@@ -1,0 +1,58 @@
+﻿
+.mailList
+{
+    position: relative;
+}
+
+.mailListSubscribers
+{
+    width: 148px;
+    height: 135px;
+    border: 1px solid black;
+    margin-bottom: 15px;
+    padding: 10px 5px 10px 5px;
+	font-family: Arial, Georgia, "Times New Roman", Times, serif;
+    position: relative;
+}
+
+    .mailListSubscribers h3
+    {
+        border-bottom: 1px solid #666;
+        color: #666;
+	    font-size: 1.3em;
+	    font-style: normal;
+        font-weight: bolder;
+        text-transform: none;
+        
+    }
+
+    .mailListSubscribers label
+    {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        color: #666;
+        font-size: 1.2em;
+        width: 150px;
+    }
+
+    .mailListSubscribers>input[type="text"]
+    {
+		color: #000;
+		font-weight: normal;
+        border: 1px solid #ccc;
+        width: 135px;
+        margin-bottom: 10px;
+    }
+
+    .mailListSubscribers>input[type="submit"]
+    {
+			background-color: #000000;
+			border: none;
+			border-radius: 4px;
+			color: #fff;
+			cursor: pointer;
+			float: right;
+			font-weight: bold;
+			padding: 6px 16px;
+			text-shadow: 0 -1px 0 #000;
+    }

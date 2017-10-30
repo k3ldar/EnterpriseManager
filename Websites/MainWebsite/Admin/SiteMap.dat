@@ -1,0 +1,44 @@
+﻿# this file lists standard pages for site map
+# any line beginning with hash (#) is ignored
+# the format for each page is
+#
+# page location # priority # update frequency
+#
+# page location is without the uri
+# priority is between 0.0 and 1.0, 0.5 is default
+# update frequency can be:  
+# always, hourly, daily, weekly, monthly, yearly, never
+#
+# product links are built automatically by enumerating the products
+# celebrities are built automatically by enumerating the celebs
+# treatments are built automatically by enumerating the treatments
+# Salons are built automatically by enumerating the salons
+# distributors are built automatically by enumerating distributors
+#
+/Appointments/Index.aspx#0.2#monthly
+/Blog/Index.aspx#0.6#daily
+/Celebrities/Index.aspx##weekly
+/Helpdesk/Feedback.aspx#.6#weekly
+/Tips/Tip.aspx#0.5#weekly
+/Press/Index.aspx#.05#weekly
+/Treatments/Lia.aspx#0.6#weekly
+/Treatments/Shellac.aspx#.5#weekly
+/Video/Index.aspx#.9#weekly
+/Products/BeeVenomGold.aspx#.6#monthly
+/Products/BlackLabel.aspx#.6#monthly
+/Products/ChristmasGiftSets.aspx#.5#monthly
+/Products/HeavenNails.aspx#.6#monthly
+/Products/Prism.aspx#.6#monthly
+/About.aspx##monthly
+/ContactUs.aspx##monthly
+/Distributors.aspx#.7#weekly
+/Home.aspx#0.5#monthly
+/Index.aspx#.9#daily
+/Privacy.aspx#.5#monthly
+/Products.aspx#.7#monthly
+/Returns.aspx##monthly
+/Salons.aspx#.7#weekly
+/Terms.aspx##monthly
+/TipsnTricks.aspx#.6#monthly
+/Trade.aspx#.9#monthly
+/Treatments.aspx#.9#monthly

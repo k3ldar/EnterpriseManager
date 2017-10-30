@@ -1,0 +1,74 @@
+﻿.binImage
+{ 
+    float: right;
+    z-index: 1;
+    background-repeat: no-repeat; 
+    margin-left: 10px;
+}
+
+.binSmallText
+{
+    font-size: 0.8em;
+}
+
+.binAbsolute
+{
+    position: static;
+}
+
+.binMainContent { float: right; width: 750px; }
+
+.binMainContent .binProductImg {
+	float: left;
+	width: 375px;
+	margin-bottom: 20px;
+}
+
+    .binMainContent .binProductImg img
+    {
+        float: left;
+    }
+    
+    .divImage
+    {
+        float: left;
+        width: 185px;
+        display: block;
+        padding-bottom: 30px;
+    }
+
+    .divDescription
+    {
+        float: left;
+        padding-top: 20px;
+        width: 190px;
+        display: block;
+        min-height: 114px;
+    }
+    .binMainContent .binProductImg .binProductDescription
+    {
+        left: 5px;
+        top: 0px;
+        width: 200px;
+        float: left;
+    }
+
+        .binMainContent .binProductImg .binProductDescription p
+        {
+        	margin: 0 0 10px 0;
+            float: right;
+        }
+        
+
+        .binProductBasket
+        {
+            float: right;
+            padding-right: 20px;
+        }
+
+
+        .binProductContains
+        {
+            font-size: 0.9em;
+            font-style: italic;
+        }

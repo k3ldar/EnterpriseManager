@@ -1,0 +1,99 @@
+﻿.orderPayment
+{
+    width: 750px;
+    float: left;
+}
+
+    .orderSummary
+    {
+        width: 750px;
+        float: left;
+        margin-bottom: 50px;
+        font-size: 1.2em;
+        font-family: Arial, Georgia, "Times New Roman", Times, serif;
+        color: #666;
+    }
+
+        .orderSummary h2
+        {
+            font-size: 1.3em;
+            font-family: Arial, Georgia, "Times New Roman", Times, serif;
+            font-weight: bold;
+        }
+
+        .orderSummary h3
+        {
+            width: 330px;
+            font-size: 1.25em;
+            font-family: Arial, Georgia, "Times New Roman", Times, serif;
+            margin-right: 10px;
+        }
+
+        .orderSummary .orderDetails
+        {
+            width: 330px;
+            float: left;
+        }
+
+            .orderSummary table 
+            {
+                width: 100%;
+                border: 0;
+                position: absolute;
+                margin-top: 10px;
+            }
+                
+                .orderSummary table td
+                {
+                    font-size: 1.1em;
+                    font-family: Arial, Georgia, "Times New Roman", Times, serif;
+                    line-height: 1.5em;
+                }
+
+                    .orderSummary table td span
+                    {
+                        float: right;
+                        font-size: 1.1em;
+                        font-family: Arial, Georgia, "Times New Roman", Times, serif;
+                    }
+
+                .orderSummary table td strong
+                {
+                    font-size: 1.1em;
+                    font-family: Arial, Georgia, "Times New Roman", Times, serif;
+                    line-height: 1.5em;
+                    font-weight: bold;
+                }
+
+                    .orderSummary table td span strong
+                    {
+                        float: right;
+                        font-size: 1.1em;
+                        font-family: Arial, Georgia, "Times New Roman", Times, serif;
+                        font-weight: bold;
+                    }
+
+
+            .orderSummary .orderDetails p
+            {
+                font-size: 1.1em;
+                font-family: Arial, Georgia, "Times New Roman", Times, serif;
+                margin: 0 0 0 0;
+            }
+
+                .orderSummary .orderDetails p span
+                {
+                    float: right;
+                    font-size: 1.1em;
+                    font-family: Arial, Georgia, "Times New Roman", Times, serif;
+                    margin: 0 0 0 0;
+                }
+
+        .orderSummary .orderAddress
+        {
+            font-size: 1.1em;
+            font-family: Arial, Georgia, "Times New Roman", Times, serif;
+            width: 200px;
+            float: right;
+            line-height: 1.5em;
+        }

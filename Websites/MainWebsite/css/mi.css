@@ -1,0 +1,396 @@
+﻿* { position: relative; }
+
+body, div, dl, dt, dd, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, p, blockquote, table, th, td, embed, object { margin: 0; padding: 0; }
+
+address, caption, cite, code, dfn, th, var { font-style: normal; font-weight: normal; }
+
+h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: normal; }
+
+table { border-collapse: collapse; border-spacing: 0; }
+
+:focus, :active { outline: 0; }
+
+a img, fieldset, img, abbr, acronym { border:0px; }
+
+ol, ul { list-style: none; }
+
+caption, th { text-align: left;	}
+
+q:before, q:after { content: ''; }
+
+/*--- Font Size (em) Bug Fixing for IE ---*/
+
+h1 { font-size: 2em; }  	/* displayed at 24px */
+h2 { font-size: 1.5em ;}  	/* displayed at 18px */
+h3 { font-size: 1.25em; }  	/* displayed at 15px */
+h4 { font-size: 1em; }  	/* displayed at 12px */
+input, textarea, select, th, td { font-size:1em; }
+li li, li p, td p, blockquote p { font-size:1em; }
+
+/*li { direction: rtl; }
+ul { direction: rtl; }
+  */  
+
+/* !--- GLOBAL --- */
+
+body {
+	/* background: url('https://static.heavenskincare.com/images/background.jpg') #fff no-repeat; */
+	font-family: "nimbus-sans", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 62.5%;
+	line-height: 1;
+    background-size: 100%;
+}
+
+.clear { clear:both; }
+
+.fixed:after {
+	clear:both;
+	content:"."; 
+	display:block; 
+	height:0; 
+	visibility:hidden;
+}
+
+.fixed { display:block; }
+
+/*  \*/
+.fixed { min-height:1%; }
+
+* html .fixed {	height:1%; }
+
+.left 	{ float: left; }
+.right 	{ float: right; }
+
+
+.wrapper {
+	background-color: transparent;
+	/*box-shadow: 0 2px 5px rgba(0,0,0,0.6);*/
+	margin: 0px auto;
+	width: 100%;
+}
+
+    .wrapper .tagLine
+    {
+        /*background: url(/images/quote.gif) no-repeat left 16px;*/
+        border-top: none;
+	    color: #000;
+	    font-family: Arial, Georgia, "Times New Roman", Times, serif;
+	    font-size: 1.2em;
+	    font-style: normal;
+        font-weight: bolder;
+	    line-height: 1.25;
+	    padding: 30px 30px 10px 30px;
+        width: 80%;
+        margin-top: 2px;
+        background-color: transparent;
+        text-transform: uppercase;
+        align-content: center;
+        text-align: center;
+        margin: 0 auto; 
+    }
+
+.fullHeight
+{
+    width:128px;
+    height: 128px;
+}
+
+.menuOptions
+{
+    width: 100%;
+    display: inline-block;
+}
+
+    .menuOptions ul
+    {
+        list-style: none;
+        text-align: left;
+        display: inline-block;
+        margin: auto auto;
+    }
+
+        .menuOptions ul li
+        {
+            float: left; 
+            margin: 0 8px 8px 0; 
+            width: 128px; 
+            height: 128px; 
+            padding: 2px 0px 2px 4px; 
+            text-align: center;
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 128px !important;
+            
+        }
+
+            .menuOptions ul li.Other 
+            { 
+                color: #666; 
+                border-color: #666; 
+                background-color: grey;
+            }
+
+            .menuOptions ul li.Psoriasis { 
+                color: rgb(188, 189, 192); 
+                background-color: rgb(188, 189, 192); 
+            }
+
+            .menuOptions ul li.OilySkin {
+                color: rgb(139, 200, 103);
+                background-color: rgb(139, 200, 103);
+            }
+            .menuOptions ul li.Eczema {
+                color: rgb(89, 142, 202);
+                background-color: rgb(89, 142, 202);
+            }
+            .menuOptions ul li.DrySkin {
+                color: rgb(162, 133, 87);
+                background-color: rgb(162, 133, 87);
+            }
+            .menuOptions ul li.AntiAgeing {
+                color: rgb(246, 141, 72);
+                background-color: rgb(246, 141, 72);
+            }
+            .menuOptions ul li.Acne {
+                color: rgb(165, 131, 188);
+                background-color: rgb(165, 131, 188);
+            }
+            .menuOptions ul li.Sensitive {
+                color: rgb(151, 216, 229);
+                background-color: rgb(151, 216, 229);
+            }
+            .menuOptions ul li.Revitalised {
+                color: rgb(243, 223, 81);
+                background-color: rgb(243, 223, 81);
+            }
+            .menuOptions ul li.Rosacea {
+                color: rgb(224, 110, 171);
+                background-color: rgb(224, 110, 171);
+            }	
+            				
+        .menuOptions ul li a {
+	        color: white;
+	        font-size: 1.3em;
+            font-weight: bolder;
+            text-align:center;
+	        text-shadow: none;
+            text-transform: uppercase;
+            text-decoration: none;
+            height: 128px;
+            width: 128px;
+            display: block;
+        }
+
+            .menuOptions ul li a span
+            {
+                line-height: 128px;
+                /*display: inline-block;
+                vertical-align: middle;
+                padding: 40px 8px 0 8px;*/
+                display: table;
+            }
+
+            .menuOptions ul li a span div
+            {
+                line-height: normal;
+                display: inline-block;
+                vertical-align: middle;
+                /*padding: 40px 8px 0 8px;*/
+                display: table-cell; vertical-align: middle;
+            }
+/*  !-- HEADER --- */
+.header 
+{ 
+    border-bottom: 10px solid transparent; 
+    background-color: transparent;
+    width: 100%;
+    min-height: 100px;
+}
+
+
+    .header .rightContainer
+    {
+        padding-top: 6px;
+        float: right;
+        border: none;
+        right: 0px;
+        padding-right: 7px;
+        position: absolute;
+        top: 0px;
+    }
+
+    .header .centerContainer
+    {
+        padding-top: 6px;
+        margin: auto 110px;
+        display: block;
+        min-height: 100px;
+    }
+
+        .header .centerContainer a img
+        {
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            width: 150px;
+            height: 115px;
+            position: absolute;
+        }
+
+    .header .leftContainer 
+    {
+        padding-top: 6px;
+        float: left;
+        z-index: 5;
+    }
+
+    .header .leftContainer .socialMedia
+    {
+        height: 26px;
+    }
+        .header .leftContainer .socialMedia ul
+        {
+            padding: 0;
+            margin: 0;
+        }
+			.header .leftContainer .socialMedia ul li
+            {
+                padding: 0px 0px 0px 6px;
+                float: left;
+			}
+
+    .searchWrapper    	
+    {
+        float: right;
+        width: 140px;
+        margin: 6px 0 0 0; 
+        background-color: transparent;
+    }
+
+	.header .leftContainer .frm_search {
+		background: #fff;
+		/*-moz-border-radius: 2px;  
+		-webkit-border-radius: 2px;  
+		border-radius: 2px;*/
+		float: left;
+		font-size: 1.2em;
+		margin: 7px 10px 6px 6px;
+		padding: 4px 6px;
+        border: 1px solid black;
+	}
+	
+		.header .leftContainer .frm_search input[type="text"] {
+			border: none;
+			color: #999;
+			font-style: italic;
+			width: 83px;
+		}
+		
+		.header .leftContainer .frm_search input[type="text"]:focus { color: #333; font-style: normal; }
+		
+		.header .leftContainer .frm_search input[type="image"] { padding: 3px 6px 0 6px; }
+
+
+.featureWrapper
+{
+	    margin: 14px 0px 14px 0px;
+        padding: 10px;
+}
+
+    .featureWrapper .feature {
+	    /*border: 1px solid #ccc;*/
+	    -moz-border-radius: 2px;  
+	    -webkit-border-radius: 2px;  
+	    border-radius: 2px;
+	    overflow: hidden;
+        width: 300px;
+        height: 140px;
+        margin: 0 auto;    
+    }
+
+
+/* !--- FOOTER --- */
+
+.footer {
+	margin: 5px;
+	width: 85%;
+    background-color: transparent;
+    padding: 11px 11px 50px 11px;
+}
+
+	.footer p {
+		clear: both;
+		color: #999;
+		font-size: 1.2em;
+		line-height: 1.5;
+		text-align: center;
+	}
+
+	    .footer p a { color: #666; text-decoration: none; padding: 10px 8px 10px 2px;}
+				
+        .footer p a:hover { color: rgba(0,0,0,0.6); }
+
+	.footer .footerBlock {
+		float: left;
+		margin: 0 30px 30px 0;
+		width: 100%;
+	}
+	
+		.footer .footerBlock h6 {
+			border-bottom: 1px solid #262626;
+			color: #000;
+			font-size: 1.4em;
+			margin: 0 0 10px 0;
+			padding: 0 0 8px 0;
+			text-transform: uppercase;
+		}
+		
+        .footer .contact
+        {
+            align-content: center;
+        }
+
+		.footer .footerBlock p { margin: 0 0 1em 0; text-align: right; }
+		
+			.footer .footerBlock p a { color: #000; }
+	
+	.footer .footerWide { width: 100px; }
+	
+		.footer .footerWide ul { font-size: 1.2em; }
+		
+			.footer .footerWide ul li {
+				float: left;
+				margin: 0 0 8px 0;
+				width: 130px;
+			}
+			
+			.footer .footerWide ul li:before { color: #333; content: "· "; }
+			
+				.footer .footerWide ul li a { color: #999; text-decoration: none; }
+				
+				.footer .footerWide ul li a:hover { color: #fff; }
+	
+	.footer .social {}
+	
+		.footer .social ul { font-size: 1.2em; }
+		
+			.footer .social ul li { margin: 0 0 16px 0; }
+			
+				.footer .social ul li a {
+					background: url(/images/social-icons.png) no-repeat left center;
+					color: #999;
+					display: block;
+					height: 16px;
+					padding: 0 0 0 24px;
+					text-decoration: none;
+				}
+				
+				.footer .social ul li a:hover { color: #fff; }
+				
+				.footer .social ul li.fb a 	{ background-position: 0 0; }
+				.footer .social ul li.tw a 	{ background-position: 0 -17px; }
+				.footer .social ul li.rss a { background-position: 0 -34px; }
+				
+

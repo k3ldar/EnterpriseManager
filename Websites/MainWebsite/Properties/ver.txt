@@ -1,0 +1,10 @@
+Parameters
+/out=T:\HeavenMain\Websites\MainWebsite\Properties\ver.txt
+/Debug
+/path=T:\HeavenMain\Websites\MainWebsite\
+
+Path Exists
+
+T:\HeavenMain\Websites\MainWebsite\properties\AssemblyInfo.cs Found
+
+New Version 3.0.73.6859

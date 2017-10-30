@@ -1,0 +1,79 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteStaff.master.cs" Inherits="Heavenskincare.WebsiteTemplate.SiteStaffMaster" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
+
+<!DOCTYPE html>
+
+<html>
+
+<head id="Head1" runat="server">
+    <title>Heaven Health & Beatuy Ltd - Staff</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/css/ajax.css" type="text/css" media="screen" />
+
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <asp:ScriptManager ID="ScriptManager2" runat="server" ScriptMode="Release"></asp:ScriptManager>
+    <form id="frmIndex" runat="server">
+	<div class="wrapperStaff">
+	
+        <!-- Header Start -->
+        <div class="header">
+            <a href="/Index.aspx" title="Heaven by Deborah Mitchell" class="logo">Heaven by Deborah Mitchell</a>
+           	<div class="actions">
+           		<p><a href="/Members/Index.aspx">my account</a> | <a href="/helpdesk/Index.aspx">helpdesk</a></p>
+        	</div><!-- end of #actions -->
+    	    <div class="clear"><!-- clear --></div>        
+        </div><!-- end of #header -->
+
+        <div class="navigation">
+           	<ul>
+        		<li class="current"><a href="<%=BaseURL()%>/Index.aspx"><span class="png_bg"></span></a></li>
+                <!-- <li><a href="/Staff/Diary.aspx" target="_blank">Diary</a></li> -->
+        		<li><a href="/Staff/SalesLeads.aspx">Sales Tracker</a></li>
+                <li><a href="/Staff/Feeds/Twitter.aspx">Twitter Feeds</a></li>
+                <li><a href="/Staff/Feeds/RSSFeeds.aspx">RSS Feeds</a></li>
+                <li><a href="/Staff/Statistics/Index.aspx">Statistics</a></li>
+                <li><a href="/Staff/Downloads/Index.aspx">Client Downloads</a></li>
+                <li><a href="/Staff/MassEmail/MassEmail.aspx">Mass Email</a></li>
+                <li><a href="/Staff/Reports/Index.aspx">Reports</a></li>
+                <li><a href="/Staff/Campaigns/Index.aspx">Campaigns</a></li>
+                <li><a href="/Staff/Admin/Index.aspx">Admin</a>
+                    <div class="menu">
+                        <div>
+                            <ul>
+                                <%=GetMenuItems() %>
+                            </ul>
+                        </div>
+                        <div class="clear"><!-- clear --></div>
+                    </div>
+                </li>
+        	</ul>
+
+        	<div class="clear"><!-- clear --></div>
+        </div><!-- end of #navigation -->
+
+        <!-- Header End -->
+
+
+        <!-- Main Content -->
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        
+        </asp:ContentPlaceHolder>
+        <!-- Main Content End -->
+    </div> <!-- End of Wrapper -->
+
+        
+    <!-- Footer -->
+    <div class="footer">
+        <p><%=GetUserName() %></p>
+        <p><%=Request.ServerVariables["REMOTE_HOST"]%></p>
+    	<p><br />&copy; Copyright 2012 - 2015 Heaven Health &amp; Beauty Ltd. All rights reserved. Heaven Health & Beauty Ltd. Registered in England No. 3095876<br /><br /><br /></p>
+        
+    </div><!-- Footer -->
+    </form>
+</body>
+</html>

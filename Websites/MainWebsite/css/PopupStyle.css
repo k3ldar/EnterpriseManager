@@ -1,0 +1,18 @@
+﻿.popupFrame { padding: 10px; background: white no-repeat center; border-radius: 10px; z-index: 1001; }
+.popupFrame.wait { background-image: url(../img/preloader-white.gif); }
+
+.popupFrame-overlay { background: #090909 url(../img/pattern-7.png) repeat center; background: rgba(0, 0, 0, 0.9) url(../img/pattern-7.png) repeat center; z-index: 1000; }
+
+.popupFrame-close { background: url(../img/close.png) no-repeat center; z-index: 1010; }
+.start { width: 340px; text-align: center; }
+
+#demos .demo { float: left; margin: 35px 20px 0 75px; }
+#demos .demo h2 { margin: 10px; font-size: 15px; }
+#demos .demo h2 a { color: black; text-decoration: none; }
+#demos .demo .preview img { display: block; width: 328px; height: 234px; }
+#demos .demo .preview, #demos .demo .start { width: 340px; text-align: center; }
+#demos .demo .start a { display: inline-block; padding: 5px; font-size: 10px; color: #999999; text-decoration: none; background: url(../img/demos/arrow.gif) no-repeat right 6px; padding-right: 16px; }
+#demos .demo .start a:hover { color: #666666; }
+#demos .demo:hover .start a { color: #666666; }
+
+

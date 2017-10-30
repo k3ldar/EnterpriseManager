@@ -1,0 +1,27 @@
+Sitemap: http://localhost:49999/sitemap_location.xml
+
+User-Agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /bin/
+Disallow: /toolbar/
+Dissalow: /staff/
+Dissalow: /error/
+Disallow: /website/scriptresource.axd
+Disallow: /website/webresource.axd
+Disallow: /scriptresource.axd
+Disallow: /combinescriptshandler.axd
+Disallow: /webresource.axd
+
+User-Agent: bingbot
+Allow: /
+Disallow: /admin/
+Disallow: /bin/
+Disallow: /toolbar/
+Dissalow: /staff/
+Dissalow: /error/
+Disallow: /website/scriptresource.axd
+Disallow: /website/webresource.axd
+Disallow: /scriptresource.axd
+Disallow: /combinescriptshandler.axd
+Disallow: /webresource.axd

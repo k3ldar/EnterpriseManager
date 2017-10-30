@@ -1,0 +1,3057 @@
+﻿
+/* VER 5.0
+*/
+
+/*
+    * { direction: rtl; unicode-bidi: embed }
+    */
+
+
+* { position: relative; }
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, p, blockquote, table, th, td, embed, object { margin: 0; padding: 0; }
+
+address, caption, cite, code, dfn, th, var { font-style: normal; font-weight: normal; }
+
+h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: normal; }
+
+table { border-collapse: collapse; border-spacing: 0; }
+
+:focus, :active { outline: 0; }
+
+a img, fieldset, img, abbr, acronym { border:0px; }
+
+ol, ul { list-style: none; }
+
+caption, th { text-align: left;	}
+
+q:before, q:after { content: ''; }
+
+/*--- Font Size (em) Bug Fixing for IE ---*/
+
+h1 { font-size: 2em; }  	/* displayed at 24px */
+h2 { font-size: 1.5em ;}  	/* displayed at 18px */
+h3 { font-size: 1.25em; }  	/* displayed at 15px */
+h4 { font-size: 1em; }  	/* displayed at 12px */
+input, textarea, select, th, td { font-size:1em; }
+li li, li p, td p, blockquote p { font-size:1em; }
+
+/*li { direction: rtl; }
+ul { direction: rtl; }
+  */  
+
+/* !--- GLOBAL --- */
+
+body {
+	/* background: url('https://static.heavenskincare.com/images/background.jpg') #fff no-repeat; */
+	font-family: "nimbus-sans", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 62.5%;
+	line-height: 1;
+    background-size: 100%;
+}
+
+.clear { clear:both; }
+
+.fixed:after {
+	clear:both;
+	content:"."; 
+	display:block; 
+	height:0; 
+	visibility:hidden;
+}
+
+.fixed { display:block; }
+
+/*  \*/
+.fixed { min-height:1%; }
+
+* html .fixed {	height:1%; }
+
+.left 	{ float: left; }
+.right 	{ float: right; }
+
+/* !--- WRAPPER --- */
+
+
+.wrapperStaff {
+	background-color: #fff;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.6);
+	margin: 0px auto;
+	width: 90%;
+}
+
+.wrapper {
+	background-color: transparent;
+	/*box-shadow: 0 2px 5px rgba(0,0,0,0.6);*/
+	margin: 0px auto;
+	width: 980px;
+}
+
+    .wrapper .tagLineHome
+    {
+        border-top: none;
+	    color: #000;
+	    font-family: Arial, Georgia, "Times New Roman", Times, serif;
+	    font-size: 1.4em;
+	    font-style: normal;
+        font-weight: bolder;
+	    line-height: 1.25;
+	    padding: 15px 30px 10px 0px;
+        width: 400px;
+        float: left;
+        margin-left: 00px;
+        margin-top: 2px;
+        background-color: transparent;
+        text-transform: uppercase;
+        align-content: center;
+        text-align: left;
+    }
+
+        .wrapper .tagLineHome img
+        {
+            border: none;
+            float: left;
+            padding: 0px;
+        }
+
+    .wrapper .tagLine
+    {
+        /*background: url(https://static.heavenskincare.com/images/quote.gif) no-repeat left 16px;*/
+        border-top: none;
+	    color: #000;
+	    font-family: Arial, Georgia, "Times New Roman", Times, serif;
+	    font-size: 1.4em;
+	    font-style: normal;
+        font-weight: bolder;
+	    line-height: 1.25;
+	    padding: 30px 30px 10px 30px;
+        width: 890px;
+        float: left;
+        margin-left: 30px;
+        margin-top: 2px;
+        background-color: transparent;
+        text-transform: uppercase;
+        align-content: center;
+        text-align: center;
+    }
+
+/* !--- HEADER --- */
+
+.header 
+{ 
+    padding: 0 20px; 
+    border-bottom: 10px solid transparent; 
+    background-color: transparent;
+}
+
+	.header .logo {
+		background: url('https://www.heavenskincare.com/images/Heaven-logo.png') no-repeat;
+		display: block;
+		float: left;
+		/*overflow: hidden;*/
+		text-indent: -9999px;
+		width: 178px; height: 121px;
+        background-color: transparent;
+	}
+
+    .header .socialAndSearch
+    {
+        left: 20px;
+        width: 180px;
+        height: 120px;
+        float: left;
+
+    }
+
+    .header .socialMedia
+    {
+        /*left: 20px;*/
+        top: 16px;
+        float: right;
+        width: 124px;
+        padding-right: 12px;
+    }
+
+		.header .socialMedia ul 
+        { 
+            font-size: 1.2em; 
+            height: 26px;
+		}
+		
+			.header .socialMedia ul li 
+            { 
+                margin: 0 5px 0 0; 
+                float: right;
+			}
+			
+				.header .socialMedia ul li a img
+                {
+					padding: 0 0 0 0;
+					text-decoration: none;
+				}
+				
+				/*.header .socialMedia ul li a:hover { color: #fff; }*/
+				
+        
+	.header .actions { float: right; margin: 6px 0 0 0; background-color: transparent; width: 365px; }
+
+    .header .socialAndSearch .selectCountry
+    {
+        /*width: 120px;*/
+        height: 32px;
+        display: inline-block;
+        border: 0px;
+        float: left;
+        padding-left: 5px;
+        top: 20px;
+        width:162px;
+    }
+
+        .header .socialAndSearch .selectCountry a
+        {
+            float: right;
+            padding-right: 3px;
+        }
+
+		.header .actions p {
+			color: #ccc;
+			font-size: 1.3em;
+			font-weight: bold;
+			text-align: right;
+		}
+		
+			.header .actions p a { color: #666; text-decoration: none; text-transform: uppercase; }
+			
+				.header .actions p a:hover { color: #333; }
+	
+                
+/*    COUNTRY SELECT START   */
+			
+.content .countrySelection
+{
+    position: absolute;
+    z-index: 10;
+    display: block;
+    top: 50px;
+    left: 70px;
+    width: 810px;
+    height: 500px;
+    opacity: 0.6;
+    background-color: #666;
+    border: 1px solid #000;
+}
+
+    .content .countrySelection span
+    {
+        float: left;
+        top: 470px;
+        left: 20px;
+    }
+
+        .content .countrySelection span a
+        {
+            font-size: 1.9em;
+            text-decoration: none;
+            color: #fff;
+        }
+
+            .content .countrySelection span a:hover
+            {
+                text-decoration: underline;
+            }
+
+    .content .countrySelection ul
+    {
+        font-size: 1.3em;
+        color: #fff;
+        border: 0px;
+        padding: 15px 0px 0px 0px;
+        margin: 0px;
+        list-style: none;
+    }
+
+        .content .countrySelection ul li
+        {
+            color: #fff;
+            font-size: 2.0em;
+            margin: 5px 25px 5px 5px;
+            display: inline;
+            float: left;
+        }
+            
+                    .country
+                    {
+                        font-size: 1.3em;
+                        width: 150px;
+                        display: block;
+                    }
+
+                        .content .countrySelection ul li ul
+                        {
+                            list-style: none;
+                            font-size: 1em;
+                            list-style-type: circle;
+                        }
+
+                            .content .countrySelection ul li ul li
+                            {
+                                font-size: 1em;
+                                margin: 0px;
+                                padding: 5px 0px;
+                                border: 0px;
+                                display: block;
+                                float: none;
+                                width: 120px;
+                            }
+
+                                .content .countrySelection ul li ul li a
+                                {
+                                    font-size: 0.5em;
+                                    text-decoration: none;
+                                    color: #fff;
+                                    width: 140px;
+                                    height: auto;
+                                    line-height: 1.3em;
+                                    word-wrap: break-word;
+                                }
+
+                                    .content .countrySelection ul li ul li a:hover
+                                    {
+                                        text-decoration: underline;
+                                    }
+
+
+/* OLD COUNTRY SELECT */
+.selectCountry
+{
+    width: 200px;
+    float: right;
+    top: 45px;
+    height: 60px;
+    font-size: 1.5em;
+    text-align: center;
+    align-content: center;
+    display: inline-block;
+    border: 1px solid;
+}
+
+
+        .selectCountry ul
+        {
+            width: 100%;
+            height: 100%;
+        }
+
+            .selectCountry ul li
+            {
+                padding-top: 20px;
+                padding-bottom: 25px;
+                width: 100%;
+            }
+
+                .selectCountry ul li:hover 
+                { 
+                    display: block; 
+                    color: #fff;
+                    background-color: #000;
+                }
+       
+
+    .selectCountry .subMenu
+    {
+    
+        width: 150px;
+        background-color: #fff;
+        color: #000;
+    }
+
+        .selectCountry .subMenu ul
+        {
+            list-style: none;
+        }
+
+                .selectCountry .subMenu ul li
+                {
+				    box-shadow: 0 2px 2px rgba(0,0,0,0.5);
+				    padding: 0px;
+                    left: 0;
+				    width: 180px;
+                    height: 30px;
+				    z-index: 10;
+                    background-color: #fff;
+                    border-top: 4px solid #fff;
+                }
+
+                .selectCountry ul li:hover 
+                { 
+                    display: block; 
+                    color: #fff;
+                    background-color: #000;
+                    border-top: 4px solid #000;
+                }
+
+                .selectCountry .subMenu ul li a
+                { 
+                    float: left; 
+                    color: #000;
+                    background-color: #fff;
+                    height: 30px;
+                    width:180px;
+                    text-decoration: none;
+               }
+		    
+                .selectCountry .subMenu ul li a:hover
+                { 
+                    float: left; 
+                    color: #fff;
+                    background-color: #000;
+                    height: 30px;
+                    width:180px;
+                }
+
+			    
+
+                .selectCountry ul li .subMenu
+                {
+                    background: #fff;
+				    box-shadow: 0 2px 2px rgba(0,0,0,0.5);
+				    display: none;
+				    padding: 0px;
+				    position: absolute;	
+				    top: 40px; 
+                    left: 0;
+				    width: 130px;
+				    z-index: 10;
+                }
+			
+                .selectCountry ul li:hover .subMenu { display: block; height: 30px; top: 60px; }
+
+
+			    .selectCountry ul li ul li .sub {
+				    background: #fff;
+				    box-shadow: 0 2px 2px rgba(0,0,0,0.5);
+				    display: none;
+				    padding: 0px;
+				    position: absolute;	
+				    top: 0px; 
+                    right: 181px;
+				    width: 196px;
+				    z-index: 40;
+			    }
+			
+				    .selectCountry ul li ul li:hover .sub { display: block; }
+				
+				    .selectCountry ul li ul li .sub .cat 	
+                    { 
+                        float: left; 
+                        width: 196px; 
+                        height: auto; 
+                        max-height: 300px; 
+                        min-width: 196px;
+				    }
+				
+				    .selectCountry ul li ul li .sub a {
+					    box-shadow: none;
+					    height: auto;
+					    padding: 0;
+                        width: 180px;
+                        background-color: #fff;
+                        text-align: center;
+                        text-decoration: none;
+				    }
+				
+				    .selectCountry ul li ul li .sub h6 {
+					    border-bottom: 1px solid #ccc;
+					    color: #999;
+					    font-size: 1.4em;
+					    margin: 0 0 10px 0;
+					    padding: 0 0 4px 0;
+                        text-transform: uppercase;
+				    }
+				
+
+				    .selectCountry ul li ul li .sub .cat ul { 
+                        float: none; 
+                        list-style: none; 
+                        list-style-position: inside;
+                        width: auto;
+				    }
+				
+					    .selectCountry ul li ul li .sub .cat ul li {
+						    border: none;
+						    float: left;
+						    line-height:2em;
+						    margin: 0 10px 0 0;
+                            padding: 2px 0px 2px 6px;
+                            width: 180px;
+                            box-shadow: none;
+                            background-color: #fff;
+					    }
+					
+/* OLD COUNTRY SELECT */
+
+/*    COUNTRY SELECT END   */					
+		.header .actions .bag {
+			margin: 0 0 0 0;
+			padding: 14px 0 0 0;
+			width: 270px; height: 76px;
+            float: right;
+		}
+		
+			.header .actions .bag p {
+				color: #999;
+				margin: 0 10px 14px 70px;
+				text-align: left;
+			}
+			
+				.header .actions .bag p strong { float: right; text-align: right; width: 80px; }
+		
+			.header .actions .bag a {
+				background: #eaeaea;
+				-moz-border-radius: 3px;  
+				-webkit-border-radius: 3px;  
+				border-radius: 3px;
+				color: #333;
+				display: block;
+				font-size: 1.5em;
+				margin: 0 0 0 20px;
+				padding: 4px 16px;
+				text-align: right;
+				text-decoration: none;
+			}
+			
+			.header .actions .bag a:hover { background: #ddd; }
+			
+			.header .actions .bag span {
+				background: url('https://www.heavenskincare.com/images/shopping-bag.png') no-repeat;
+				position: absolute;
+				top: 0; left: 0;
+				width: 67px; height: 76px;
+				z-index: 5;
+			}
+	
+/* !--- NAVIGATION --- */
+
+.navigation {
+	background-color: transparent;
+    height: 60px;
+}
+
+	.navigation ul { float: left; }
+	
+		.navigation ul li {
+			float: left;
+			position: relative;
+		}
+		
+			.navigation ul li a {
+				color: #000;
+				display: block;
+				font-size: 1.1em;
+				height: 28px;	
+				padding: 12px 7px 0;
+				text-decoration: none;
+				text-transform: uppercase;
+			}
+			
+				.navigation ul li a span
+                {
+                    background: url('https://static.heavenskincare.com/images/home.png') no-repeat 0 0;
+                    display: block;
+                    width: 18px;
+                    height: 16px;
+                }
+				
+				.navigation ul li a:hover span { background-position: 0 100%; }
+				
+				.navigation ul li.current a:hover span { background-position: 0 0; }
+
+			.navigation ul li:hover a, .navigation ul li a:hover {
+				background: #000;
+				/*box-shadow: 0 -1px 1px rgba(0,0,0,0.1);*/
+				color: #fff;
+				text-shadow: none;
+			}
+			
+.navigation img
+{
+    background-color: transparent;
+    display: inline;
+    top: -60px;
+    width: 200px;
+    align-content: center;
+    margin: 0 0 0 0;
+    left: 7px;
+}
+			
+/* SUB MENU */
+
+.menuBorder 
+{
+    border: 2px solid silver;
+    border-right: none;
+    border-left: none;
+}
+
+.leftMenu
+{
+    float: left;
+    margin-left: 0px; 
+    padding-left: 10px;
+    padding-right: 10px;
+    min-height: 39px;
+    min-width: 360px;
+}
+
+.rightMenu
+{
+    float: right;
+    margin-right: 0px;
+    padding-right: 10px;
+    padding-left: 10px;
+    min-height: 39px;
+    min-width: 360px;
+}
+
+    .rightMenu ul
+    {
+        float: right;
+    }
+
+.navigation .subMenu
+{
+    
+    width: 150px;
+    background-color: #fff;
+    color: #000;
+}
+
+    .navigation .subMenu ul
+    {
+        list-style: none;
+    }
+
+            .navigation .subMenu ul li
+            {
+                background: #fff;
+				box-shadow: 0 2px 2px rgba(0,0,0,0.5);
+				padding: 5px;
+	
+				top: 0px; 
+                left: 0;
+				/* width: 130px;  458px */
+				z-index: 10;
+            }
+
+            .navigation ul li:hover, .navigation ul li a:hover { display: block; }
+
+            .navigation .subMenu ul li a
+            { 
+                float: left; 
+                width: 130px; 
+                color: #000;
+                background-color: #fff;
+            }
+		    
+            .navigation .subMenu ul li a:hover
+            { 
+                float: left; 
+                width: 130px; 
+                color: #fff;
+                background-color: #000;
+            }
+			.navigation ul li.current a {
+				background-color: #000;
+				/*background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#000000), to(#222222));
+				background-image: -webkit-linear-gradient(top, #000000, #222222);
+				background-image:    -moz-linear-gradient(top, #000000, #222222);
+				background-image:     -ms-linear-gradient(top, #000000, #222222);
+				background-image:      -o-linear-gradient(top, #000000, #222222);
+                    */
+			}
+
+            .navigation ul li .subMenu
+            {
+                background: #fff;
+				box-shadow: 0 2px 2px rgba(0,0,0,0.5);
+				display: none;
+				padding: 0px;
+				position: absolute;	
+				top: 40px; 
+                left: 0;
+				width: 130px; /* 458px */
+				z-index: 10;
+            }
+			
+            .navigation ul li .menu
+            {
+                background: #000;
+				box-shadow: 0 2px 2px rgba(0,0,0,0.5);
+				display: none;
+				padding: 16px;
+				position: absolute;	
+				top: 40px; 
+                left: 0;
+				width: 130px; /* 458px */
+				z-index: 10;
+            }
+
+            .navigation ul li:hover .menu { display: block; }
+            .navigation ul li:hover .subMenu { display: block; }
+
+            .navigation ul li .menu
+            { 
+                float: left; 
+                width: 130px; 
+                color: #000;
+                background-color: #fff;
+            }
+
+			.navigation ul li .sub {
+				background: #fff;
+				box-shadow: 0 2px 2px rgba(0,0,0,0.5);
+				display: none;
+				padding: 16px;
+				position: absolute;	
+				top: 30px; left: 0px;
+				width: 520px; /* 490px */
+				z-index: 10;
+			}
+			
+				.navigation ul li:hover .sub { display: block; }
+				
+				.navigation ul li .sub .cat 	{ float: left; width: 350px; }
+				.navigation ul li .sub .prod,.navigation ul li .sub .prodStratosphere	{ float: right; width: 150px; }
+				
+				.navigation ul li .sub a {
+					box-shadow: none;
+					height: auto;
+					padding: 0;
+				}
+				
+				.navigation ul li .sub h6 {
+					border-bottom: 1px solid #ccc;
+					color: #999;
+					font-size: 1.4em;
+					margin: 0 0 10px 0;
+					padding: 0 0 4px 0;
+                    text-transform: uppercase;
+				}
+				
+				.navigation ul li .sub .cat ul { 
+                    float: none; 
+                    list-style: none; 
+                    list-style-position: inside;
+				}
+				
+					.navigation ul li .sub .cat ul li {
+						border: none;
+						float: left;
+						line-height:2em;
+						margin: 0 10px 0 0;
+						padding:2px 0px 2px 14px;
+						width: 150px;
+                        box-shadow: none;
+					}
+
+.prodGroupFontSmall
+{
+    position: relative; text-align: center; 
+    background: white;
+    font-size: 0.9em;
+    width: 118px; 
+}
+
+.prodGroupLineHeightSmall
+{
+    position: relative; text-align: center; 
+    background: white;
+    font-size: 0.3em;
+    width: 118px; 
+    height: 5px;
+}
+
+.prodGroupFontLarge
+{
+    position: relative; text-align: center; 
+    background: white;
+    font-size: 1.3em;
+    width: 118px; 
+}
+
+
+                        .navigation ul li .sub .cat ul li.Other { color: rgb(255, 255, 255); border-left: 0px; border-top: 0px; border-bottom: 0px; border-right: 0px; border-color: rgb(255, 255, 255); border-style: solid; margin-bottom: 1px; }
+
+			            .navigation ul li .sub .cat ul li.Psoriasis { padding: 2px 0px 2px 4px; color: rgb(188, 189, 192); border-left: 8px; border-top: 2px; border-bottom: 2px; border-right: 2px;  border-color: rgb(188, 189, 192); border-style: solid; margin-bottom: 3px; }
+			
+			            .navigation ul li .sub .cat ul li.OilySkin { padding: 2px 0px 2px 4px; color: rgb(139, 200, 103); border-left: 8px; border-top: 2px; border-bottom: 2px; border-right: 2px;  border-color: rgb(139, 200, 103); border-style: solid; margin-bottom: 3px; }
+
+			            .navigation ul li .sub .cat ul li.Eczema { padding: 2px 0px 2px 4px; color: rgb(89, 142, 202); border-left: 8px; border-top: 2px; border-bottom: 2px; border-right: 2px;  border-color: rgb(89, 142, 202); border-style: solid; margin-bottom: 3px; }
+
+			            .navigation ul li .sub .cat ul li.DrySkin { padding: 2px 0px 2px 4px; color: rgb(162, 133, 87); border-left: 8px; border-top: 2px; border-bottom: 2px; border-right: 2px;  border-color: rgb(162, 133, 87); border-style: solid; margin-bottom: 3px; }
+
+			            .navigation ul li .sub .cat ul li.AntiAgeing { padding: 2px 0px 2px 4px; color: rgb(246, 141, 72); border-left: 8px; border-top: 2px; border-bottom: 2px; border-right: 2px;  border-color: rgb(246, 141, 72); border-style: solid; margin-bottom: 3px; }
+
+			            .navigation ul li .sub .cat ul li.Acne { padding: 2px 0px 2px 4px; color: rgb(165, 131, 188); border-left: 8px; border-top: 2px; border-bottom: 2px; border-right: 2px;  border-color: rgb(165, 131, 188); border-style: solid; margin-bottom: 3px; }
+
+			            .navigation ul li .sub .cat ul li.Sensitive { padding: 2px 0px 2px 4px; color: rgb(151, 216, 229); border-left: 8px; border-top: 2px; border-bottom: 2px; border-right: 2px;  border-color: rgb(151, 216, 229); border-style: solid; margin-bottom: 3px; }
+
+			            .navigation ul li .sub .cat ul li.Revitalised { padding: 2px 0px 2px 4px; color: rgb(243, 223, 81); border-left: 8px; border-top: 2px; border-bottom: 2px; border-right: 2px;  border-color: rgb(243, 223, 81); border-style: solid; margin-bottom: 3px; }
+
+			            .navigation ul li .sub .cat ul li.Rosacea { padding: 2px 0px 2px 4px; color: rgb(224, 110, 171); border-left: 8px; border-top: 2px; border-bottom: 2px; border-right: 2px;  border-color: rgb(224, 110, 171); border-style: solid; margin-bottom: 3px; }
+					
+						.navigation ul li .sub .cat ul li a {
+							color: #666;
+							font-size: 1.0em;
+							text-shadow: none;
+                            background-color: #fff;
+						}
+
+						    .navigation ul li .sub .cat ul li a span, .navigation ul li .sub .cat ul li a:hover span
+                            {
+                                background: white;
+                                width: 150px;
+						    }
+
+						.navigation ul li .sub .cat ul li a:hover { color: #000; }
+						
+					.navigation ul li .sub .prod a { font-size: 1.4em; line-height: 1.5; background-color: #fff; color: #666; }
+					
+						.navigation ul li .sub .prod a img {
+							/*border: 1px solid #ccc;*/
+							-moz-border-radius: 2px;  
+							-webkit-border-radius: 2px;  
+							border-radius: 2px;
+                            left: 0px;
+                            width: 148px;
+                            top: 0px;
+							margin: 0 0 10px 0;
+						}
+
+						.navigation ul li .sub .prod a:hover {
+							font-size: 1.4em; 
+                            line-height: 1.5; 
+                            background-color: #fff;
+                            color: #666;
+						}
+						
+						.navigation ul li .sub .prod a:hover img {
+                            font-size: 1.4em; 
+                            line-height: 1.5; 
+                            background-color: #fff; }
+						
+						.navigation ul li .sub .prod a strong {
+							color: #999;
+							display: block;
+							font-size: 0.8em;
+						}
+
+
+					.navigation ul li .sub .prodStratosphere a { 
+                        font-size: 1.4em; 
+                        line-height: 1.5; 
+                        background-color: #fff; 
+                        background: url('https://static.heavenskincare.com/images/circle130.png') no-repeat;
+                        background-position: center 25px;
+		                float: left;
+		                margin: 0 10px 10px 0;					
+                        
+					}
+					
+                        .navigation ul li .sub .prodStratosphere a p {
+                            padding-top: 35px;
+                        }
+
+						.navigation ul li .sub .prodStratosphere a img {
+							border: none;
+                            left: -8px;
+                            width: 148px;
+                            top: 0px;
+							margin: 0 0 10px 0;
+						}
+
+						.navigation ul li .sub .prodStratosphere a:hover {
+							font-size: 1.4em; 
+                            line-height: 1.5; 
+                            background-color: transparent;
+                            color: #666;
+						}
+						
+						.navigation ul li .sub .prodStratosphere a:hover img {
+                            font-size: 1.4em; 
+                            line-height: 1.5; 
+                            background-color: transparent; }
+						
+						.navigation ul li .sub .prodStratosphere a strong {
+							color: #999;
+							display: block;
+							font-size: 0.8em;
+						}
+                        
+                        	
+	.header .frm_search {
+		background: #fff;
+		/*-moz-border-radius: 2px;  
+		-webkit-border-radius: 2px;  
+		border-radius: 2px;*/
+		float: left;
+		font-size: 1.2em;
+		margin: 7px 10px 6px 0;
+		padding: 4px 6px;
+        border: 1px solid black;
+            /* left: -104px; */
+            top: 73px;
+        position: absolute;
+	}
+	
+		.header .frm_search input[type="text"] {
+			border: none;
+			color: #999;
+			font-style: italic;
+			width: 123px;
+		}
+		
+		.header .frm_search input[type="text"]:focus { color: #333; font-style: normal; }
+		
+		.header .frm_search input[type="image"] { padding: 3px 6px 0 6px; }
+
+/* !--- CONTENT / Global --- */
+
+.contentStaff 
+{
+    padding: 20px 20px 20px 20px;
+}
+
+.content { padding: 20px; }
+
+	.content h1 {
+		border-bottom: 1px solid #ccc;
+		color: #666;
+		font-size: 3em;
+		font-weight: 300;
+		margin: 0 0 0.6em 0;
+		padding: 0 0 0.2em 0;
+		text-transform: uppercase;
+    top: 3px;
+    left: 4px;
+}
+	
+	.content h2 {
+		border-bottom: 1px solid #ccc;
+		color: #666;
+		font-size: 2.4em;
+		font-weight: 300;
+		margin: 0 0 0.6em 0;
+		padding: 0 0 0.2em 0;
+		text-transform: uppercase;
+	}
+	
+	.content h3 {
+		color: #666;
+		font-size: 2.1em;
+		font-weight: 300;
+		margin: 0 0 0.6em 0;
+		text-transform: uppercase;
+	}
+	
+	.content h4 {
+		background: url('https://static.heavenskincare.com/images/strapline-border.gif') repeat-x bottom;
+		color: #2c2c2c;
+		font-size: 2.1em;
+		font-weight: 300;
+		margin: 0 0 0.6em 0;
+		padding: 0 0 0.8em 0;
+		text-transform: uppercase;
+        text-align: center;
+	}
+	
+        .content h4.Other { color: #666; text-align:left; }
+
+		.content h4.Psoriasis { color: rgb(188, 189, 192); }
+			
+		.content h4.OilySkin { color: rgb(139, 200, 103); }
+
+		.content h4.Eczema { color: rgb(89, 142, 202); }
+
+		.content h4.DrySkin { color: rgb(162, 133, 87); }
+
+		.content h4.AntiAgeing { color: rgb(246, 141, 72); }
+
+		.content h4.Acne { color: rgb(165, 131, 188); }
+
+		.content h4.Sensitive { color: rgb(151, 216, 229); }
+
+		.content h4.Revitalised { color: rgb(243, 223, 81); }
+
+		.content h4.Rosacea { color: rgb(224, 110, 171); }
+
+	.content h5 {
+		color: #333;
+		font-size: 1.8em;
+		font-weight: 300;
+		margin: 0 0 0.6em 0;
+        text-transform: uppercase;
+	}
+	
+	.content p {
+		color: #666;
+		font-size: 1.3em;
+		line-height: 1.5;
+		margin: 0 0 1.5em 0;
+	}
+	
+		.content p strong { font-weight: bold; }
+	
+	.content ul {
+		font-size: 1.3em;
+		line-height: 1.5em;
+		list-style: disc;
+		margin: 0 0 1.5em 20px;
+	}
+	
+		.content ul li { color: #666; margin: 0 0 .5em 0;  }
+		
+	.content p a, .content ul li a { color: #333; font-weight: bold; }
+	
+	.content p a:hover, .content ul li a:hover { color: #666; }
+	
+	.content img.right { margin: 0 0 20px 20px; }
+	
+	.content img.wide { margin: 0 0 20px 0; }
+	
+	.content input[type="text"], .content input[type="password"] {
+		border: 1px solid #ccc;
+		-moz-border-radius: 3px;  
+		-webkit-border-radius: 3px;  
+		border-radius: 3px;
+		color: #333;
+		padding: 6px;
+		width: 200px;
+	}
+
+	.content .form { font-size: 1.3em; width: 580px; }
+
+		.content .form label {
+			color: #333;
+			display: block;
+			float: left;
+			font-weight: bold;
+			margin: 0 0 20px 0;
+			padding: 6px 10px 0 0;
+			text-align: right;
+			width: 200px;
+		}
+	
+		.content .form input[type="text"], .content .form input[type="password"] { margin: 0 0 10px 0; width: 240px; }
+		
+		.content .form textarea {
+			border: 1px solid #ccc;
+			-moz-border-radius: 3px;  
+			-webkit-border-radius: 3px;  
+			border-radius: 3px;
+			color: #333;
+			margin: 0 0 10px 0;
+			padding: 6px;
+			width: 300px; height: 120px;
+		}
+		
+		.content .form input[type="checkbox"]
+		{
+		    float: left;
+		    margin-top: 7px;
+		    text-align: left;
+		}
+		
+		.content .form select { float: left; width: 254px; }
+		
+		.content .form input[type="submit"] {
+			background-color: #000000;
+			background-image: url('https://static.heavenskincare.com/images/btn_fallback.gif');
+			background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#2c2c2c), to(#000000));
+			background-image: -webkit-linear-gradient(top, #2c2c2c, #000000);
+			background-image:    -moz-linear-gradient(top, #2c2c2c, #000000);
+			background-image:     -ms-linear-gradient(top, #2c2c2c, #000000);
+			background-image:      -o-linear-gradient(top, #2c2c2c, #000000);
+			border: none;
+			-moz-border-radius: 4px;  
+			-webkit-border-radius: 4px;  
+			border-radius: 4px;
+			color: #fff;
+			cursor: pointer;
+			float: right;
+			font-weight: bold;
+			padding: 6px 16px;
+			text-shadow: 0 -1px 0 #000;
+			margin-right: 10px;
+		}
+				
+		.content .form br { clear: both; }
+
+
+
+/* Start Content Basket Form */
+
+	.content .basketForm { font-size: 1.3em; }
+
+        .content .basketForm h3
+        {
+            font-size: 1.4em;
+        }
+
+        .content .basketForm p {
+            color: #666;
+            font-size: 1.2em;
+            line-height: 1.4em;
+            margin: 0 0 1.5em 0;
+        }
+
+		.content .basketForm label {
+			color: #666;
+			display: block;
+			float: left;
+			font-weight: normal;
+			margin: 0 0 20px 0;
+			padding: 6px 10px 0 0;
+			text-align: right;
+			width: 100px;
+		}
+	
+		.content .basketForm input[type="text"], .content .form input[type="password"] { margin: 0 0 10px 0; width: 180px; }
+				
+		.content .basketForm input[type="checkbox"]
+		{
+		    float: left;
+		    margin-top: 7px;
+		    text-align: left;
+		}
+		
+		.content .basketForm select { float: left; width: 254px; }
+		
+		.content .basketForm input[type="submit"] {
+			background-color: #000000;
+			background-image: url('https://static.heavenskincare.com/images/btn_fallback.gif');
+			background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#2c2c2c), to(#000000));
+			background-image: -webkit-linear-gradient(top, #2c2c2c, #000000);
+			background-image:    -moz-linear-gradient(top, #2c2c2c, #000000);
+			background-image:     -ms-linear-gradient(top, #2c2c2c, #000000);
+			background-image:      -o-linear-gradient(top, #2c2c2c, #000000);
+			border: none;
+			-moz-border-radius: 4px;  
+			-webkit-border-radius: 4px;  
+			border-radius: 4px;
+			color: #fff;
+			cursor: pointer;
+			float: right;
+			font-weight: bold;
+			padding: 6px 16px;
+			text-shadow: 0 -1px 0 #000;
+			margin-right: 10px;
+		}
+				
+		.content .basketForm br { clear: both; }
+
+/* End Content Basket Form */
+
+        .homeBanner
+        {
+            padding-top: 30px;
+            padding-bottom: 80px;
+            padding-left: 20px;
+        }
+
+        .homeBannerDescription
+        {
+            position: absolute;
+            left: 670px;
+            top: 40px;
+        }
+
+            .homeBannerDescription p
+            {
+                display: block;
+                text-align: left;
+                font-size: 1.6em;
+                color: #fff;
+                position: absolute;
+                overflow: hidden;
+                top: 30px;
+                left: 48px;
+                width: 170px;
+                height: 400px;
+                text-transform: lowercase;
+                font-family: Arial;
+            }
+
+                .homeBannerDescription p span
+                {
+                    text-align: left;
+                    font-size: 2.0em;
+                    left: 0px;
+                    width: 100%;
+                }
+
+        .homeProductStratosphere
+        {
+            background-color: transparent;
+            width: 980px;
+            height: 240px;
+            position: relative;
+            display: block;
+            left: -50px;
+        }
+
+            .homeProductStratosphere ul
+            {
+                padding-top: 10px;
+                float: left;
+                list-style: none;
+            }
+
+                .homeProductStratosphere ul li
+                {
+                    background: url('https://static.heavenskincare.com/Images/circle.png') no-repeat;
+                    background-position: center 70px;
+                    height: 300px;
+                    float: left;
+                }
+
+                .homeProductStratosphere ul li p
+                {
+                    width: 100%;
+                    padding-top: 30px;
+                    font-size: 1.5em;
+                    text-align: center;
+                    margin-bottom: 5px;
+                    text-transform: capitalize;
+                }
+
+/* !--- CONTENT / Home --- */
+
+.feature {
+	/*border: 1px solid #ccc;*/
+	-moz-border-radius: 2px;  
+	-webkit-border-radius: 2px;  
+	border-radius: 2px;
+	float: left;
+	margin: 0 0 14px 0;
+	overflow: hidden;
+	width: 700px; height: 320px;
+}
+
+	.feature a {}
+	
+		.feature a img { -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; }
+
+.bannerBlog { float: right; }
+	
+	.bannerBlog img {
+		border: 1px solid #ccc;
+		-moz-border-radius: 2px;  
+		-webkit-border-radius: 2px;  
+		border-radius: 2px;
+	}
+
+.banners { clear: both; margin: 0 0 24px 0; width: 952px;}
+
+	.banners a {
+		border: 1px solid #ccc;
+		-moz-border-radius: 2px;  
+		-webkit-border-radius: 2px;  
+		border-radius: 2px;
+		float: left;
+		margin: 0 12px 0 0;
+		text-decoration: none;
+		width: 224px; height: 224px;
+	}
+	
+	.banners .banner1jpeg 		{ background: url('https://www.heavenskincare.com/images/Home/Celebrities.jpg') no-repeat 0 0; }
+	.banners .banner1jpeg:hover { background-position: 100% 0; }
+	
+	.banners .banner2jpeg		{ background: url('https://www.heavenskincare.com/images/Home/Cleansers.jpg') no-repeat 0 0; }
+	.banners .banner2jpeg:hover { background-position: 100% 0; }
+	
+	.banners .banner3jpeg 		{ background: url('https://www.heavenskincare.com/images/Home/Moisturisers.jpg') no-repeat 0 0; }
+	.banners .banner3jpeg:hover { background-position: 100% 0; }
+	
+	.banners .banner4jpeg 		{ background: url('https://www.heavenskincare.com/images/Home/Treatments.jpg') no-repeat 0 0; margin: 0; }
+	.banners .banner4jpeg:hover { background-position: 100% 0; }
+
+	.banners .banner1gif 		{ background: url('https://www.heavenskincare.com/images/Home/Celebrities.gif') no-repeat 0 0; }
+	.banners .banner1gif:hover { background-position: 100% 0; }
+	
+	.banners .banner2gif		{ background: url('https://www.heavenskincare.com/images/Home/Cleansers.gif') no-repeat 0 0; }
+	.banners .banner2gif:hover { background-position: 100% 0; }
+	
+	.banners .banner3gif 		{ background: url('https://www.heavenskincare.com/images/Home/Moisturisers.gif') no-repeat 0 0; }
+	.banners .banner3gif:hover { background-position: 100% 0; }
+	
+	.banners .banner4gif 		{ background: url('https://www.heavenskincare.com/images/Home/Treatments.gif') no-repeat 0 0; margin: 0; }
+	.banners .banner4gif:hover { background-position: 100% 0; }
+
+	.banners .banner1png 		{ background: url('https://www.heavenskincare.com/images/Home/Celebrities.png') no-repeat 0 0; }
+	.banners .banner1png:hover { background-position: 100% 0; }
+	
+	.banners .banner2png		{ background: url('https://www.heavenskincare.com/images/Home/Cleansers.png') no-repeat 0 0; }
+	.banners .banner2png:hover { background-position: 100% 0; }
+	
+	.banners .banner3png		{ background: url('https://www.heavenskincare.com/images/Home/Moisturisers.png') no-repeat 0 0; }
+	.banners .banner3png:hover { background-position: 100% 0; }
+	
+	.banners .banner4png 		{ background: url('https://www.heavenskincare.com/images/Home/Treatments.png') no-repeat 0 0; margin: 0; }
+	.banners .banner4png:hover { background-position: 100% 0; }
+		
+    .banners .banner1gifanimated 		{ background: url('https://www.heavenskincare.com/images/Home/CelebritiesAnim.gif') no-repeat 0 0; }
+	
+	.banners .banner2gifanimated		{ background: url('https://www.heavenskincare.com/images/Home/CleansersAnim.gif') no-repeat 0 0; }
+	
+	.banners .banner3gifanimated		{ background: url('https://www.heavenskincare.com/images/Home/MoisturisersAnim.gif') no-repeat 0 0; }
+	
+	.banners .banner4gifanimated 		{ background: url('https://www.heavenskincare.com/images/Home/TreatmentsAnim.gif') no-repeat 0 0; margin: 0; }
+
+		.banners a .overlay {
+			background: rgb(0,0,0);
+			background: rgba(0,0,0,0.4);
+			display: none;
+			position: absolute;
+			top: 0; left: 0;
+			width: 224px; height: 194px;
+		}
+		
+		.banners a:hover .overlay { display: block; }
+		
+			.banners a h6 {
+                top: 0px;
+				color: #fff;
+				font-size: 3em;
+				font-weight: 300;
+				line-height: 1.1;
+				position: absolute;
+				bottom: 10px; left: 10px;
+				text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+				opacity:0.99;
+				-webkit-font-smoothing: antialiased;
+			}
+		
+		.banners a span {
+			background: url('https://static.heavenskincare.com/images/banner-arrow.gif') no-repeat 96% center;
+			color: #888;
+			display: block;
+			font-size: 1.3em;
+			font-weight: 700;
+			padding: 8px;
+			position: absolute;
+			top: 194px; left: 0;
+			width: 208px; /* 224px */ height: 14px; /* 30px */
+		}
+	
+		.banners a strong { color: #333; }
+
+/*  PRODUCT SCROLLER START   */
+.productScroller {
+	border-bottom: 4px solid #ccc;
+	left: -20px;
+/* 	padding: 0 0 20px 0; */
+	width: 980px;
+}
+
+	.productScroller h5 {
+		border-bottom: 1px solid #ccc;
+		color: #666;
+		font-size: 2.4em;
+		margin: 0 20px 12px 20px;
+		padding: 0 0 6px 0;
+        text-align: center;
+	}
+	
+	.productScroller ul { font-size: 1em; }
+	
+		.productScroller ul li {
+			float: left;
+			margin: 0 10px;
+			width: 200px;
+		}
+		
+			.productScroller ul li a {
+				color: #333;
+				display: block;
+				font-size: 1.5em;
+				font-weight: normal;
+				line-height: 1.2;
+				text-decoration: none;
+			}
+			
+				.productScroller ul li a span.info, .productScroller ul li span.info {
+					display: block;
+					margin: 0 0 10px 0;
+					height: 62px;
+				}
+				
+					.productScroller ul li a span.info strong, .productScroller ul li span.info strong { padding: 10px 0 0 0; }
+			
+				.productScroller ul li a img, .productScroller ul li img {
+                    /*border: 1px solid #ccc;*/
+					-moz-border-radius: 2px;  
+					-webkit-border-radius: 2px;  
+					border-radius: 2px;
+                    background-color: #fff;
+/* 					margin: 0 0 10px 0; */
+				}
+				
+				.productScroller ul li a:hover img { border-color: #999; }
+				
+				.productScroller ul li a strong, .productScroller ul li strong {
+					color: #999;
+					display: block;
+					font-size: 0.8em;
+				}
+				
+				.productScroller ul li a span.new, .productScroller ul li a span.best, .productScroller ul li span.new, .productScroller ul li span.best {
+					background: #000;
+					color: #fff;
+					display: none;
+					overflow: hidden;
+					position: absolute;
+					text-align: center;
+                    font-size: 0.8em;
+					/*text-indent: -9999px;*/
+					top: 10px; right: 5px;
+					width: 60px; height: 60px;
+                    padding-top: 10px;
+				}
+				
+				.productScroller ul li a span.new, .productScroller ul li span.new 	{ background: url('https://www.heavenskincare.com/images/greybox.png') no-repeat; }
+				.productScroller ul li a span.best, .productScroller ul li span.best 	{ background: url('https://www.heavenskincare.com/images/greybox.png') no-repeat; }
+				
+/*   PRODUCT SCROLLER END   */
+
+/*   PRODUCT SCROLLER STRATOSPHERE   */
+.productScrollerStratosphere {
+	border-bottom: 4px solid #ccc;
+	left: -10px;
+/* 	padding: 0 0 20px 0; */
+	width: 980px;
+    border-right: none;
+    margin-right: 0px;
+}
+
+	.productScrollerStratosphere h5 {
+		border-bottom: 1px solid #ccc;
+		color: #666;
+		font-size: 2.4em;
+		margin: 0 20px 12px 20px;
+		padding: 0 0 6px 0;
+        text-align: center;
+	}
+	
+	.productScrollerStratosphere ul { font-size: 1em; }
+	
+		.productScrollerStratosphere ul li {
+                background: url('https://static.heavenskincare.com/images/circle.png') no-repeat;
+                background-position: center 45px;
+			float: left;
+			margin: 0 10px;
+			width: 200px;
+		}
+		
+			.productScrollerStratosphere ul li a {
+				color: #333;
+				display: block;
+				font-size: 1.5em;
+				font-weight: normal;
+				line-height: 1.2;
+				text-decoration: none;
+                padding-top: 25px;
+			}
+			
+				.productScrollerStratosphere ul li a span.info {
+					display: block;
+					margin: 0 0 10px 0;
+					height: 62px;
+				}
+				
+					.productScrollerStratosphere ul li a span.info strong { padding: 10px 0 0 0; }
+			
+				.productScrollerStratosphere ul li a img {
+/* 					border: 1px solid #ccc; */
+					-moz-border-radius: 2px;  
+					-webkit-border-radius: 2px;  
+					border-radius: 2px;
+/* 					margin: 0 0 10px 0; */
+				}
+				
+				.productScrollerStratosphere ul li a:hover img { border-color: #999; }
+				
+				.productScrollerStratosphere ul li a strong {
+					color: #999;
+					display: block;
+					font-size: 0.8em;
+				}
+				
+				.productScrollerStratosphere ul li a span.new, .productScrollerStratosphere ul li a span.best {
+                    background: url('https://www.heavenskincare.com/images/greybox.png') no-repeat; 
+					color: #fff;
+					display: none;
+					overflow: hidden;
+					position: absolute;
+					text-align: center;
+                    font-size: 0.8em;
+					top: 0px; right: 0px;
+					width: 60px; height: 50px;
+                    padding-top: 10px;
+				}
+				
+/*   PRODUCT SCROLLER STRATOSPHERE END   */
+
+.jcarousel-clip {
+	left: 40px;
+	overflow: hidden;
+	width: 880px;
+    direction: ltr;
+}
+
+.jcarousel-item { width: 200px; }
+
+.jcarousel-prev-horizontal, .jcarousel-next-horizontal {
+	cursor: pointer;
+	opacity: 0.8;
+	position: absolute;
+	top: 62px;
+	width: 25px; height: 46px;
+}
+
+.jcarousel-prev-horizontal { background: transparent url('https://www.heavenskincare.com/images/arrow-previous.png') no-repeat center 0; left: 14px; }
+.jcarousel-next-horizontal { background: transparent url('https://www.heavenskincare.com/images/arrow-next.png') no-repeat center 0; right: -2px; }
+
+.jcarousel-next-horizontal:hover, .jcarousel-next-horizontal:focus, .jcarousel-next-horizontal:active,
+.jcarousel-prev-horizontal:hover, .jcarousel-prev-horizontal:focus, .jcarousel-prev-horizontal:active { opacity: 1; }
+
+.jcarousel-next-disabled-horizontal, .jcarousel-next-disabled-horizontal:hover, .jcarousel-next-disabled-horizontal:focus, .jcarousel-next-disabled-horizontal:active,
+.jcarousel-prev-disabled-horizontal, .jcarousel-prev-disabled-horizontal:hover, .jcarousel-prev-disabled-horizontal:focus, .jcarousel-prev-disabled-horizontal:active
+{ opacity: 0.2; }
+
+
+/* !--- CONTENT / Breadcrumb --- */
+
+.breadcrumb { margin: 0 0 20px 0; }
+
+	.breadcrumb ul {
+		font-size: 1.3em;
+		line-height: 1;
+		list-style: none;
+		margin: 0;
+	}
+	
+		.breadcrumb ul li {
+			color: #999;
+			float: left;
+			margin: 0;
+			padding: 0 6px;
+		}
+		
+			.breadcrumb ul li a {
+				color: #999;
+				text-decoration: none;
+				text-transform: lowercase;
+			}
+			
+			.breadcrumb ul li:first-child a {
+				background: url('https://static.heavenskincare.com/images/breadcrumb-home.gif') no-repeat;
+				display: block;
+				opacity: 0.5;
+				overflow: hidden;
+				text-indent: -9999px;
+				width: 12px; height: 11px;
+			}
+			
+			.breadcrumb ul li:last-child a { color: #666; font-weight: bold; }
+			
+			.breadcrumb ul li a:hover { color: #333; }
+			
+			.breadcrumb ul li:first-child a:hover { opacity: 1; }
+
+/* !--- CONTENT / Left Column --- */
+
+
+.leftColumn { float: left; width: 160px; }
+
+	.leftColumn h5 {
+		border-bottom: 1px solid #ccc;
+		color: #999;
+		margin: 0 0 0.66em 0;
+		padding: 14px 0 4px 0;
+	}
+	
+	.leftColumn text
+	{
+        color: #666;
+		font-weight: 300;
+		text-decoration: none;
+	}
+	
+	.leftColumn ul {
+		font-size: 1.3em;
+		line-height: 1;
+		list-style: none;
+		margin: 0 0 20px 0;
+	}
+	
+		.leftColumn ul li {
+			/*background:transparent url(https://static.heavenskincare.com/images/bullet.gif) no-repeat scroll 0 50%;*/
+			line-height: 1.5;
+			margin: 0;
+			padding:3px 0px 3px 14px;
+		}
+		
+			.leftColumn ul li a {
+				color: #666;
+				font-weight: 300;
+				text-decoration: none;
+                width: 100%;
+			}
+
+            .leftColumn ul li.Other { color: rgb(255, 255, 255); border-left: 0px; border-top: 0px; border-bottom: 0px; border-right: 0px; border-color: rgb(255, 255, 255); border-style: solid; margin-bottom: 1px; }
+
+			.leftColumn ul li.Psoriasis { color: rgb(188, 189, 192); border-left: 8px; border-top: 2px; border-bottom: 2px; border-right: 2px;  border-color: rgb(188, 189, 192); border-style: solid; margin-bottom: 3px; }
+			
+			.leftColumn ul li.OilySkin { color: rgb(139, 200, 103); border-left: 8px; border-top: 2px; border-bottom: 2px; border-right: 2px;  border-color: rgb(139, 200, 103); border-style: solid; margin-bottom: 3px; }
+
+			.leftColumn ul li.Eczema { color: rgb(89, 142, 202); border-left: 8px; border-top: 2px; border-bottom: 2px; border-right: 2px;  border-color: rgb(89, 142, 202); border-style: solid; margin-bottom: 3px; }
+
+			.leftColumn ul li.DrySkin { color: rgb(162, 133, 87); border-left: 8px; border-top: 2px; border-bottom: 2px; border-right: 2px;  border-color: rgb(162, 133, 87); border-style: solid; margin-bottom: 3px; }
+
+			.leftColumn ul li.AntiAgeing { color: rgb(246, 141, 72); border-left: 8px; border-top: 2px; border-bottom: 2px; border-right: 2px;  border-color: rgb(246, 141, 72); border-style: solid; margin-bottom: 3px; }
+
+			.leftColumn ul li.Acne { color: rgb(165, 131, 188); border-left: 8px; border-top: 2px; border-bottom: 2px; border-right: 2px;  border-color: rgb(165, 131, 188); border-style: solid; margin-bottom: 3px; }
+
+			.leftColumn ul li.Sensitive { color: rgb(151, 216, 229); border-left: 8px; border-top: 2px; border-bottom: 2px; border-right: 2px;  border-color: rgb(151, 216, 229); border-style: solid; margin-bottom: 3px; }
+
+			.leftColumn ul li.Revitalised { color: rgb(243, 223, 81); border-left: 8px; border-top: 2px; border-bottom: 2px; border-right: 2px;  border-color: rgb(243, 223, 81); border-style: solid; margin-bottom: 3px; }
+
+			.leftColumn ul li.Rosacea { color: rgb(224, 110, 171); border-left: 8px; border-top: 2px; border-bottom: 2px; border-right: 2px;  border-color: rgb(224, 110, 171); border-style: solid; margin-bottom: 3px; }
+
+                .leftColumn ul li a span { font-size: 0.8em; }
+			/*
+			.leftColumn ul li.current a { font-weight: bold; }
+			
+			.leftColumn ul li.Other a:hover { color: #333; }
+
+            .leftColumn ul li.Other, .leftColumn ul li.Other a { color: #333; background-color: rgb(255, 255, 255); }
+
+			.leftColumn ul li.Psoriasis, .leftColumn ul li.Psoriasis a { color: #fff; background-color: rgb(188, 189, 192); }
+			
+			.leftColumn ul li.OilySkin, .leftColumn ul li.OilySkin a { color: #fff; background-color: rgb(139, 200, 103); }
+
+			.leftColumn ul li.Eczema, .leftColumn ul li.Eczema a { color: #fff; background-color: rgb(89, 142, 202); }
+
+			.leftColumn ul li.DrySkin, .leftColumn ul li.DrySkin a { color: #fff; background-color: rgb(162, 133, 87); }
+
+			.leftColumn ul li.AntiAgeing, .leftColumn ul li.AntiAgeing a { color: #fff; background-color: rgb(246, 141, 72); }
+
+			.leftColumn ul li.Acne, .leftColumn ul li.Acne a { color: #fff; background-color: rgb(165, 131, 188); }
+
+			.leftColumn ul li.Sensitive, .leftColumn ul li.Sensitive a { color: #fff; background-color: rgb(151, 216, 229); }
+
+			.leftColumn ul li.Revitalised, .leftColumn ul li.Revitalised a { color: #fff; background-color: rgb(243, 223, 81); }
+
+			.leftColumn ul li.Rosacea, .leftColumn ul li.Rosacea a { color: #fff; background-color: rgb(224, 110, 171); }
+			*/
+	.leftColumn ul.collapsible {}
+	
+		.leftColumn ul.collapsible li { background: none; padding: 3px 0; }
+			
+			.leftColumn ul.collapsible li a { padding: 0 0 0 12px; }
+			
+			.leftColumn ul.collapsible li a.expanded 	{ background: url(https://static.heavenskincare.com/images/expanded.gif) no-repeat left center; }
+			.leftColumn ul.collapsible li a.collapsed 	{ background: url(https://static.heavenskincare.com/images/collapsed.gif) no-repeat left center; }
+		
+			.leftColumn ul.collapsible li ul { font-size: 1em; margin: 0 0 0 10px; }
+			
+				.leftColumn ul.collapsible li ul li { background: none; }
+				
+				.leftColumn ul.collapsible li ul li:before { content: "- "; }
+				
+					.leftColumn ul.collapsible li ul li a { padding: 0; }
+	
+	.leftColumn a.banner {
+		border: 1px solid #ccc;
+		-moz-border-radius: 2px;  
+		-webkit-border-radius: 2px;  
+		border-radius: 2px;
+		display: block;
+		margin: 0 0 20px 0;
+	}
+
+/* !--- CONTENT / Main Content --- */
+
+.mainContent { float: right; width: 750px; }
+
+    .mainContent .headerH2
+    {
+        width: 750px;
+        height: 65px;
+        border: solid 1px;
+        text-align: center;
+        padding-top: 10px;
+        padding-bottom: 8px;
+        margin-bottom: 8px;
+        position: relative;
+    }
+
+        .mainContent .headerH2 .headerContent
+        {
+            text-transform: uppercase;
+            padding-top: 8px;
+            font-size: 3.1em;
+            position: relative;
+            letter-spacing: 10px;
+            line-height: 60px;
+        }
+
+        .mainContent .headerH2 .headerSubContent
+        {
+            text-transform: uppercase;
+            padding-top: 8px;
+            font-size: 1.5em;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .headerH2.Psoriasis { color: #fff; background-color: rgb(188, 189, 192); }
+			
+		.headerH2.OilySkin { color: #fff; background-color: rgb(139, 200, 103); }
+
+		.headerH2.Eczema { color: #fff; background-color: rgb(89, 142, 202); }
+
+		.headerH2.DrySkin { color: #fff; background-color: rgb(162, 133, 87); }
+
+		.headerH2.AntiAgeing { color: #fff; background-color: rgb(246, 141, 72); }
+
+		.headerH2.Acne { color: #fff; background-color: rgb(165, 131, 188); }
+
+		.headerH2.Sensitive { color: #fff; background-color: rgb(151, 216, 229); }
+
+		.headerH2.Revitalised { color: #fff; background-color: rgb(243, 223, 81); }
+
+		.headerH2.Rosacea { color: #fff; background-color: rgb(224, 110, 171); }
+
+
+
+.mainContentStaff 
+{ 
+    float: left; 
+    width: 980px; 
+    border: 0 0 0 0;
+    margin: 0 0 0 0;
+}
+
+/* !--- CONTENT / Main Content / Product Listing --- */
+
+.mainContent ul.productList {
+	font-size: 1em;
+	line-height: 1;
+	list-style: none;
+	margin: 0 0 20px 0;
+}
+
+	.mainContent ul.productList li {
+		float: left;
+		width: 180px;
+        height: 175px;
+	}
+	
+	.mainContent ul.productList li.end { margin: 0; }
+	
+		.mainContent ul.productList li a {
+			color: #333;
+			display: block;
+			font-size: 1.4em;
+			font-weight: 300;
+			line-height: 1;
+			text-decoration: none;
+		}
+
+			.mainContent ul.productList li a img {
+				/*border: 1px solid #ccc;*/
+				-moz-border-radius: 2px;  
+				-webkit-border-radius: 2px;  
+				border-radius: 2px;
+				margin: 0 0 10px 0;
+                background-color: #fff;
+                padding-left: 11px;
+                padding-right: 11px;
+			}
+			
+			.mainContent ul.productList li.professional a:hover img { border-color: #999; }
+			
+			.mainContent ul.productList li a strong {
+				color: #999;
+				display: block;
+				font-size: 0.8em;
+				margin: 1em 0 0 0;
+			}
+			
+			.mainContent ul.productList li a span.new, .mainContent ul.productList li a span.best 	
+            { 
+                background: url('https://www.heavenskincare.com/images/greybox.png') no-repeat; 
+				display: none;
+				overflow: hidden;
+				position: absolute;
+				text-align: center;
+				text-indent: 0px;
+				top: 10px; 
+                right: 20px;
+				width: 60px; 
+                height: 50px;
+                padding-top: 10px;
+                font-size: 0.8em;
+			}
+
+                .mainContent ul.productList li.professional a span.new, .mainContent ul.productList li.professional a span.best 
+                {
+                    top: -20px;
+                }
+
+			.mainContent ul.productList li a span.newPress { background: url('https://www.heavenskincare.com/images/greybox.png') no-repeat; }
+
+.mainContent ul.productList li.professional
+{
+    margin: 8px 10px 25px 0;
+    height: 195px;
+    float: left;
+    width: 200px;
+}
+
+    .mainContent ul.productList li.professional a
+    {
+        border: 0px;
+        margin-top: 25px;
+    }
+
+    .mainContent ul.productList li.stratosphere img
+    {
+        padding-bottom: 8px;
+    }
+
+.mainContent ul.productList li.stratosphere
+{
+    margin: 0 10px 20px 0;
+    border: 0px;
+    height: 220px;
+    float: left;
+    width: 200px;
+}
+
+
+    .mainContent ul.productList li.stratosphere img
+    {
+        border: 0px;
+        padding-bottom: 23px;
+        margin-bottom: 22px;
+        padding-left: 8px;
+    }
+
+    .mainContent ul.productList li.stratosphere a
+    {
+        background: url('https://static.heavenskincare.com/images/circle130.png') no-repeat;
+        background-position: center center;
+        border: 0px;
+    }
+
+/*    MAIN CONTENT SEARCH    */
+	.mainContent .frm_search {
+		background: #fff;
+		/*-moz-border-radius: 2px;  
+		-webkit-border-radius: 2px;  
+		border-radius: 2px;*/
+		float: left;
+		font-size: 1.2em;
+		margin: 7px 0px 20px 0;
+		padding: 4px 6px;
+        border: 1px solid black;
+	}
+	
+		.mainContent .frm_search input[type="text"] {
+			border: none;
+			color: #999;
+			font-style: italic;
+			width: 140px;
+		}
+		
+		.mainContent .frm_search input[type="text"]:focus { color: #333; font-style: normal; }
+		
+		.mainContent .frm_search input[type="image"] { padding: 3px 6px 0 6px; }
+
+/* !--- CONTENT / Main Content / Stratosphere Product Listing --- */
+
+.mainContent ul.stratosphereProductList {
+	font-size: 1em;
+	line-height: 1;
+	list-style: none;
+	margin: 0 0 20px 0;
+}
+
+	.mainContent ul.stratosphereProductList li {
+        background: url('https://static.heavenskincare.com/images/circle130.png') no-repeat;
+        background-position: center center;
+		float: left;
+		margin: 0 10px 20px 0;
+		width: 180px;
+        height: 190px;
+	}
+	
+	.mainContent ul.stratosphereProductList li.end { margin: 0; }
+	
+		.mainContent ul.stratosphereProductList li a {
+			color: #333;
+			display: block;
+			font-size: 1.4em;
+			font-weight: 300;
+			line-height: 1;
+			text-decoration: none;
+		}
+
+			.mainContent ul.stratosphereProductList li a img {
+				margin: 0 0 10px 0;
+			}
+
+            .mainContent ul.stratosphereProductList li a p
+            {
+			    color: #333;
+			    display: block;
+			    font-size: 1.0em;
+			    font-weight: 300;
+			    line-height: 1;
+			    text-decoration: none;
+                margin-top: 25px;
+            }
+			
+			.mainContent ul.stratosphereProductList li a:hover img { border-color: #999; }
+			
+			.mainContent ul.stratosphereProductList li a p strong {
+				color: #999;
+				display: block;
+				font-size: 0.8em;
+				margin: 1em 0 0 0;
+			}
+			
+			.mainContent ul.stratosphereProductList li a span {
+					background: #000;
+					color: #fff;
+					display: none;
+					overflow: hidden;
+					position: absolute;
+					text-align: center;
+                    font-size: 0.8em;
+					top: 0px; right: 0px;
+					width: 60px; height: 50px;
+                    padding-top: 10px;
+			}
+			
+			.mainContent ul.stratosphereProductList li a span.new 	
+            { 
+                background: url('https://www.heavenskincare.com/images/greybox.png') no-repeat; 
+			}
+
+			.mainContent ul.stratosphereProductList li a span.best 	
+            { 
+                background: url('https://www.heavenskincare.com/images/greybox.png') no-repeat; 
+			}
+
+			.mainContent ul.stratosphereProductList li a span.newPress { background: url(https://www.heavenskincare.com/images/new-press.gif) no-repeat; }
+
+
+/* !--- CONTENT / Main Content / Pagination --- */
+
+.mainContent .pagination {
+	border-top: 1px solid #ccc;
+	margin: 0 0 20px 0;
+	padding: 20px 0 0 0;
+	text-align: center;
+}
+
+.mainContent .pagination ul {
+	line-height: 1;
+	list-style: none;
+	margin: 0;
+}
+
+	.mainContent .pagination ul li { display: inline; margin: 0 5px; }
+	
+		.mainContent .pagination ul li a {
+			background: #eaeaea;
+			-moz-border-radius: 3px;  
+			-webkit-border-radius: 3px;  
+			border-radius: 3px;
+			color: #666;
+			padding: 4px 8px;
+			text-decoration: none;
+			text-shadow: 0 1px 0 #fff;
+		}
+		
+		.mainContent .pagination ul li.disabled a {
+			background: #f4f4f4;
+			color: #ccc;
+			cursor: default;
+			text-shadow: 0 1px 0 #fff;
+		}
+		
+		.mainContent .pagination ul li.current a {
+			background: #b4b4b4;
+			color: #fff;
+			text-shadow: 0 1px 0 #757575;
+		}
+		
+		.mainContent .pagination ul li a:hover { background-color: #ddd; color: #333; }
+		
+		.mainContent .pagination ul li.current a { background: #b4b4b4; color: #fff; }
+		
+		.mainContent .pagination ul li.disabled a { background: #f4f4f4; color: #ccc; }
+
+/* !--- CONTENT / Main Content Staff / Pagination --- */
+
+.mainContentStaff .pagination {
+	border-top: 1px solid #ccc;
+	margin: 0 0 20px 0;
+	padding: 20px 0 0 0;
+	text-align: center;
+}
+
+.mainContentStaff .pagination ul {
+	line-height: 1;
+	list-style: none;
+	margin: 0;
+}
+
+	.mainContentStaff .pagination ul li { display: inline; margin: 0 5px; }
+	
+		.mainContentStaff .pagination ul li a {
+			background: #eaeaea;
+			-moz-border-radius: 3px;  
+			-webkit-border-radius: 3px;  
+			border-radius: 3px;
+			color: #666;
+			padding: 4px 8px;
+			text-decoration: none;
+			text-shadow: 0 1px 0 #fff;
+		}
+		
+		.mainContentStaff .pagination ul li.disabled a {
+			background: #f4f4f4;
+			color: #ccc;
+			cursor: default;
+			text-shadow: 0 1px 0 #fff;
+		}
+		
+		.mainContentStaff .pagination ul li.current a {
+			background: #b4b4b4;
+			color: #fff;
+			text-shadow: 0 1px 0 #757575;
+		}
+		
+		.mainContentStaff .pagination ul li a:hover { background-color: #ddd; color: #333; }
+		
+		.mainContentStaff .pagination ul li.current a { background: #b4b4b4; color: #fff; }
+		
+		.mainContentStaff .pagination ul li.disabled a { background: #f4f4f4; color: #ccc; }
+
+
+/* !--- CONTENT / Main Content / Product Information --- */
+
+.mainContent .productImg {
+	float: left;
+	margin: 0 0 20px 0;
+	width: 290px;
+    background-color: #fff;
+}
+
+	.mainContent .productImg a img {
+		/* border: 1px solid #ccc; */
+		-moz-border-radius: 2px;  
+		-webkit-border-radius: 2px;  
+		border-radius: 2px;
+	}
+	
+	.mainContent .productImg a span {
+		background: url(https://static.heavenskincare.com/images/zoom.png) no-repeat;
+		opacity: 0.75;
+		overflow: hidden;
+		position: absolute;
+		text-indent: -9999px;
+		bottom: 2px; right: 2px;
+		width: 17px; height: 16px;
+	}
+	
+		.mainContent .productImg a:hover span { opacity: 1; }
+
+
+.mainContent .productImgStratosphere {
+	float: left;
+	margin: 0 0 0 0;
+	width: 290px;
+    background: url('https://static.heavenskincare.com/images/circle-large.png') no-repeat;
+    background-position: center 30px;
+    height: 350px;
+}
+
+	
+	.mainContent .productImgStratosphere a span {
+		background: url(https://static.heavenskincare.com/images/zoom.png) no-repeat;
+		opacity: 0.75;
+		overflow: hidden;
+		position: absolute;
+		text-indent: -9999px;
+		bottom: 2px; right: 2px;
+		width: 17px; height: 16px;
+	}
+	
+		.mainContent .productImgStratosphere a:hover span { opacity: 1; }
+
+.mainContent .productInfo {
+	float: right;
+	margin:  0 0 30px 0;
+	width: 440px;
+}
+
+	.mainContent .productInfo .form { font-size: 1.2em; }
+	
+		.mainContent .productInfo .form label {
+			color: #333;
+			display: block;
+			float: left;
+			font-weight: bold;
+			margin: 0 0 20px 0;
+			padding: 2px 10px 0 0;
+			text-align: right;
+			width: 120px;
+		}
+		
+		.mainContent .productInfo .form select { float: left; margin: 0 0 20px 0; }
+		
+		.mainContent .productInfo .form input[type="image"] { float: right; }
+		
+		.mainContent .productInfo .form br { clear: both; }
+
+/* !--- CONTENT / Shopping Basket --- */
+
+.tblBasket {
+	color: #333;
+	font-size: 1.5em;
+	margin: 0 0 30px 0;
+}
+
+	.tblBasket th {
+		background-color: #000;
+		border-left: 1px solid #fff;
+		color: #fff;
+		font-weight: bold;
+		padding: 6px 10px;
+		text-align: center;
+	}
+	
+	.tblBasket th.first { border: none; text-align: left; }
+	
+	.tblBasket td {
+		border-bottom: 1px solid #ccc;
+		padding: 6px 10px;
+		text-align: center;
+	}
+	
+		.tblBasket td strong { font-weight: 700; }
+	
+		.tblBasket td.first img {
+			border: 1px solid #ccc;
+			-moz-border-radius: 2px;  
+			-webkit-border-radius: 2px;  
+			border-radius: 2px;
+		}
+	
+	.tblBasket td.name { text-align: left; }
+	
+	.tblBasket .voucher td { background: #eaeaea; font-size: 0.85em; }
+	
+		.tblBasket .voucher td form { margin: 0 auto; width: 680px; }
+	
+			.tblBasket .voucher td form label {
+				float: left;
+				font-weight: bold;
+				padding: 8px 0 0 0;
+			}
+			
+			.tblBasket .voucher td form input { float: left; }
+			
+			.tblBasket .voucher td form input[type="text"] { margin: 0 10px; width: 150px; }
+		
+            .tblBasket .voucher input[type="submit"] 
+            {
+			    background-color: #000000;
+			    background-image: url('https://static.heavenskincare.com/images/btn_fallback.gif');
+			    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#2c2c2c), to(#000000));
+			    background-image: -webkit-linear-gradient(top, #2c2c2c, #000000);
+			    background-image:    -moz-linear-gradient(top, #2c2c2c, #000000);
+			    background-image:     -ms-linear-gradient(top, #2c2c2c, #000000);
+			    background-image:      -o-linear-gradient(top, #2c2c2c, #000000);
+			    border: none;
+			    -moz-border-radius: 4px;  
+			    -webkit-border-radius: 4px;  
+			    border-radius: 4px;
+			    color: #fff;
+			    cursor: pointer;
+			    font-weight: bold;
+			    padding: 6px 16px;
+			    text-shadow: 0 -1px 0 #000;
+			    margin-right: 10px;
+		    }
+			
+			.tblBasket .voucher td form br { clear: both; }
+			
+	.tblBasket .totals td { border-bottom: none; padding: 12px 10px; }
+	
+	.tblBasket .totals td.first { text-align: right; }
+	
+	.tblBasket .total td { border-bottom: 1px solid #ccc; border-top: 1px solid #ccc; padding: 12px 10px; }
+	
+	.tblBasket .total td.first { text-align: right; }
+
+/* !--- CONTENT / Previous Orders --- */
+
+.tblBasket.tblPrevious { font-size: 1.3em; }
+
+	.tblBasket.tblPrevious td { color: #999; font-weight: bold; }
+	
+	.tblBasket.tblPrevious td.name { line-height: 1.5; }
+	
+		.tblBasket.tblPrevious td.name strong { color: #333; font-size: 1.1em; font-weight: 300; }
+		
+		.tblBasket.tblPrevious a { text-align: left; color: #999; text-decoration: none;  text-transform: none}
+		
+		.tblBasket.tblPrevious a:hover { text-align: left; color: #333; text-decoration: none; }
+
+/* !--- CONTENT / Main Content / Login --- */
+
+.mainContent .frmLogin.form {
+	border: 1px solid #ccc;
+	-moz-border-radius: 3px;  
+	-webkit-border-radius: 3px;  
+	border-radius: 3px;
+	margin: 0 auto 20px;
+	padding: 20px;
+	width: 410px;	/* 450px */
+}
+
+	.mainContent .frmLogin.form h5 { text-align: center; }
+	
+	.mainContent .frmLogin.form label { width: 120px; }
+	
+	.mainContent .frmLogin.form a.forgotten { color: #333; float: left; padding: 8px 0; }
+	
+	.mainContent .frmLogin.form + p { text-align: center; }
+
+/* !--- CONTENT / Main Content / Member Profile --- */
+
+.mainContent ul.memberOptions {
+	line-height: 1.2;
+	list-style: none;
+	margin: 20px auto;
+	width: 640px;
+}
+
+	.mainContent ul.memberOptions li {
+		-moz-border-radius: 4px;  
+		-webkit-border-radius: 4px;  
+		border-radius: 4px;
+		float: left;
+		margin: 0 10px 30px 10px;
+		text-align: center;
+		width: 140px;
+	}
+	
+	.mainContent ul.memberOptions li:hover { background: #eee; }
+	
+		.mainContent ul.memberOptions li a {
+			background-position: center 10px;
+			background-repeat: no-repeat;
+			display: block;
+			padding: 84px 10px 10px 10px;
+			text-decoration: none;
+		}
+		
+		.mainContent ul.memberOptions li.email a 		    { background-image: url(https://www.heavenskincare.com/images/members/memberdetailsIcon.png); }
+		.mainContent ul.memberOptions li.billing a 		    { background-image: url(https://www.heavenskincare.com/images/members/billingaddressIcon.png); }
+		.mainContent ul.memberOptions li.password a 	    { background-image: url(https://www.heavenskincare.com/images/members/passwordIcon.png); }
+		.mainContent ul.memberOptions li.orders a 		    { background-image: url(https://www.heavenskincare.com/images/members/ordersIcon.png); }
+		.mainContent ul.memberOptions li.delivery a		    { background-image: url(https://www.heavenskincare.com/images/members/deliveryaddressIcon.png); }
+		.mainContent ul.memberOptions li.offers a		    { background-image: url(https://www.heavenskincare.com/images/members/specialoffersIcon.png); }
+		.mainContent ul.memberOptions li.appointments a	    { background-image: url(https://www.heavenskincare.com/images/members/appointmentsIcon.png); }
+		.mainContent ul.memberOptions li.creditcards a	    { background-image: url(https://www.heavenskincare.com/images/members/CreditcardIcon.png); }
+		.mainContent ul.memberOptions li.invoices a	        { background-image: url(https://www.heavenskincare.com/images/members/invoicesIcon.png); }
+		.mainContent ul.memberOptions li.tradeDownload a	{ background-image: url(https://www.heavenskincare.com/images/members/tradedownloadsIcon.png); }
+		.mainContent ul.memberOptions li.salons a	        { background-image: url(https://www.heavenskincare.com/images/members/salonsIcon.png); }
+		.mainContent ul.memberOptions li.statistics a	    { background-image: url(https://www.heavenskincare.com/images/members/statisticsIcon.png); }
+		.mainContent ul.memberOptions li.admin a	        { background-image: url(https://www.heavenskincare.com/images/members/adminicon.png); }
+        .mainContent ul.memberOptions li.tickets a          { background-image: url(https://www.heavenskincare.com/images/members/submitticketIcon.png); }
+		
+/* !--- CONTENT / Main Content / Helpdesk --- */
+
+.mainContent .helpOptions.memberOptions { width: 320px; }
+
+	.mainContent .helpOptions.memberOptions li.submit a 		{ background-image: url(https://www.heavenskincare.com/images/members/submitticketIcon.png); }
+	.mainContent .helpOptions.memberOptions li.find a 		{ background-image: url(https://www.heavenskincare.com/images/members/findaticketIcon.png); }
+	.mainContent .helpOptions.memberOptions li.faq a 		{ background-image: url(https://www.heavenskincare.com/images/members/FAQIcon.png); }
+	.mainContent .helpOptions.memberOptions li.feedback a 		{ background-image: url(https://www.heavenskincare.com/images/members/feedbackIcon.png); }
+
+
+/* !--- CONTENT / Main Content / Feedback --- */
+
+.mainContent blockquote {
+	background: url(https://static.heavenskincare.com/images/quote.gif) no-repeat left 16px;
+	border-top: 1px solid #ccc;
+	color: #666;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 1.4em;
+	font-style: italic;
+	line-height: 1.5;
+	padding: 20px 0 20px 32px;
+}
+
+.mainContent p + blockquote { border: none; }
+
+	.mainContent blockquote cite {
+		display: block;
+		font-family: "nimbus-sans", Helvetica, Arial, "Lucida Grande", sans-serif;
+		font-style: normal;
+		font-weight: bold;
+		margin: 20px 0 0 0;
+	}
+
+/* !--- CONTENT / Main Content / News --- */
+
+.mainContent ul.newsList {
+	font-size: 1.4em;
+	line-height: 1.2;
+	list-style: none;
+	margin: 0;
+}
+
+	.mainContent ul.newsList li {
+		float: left;
+		margin: 0 30px 30px 0;
+		padding: 10px;
+		text-align: center;
+		width: 210px; /* 230px */
+	}
+	
+	.mainContent ul.newsList li.end { margin: 0 0 30px 0; }
+	
+		.mainContent ul.newsList li a { font-weight: 300; text-decoration: none; }
+	
+			.mainContent ul.newsList li a img { margin: 0 30px 10px 30px; }
+			
+.mainContent p.date {
+	clear: both;
+	color: #999;
+	font-weight: bold;
+}
+
+/* !--- CONTENT / Main Content / Blog --- */
+
+.mainContent .blogList { border-top: 1px solid #ccc; padding: 16px 0; }
+
+.mainContent h1 + .blogList { border: none; }
+
+	.mainContent .blogList h3 { text-transform: none; }
+	
+		.mainContent .blogList h3 a { color: #333; text-decoration: none; }
+		
+		.mainContent .blogList h3 a:hover { color: #666; }
+		
+	.mainContent .blogList img { float: left; margin: 0 10px 18px 0; }
+
+/* !--- CONTENT / Main Content / Salons --- */
+
+.mainContent .salonFinder {
+	background: #eaeaea;
+	border: solid #ccc;
+	border-width: 1px 0;
+	margin: 0 0 20px 0;
+	padding: 5px 10px;
+	width: 730px;
+}
+
+	.mainContent .salonFinder.label {
+		margin: 0;
+		padding: 8px 10px 0 0;
+		width: 320px;
+	}
+	
+	.mainContent .salonFinder.input[type="text"] {
+		float: left;
+		margin: 0 10px 0 0;
+		width: 120px;
+	}
+	
+	.mainContent .salonFinder.input[type="submit"] 
+	{ 
+	    float: left; 
+	}
+
+.mainContent ul.salonList {
+	font-size: 1em;
+	line-height: 1.2;
+	list-style: none;
+	margin: 0;
+}
+
+	.mainContent ul.salonList li { border-top: 1px solid #ccc; padding: 16px 0; }
+	
+	.mainContent ul.salonList li:first-child { border: none; }
+	
+	.mainContent ul.salonList li.vip { background: url(https://static.heavenskincare.com/images/vip.gif) no-repeat right 24px; }
+	
+		.mainContent ul.salonList li h3 { color: #333; text-transform: none; }
+		
+		.mainContent ul.salonList li .salonImg {
+			float: left;
+			margin: 0 20px 0 0;
+			width: 130px;
+		}
+		
+			.mainContent ul.salonList li .salonImg img { border: 3px solid #ccc; }
+			
+			.mainContent ul.salonList li.vip .salonImg img { border-color: #bd81b7; }
+			
+		.mainContent ul.salonList li .salonAddress { float: left; width: 240px; }
+		
+		.mainContent ul.salonList li .salonContact { float: left; width: 300px; }
+
+
+
+.mainContent ul.treatmentList {
+	font-size: 1.3em;
+	line-height: 1.2;
+	list-style: none;
+	margin: 0;
+}
+
+	.mainContent ul.treatmentList li { border-top: 1px solid #ccc; padding: 16px 0; }
+	
+	.mainContent ul.treatmentList li:first-child { border: none; }
+	
+	.mainContent ul.treatmentList li.vip { background: url(https://static.heavenskincare.com/images/vip.gif) no-repeat right 24px; }
+	
+		.mainContent ul.treatmentList li h3 { color: #333; text-transform: none; }
+		
+		.mainContent ul.treatmentList li .treatmentImg {
+			float: left;
+			margin: 0 20px 0 0;
+			width: 130px;
+		}
+		
+			.mainContent ul.treatmentList li .treatmentImg img { border: 3px solid #ccc; }
+			
+			.mainContent ul.treatmentList li.vip .treatmentImg img { border-color: #bd81b7; }
+			
+		.mainContent ul.treatmentList li .treatmentDetails { float: left; width: 400px; }
+		
+
+
+
+/* !--- FOOTER --- */
+
+.footer {
+	margin: 20px auto;
+	width: 960px;
+    background-color: transparent;
+    padding: 11px;
+}
+
+	.footer p {
+		clear: both;
+		color: #999;
+		font-size: 1.2em;
+		line-height: 1.5;
+		text-align: center;
+	}
+
+	    .footer p a { color: #666; text-decoration: none; }
+				
+        .footer p a:hover { color: rgba(0,0,0,0.6); }
+
+	.footer .footerBlock {
+		float: left;
+		margin: 0 30px 30px 0;
+		width: 100%;
+	}
+	
+		.footer .footerBlock h6 {
+			border-bottom: 1px solid #262626;
+			color: #000;
+			font-size: 1.4em;
+			margin: 0 0 10px 0;
+			padding: 0 0 8px 0;
+			text-transform: uppercase;
+		}
+		
+        .footer .contact
+        {
+            align-content: center;
+        }
+
+		.footer .footerBlock p { margin: 0 0 1em 0; text-align: right; }
+		
+			.footer .footerBlock p a { color: #000; }
+	
+	.footer .footerWide { width: 410px; }
+	
+		.footer .footerWide ul { font-size: 1.2em; }
+		
+			.footer .footerWide ul li {
+				float: left;
+				margin: 0 0 8px 0;
+				width: 130px;
+			}
+			
+			.footer .footerWide ul li:before { color: #333; content: "· "; }
+			
+				.footer .footerWide ul li a { color: #999; text-decoration: none; }
+				
+				.footer .footerWide ul li a:hover { color: #fff; }
+	
+	.footer .social {}
+	
+		.footer .social ul { font-size: 1.2em; }
+		
+			.footer .social ul li { margin: 0 0 16px 0; }
+			
+				.footer .social ul li a {
+					background: url(https://static.heavenskincare.com/images/social-icons.png) no-repeat left center;
+					color: #999;
+					display: block;
+					height: 16px;
+					padding: 0 0 0 24px;
+					text-decoration: none;
+				}
+				
+				.footer .social ul li a:hover { color: #fff; }
+				
+				.footer .social ul li.fb a 	{ background-position: 0 0; }
+				.footer .social ul li.tw a 	{ background-position: 0 -17px; }
+				.footer .social ul li.rss a { background-position: 0 -34px; }
+				
+
+.DeliveryAddress
+{
+    width: 300px;
+}
+
+.ProductBasket
+{
+    left: 20px;
+    padding: 0 0 30px 20px;
+    /*width: 420px; */
+    height: 250px;
+    right: 220px;
+    /*float: right;*/
+}
+
+.ProductDescription
+{
+    width: 650px;
+}
+
+.productBasketStratosphere
+{
+    left: 20px;
+    padding: 10px 0 50px 20px;
+    right: 220px;
+    padding-bottom: 20px;
+    float: left;
+}
+.productIngredients
+{
+    left: 20px;
+    padding: 0 0 30px 20px;
+    width: 420px; 
+    right: 220px;
+    float: left;
+}
+
+    .productIngredients h5
+    {
+        text-transform: uppercase;
+        color: #666;
+    }
+
+.productHowToUse
+{
+    left: 0px;
+    padding: 0 0 30px 10px;
+    width: 700px; 
+    float: left;
+}
+
+    .productHowToUse h5
+    {
+        text-transform: uppercase;
+        color: #666;
+    }
+
+.productVideo
+{
+    left: 0px;
+    padding: 0 0 30px 10px;
+    float: left;
+}
+
+    .productVideo span
+    {
+        font-size: 1.2em;
+        color: #666;
+    }
+
+        .productVideo span a
+        {
+            text-decoration: none;
+            color: #666;
+        }
+
+        .productVideo span a:hover
+        {
+            text-decoration: none;
+            color: #000;
+        }
+
+    .productVideo h5
+    {
+        text-transform: uppercase;
+        color: #666;
+    }
+
+    .productVideo p
+    {
+        width: 640px; 
+        height: 390px;
+        border: 1px solid #666;
+        background-color: #fff;
+    }
+
+.productFeatures
+{
+    left: 0px;
+    padding: 0 0 30px 10px;
+    width: 700px; 
+    float: left;
+}
+
+    .productFeatures h5
+    {
+        text-transform: uppercase;
+        color: #666;
+    }
+
+.productDescription
+{
+    left: 0px;
+    padding: 0 0 30px 10px;
+    width: 700px; 
+    float: left;
+}
+
+    .productDescription h5
+    {
+        text-transform: uppercase;
+        color: #666;
+    }
+
+.featuredProduct {
+	border-bottom: 4px solid #ccc;
+	left: -20px;
+/* 	padding: 0 0 20px 0; */
+	width: 710px;
+	overflow: hidden;
+}
+
+	.featuredProduct h5 {
+		border-bottom: 1px solid #ccc;
+		color: #666;
+		font-size: 2.4em;
+		margin: 0 20px 12px 20px;
+		padding: 0 0 6px 0;
+	}
+	
+	.featuredProduct ul { font-size: 1em; }
+	
+		.featuredProduct ul li {
+			float: left;
+			margin: 0 10px;
+			width: 200px;
+		}
+		
+			.featuredProduct ul li a {
+				color: #333;
+				display: block;
+				font-size: 1.5em;
+				font-weight: normal;
+				line-height: 1.2;
+				text-decoration: none;
+			}
+			
+				.featuredProduct ul li a span.info {
+					display: block;
+					margin: 0 0 10px 0;
+					height: 62px;
+				}
+				
+					.featuredProduct ul li a span.info strong { padding: 10px 0 0 0; }
+			
+				.featuredProduct ul li a img {
+ 					/* border: 1px solid #ccc;  */
+					-moz-border-radius: 2px;  
+					-webkit-border-radius: 2px;  
+					border-radius: 2px;
+                    background-color: #fff;
+/* 					margin: 0 0 10px 0; */
+				}
+				
+				.featuredProduct ul li a:hover img { border-color: #999; }
+				
+				.featuredProduct ul li a strong {
+					color: #999;
+					display: block;
+					font-size: 0.8em;
+				}
+				
+				.featuredProduct ul li a span.new, .featuredProduct ul li a span.best {
+					background: #000;
+					color: #fff;
+					display: none;
+					overflow: hidden;
+					position: absolute;
+					text-align: center;
+					text-indent: 0px;
+					top: 10px; right: 5px;
+					width: 60px; height: 50px;
+				}
+				
+				.featuredProduct ul li a span.new 	{ background: url('https://www.heavenskincare.com/images/greybox.png') no-repeat; }
+				.featuredProduct ul li a span.best 	{ background: url('https://www.heavenskincare.com/images/greybox.png') no-repeat; }
+
+/*    END FEATURED PRODUCT    */
+
+
+/*    FEATURED PRODUCT STRATOSPHERE    */
+
+.featuredProductStratosphere {
+	border-bottom: 4px solid #ccc;
+	left: -20px;
+/* 	padding: 0 0 20px 0; */
+	width: 720px;
+	overflow: hidden;
+}
+    .featuredProductStratosphere h2
+    {
+        text-align: center;
+    }
+
+	.featuredProductStratosphere h5 {
+		border-bottom: 1px solid #ccc;
+		color: #666;
+		font-size: 2.4em;
+		margin: 0 20px 12px 20px;
+		padding: 0 0 6px 0;
+	}
+	
+	.featuredProductStratosphere ul { font-size: 1em; }
+	
+		.featuredProductStratosphere ul li {
+			float: left;
+			margin: 0 10px;
+			width: 200px;
+		}
+		
+			.featuredProductStratosphere ul li a {
+				color: #333;
+				display: block;
+				font-size: 1.5em;
+				font-weight: normal;
+				line-height: 1.2;
+				text-decoration: none;
+                background-color: #fff; 
+                background: url('https://static.heavenskincare.com/images/circle130.png') no-repeat;
+                background-position: center 25px;
+			}
+			
+				.featuredProductStratosphere ul li a span.info {
+					display: block;
+					margin: 0 0 10px 0;
+					height: 62px;
+				}
+				
+					.featuredProductStratosphere ul li a span.info strong { padding: 10px 0 0 0; }
+			
+				.featuredProductStratosphere ul li a img {
+                    background-color: #fff;
+                    border: 1px solid #666;
+				}
+				
+				.featuredProductStratosphere ul li a:hover img { border-color: #999; }
+				
+				.featuredProductStratosphere ul li a strong {
+					color: #999;
+					display: block;
+					font-size: 0.8em;
+				}
+				
+				.featuredProductStratosphere ul li a span.new, .featuredProductStratosphere ul li a span.best {
+					background: #000;
+					color: #fff;
+					display: none;
+					overflow: hidden;
+					position: absolute;
+					text-align: center;
+					text-indent: 0px;
+					top: 0px; right: 0px;
+					width: 60px; height: 50px;
+                    padding-top: 10px;
+                    font-size: 0.8em;
+				}
+				
+				.featuredProductStratosphere ul li a span.new 	{ background: url('https://www.heavenskincare.com/images/greybox.png') no-repeat; }
+				.featuredProductStratosphere ul li a span.best 	{ background: url('https://www.heavenskincare.com/images/greybox.png') no-repeat; }
+
+
+/*    END FEATURED PRODUCT STRATOSPHERE    */
+
+.content .faq 
+{
+	margin: 10px auto auto auto;
+	width: 700px;
+	display: list-item;
+	list-style-type: none;
+	padding: 0;
+}
+
+.content .faqList ul li
+{
+    float: left;
+    margin: 0 0 8px 0;
+    display: list-item;
+    width: 300px;
+    list-style-type: none;
+}
+			
+.content .faqList ul li:before { color: #333; content: "· "; }
+			
+.content .faqList ul li a { color: #999; text-decoration: none; }
+				
+.content .faqList ul li a:hover { color: #fff; }
+.strapline
+{
+    text-align: center;
+    width: 100%;
+    font-size: 1.5em;
+}
+
+
+.mainContent ul.searchResult {
+	font-size: 1em;
+	line-height: 1.2;
+	list-style: none;
+	margin: 0;
+}
+
+	.mainContent ul.searchResult li { border-top: 1px solid #ccc; padding: 16px 0; font-size: 1.0em; }
+	
+	.mainContent ul.searchResult li:first-child { border: none; }
+	
+		.mainContent ul.searchResult li h3 { color: #333; text-transform: none; }
+		
+		.mainContent ul.searchResult li .searchType { float: left; width: 150px; font-size: 1.5em }
+		
+		.mainContent ul.searchResult li .searchLink { float: left; width: 300px; font-size: 1.5em }
+
+.fontOptionalExtra
+{
+    font-size: 1.2em;
+}
+
+
+
+		.standardButton {
+			background-color: #000000;
+			background-image: url('https://static.heavenskincare.com/images/btn_fallback.gif');
+			background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#2c2c2c), to(#000000));
+			background-image: -webkit-linear-gradient(top, #2c2c2c, #000000);
+			background-image:    -moz-linear-gradient(top, #2c2c2c, #000000);
+			background-image:     -ms-linear-gradient(top, #2c2c2c, #000000);
+			background-image:      -o-linear-gradient(top, #2c2c2c, #000000);
+			border: none;
+			-moz-border-radius: 4px;  
+			-webkit-border-radius: 4px;  
+			border-radius: 4px;
+			color: #fff;
+			cursor: pointer;
+			font-weight: bold;
+			padding: 6px 16px;
+			text-shadow: 0 -1px 0 #000;
+			margin-right: 10px;
+		}
+
+.left210
+{
+    left: 210px;
+}
+
+
+
+.tblMTD {
+	color: #333;
+	font-size: 1.0em;
+	margin: 0 0 30px 0;
+}
+
+	.tblMTD th {
+		background-color: #000;
+		border-left: 1px solid #fff;
+		color: #fff;
+		font-weight: bold;
+		padding: 6px 10px;
+		text-align: center;
+	}
+	
+	.tblMTD th.first { border: none; text-align: left; }
+	
+	.tblMTD td {
+		border-bottom: 1px solid #ccc;
+		padding: 6px 6px;
+		text-align: left;
+	}
+	
+		.tblMTD td strong { font-weight: 700; }
+	
+		.tblMTD td.first img {
+			border: 1px solid #ccc;
+			-moz-border-radius: 2px;  
+			-webkit-border-radius: 2px;  
+			border-radius: 2px;
+		}
+	
+	.tblMTD td.name { text-align: left; }
+	
+    .tblMTD .totals td { border-bottom: none; padding: 6px 6px; }
+	
+	.tblMTD .totals td.first { text-align: right; }
+	
+	.tblMTD .total td { border-bottom: 1px solid #ccc; border-top: 1px solid #ccc; padding: 6px 6px; }
+	
+	.tblMTD .total td.first { text-align: right; }
+
+
+
+
+
+.tblStock {
+	color: #333;
+	font-size: 1.2em;
+	margin: 0 0 30px 0;
+}
+
+    .tblStock .lowStock
+    {
+        background-color: Red;
+    }
+    
+    .tblStock .nearStock
+    {
+        background-color: Orange;
+    }
+
+	.tblStock th {
+		background-color: #000;
+		border-left: 1px solid #fff;
+		color: #fff;
+		font-size: 1.4em;
+		font-weight: bold;
+		padding: 6px 10px;
+		text-align: center;
+	}
+	
+	.tblStock th.first { border: none; text-align: left; }
+	
+	.tblStock .textLeft { text-align: left; }
+	.tblStock .textCenter { text-align: center; }
+	
+	.tblStock td {
+		border-bottom: 1px solid #ccc;
+		padding: 6px 10px;
+		text-align: left;
+	}
+	
+		.tblStock td strong { font-weight: 700; }
+	
+		.tblStock td.first img {
+			border: 1px solid #ccc;
+			-moz-border-radius: 2px;  
+			-webkit-border-radius: 2px;  
+			border-radius: 2px;
+		}
+	
+	        .tblStock td.name { text-align: left; }
+	
+.tblSalesLeads {
+	color: #333;
+	font-size: 1.5em;
+	margin: 0 0 30px 0;
+	border: 2px;
+}
+
+	.tblSalesLeads th {
+		background-color: #000;
+		border-left: 1px solid #fff;
+		color: #fff;
+		font-weight: bold;
+		font-size: medium;
+		padding: 6px 10px;
+		text-align: left;
+	}
+	
+	.tblSalesLeads th.first { border: 2px; text-align: left; }
+	
+	.tblSalesLeads td
+{
+    border-bottom: 1px solid #ccc;
+    padding: 6px 10px;
+    font-weight: normal;
+    font-size: small;
+    text-align: left;
+    top: 5px;
+}
+	
+    .tblSalesLeads td strong { font-weight: 700; }
+	
+	.tblSalesLeads td.name { text-align: left; }
+	
+.accountUpdated
+{
+    width: 600px;
+    margin-left: 75px;
+    background-color: aliceblue;
+    color: black;
+    height: 80px;
+    border: solid 2px black;
+}
+
+    .accountUpdated p
+    {
+        font-size: 1.2em;
+        font-weight: normal;
+        padding-left: 30px;
+    }
+
+        .accountUpdated p span
+        {
+            padding-top: 10px;
+            font-size: 1.4em;
+            font-weight: bold;
+        }
