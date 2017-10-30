@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY><OBJECT type="text/site properties">
+</OBJECT>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="features">
+	<param name="Local" value="features.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="user">
+	<param name="Local" value="posuserinterface.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="interface">
+	<param name="Local" value="posuserinterface.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="home">
+	<param name="Local" value="posuserinterface.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="discounts">
+	<param name="Local" value="discounts.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="language">
+	<param name="Local" value="displaylanguage.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="administration settings">
+	<param name="Local" value="administrationsettings.html">
+	</OBJECT>
+</UL>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="dictionary">
+	<param name="Local" value="administrationusersettingsdictionary.html">
+	</OBJECT>
+</UL>
+
+	
+</BODY></HTML>

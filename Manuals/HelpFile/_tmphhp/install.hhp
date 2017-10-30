@@ -1,0 +1,36 @@
+[OPTIONS]
+TITLE=Installer
+Full-text search=Yes
+Display compile notes=YES
+Display compile progress=YES
+Compatibility=1.1
+Default Window=Main
+Language=0x409 English (United States)
+Default Font=Arial,8,0
+Compiled file=install.chm
+Error Log file=install.log
+Contents file=install.hhc
+Index File=install.hhk
+Default Topic=installtype.html
+
+[FILES]
+installtype.html
+destinationlocation.html
+distributordetails.html
+server.html
+selectstartmenu.html
+additionaltasks.html
+readytoinstall.html
+finish.html
+
+
+[WINDOWS]
+Main="Main","install.hhc","install.hhk","installtype.html","installtype.html", ,,,,0x061520,200, 0x00304E, [271, 322, 643, 516]  , 0x307e, , , , , , , , 0
+Popup="Popup","install.hhc","install.hhk","installtype.html","installtype.html", ,,,,0x061520,200, 0x00304E, [271, 322, 643, 516]  , 0x307e, , , , , , , , 0
+
+
+[MAP]
+#include install.h
+
+[TEXT POPUPS]
+CSHelp.txt
