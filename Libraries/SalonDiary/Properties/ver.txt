@@ -1,0 +1,5 @@
+Parameters
+/out=T:\HeavenMain\Libraries\SalonDiary\Properties\ver.txt
+/ignore=20
+/Debug
+/path=T:\HeavenMain\Libraries\SalonDiary\
