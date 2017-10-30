@@ -1,0 +1,322 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{39B467CF-C3F3-447A-A7DA-59617388D26B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>POS.Invoices</RootNamespace>
+    <AssemblyName>POS.Invoices</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Builds\POS\Debug\Plugins\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;TAB_INTERFACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\Builds\POS\Release\Plugins\</OutputPath>
+    <DefineConstants>TAB_INTERFACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Applications\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="SharedControls, Version=2.8.0.0, Culture=neutral, PublicKeyToken=5e7029cf0b93cfbe, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Applications\packages\SC.SharedControls.2.8.15\lib\net452\SharedControls.dll</HintPath>
+    </Reference>
+    <Reference Include="SharedLib, Version=2.5.0.0, Culture=neutral, PublicKeyToken=bcec03f2c05555a7, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Applications\packages\SC.Shared.Library.2.5.13\lib\net452\SharedLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Checks.cs" />
+    <Compile Include="Classes\GenerateRecurringInvoiceThread.cs" />
+    <Compile Include="Classes\RecurringPaymentsWizard.cs" />
+    <Compile Include="Controls\InvoiceFooterSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\InvoiceFooterSettings.Designer.cs">
+      <DependentUpon>InvoiceFooterSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\InvoiceHeaderSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\InvoiceHeaderSettings.Designer.cs">
+      <DependentUpon>InvoiceHeaderSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\InvoiceManagerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\InvoiceManagerControl.designer.cs">
+      <DependentUpon>InvoiceManagerControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\InvoiceSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\InvoiceSettings.Designer.cs">
+      <DependentUpon>InvoiceSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\OrdersReceivedControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\OrdersReceivedControl.designer.cs">
+      <DependentUpon>OrdersReceivedControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RecurringInvocesControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\RecurringInvocesControl.Designer.cs">
+      <DependentUpon>RecurringInvocesControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Wizards\RecurringPayments\FinalStep.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Wizards\RecurringPayments\FinalStep.Designer.cs">
+      <DependentUpon>FinalStep.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Wizards\RecurringPayments\Step1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Wizards\RecurringPayments\Step1.Designer.cs">
+      <DependentUpon>Step1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Wizards\RecurringPayments\Step2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Wizards\RecurringPayments\Step2.Designer.cs">
+      <DependentUpon>Step2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateOrderCard.cs" />
+    <Compile Include="Forms\ChangeSalesPerson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ChangeSalesPerson.Designer.cs">
+      <DependentUpon>ChangeSalesPerson.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CreateOrder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\CreateOrder.Designer.cs">
+      <DependentUpon>CreateOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FindOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FindOrderForm.Designer.cs">
+      <DependentUpon>FindOrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\InvoiceCancel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InvoiceCancel.Designer.cs">
+      <DependentUpon>InvoiceCancel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\InvoiceManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InvoiceManager.Designer.cs">
+      <DependentUpon>InvoiceManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\InvoicesReceived.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InvoicesReceived.Designer.cs">
+      <DependentUpon>InvoicesReceived.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\InvoiceView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InvoiceView.Designer.cs">
+      <DependentUpon>InvoiceView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\IssueRefundForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\IssueRefundForm.Designer.cs">
+      <DependentUpon>IssueRefundForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\OrderView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OrderView.Designer.cs">
+      <DependentUpon>OrderView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SavedBasketOrdersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SavedBasketOrdersForm.Designer.cs">
+      <DependentUpon>SavedBasketOrdersForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UnpaidOrderForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UnpaidOrderForm.Designer.cs">
+      <DependentUpon>UnpaidOrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InvoiceManagerCard.cs" />
+    <Compile Include="InvoiceOnHoldTrayStatus.cs" />
+    <Compile Include="InvoicePartiallyDispatchedTrayStatus.cs" />
+    <Compile Include="InvoicesPluginModule.cs" />
+    <Compile Include="InvoicesTrayStatus.cs" />
+    <Compile Include="OrdersReceivedCard.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RecurringInvoiceCard.cs" />
+    <Compile Include="UnpaidOrdersCard.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\InvoiceFooterSettings.resx">
+      <DependentUpon>InvoiceFooterSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\InvoiceHeaderSettings.resx">
+      <DependentUpon>InvoiceHeaderSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\InvoiceManagerControl.resx">
+      <DependentUpon>InvoiceManagerControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\InvoiceSettings.resx">
+      <DependentUpon>InvoiceSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\OrdersReceivedControl.resx">
+      <DependentUpon>OrdersReceivedControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\RecurringInvocesControl.resx">
+      <DependentUpon>RecurringInvocesControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Wizards\RecurringPayments\FinalStep.resx">
+      <DependentUpon>FinalStep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Wizards\RecurringPayments\Step1.resx">
+      <DependentUpon>Step1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Wizards\RecurringPayments\Step2.resx">
+      <DependentUpon>Step2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ChangeSalesPerson.resx">
+      <DependentUpon>ChangeSalesPerson.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CreateOrder.resx">
+      <DependentUpon>CreateOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FindOrderForm.resx">
+      <DependentUpon>FindOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\InvoiceCancel.resx">
+      <DependentUpon>InvoiceCancel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\InvoiceManager.resx">
+      <DependentUpon>InvoiceManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\InvoicesReceived.resx">
+      <DependentUpon>InvoicesReceived.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\InvoiceView.resx">
+      <DependentUpon>InvoiceView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\IssueRefundForm.resx">
+      <DependentUpon>IssueRefundForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OrderView.resx">
+      <DependentUpon>OrderView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SavedBasketOrdersForm.resx">
+      <DependentUpon>SavedBasketOrdersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UnpaidOrderForm.resx">
+      <DependentUpon>UnpaidOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Languages\Languages.csproj">
+      <Project>{2a685cd0-df5b-4ce3-bd18-5e6bf927ec7f}</Project>
+      <Name>Languages</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Library\Library.csproj">
+      <Project>{3444f493-5cbe-4d67-8bc9-1184e486c7e7}</Project>
+      <Name>Library</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\POS\POS.csproj">
+      <Project>{c5ea121e-69b3-499d-acde-c6dfd9779b73}</Project>
+      <Name>POS</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Reports\Reports.csproj">
+      <Project>{74dce6c6-8044-438d-b16a-b01add05add0}</Project>
+      <Name>Reports</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\invoices.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OrderReceived.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PurchaseOrderUnpaid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Orders.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OrderUnpaid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PurchaseOrder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RecurringInvoices.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>..\..\..\..\..\GitProjects\Builds\NetBuildTools\Release\UpdateVersion.exe /out="$(ProjectDir)Properties\ver.txt" /$(ConfigurationName) /path="$(ProjectDir)</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
