@@ -1,0 +1,10 @@
+Parameters
+/out=T:\HeavenMain\Libraries\Plugins\POS.PurchaseOrders\Properties\ver.txt
+/Debug
+/path=T:\HeavenMain\Libraries\Plugins\POS.PurchaseOrders\
+
+Path Exists
+
+T:\HeavenMain\Libraries\Plugins\POS.PurchaseOrders\properties\AssemblyInfo.cs Found
+
+New Version 4.0.0.784
