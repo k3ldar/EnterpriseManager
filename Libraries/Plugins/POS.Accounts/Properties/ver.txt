@@ -1,0 +1,10 @@
+Parameters
+/out=T:\HeavenMain\Libraries\Plugins\POS.Accounts\Properties\ver.txt
+/Debug
+/path=T:\HeavenMain\Libraries\Plugins\POS.Accounts\
+
+Path Exists
+
+T:\HeavenMain\Libraries\Plugins\POS.Accounts\properties\AssemblyInfo.cs Found
+
+New Version 4.0.0.756
