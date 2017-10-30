@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B24A35E4-48FE-4707-8004-21B93750192E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>POS.Diary</RootNamespace>
+    <AssemblyName>POS.Diary</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Builds\POS\Debug\Plugins\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CACHE_APPOINTMENTS TAB_INTERFACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\Builds\POS\Release\Plugins\</OutputPath>
+    <DefineConstants>CACHE_APPOINTMENTS TAB_INTERFACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Calendar.DayView, Version=2.2.9.280, Culture=neutral, PublicKeyToken=d5080d437467605c, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Applications\packages\DayView.2.2.9\lib\net4\Calendar.DayView.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Applications\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="SharedControls, Version=2.8.0.0, Culture=neutral, PublicKeyToken=5e7029cf0b93cfbe, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Applications\packages\SC.SharedControls.2.8.15\lib\net452\SharedControls.dll</HintPath>
+    </Reference>
+    <Reference Include="SharedLib, Version=2.5.0.0, Culture=neutral, PublicKeyToken=bcec03f2c05555a7, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Applications\packages\SC.Shared.Library.2.5.13\lib\net452\SharedLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Checks.cs" />
+    <Compile Include="Classes\TrayNotifications.cs" />
+    <Compile Include="Controls\DiarySettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DiarySettings.Designer.cs">
+      <DependentUpon>DiarySettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SalonAppointment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SalonAppointment.Designer.cs">
+      <DependentUpon>SalonAppointment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SalonCalendarControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SalonCalendarControl.designer.cs">
+      <DependentUpon>SalonCalendarControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TextMagic.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\TextMagic.Designer.cs">
+      <DependentUpon>TextMagic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiaryPluginModule.cs" />
+    <Compile Include="DiaryCard.cs" />
+    <Compile Include="Forms\AppointmentChanges.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AppointmentChanges.Designer.cs">
+      <DependentUpon>AppointmentChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AppointmentHistoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AppointmentHistoryForm.Designer.cs">
+      <DependentUpon>AppointmentHistoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CalendarAppointment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CalendarAppointment.Designer.cs">
+      <DependentUpon>CalendarAppointment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CloneAppointment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CloneAppointment.Designer.cs">
+      <DependentUpon>CloneAppointment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CreditCardDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CreditCardDetails.Designer.cs">
+      <DependentUpon>CreditCardDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NewAppointments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NewAppointments.Designer.cs">
+      <DependentUpon>NewAppointments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SalonAdvancedSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SalonAdvancedSettings.Designer.cs">
+      <DependentUpon>SalonAdvancedSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SalonCalendar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SalonCalendar.Designer.cs">
+      <DependentUpon>SalonCalendar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SelectTreatmentsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SelectTreatmentsForm.Designer.cs">
+      <DependentUpon>SelectTreatmentsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\DiarySettings.resx">
+      <DependentUpon>DiarySettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SalonAppointment.resx">
+      <DependentUpon>SalonAppointment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SalonCalendarControl.resx">
+      <DependentUpon>SalonCalendarControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TextMagic.resx">
+      <DependentUpon>TextMagic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AppointmentChanges.resx">
+      <DependentUpon>AppointmentChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AppointmentHistoryForm.resx">
+      <DependentUpon>AppointmentHistoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CalendarAppointment.resx">
+      <DependentUpon>CalendarAppointment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CloneAppointment.resx">
+      <DependentUpon>CloneAppointment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CreditCardDetails.resx">
+      <DependentUpon>CreditCardDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NewAppointments.resx">
+      <DependentUpon>NewAppointments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SalonAdvancedSettings.resx">
+      <DependentUpon>SalonAdvancedSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SalonCalendar.resx">
+      <DependentUpon>SalonCalendar.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SelectTreatmentsForm.resx">
+      <DependentUpon>SelectTreatmentsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Languages\Languages.csproj">
+      <Project>{2a685cd0-df5b-4ce3-bd18-5e6bf927ec7f}</Project>
+      <Name>Languages</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Library\Library.csproj">
+      <Project>{3444f493-5cbe-4d67-8bc9-1184e486c7e7}</Project>
+      <Name>Library</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\POS\POS.csproj">
+      <Project>{c5ea121e-69b3-499d-acde-c6dfd9779b73}</Project>
+      <Name>POS</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Reports\Reports.csproj">
+      <Project>{74dce6c6-8044-438d-b16a-b01add05add0}</Project>
+      <Name>Reports</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SalonDiary\SalonDiary.csproj">
+      <Project>{fb4558aa-3653-4281-999b-d78d99f23437}</Project>
+      <Name>SalonDiary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Resources\Calendar.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EmployeeNoTreatments.bmp" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>..\..\..\..\..\GitProjects\Builds\NetBuildTools\Release\UpdateVersion.exe /out="$(ProjectDir)Properties\ver.txt" /$(ConfigurationName) /path="$(ProjectDir)</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
