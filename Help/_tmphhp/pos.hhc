@@ -1,0 +1,469 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<OBJECT type="text/site properties">
+<param name="ExWindow Styles" value="0x800225">
+<param name="Window Styles" value="0x800225">
+</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Point Of Sale">	<PARAM name="Local" value="pointofsale.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Features">	<PARAM name="Local" value="features.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Definitions, Acronyms and Abbreviations">	<PARAM name="Local" value="definitionsacronymsandabbreviations.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Shortcut Keys">	<PARAM name="Local" value="shortcutkeys.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Automatic Updates">	<PARAM name="Local" value="posautomaticupdates.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<param name="Name" value="Pos User Interface">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="POS User Interface">	<PARAM name="Local" value="posuserinterface.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Home Buttons">	<PARAM name="Local" value="homebuttonsandstatusbar.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Status Bar">	<PARAM name="Local" value="statusbar.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="List Views">	<PARAM name="Local" value="listviews.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Discounts">	<PARAM name="Local" value="discounts.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Change Password">	<PARAM name="Local" value="changepassword.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Hints and Tips">	<PARAM name="Local" value="hintsandtips.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Login">	<PARAM name="Local" value="login.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Notes">	<PARAM name="Local" value="notes.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="View Notes">	<PARAM name="Local" value="viewnotes.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Display Language">	<PARAM name="Local" value="displaylanguage.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Settings">	<PARAM name="Local" value="standardSettings.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Login Settings">	<PARAM name="Local" value="loginsettings.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Automatic Login">	<PARAM name="Local" value="automaticlogin.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Plugins">	<PARAM name="Local" value="plugins.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Edit Plugin">	<PARAM name="Local" value="editplugin.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Standard Icons">	<PARAM name="Local" value="standardicons.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<param name="Name" value="Settings">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Administration Settings">	<PARAM name="Local" value="administrationsettings.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="SMS Reminder Alerts">	<PARAM name="Local" value="smsreminderalerts.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Invoice">	<PARAM name="Local" value="invoiceSettings.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Invoice Header">	<PARAM name="Local" value="invoiceSettingsHeader.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Invoice Footer">	<PARAM name="Local" value="invoiceSettingsFooter.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Products">	<PARAM name="Local" value="administrationSettingsProducts.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Staff Leave Settings">	<PARAM name="Local" value="staffLeaveSettings.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Commission Settings">	<PARAM name="Local" value="staffcommissionsettings.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Commission Pool">	<PARAM name="Local" value="commissionpoolsettings.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Client Commission">	<PARAM name="Local" value="adminclientcommissionsettings.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Affiliate Settings">	<PARAM name="Local" value="adminaffiliatesettings.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Cash Drawer Settings">	<PARAM name="Local" value="admincashdrawersettings.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="SMS Alert Options">	<PARAM name="Local" value="diarysmsalertoptions.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Invoice">	<PARAM name="Local" value="invoicesettings.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Header">	<PARAM name="Local" value="invoiceheadersettings.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Footer">	<PARAM name="Local" value="invoicefootersettings.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Order Manager Settings">	<PARAM name="Local" value="ordermanagersettings.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Recorded Delivery">	<PARAM name="Local" value="ordermanagerrecordeddelivery.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Label Printing Settings">	<PARAM name="Local" value="ordermanagerlabelprintingsettings.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Marketing Settings">	<PARAM name="Local" value="adminmarketingsettings.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Mail Chimp Settings">	<PARAM name="Local" value="marketingmailchimpsettings.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Stock Control Settings">	<PARAM name="Local" value="stockcontrolsettings.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Automatic Stock Re-ordering">	<PARAM name="Local" value="stockcontrolautomaticstockreordering.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Website Settings">	<PARAM name="Local" value="websitesettings.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="User Settings">	<PARAM name="Local" value="administrationusersettings.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="General">	<PARAM name="Local" value="administrationusersettingsgeneral.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Dictionary">	<PARAM name="Local" value="administrationusersettingsdictionary.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Language">	<PARAM name="Local" value="administrationusersettingslanguage.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Price Data">	<PARAM name="Local" value="administrationusersettingspricedata.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Till Settings">	<PARAM name="Local" value="administrationusersettingstillsettings.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Currency Watch Settings">	<PARAM name="Local" value="currencywatchsettings.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Diary Settings">	<PARAM name="Local" value="userdiarysettings.html">	<PARAM name="ImageNumber" value="41">	</OBJECT>
+</UL>
+</UL>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<param name="Name" value="Modules">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Staff">	<PARAM name="Local" value="administrationstaff.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Create Staff Member">	<PARAM name="Local" value="createstaffmember.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 1">	<PARAM name="Local" value="createstaffstep1.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 2">	<PARAM name="Local" value="createstaffstep2.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 3">	<PARAM name="Local" value="createstaffstep3.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 4">	<PARAM name="Local" value="createstaffstep4.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 5">	<PARAM name="Local" value="createstaffstep5.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Remove Staff">	<PARAM name="Local" value="removestaff.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Details">	<PARAM name="Local" value="staffdetails.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Contact">	<PARAM name="Local" value="staffcontactdetails.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Employment">	<PARAM name="Local" value="staffemploymentdetails.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Personal">	<PARAM name="Local" value="staffpersonaldetails.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Leave/Holiday">	<PARAM name="Local" value="staffleaveholiday.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="View Leave">	<PARAM name="Local" value="staffviewleave.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Request Leave">	<PARAM name="Local" value="staffrequestleave.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Approve Leave">	<PARAM name="Local" value="staffapproveleave.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Authorise Leave">	<PARAM name="Local" value="staffauthoriseleave.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Sickness">	<PARAM name="Local" value="staffsicknessdetails.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="New Sickness Record">	<PARAM name="Local" value="staffnewsicknessrecord.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 1">	<PARAM name="Local" value="staffsicknesscreatestep1.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 2">	<PARAM name="Local" value="staffsicknesscreatestep2.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 3">	<PARAM name="Local" value="staffsicknesscreatestep3.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 4">	<PARAM name="Local" value="staffsicknesscreatestep4.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="View Sickness Record">	<PARAM name="Local" value="staffviewsicknessrecord.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Return To Work">	<PARAM name="Local" value="staffsicknessreturntowork.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Statistics">	<PARAM name="Local" value="staffsicknessstatistics.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Select Appointment">	<PARAM name="Local" value="staffsicknessselectappointment.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Emeregency Contact">	<PARAM name="Local" value="staffemeregencycontact.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Driving Licence">	<PARAM name="Local" value="staffdrivinglicence.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Diary">	<PARAM name="Local" value="staffdiarysettings.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Working Hours">	<PARAM name="Local" value="staffworkinghours.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Edit Working Hours">	<PARAM name="Local" value="staffworkinghoursedit.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Treatments">	<PARAM name="Local" value="stafftreatments.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Permissions">	<PARAM name="Local" value="staffpospermissions.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Commission">	<PARAM name="Local" value="staffcommission.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Clients">	<PARAM name="Local" value="staffclients.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Customers">	<PARAM name="Local" value="customers.html">	<PARAM name="ImageNumber" value="9">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Create Customer">	<PARAM name="Local" value="createcustomer.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="View Customer Details">	<PARAM name="Local" value="viewcustomerdetails.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="View Customer Orders">	<PARAM name="Local" value="viewcustomerorders.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="View Customer Invoices">	<PARAM name="Local" value="viewcustomerinvoices.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="View Customer Support Tickets">	<PARAM name="Local" value="viewcustomersupporttickets.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Customer Marketing Preferences">	<PARAM name="Local" value="customermarketingpreferences.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Delivery Address">	<PARAM name="Local" value="customerdeliveryaddress.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Notes">	<PARAM name="Local" value="viewcustomernotes.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Appointments">	<PARAM name="Local" value="viewcustomerappointments.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Gold User">	<PARAM name="Local" value="editcustomergolduser.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Salon Owners">	<PARAM name="Local" value="editcustomersalonowners.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Permissions">	<PARAM name="Local" value="editcustomerpermissions.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Export Customers">	<PARAM name="Local" value="exportcustomers.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 1">	<PARAM name="Local" value="exportcustomerstep1.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 2">	<PARAM name="Local" value="exportcustomerstep2.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 3">	<PARAM name="Local" value="exportcustomerstep3.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 4">	<PARAM name="Local" value="exportcustomerstep4.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 5">	<PARAM name="Local" value="exportcustomerstep5.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 6">	<PARAM name="Local" value="exportcustomerstep6.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Merge Customers">	<PARAM name="Local" value="mergecustomers.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Products">	<PARAM name="Local" value="products.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Details">	<PARAM name="Local" value="producteditdetails.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Settings">	<PARAM name="Local" value="producteditsettings.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Product Items">	<PARAM name="Local" value="producteditproductitems.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="New Product Item">	<PARAM name="Local" value="newproductitem.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Edit Product Item">	<PARAM name="Local" value="editproductitem.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Price Calculator">	<PARAM name="Local" value="pricecalculator.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Product Groups">	<PARAM name="Local" value="producteditproductgroups.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="New Product">	<PARAM name="Local" value="newproduct.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Top Selling Products">	<PARAM name="Local" value="productedittopsellingproducts.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Invalid Product SKU">	<PARAM name="Local" value="invalidproductsku.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Product Groups">	<PARAM name="Local" value="administrationproductgroups.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Edit Product Groups">	<PARAM name="Local" value="editproductgroups.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Edit Product Group Mobile">	<PARAM name="Local" value="editproductgroupmobile.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Diary">	<PARAM name="Local" value="diary.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Toolbar">	<PARAM name="Local" value="diarytoolbar.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Date Selection">	<PARAM name="Local" value="diarydateselection.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Image Overlays">	<PARAM name="Local" value="diaryimageoverlays.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Salon Treatments">	<PARAM name="Local" value="diarysalontreatments.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Edit Salon Treatments">	<PARAM name="Local" value="diaryeditsalontreatments.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Staff Members">	<PARAM name="Local" value="diaryedittreatmentstaffmembers.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Advanced Settings">	<PARAM name="Local" value="diaryadvancedsettings.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="General">	<PARAM name="Local" value="diaryadvancedsettingsgeneral.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Colours">	<PARAM name="Local" value="diaryadvancedsettingscolours.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Image Overlays">	<PARAM name="Local" value="diaryadvancedsettingsimageoverlays.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Auto Hide">	<PARAM name="Local" value="diaryadvancedsettingsautohide.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Times">	<PARAM name="Local" value="diaryadvancedsettingstimes.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Advanced">	<PARAM name="Local" value="diaryadvancedsettingsadvanced.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Appointment Menu">	<PARAM name="Local" value="diaryappointmentmenu.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Appointment Status">	<PARAM name="Local" value="diaryappointmentstatus.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Create or Edit Appointment">	<PARAM name="Local" value="diarycreateoreditappointment.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Add Treatment">	<PARAM name="Local" value="diarycreateoredittreatmentaddtreatment.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Previous Treatments">	<PARAM name="Local" value="diarycreateoreditappointmentprevioustreatments.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Clone Appointment">	<PARAM name="Local" value="diarycloneappointment.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Appointment History">	<PARAM name="Local" value="diaryappointmenthistory.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Appointment Changes">	<PARAM name="Local" value="diaryappointmentchanges.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Credit Card Details">	<PARAM name="Local" value="diarycreditcarddetails.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="New Appointments">	<PARAM name="Local" value="diarynewappointments.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Reports">	<PARAM name="Local" value="diaryreports.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="New Appointment Wizard">	<PARAM name="Local" value="diarynewappointmentwizard.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 1">	<PARAM name="Local" value="diarynewappointmentwizardstep1.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 2">	<PARAM name="Local" value="diarynewappointmentwizardstep2.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 3">	<PARAM name="Local" value="diarynewappointmentwizardstep3.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Waiting List">	<PARAM name="Local" value="diarywaitinglist.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 1">	<PARAM name="Local" value="diarywaitingliststep1.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 2">	<PARAM name="Local" value="diarywaitingliststep2.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 3">	<PARAM name="Local" value="diarywaitingliststep3.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 4">	<PARAM name="Local" value="diarywaitingliststep4.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="SMS Alerts">	<PARAM name="Local" value="diarysmsalerts.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 1">	<PARAM name="Local" value="diarysmsalertsstep1.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 2">	<PARAM name="Local" value="diarysmsalertsstep2.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 3">	<PARAM name="Local" value="diarysmsalertsstep3.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Till">	<PARAM name="Local" value="till.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Apply Discounts">	<PARAM name="Local" value="tillapplydiscounts.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Completing a Sale">	<PARAM name="Local" value="tillcompletingasale.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Entering Payment">	<PARAM name="Local" value="tillenteringpayment.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Redeem Voucher">	<PARAM name="Local" value="tillredeemvoucher.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Cash Payment">	<PARAM name="Local" value="tillcashpayment.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Split Payments">	<PARAM name="Local" value="tillsplitpayments.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Card Payments">	<PARAM name="Local" value="tillcardpayments.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Cheque Payments">	<PARAM name="Local" value="tillchequepayments.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Custom VAT Rate">	<PARAM name="Local" value="tillcustomvatrate.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Assign Barcodes">	<PARAM name="Local" value="tillassignbarcodes.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Invoices">	<PARAM name="Local" value="invoices.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Invoice Manager">	<PARAM name="Local" value="invoicemanager.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="View Invoice">	<PARAM name="Local" value="invoiceview.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Change Sales Person">	<PARAM name="Local" value="invoiceviewchangesalesperson.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Cancel Invoice">	<PARAM name="Local" value="invoiceviewcancelinvoice.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Issue Refund">	<PARAM name="Local" value="invoiceviewissuerefund.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Orders">	<PARAM name="Local" value="orders.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Order View">	<PARAM name="Local" value="orderview.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Create Order">	<PARAM name="Local" value="orderscreateorder.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Open Saved Order">	<PARAM name="Local" value="orderscreateorderopensavedorder.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Find Orders">	<PARAM name="Local" value="ordersfindorders.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="View Orders Received">	<PARAM name="Local" value="ordersviewordersreceived.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="View Unpaid Orders">	<PARAM name="Local" value="ordersviewunpaidorders.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Dispatch Orders">	<PARAM name="Local" value="ordersdispatchorders.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Tracking Reference">	<PARAM name="Local" value="orderstrackingreference.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Stock Control">	<PARAM name="Local" value="stockcontrol.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Stock In">	<PARAM name="Local" value="stockcontrolstockin.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Stock Out">	<PARAM name="Local" value="stockcontrolstockout.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Stock Audit">	<PARAM name="Local" value="stockcontrolstockaudit.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Create Stock">	<PARAM name="Local" value="stockcontrolcreatestock.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="CreateStockConfirm">	<PARAM name="Local" value="stockcreatestockconfirm.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Stock History">	<PARAM name="Local" value="stockcontrolstockhistory.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Automatic Stock Re-ordering">	<PARAM name="Local" value="stockcontrolsetautomaticstockreordering.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Discount Coupons">	<PARAM name="Local" value="administrationdiscountcoupons.html">	<PARAM name="ImageNumber" value="9">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 1">	<PARAM name="Local" value="discountcouponsstep1.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 2">	<PARAM name="Local" value="discountcouponsstep2.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 3">	<PARAM name="Local" value="discountcouponsstep3.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 4">	<PARAM name="Local" value="discountcouponsstep4.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Summary">	<PARAM name="Local" value="discountcouponssummary.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Cash Drawer">	<PARAM name="Local" value="admincashdrawer.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Till">	<PARAM name="Local" value="admincashdrawertill.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Verify Till">	<PARAM name="Local" value="admincashdrawerverifytill.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Safe">	<PARAM name="Local" value="admincashdrawersafe.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Verify Safe">	<PARAM name="Local" value="admincashdrawerverifysafe.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Petty Cash">	<PARAM name="Local" value="admincashdrawerpettycash.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Petty Cash Verify">	<PARAM name="Local" value="admincashdrawerpettycashverify.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Voucher Management">	<PARAM name="Local" value="vouchermanagement.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Create Vouchers">	<PARAM name="Local" value="voucherscreatevouchers.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="System Emails">	<PARAM name="Local" value="systememails.html">	<PARAM name="ImageNumber" value="9">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Marketing">	<PARAM name="Local" value="marketing.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Create Campaign">	<PARAM name="Local" value="marketingcreatecampaign.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Campaign Name">	<PARAM name="Local" value="marketingcampaignname.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Select Template">	<PARAM name="Local" value="marketingselecttemplate.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Landing Page">	<PARAM name="Local" value="marketinglandingpage.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Social Media Links">	<PARAM name="Local" value="marketingsocialmedialinks.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Menu Items">	<PARAM name="Local" value="marketingmenuitems.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Preview">	<PARAM name="Local" value="marketingpreview.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Campaign">	<PARAM name="Local" value="marketingcampaign.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Repeat Campaign">	<PARAM name="Local" value="marketingrepeatcampaign.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Update Marketing Files">	<PARAM name="Local" value="marketingupdatemarketingfiles.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Countries">	<PARAM name="Local" value="countries.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Address Options">	<PARAM name="Local" value="countriesaddressoptions.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Training Schedule">	<PARAM name="Local" value="trainingschedule.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<param name="Name" value="Create New Course">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 1">	<PARAM name="Local" value="trainingschedulecreatestep1.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 2">	<PARAM name="Local" value="trainingschedulecreatestep2.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 3">	<PARAM name="Local" value="trainingschedulecreatestep3.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Edit Training Course">	<PARAM name="Local" value="trainingscheduleedittrainingcourse.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Add Attendees">	<PARAM name="Local" value="trainingscheduleeditcourseaddattendees.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Commission">	<PARAM name="Local" value="commission.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Commission Pools">	<PARAM name="Local" value="commissionpools.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Pools">	<PARAM name="Local" value="administrationcommissionpools.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Generate Data">	<PARAM name="Local" value="administrationcommissionpoolsgeneratedata.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Commission Pool Data">	<PARAM name="Local" value="administrationcommissionpooldata.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Pay Commission">	<PARAM name="Local" value="adminpaycommission.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step1">	<PARAM name="Local" value="paycommissionpoolstep1.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 2">	<PARAM name="Local" value="paycommissionpoolstep2.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 3">	<PARAM name="Local" value="paycommissionpoolstep3.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 4">	<PARAM name="Local" value="paycommissionpoolstep4.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 5">	<PARAM name="Local" value="paycommissionpoolstep5.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+</UL>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Account Commission">	<PARAM name="Local" value="adminstaffaccountcommission.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Generate Data">	<PARAM name="Local" value="adminclientcommissiongeneratedata.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Account Commission Data">	<PARAM name="Local" value="adminaccountcommissiondata.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Bonus Payments">	<PARAM name="Local" value="adminclientcommissionbonuspayments.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 1">	<PARAM name="Local" value="adminclientcommissionbonuspaystep1.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 2">	<PARAM name="Local" value="adminclientcommissionbonuspaystep2.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 3">	<PARAM name="Local" value="adminclientcommissionbonuspaystep3.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 4">	<PARAM name="Local" value="adminclientcommissionbonuspaystep4.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 5">	<PARAM name="Local" value="adminclientcommissionbonuspaystep5.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Affiliate Marketing and Commission">	<PARAM name="Local" value="affiliatemarketingandcommission.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Commission Sales">	<PARAM name="Local" value="adminaffiliatecommissionsales.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="SEO Links">	<PARAM name="Local" value="adminaffiliateseolinks.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Setting up Affiliates">	<PARAM name="Local" value="adminsettingupaffiliates.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Settings">	<PARAM name="Local" value="adminaffiliatecreatesettings.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Commission Data">	<PARAM name="Local" value="affiliatecommissiondata.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Pay Commission">	<PARAM name="Local" value="adminaffiliatepaycommission.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 1">	<PARAM name="Local" value="adminaffiliatepaycommissionstep1.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 2">	<PARAM name="Local" value="adminaffiliatepaycommissionstep2.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 3">	<PARAM name="Local" value="adminaffiliatepaycommissionstep3.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+</UL>
+</UL>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Export">	<PARAM name="Local" value="export.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Sage">	<PARAM name="Local" value="exportsage.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Database Backup">	<PARAM name="Local" value="databasebackup.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Currency Watch">	<PARAM name="Local" value="currencywatch.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Update All Images">	<PARAM name="Local" value="updateallimages.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Automatic Rule Updates">	<PARAM name="Local" value="automaticruleupdates.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<param name="Name" value="Create Rule">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 1">	<PARAM name="Local" value="automaticrulescreaterulestep1.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 2">	<PARAM name="Local" value="automaticrulescreaterulestep2.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 3">	<PARAM name="Local" value="automaticrulescreaterulestep3.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 4">	<PARAM name="Local" value="automaticrulescreaterulestep4.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 5">	<PARAM name="Local" value="automaticrulescreaterulestep5.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<param name="Name" value="Website">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Salons">	<PARAM name="Local" value="websitesalons.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Edit Salons">	<PARAM name="Local" value="websitesalonseditsalons.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="General">	<PARAM name="Local" value="websitesalonseditsalonsgeneral.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Settings">	<PARAM name="Local" value="websitesalonseditsalonssettings.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="VIP">	<PARAM name="Local" value="websitesaloneditvip.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Type">	<PARAM name="Local" value="websitesalonseditsalonstype.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Opening Times">	<PARAM name="Local" value="websitesalonseditsalonsopeningtimes.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Salon Owners">	<PARAM name="Local" value="websitesalonowners.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Salon Owner Details">	<PARAM name="Local" value="websitesalonownerssalonownerdetails.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Salon Owner Permissions">	<PARAM name="Local" value="websitesalonownerssalonownerpermissions.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Salon to Salon Owners">	<PARAM name="Local" value="websitesalontosalonowners.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Salon Updates">	<PARAM name="Local" value="websitesalonupdates.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Select Salon">	<PARAM name="Local" value="websalonsselectsalon.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Treatments">	<PARAM name="Local" value="websitetreatments.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Edit Treatments">	<PARAM name="Local" value="websiteedittreatments.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Treatment Groups">	<PARAM name="Local" value="websitetreatmentstreatmentgroups.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Edit Treatment Groups">	<PARAM name="Local" value="websitetreatmentsedittreatmentgroups.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Distributors">	<PARAM name="Local" value="websitedistributors.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Help Desk">	<PARAM name="Local" value="helpdesk.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="View Ticket">	<PARAM name="Local" value="helpdeskviewticket.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Customer Comments">	<PARAM name="Local" value="customercomments.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Missing Links">	<PARAM name="Local" value="websitemissinglinks.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Edit">	<PARAM name="Local" value="websitemissinglinksedit.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Celebrities">	<PARAM name="Local" value="websitecelebrities.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Tips and Tricks">	<PARAM name="Local" value="websitetipsandtricks.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Edit">	<PARAM name="Local" value="websitetipsandtricksedit.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Video Administration">	<PARAM name="Local" value="websitevideoadministration.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Reports">	<PARAM name="Local" value="reports.html">	<PARAM name="ImageNumber" value="1">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Client Birthday">	<PARAM name="Local" value="reportsclientbirthday.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Salon">	<PARAM name="Local" value="reportssalon.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Stock Control">	<PARAM name="Local" value="reportsstockcontrol.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Products">	<PARAM name="Local" value="reportsproducts.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<param name="Name" value="Getting Started">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 1">	<PARAM name="Local" value="initialsetupstep1.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 2">	<PARAM name="Local" value="initialsetupstep2.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 3">	<PARAM name="Local" value="initialsetupstep3.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Step 4">	<PARAM name="Local" value="initialsetupstep4.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Final Step">	<PARAM name="Local" value="initialsetupfinal.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Member Levels">	<PARAM name="Local" value="memberlevels.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Parameters">	<PARAM name="Local" value="parameters.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+

@@ -1,0 +1,37 @@
+[OPTIONS]
+TITLE=YourProject
+Full-text search=Yes
+Display compile notes=YES
+Display compile progress=YES
+Compatibility=1.1
+Default Window=Main
+Language=0x409 English (United States)
+Default Font=Arial,8,0
+Compiled file=gettingstarted.chm
+Error Log file=gettingstarted.log
+Contents file=gettingstarted.hhc
+Index File=gettingstarted.hhk
+Default Topic=installfinish.html
+
+[FILES]
+gettingstarted.html
+installtype.html
+installdestinationlocation.html
+installdistributordetails.html
+installserver.html
+installselectstartmenu.html
+installadditionaltasks.html
+installreadytoinstall.html
+installfinish.html
+
+
+[WINDOWS]
+Main="Main","gettingstarted.hhc","gettingstarted.hhk","","", ,,,,0x061520,200, 0x00304E, [-1, -1, -2, -2]  , 0x307e, , , , , , , , 0
+Popup="Popup","gettingstarted.hhc","gettingstarted.hhk","","", ,,,,0x061520,200, 0x00304E, [271, 322, 643, 516]  , 0x307e, , , , , , , , 0
+
+
+[MAP]
+#include gettingstarted.h
+
+[TEXT POPUPS]
+CSHelp.txt

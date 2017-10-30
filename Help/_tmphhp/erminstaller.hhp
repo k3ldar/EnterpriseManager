@@ -1,0 +1,34 @@
+[OPTIONS]
+TITLE=YourProject
+Full-text search=Yes
+Display compile notes=YES
+Display compile progress=YES
+Compatibility=1.1
+Default Window=Main
+Compiled file=erminstaller.chm
+Error Log file=erminstaller.log
+Contents file=erminstaller.hhc
+Index File=erminstaller.hhk
+Default Topic=installFinish.html
+
+[FILES]
+installtype.html
+installDestinationlocation.html
+installDistributordetails.html
+installServer.html
+installSelectstartmenu.html
+installAdditionaltasks.html
+installReadytoinstall.html
+installFinish.html
+
+
+[WINDOWS]
+Main="Main","erminstaller.hhc","erminstaller.hhk","","", ,,,,0x061520,200, 0x00304E, [-1, -1, -2, -2]  , 0x307e, , , , , , , , 0
+Popup="Popup","erminstaller.hhc","erminstaller.hhk","","", ,,,,0x061520,200, 0x00304E, [271, 322, 643, 516]  , 0x307e, , , , , , , , 0
+
+
+[MAP]
+#include erminstaller.h
+
+[TEXT POPUPS]
+CSHelp.txt

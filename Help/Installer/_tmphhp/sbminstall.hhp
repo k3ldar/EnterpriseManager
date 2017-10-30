@@ -1,0 +1,36 @@
+[OPTIONS]
+TITLE=Small Business Enterprise Resource Manager
+Full-text search=Yes
+Display compile notes=YES
+Display compile progress=YES
+Compatibility=1.1
+Default Window=Main
+Language=0x409 English (United States)
+Default Font=Arial,8,0
+Compiled file=sbminstall.chm
+Error Log file=sbminstall.log
+Contents file=sbminstall.hhc
+Index File=sbminstall.hhk
+Default Topic=installtype.html
+
+[FILES]
+installtype.html
+destinationlocation.html
+distributordetails.html
+server.html
+selectstartmenu.html
+additionaltasks.html
+readytoinstall.html
+finish.html
+
+
+[WINDOWS]
+Main="Main","sbminstall.hhc","sbminstall.hhk","installtype.html","installtype.html", ,,,,0x061520,200, 0x00304E, [-1, -1, -2, -2]  , 0x307e, , , , , , , , 0
+Popup="Popup","sbminstall.hhc","sbminstall.hhk","installtype.html","installtype.html", ,,,,0x061520,200, 0x00304E, [-1, -1, -2, -2]  , 0x307e, , , , , , , , 0
+
+
+[MAP]
+#include sbminstall.h
+
+[TEXT POPUPS]
+CSHelp.txt
