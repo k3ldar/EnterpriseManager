@@ -1,0 +1,67 @@
+SET TERM ^ ;
+CREATE OR ALTER PROCEDURE WSP_MAINTENANCE_ORDERS
+AS
+DECLARE VARIABLE vOrderID INTEGER;
+  DECLARE VARIABLE vFirstName VARCHAR(50);
+  DECLARE VARIABLE vFullName VARCHAR(100);
+  DECLARE VARIABLE vEmail VARCHAR(100);
+  DECLARE VARIABLE vMessage BLOB SUB_TYPE TEXT;
+  DECLARE VARIABLE vNewID BIGINT;
+BEGIN
+  FOR 
+    SELECT r.ID, m.FIRSTNAME, m.EMAIL, m.USERNAME
+    FROM WS_INVOICE r
+      INNER JOIN WS_MEMBERS m ON (m.ID = r.USERID)
+    WHERE r.STATUS NOT IN 
+        (
+            SELECT a.ID
+            FROM WS_PAYMENT_STATUS a
+            WHERE a.IS_PAID = 'Y'
+        )
+      AND r.USER_SESSION IS NOT NULL
+      AND r.REMOTE_HOST IS NOT NULL
+      AND r.ID NOT IN (SELECT ORDER_ID FROM WS_INVOICE_ORDERS)
+      AND r.NON_PAYMENT_REMINDER IS NULL
+      AND r.PURCHASEDATE < CURRENT_TIMESTAMP -7
+    INTO :vOrderID, :vFirstName, :vEmail, :vFullName
+  DO
+  BEGIN
+    vMessage = 'Dear ' || vFirstName || ',' || '
+
+You recently placed an order on our website but did not complete the
+process by paying.
+
+If you would like to continue with this order please follow the link
+below and click "Pay Now"
+
+http://www.heavenskincare.com/Members/Accounts/OrderViewItem.aspx?AccountsID=' || vOrderID || '
+
+If you do not wish to complete this order then please disregard this email.
+
+Heaven Health & Beauty Ltd';
+    
+    
+    
+    UPDATE WS_INVOICE
+    SET NON_PAYMENT_REMINDER = CURRENT_TIMESTAMP
+    WHERE ID = :vOrderID;
+  END
+  
+
+  UPDATE WS_INVOICE r
+  SET r.PROCESS_STATUS = 10, r.STATUS = 10
+  WHERE r.STATUS NOT IN 
+    (
+        SELECT a.ID
+        FROM WS_PAYMENT_STATUS a
+        WHERE a.IS_PAID = 'Y'
+    )
+    AND r.PROCESS_STATUS <> 2
+    AND r.NON_PAYMENT_REMINDER < CURRENT_TIMESTAMP -14;
+END^
+SET TERM ; ^
+
+GRANT EXECUTE
+ ON PROCEDURE WSP_MAINTENANCE_ORDERS TO PUBLIC;
+
+

@@ -1,0 +1,341 @@
+SET TERM ^ ;
+CREATE PROCEDURE WSP_ROUTINE_MAINT_REPLICATION
+AS
+DECLARE VARIABLE vOperationLogID BIGINT;
+  DECLARE VARIABLE vSQL BLOB SUB_TYPE text;
+  DECLARE VARIABLE vCount BIGINT;
+BEGIN
+  EXECUTE PROCEDURE WSP_PROCEDURE_RUNNING('WSP_ROUTINE_MAINT_REPLICATION') RETURNING_VALUES :vCount;
+  
+  IF (vCount = 0) THEN
+  BEGIN
+    /*FOR
+        SELECT a.ID
+        FROM REPLICATE$OPERATIONLOG a
+          LEFT JOIN REPLICATE$REQUIRED_SQL rs ON (rs.ID = a.ID)
+        where a.DATETIME >= CURRENT_TIMESTAMP - 0.5
+        and rs.REQUIRED_SQL is null
+        INTO :vOperationLogID
+    DO
+    BEGIN
+        SELECT p.OPSQL
+        FROM REPLICATE$REPLICATECHANGES(:vOperationLogID, :vOperationLogID) p
+        INTO :vSQL;
+    END*/
+  END
+END^
+SET TERM ; ^
+
+GRANT EXECUTE
+ ON PROCEDURE WSP_ROUTINE_MAINT_REPLICATION TO PUBLIC;
+
+
+
+
+INSERT INTO WS_PAYMENT_STATUS (ID, DESCRIPTION, INITIAL_PROCESS_STATUS, IS_PAID, PROVIDER_NAMESPACE, STATUS_TILL, STATUS_OFFICE, STATUS_ONLINE, CREATE_INVOICE, MEMBER_LEVEL) 
+VALUES ('998', 'Test Purchase', '1', 'Y', 'SieraDelta.Website.Library.Classes.PaymentOptions.PaymentOptionTestPurchase', 'N', 'N', 'Y', 'Y', '5');
+
+
+SET TERM ^ ;
+ALTER PROCEDURE SPSEO_DATA_INS (
+    IPCREATED Timestamp,
+    IPSESSION_ID Varchar(100),
+    IPUSER_AGENT Varchar(1000),
+    IPINITIAL_REFERRER Varchar(1000),
+    IPIP_ADDRESS Varchar(15),
+    IPHOST_NAME Varchar(150),
+    IPIS_MOBILE_DEVICE Char(1),
+    IPIS_BROWSER_MOBILE Char(1),
+    IPMOBILE_REDIRECT Char(1),
+    IPREFERRAL_TYPE Integer,
+    IPBOUNCED Char(1),
+    IPIS_BOT Char(1),
+    IPCITY_ID Bigint,
+    IPMOBILE_MANUFACTURER Varchar(100),
+    IPMOBILE_MODEL Varchar(100),
+    IPUSER_ID Bigint,
+    IPSCREEN_WIDTH Integer,
+    IPSCREEN_HEIGHT Integer,
+    IPSALE_AMOUNT Decimal(18,2),
+    IPSALE_CURRENCY Varchar(3),
+    IPOLDID Bigint )
+RETURNS (
+    OPNEWID Bigint )
+AS
+DECLARE VARIABLE vReferrer BIGINT;
+  DECLARE VARIABLE vUserAgent BIGINT;
+BEGIN
+  IF (ipOLDID = -9223372036854775808) THEN
+  BEGIN
+      opNEWID = GEN_ID(GEN_SEO_DATA_ID, 1);
+
+      EXECUTE PROCEDURE spSEO_INITIAL_REFERRER_INS(ipINITIAL_REFERRER) RETURNING_VALUES :vReferrer;
+      EXECUTE PROCEDURE spSEO_USER_AGENT_INS(ipUSER_AGENT) RETURNING_VALUES :vUserAgent;
+  
+      INSERT INTO SEO_DATA (
+        ID,
+        CREATED,
+        SESSION_ID,
+        USER_AGENT_ID,
+        INITIAL_REFERRER_ID,
+        IP_ADDRESS,
+        HOST_NAME,
+        IS_MOBILE_DEVICE,
+        IS_BROWSER_MOBILE,
+        MOBILE_REDIRECT,
+        REFERRAL_TYPE,
+        BOUNCED,
+        IS_BOT,
+        CITY_ID,
+        MOBILE_MANUFACTURER,
+        MOBILE_MODEL,
+        USER_ID,
+        SCREEN_WIDTH,
+        SCREEN_HEIGHT,
+        SALE_AMOUNT,
+        SALE_CURRENCY 
+      ) VALUES (
+        :opNEWID,
+        :ipCREATED,
+        :ipSESSION_ID,
+        :vUserAgent,
+        :vReferrer,
+        :ipIP_ADDRESS,
+        :ipHOST_NAME,
+        :ipIS_MOBILE_DEVICE,
+        :ipIS_BROWSER_MOBILE,
+        :ipMOBILE_REDIRECT,
+        :ipREFERRAL_TYPE,
+        :ipBOUNCED,
+        :ipIS_BOT,
+        :ipCITY_ID,
+        :ipMOBILE_MANUFACTURER,
+        :ipMOBILE_MODEL,
+        :ipUSER_ID,
+        :ipSCREEN_WIDTH,
+        :ipSCREEN_HEIGHT,
+        :ipSALE_AMOUNT,
+        :ipSALE_CURRENCY 
+      );
+  END ELSE BEGIN
+    opNEWID = IPOLDID;
+  
+    UPDATE SEO_DATA 
+    SET 
+        IS_MOBILE_DEVICE = :ipIS_MOBILE_DEVICE,
+        IS_BROWSER_MOBILE = :ipIS_BROWSER_MOBILE,
+        MOBILE_REDIRECT = :ipMOBILE_REDIRECT,
+        REFERRAL_TYPE = :ipREFERRAL_TYPE,
+        IS_BOT = :ipIS_BOT,
+        CITY_ID = :ipCITY_ID,
+        BOUNCED = :ipBOUNCED,
+        SALE_AMOUNT = :ipSALE_AMOUNT,
+        SALE_CURRENCY = :ipSALE_CURRENCY,
+        USER_ID = :IPUSER_ID
+
+    WHERE ID = :IPOLDID;
+  END
+  
+  
+  SUSPEND;
+END^
+SET TERM ; ^
+
+
+
+SET TERM ^ ;
+ALTER PROCEDURE WSP_ROUTINE_MAINTENANCE
+AS
+DECLARE VARIABLE vName VARCHAR(40);
+  DECLARE VARIABLE vSendEmail CHAR(1);
+  DECLARE VARIABLE vEmailSent CHAR(1);
+  DECLARE VARIABLE vSenderName VARCHAR(150);
+  DECLARE VARIABLE vSenderEmail VARCHAR(250);
+  DECLARE VARIABLE vEmail BLOB SUB_TYPE TEXT;
+  DECLARE VARIABLE vEmail2 BLOB SUB_TYPE TEXT;
+  DECLARE VARIABLE vEmailSubject VARCHAR(100);
+  DECLARE VARIABLE vFirstName VARCHAR(100);
+    
+  DECLARE VARIABLE vUserEmail VARCHAR(100);
+  DECLARE VARIABLE vUserName VARCHAR(100);
+  DECLARE VARIABLE vUserGUUID VARCHAR(40);
+  DECLARE VARIABLE vNewID BIGINT;
+  DECLARE VARIABLE vSendTime TIMESTAMP;
+    
+  DECLARE VARIABLE vMessagesSent BIGINT;
+    
+  DECLARE VARIABLE vPRODUCTGROUP INTEGER;
+    
+  DECLARE VARIABLE vURL VARCHAR(500);
+  DECLARE VARIABLE vCount integer;
+BEGIN
+  EXECUTE PROCEDURE WSP_ROUTINE_MAINT_REPLICATION;
+  
+  EXECUTE PROCEDURE WSP_PROCEDURE_RUNNING('WSP_ROUTINE_MAINTENANCE') RETURNING_VALUES :vCount;
+  
+  IF (vCount = 0) THEN
+  BEGIN
+    -- cancel test purchase ordes
+    UPDATE WS_INVOICE i
+    SET i.STATUS = 10
+    WHERE i.ID IN (
+    SELECT io.ORDER_ID
+    FROM WS_INVOICE_ORDERS io
+    WHERE io.PAYMENT_TYPE = 998 AND io.STATUS <> 10);
+
+    -- cancel test purchase invoices
+    UPDATE WS_INVOICE_ORDERS a
+    SET a.STATUS = 10
+    WHERE a.PAYMENT_TYPE = 998 AND a.STATUS <> 10;
+    
+    
+    DELETE FROM WS_BANNED_IP a 
+    WHERE a.DATE_BANNED < CURRENT_TIMESTAMP - 30;
+    
+    FOR
+    SELECT a.ACTIVATE_PRODUCT_GROUP
+    FROM WS_CAMPAIGNS a
+	WHERE (a.CAMPAIGN_START < CURRENT_TIMESTAMP) AND (a.CAMPAIGN_FINISH > CURRENT_TIMESTAMP)
+	INTO :vPRODUCTGROUP
+	DO
+	BEGIN
+        IF ((vPRODUCTGROUP IS NOT NULL) AND 
+            (NOT EXISTS(SELECT a.ID FROM WS_PRODUCT_GROUP a WHERE a.SHOW_ON_WEBSITE = 'Y' AND a.ID = :vPRODUCTGROUP))) THEN
+        BEGIN
+            IF (EXISTS(SELECT pg.ID FROM WS_PRODUCT_GROUP pg WHERE pg.ID = :vPRODUCTGROUP)) THEN
+            BEGIN
+                UPDATE WS_PRODUCT_GROUP
+                SET SHOW_ON_WEBSITE = 'Y'
+                WHERE ID = :vPRODUCTGROUP;
+            END
+        END
+	
+	END
+
+    
+    FOR
+    SELECT a.ACTIVATE_PRODUCT_GROUP
+    FROM WS_CAMPAIGNS a
+	WHERE (a.CAMPAIGN_FINISH < CURRENT_TIMESTAMP) AND (a.ACTIVATE_PRODUCT_GROUP > -1)
+	INTO :vPRODUCTGROUP
+	DO
+	BEGIN
+        IF ((vPRODUCTGROUP IS NOT NULL) AND 
+            (EXISTS(SELECT a.ID FROM WS_PRODUCT_GROUP a WHERE a.SHOW_ON_WEBSITE = 'Y' AND a.ID = :vPRODUCTGROUP))) THEN
+        BEGIN
+            IF (EXISTS(SELECT pg.ID FROM WS_PRODUCT_GROUP pg WHERE pg.ID = :vPRODUCTGROUP)) THEN
+            BEGIN
+                UPDATE WS_PRODUCT_GROUP
+                SET SHOW_ON_WEBSITE = 'N'
+                WHERE ID = :vPRODUCTGROUP;
+            END
+        END
+	
+	END
+
+
+    
+    vMessagesSent = 0;
+    FOR
+    SELECT a.CAMPAIGN_NAME, a.EMAIL_SEND, a.EMAIL_SENT, a.EMAIL_SENDER, a.EMAIL_ADDRESS, a.EMAIL_MESSAGE, a.EMAIL_SUBJECT
+    FROM WS_CAMPAIGNS a
+	WHERE (a.CAMPAIGN_START < CURRENT_TIMESTAMP) AND (a.CAMPAIGN_FINISH > CURRENT_TIMESTAMP)
+	INTO :vName, :vSendEmail, :vEmailSent, :vSenderName, :vSenderEmail, :vEmail, :vEmailSubject
+	DO
+	BEGIN
+
+	IF ((vSendEmail = 'Y') AND (vEmailSent = 'N')) THEN
+	BEGIN
+        SELECT a.NAME_VALUE
+        FROM WS_DATA a
+        WHERE a.NAME = 'SITE.URL'
+        INTO :vURL;
+        
+        
+        vEmail = REPLACE(vEmail, '{campaign}', vName);
+        
+        IF (vEMAIL CONTAINING('{site-url}')) THEN
+            vEmail = REPLACE(vEmail, '{site-url}', vURL);
+        
+        IF (vEMAIL CONTAINING('{site-url-short}')) THEN
+            vEmail = REPLACE(vEmail, '{site-url-short}', REPLACE(REPLACE(LOWER(vURL), 'https://', ''), 'http://', ''));
+        
+        FOR 
+            SELECT a.EMAIL, a.NAME, a.NAME, a.USER_GUUID
+            FROM WS_MAIL_SUBSCRIBERS a
+            UNION ALL
+            SELECT m.EMAIL, m.USERNAME, m.FIRSTNAME, m.USER_GUUID
+            FROM WS_MEMBERS m
+            WHERE (m.RECEIVE_EMAIL_SPECIAL_OFFERS = 'T')
+              AND (m.EMAIL CONTAINING('@'))
+              AND (UPPER(m.EMAIL) NOT CONTAINING('AOL.COM'))
+        INTO :vUserEmail, :vUserName, :vFirstName, :vUserGUUID
+        DO
+        BEGIN 
+            
+            vNewID = GEN_ID(GEN_WS_EMAIL_ID, 1);
+            
+            vEmail2 = vEmail;
+            
+            IF (vEmail2 CONTAINING('{username')) THEN
+                vEmail2 = REPLACE(vEmail2, '{username}', vFirstName);
+            
+            IF (vEmail2 CONTAINING('{UserGUUID}')) THEN
+                vEmail2 = REPLACE(vEmail2, '{UserGUUID}', vUserGUUID);
+    
+            
+            IF (MOD(vMessagesSent, 1000) = 0) THEN
+            BEGIN
+                vSendTime = vSendTime + (5.00000000/1440);
+            END
+    
+            INSERT INTO WS_EMAIL(
+                ID,
+                TO_NAME, 
+                TO_EMAIL, 
+                FROM_NAME, 
+                FROM_MAIL, 
+                SUBJECT, 
+                MAIL_MESSAGE, 
+                PRIORITY, 
+                QUEUE_DATE,
+                SEND_DATE_TIME
+            ) VALUES (
+                :vNewID,
+                :vUserName, 
+                :vUserEmail, 
+                :vSenderName,  
+                :vSenderEmail, 
+                :vEmailSubject, 
+                :vEmail2, 
+                2, 
+                'NOW',
+                :vSendTime
+            );
+            
+            vMessagesSent = vMessagesSent + 1;
+        END
+        
+        
+        UPDATE WS_CAMPAIGNS SET EMAIL_SENT = 'Y' WHERE CAMPAIGN_NAME = :vName;
+        END
+	END
+  END
+  
+  
+  --remove old appointments
+  DELETE
+  FROM WS_APPOINTMENTS_CHANGES a
+  WHERE a.APPOINTMENT_DATE < (SELECT CURRENT_TIMESTAMP - CAST(a.NAME_VALUE AS INTEGER)
+                              FROM WS_DATA a
+                              WHERE a.NAME = 'Max Appointment History');
+
+  -- remove old web log data
+  DELETE
+  FROM WS_WEB_LOG a
+  WHERE a.LOG_DATE < CURRENT_TIMESTAMP -365;  
+  
+END^
+SET TERM ; ^
+
+

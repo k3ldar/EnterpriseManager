@@ -1,0 +1,5137 @@
+DROP TRIGGER WS_APPT_OPTIONS_EX_BI;
+
+
+SET TERM ^ ;
+CREATE OR ALTER TRIGGER TR_WS_APPT_OPTIONS_EX_ID FOR WS_APPOINTMENT_OPTIONS_EX ACTIVE
+BEFORE INSERT POSITION 0
+AS
+DECLARE VARIABLE tmp DECIMAL(18,0);
+BEGIN
+  IF (NEW.ID IS NULL) THEN
+    NEW.ID = GEN_ID(GEN_WS_APPT_OPTIONS_EX_ID, 1);
+END^
+SET TERM ; ^
+
+
+DROP TRIGGER WS_APPOINTMENTS_CHANGES_BI;
+
+
+SET TERM ^ ;
+CREATE TRIGGER TR_WS_APPOINTMENTS_CHANGES_ID FOR WS_APPOINTMENTS_CHANGES ACTIVE
+BEFORE INSERT POSITION 0
+AS
+BEGIN
+  IF (NEW.PK_ID IS NULL) THEN
+    NEW.PK_ID = GEN_ID(GEN_WS_APPT_CHANGES, 1);
+END^
+SET TERM ; ^
+
+DROP TRIGGER WS_COUPONS_BI;
+
+
+SET TERM ^ ;
+CREATE TRIGGER TR_WS_COUPONS_ID FOR WS_COUPONS ACTIVE
+BEFORE INSERT POSITION 0
+AS
+BEGIN
+  IF (NEW.ID IS NULL) THEN
+    NEW.ID = GEN_ID(GEN_WS_COUPONS_ID, 1);
+END^
+SET TERM ; ^
+
+
+SET TERM ^ ;
+ALTER TRIGGER TR_WS_MEMBERS_ADDRESSES_ID ACTIVE
+BEFORE INSERT POSITION 0
+AS
+BEGIN
+  IF (New.ID IS NULL) THEN
+  BEGIN
+    NEW.ID = GEN_ID(GEN_WS_MEMBERS_ADDRESSES_ID, 1);
+  END
+END^
+SET TERM ; ^
+
+
+
+
+SET TERM ^ ;
+
+CREATE OR ALTER TRIGGER TR_WS_INVOICE_ORDERS_DISPATCHED FOR WS_INVOICE_ORDERS ACTIVE BEFORE UPDATE POSITION 7
+ AS 
+BEGIN 
+  IF ((RDB$GET_CONTEXT('USER_TRANSACTION', 'REPLICATING') IS NULL) OR (RDB$GET_CONTEXT('USER_TRANSACTION', 'REPLICATING') = 'NO')) THEN
+  BEGIN
+      IF ((New.PROCESS_STATUS = 2) AND (NEW.PROCESS_STATUS <> OLD.PROCESS_STATUS)) THEN
+      BEGIN
+        New.DATE_SHIPPED = CURRENT_TIMESTAMP; 
+        NEW.PROCESS_STATUS = 2;
+      END
+  END
+END^
+
+SET TERM ; ^
+
+
+SET TERM ^ ;
+
+CREATE OR ALTER TRIGGER TR_WS_EMAIL_ID FOR WS_EMAIL ACTIVE BEFORE INSERT POSITION 0
+ AS
+BEGIN
+    IF (NEW.ID IS NULL) THEN
+        NEW.ID = GEN_ID(GEN_WS_EMAIL_ID, 1);
+END^
+
+SET TERM ; ^
+
+
+
+
+SET TERM ^ ;
+
+CREATE OR ALTER TRIGGER TR_ORDER_VOUCHER_USAGE FOR WS_INVOICE ACTIVE BEFORE INSERT POSITION 0
+ AS 
+  DECLARE VARIABLE vVoucherUsage INTEGER;
+  DECLARE VARIABLE vVoucherType INTEGER;
+  DECLARE VARIABLE vMaxUsage INTEGER;
+BEGIN 
+  IF ((RDB$GET_CONTEXT('USER_TRANSACTION', 'REPLICATING') IS NULL) OR (RDB$GET_CONTEXT('USER_TRANSACTION', 'REPLICATING') = 'NO')) THEN
+  BEGIN
+    IF (new.COUPON_NAME IS NOT NULL) THEN
+    BEGIN
+        SELECT VOUCHER_USAGE, VOUCHER_TYPE, MAX_USAGE
+        FROM WS_COUPONS
+        WHERE DISCOUNT_COUPON = NEW.COUPON_NAME
+        INTO :vVoucherUsage, :vVoucherType, :vMaxUsage;
+    
+        IF (vVoucherUsage > vMaxUsage) THEN
+        BEGIN
+            EXCEPTION exc_voucher_used;
+        END ELSE
+        BEGIN
+            UPDATE WS_COUPONS SET VOUCHER_USAGE = VOUCHER_USAGE + 1 WHERE DISCOUNT_COUPON = NEW.COUPON_NAME;
+        END
+    END  
+  END
+END^
+
+SET TERM ; ^
+
+
+
+SET TERM ^ ;
+
+CREATE OR ALTER TRIGGER TR_COST_SIZE_SOFT_DELETE_CHECK FOR WS_PRODUCTS_COST_SIZE ACTIVE BEFORE UPDATE POSITION 0
+ AS 
+  DECLARE VARIABLE vCount BIGINT;
+BEGIN 
+    IF (NEW.IS_DELETED = 'Y' AND OLD.IS_DELETED = 'N') THEN
+    BEGIN
+        SELECT SUM(a.TOTAL_AVAILABLE)
+        FROM HS_STOCKCONTROL a
+        WHERE a.ITEM_ID = NEW.ID
+        INTO :vCount;
+        
+        IF (vCount > 0) THEN
+        BEGIN
+            EXCEPTION EXC_PROD_ITEM_DELETE 'Can not delete as stock exists';
+        END
+        
+        DELETE FROM HS_STOCK_CREATE_SETTINGS scs
+	    WHERE (scs.PRODUCT_ID = NEW.ID) OR (scs.SUB_PRODUCT_ID = NEW.ID);
+
+        IF (SUBSTRING(NEW.SKU FROM 1 FOR 2) <> 'DE') THEN
+            NEW.SKU = 'DE' || GEN_ID(GEN_DELETED_SKU_ID, 1);
+    END
+END^
+
+SET TERM ; ^
+
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_WS_REDIRECT_STATS_UPDATE
+ (IPURL VARCHAR(499) CHARACTER SET UTF8)
+AS
+BEGIN
+    IF ((UPPER(ipURL) LIKE '%/ETC/%') OR (UPPER(ipURL) LIKE '%../%')) THEN
+        EXIT;
+
+  --IF NOT FOUND INSERT A RECORD
+  IF (NOT EXISTS(SELECT URL FROM WS_REDIRECT_STATS WHERE URL = UPPER(:ipURL))) THEN
+  BEGIN
+    INSERT INTO WS_REDIRECT_STATS (URL, HIT_COUNT) VALUES (UPPER(:ipURL), 0);
+  END
+
+  --INCREASE THE HIT COUNT
+  UPDATE WS_REDIRECT_STATS
+  SET HIT_COUNT = HIT_COUNT + 1
+  WHERE URL = UPPER(:ipURL);
+END^
+
+SET TERM ; ^ 
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_WS_CLIENT_ACTIONS_CREATE
+ (IPCLIENT_ACTION INTEGER, 
+  IPCLIENT_ID BIGINT, 
+  IPEXPECTED_BY VARCHAR(100) CHARACTER SET UTF8)
+RETURNS
+ (OPID BIGINT)
+AS
+BEGIN
+    opID = GEN_ID(GEN_WS_CLIENT_ACTIONS_ID, 1);
+    
+    INSERT INTO WS_CLIENT_ACTIONS 
+    (
+        ID,
+        CLIENT_ACTION,
+        CLIENT_ID,
+        EXPECTED_BY
+    )
+    VALUES
+    (
+        :opID,
+        :ipCLIENT_ACTION,
+        :ipCLIENT_ID,
+        :ipEXPECTED_BY
+    );
+	
+	SUSPEND;
+	
+END^
+
+SET TERM ; ^ 
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_WORKINGDAY
+ (IPTHERAPIST INTEGER, 
+  IPSTART_DAY DATE, 
+  IPMAX_ITERATIONS INTEGER)
+RETURNS
+ (OPSTART_DATE DATE, 
+  OPSTART_HOUR DOUBLE PRECISION , 
+  OPFINISH_HOUR DOUBLE PRECISION )
+AS
+DECLARE VARIABLE vDate DATE;
+  DECLARE VARIABLE vIteration INTEGER;
+  DECLARE VARIABLE vRepeatOption INTEGER;
+  DECLARE VARIABLE vRepeatNumber INTEGER;
+BEGIN
+
+  FOR
+    SELECT a.START_DATE, a.START_HOUR, a.FINISH_HOUR, a.REPEAT_OPTION, a.REPEAT_NUMBER
+    FROM WS_APPOINTMENT_OPTIONS_EX a
+    WHERE A.EMPLOYEE_ID = :ipTHERAPIST
+    INTO :vDate, :opSTART_HOUR, :opFINISH_HOUR, :vRepeatOption, :vRepeatNumber
+  DO
+  BEGIN
+    vIteration = 0;
+    
+    WHILE ((vIteration < ipMAX_ITERATIONS) AND (vDate <= ipSTART_DAY)) DO
+    BEGIN
+        IF (vIteration = 0) THEN
+        BEGIN
+            IF (vDATE = ipSTART_DAY) THEN
+            BEGIN
+                opSTART_DATE = vDate;
+                SUSPEND;
+            END
+        END ELSE
+        BEGIN
+            IF (vRepeatOption = 0) THEN -- one off
+                BREAK;
+
+            vDate = CASE
+                WHEN (vRepeatOption = 1) THEN --weekly
+                    DATEADD(DAY, (vRepeatNumber * 7), vDate)
+                WHEN (vRepeatOption = 2) THEN --monthly
+                    DATEADD(MONTH, vRepeatNumber, vDate)
+                WHEN (vRepeatOption = 3) THEN --yearly
+                    DATEADD(vRepeatNumber YEAR TO vDate)
+            END;
+        
+            IF (vDate = ipSTART_DAY) THEN
+            BEGIN
+                opSTART_DATE = vDate;
+                SUSPEND;
+            END
+        END
+        
+        vIteration = vIteration + 1;
+    END
+  END
+END^
+
+SET TERM ; ^ 
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_UPDATE_MISSING_STOCK
+AS
+DECLARE VARIABLE vSTORE_ID INTEGER;
+    DECLARE VARIABLE vDESCRIPTION VARCHAR(50);
+    DECLARE VARIABLE vPRODUCT_ID INTEGER;
+BEGIN
+   FOR
+     SELECT ID, DESCRIPTION
+     FROM HEAVEN_STORES
+     INTO :vSTORE_ID, :vDESCRIPTION
+   DO
+   BEGIN
+     FOR 
+       SELECT ID 
+       FROM WS_PRODUCTS_COST_SIZE
+       INTO :vPRODUCT_ID
+     DO
+     BEGIN
+       IF (NOT EXISTS(SELECT ITEM_ID FROM HS_STOCKCONTROL WHERE ITEM_ID = :vPRODUCT_ID AND STORE_ID = :vSTORE_ID AND TILL_ID = 1)) THEN
+       BEGIN
+         INSERT INTO HS_STOCKCONTROL (ITEM_ID, TOTAL_AVAILABLE, MIN_STOCK_LEVEL, RE_ORDER_QUANTITY, STORE_ID, TILL_ID)
+         VALUES (:vPRODUCT_ID, 0, 5, 3, :vSTORE_ID, 1);
+       END
+       
+       
+     END
+   END
+   
+   
+   DELETE 
+   FROM HS_STOCKCONTROL a
+   WHERE a.TILL_ID <> 1;
+
+END^
+
+SET TERM ; ^ 
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSF_MONTH_LENGTH
+ (D DATE)
+RETURNS
+ (ML INTEGER)
+AS
+DECLARE VARIABLE TMP DATE;
+BEGIN
+    TMP = D - EXTRACT(DAY FROM D) + 32;
+    ML  = EXTRACT(DAY FROM (TMP - EXTRACT(DAY FROM TMP)));
+END^
+
+SET TERM ; ^ 
+
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_STATS_MTD_TOP_SALONOWNERS
+RETURNS
+ (OPMEMBERID INTEGER, 
+  OPMEMBERNAME VARCHAR(150) CHARACTER SET UTF8, 
+  OPYEAR INTEGER, 
+  OPMONTH INTEGER, 
+  OPTOTAL DOUBLE PRECISION , 
+  OPDIFFERENCE DOUBLE PRECISION , 
+  OPDIFFPERCENT INTEGER, 
+  OPDATESTART TIMESTAMP, 
+  OPDATEEND TIMESTAMP)
+AS
+DECLARE VARIABLE vMonth INTEGER;
+  DECLARE VARIABLE vYear INTEGER;
+  DECLARE VARIABLE vDay INTEGER;
+  DECLARE VARIABLE vStartDate TIMESTAMP;
+  DECLARE VARIABLE vEndDate TIMESTAMP;
+  DECLARE VARIABLE vILoop INTEGER;
+  DECLARE VARIABLE vDateStr VARCHAR(30);
+  DECLARE VARIABLE vLastDay INTEGER;
+  DECLARE VARIABLE vPrevTotal DOUBLE PRECISION;
+  DECLARE VARIABLE vCurrentMonth INTEGER;
+  DECLARE VARIABLE vTotal DOUBLE PRECISION;
+  DECLARE VARIABLE vCurrentDate TIMESTAMP;
+BEGIN
+  vCurrentDate = DATEADD(-1 year to CURRENT_TIMESTAMP);
+  FOR
+    SELECT FIRST 145 m.ID, m.USERNAME, sum(io.TOTALCOST) AS "Total Spend"
+    FROM WS_SALONS s 
+        LEFT JOIN WS_SALONS_TO_MEMBERS stm ON (stm.SALON_ID = s.ID)
+        LEFT JOIN WS_MEMBERS m ON (m.ID = stm.MEMBER_ID)
+        LEFT JOIN WS_INVOICE_ORDERS io ON (io.USERID = m.ID)
+    WHERE s.SALON_TYPE = 0
+      AND (io.STATUS IN (SELECT a.ID FROM WS_PAYMENT_STATUS a WHERE a.IS_PAID = 'Y'))
+      AND (m.MEMBER_LEVEL = 5)
+    GROUP BY 1, 2
+    ORDER BY "Total Spend" DESC
+    INTO :opMEMBERID, :OPMEMBERNAME, :vTotal
+  DO
+  BEGIN
+    vYear = EXTRACT(YEAR FROM vCurrentDate);
+    vMonth = EXTRACT(MONTH FROM vCurrentDate) + 1;
+    vDay = EXTRACT(DAY FROM vCurrentDate);
+    vILoop = 1;
+  
+    IF (vMonth > 12) THEN
+    BEGIN
+        vMonth = 1;
+        vYear = vYear + 1;
+    END
+  
+    WHILE (vILoop < 13) DO
+    BEGIN
+        vYear = vYear -1;
+    
+        IF (((vYear + 1) = EXTRACT(YEAR FROM CURRENT_TIMESTAMP)) AND (vMonth = EXTRACT(MONTH FROM CURRENT_TIMESTAMP))) THEN
+        BEGIN
+            vCurrentMonth = 1;
+        END ELSE BEGIN
+            vCurrentMonth = 0;
+        END
+    
+        
+    
+        
+        vDateStr = CAST(vMonth AS VARCHAR(2)) || '/' || CAST(1 AS VARCHAR(2)) || '/' || CAST(vYear AS VARCHAR(4));
+        opDateStart = CAST(vDateStr as TIMESTAMP);
+    
+        
+        EXECUTE PROCEDURE WSF_MONTH_LENGTH(cast(vDateStr as TIMESTAMP)) RETURNING_VALUES vLastDay;
+    
+        IF (vCurrentMonth = 1) THEN
+        BEGIN
+            vLastDay = EXTRACT(DAY FROM CURRENT_TIMESTAMP);
+        END
+    
+        vDateStr = CAST(vMonth AS VARCHAR(2)) || '/' || CAST(vLastDay AS VARCHAR(2)) || '/' || CAST(vYear AS VARCHAR(4)) || ', 23:59:59.9999';
+        opDateEnd = CAST(vDateStr AS TIMESTAMP);
+    
+        opYear = vYear;
+        opMonth = vMonth;
+    
+        SELECT SUM(io.TOTALCOST)
+        FROM WS_INVOICE_ORDERS io
+            LEFT JOIN WS_MEMBERS m on (m.ID = io.USERID)
+        WHERE io.PURCHASEDATE BETWEEN :opDATESTART AND :opDATEEND
+            AND (io.STATUS IN (SELECT a.ID FROM WS_PAYMENT_STATUS a WHERE a.IS_PAID = 'Y'))
+            AND (m.ID = :opMEMBERID)
+        INTO :opTOTAL;
+    
+        IF (opTOTAL IS NULL) THEN
+        BEGIN
+            opTOTAL = 0;
+        END
+        
+        vPrevTotal = opTOTAL;
+        opDIFFERENCE = 0;
+        opDIFFPERCENT = 0;
+        SUSPEND;
+    
+        
+        vYear = vYear + 1;
+        opYear = vYear;
+        opMonth = vMonth;
+
+        
+        vDateStr = CAST(vMonth AS VARCHAR(2)) || '/' || CAST(1 AS VARCHAR(2)) || '/' || CAST(vYear AS VARCHAR(4));
+        opDateStart = CAST(vDateStr as TIMESTAMP);
+    
+        
+        EXECUTE PROCEDURE WSF_MONTH_LENGTH(cast(vDateStr as TIMESTAMP)) RETURNING_VALUES vLastDay;
+
+        IF (vCurrentMonth = 1) THEN
+        BEGIN
+            vLastDay = EXTRACT(DAY FROM CURRENT_TIMESTAMP);
+        END
+
+        vDateStr = CAST(vMonth AS VARCHAR(2)) || '/' || CAST(vLastDay AS VARCHAR(2)) || '/' || CAST(vYear AS VARCHAR(4)) || ', 23:59:59.9999';
+        opDateEnd = CAST(vDateStr AS TIMESTAMP);
+    
+        SELECT SUM(io.TOTALCOST)
+        FROM WS_INVOICE_ORDERS io
+            LEFT JOIN WS_MEMBERS m on (m.ID = io.USERID)
+        WHERE io.PURCHASEDATE BETWEEN :opDATESTART AND :opDATEEND
+            AND (io.STATUS IN (SELECT a.ID FROM WS_PAYMENT_STATUS a WHERE a.IS_PAID = 'Y'))
+            AND (m.ID = :opMEMBERID)
+        INTO :opTOTAL;
+
+        IF (opTOTAL IS NULL) THEN
+        BEGIN
+            opTOTAL = 0.00;
+        END
+    
+        opDIFFERENCE = opTOTAL - vPrevTotal;
+    
+        IF (opTOTAL = 0.00) THEN
+        BEGIN
+            IF (opDIFFERENCE = 0.00) THEN
+            BEGIN
+                opDIFFPERCENT = 0;
+            END ELSE BEGIN
+                opDIFFPERCENT = -100;
+            END
+        END ELSE
+        BEGIN
+            IF (opDifference < 0) THEN
+            BEGIN
+                opDIFFPERCENT = 0 - CAST(((100 / CAST(vPrevTotal AS DOUBLE PRECISION)) * (vPrevTotal - opTotal)) AS INTEGER);
+            END
+            ELSE
+            BEGIN
+                opDIFFPERCENT = CAST(((100 / CAST(opTOTAL AS DOUBLE PRECISION)) * opDifference) AS INTEGER);
+            END
+        END
+    
+        SUSPEND;
+    
+    
+        vILoop = vILoop + 1;
+        vMonth = vMonth + 1;
+    
+        IF (vMonth > 12) THEN
+        BEGIN
+            vMonth = 1;
+            vYear = vYear + 1;
+        END
+    END
+  END
+END^
+
+SET TERM ; ^ 
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_STATS_MTD_TOP_5_SALONS
+RETURNS
+ (OPMEMBERID INTEGER, 
+  OPMEMBERBUSINESSNAME VARCHAR(150) CHARACTER SET UTF8, 
+  OPYEAR INTEGER, 
+  OPMONTH INTEGER, 
+  OPTOTAL DOUBLE PRECISION , 
+  OPDIFFERENCE DOUBLE PRECISION , 
+  OPDIFFPERCENT INTEGER, 
+  OPDATESTART TIMESTAMP, 
+  OPDATEEND TIMESTAMP)
+AS
+DECLARE VARIABLE vMonth INTEGER;
+  DECLARE VARIABLE vYear INTEGER;
+  DECLARE VARIABLE vDay INTEGER;
+  DECLARE VARIABLE vStartDate TIMESTAMP;
+  DECLARE VARIABLE vEndDate TIMESTAMP;
+  DECLARE VARIABLE vILoop INTEGER;
+  DECLARE VARIABLE vDateStr VARCHAR(30);
+  DECLARE VARIABLE vLastDay INTEGER;
+  DECLARE VARIABLE vPrevTotal DOUBLE PRECISION;
+  DECLARE VARIABLE vCurrentMonth INTEGER;
+  DECLARE VARIABLE vTotal DOUBLE PRECISION;
+  DECLARE VARIABLE vCurrentDate TIMESTAMP;
+BEGIN
+  vCurrentDate = DATEADD(-1 year to CURRENT_TIMESTAMP);
+  FOR
+    SELECT FIRST 5 m.ID, CASE WHEN m.BUSINESSNAME IS NULL THEN m.USERNAME WHEN m.BUSINESSNAME = '' THEN m.USERNAME ELSE m.BUSINESSNAME END, SUM(io.TOTALCOST)
+    FROM WS_INVOICE_ORDERS io
+      LEFT JOIN WS_MEMBERS m ON (m.ID = io.USERID)
+    WHERE (io.STATUS IN (SELECT a.ID FROM WS_PAYMENT_STATUS a WHERE a.IS_PAID = 'Y'))
+      AND (m.MEMBER_LEVEL = 5)
+    GROUP BY 1, 2
+    ORDER BY 3 DESC
+    INTO :opMEMBERID, :OPMEMBERBUSINESSNAME, :vTotal
+  DO
+  BEGIN
+    vYear = EXTRACT(YEAR FROM vCurrentDate);
+    vMonth = EXTRACT(MONTH FROM vCurrentDate) + 1;
+    vDay = EXTRACT(DAY FROM vCurrentDate);
+    vILoop = 1;
+  
+    IF (vMonth > 12) THEN
+    BEGIN
+        vMonth = 1;
+        vYear = vYear + 1;
+    END
+  
+    WHILE (vILoop < 13) DO
+    BEGIN
+        vYear = vYear -1;
+    
+        IF (((vYear + 1) = EXTRACT(YEAR FROM CURRENT_TIMESTAMP)) AND (vMonth = EXTRACT(MONTH FROM CURRENT_TIMESTAMP))) THEN
+        BEGIN
+            vCurrentMonth = 1;
+        END ELSE BEGIN
+            vCurrentMonth = 0;
+        END
+    
+        
+    
+        
+        vDateStr = CAST(vMonth AS VARCHAR(2)) || '/' || CAST(1 AS VARCHAR(2)) || '/' || CAST(vYear AS VARCHAR(4));
+        opDateStart = CAST(vDateStr as TIMESTAMP);
+    
+        
+        EXECUTE PROCEDURE WSF_MONTH_LENGTH(cast(vDateStr as TIMESTAMP)) RETURNING_VALUES vLastDay;
+    
+        IF (vCurrentMonth = 1) THEN
+        BEGIN
+            vLastDay = EXTRACT(DAY FROM CURRENT_TIMESTAMP);
+        END
+    
+        vDateStr = CAST(vMonth AS VARCHAR(2)) || '/' || CAST(vLastDay AS VARCHAR(2)) || '/' || CAST(vYear AS VARCHAR(4)) || ', 23:59:59.9999';
+        opDateEnd = CAST(vDateStr AS TIMESTAMP);
+    
+        opYear = vYear;
+        opMonth = vMonth;
+    
+        SELECT SUM(io.TOTALCOST)
+        FROM WS_INVOICE_ORDERS io
+            LEFT JOIN WS_MEMBERS m on (m.ID = io.USERID)
+        WHERE io.PURCHASEDATE BETWEEN :opDATESTART AND :opDATEEND
+            AND (io.STATUS IN (SELECT a.ID FROM WS_PAYMENT_STATUS a WHERE a.IS_PAID = 'Y'))
+            AND (m.ID = :opMEMBERID)
+        INTO :opTOTAL;
+    
+        IF (opTOTAL IS NULL) THEN
+        BEGIN
+            opTOTAL = 0;
+        END
+        
+        vPrevTotal = opTOTAL;
+        opDIFFERENCE = 0;
+        opDIFFPERCENT = 0;
+        SUSPEND;
+    
+        
+        vYear = vYear + 1;
+        opYear = vYear;
+        opMonth = vMonth;
+
+        
+        vDateStr = CAST(vMonth AS VARCHAR(2)) || '/' || CAST(1 AS VARCHAR(2)) || '/' || CAST(vYear AS VARCHAR(4));
+        opDateStart = CAST(vDateStr as TIMESTAMP);
+    
+        
+        EXECUTE PROCEDURE WSF_MONTH_LENGTH(cast(vDateStr as TIMESTAMP)) RETURNING_VALUES vLastDay;
+
+        IF (vCurrentMonth = 1) THEN
+        BEGIN
+            vLastDay = EXTRACT(DAY FROM CURRENT_TIMESTAMP);
+        END
+
+        vDateStr = CAST(vMonth AS VARCHAR(2)) || '/' || CAST(vLastDay AS VARCHAR(2)) || '/' || CAST(vYear AS VARCHAR(4)) || ', 23:59:59.9999';
+        opDateEnd = CAST(vDateStr AS TIMESTAMP);
+    
+        SELECT SUM(io.TOTALCOST)
+        FROM WS_INVOICE_ORDERS io
+            LEFT JOIN WS_MEMBERS m on (m.ID = io.USERID)
+        WHERE io.PURCHASEDATE BETWEEN :opDATESTART AND :opDATEEND
+            AND (io.STATUS IN (SELECT a.ID FROM WS_PAYMENT_STATUS a WHERE a.IS_PAID = 'Y'))
+            AND (m.ID = :opMEMBERID)
+        INTO :opTOTAL;
+
+        IF (opTOTAL IS NULL) THEN
+        BEGIN
+            opTOTAL = 0.00;
+        END
+    
+        opDIFFERENCE = opTOTAL - vPrevTotal;
+    
+        IF (opTOTAL = 0.00) THEN
+        BEGIN
+            IF (opDIFFERENCE = 0.00) THEN
+            BEGIN
+                opDIFFPERCENT = 0;
+            END ELSE BEGIN
+                opDIFFPERCENT = -100;
+            END
+        END ELSE
+        BEGIN
+            IF (opDifference < 0) THEN
+            BEGIN
+                opDIFFPERCENT = 0 - CAST(((100 / CAST(vPrevTotal AS DOUBLE PRECISION)) * (vPrevTotal - opTotal)) AS INTEGER);
+            END
+            ELSE
+            BEGIN
+                opDIFFPERCENT = CAST(((100 / CAST(opTOTAL AS DOUBLE PRECISION)) * opDifference) AS INTEGER);
+            END
+        END
+    
+        SUSPEND;
+    
+    
+        vILoop = vILoop + 1;
+        vMonth = vMonth + 1;
+    
+        IF (vMonth > 12) THEN
+        BEGIN
+            vMonth = 1;
+            vYear = vYear + 1;
+        END
+    END
+  END
+END^
+
+SET TERM ; ^ 
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_STATS_MTD_SALONS
+RETURNS
+ (OPYEAR INTEGER, 
+  OPMONTH INTEGER, 
+  OPTOTAL DOUBLE PRECISION , 
+  OPDIFFERENCE DOUBLE PRECISION , 
+  OPDIFFPERCENT INTEGER, 
+  OPDATESTART TIMESTAMP, 
+  OPDATEEND TIMESTAMP)
+AS
+DECLARE VARIABLE vMonth INTEGER;
+  DECLARE VARIABLE vYear INTEGER;
+  DECLARE VARIABLE vDay INTEGER;
+  DECLARE VARIABLE vStartDate TIMESTAMP;
+  DECLARE VARIABLE vEndDate TIMESTAMP;
+  DECLARE VARIABLE vILoop INTEGER;
+  DECLARE VARIABLE vDateStr VARCHAR(30);
+  DECLARE VARIABLE vLastDay INTEGER;
+  DECLARE VARIABLE vPrevTotal DOUBLE PRECISION;
+  DECLARE VARIABLE vCurrentMonth INTEGER;
+  DECLARE VARIABLE vCurrentDate TIMESTAMP;
+BEGIN
+  vCurrentDate = DATEADD(-1 year to CURRENT_TIMESTAMP);
+  vYear = EXTRACT(YEAR FROM vCurrentDate);
+  vMonth = EXTRACT(MONTH FROM vCurrentDate) + 1;
+  vDay = EXTRACT(DAY FROM vCurrentDate);
+  vILoop = 1;
+  
+  IF (vMonth > 12) THEN
+  BEGIN
+    vMonth = 1;
+    vYear = vYear + 1;
+  END
+  
+  WHILE (vILoop < 13) DO
+  BEGIN
+     vYear = vYear -1;
+    
+    IF (((vYear + 1) = EXTRACT(YEAR FROM CURRENT_TIMESTAMP)) AND (vMonth = EXTRACT(MONTH FROM CURRENT_TIMESTAMP))) THEN
+    BEGIN
+        vCurrentMonth = 1;
+    END ELSE BEGIN
+        vCurrentMonth = 0;
+    END
+    
+    
+    
+    
+    vDateStr = CAST(vMonth AS VARCHAR(2)) || '/' || CAST(1 AS VARCHAR(2)) || '/' || CAST(vYear AS VARCHAR(4));
+    opDateStart = CAST(vDateStr as TIMESTAMP);
+    
+    
+    EXECUTE PROCEDURE WSF_MONTH_LENGTH(cast(vDateStr as TIMESTAMP)) RETURNING_VALUES vLastDay;
+    
+    IF (vCurrentMonth = 1) THEN
+    BEGIN
+        vLastDay = EXTRACT(DAY FROM CURRENT_TIMESTAMP);
+    END
+    
+    vDateStr = CAST(vMonth AS VARCHAR(2)) || '/' || CAST(vLastDay AS VARCHAR(2)) || '/' || CAST(vYear AS VARCHAR(4)) || ', 23:59:59.9999';
+    opDateEnd = CAST(vDateStr AS TIMESTAMP);
+    
+    opYear = vYear;
+    opMonth = vMonth;
+    
+    SELECT SUM(io.TOTALCOST)
+    FROM WS_INVOICE_ORDERS io
+      LEFT JOIN WS_MEMBERS m ON (m.ID = io.USERID)
+    WHERE io.PURCHASEDATE BETWEEN :opDATESTART AND :opDATEEND
+      AND (io.STATUS IN (SELECT a.ID FROM WS_PAYMENT_STATUS a WHERE a.IS_PAID = 'Y'))
+      AND (m.MEMBER_LEVEL = 5)
+    INTO :opTOTAL;
+    
+    IF (opTotal IS NULL) THEN
+    BEGIN
+        opTOTAL = 0.00;
+    END
+    
+    vPrevTotal = opTOTAL;
+    opDIFFERENCE = 0;
+    opDIFFPERCENT = 0;
+    SUSPEND;
+    
+    
+    vYear = vYear + 1;
+    opYear = vYear;
+    opMonth = vMonth;
+
+    
+    vDateStr = CAST(vMonth AS VARCHAR(2)) || '/' || CAST(1 AS VARCHAR(2)) || '/' || CAST(vYear AS VARCHAR(4));
+    opDateStart = CAST(vDateStr as TIMESTAMP);
+    
+    
+    EXECUTE PROCEDURE WSF_MONTH_LENGTH(cast(vDateStr as TIMESTAMP)) RETURNING_VALUES vLastDay;
+
+    IF (vCurrentMonth = 1) THEN
+    BEGIN
+        vLastDay = EXTRACT(DAY FROM CURRENT_TIMESTAMP);
+    END
+
+    vDateStr = CAST(vMonth AS VARCHAR(2)) || '/' || CAST(vLastDay AS VARCHAR(2)) || '/' || CAST(vYear AS VARCHAR(4)) || ', 23:59:59.9999';
+    opDateEnd = CAST(vDateStr AS TIMESTAMP);
+    
+    SELECT SUM(io.TOTALCOST)
+    FROM WS_INVOICE_ORDERS io
+        LEFT JOIN WS_MEMBERS m ON (m.ID = io.USERID)
+    WHERE io.PURCHASEDATE BETWEEN :opDATESTART AND :opDATEEND
+        AND (io.STATUS IN (SELECT a.ID FROM WS_PAYMENT_STATUS a WHERE a.IS_PAID = 'Y'))
+        AND (m.MEMBER_LEVEL = 5)
+    INTO :opTOTAL;
+
+    IF (opTOTAL IS NULL) THEN
+    BEGIN
+        opTOTAL = 0.00;
+    END
+    
+    opDIFFERENCE = opTOTAL - vPrevTotal;
+    
+    IF (opTOTAL = 0.00) THEN
+    BEGIN
+        IF (opDIFFERENCE = 0.00) THEN
+        BEGIN
+            opDIFFPERCENT = 0;
+        END ELSE BEGIN
+            opDIFFPERCENT = -100;
+        END
+    END ELSE
+    BEGIN
+        IF (opDifference < 0) THEN
+        BEGIN
+            opDIFFPERCENT = 0 - CAST(((100 / CAST(vPrevTotal AS DOUBLE PRECISION)) * (vPrevTotal - opTotal)) AS INTEGER);
+        END
+        ELSE
+        BEGIN
+            opDIFFPERCENT = CAST(((100 / CAST(opTOTAL AS DOUBLE PRECISION)) * opDifference) AS INTEGER);
+        END
+    END
+    
+    SUSPEND;
+    
+    
+    vILoop = vILoop + 1;
+    vMonth = vMonth + 1;
+    
+    IF (vMonth > 12) THEN
+    BEGIN
+      vMonth = 1;
+      vYear = vYear + 1;
+    END
+  END
+END^
+
+SET TERM ; ^ 
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_STATS_MONTH_TO_DATE2
+ (IPSTARTDATE TIMESTAMP, 
+  IPCOUNTRY_CODES VARCHAR(2) CHARACTER SET UTF8, 
+  IPTYPE INTEGER)
+RETURNS
+ (OPYEAR INTEGER, 
+  OPMONTH INTEGER, 
+  OPTOTAL DOUBLE PRECISION , 
+  OPDIFFERENCE DOUBLE PRECISION , 
+  OPDIFFPERCENT INTEGER, 
+  OPDATESTART TIMESTAMP, 
+  OPDATEEND TIMESTAMP)
+AS
+DECLARE VARIABLE vMonth INTEGER;
+  DECLARE VARIABLE vYear INTEGER;
+  DECLARE VARIABLE vDay INTEGER;
+  DECLARE VARIABLE vStartDate TIMESTAMP;
+  DECLARE VARIABLE vEndDate TIMESTAMP;
+  DECLARE VARIABLE vILoop INTEGER;
+  DECLARE VARIABLE vDateStr VARCHAR(30);
+  DECLARE VARIABLE vLastDay INTEGER;
+  DECLARE VARIABLE vPrevTotal DOUBLE PRECISION;
+  DECLARE VARIABLE vCurrentMonth INTEGER;
+  DECLARE VARIABLE vCurrentDate TIMESTAMP;
+  DECLARE VARIABLE vTotal DOUBLE PRECISION;
+  DECLARE VARIABLE vCountry VARCHAR(2);
+  DECLARE VARIABLE vPaymentStatus INTEGER;
+BEGIN
+  vCurrentDate = DATEADD(-1 year to ipStartDate);
+  vYear = EXTRACT(YEAR FROM vCurrentDate);
+  vMonth = EXTRACT(MONTH FROM vCurrentDate) + 1;
+  vDay = EXTRACT(DAY FROM vCurrentDate);
+  vILoop = 1;
+    
+  IF (vMonth > 12) THEN
+  BEGIN
+    vMonth = 1;
+    vYear = vYear + 1;
+  END
+  
+  WHILE (vILoop < 13) DO
+  BEGIN
+     vYear = vYear -1;
+    
+    IF (((vYear + 1) = EXTRACT(YEAR FROM ipStartDate)) AND (vMonth = EXTRACT(MONTH FROM ipStartDate))) THEN
+    BEGIN
+        vCurrentMonth = 1;
+    END ELSE BEGIN
+        vCurrentMonth = 0;
+    END
+    
+    vDateStr = '01.' || CAST(vMonth AS VARCHAR(2)) || '.' || CAST(vYear AS VARCHAR(4)) || ' 00:00:00';
+    opDateStart = CAST(vDateStr as TIMESTAMP);
+    
+    
+    EXECUTE PROCEDURE WSF_MONTH_LENGTH(cast(vDateStr as TIMESTAMP)) RETURNING_VALUES vLastDay;
+    
+    IF (vCurrentMonth = 1) THEN
+    BEGIN
+        vLastDay = EXTRACT(DAY FROM ipStartDate);
+    END
+    
+    vDateStr = CAST(vLastDay AS VARCHAR(2)) || '.' || CAST(vMonth AS VARCHAR(2)) || '.' || CAST(vYear AS VARCHAR(4)) || ', 23:59:59.9999';
+    opDateEnd = CAST(vDateStr AS TIMESTAMP);
+    
+    opYear = vYear;
+    opMonth = vMonth;
+    opTotal = 0.00;
+    
+    FOR
+        SELECT SUM(io.TOTALCOST), c.COUNTRYCODE, io.STATUS
+        FROM WS_INVOICE_ORDERS io
+          JOIN WS_MEMBERS m ON (m.ID = io.USERID)
+          JOIN WS_COUNTRIES c ON (c.ID = m.COUNTRY)
+        WHERE io.PURCHASEDATE BETWEEN :opDATESTART AND :opDATEEND
+          AND (io.STATUS IN (SELECT a.ID FROM WS_PAYMENT_STATUS a WHERE a.IS_PAID = 'Y'))
+          AND (io.PROCESS_STATUS IN (0, 1, 2))
+        GROUP BY c.COUNTRYCODE, io.STATUS
+        INTO :vTotal, :vCountry, :vPaymentStatus
+    DO
+    BEGIN
+        IF (ipCOUNTRY_CODES = '' OR (ipCountry_CODES <> '' AND ipCOUNTRY_CODES = vCountry)
+            AND ((ipTYPE = 0) 
+                OR ((ipType = 1) AND (vPaymentStatus = 67))
+                OR ((ipType = 2) AND (vPaymentStatus IN (26, 27, 28, 29)))
+                OR ((ipType = 3) AND (vPaymentStatus NOT IN (26, 27, 28, 29, 67))))
+                        ) THEN
+        BEGIN
+            opTotal = opTotal + vTotal;
+        END
+    END
+    
+    
+    vPrevTotal = opTOTAL;
+    opDIFFERENCE = 0;
+    opDIFFPERCENT = 0;
+    SUSPEND;
+    
+    
+    vYear = vYear + 1;
+    opYear = vYear;
+    opMonth = vMonth;
+    opTotal = 0.00;
+    
+    vDateStr = '01.' || CAST(vMonth AS VARCHAR(2)) || '.' || CAST(vYear AS VARCHAR(4)) || ' 00:00:00';
+    opDateStart = CAST(vDateStr as TIMESTAMP);
+    
+    
+    EXECUTE PROCEDURE WSF_MONTH_LENGTH(cast(vDateStr as TIMESTAMP)) RETURNING_VALUES vLastDay;
+
+    IF (vCurrentMonth = 1) THEN
+    BEGIN
+        vLastDay = EXTRACT(DAY FROM ipStartDate);
+    END
+
+    vDateStr = CAST(vLastDay AS VARCHAR(2)) || '.' || CAST(vMonth AS VARCHAR(2)) || '.' || CAST(vYear AS VARCHAR(4)) || ', 23:59:59.9999';
+    opDateEnd = CAST(vDateStr AS TIMESTAMP);
+    
+    FOR
+        SELECT SUM(io.TOTALCOST), c.COUNTRYCODE, io.STATUS
+        FROM WS_INVOICE_ORDERS io
+          JOIN WS_MEMBERS m ON (m.ID = io.USERID)
+          JOIN WS_COUNTRIES c ON (c.ID = m.COUNTRY)
+        WHERE io.PURCHASEDATE BETWEEN :opDATESTART AND :opDATEEND
+          AND (io.STATUS IN (SELECT a.ID FROM WS_PAYMENT_STATUS a WHERE a.IS_PAID = 'Y'))
+          AND (io.PROCESS_STATUS IN (0, 1, 2))
+        GROUP BY c.COUNTRYCODE, io.STATUS
+        INTO :vTotal, :vCountry, :vPaymentStatus
+    DO
+    BEGIN
+        IF (ipCOUNTRY_CODES = '' OR (ipCountry_CODES <> '' AND ipCOUNTRY_CODES = vCountry)
+            AND ((ipTYPE = 0) 
+                OR ((ipType = 1) AND (vPaymentStatus = 67))
+                OR ((ipType = 2) AND (vPaymentStatus IN (26, 27, 28, 29)))
+                OR ((ipType = 3) AND (vPaymentStatus NOT IN (26, 27, 28, 29, 67))))
+                        ) THEN
+        BEGIN
+            opTotal = opTotal + vTotal;
+        END
+    END
+    
+    opDIFFERENCE = opTOTAL - vPrevTotal;
+    
+    IF (opTOTAL = 0.00) THEN
+    BEGIN
+            IF (opDIFFERENCE = 0.00) THEN
+            BEGIN
+                opDIFFPERCENT = 0;
+            END ELSE BEGIN
+                opDIFFPERCENT = -100;
+            END
+    END ELSE
+    BEGIN
+        IF (opDifference < 0) THEN
+        BEGIN
+            opDIFFPERCENT = 0 - CAST(((100 / CAST(vPrevTotal AS DOUBLE PRECISION)) * (vPrevTotal - opTotal)) AS INTEGER);
+        END
+        ELSE
+        BEGIN
+            opDIFFPERCENT = CAST(((100 / CAST(opTOTAL AS DOUBLE PRECISION)) * opDifference) AS INTEGER);
+        END
+    END
+    
+    SUSPEND;
+    
+    
+    vILoop = vILoop + 1;
+    vMonth = vMonth + 1;
+    
+    IF (vMonth > 12) THEN
+    BEGIN
+      vMonth = 1;
+      vYear = vYear + 1;
+    END
+  END
+END^
+
+SET TERM ; ^ 
+
+
+GRANT EXECUTE ON PROCEDURE WSP_STATS_MONTH_TO_DATE2 TO PUBLIC;
+
+
+GRANT EXECUTE ON PROCEDURE WSP_STATS_MTD_SALONS TO PUBLIC;
+GRANT EXECUTE ON PROCEDURE WSP_STATS_MTD_TOP_5_SALONS TO PUBLIC;
+GRANT EXECUTE ON PROCEDURE WSF_MONTH_LENGTH TO PUBLIC;
+GRANT EXECUTE ON PROCEDURE WSP_STATS_MTD_TOP_SALONOWNERS TO PUBLIC;
+GRANT EXECUTE ON PROCEDURE WSP_UPDATE_MISSING_STOCK TO PUBLIC;
+GRANT EXECUTE ON PROCEDURE WSP_WORKINGDAY TO PUBLIC;
+GRANT EXECUTE ON PROCEDURE WSP_WS_CLIENT_ACTIONS_CREATE TO PUBLIC;
+GRANT EXECUTE ON PROCEDURE WSP_WS_REDIRECT_STATS_UPDATE TO PUBLIC;
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_STATS_MONTH_TO_DATE_TOTAL
+RETURNS
+ (OPYEAR INTEGER, 
+  OPMONTH INTEGER, 
+  OPTOTAL INTEGER, 
+  OPDIFFERENCE INTEGER, 
+  OPDIFFPERCENT INTEGER, 
+  OPDATESTART TIMESTAMP, 
+  OPDATEEND TIMESTAMP)
+AS
+DECLARE VARIABLE vMonth INTEGER;
+  DECLARE VARIABLE vYear INTEGER;
+  DECLARE VARIABLE vDay INTEGER;
+  DECLARE VARIABLE vStartDate TIMESTAMP;
+  DECLARE VARIABLE vEndDate TIMESTAMP;
+  DECLARE VARIABLE vILoop INTEGER;
+  DECLARE VARIABLE vDateStr VARCHAR(30);
+  DECLARE VARIABLE vLastDay INTEGER;
+  DECLARE VARIABLE vPrevTotal INTEGER;
+  DECLARE VARIABLE vCurrentMonth INTEGER;
+  DECLARE VARIABLE vCurrentDate TIMESTAMP;
+BEGIN
+  vCurrentDate = DATEADD(-1 year to CURRENT_TIMESTAMP);
+  vYear = EXTRACT(YEAR FROM vCurrentDate);
+  vMonth = EXTRACT(MONTH FROM vCurrentDate) + 1;
+  vDay = EXTRACT(DAY FROM vCurrentDate);
+  vILoop = 1;
+  
+  IF (vMonth > 12) THEN
+  BEGIN
+    vMonth = 1;
+    vYear = vYear + 1;
+  END
+  
+  WHILE (vILoop < 13) DO
+  BEGIN
+     vYear = vYear -1;
+    
+    IF (((vYear + 1) = EXTRACT(YEAR FROM CURRENT_TIMESTAMP)) AND (vMonth = EXTRACT(MONTH FROM CURRENT_TIMESTAMP))) THEN
+    BEGIN
+        vCurrentMonth = 1;
+    END ELSE BEGIN
+        vCurrentMonth = 0;
+    END
+    
+    
+    
+    
+    vDateStr = CAST(vMonth AS VARCHAR(2)) || '/' || CAST(1 AS VARCHAR(2)) || '/' || CAST(vYear AS VARCHAR(4));
+    opDateStart = CAST(vDateStr as TIMESTAMP);
+    
+    
+    EXECUTE PROCEDURE WSF_MONTH_LENGTH(cast(vDateStr as TIMESTAMP)) RETURNING_VALUES vLastDay;
+    
+    IF (vCurrentMonth = 1) THEN
+    BEGIN
+        vLastDay = EXTRACT(DAY FROM CURRENT_TIMESTAMP);
+    END
+    
+    vDateStr = CAST(vMonth AS VARCHAR(2)) || '/' || CAST(vLastDay AS VARCHAR(2)) || '/' || CAST(vYear AS VARCHAR(4)) || ', 23:59:59.9999';
+    opDateEnd = CAST(vDateStr AS TIMESTAMP);
+    
+    opYear = vYear;
+    opMonth = vMonth;
+    
+    SELECT COUNT(io.ID)
+    FROM WS_INVOICE_ORDERS io
+    WHERE io.PURCHASEDATE BETWEEN :opDATESTART AND :opDATEEND
+      AND (io.STATUS IN (SELECT a.ID FROM WS_PAYMENT_STATUS a WHERE a.IS_PAID = 'Y'))
+      AND (io.PROCESS_STATUS IN (0, 1, 2))
+    INTO :opTOTAL;
+    
+    IF (opTOTAL IS NULL) THEN
+    BEGIN
+        opTOTAL = 0;
+    END
+    
+    vPrevTotal = opTOTAL;
+    opDIFFERENCE = 0;
+    opDIFFPERCENT = 0;
+    SUSPEND;
+    
+    
+    vYear = vYear + 1;
+    opYear = vYear;
+    opMonth = vMonth;
+
+    
+    vDateStr = CAST(vMonth AS VARCHAR(2)) || '/' || CAST(1 AS VARCHAR(2)) || '/' || CAST(vYear AS VARCHAR(4));
+    opDateStart = CAST(vDateStr as TIMESTAMP);
+    
+    
+    EXECUTE PROCEDURE WSF_MONTH_LENGTH(cast(vDateStr as TIMESTAMP)) RETURNING_VALUES vLastDay;
+
+    IF (vCurrentMonth = 1) THEN
+    BEGIN
+        vLastDay = EXTRACT(DAY FROM CURRENT_TIMESTAMP);
+    END
+
+    vDateStr = CAST(vMonth AS VARCHAR(2)) || '/' || CAST(vLastDay AS VARCHAR(2)) || '/' || CAST(vYear AS VARCHAR(4)) || ', 23:59:59.9999';
+    opDateEnd = CAST(vDateStr AS TIMESTAMP);
+    
+    SELECT COUNT(io.ID)
+    FROM WS_INVOICE_ORDERS io
+    WHERE io.PURCHASEDATE BETWEEN :opDATESTART AND :opDATEEND
+        AND (io.STATUS IN (SELECT a.ID FROM WS_PAYMENT_STATUS a WHERE a.IS_PAID = 'Y'))
+        AND (io.PROCESS_STATUS IN (0, 1, 2))
+    INTO :opTOTAL;
+
+    IF (opTOTAL IS NULL) THEN
+    BEGIN
+        opTOTAL = 0.00;
+    END
+    
+    opDIFFERENCE = opTOTAL - vPrevTotal;
+    
+    IF (opTOTAL = 0) THEN
+    BEGIN
+            IF (opDIFFERENCE = 0) THEN
+            BEGIN
+                opDIFFPERCENT = 0;
+            END ELSE BEGIN
+                opDIFFPERCENT = -100;
+            END
+    END ELSE
+    BEGIN
+        IF (opDifference < 0) THEN
+        BEGIN
+            opDIFFPERCENT = 0 - CAST(((100 / CAST(vPrevTotal AS DOUBLE PRECISION)) * (vPrevTotal - opTotal)) AS INTEGER);
+        END
+        ELSE
+        BEGIN
+            opDIFFPERCENT = CAST(((100 / CAST(opTOTAL AS DOUBLE PRECISION)) * opDifference) AS INTEGER);
+        END
+    END
+    
+    SUSPEND;
+    
+    
+    vILoop = vILoop + 1;
+    vMonth = vMonth + 1;
+    
+    IF (vMonth > 12) THEN
+    BEGIN
+      vMonth = 1;
+      vYear = vYear + 1;
+    END
+  END
+END^
+
+SET TERM ; ^ 
+
+
+GRANT EXECUTE ON PROCEDURE WSP_STATS_MONTH_TO_DATE_TOTAL TO PUBLIC;
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_STATS_MONTH_TO_DATE_TOP_5
+RETURNS
+ (OPCOUNTRY INTEGER, 
+  OPCOUNTRYNAME VARCHAR(150) CHARACTER SET UTF8, 
+  OPYEAR INTEGER, 
+  OPMONTH INTEGER, 
+  OPTOTAL DOUBLE PRECISION , 
+  OPDIFFERENCE DOUBLE PRECISION , 
+  OPDIFFPERCENT INTEGER, 
+  OPDATESTART TIMESTAMP, 
+  OPDATEEND TIMESTAMP)
+AS
+DECLARE VARIABLE vMonth INTEGER;
+  DECLARE VARIABLE vYear INTEGER;
+  DECLARE VARIABLE vDay INTEGER;
+  DECLARE VARIABLE vStartDate TIMESTAMP;
+  DECLARE VARIABLE vEndDate TIMESTAMP;
+  DECLARE VARIABLE vILoop INTEGER;
+  DECLARE VARIABLE vDateStr VARCHAR(30);
+  DECLARE VARIABLE vLastDay INTEGER;
+  DECLARE VARIABLE vPrevTotal DOUBLE PRECISION;
+  DECLARE VARIABLE vCurrentMonth INTEGER;
+  DECLARE VARIABLE vTotal DOUBLE PRECISION;
+  DECLARE VARIABLE vCurrentDate TIMESTAMP;
+BEGIN
+  vCurrentDate = DATEADD(-1 year to CURRENT_TIMESTAMP);
+  FOR
+    SELECT FIRST 5 m.COUNTRY, c.COUNTRY, SUM(io.TOTALCOST)
+    FROM WS_INVOICE_ORDERS io
+      LEFT JOIN WS_MEMBERS m ON (m.ID = io.USERID)
+      LEFT JOIN WS_COUNTRIES c ON (c.ID = m.COUNTRY)
+    WHERE (io.STATUS IN (SELECT a.ID FROM WS_PAYMENT_STATUS a WHERE a.IS_PAID = 'Y'))
+      AND (io.PROCESS_STATUS IN (0, 1, 2))
+    GROUP BY 1, 2
+    ORDER BY 3 DESC
+    INTO :opCOUNTRY, :opCOUNTRYNAME, :vTotal
+  DO
+  BEGIN
+    vYear = EXTRACT(YEAR FROM vCurrentDate);
+    vMonth = EXTRACT(MONTH FROM vCurrentDate) + 1;
+    vDay = EXTRACT(DAY FROM vCurrentDate);
+    vILoop = 1;
+  
+    IF (vMonth > 12) THEN
+    BEGIN
+        vMonth = 1;
+        vYear = vYear + 1;
+    END
+  
+    WHILE (vILoop < 13) DO
+    BEGIN
+        vYear = vYear -1;
+    
+        IF (((vYear + 1) = EXTRACT(YEAR FROM CURRENT_TIMESTAMP)) AND (vMonth = EXTRACT(MONTH FROM CURRENT_TIMESTAMP))) THEN
+        BEGIN
+            vCurrentMonth = 1;
+        END ELSE BEGIN
+            vCurrentMonth = 0;
+        END
+    
+        
+    
+        
+        vDateStr = CAST(vMonth AS VARCHAR(2)) || '/' || CAST(1 AS VARCHAR(2)) || '/' || CAST(vYear AS VARCHAR(4));
+        opDateStart = CAST(vDateStr as TIMESTAMP);
+    
+        
+        EXECUTE PROCEDURE WSF_MONTH_LENGTH(cast(vDateStr as TIMESTAMP)) RETURNING_VALUES vLastDay;
+    
+        IF (vCurrentMonth = 1) THEN
+        BEGIN
+            vLastDay = EXTRACT(DAY FROM CURRENT_TIMESTAMP);
+        END
+    
+        vDateStr = CAST(vMonth AS VARCHAR(2)) || '/' || CAST(vLastDay AS VARCHAR(2)) || '/' || CAST(vYear AS VARCHAR(4)) || ', 23:59:59.9999';
+        opDateEnd = CAST(vDateStr AS TIMESTAMP);
+    
+        opYear = vYear;
+        opMonth = vMonth;
+    
+        SELECT SUM(io.TOTALCOST)
+        FROM WS_INVOICE_ORDERS io
+            LEFT JOIN WS_MEMBERS m on (m.ID = io.USERID)
+        WHERE io.PURCHASEDATE BETWEEN :opDATESTART AND :opDATEEND
+            AND (io.STATUS IN (SELECT a.ID FROM WS_PAYMENT_STATUS a WHERE a.IS_PAID = 'Y'))
+            AND (io.PROCESS_STATUS IN (0, 1, 2))
+            AND (m.COUNTRY = :opCOUNTRY)
+        INTO :opTOTAL;
+    
+        IF (opTOTAL IS NULL) THEN
+        BEGIN
+            opTOTAL = 0;
+        END
+        
+        vPrevTotal = opTOTAL;
+        opDIFFERENCE = 0;
+        opDIFFPERCENT = 0;
+        SUSPEND;
+    
+        
+        vYear = vYear + 1;
+        opYear = vYear;
+        opMonth = vMonth;
+
+        
+        vDateStr = CAST(vMonth AS VARCHAR(2)) || '/' || CAST(1 AS VARCHAR(2)) || '/' || CAST(vYear AS VARCHAR(4));
+        opDateStart = CAST(vDateStr as TIMESTAMP);
+    
+        
+        EXECUTE PROCEDURE WSF_MONTH_LENGTH(cast(vDateStr as TIMESTAMP)) RETURNING_VALUES vLastDay;
+
+        IF (vCurrentMonth = 1) THEN
+        BEGIN
+            vLastDay = EXTRACT(DAY FROM CURRENT_TIMESTAMP);
+        END
+
+        vDateStr = CAST(vMonth AS VARCHAR(2)) || '/' || CAST(vLastDay AS VARCHAR(2)) || '/' || CAST(vYear AS VARCHAR(4)) || ', 23:59:59.9999';
+        opDateEnd = CAST(vDateStr AS TIMESTAMP);
+    
+        SELECT SUM(io.TOTALCOST)
+        FROM WS_INVOICE_ORDERS io
+            LEFT JOIN WS_MEMBERS m on (m.ID = io.USERID)
+        WHERE io.PURCHASEDATE BETWEEN :opDATESTART AND :opDATEEND
+            AND (io.STATUS IN (SELECT a.ID FROM WS_PAYMENT_STATUS a WHERE a.IS_PAID = 'Y'))
+            AND (io.PROCESS_STATUS IN (0, 1, 2))
+            AND (m.COUNTRY = :opCOUNTRY)
+        INTO :opTOTAL;
+
+        IF (opTOTAL IS NULL) THEN
+        BEGIN
+            opTOTAL = 0.00;
+        END
+    
+        opDIFFERENCE = opTOTAL - vPrevTotal;
+    
+        IF (opTOTAL = 0.00) THEN
+        BEGIN
+            IF (opDIFFERENCE = 0.00) THEN
+            BEGIN
+                opDIFFPERCENT = 0;
+            END ELSE BEGIN
+                opDIFFPERCENT = -100;
+            END
+        END ELSE
+        BEGIN
+            IF (opDifference < 0) THEN
+            BEGIN
+                opDIFFPERCENT = 0 - CAST(((100 / CAST(vPrevTotal AS DOUBLE PRECISION)) * (vPrevTotal - opTotal)) AS INTEGER);
+            END
+            ELSE
+            BEGIN
+                opDIFFPERCENT = CAST(((100 / CAST(opTOTAL AS DOUBLE PRECISION)) * opDifference) AS INTEGER);
+            END
+        END
+    
+        SUSPEND;
+    
+    
+        vILoop = vILoop + 1;
+        vMonth = vMonth + 1;
+    
+        IF (vMonth > 12) THEN
+        BEGIN
+            vMonth = 1;
+            vYear = vYear + 1;
+        END
+    END
+  END
+END^
+
+SET TERM ; ^ 
+
+
+GRANT EXECUTE ON PROCEDURE WSP_STATS_MONTH_TO_DATE_TOP_5 TO PUBLIC;
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_STATS_MONTH_TO_DATE_SALON
+RETURNS
+ (OPYEAR INTEGER, 
+  OPMONTH INTEGER, 
+  OPTOTAL DOUBLE PRECISION , 
+  OPDIFFERENCE DOUBLE PRECISION , 
+  OPDIFFPERCENT INTEGER, 
+  OPDATESTART TIMESTAMP, 
+  OPDATEEND TIMESTAMP)
+AS
+DECLARE VARIABLE vMonth INTEGER;
+  DECLARE VARIABLE vYear INTEGER;
+  DECLARE VARIABLE vDay INTEGER;
+  DECLARE VARIABLE vStartDate TIMESTAMP;
+  DECLARE VARIABLE vEndDate TIMESTAMP;
+  DECLARE VARIABLE vILoop INTEGER;
+  DECLARE VARIABLE vDateStr VARCHAR(30);
+  DECLARE VARIABLE vLastDay INTEGER;
+  DECLARE VARIABLE vPrevTotal DOUBLE PRECISION;
+  DECLARE VARIABLE vCurrentMonth INTEGER;
+  DECLARE VARIABLE vCurrentDate TIMESTAMP;
+BEGIN
+  vCurrentDate = DATEADD(-1 year to CURRENT_TIMESTAMP);
+  vYear = EXTRACT(YEAR FROM vCurrentDate);
+  vMonth = EXTRACT(MONTH FROM vCurrentDate) + 1;
+  vDay = EXTRACT(DAY FROM vCurrentDate);
+  vILoop = 1;
+    
+  IF (vMonth > 12) THEN
+  BEGIN
+    vMonth = 1;
+    vYear = vYear + 1;
+  END
+  
+  WHILE (vILoop < 13) DO
+  BEGIN
+     vYear = vYear -1;
+    
+    IF (((vYear + 1) = EXTRACT(YEAR FROM CURRENT_TIMESTAMP)) AND (vMonth = EXTRACT(MONTH FROM CURRENT_TIMESTAMP))) THEN
+    BEGIN
+        vCurrentMonth = 1;
+    END ELSE BEGIN
+        vCurrentMonth = 0;
+    END
+    
+    
+    
+    
+    vDateStr = CAST(1 AS VARCHAR(2)) || '.' || CAST(vMonth AS VARCHAR(2)) || '.' || CAST(vYear AS VARCHAR(4)) || ' 00:00:00';
+    opDateStart = CAST(vDateStr as TIMESTAMP);
+    
+    
+    EXECUTE PROCEDURE WSF_MONTH_LENGTH(cast(vDateStr as TIMESTAMP)) RETURNING_VALUES vLastDay;
+    
+    IF (vCurrentMonth = 1) THEN
+    BEGIN
+        vLastDay = EXTRACT(DAY FROM CURRENT_TIMESTAMP);
+    END
+    
+    vDateStr = CAST(vLastDay AS VARCHAR(2)) || '.' || CAST(vMonth AS VARCHAR(2)) || '.' || CAST(vYear AS VARCHAR(4)) || ', 23:59:59.9999';
+    opDateEnd = CAST(vDateStr AS TIMESTAMP);
+    
+    opYear = vYear;
+    opMonth = vMonth;
+    
+    SELECT SUM(io.TOTALCOST)
+    FROM WS_INVOICE_ORDERS io
+    WHERE io.PURCHASEDATE BETWEEN :opDATESTART AND :opDATEEND
+      AND (io.STATUS IN (SELECT a.ID FROM WS_PAYMENT_STATUS a WHERE a.IS_PAID = 'Y' AND a.STATUS_TILL = 'Y'))
+      AND (io.PROCESS_STATUS IN (0, 1, 2))
+    INTO :opTOTAL;
+    
+    IF (opTOTAL IS NULL) THEN
+    BEGIN
+        opTOTAL = 0.00;
+    END
+    
+    
+    vPrevTotal = opTOTAL;
+    opDIFFERENCE = 0;
+    opDIFFPERCENT = 0;
+    SUSPEND;
+    
+    
+    vYear = vYear + 1;
+    opYear = vYear;
+    opMonth = vMonth;
+
+    
+    vDateStr = '01.' || CAST(vMonth AS VARCHAR(2)) || '.' || CAST(vYear AS VARCHAR(4)) || ' 00:00:00';
+    opDateStart = CAST(vDateStr as TIMESTAMP);
+    
+    
+    EXECUTE PROCEDURE WSF_MONTH_LENGTH(cast(vDateStr as TIMESTAMP)) RETURNING_VALUES vLastDay;
+
+    IF (vCurrentMonth = 1) THEN
+    BEGIN
+        vLastDay = EXTRACT(DAY FROM CURRENT_TIMESTAMP);
+    END
+
+    vDateStr = CAST(vLastDay AS VARCHAR(2)) || '.' || CAST(vMonth AS VARCHAR(2)) || '.' || CAST(vYear AS VARCHAR(4)) || ', 23:59:59.9999';
+    opDateEnd = CAST(vDateStr AS TIMESTAMP);
+    
+    SELECT SUM(io.TOTALCOST)
+    FROM WS_INVOICE_ORDERS io
+    WHERE io.PURCHASEDATE BETWEEN :opDATESTART AND :opDATEEND
+        AND (io.STATUS IN (SELECT a.ID FROM WS_PAYMENT_STATUS a WHERE a.IS_PAID = 'Y' AND a.STATUS_TILL = 'Y'))
+        AND (io.PROCESS_STATUS IN (0, 1, 2))
+    INTO :opTOTAL;
+
+    IF (opTOTAL IS NULL) THEN
+    BEGIN
+        opTOTAL = 0.00;
+    END
+    
+    opDIFFERENCE = opTOTAL - vPrevTotal;
+    
+    IF (opTOTAL = 0.00) THEN
+    BEGIN
+            IF (opDIFFERENCE = 0.00) THEN
+            BEGIN
+                opDIFFPERCENT = 0;
+            END ELSE BEGIN
+                opDIFFPERCENT = -100;
+            END
+    END ELSE
+    BEGIN
+        IF (opDifference < 0) THEN
+        BEGIN
+            opDIFFPERCENT = 0 - CAST(((100 / CAST(vPrevTotal AS DOUBLE PRECISION)) * (vPrevTotal - opTotal)) AS INTEGER);
+        END
+        ELSE
+        BEGIN
+            opDIFFPERCENT = CAST(((100 / CAST(opTOTAL AS DOUBLE PRECISION)) * opDifference) AS INTEGER);
+        END
+    END
+    
+    SUSPEND;
+    
+    
+    vILoop = vILoop + 1;
+    vMonth = vMonth + 1;
+    
+    IF (vMonth > 12) THEN
+    BEGIN
+      vMonth = 1;
+      vYear = vYear + 1;
+    END
+  END
+END^
+
+SET TERM ; ^ 
+
+
+
+GRANT EXECUTE ON PROCEDURE WSP_STATS_MONTH_TO_DATE_SALON TO PUBLIC;
+
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_STATS_MONTH_TO_DATE_ONLINE
+RETURNS
+ (OPYEAR INTEGER, 
+  OPMONTH INTEGER, 
+  OPTOTAL DOUBLE PRECISION , 
+  OPDIFFERENCE DOUBLE PRECISION , 
+  OPDIFFPERCENT INTEGER, 
+  OPDATESTART TIMESTAMP, 
+  OPDATEEND TIMESTAMP)
+AS
+DECLARE VARIABLE vMonth INTEGER;
+  DECLARE VARIABLE vYear INTEGER;
+  DECLARE VARIABLE vDay INTEGER;
+  DECLARE VARIABLE vStartDate TIMESTAMP;
+  DECLARE VARIABLE vEndDate TIMESTAMP;
+  DECLARE VARIABLE vILoop INTEGER;
+  DECLARE VARIABLE vDateStr VARCHAR(30);
+  DECLARE VARIABLE vLastDay INTEGER;
+  DECLARE VARIABLE vPrevTotal DOUBLE PRECISION;
+  DECLARE VARIABLE vCurrentMonth INTEGER;
+  DECLARE VARIABLE vCurrentDate TIMESTAMP;
+BEGIN
+  vCurrentDate = DATEADD(-1 year to CURRENT_TIMESTAMP);
+  vYear = EXTRACT(YEAR FROM vCurrentDate);
+  vMonth = EXTRACT(MONTH FROM vCurrentDate) + 1;
+  vDay = EXTRACT(DAY FROM vCurrentDate);
+  vILoop = 1;
+    
+  IF (vMonth > 12) THEN
+  BEGIN
+    vMonth = 1;
+    vYear = vYear + 1;
+  END
+  
+  WHILE (vILoop < 13) DO
+  BEGIN
+     vYear = vYear -1;
+    
+    IF (((vYear + 1) = EXTRACT(YEAR FROM CURRENT_TIMESTAMP)) AND (vMonth = EXTRACT(MONTH FROM CURRENT_TIMESTAMP))) THEN
+    BEGIN
+        vCurrentMonth = 1;
+    END ELSE BEGIN
+        vCurrentMonth = 0;
+    END
+    
+    
+    
+    
+    vDateStr = CAST(vMonth AS VARCHAR(2)) || '/' || CAST(1 AS VARCHAR(2)) || '/' || CAST(vYear AS VARCHAR(4));
+    opDateStart = CAST(vDateStr as TIMESTAMP);
+    
+    
+    EXECUTE PROCEDURE WSF_MONTH_LENGTH(cast(vDateStr as TIMESTAMP)) RETURNING_VALUES vLastDay;
+    
+    IF (vCurrentMonth = 1) THEN
+    BEGIN
+        vLastDay = EXTRACT(DAY FROM CURRENT_TIMESTAMP);
+    END
+    
+    vDateStr = CAST(vMonth AS VARCHAR(2)) || '/' || CAST(vLastDay AS VARCHAR(2)) || '/' || CAST(vYear AS VARCHAR(4)) || ', 23:59:59.9999';
+    opDateEnd = CAST(vDateStr AS TIMESTAMP);
+    
+    opYear = vYear;
+    opMonth = vMonth;
+    
+    SELECT SUM(io.TOTALCOST)
+    FROM WS_INVOICE_ORDERS io
+    WHERE io.PURCHASEDATE BETWEEN :opDATESTART AND :opDATEEND
+      AND (io.STATUS IN (SELECT a.ID FROM WS_PAYMENT_STATUS a WHERE a.IS_PAID = 'Y' AND a.STATUS_ONLINE = 'Y'))
+      AND (io.PROCESS_STATUS IN (0, 1, 2))
+    INTO :opTOTAL;
+    
+    IF (opTOTAL IS NULL) THEN
+    BEGIN
+        opTOTAL = 0.00;
+    END
+    
+    
+    vPrevTotal = opTOTAL;
+    opDIFFERENCE = 0;
+    opDIFFPERCENT = 0;
+    SUSPEND;
+    
+    
+    vYear = vYear + 1;
+    opYear = vYear;
+    opMonth = vMonth;
+
+    
+    vDateStr = CAST(vMonth AS VARCHAR(2)) || '/' || CAST(1 AS VARCHAR(2)) || '/' || CAST(vYear AS VARCHAR(4));
+    opDateStart = CAST(vDateStr as TIMESTAMP);
+    
+    
+    EXECUTE PROCEDURE WSF_MONTH_LENGTH(cast(vDateStr as TIMESTAMP)) RETURNING_VALUES vLastDay;
+
+    IF (vCurrentMonth = 1) THEN
+    BEGIN
+        vLastDay = EXTRACT(DAY FROM CURRENT_TIMESTAMP);
+    END
+
+    vDateStr = CAST(vMonth AS VARCHAR(2)) || '/' || CAST(vLastDay AS VARCHAR(2)) || '/' || CAST(vYear AS VARCHAR(4)) || ', 23:59:59.9999';
+    opDateEnd = CAST(vDateStr AS TIMESTAMP);
+    
+    SELECT SUM(io.TOTALCOST)
+    FROM WS_INVOICE_ORDERS io
+    WHERE io.PURCHASEDATE BETWEEN :opDATESTART AND :opDATEEND
+        AND (io.STATUS IN (SELECT a.ID FROM WS_PAYMENT_STATUS a WHERE a.IS_PAID = 'Y' AND a.STATUS_ONLINE = 'Y'))
+        AND (io.PROCESS_STATUS IN (0, 1, 2))
+    INTO :opTOTAL;
+
+    IF (opTOTAL IS NULL) THEN
+    BEGIN
+        opTOTAL = 0.00;
+    END
+    
+    opDIFFERENCE = opTOTAL - vPrevTotal;
+    
+    IF (opTOTAL = 0.00) THEN
+    BEGIN
+            IF (opDIFFERENCE = 0.00) THEN
+            BEGIN
+                opDIFFPERCENT = 0;
+            END ELSE BEGIN
+                opDIFFPERCENT = -100;
+            END
+    END ELSE
+    BEGIN
+        IF (opDifference < 0) THEN
+        BEGIN
+            opDIFFPERCENT = 0 - CAST(((100 / CAST(vPrevTotal AS DOUBLE PRECISION)) * (vPrevTotal - opTotal)) AS INTEGER);
+        END
+        ELSE
+        BEGIN
+            opDIFFPERCENT = CAST(((100 / CAST(opTOTAL AS DOUBLE PRECISION)) * opDifference) AS INTEGER);
+        END
+    END
+    
+    SUSPEND;
+    
+    
+    vILoop = vILoop + 1;
+    vMonth = vMonth + 1;
+    
+    IF (vMonth > 12) THEN
+    BEGIN
+      vMonth = 1;
+      vYear = vYear + 1;
+    END
+  END
+END^
+
+SET TERM ; ^ 
+
+
+
+
+
+GRANT EXECUTE ON PROCEDURE WSP_STATS_MONTH_TO_DATE_ONLINE TO PUBLIC;
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_STATS_MONTH_TO_DATE_OFFICE
+RETURNS
+ (OPYEAR INTEGER, 
+  OPMONTH INTEGER, 
+  OPTOTAL DOUBLE PRECISION , 
+  OPDIFFERENCE DOUBLE PRECISION , 
+  OPDIFFPERCENT INTEGER, 
+  OPDATESTART TIMESTAMP, 
+  OPDATEEND TIMESTAMP)
+AS
+DECLARE VARIABLE vMonth INTEGER;
+  DECLARE VARIABLE vYear INTEGER;
+  DECLARE VARIABLE vDay INTEGER;
+  DECLARE VARIABLE vStartDate TIMESTAMP;
+  DECLARE VARIABLE vEndDate TIMESTAMP;
+  DECLARE VARIABLE vILoop INTEGER;
+  DECLARE VARIABLE vDateStr VARCHAR(30);
+  DECLARE VARIABLE vLastDay INTEGER;
+  DECLARE VARIABLE vPrevTotal DOUBLE PRECISION;
+  DECLARE VARIABLE vCurrentMonth INTEGER;
+  DECLARE VARIABLE vCurrentDate TIMESTAMP;
+BEGIN
+  vCurrentDate = DATEADD(-1 year to CURRENT_TIMESTAMP);
+  vYear = EXTRACT(YEAR FROM vCurrentDate);
+  vMonth = EXTRACT(MONTH FROM vCurrentDate) + 1;
+  vDay = EXTRACT(DAY FROM vCurrentDate);
+  vILoop = 1;
+    
+  IF (vMonth > 12) THEN
+  BEGIN
+    vMonth = 1;
+    vYear = vYear + 1;
+  END
+  
+  WHILE (vILoop < 13) DO
+  BEGIN
+     vYear = vYear -1;
+    
+    IF (((vYear + 1) = EXTRACT(YEAR FROM CURRENT_TIMESTAMP)) AND (vMonth = EXTRACT(MONTH FROM CURRENT_TIMESTAMP))) THEN
+    BEGIN
+        vCurrentMonth = 1;
+    END ELSE BEGIN
+        vCurrentMonth = 0;
+    END
+    
+    
+    
+    
+    vDateStr = '01.' || CAST(vMonth AS VARCHAR(2)) || '.' || CAST(vYear AS VARCHAR(4)) || ' 00:00:00';
+    opDateStart = CAST(vDateStr as TIMESTAMP);
+    
+    
+    EXECUTE PROCEDURE WSF_MONTH_LENGTH(cast(vDateStr as TIMESTAMP)) RETURNING_VALUES vLastDay;
+    
+    IF (vCurrentMonth = 1) THEN
+    BEGIN
+        vLastDay = EXTRACT(DAY FROM CURRENT_TIMESTAMP);
+    END
+    
+    vDateStr = CAST(vLastDay AS VARCHAR(2)) || '.' || CAST(vMonth AS VARCHAR(2)) || '.' || CAST(vYear AS VARCHAR(4)) || ', 23:59:59.9999';
+    opDateEnd = CAST(vDateStr AS TIMESTAMP);
+    
+    opYear = vYear;
+    opMonth = vMonth;
+    
+    SELECT SUM(io.TOTALCOST)
+    FROM WS_INVOICE_ORDERS io
+    WHERE io.PURCHASEDATE BETWEEN :opDATESTART AND :opDATEEND
+      AND (io.STATUS IN (SELECT a.ID FROM WS_PAYMENT_STATUS a WHERE a.IS_PAID = 'Y' AND a.STATUS_OFFICE = 'Y' AND a.STATUS_ONLINE = 'N'))
+      AND (io.PROCESS_STATUS IN (0, 1, 2))
+    INTO :opTOTAL;
+    
+    IF (opTOTAL IS NULL) THEN
+    BEGIN
+        opTOTAL = 0.00;
+    END
+    
+    
+    vPrevTotal = opTOTAL;
+    opDIFFERENCE = 0;
+    opDIFFPERCENT = 0;
+    SUSPEND;
+    
+    
+    vYear = vYear + 1;
+    opYear = vYear;
+    opMonth = vMonth;
+
+    
+    vDateStr = '01.' || CAST(vMonth AS VARCHAR(2)) || '.' || CAST(vYear AS VARCHAR(4)) || ' 00:00:00';
+    opDateStart = CAST(vDateStr as TIMESTAMP);
+    
+    
+    EXECUTE PROCEDURE WSF_MONTH_LENGTH(cast(vDateStr as TIMESTAMP)) RETURNING_VALUES vLastDay;
+
+    IF (vCurrentMonth = 1) THEN
+    BEGIN
+        vLastDay = EXTRACT(DAY FROM CURRENT_TIMESTAMP);
+    END
+
+    vDateStr = CAST(vLastDay AS VARCHAR(2)) || '.' || CAST(vMonth AS VARCHAR(2)) || '.' || CAST(vYear AS VARCHAR(4)) || ', 23:59:59.9999';
+    opDateEnd = CAST(vDateStr AS TIMESTAMP);
+    
+    SELECT SUM(io.TOTALCOST)
+    FROM WS_INVOICE_ORDERS io
+    WHERE io.PURCHASEDATE BETWEEN :opDATESTART AND :opDATEEND
+        AND (io.STATUS IN (SELECT a.ID FROM WS_PAYMENT_STATUS a WHERE a.IS_PAID = 'Y' AND a.STATUS_OFFICE = 'Y' AND a.STATUS_ONLINE = 'N'))
+        AND (io.PROCESS_STATUS IN (0, 1, 2))
+    INTO :opTOTAL;
+
+    IF (opTOTAL IS NULL) THEN
+    BEGIN
+        opTOTAL = 0.00;
+    END
+    
+    opDIFFERENCE = opTOTAL - vPrevTotal;
+    
+    IF (opTOTAL = 0.00) THEN
+    BEGIN
+            IF (opDIFFERENCE = 0.00) THEN
+            BEGIN
+                opDIFFPERCENT = 0;
+            END ELSE BEGIN
+                opDIFFPERCENT = -100;
+            END
+    END ELSE
+    BEGIN
+        IF (opDifference < 0) THEN
+        BEGIN
+           opDIFFPERCENT = 0 - CAST(((100 / CAST(vPrevTotal AS DOUBLE PRECISION)) * (vPrevTotal - opTotal)) AS INTEGER);
+        END
+        ELSE
+        BEGIN
+            opDIFFPERCENT = CAST(((100 / CAST(opTOTAL AS DOUBLE PRECISION)) * opDifference) AS INTEGER);
+        END
+    END
+    
+    SUSPEND;
+    
+    
+    vILoop = vILoop + 1;
+    vMonth = vMonth + 1;
+    
+    IF (vMonth > 12) THEN
+    BEGIN
+      vMonth = 1;
+      vYear = vYear + 1;
+    END
+  END
+END^
+
+SET TERM ; ^ 
+
+
+
+GRANT EXECUTE ON PROCEDURE WSP_STATS_MONTH_TO_DATE_OFFICE TO PUBLIC;
+
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_STATS_MONTH_TO_DATE
+RETURNS
+ (OPYEAR INTEGER, 
+  OPMONTH INTEGER, 
+  OPTOTAL DOUBLE PRECISION , 
+  OPDIFFERENCE DOUBLE PRECISION , 
+  OPDIFFPERCENT INTEGER, 
+  OPDATESTART TIMESTAMP, 
+  OPDATEEND TIMESTAMP)
+AS
+DECLARE VARIABLE vMonth INTEGER;
+  DECLARE VARIABLE vYear INTEGER;
+  DECLARE VARIABLE vDay INTEGER;
+  DECLARE VARIABLE vStartDate TIMESTAMP;
+  DECLARE VARIABLE vEndDate TIMESTAMP;
+  DECLARE VARIABLE vILoop INTEGER;
+  DECLARE VARIABLE vDateStr VARCHAR(30);
+  DECLARE VARIABLE vLastDay INTEGER;
+  DECLARE VARIABLE vPrevTotal DOUBLE PRECISION;
+  DECLARE VARIABLE vCurrentMonth INTEGER;
+  DECLARE VARIABLE vCurrentDate TIMESTAMP;
+BEGIN
+  vCurrentDate = DATEADD(-1 year to CURRENT_TIMESTAMP);
+  vYear = EXTRACT(YEAR FROM vCurrentDate);
+  vMonth = EXTRACT(MONTH FROM vCurrentDate) + 1;
+  vDay = EXTRACT(DAY FROM vCurrentDate);
+  vILoop = 1;
+    
+  IF (vMonth > 12) THEN
+  BEGIN
+    vMonth = 1;
+    vYear = vYear + 1;
+  END
+  
+  WHILE (vILoop < 13) DO
+  BEGIN
+     vYear = vYear -1;
+    
+    IF (((vYear + 1) = EXTRACT(YEAR FROM CURRENT_TIMESTAMP)) AND (vMonth = EXTRACT(MONTH FROM CURRENT_TIMESTAMP))) THEN
+    BEGIN
+        vCurrentMonth = 1;
+    END ELSE BEGIN
+        vCurrentMonth = 0;
+    END
+    
+    
+    
+    
+    vDateStr = '01.' || CAST(vMonth AS VARCHAR(2)) || '.' || CAST(vYear AS VARCHAR(4)) || ' 00:00:00';
+    opDateStart = CAST(vDateStr as TIMESTAMP);
+    
+    
+    EXECUTE PROCEDURE WSF_MONTH_LENGTH(cast(vDateStr as TIMESTAMP)) RETURNING_VALUES vLastDay;
+    
+    IF (vCurrentMonth = 1) THEN
+    BEGIN
+        vLastDay = EXTRACT(DAY FROM CURRENT_TIMESTAMP);
+    END
+    
+    vDateStr = CAST(vLastDay AS VARCHAR(2)) || '.' || CAST(vMonth AS VARCHAR(2)) || '.' || CAST(vYear AS VARCHAR(4)) || ', 23:59:59.9999';
+    opDateEnd = CAST(vDateStr AS TIMESTAMP);
+    
+    opYear = vYear;
+    opMonth = vMonth;
+    
+    SELECT SUM(io.TOTALCOST)
+    FROM WS_INVOICE_ORDERS io
+    WHERE io.PURCHASEDATE BETWEEN :opDATESTART AND :opDATEEND
+      AND (io.STATUS IN (SELECT a.ID FROM WS_PAYMENT_STATUS a WHERE a.IS_PAID = 'Y'))
+      AND (io.PROCESS_STATUS IN (0, 1, 2))
+    INTO :opTOTAL;
+    
+    IF (opTOTAL IS NULL) THEN
+    BEGIN
+        opTOTAL = 0.00;
+    END
+    
+    
+    vPrevTotal = opTOTAL;
+    opDIFFERENCE = 0;
+    opDIFFPERCENT = 0;
+    SUSPEND;
+    
+    
+    vYear = vYear + 1;
+    opYear = vYear;
+    opMonth = vMonth;
+
+    
+    vDateStr = '01.' || CAST(vMonth AS VARCHAR(2)) || '.' || CAST(vYear AS VARCHAR(4)) || ' 00:00:00';
+    opDateStart = CAST(vDateStr as TIMESTAMP);
+    
+    
+    EXECUTE PROCEDURE WSF_MONTH_LENGTH(cast(vDateStr as TIMESTAMP)) RETURNING_VALUES vLastDay;
+
+    IF (vCurrentMonth = 1) THEN
+    BEGIN
+        vLastDay = EXTRACT(DAY FROM CURRENT_TIMESTAMP);
+    END
+
+    vDateStr = CAST(vLastDay AS VARCHAR(2)) || '.' || CAST(vMonth AS VARCHAR(2)) || '.' || CAST(vYear AS VARCHAR(4)) || ', 23:59:59.9999';
+    opDateEnd = CAST(vDateStr AS TIMESTAMP);
+    
+    SELECT SUM(io.TOTALCOST)
+    FROM WS_INVOICE_ORDERS io
+    WHERE io.PURCHASEDATE BETWEEN :opDATESTART AND :opDATEEND
+        AND (io.STATUS IN (SELECT a.ID FROM WS_PAYMENT_STATUS a WHERE a.IS_PAID = 'Y'))
+        AND (io.PROCESS_STATUS IN (0, 1, 2))
+    INTO :opTOTAL;
+
+    IF (opTOTAL IS NULL) THEN
+    BEGIN
+        opTOTAL = 0.00;
+    END
+    
+    opDIFFERENCE = opTOTAL - vPrevTotal;
+    
+    IF (opTOTAL = 0.00) THEN
+    BEGIN
+            IF (opDIFFERENCE = 0.00) THEN
+            BEGIN
+                opDIFFPERCENT = 0;
+            END ELSE BEGIN
+                opDIFFPERCENT = -100;
+            END
+    END ELSE
+    BEGIN
+        IF (opDifference < 0) THEN
+        BEGIN
+            opDIFFPERCENT = 0 - CAST(((100 / CAST(vPrevTotal AS DOUBLE PRECISION)) * (vPrevTotal - opTotal)) AS INTEGER);
+        END
+        ELSE
+        BEGIN
+            opDIFFPERCENT = CAST(((100 / CAST(opTOTAL AS DOUBLE PRECISION)) * opDifference) AS INTEGER);
+        END
+    END
+    
+    SUSPEND;
+    
+    
+    vILoop = vILoop + 1;
+    vMonth = vMonth + 1;
+    
+    IF (vMonth > 12) THEN
+    BEGIN
+      vMonth = 1;
+      vYear = vYear + 1;
+    END
+  END
+END^
+
+SET TERM ; ^ 
+
+
+GRANT EXECUTE ON PROCEDURE WSP_STATS_MONTH_TO_DATE TO PUBLIC;
+
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_STATS_CAMPAIGN
+ (IPCAMPAIGN VARCHAR(40) CHARACTER SET UTF8, 
+  IPSTARTDATE TIMESTAMP, 
+  IPENDDATE TIMESTAMP, 
+  IPCAMPAIGN_ID INTEGER)
+AS
+DECLARE VARIABLE vVisits INTEGER;
+  DECLARE VARIABLE vInvoices INTEGER;
+  DECLARE VARIABLE vSales DOUBLE PRECISION;
+BEGIN
+  IF (CURRENT_TIMESTAMP < IPENDDATE) THEN
+  BEGIN
+    SELECT count(a.USER_SESSION)
+    FROM WS_WEB_LOG a
+    where a.LOG_DATE >= :ipSTARTDATE AND a.LOG_DATE < :ipENDDATE
+        and a.REFERER = :ipCAMPAIGN
+    INTO :vVisits;
+    
+    SELECT SUM(io.TOTALCOST)
+    FROM WS_INVOICE_ORDERS io
+    WHERE io.PURCHASEDATE >= :ipSTARTDATE AND io.PURCHASEDATE < :ipENDDATE
+      AND (io.STATUS IN (1, 6, 7, 8, 9, 26, 67))
+      AND (io.PROCESS_STATUS IN (0, 1, 2))
+      AND (io.USER_SESSION IN 
+        (
+            SELECT a.USER_SESSION 
+            FROM WS_WEB_LOG a
+            where a.LOG_DATE >= :ipSTARTDATE AND a.LOG_DATE < :ipENDDATE
+                and a.REFERER = :ipCAMPAIGN
+        ))
+    INTO :vSales;
+        
+    SELECT COUNT(io.ID)
+    FROM WS_INVOICE_ORDERS io
+    WHERE io.PURCHASEDATE >= :ipSTARTDATE AND io.PURCHASEDATE < :ipENDDATE
+      AND (io.STATUS IN (1, 6, 7, 8, 9, 26, 67))
+      AND (io.PROCESS_STATUS IN (0, 1, 2))
+      AND (io.USER_SESSION IN 
+        (
+            SELECT a.USER_SESSION 
+            FROM WS_WEB_LOG a
+            where a.LOG_DATE >= :ipSTARTDATE AND a.LOG_DATE < :ipENDDATE
+            and a.REFERER = :ipCAMPAIGN
+        ))
+    INTO :vInvoices;
+
+    IF (vVisits IS NULL) THEN
+        vVisits = 0;
+        
+    IF (vInvoices IS NULL) THEN
+        vInvoices = 0;
+    
+    IF (vSales IS NULL) THEN
+        vSales = 0.00;
+        
+    UPDATE WS_CAMPAIGN_STATS
+    SET TOTAL_VISITS = :vVisits,
+        TOTAL_INVOICES = :vInvoices,
+        TOTAL_SALES = :vSales
+    WHERE ID = :ipCAMPAIGN_ID;
+  END  
+END^
+
+SET TERM ; ^ 
+
+
+GRANT EXECUTE ON PROCEDURE WSP_STATS_CAMPAIGN TO PUBLIC;
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_SEARCH
+ (IPMEMBER_LEVEL INTEGER)
+RETURNS
+ (OPDESCRIPTION VARCHAR(500) CHARACTER SET UTF8, 
+  OPRESULT_TYPE INTEGER, 
+  OPMEMBER_LEVEL INTEGER, 
+  OPID BIGINT, 
+  OPTEXT BLOB SUB_TYPE 1 , 
+  OPURL VARCHAR(2000) CHARACTER SET UTF8, 
+  OPPRIMARY_PRODUCT_TYPE INTEGER)
+AS
+BEGIN
+    FOR 
+        SELECT a.NAME, 0, 0, a.ID, UPPER(a.NAME || ' ' || a.DESCRIPTION || ' ' || a.FEATURES || ' ' || a.HOW_TO_USE || ' ' || a.INGREDIENTS), '', a.PRIMARY_GROUP_TYPE
+        FROM WS_PRODUCTS a
+        WHERE a.SHOW_ON_WEB = 0
+        UNION
+        SELECT a.DESCRIPTION, 1, sg.MEMBER_LEVEL, a.ID, UPPER(a.DESCRIPTION || ' ' || a.CONTENT), '', -1
+        FROM WS_KNOWLEDGEBASE_ITEMS a
+        LEFT JOIN WS_KNOWLEDGEBASE_GROUPS sg ON (sg.ID = a.SUBGROUPID)
+        WHERE sg.MEMBER_LEVEL <= :ipMEMBER_LEVEL
+        UNION
+        SELECT a.NAME, 2, 0, a.ID, UPPER(a.NAME || ' ' || a.CONTACT_NAME || ' ' || a.ADDRESS), '', -1
+        FROM WS_SALONS a
+        WHERE a.SHOW_ON_WEB = 0
+        UNION
+        SELECT a.NAME, 3, 0, a.ID, UPPER(a.NAME || ' ' || a.DESCRIPTION), '', -1
+        FROM WS_TREATMENTS a
+        UNION
+        SELECT a.NAME, 4, 0, a.ID, UPPER(a.NAME || ' ' || a.DESCRIPTION), '', -1
+        FROM WS_CELEBRITIES a
+        UNION
+        SELECT 'Customer Comment', 6, 0, a.ID, UPPER(a.USER_COMMENTS), '', -1
+        FROM WS_CUSTOMER_COMMENTS a
+        WHERE a.SHOW_ON_WEB = 'Y'
+        UNION
+        SELECT a.TAG, 5, 0, a.ID, UPPER(a.TAG), P.PAGE_NAME, -1
+        FROM WS_HASH_TAGS a
+        LEFT JOIN WS_HASH_TAGS_TO_PAGES HTP ON (HTP.TAG_ID = A.ID)
+        LEFT JOIN WS_HASH_TAG_PAGES P ON (P.ID = HTP.PAGE_ID)
+    INTO :OPDESCRIPTION, :opRESULT_TYPE, :opMEMBER_LEVEL, :opID, :opTEXT, :opURL, :OPPRIMARY_PRODUCT_TYPE 
+    DO
+    BEGIN
+        SUSPEND;
+    END
+END^
+
+SET TERM ; ^ 
+
+
+
+
+GRANT EXECUTE ON PROCEDURE WSP_SEARCH TO PUBLIC;
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_PROCEDURE_RUNNING
+ (IPPROCEDURENAME VARCHAR(50) CHARACTER SET UTF8)
+RETURNS
+ (OPRESULT INTEGER)
+AS
+BEGIN
+  SELECT COUNT(a.MON$ATTACHMENT_ID)
+  FROM MON$STATEMENTS a
+  WHERE a.MON$SQL_TEXT like '%' || :ipPROCEDURENAME || '%'
+    AND a.MON$ATTACHMENT_ID <> CURRENT_CONNECTION
+  INTO :opResult;
+  
+  SUSPEND;
+END^
+
+SET TERM ; ^ 
+
+
+
+
+GRANT EXECUTE ON PROCEDURE WSP_PROCEDURE_RUNNING TO PUBLIC;
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_ROUTINE_MAINTENANCE
+AS
+DECLARE VARIABLE vName VARCHAR(40);
+  DECLARE VARIABLE vSendEmail CHAR(1);
+  DECLARE VARIABLE vEmailSent CHAR(1);
+  DECLARE VARIABLE vSenderName VARCHAR(150);
+  DECLARE VARIABLE vSenderEmail VARCHAR(250);
+  DECLARE VARIABLE vEmail BLOB SUB_TYPE TEXT;
+  DECLARE VARIABLE vEmail2 BLOB SUB_TYPE TEXT;
+  DECLARE VARIABLE vEmailSubject VARCHAR(100);
+  DECLARE VARIABLE vFirstName VARCHAR(100);
+    
+  DECLARE VARIABLE vUserEmail VARCHAR(100);
+  DECLARE VARIABLE vUserName VARCHAR(100);
+  DECLARE VARIABLE vUserGUUID VARCHAR(40);
+  DECLARE VARIABLE vNewID BIGINT;
+  DECLARE VARIABLE vSendTime TIMESTAMP;
+    
+  DECLARE VARIABLE vMessagesSent BIGINT;
+    
+  DECLARE VARIABLE vPRODUCTGROUP INTEGER;
+    
+  DECLARE VARIABLE vURL VARCHAR(500);
+  DECLARE VARIABLE vCount integer;
+BEGIN
+  EXECUTE PROCEDURE WSP_PROCEDURE_RUNNING('WSP_ROUTINE_MAINTENANCE') RETURNING_VALUES :vCount;
+  
+  IF (vCount = 0) THEN
+  BEGIN
+    DELETE FROM WS_BANNED_IP a 
+    WHERE a.DATE_BANNED < CURRENT_TIMESTAMP - 30;
+    
+    FOR
+    SELECT a.ACTIVATE_PRODUCT_GROUP
+    FROM WS_CAMPAIGNS a
+	WHERE (a.CAMPAIGN_START < CURRENT_TIMESTAMP) AND (a.CAMPAIGN_FINISH > CURRENT_TIMESTAMP)
+	INTO :vPRODUCTGROUP
+	DO
+	BEGIN
+        IF ((vPRODUCTGROUP IS NOT NULL) AND 
+            (NOT EXISTS(SELECT a.ID FROM WS_PRODUCT_GROUP a WHERE a.SHOW_ON_WEBSITE = 'Y' AND a.ID = :vPRODUCTGROUP))) THEN
+        BEGIN
+            IF (EXISTS(SELECT pg.ID FROM WS_PRODUCT_GROUP pg WHERE pg.ID = :vPRODUCTGROUP)) THEN
+            BEGIN
+                UPDATE WS_PRODUCT_GROUP
+                SET SHOW_ON_WEBSITE = 'Y'
+                WHERE ID = :vPRODUCTGROUP;
+            END
+        END
+	
+	END
+
+    
+    FOR
+    SELECT a.ACTIVATE_PRODUCT_GROUP
+    FROM WS_CAMPAIGNS a
+	WHERE (a.CAMPAIGN_FINISH < CURRENT_TIMESTAMP) AND (a.ACTIVATE_PRODUCT_GROUP > -1)
+	INTO :vPRODUCTGROUP
+	DO
+	BEGIN
+        IF ((vPRODUCTGROUP IS NOT NULL) AND 
+            (EXISTS(SELECT a.ID FROM WS_PRODUCT_GROUP a WHERE a.SHOW_ON_WEBSITE = 'Y' AND a.ID = :vPRODUCTGROUP))) THEN
+        BEGIN
+            IF (EXISTS(SELECT pg.ID FROM WS_PRODUCT_GROUP pg WHERE pg.ID = :vPRODUCTGROUP)) THEN
+            BEGIN
+                UPDATE WS_PRODUCT_GROUP
+                SET SHOW_ON_WEBSITE = 'N'
+                WHERE ID = :vPRODUCTGROUP;
+            END
+        END
+	
+	END
+
+
+    
+    vMessagesSent = 0;
+    FOR
+    SELECT a.CAMPAIGN_NAME, a.EMAIL_SEND, a.EMAIL_SENT, a.EMAIL_SENDER, a.EMAIL_ADDRESS, a.EMAIL_MESSAGE, a.EMAIL_SUBJECT
+    FROM WS_CAMPAIGNS a
+	WHERE (a.CAMPAIGN_START < CURRENT_TIMESTAMP) AND (a.CAMPAIGN_FINISH > CURRENT_TIMESTAMP)
+	INTO :vName, :vSendEmail, :vEmailSent, :vSenderName, :vSenderEmail, :vEmail, :vEmailSubject
+	DO
+	BEGIN
+
+	IF ((vSendEmail = 'Y') AND (vEmailSent = 'N')) THEN
+	BEGIN
+        SELECT a.NAME_VALUE
+        FROM WS_DATA a
+        WHERE a.NAME = 'SITE.URL'
+        INTO :vURL;
+        
+        
+        vEmail = REPLACE(vEmail, '{campaign}', vName);
+        
+        IF (vEMAIL CONTAINING('{site-url}')) THEN
+            vEmail = REPLACE(vEmail, '{site-url}', vURL);
+        
+        IF (vEMAIL CONTAINING('{site-url-short}')) THEN
+            vEmail = REPLACE(vEmail, '{site-url-short}', REPLACE(REPLACE(LOWER(vURL), 'https://', ''), 'http://', ''));
+        
+        FOR 
+            SELECT a.EMAIL, a.NAME, a.NAME, a.USER_GUUID
+            FROM WS_MAIL_SUBSCRIBERS a
+            UNION ALL
+            SELECT m.EMAIL, m.USERNAME, m.FIRSTNAME, m.USER_GUUID
+            FROM WS_MEMBERS m
+            WHERE (m.RECEIVE_EMAIL_SPECIAL_OFFERS = 'T')
+              AND (m.EMAIL CONTAINING('@'))
+              AND (UPPER(m.EMAIL) NOT CONTAINING('AOL.COM'))
+        INTO :vUserEmail, :vUserName, :vFirstName, :vUserGUUID
+        DO
+        BEGIN 
+            
+            vNewID = GEN_ID(GEN_WS_EMAIL_ID, 1);
+            
+            vEmail2 = vEmail;
+            
+            IF (vEmail2 CONTAINING('{username')) THEN
+                vEmail2 = REPLACE(vEmail2, '{username}', vFirstName);
+            
+            IF (vEmail2 CONTAINING('{UserGUUID}')) THEN
+                vEmail2 = REPLACE(vEmail2, '{UserGUUID}', vUserGUUID);
+    
+            
+            IF (MOD(vMessagesSent, 1000) = 0) THEN
+            BEGIN
+                vSendTime = vSendTime + (5.00000000/1440);
+            END
+    
+            INSERT INTO WS_EMAIL(
+                ID,
+                TO_NAME, 
+                TO_EMAIL, 
+                FROM_NAME, 
+                FROM_MAIL, 
+                SUBJECT, 
+                MAIL_MESSAGE, 
+                PRIORITY, 
+                QUEUE_DATE,
+                SEND_DATE_TIME
+            ) VALUES (
+                :vNewID,
+                :vUserName, 
+                :vUserEmail, 
+                :vSenderName,  
+                :vSenderEmail, 
+                :vEmailSubject, 
+                :vEmail2, 
+                2, 
+                'NOW',
+                :vSendTime
+            );
+            
+            vMessagesSent = vMessagesSent + 1;
+        END
+        
+        
+        UPDATE WS_CAMPAIGNS SET EMAIL_SENT = 'Y' WHERE CAMPAIGN_NAME = :vName;
+        END
+	END
+  END
+  
+  
+  --remove old appointments
+  DELETE
+  FROM WS_APPOINTMENTS_CHANGES a
+  WHERE a.APPOINTMENT_DATE < (SELECT CURRENT_TIMESTAMP - CAST(a.NAME_VALUE AS INTEGER)
+                              FROM WS_DATA a
+                              WHERE a.NAME = 'Max Appointment History');
+
+  -- remove old web log data
+  DELETE
+  FROM WS_WEB_LOG a
+  WHERE a.LOG_DATE < CURRENT_TIMESTAMP -365;  
+  
+END^
+
+SET TERM ; ^ 
+
+
+
+GRANT EXECUTE ON PROCEDURE WSP_ROUTINE_MAINTENANCE TO PUBLIC;
+
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE SP_COMPETITION_REGISTRATION
+ (IPEMAIL VARCHAR(100) CHARACTER SET UTF8, 
+  IPFIRSTNAME VARCHAR(50) CHARACTER SET UTF8, 
+  IPLASTNAME VARCHAR(80) CHARACTER SET UTF8, 
+  IPDATEOFBIRTH DATE, 
+  IPRECEIVEUPDATES CHAR(1) CHARACTER SET UTF8, 
+  IPPASSWORD VARCHAR(50) CHARACTER SET UTF8, 
+  IPCOUNTRYID INTEGER, 
+  IPCOMPETITIONNAME VARCHAR(40) CHARACTER SET UTF8)
+AS
+DECLARE VARIABLE vCampaignID INTEGER;
+  DECLARE VARIABLE vUserID BIGINT;
+BEGIN
+  
+  SELECT ID
+  FROM WS_CAMPAIGNS
+  WHERE CAMPAIGN_NAME = :ipCOMPETITIONNAME
+  INTO :vCampaignID;
+  
+  IF (vCampaignID IS NULL) THEN
+    EXCEPTION EXC_COMP_NOT_FOUND;
+    
+  
+  SELECT ID
+  FROM WS_MEMBERS
+  WHERE LOWER(EMAIL) = LOWER(:ipEMAIL)
+  INTO :vUserID;
+  
+  IF (vUserID IS NULL) THEN
+  BEGIN
+    
+    IF (:ipFIRSTNAME = '' OR :ipFIRSTNAME IS NULL) THEN
+        EXCEPTION EXC_COMP_USER_NAME_INVALID;
+        
+    IF (:ipLASTNAME = '' OR :ipLASTNAME IS NULL) THEN
+        EXCEPTION EXC_COMP_USER_NAME_INVALID;
+        
+    IF (:ipEMAIL = '' or :ipEMAIL IS NULL) THEN
+        EXCEPTION EXC_INV_MEMBERS_EMAIL;
+  
+    EXECUTE PROCEDURE WSP_MEMBERS_INS(:ipEMAIL, :ipFIRSTNAME || ' ' || :ipLASTNAME, :ipFIRSTNAME, :ipLASTNAME, :ipPASSWORD, '', '', '', '', '', '', '', :ipCOUNTRYID, '', 6, :ipDATEOFBIRTH) RETURNING_VALUES :vUserID;
+  END   
+    
+  UPDATE WS_MEMBERS
+  SET RECEIVE_EMAIL_SPECIAL_OFFERS = :ipRECEIVEUPDATES
+  WHERE ID = :vUserID;
+
+  
+  IF (NOT EXISTS (SELECT USER_ID FROM WS_COMPETITION_TO_USER WHERE COMPETITION_ID = :vCampaignID AND USER_ID = :vUserID)) THEN
+    INSERT INTO WS_COMPETITION_TO_USER (COMPETITION_ID, USER_ID) VALUES (:vCampaignID, :vUserID);
+  
+END^
+
+SET TERM ; ^ 
+
+
+
+
+GRANT EXECUTE ON PROCEDURE SP_COMPETITION_REGISTRATION TO PUBLIC;
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE SP_WS_TAGLINES_CREATE
+RETURNS
+ (ID BIGINT, 
+  DESCRIPTION VARCHAR(250) CHARACTER SET UTF8)
+AS
+DECLARE VARIABLE vNewID BIGINT;
+BEGIN
+    vNewID = GEN_ID(GEN_TAGLINES_ID, 1);
+
+    INSERT INTO WS_TAGLINES (ID, DESCRIPTION) VALUES (:vNewID, '');
+    ID = vNewID;
+    DESCRIPTION = '';
+    SUSPEND;
+END^
+
+SET TERM ; ^ 
+
+
+GRANT EXECUTE ON PROCEDURE SP_WS_TAGLINES_CREATE TO PUBLIC;
+
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSF_FIND_NEAREST_SALON
+ (POSTCODE VARCHAR(5) CHARACTER SET UTF8)
+RETURNS
+ (DISTANCE FLOAT, 
+  SALON_ID BIGINT)
+AS
+DECLARE VARIABLE vsLAT FLOAT;
+  DECLARE VARIABLE vsLON FLOAT;
+  DECLARE VARIABLE vdLAT FLOAT;
+  DECLARE VARIABLE vdLON FLOAT;
+BEGIN
+  FOR 
+  SELECT source.LATITUDE, source.LONGITUDE, dest.LATITUDE, dest.LONGITUDE, dest.SALON_ID
+  FROM hwz_postcodes source, 
+    salon_with_lat_lon dest
+  WHERE source.outcode = :POSTCODE 
+    AND dest.LONGITUDE IS NOT NULL
+  INTO :vsLAT, :vsLON, vdLAT, vdLON, :SALON_ID
+  DO
+  BEGIN
+    EXECUTE PROCEDURE GEODISTKM(vsLAT, vsLON, vdLAT, vdLON) RETURNING_VALUES :DISTANCE;
+    SUSPEND;
+  END
+END^
+
+SET TERM ; ^ 
+
+
+
+GRANT EXECUTE ON PROCEDURE WSF_FIND_NEAREST_SALON TO PUBLIC;
+
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WS_SEO
+RETURNS
+ (OPNAME VARCHAR(200) CHARACTER SET UTF8, 
+  OPURL VARCHAR(200) CHARACTER SET UTF8, 
+  OPTITLE VARCHAR(1000) CHARACTER SET UTF8, 
+  OPHASHTAGCOUNT INTEGER, 
+  OPDESCRIPTION VARCHAR(1000) CHARACTER SET UTF8)
+AS
+DECLARE VARIABLE vType VARCHAR(250);
+DECLARE VARIABLE vSend INTEGER;
+BEGIN
+  FOR 
+    SELECT a.NAME, CASE a.PRIMARY_GROUP_TYPE WHEN 0 THEN 'Professional' ELSE 'Stratosphere' END, 
+        CASE a.PRIMARY_GROUP_TYPE WHEN 0 THEN '/PRODUCTS/PRODUCT.ASPX?ID=' || a.ID ELSE '/PRODUCTS/STRATOSPHERE.ASPX?ID=' || a.ID END
+    FROM WS_PRODUCTS a
+    WHERE a.SHOW_ON_WEB = 0
+
+    INTO :opNAME, :vtype, :opURL
+    DO
+    BEGIN
+        vSend = 0;
+        opTITLE = NULL;
+        opDescription = NULL;
+        
+        SELECT d.NAME_VALUE
+        FROM WS_DATA d
+        WHERE d.NAME = 'TITLE:' || :opURL
+        INTO :opTITLE;
+    
+        SELECT d.NAME_VALUE
+        FROM WS_DATA d
+        WHERE d.NAME = 'DESCRIPTION:' || :opURL
+        INTO :opDESCRIPTION;
+
+        SELECT COUNT(a.TAG_ID)
+        FROM WS_HASH_TAGS_TO_PAGES a
+        WHERE a.PAGE_ID IN
+        (
+        SELECT a.ID
+        FROM WS_HASH_TAG_PAGES a
+        where a.PAGE_NAME like '%/PRODUCTS/PRODUCT.ASPX?ID=187'
+        )
+        INTO :opHASHTAGCOUNT;
+        
+        
+        IF (opTITLE IS NULL) THEN
+        BEGIN
+            vSend = vSend + 1;
+            opTITLE = '';
+        END
+        
+        IF (opDescription IS NULL) THEN
+        BEGIN
+            vSend = vSend + 1;
+            opDescription = '';
+        END
+
+        --IF (vSend > 0) THEN
+            SUSPEND;
+    END
+END^
+
+SET TERM ; ^ 
+
+
+
+GRANT EXECUTE ON PROCEDURE WS_SEO TO PUBLIC;
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_DISCOUNT_CODE_CREATE
+ (IPCODE VARCHAR(30) CHARACTER SET UTF8, 
+  IPVALUE INTEGER)
+RETURNS
+ (OPCREATED INTEGER)
+AS
+BEGIN
+  IF (EXISTS(SELECT ID FROM WS_COUPONS WHERE DISCOUNT_COUPON = :ipCode)) THEN
+  BEGIN
+    opCreated = 0;
+  END ELSE
+  BEGIN
+    opCreated = 1;
+    
+    INSERT INTO WS_COUPONS (DISCOUNT_COUPON, EXPIRES, PRODUCTSKU, ISACTIVE, DISCOUNT, FREE_PRODUCT_CODE, MAIN_PRODUCT_CODE, VOUCHER_TYPE, VOUCHER_USAGE)
+    VALUES 
+    (
+    :ipCode,
+    CURRENT_TIMESTAMP + 30000,
+    null, 
+    0, 
+    :ipValue, 
+    -1, 
+    -1, 
+    1, 
+    0
+    );
+    
+  END
+  
+  SUSPEND;
+END^
+
+SET TERM ; ^ 
+
+
+
+GRANT EXECUTE ON PROCEDURE WSP_DISCOUNT_CODE_CREATE TO PUBLIC;
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_HASHTAG_ADD
+ (IPTAGID BIGINT, 
+  IPPAGE_NAME VARCHAR(500) CHARACTER SET UTF8)
+AS
+DECLARE VARIABLE vPageID BIGINT; 
+BEGIN
+  IF (EXISTS(SELECT ID FROM WS_HASH_TAG_PAGES WHERE PAGE_NAME = :ipPAGE_NAME)) THEN
+  BEGIN
+    SELECT ID
+    FROM WS_HASH_TAG_PAGES
+    WHERE PAGE_NAME = :ipPAGE_NAME
+    INTO :vPageID;
+  END
+  ELSE
+  BEGIN
+    vPageID = GEN_ID(GEN_WS_HASH_TAG_PAGES, 1);
+    
+    INSERT INTO WS_HASH_TAG_PAGES (ID, PAGE_NAME)
+    VALUES (:vPageID, :ipPAGE_NAME);
+  END
+  
+  INSERT INTO WS_HASH_TAGS_TO_PAGES(TAG_ID, PAGE_ID) VALUES (:ipTAGID, :vPageID);
+END^
+
+SET TERM ; ^ 
+
+
+GRANT EXECUTE ON PROCEDURE WSP_HASHTAG_ADD TO PUBLIC;
+
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_HASHTAG_CREATE
+ (IPTAGNAME VARCHAR(30) CHARACTER SET UTF8)
+RETURNS
+ (OPTAGID BIGINT, 
+  OPTAGNAME VARCHAR(30) CHARACTER SET UTF8)
+AS
+DECLARE VARIABLE vTagID BIGINT; 
+BEGIN
+  IF (EXISTS(SELECT ID FROM WS_HASH_TAGS WHERE UPPER(TAG) = UPPER(:ipTAGNAME))) THEN
+  BEGIN
+    SELECT ID, TAG
+    FROM WS_HASH_TAGS
+    WHERE UPPER(TAG) = UPPER(:ipTAGNAME)
+    INTO :opTAGID, opTAGNAME;
+  END
+  ELSE
+  BEGIN
+    vTagID = GEN_ID(GEN_WS_HASH_TAGS, 1);
+    
+    INSERT INTO WS_HASH_TAGS (ID, TAG)
+    VALUES (:vTagID, :ipTAGNAME);
+    
+    opTAGID = vTagID;
+    opTAGNAME = ipTAGNAME;
+  END
+  
+  SUSPEND;
+END^
+
+SET TERM ; ^ 
+
+
+GRANT EXECUTE ON PROCEDURE WSP_HASHTAG_CREATE TO PUBLIC;
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_HASHTAG_REMOVE
+ (IPTAGID BIGINT, 
+  IPPAGE_NAME VARCHAR(500) CHARACTER SET UTF8)
+AS
+DECLARE VARIABLE vPageID BIGINT; 
+BEGIN
+  IF (EXISTS(SELECT ID FROM WS_HASH_TAG_PAGES WHERE PAGE_NAME = :ipPAGE_NAME)) THEN
+  BEGIN
+    SELECT ID
+    FROM WS_HASH_TAG_PAGES
+    WHERE PAGE_NAME = :ipPAGE_NAME
+    INTO :vPageID;
+  END
+  ELSE
+  BEGIN
+    vPageID = GEN_ID(GEN_WS_HASH_TAG_PAGES, 1);
+    
+    INSERT INTO WS_HASH_TAG_PAGES (ID, PAGE_NAME)
+    VALUES (:vPageID, :ipPAGE_NAME);
+  END
+  
+  DELETE FROM WS_HASH_TAGS_TO_PAGES
+  WHERE TAG_ID = :ipTAGID
+    AND PAGE_ID = :vPageID;
+END^
+
+SET TERM ; ^ 
+
+
+GRANT EXECUTE ON PROCEDURE WSP_HASHTAG_REMOVE TO PUBLIC;
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_KBGROUPS_GET_ADMIN
+RETURNS
+ (OPID INTEGER, 
+  OPGROUP_NAME VARCHAR(50) CHARACTER SET UTF8, 
+  OPDESCRIPTION VARCHAR(150) CHARACTER SET UTF8, 
+  OPGROUPORDER INTEGER, 
+  OPVIEWCOUNT INTEGER, 
+  OPGROUP_PARENT INTEGER, 
+  OPMEMBER_LEVEL INTEGER)
+AS
+BEGIN
+    FOR SELECT ID, GROUP_NAME, DESCRIPTION, GROUPORDER, VIEWCOUNT, GROUP_PARENT, MEMBER_LEVEL
+    FROM WS_KNOWLEDGEBASE_GROUPS
+    ORDER BY GROUPORDER
+    INTO :opID, :opGROUP_NAME, :opDESCRIPTION, :opGROUPORDER, :opVIEWCOUNT, :opGROUP_PARENT, :opMEMBER_LEVEL
+    DO
+    BEGIN
+      SUSPEND;
+    END
+END^
+
+SET TERM ; ^ 
+
+
+GRANT EXECUTE ON PROCEDURE WSP_KBGROUPS_GET_ADMIN TO PUBLIC;
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_PRODUCTS_SET_FEATURED
+ (IPPRODUCTID BIGINT)
+AS
+BEGIN
+  UPDATE WS_PRODUCTS
+  SET FEATURED_PRODUCT = 'N'
+  WHERE FEATURED_PRODUCT = 'Y';
+
+  UPDATE WS_PRODUCTS
+  SET FEATURED_PRODUCT = 'Y'
+  WHERE ID = :ipPRODUCTID;
+END^
+
+SET TERM ; ^ 
+
+
+GRANT EXECUTE ON PROCEDURE WSP_PRODUCTS_SET_FEATURED TO PUBLIC;
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_CUST_PAGES_ADD_MISSING
+ (IPWEBSITEID INTEGER)
+AS
+DECLARE VARIABLE vCountryID INTEGER;
+  DECLARE VARIABLE vPageData BLOB SUB_TYPE 1;
+  DECLARE VARIABLE vDescription VARCHAR(1000);
+BEGIN
+    FOR 
+        SELECT ID
+        FROM WS_COUNTRIES 
+        WHERE LOCALIZED = 'Y'
+        INTO :vCountryID
+    DO
+    BEGIN
+        FOR
+            SELECT cp1.DESCRIPTION, cp1.PAGE_DATA
+            FROM WS_CUSTOM_PAGES cp1 
+            WHERE cp1.WEBSITE_ID = :ipWEBSITEID
+                AND cp1.DESCRIPTION NOT IN 
+                    (
+                        SELECT cp.DESCRIPTION
+                        FROM WS_CUSTOM_PAGES cp 
+                        WHERE cp.WEBSITE_ID = :ipWEBSITEID 
+                            AND cp.DESCRIPTION NOT IN (SELECT a.DESCRIPTION FROM WS_CUSTOM_PAGES a WHERE a.WEBSITE_ID = :ipWEBSITEID)
+                    )
+            INTO :vDescription, :vPageData
+        DO
+        BEGIN
+            IF (NOT EXISTS( SELECT a.DESCRIPTION, a.WEBSITE_ID, a.COUNTRY_ID
+                            FROM WS_CUSTOM_PAGES a
+                            WHERE a.DESCRIPTION = :vDescription AND a.WEBSITE_ID = :ipWEBSITEID AND a.COUNTRY_ID = :vCountryID)) THEN
+            BEGIN
+                INSERT INTO WS_CUSTOM_PAGES (ID, PAGE_DATA, DESCRIPTION, WEBSITE_ID, COUNTRY_ID, IS_ACTIVE, PAGE_TYPE)
+                VALUES 
+                (
+                    NULL, 
+                    :vPageData, 
+                    :vDescription, 
+                    :ipWEBSITEID, 
+                    :vCountryID,
+                    'N',
+                    0
+                );
+            END
+        END
+    END
+END^
+
+SET TERM ; ^ 
+
+
+
+GRANT EXECUTE ON PROCEDURE WSP_CUST_PAGES_ADD_MISSING TO PUBLIC;
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_AFFILIATE_PRODUCTS
+ (IPCOUNTRYCODE VARCHAR(2) CHARACTER SET UTF8, 
+  IPAFFILIATEID VARCHAR(50) CHARACTER SET UTF8, 
+  IPIMAGESIZE INTEGER, 
+  IPWEBSITE VARCHAR(300) CHARACTER SET UTF8)
+RETURNS
+ (OPSKU VARCHAR(10) CHARACTER SET UTF8, 
+  OPTITLE VARCHAR(300) CHARACTER SET UTF8, 
+  OPPRICE DOUBLE PRECISION , 
+  OPDISCOUNTPRICE DOUBLE PRECISION , 
+  OPDESCRIPTION VARCHAR(4000) CHARACTER SET UTF8, 
+  OPSTOCKAVAILABILITY VARCHAR(20) CHARACTER SET UTF8, 
+  OPIMAGELINK VARCHAR(1000) CHARACTER SET UTF8, 
+  OPPRODUCTLINK VARCHAR(1000) CHARACTER SET UTF8)
+AS
+DECLARE VARIABLE vPrice1 DOUBLE PRECISION;
+  DECLARE VARIABLE vPrice2 DOUBLE PRECISION;
+  DECLARE VARIABLE vPrice3 DOUBLE PRECISION;
+  DECLARE VARIABLE vDiscount DOUBLE PRECISION;
+  DECLARE VARIABLE vImage VARCHAR(1000);
+  DECLARE VARIABLE vProductID BIGINT;
+  DECLARE VARIABLE vProductLink VARCHAR(150);
+  DECLARE VARIABLE vCostColumn INTEGER;
+  DECLARE VARIABLE vCostMultiplier DOUBLE PRECISION;
+  DECLARE VARIABLE vVATRate DOUBLE PRECISION;
+BEGIN
+    SELECT c.PRICE_COLUMN, c.COST_MULTIPLIER, c.VAT_RATE
+    FROM WS_COUNTRIES c
+    WHERE c.COUNTRYCODE = :ipCOUNTRYCODE
+    INTO :vCostColumn, :vCostMultiplier, :vVATRate;
+    
+    FOR 
+        SELECT pcs.SKU, p.NAME || ' ' || pcs.PRODUCT_SIZE, p.DESCRIPTION, pcs.PRODUCT_COST, pcs.PRODUCT_COST2, pcs.PRODUCT_COST3, 
+            CASE pcs.OUT_OF_STOCK WHEN 'F' THEN 'in stock' ELSE 'out of stock' END, 
+            p.IMAGE, pcs.DISCOUNT_VALUE, p.ID,
+            CASE p.PRIMARY_GROUP_TYPE WHEN 0 THEN '/products/product.aspx?ID=' ELSE '/products/stratosphere.aspx?ID=' END
+        FROM WS_PRODUCTS_COST_SIZE pcs
+            JOIN WS_PRODUCTS p ON (pcs.PRODUCT_ID = p.ID)
+            JOIN WS_PRODUCT_TYPE pt ON (pt.ID = p.PRIMARY_GROUP_TYPE)
+        WHERE pcs.MEMBER_LEVEL <= 0
+            AND pcs.IS_DELETED = 'N'
+            AND pcs.PRODUCT_COST > 0.00
+        INTO :opSKU, :opTITLE, :opDESCRIPTION, :vPrice1, :vPrice2, :vPrice3, :opSTOCKAVAILABILITY, 
+            :vImage, :vDiscount, :vProductID, :vProductLink
+    DO
+    BEGIN
+        IF (ipImageSize <> 148) THEN
+        BEGIN
+            vIMAGE = replace(vImage, '148', CAST(ipIMAGESIZE AS VARCHAR(3)));
+        END
+        
+        IF (vCostColumn = 0) THEN
+            opPRICE = vPrice1;
+        ELSE IF (vCostColumn = 1) THEN
+            opPRICE = vPrice2;
+        ELSE IF (vCostColumn = 2) THEN
+            opPRICE = vPrice3;
+        ELSE
+            EXCEPTION EXC_104003462 'Invalid Country Code';
+            
+        IF (vCostMultiplier > 0.0) THEN
+        BEGIN
+            opPRICE = opPRICE * vCostMultiplier;
+        END
+        
+        IF (vDiscount > 0.0) THEN
+        BEGIN
+            opDISCOUNTPRICE = (opPRICE / 100) * (100 - vDiscount);
+        END ELSE 
+        BEGIN
+            opDISCOUNTPRICE = opPRICE;
+        END
+        
+        IF (vVATRate > 0.0) THEN
+        BEGIN
+            opPRICE = opPrice + ((vVATRate / 100) * opPRICE);
+            opDISCOUNTPRICE = opDISCOUNTPRICE + ((vVATRate / 100) * opDISCOUNTPRICE);        
+        END
+        
+        opIMAGELINK = 'https://static.heavenskincare.com/images/products/' || vImage;
+        
+        opPRODUCTLINK = ipWEBSITE || vProductLink || vProductID || '&aff=' || ipAffiliateID;
+        SUSPEND;
+    END
+END^
+
+SET TERM ; ^ 
+
+
+GRANT EXECUTE ON PROCEDURE WSP_AFFILIATE_PRODUCTS TO PUBLIC;
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE SEO_PAGE_DATA
+ (IPURL VARCHAR(800) CHARACTER SET UTF8, 
+  IPAGEDAYS INTEGER)
+RETURNS
+ (OPDATE DATE, 
+  OPTOTALVISITS BIGINT, 
+  OPBOTVISITS BIGINT, 
+  OPBOUNCED BIGINT, 
+  OPMINSECONDS BIGINT, 
+  OPMAXSECONDS BIGINT, 
+  OPAVGSECONDS BIGINT, 
+  OPTIMEDVISITS BIGINT, 
+  OPCONVERSIONS BIGINT, 
+  OPMOBILECONVERSIONS BIGINT, 
+  OPMOBILEVISITS BIGINT, 
+  OPLANDINGPAGE BIGINT, 
+  OPREFERUNKNOWN BIGINT, 
+  OPREFERDIRECT BIGINT, 
+  OPREFERAL BIGINT, 
+  OPREFERORGANIC BIGINT, 
+  OPREFERBING BIGINT, 
+  OPREFERGOOGLE BIGINT, 
+  OPREFERYAHOO BIGINT, 
+  OPREFERFACEBOOK BIGINT, 
+  OPREFERTWITTER BIGINT)
+AS
+DECLARE VARIABLE vTotalSeconds BIGINT;
+    DECLARE VARIABLE vID BIGINT;
+    DECLARE VARIABLE vCreated TIMESTAMP;
+    DECLARE VARIABLE vSessionID VARCHAR(100);
+    DECLARE VARIABLE vIPAddress VARCHAR(15);
+    DECLARE VARIABLE vIsMobile CHAR(1);
+    DECLARE VARIABLE vReferralType INTEGER;
+    DECLARE VARIABLE vBounced CHAR(1);
+    DECLARE VARIABLE vIsBot CHAR(1);
+    DECLARE VARIABLE vSeconds BIGINT;
+    DECLARE VARIABLE vLandingURL VARCHAR(1000);
+    DECLARE VARIABLE vLoopCounter INTEGER;
+    DECLARE VARIABLE vSaleAmount DECIMAL;
+    DECLARE VARIABLE vHash BIGINT;
+BEGIN
+    vHash = HASH(LOWER(SUBSTRING(ipURL FROM POSITION('/', ipURL, 10))));
+    
+    vLoopCounter = ipAgeDays -1;
+    
+    WHILE (vLoopCounter >= 0) DO
+    BEGIN
+        opDate = CAST(CURRENT_TIMESTAMP - vLoopCounter AS DATE);
+        opTotalVisits = 0; 
+        opBOTVisits = 0; 
+        opBounced = 0;
+        opReferUnknown = 0;
+        opReferDirect = 0;
+        opReferal = 0;
+        opReferOrganic = 0;
+        opReferBing = 0;
+        opReferGoogle = 0;
+        opReferYahoo = 0;
+        opReferFacebook = 0;
+        opReferTwitter = 0;
+        opMinSeconds = 20000000;
+        opMaxSeconds = 0;
+        opAvgSeconds = 0;
+        opTimedVisits = 0;
+        vSeconds = 0;
+        opMobileVisits = 0;
+        opLandingPage = 0;
+        opMobileConversions = 0;
+        opConversions = 0;
+        vSaleAmount = 0.00;
+        
+        FOR
+        SELECT pv.SECONDS, a.CREATED, a.SESSION_ID, a.IP_ADDRESS,  
+            a.IS_MOBILE_DEVICE, a.REFERRAL_TYPE, a.BOUNCED, a.IS_BOT,
+            a.ID
+        FROM SEO_DATA a
+          JOIN SEO_DATA_PAGE_VIEWS pv ON (pv.SEO_DATA_ID = a.ID)
+        WHERE pv.URL_HASH = :vHash
+          AND CAST(a.CREATED AS DATE) = :opDate
+        ORDER BY pv.SEO_DATA_ID, pv.ID
+        INTO :vTotalSeconds, :vCreated, :vSessionID, vIPAddress,
+            :vIsMobile, :vReferralType, :vBounced, :vIsBot, :vID
+        DO
+        BEGIN
+            -- was it the landing page?
+            SELECT FIRST 1 pv.URL, a.SALE_AMOUNT
+            FROM SEO_DATA a
+              INNER JOIN SEO_DATA_PAGE_VIEWS pv ON (pv.SEO_DATA_ID = a.ID)
+            WHERE pv.SEO_DATA_ID = :vID
+            ORDER BY pv.SEO_DATA_ID, pv.ID
+            INTO :vLandingURL, :vSaleAmount;
+            
+            IF (vSaleAmount> 0.00) THEN
+            BEGIN
+                opConversions = opConversions + 1;
+                
+                IF (vIsMobile = 'Y') THEN
+                    opMobileConversions = opMobileConversions + 1;
+            END 
+            
+            IF (POSITION(ipURL IN vLandingURL) > 0) THEN
+            BEGIN
+                -- it's a landing page
+                opLandingPage = opLandingPage + 1;
+                IF (vReferralType = 0) THEN opReferUnknown = opReferUnknown + 1;
+                ELSE IF (vReferralType = 1) THEN opReferDirect = opReferDirect + 1;
+                ELSE IF (vReferralType = 2) THEN opReferOrganic = opReferOrganic + 1;
+                ELSE IF (vReferralType = 3) THEN opReferal = opReferal + 1;
+                ELSE IF (vReferralType = 4) THEN opReferFacebook = opReferFacebook + 1;
+                ELSE IF (vReferralType = 5) THEN opReferTwitter = opReferTwitter + 1;
+                ELSE IF (vReferralType = 6) THEN opReferGoogle = opReferGoogle + 1;
+                ELSE IF (vReferralType = 7) THEN opReferYahoo = opReferYahoo + 1;
+                ELSE IF (vReferralType = 8) THEN opReferBing = opReferBing + 1;
+            END 
+            
+            opTotalVisits = opTotalVisits + 1;
+            
+            IF (vIsBot = 'Y') THEN opBotVisits = opBotVisits + 1;
+            
+            IF (vBounced = 'Y' AND vIsBot = 'N') THEN opBounced = opBounced + 1;
+            
+            IF (vBounced = 'N' AND vIsBot = 'N' AND vTotalSeconds > 0) THEN
+            BEGIN
+                opTimedVisits = opTimedVisits + 1;
+                vSeconds = vSeconds + vTotalSeconds;
+                
+                IF (vTotalSeconds < opMinSeconds) THEN
+                    opMinSeconds = vTotalSeconds;
+                    
+                IF (vTotalSeconds > opMaxSeconds) THEN
+                    opMaxSeconds = vTotalSeconds;
+            END
+            
+            IF (vIsMobile = 'Y') THEN opMobileVisits = opMobileVisits + 1;
+        END
+        
+        IF (opMinSeconds = 20000000) THEN opMinSeconds = 0;
+
+        IF (vSeconds > 0) THEN opAvgSeconds = vSeconds / opTimedVisits; 
+        
+        SUSPEND;
+        
+        vLoopCounter = vLoopCounter - 1;
+    END -- loop
+END^
+
+SET TERM ; ^ 
+
+
+
+GRANT EXECUTE ON PROCEDURE SEO_PAGE_DATA TO PUBLIC;
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_ROUTINE_MAINT_CAMPAIGNS
+AS
+DECLARE VARIABLE vName VARCHAR(40);
+  DECLARE VARIABLE vEnd TIMESTAMP;
+  DECLARE VARIABLE vStart TIMESTAMP;
+  DECLARE VARIABLE vCount INTEGER;
+  DECLARE VARIABLE vID INTEGER;
+BEGIN
+  EXECUTE PROCEDURE WSP_PROCEDURE_RUNNING('WSP_ROUTINE_MAINT_CAMPAIGNS') RETURNING_VALUES :vCount;
+  
+  IF (vCount = 0) THEN
+  BEGIN
+    FOR 
+        SELECT C.CAMPAIGN_NAME, c.CAMPAIGN_START, C.CAMPAIGN_FINISH, C.ID
+        FROM WS_CAMPAIGNS C
+        INTO :vName, vStart, :vEnd, :vID
+    DO
+    BEGIN
+        EXECUTE PROCEDURE WSP_STATS_CAMPAIGN(:vName, vStart, vEnd + 20, vID);
+    END
+  END
+END^
+
+SET TERM ; ^ 
+
+
+GRANT EXECUTE ON PROCEDURE WSP_ROUTINE_MAINT_CAMPAIGNS TO PUBLIC;
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_CAMPAIGNS_GET_ACTIVE
+RETURNS
+ (OPID INTEGER, 
+  OPCAMPAIGN_START TIMESTAMP, 
+  OPCAMPAIGN_FINISH TIMESTAMP, 
+  OPCAMPAIGN_NAME VARCHAR(40) CHARACTER SET UTF8, 
+  OPEMAIL_SEND CHAR(1) CHARACTER SET UTF8, 
+  OPEMAIL_SENT CHAR(1) CHARACTER SET UTF8, 
+  OPEMAIL_SENDER VARCHAR(150) CHARACTER SET UTF8, 
+  OPEMAIL_ADDRESS VARCHAR(250) CHARACTER SET UTF8, 
+  OPEMAIL_SUBJECT VARCHAR(100) CHARACTER SET UTF8, 
+  OPEMAIL_MESSAGE BLOB SUB_TYPE 1 , 
+  OPLETTER_SEND CHAR(1) CHARACTER SET UTF8, 
+  OPLETTER BLOB SUB_TYPE 1 , 
+  OPIMAGE_MAIN_PAGE VARCHAR(500) CHARACTER SET UTF8, 
+  OPIMAGE_LEFT_MENU VARCHAR(500) CHARACTER SET UTF8, 
+  OPIMAGE_OFFERS_PAGE VARCHAR(500) CHARACTER SET UTF8, 
+  OPPAGE_OFFERS_TEXT VARCHAR(6000) CHARACTER SET UTF8, 
+  OPCAMPAIGN_TITLE VARCHAR(30) CHARACTER SET UTF8, 
+  OPLINKOVERRIDE VARCHAR(150) CHARACTER SET UTF8, 
+  OPACTIVATEPRODUCTGROUP INTEGER, 
+  OPCOUPONNAME VARCHAR(30) CHARACTER SET UTF8, 
+  OPCOUPONPERCENT INTEGER, 
+  OPFREEPRODUCTCODE INTEGER, 
+  OPMAINPRODUCTCODE INTEGER, 
+  OPCANREPLICATE CHAR(1) CHARACTER SET UTF8, 
+  OPOFFER_PRODUCT1 BIGINT, 
+  OPOFFER_PRODUCT2 BIGINT, 
+  OPOFFER_PRODUCT3 BIGINT, 
+  OPOFFER_PRODUCT4 BIGINT, 
+  OPOFFER_PRODUCT5 BIGINT, 
+  OPOFFER_PRODUCT6 BIGINT)
+AS
+BEGIN
+	FOR SELECT a.ID, a.CAMPAIGN_START, a.CAMPAIGN_FINISH, a.CAMPAIGN_NAME, a.EMAIL_SEND, a.EMAIL_SENT, a.EMAIL_SENDER, a.EMAIL_ADDRESS, 
+            a.EMAIL_MESSAGE, a.LETTER_SEND, a.LETTER, a.IMAGE_MAIN_PAGE, a.IMAGE_LEFT_MENU, a.IMAGE_OFFERS_PAGE, a.PAGE_OFFERS_TEXT, 
+            a.CAMPAIGN_TITLE, a.EMAIL_SUBJECT, a.LINK_OVERRIDE, a.ACTIVATE_PRODUCT_GROUP, a.COUPON_NAME, a.COUPON_PERCENT, a.FREE_PRODUCT,
+            a.MAIN_PRODUCT, a.CAN_REPLICATE, a.OFFER_PAGE_PRODUCT1, a.OFFER_PAGE_PRODUCT2, a.OFFER_PAGE_PRODUCT3, 
+            a.OFFER_PAGE_PRODUCT4, a.OFFER_PAGE_PRODUCT5, a.OFFER_PAGE_PRODUCT6
+	    FROM WS_CAMPAIGNS a
+	    WHERE (a.CAMPAIGN_START < CURRENT_TIMESTAMP) AND (a.CAMPAIGN_FINISH > CURRENT_TIMESTAMP)
+	    INTO :opID, :opCAMPAIGN_START, :opCAMPAIGN_FINISH, :opCAMPAIGN_NAME, :opEMAIL_SEND, :opEMAIL_SENT, :opEMAIL_SENDER, 
+            :opEMAIL_ADDRESS, :opEMAIL_MESSAGE, :opLETTER_SEND, :opLETTER, :opIMAGE_MAIN_PAGE, :opIMAGE_LEFT_MENU, :opIMAGE_OFFERS_PAGE, 
+            :opPAGE_OFFERS_TEXT, :opCAMPAIGN_TITLE, :OPEMAIL_SUBJECT, :opLinkOverride, :opActivateProductGroup, :opCouponName,
+            :opCouponPercent, :opFreeProductCode, :opMainProductCode, :opCANREPLiCATE,
+            :opOFFER_PRODUCT1, :opOFFER_PRODUCT2, :opOFFER_PRODUCT3, :opOFFER_PRODUCT4, :opOFFER_PRODUCT5, :opOFFER_PRODUCT6
+	DO
+	BEGIN
+		SUSPEND;
+	END
+END^
+
+SET TERM ; ^ 
+
+
+
+GRANT EXECUTE ON PROCEDURE WSP_CAMPAIGNS_GET_ACTIVE TO PUBLIC;
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_CAMPAIGNS_GET_ID
+ (IPID INTEGER)
+RETURNS
+ (OPID INTEGER, 
+  OPCAMPAIGN_START TIMESTAMP, 
+  OPCAMPAIGN_FINISH TIMESTAMP, 
+  OPCAMPAIGN_NAME VARCHAR(40) CHARACTER SET UTF8, 
+  OPEMAIL_SEND CHAR(1) CHARACTER SET UTF8, 
+  OPEMAIL_SENT CHAR(1) CHARACTER SET UTF8, 
+  OPEMAIL_SENDER VARCHAR(150) CHARACTER SET UTF8, 
+  OPEMAIL_ADDRESS VARCHAR(250) CHARACTER SET UTF8, 
+  OPEMAIL_SUBJECT VARCHAR(100) CHARACTER SET UTF8, 
+  OPEMAIL_MESSAGE BLOB SUB_TYPE 1 , 
+  OPLETTER_SEND CHAR(1) CHARACTER SET UTF8, 
+  OPLETTER BLOB SUB_TYPE 1 , 
+  OPIMAGE_MAIN_PAGE VARCHAR(500) CHARACTER SET UTF8, 
+  OPIMAGE_LEFT_MENU VARCHAR(500) CHARACTER SET UTF8, 
+  OPIMAGE_OFFERS_PAGE VARCHAR(500) CHARACTER SET UTF8, 
+  OPPAGE_OFFERS_TEXT VARCHAR(6000) CHARACTER SET UTF8, 
+  OPCAMPAIGN_TITLE VARCHAR(30) CHARACTER SET UTF8, 
+  OPLINKOVERRIDE VARCHAR(150) CHARACTER SET UTF8, 
+  OPACTIVATEPRODUCTGROUP INTEGER, 
+  OPCOUPONNAME VARCHAR(30) CHARACTER SET UTF8, 
+  OPCOUPONPERCENT INTEGER, 
+  OPFREEPRODUCTCODE INTEGER, 
+  OPMAINPRODUCTCODE INTEGER, 
+  OPCANREPLICATE CHAR(1) CHARACTER SET UTF8, 
+  OPOFFER_PRODUCT1 BIGINT, 
+  OPOFFER_PRODUCT2 BIGINT, 
+  OPOFFER_PRODUCT3 BIGINT, 
+  OPOFFER_PRODUCT4 BIGINT, 
+  OPOFFER_PRODUCT5 BIGINT, 
+  OPOFFER_PRODUCT6 BIGINT)
+AS
+BEGIN
+	FOR SELECT a.ID, a.CAMPAIGN_START, a.CAMPAIGN_FINISH, a.CAMPAIGN_NAME, a.EMAIL_SEND, a.EMAIL_SENT, a.EMAIL_SENDER, a.EMAIL_ADDRESS, 
+            a.EMAIL_MESSAGE, a.LETTER_SEND, a.LETTER, a.IMAGE_MAIN_PAGE, a.IMAGE_LEFT_MENU, a.IMAGE_OFFERS_PAGE, a.PAGE_OFFERS_TEXT, 
+            a.CAMPAIGN_TITLE, a.EMAIL_SUBJECT, a.LINK_OVERRIDE, a.ACTIVATE_PRODUCT_GROUP, a.COUPON_NAME, a.COUPON_PERCENT, a.FREE_PRODUCT,
+            a.MAIN_PRODUCT, a.CAN_REPLICATE, a.OFFER_PAGE_PRODUCT1, a.OFFER_PAGE_PRODUCT2, a.OFFER_PAGE_PRODUCT3, 
+            a.OFFER_PAGE_PRODUCT4, a.OFFER_PAGE_PRODUCT5, a.OFFER_PAGE_PRODUCT6
+	    FROM WS_CAMPAIGNS a
+	    WHERE a.ID = :ipID
+	    INTO :opID, :opCAMPAIGN_START, :opCAMPAIGN_FINISH, :opCAMPAIGN_NAME, :opEMAIL_SEND, :opEMAIL_SENT, :opEMAIL_SENDER, 
+            :opEMAIL_ADDRESS, :opEMAIL_MESSAGE, :opLETTER_SEND, :opLETTER, :opIMAGE_MAIN_PAGE, :opIMAGE_LEFT_MENU, :opIMAGE_OFFERS_PAGE, 
+            :opPAGE_OFFERS_TEXT, :opCAMPAIGN_TITLE, :OPEMAIL_SUBJECT, :opLinkOverride, :opActivateProductGroup, :opCouponName,
+            :opCouponPercent, :opFreeProductCode, :opMainProductCode, :opCANREPLiCATE,
+            :opOFFER_PRODUCT1, :opOFFER_PRODUCT2, :opOFFER_PRODUCT3, :opOFFER_PRODUCT4, :opOFFER_PRODUCT5, :opOFFER_PRODUCT6
+	DO
+	BEGIN
+		SUSPEND;
+	END
+END^
+
+SET TERM ; ^ 
+
+
+
+GRANT EXECUTE ON PROCEDURE WSP_CAMPAIGNS_GET_ID TO PUBLIC;
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_CAMPAIGN_TEST_EMAIL
+ (IPSENDERNAME VARCHAR(150) CHARACTER SET UTF8, 
+  IPSENDEREMAIL VARCHAR(250) CHARACTER SET UTF8, 
+  IPMESSAGE BLOB SUB_TYPE 1 , 
+  IPMESSAGESUBJECT VARCHAR(100) CHARACTER SET UTF8, 
+  IPCAMPAIGNNAME VARCHAR(30) CHARACTER SET UTF8, 
+  IPRECIPIENT BIGINT)
+AS
+DECLARE VARIABLE vName VARCHAR(40);
+    DECLARE VARIABLE vEmailSent CHAR(1);
+    DECLARE VARIABLE vSenderName VARCHAR(150);
+    DECLARE VARIABLE vSenderEmail VARCHAR(250);
+    DECLARE VARIABLE vEmail BLOB SUB_TYPE TEXT;
+    DECLARE VARIABLE vEmailSubject VARCHAR(100);
+    
+    DECLARE VARIABLE vUserEmail VARCHAR(100);
+    DECLARE VARIABLE vUserName VARCHAR(100);
+    DECLARE VARIABLE vNewID BIGINT;
+    DECLARE VARIABLE vSendTime TIMESTAMP;
+    
+    DECLARE VARIABLE vMessagesSent BIGINT;
+    DECLARE VARIABLE vFirstName VARCHAR(100);
+
+BEGIN
+    vName = ipCampaignName;
+    vSenderName = ipSenderName;
+    vSenderEmail = ipSenderEmail;
+    vEmail = ipMessage;
+    vEmailSubject = ipMessageSubject;
+    vSendTime = CURRENT_TIMESTAMP;
+   
+ 
+        -- repalce the campaign name
+        vEmail = REPLACE(vEmail, '{campaign}', vName);
+        
+        FOR 
+            SELECT m.EMAIL, m.USERNAME, m.FIRSTNAME
+            FROM WS_MEMBERS m
+            WHERE (m.ID = :IPRECIPIENT)
+        INTO :vUserEmail, :vUserName, :vFirstName
+        DO
+        BEGIN -- send an email to each user
+            /* Get next ID */
+            vNewID = GEN_ID(GEN_WS_EMAIL_ID, 1);
+            vEmail = REPLACE(vEmail, '{username}', vFirstName);
+            
+            INSERT INTO WS_EMAIL(
+                ID,
+                TO_NAME, 
+                TO_EMAIL, 
+                FROM_NAME, 
+                FROM_MAIL, 
+                SUBJECT, 
+                MAIL_MESSAGE, 
+                PRIORITY, 
+                QUEUE_DATE,
+                SEND_DATE_TIME
+            ) VALUES (
+                :vNewID,
+                :vUserName, 
+                :vUserEmail, 
+                :vSenderName,  
+                :vSenderEmail, 
+                :vEmailSubject, 
+                :vEmail, 
+                2, 
+                'NOW',
+                :vSendTime
+            );
+            
+            vMessagesSent = vMessagesSent + 1;
+        END
+
+END^
+
+SET TERM ; ^ 
+
+
+GRANT EXECUTE ON PROCEDURE WSP_CAMPAIGN_TEST_EMAIL TO PUBLIC;
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_KB_ITEMS_PAGE
+ (IPPAGESIZE BIGINT, 
+  IPPAGENUMBER BIGINT)
+RETURNS
+ (OPID INTEGER, 
+  OPDESCRIPTION VARCHAR(80) CHARACTER SET UTF8, 
+  OPSUBGROUPID INTEGER, 
+  OPCONTENT BLOB SUB_TYPE 1 , 
+  OPVIEWCOUNT INTEGER)
+AS
+DECLARE VARIABLE vPAGENO BIGINT;
+  DECLARE VARIABLE vCOUNTER BIGINT;
+BEGIN
+  IF (ipPAGENUMBER < 1) THEN
+    EXCEPTION EXC_INVALID_PAGE_NUM;
+
+  IF (ipPAGESIZE < 1) THEN
+    EXCEPTION EXC_INVALID_PAGE_SIZE;
+
+  vCOUNTER = 0;
+
+  vPAGENO = (ipPAGESIZE * ipPAGENUMBER) - ipPAGESIZE;
+
+  FOR 
+    SELECT a.ID, a.DESCRIPTION, a.SUBGROUPID, a.CONTENT, a.VIEWCOUNT
+    FROM WS_KNOWLEDGEBASE_ITEMS a
+  INTO :opID, :opDESCRIPTION, :opSUBGROUPID, :opCONTENT, :opVIEWCOUNT
+  DO
+  BEGIN
+    IF ((vCOUNTER >= vPAGENO) AND (vCOUNTER < (vPAGENO + ipPAGESIZE))) THEN
+    BEGIN
+      SUSPEND;
+    END
+
+    vCOUNTER = vCOUNTER + 1;
+
+    IF (vCOUNTER > (vPAGENO + ipPAGESIZE)) THEN
+    BEGIN
+      EXIT;
+    END
+  END
+  
+END^
+
+SET TERM ; ^ 
+
+
+GRANT EXECUTE ON PROCEDURE WSP_KB_ITEMS_PAGE TO PUBLIC;
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE POS_INSTALL_LOCATION
+ (IPEMAIL VARCHAR(100) CHARACTER SET UTF8, 
+  IPPASSWORD VARCHAR(50) CHARACTER SET UTF8, 
+  IPCOMPUTER VARCHAR(250) CHARACTER SET UTF8, 
+  IPSERVER VARCHAR(250) CHARACTER SET UTF8, 
+  IPINSTALL_TYPE VARCHAR(30) CHARACTER SET UTF8)
+RETURNS
+ (OPVALID CHAR(1) CHARACTER SET UTF8, 
+  OPREMOTEDB VARCHAR(250) CHARACTER SET UTF8, 
+  OPSERVER VARCHAR(250) CHARACTER SET UTF8, 
+  OPSTOREID INTEGER, 
+  OPTILLID INTEGER)
+AS
+DECLARE VARIABLE vPOSID BIGINT;
+DECLARE VARIABLE vAllowedServers INTEGER;
+DECLARE VARIABLE vAllowedClients INTEGER;
+DECLARE VARIABLE vServerInstalls INTEGER;
+DECLARE VARIABLE vClientInstalls INTEGER;
+DECLARE VARIABLE vInsert INTEGER;
+BEGIN
+    vInsert = 1;
+    
+    SELECT pl.ID, pl.IS_ACTIVE, pl.STORE_COUNT, pl.TILL_COUNT, pl.REMOTE_DATABASE
+    FROM POS_LICENCES pl
+        LEFT JOIN WS_MEMBERS m ON (m.ID = pl.MEMBER_ID)
+    WHERE UPPER(m.EMAIL) = UPPER(:ipEMAIL)
+        AND m.PWORD = :ipPASSWORD
+    INTO :vPOSID, :opVALID, :vAllowedServers, vAllowedClients, opREMOTEDB;
+    
+    
+    IF (opVALID = 'Y') THEN
+    BEGIN
+        -- are there enough licenses left
+        SELECT COUNT(pli.ID)
+        FROM POS_LICENCE_INSTALLS pli
+        WHERE pli.LICENCE_ID = :vPOSID
+            AND pli.INSTALL_TYPE = 'Server'
+        INTO :vServerInstalls;
+        
+        SELECT COUNT(pli.ID)
+        FROM POS_LICENCE_INSTALLS pli
+        WHERE pli.LICENCE_ID = :vPOSID
+            AND pli.INSTALL_TYPE = 'Client'
+        INTO :vClientInstalls;
+        
+        IF ((IPINSTALL_TYPE = 'Server' AND vServerInstalls >= vAllowedServers) OR 
+            (IPINSTALL_TYPE = 'Server' AND vClientInstalls >= vAllowedClients)) THEN
+        BEGIN
+            opVALID = 'N';
+        END ELSE
+        BEGIN
+            -- is it client or server?
+            SELECT STORE_ID, TILL_ID
+            FROM POS_LICENCE_INSTALLS
+            WHERE LICENCE_ID = :vPOSID
+                AND COMPUTER_NAME = :ipSERVER
+                AND INSTALL_TYPE = 'Server'
+            INTO :opSTOREID, :opTILLID;
+
+            IF (opSTOREID IS NULL OR IPINSTALL_TYPE <> 'Server') THEN
+            BEGIN
+                IF (ipSERVER IS NULL) THEN
+                BEGIN
+                    /*SELECT TILL_ID
+                    FROM POS_LICENCE_INSTALLS
+                    WHERE LICENCE_ID = :vPOSID
+                        AND COMPUTER_NAME = :ipSERVER
+                        AND INSTALL_TYPE = 'Client'
+                    INTO :opTILLID;*/
+                END
+                
+                IF (opSTOREID IS NULL) THEN
+                BEGIN
+                    opSTOREID = GEN_ID(GEN_POS_STORE_ID, 1);
+                    vInsert = 0;
+                END
+
+                IF (NOT EXISTS(SELECT TILL_ID
+                FROM POS_LICENCE_INSTALLS
+                WHERE LICENCE_ID = :vPOSID
+                    AND COMPUTER_NAME = :ipCOMPUTER
+                    AND INSTALL_TYPE = 'Client')) THEN
+                BEGIN
+                    opTILLID = NULL;
+                END ELSE
+                BEGIN            
+                    SELECT TILL_ID
+                    FROM POS_LICENCE_INSTALLS
+                    WHERE LICENCE_ID = :vPOSID
+                        AND COMPUTER_NAME = :ipCOMPUTER
+                        AND INSTALL_TYPE = 'Client'
+                    INTO :opTILLID; 
+                END
+
+                IF (opTILLID IS NULL OR IPINSTALL_TYPE <> 'Client') THEN
+                BEGIN
+                    opTILLID = GEN_ID(GEN_POS_TILL_ID, 1);
+                    vInsert = 0;
+                END
+            
+                IF (vInsert = 0) THEN
+                BEGIN
+                    INSERT INTO POS_LICENCE_INSTALLS 
+                    (
+                        LICENCE_ID, 
+                        COMPUTER_NAME, 
+                        STORE_ID, 
+                        TILL_ID, 
+                        CREATE_DATE, 
+                        IS_ACTIVE, 
+                        INSTALL_TYPE,
+                        SERVER_NAME
+                    )
+                    VALUES 
+                    (
+                        :vPOSID, 
+                        :ipCOMPUTER, 
+                        :opSTOREID, 
+                        :opTILLID, 
+                        CURRENT_TIMESTAMP, 
+                        :opVALID, 
+                        :ipINSTALL_TYPE,
+                        :ipSERVER
+                    );
+                END
+            END -- STOREID IS NULL
+            
+            
+            opSERVER = ipSERVER;
+        END --(vCountInstalls >= vAllowed)
+    END --(opVALID = 'Y')
+    
+    SUSPEND;    
+END^
+
+SET TERM ; ^ 
+
+
+GRANT EXECUTE ON PROCEDURE POS_INSTALL_LOCATION TO PUBLIC;
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE POS_INSTALL_SERVERS
+ (IPEMAIL VARCHAR(100) CHARACTER SET UTF8, 
+  IPPASSWORD VARCHAR(50) CHARACTER SET UTF8)
+RETURNS
+ (OPVALID CHAR(1) CHARACTER SET UTF8, 
+  OPSERVERS VARCHAR(8000) CHARACTER SET UTF8)
+AS
+DECLARE VARIABLE vPOSID BIGINT;
+DECLARE VARIABLE vAllowed INTEGER;
+DECLARE VARIABLE vServer VARCHAR(250);
+BEGIN
+    opServers = '';
+    
+    SELECT pl.ID, pl.IS_ACTIVE, pl.STORE_COUNT
+    FROM POS_LICENCES pl
+        LEFT JOIN WS_MEMBERS m ON (m.ID = pl.MEMBER_ID)
+    WHERE UPPER(m.EMAIL) = UPPER(:ipEMAIL)
+        AND m.PWORD = :ipPASSWORD
+    INTO :vPOSID, :opVALID, :vAllowed;
+    
+    
+    IF (opVALID = 'Y') THEN
+    BEGIN
+        FOR
+            SELECT a.COMPUTER_NAME
+            FROM POS_LICENCE_INSTALLS a
+            WHERE a.LICENCE_ID = :vPOSID
+                AND a.INSTALL_TYPE = 'Server'
+                AND a.IS_ACTIVE = 'Y'
+        INTO :vServer
+        DO
+        BEGIN
+            opSERVERS = opSERVERS || vServer || '#';
+        END
+    END --(opVALID = 'Y')
+    
+    SUSPEND;    
+END^
+
+SET TERM ; ^ 
+
+
+GRANT EXECUTE ON PROCEDURE POS_INSTALL_SERVERS TO PUBLIC;
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE SEO_PAGE_DATA_DAYS
+ (IPAGEDAYS INTEGER)
+RETURNS
+ (OPDATE DATE, 
+  OPTOTALVISITS BIGINT, 
+  OPBOTVISITS BIGINT, 
+  OPBOUNCED BIGINT, 
+  OPMINPAGES BIGINT, 
+  OPMAXPAGES BIGINT, 
+  OPAVGPAGES BIGINT, 
+  OPTOTALPAGES BIGINT, 
+  OPTIMEDVISITS BIGINT, 
+  OPCONVERSIONS BIGINT, 
+  OPMOBILECONVERSIONS BIGINT, 
+  OPMOBILEVISITS BIGINT, 
+  OPREFERUNKNOWN BIGINT, 
+  OPREFERDIRECT BIGINT, 
+  OPREFERAL BIGINT, 
+  OPREFERORGANIC BIGINT, 
+  OPREFERBING BIGINT, 
+  OPREFERGOOGLE BIGINT, 
+  OPREFERYAHOO BIGINT, 
+  OPREFERFACEBOOK BIGINT, 
+  OPREFERTWITTER BIGINT)
+AS
+DECLARE VARIABLE vTotalPages BIGINT;
+    DECLARE VARIABLE vID BIGINT;
+    DECLARE VARIABLE vCreated TIMESTAMP;
+    DECLARE VARIABLE vSessionID VARCHAR(100);
+    DECLARE VARIABLE vIPAddress VARCHAR(15);
+    DECLARE VARIABLE vIsMobile CHAR(1);
+    DECLARE VARIABLE vReferralType INTEGER;
+    DECLARE VARIABLE vBounced CHAR(1);
+    DECLARE VARIABLE vIsBot CHAR(1);
+    DECLARE VARIABLE vLandingURL VARCHAR(1000);
+    DECLARE VARIABLE vLoopCounter INTEGER;
+    DECLARE VARIABLE vSaleAmount DECIMAL;
+    DECLARE VARIABLE vTotalSeconds INTEGER;
+BEGIN
+    vLoopCounter = ipAgeDays -1;
+    
+    WHILE (vLoopCounter >= 0) DO
+    BEGIN
+        opDate = CAST(CURRENT_TIMESTAMP - vLoopCounter AS DATE);
+        opTotalVisits = 0; 
+        opBOTVisits = 0; 
+        opBounced = 0;
+        opReferUnknown = 0;
+        opReferDirect = 0;
+        opReferal = 0;
+        opReferOrganic = 0;
+        opReferBing = 0;
+        opReferGoogle = 0;
+        opReferYahoo = 0;
+        opReferFacebook = 0;
+        opReferTwitter = 0;
+        opMinPages = 20000000;
+        opMaxPages = 0;
+        opAvgPages = 0;
+        opTotalPages = 0;
+        opTimedVisits = 0;
+        opMobileVisits = 0;
+        opMobileConversions = 0;
+        opConversions = 0;
+        vSaleAmount = 0.00;
+        
+        FOR
+        SELECT a.CREATED, a.SESSION_ID, a.IP_ADDRESS,  
+            a.IS_MOBILE_DEVICE, a.REFERRAL_TYPE, a.BOUNCED, a.IS_BOT,
+            a.ID, a.SALE_AMOUNT
+        FROM SEO_DATA a
+        WHERE CAST(a.CREATED AS DATE) = :opDate
+        INTO :vCreated, :vSessionID, vIPAddress,
+            :vIsMobile, :vReferralType, :vBounced, :vIsBot, :vID,
+            :vSaleAmount
+        DO
+        BEGIN
+            -- referral type
+            IF (vReferralType = 0) THEN opReferUnknown = opReferUnknown + 1;
+            ELSE IF (vReferralType = 1) THEN opReferDirect = opReferDirect + 1;
+            ELSE IF (vReferralType = 2) THEN opReferOrganic = opReferOrganic + 1;
+            ELSE IF (vReferralType = 3) THEN opReferal = opReferal + 1;
+            ELSE IF (vReferralType = 4) THEN opReferFacebook = opReferFacebook + 1;
+            ELSE IF (vReferralType = 5) THEN opReferTwitter = opReferTwitter + 1;
+            ELSE IF (vReferralType = 6) THEN opReferGoogle = opReferGoogle + 1;
+            ELSE IF (vReferralType = 7) THEN opReferYahoo = opReferYahoo + 1;
+            ELSE IF (vReferralType = 8) THEN opReferBing = opReferBing + 1;
+
+            -- is it a conversion
+            IF (vSaleAmount> 0.00) THEN
+            BEGIN
+                opConversions = opConversions + 1;
+                
+                IF (vIsMobile = 'Y') THEN
+                    opMobileConversions = opMobileConversions + 1;
+            END 
+        
+            -- was it the landing page?
+            vTotalPages = 0;
+            FOR 
+                SELECT pv.URL, pv.SECONDS
+                FROM SEO_DATA_PAGE_VIEWS pv
+                WHERE pv.SEO_DATA_ID = :vID
+                ORDER BY pv.SEO_DATA_ID, pv.ID
+                INTO :vLandingURL, :vTotalSeconds
+            DO
+            BEGIN
+                IF (vBounced = 'N' AND vIsBot = 'N') THEN
+                BEGIN
+                    IF (vTotalSeconds > 0) THEN
+                    BEGIN
+                        opTimedVisits = opTimedVisits + 1;
+                    END
+                END
+                
+                IF (vIsBot = 'N') THEN 
+                BEGIN
+                    vTotalPages = vTotalPages + 1;
+                    opTotalPages = opTotalPages + 1;
+                END
+            END
+                
+            IF (vIsBot = 'N') THEN
+            BEGIN
+                IF (vTotalPages < opMinPages) THEN
+                    opMinPages = vTotalPages;
+                    
+                IF (vTotalPages > opMaxPages) THEN
+                    opMaxPages = vTotalPages;
+            END
+            
+            opTotalVisits = opTotalVisits + 1;
+            
+            IF (vIsBot = 'Y') THEN opBotVisits = opBotVisits + 1;
+            
+            IF (vBounced = 'Y' AND vIsBot = 'N') THEN opBounced = opBounced + 1;
+                        
+            IF (vIsMobile = 'Y') THEN opMobileVisits = opMobileVisits + 1;
+        END
+
+        IF (opTotalPages > 0 AND opTimedVisits > 0) THEN opAvgPages = opTotalPages / opTimedVisits; 
+                
+        IF (opMinPages = 20000000 OR opMinPages < 1) THEN opMinPages = 1;
+        
+        SUSPEND;
+        
+        vLoopCounter = vLoopCounter - 1;
+    END -- loop
+END^
+
+SET TERM ; ^ 
+
+
+GRANT EXECUTE ON PROCEDURE SEO_PAGE_DATA_DAYS TO PUBLIC;
+
+ 
+CREATE DOMAIN WD$PRIMARY_KEY
+  AS BIGINT NOT NULL;
+
+CREATE DOMAIN WD$BLOB_STRING
+  AS BLOB SUB_TYPE TEXT NOT NULL;
+  
+CREATE DOMAIN WD$DELIMITER
+  AS CHAR(1) DEFAULT '.' NOT NULL;
+    
+CREATE DOMAIN WD$COUNTRY_CODE
+  AS VARCHAR(3) NOT NULL;
+  
+CREATE DOMAIN WD$IP_ADDRESS1 
+  AS VARCHAR(15) NOT NULL;
+
+CREATE DOMAIN WD$IP_ADDRESS2 
+  AS BIGINT NOT NULL;
+  
+CREATE DOMAIN WD$CITY VARCHAR(200);
+CREATE DOMAIN WD$POSTCODE VARCHAR(30);
+CREATE DOMAIN WD$LATLONG DECIMAL(6, 4);
+
+
+
+CREATE TABLE WD$IPCITY
+(
+  WD$ID WD$PRIMARY_KEY,
+  WD$COUNTRY WD$COUNTRY_CODE,
+  WD$REGION WD$COUNTRY_CODE,
+  WD$CITY WD$CITY,
+  WD$POSTCODE WD$POSTCODE,
+  WD$LATITUDE WD$LATLONG,
+  WD$LONGITUDE WD$LATLONG,
+  WD$METRO_CODE WD$COUNTRY_CODE,
+  WD$AREA_CODE WD$COUNTRY_CODE,
+  WD$VERSION WD$PRIMARY_KEY,
+
+  CONSTRAINT PK_WD$IP_CITY PRIMARY KEY (WD$ID)
+);
+
+GRANT ALL ON WD$IPCITY TO PUBLIC;
+    
+
+CREATE GENERATOR WD$GEN_IPADDRESS_ID;
+CREATE GENERATOR WD$GEN_IP_CITY;
+
+CREATE TABLE WD$IPTOCOUNTRY
+(
+  WD$ID WD$PRIMARY_KEY,
+  WD$FROM_IP WD$IP_ADDRESS2,
+  WD$TO_IP WD$IP_ADDRESS2,
+  WD$COUNTRY_CODE WD$COUNTRY_CODE,
+  WD$ISP WD$CITY,
+  WD$HOST WD$CITY,
+  WD$VERSION WD$PRIMARY_KEY,
+  WD$CITY_ID WD$PRIMARY_KEY,
+  
+  CONSTRAINT PK_WD$IP_TO_COUNTRY_ID PRIMARY KEY (WD$ID),
+
+  CONSTRAINT FK_WD$CITY_ID FOREIGN KEY (WD$CITY_ID) REFERENCES WD$IPCITY (WD$ID) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE INDEX IDX_WD$IP_TO_COUNTRY_IP ON WD$IPTOCOUNTRY (WD$FROM_IP, WD$TO_IP);
+
+
+GRANT SELECT ON WD$IPTOCOUNTRY TO PUBLIC;
+
+
+SET TERM ^ ;
+CREATE OR ALTER TRIGGER WD$IPTOCOUNTRY_ID FOR WD$IPTOCOUNTRY ACTIVE
+BEFORE INSERT OR UPDATE POSITION 1
+AS 
+BEGIN 
+  IF (NEW.WD$ID IS NULL) THEN
+    NEW.WD$ID = GEN_ID(WD$GEN_IPADDRESS_ID, 1);
+END^
+SET TERM ; ^
+
+SET TERM ^ ;
+
+CREATE TRIGGER WD$IPCITY_ID FOR WD$IPCITY
+ACTIVE BEFORE INSERT POSITION 0
+AS 
+BEGIN 
+  IF (NEW.WD$ID IS NULL) THEN
+    NEW.WD$ID = GEN_ID(WD$GEN_IP_CITY, 1);
+END^
+
+SET TERM ; ^ 
+
+SET TERM ^ ;
+CREATE OR ALTER PROCEDURE WD$SPLITSTRING (
+    IPSTRING WD$BLOB_STRING,
+    IPDELIMITER WD$DELIMITER )
+RETURNS (
+    OPPART WD$BLOB_STRING )
+AS
+  declare variable vLastPos integer;
+  declare variable vNextPos integer;
+begin
+    ipString = :ipString || :ipDelimiter;
+    
+    vLastPos = 1;
+    vNextPos = POSITION(:ipDelimiter, :ipString, :vLastPos);
+    
+    IF (vLastPos = vNextPos) THEN
+    BEGIN
+        opPart = SUBSTRING(:ipString FROM :vLastPos FOR :vNextPos - :vLastPos);
+        SUSPEND;
+        vLastPos = :vNextPos + 1;
+        vNextPos = POSITION(:ipDelimiter, :ipString, vLastPos);
+    END
+    
+    WHILE (:vNextPos > 1) DO
+    BEGIN
+        opPart = SUBSTRING(:ipString FROM :vLastPos FOR :vNextPos - :vLastPos);
+        vLastPos = :vNextPos + 1;
+        vNextPos = POSITION(:ipDelimiter, :ipString, :vLastPos);
+        SUSPEND;
+    END
+end
+
+^
+SET TERM ; ^
+
+
+GRANT EXECUTE ON PROCEDURE WD$SPLITSTRING TO PUBLIC;
+
+SET TERM ^ ;
+CREATE OR ALTER PROCEDURE WD$GEO_DECODE_IP (
+    IPIPADDRESS WD$IP_ADDRESS1 )
+RETURNS (
+    OPID BIGINT,
+    OPCOUNTRY VARCHAR(3),
+    OPCITY VARCHAR(200),
+    OPREGION VARCHAR(3),
+    OPPOSTCODE VARCHAR(30),
+    OPLATITUDE DECIMAL(10, 4),
+    OPLONGITUDE DECIMAL(10, 4),
+    OPMETROCODE VARCHAR(3),
+    OPAREACODE VARCHAR(3),
+    opNUMERIC BIGINT,
+    opSTARTBLOCK BIGINT,
+    opENDBLOCK BIGINT)
+AS
+DECLARE VARIABLE vIPAddressPart VARCHAR(3);
+  DECLARE VARIABLE vCount INTEGER = 0;
+  DECLARE VARIABLE vTotal BIGINT = 0;
+  DECLARE VARIABLE vPart BIGINT = 0;
+BEGIN
+  FOR
+    SELECT opPART
+    FROM WD$SPLITSTRING(:ipIPADDRESS, '.')
+    INTO :vIPAddressPart
+  DO
+  BEGIN
+    IF (vCount = 0) THEN
+        vPart = CAST(vIPAddressPart AS BIGINT) * 16777216;
+    ELSE IF (vCount = 1) THEN
+        vPart = CAST(vIPAddressPart AS BIGINT) * 65536;
+    ELSE IF (vCount = 2) THEN
+        vPart = CAST(vIPAddressPart AS BIGINT) * 256;
+    ELSE 
+        vPart = CAST(vIPAddressPart AS BIGINT);
+  
+    --increase the COUNT
+    vCount = vCount + 1;
+    
+    vTotal = vTotal + vPart;
+  END
+
+  opNUMERIC = vTotal;
+    
+  SELECT FIRST 1 c.WD$COUNTRY_CODE, ipc.WD$CITY, ipc.WD$REGION, 
+    ipc.WD$POSTCODE, ipc.WD$LATITUDE, ipc.WD$LONGITUDE,
+    ipc.WD$METRO_CODE, ipc.WD$AREA_CODE, c.WD$FROM_IP, c.WD$TO_IP
+  FROM WD$IPTOCOUNTRY c
+    LEFT JOIN WD$IPCITY ipc ON (ipc.WD$ID = c.WD$CITY_ID)
+  WHERE (c.WD$FROM_IP <= :vTotal) AND (c.WD$TO_IP >= :vTotal)
+  ORDER BY c.WD$VERSION
+  INTO :opCOUNTRY, :opCITY, :opREGION, :opPOSTCODE, :opLATITUDE, :opLONGITUDE, :OPMETROCODE, :OPAREACODE, :opSTARTBLOCK, :opENDBLOCK;
+
+  SUSPEND; 
+
+END^
+SET TERM ; ^
+
+GRANT EXECUTE ON PROCEDURE WD$GEO_DECODE_IP TO PUBLIC;
+
+CREATE OR ALTER EXCEPTION EXC_SPGEN_ERROR 'Error';
+
+SET TERM ^ ;
+
+CREATE OR ALTER PROCEDURE WD$IPCITY_IU 
+(
+  ipWD$ID BIGINT,
+  ipWD$COUNTRY VARCHAR(3),
+  ipWD$REGION VARCHAR(3),
+  ipWD$CITY VARCHAR(200),
+  ipWD$POSTCODE VARCHAR(30),
+  ipWD$LATITUDE DECIMAL(6, 4),
+  ipWD$LONGITUDE DECIMAL(6, 4),
+  ipWD$METRO_CODE VARCHAR(3),
+  ipWD$AREA_CODE VARCHAR(3),
+  ipWD$VERSION BIGINT
+)
+AS
+BEGIN
+  IF (EXISTS(SELECT WD$ID FROM WD$IPCITY WHERE WD$ID = :ipWD$ID)) THEN
+  BEGIN
+    UPDATE WD$IPCITY
+    SET WD$COUNTRY = :ipWD$COUNTRY,
+      WD$REGION = :ipWD$REGION,
+      WD$CITY = :ipWD$CITY,
+      WD$POSTCODE = :ipWD$POSTCODE,
+      WD$LATITUDE = :ipWD$LATITUDE,
+      WD$LONGITUDE = :ipWD$LONGITUDE,
+      WD$METRO_CODE = :ipWD$METRO_CODE,
+      WD$AREA_CODE = :ipWD$AREA_CODE,
+      WD$VERSION = :ipWD$VERSION
+    WHERE WD$ID = :ipWD$ID;
+  END ELSE BEGIN
+    INSERT INTO WD$IPCITY (
+      WD$ID,
+      WD$COUNTRY,
+      WD$REGION,
+      WD$CITY,
+      WD$POSTCODE,
+      WD$LATITUDE,
+      WD$LONGITUDE,
+      WD$METRO_CODE,
+      WD$AREA_CODE,
+      WD$VERSION
+    ) VALUES (
+      :ipWD$ID,
+      :ipWD$COUNTRY,
+      :ipWD$REGION,
+      :ipWD$CITY,
+      :ipWD$POSTCODE,
+      :ipWD$LATITUDE,
+      :ipWD$LONGITUDE,
+      :ipWD$METRO_CODE,
+      :ipWD$AREA_CODE,
+      :ipWD$VERSION
+    );
+  END
+END^
+
+SET TERM ; ^
+
+GRANT EXECUTE ON PROCEDURE WD$IPCITY_IU TO PUBLIC;
+
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_VISITOR_LOCATIONS
+ (IPAGE DOUBLE PRECISION )
+RETURNS
+ (OPIPADDRESS VARCHAR(15) CHARACTER SET UTF8, 
+  OPLAT BIGINT, 
+  OPLON BIGINT)
+AS
+DECLARE VARIABLE vHost VARCHAR(15); 
+BEGIN
+  FOR
+    SELECT r.REMOTEHOST
+    FROM WS_WEB_LOG r
+    where r.LOG_DATE >= CURRENT_TIMESTAMP - :ipAge -- 14 -- 0.014
+    GROUP BY r.REMOTEHOST
+    INTO :opIPAddress
+  DO
+  BEGIN
+    IF (opIPAddress NOT CONTAINING ':') THEN
+    BEGIN        
+        SELECT opLATITUDE, opLONGITUDE
+        FROM WD$GEO_DECODE_IP(:opIPAddress) p
+        INTO :opLAT, :opLON;
+        
+        IF (opLAT IS NOT NULL AND opLON IS NOT NULL) THEN
+            SUSPEND;
+    END
+  END
+END^
+
+SET TERM ; ^ 
+
+
+
+GRANT EXECUTE ON PROCEDURE WSP_VISITOR_LOCATIONS TO PUBLIC;
+
+
+
+CREATE GENERATOR GEN_SEO_DATA_ID;
+
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE SPSEO_DATA_PAGE_VIEWS_INS
+ (IPSEO_DATA_ID BIGINT, 
+  IPURL VARCHAR(1000) CHARACTER SET UTF8, 
+  IPVISITED TIMESTAMP, 
+  IPSECONDS BIGINT, 
+  IPREFERRER VARCHAR(1000) CHARACTER SET UTF8, 
+  IPPOST_BACK CHAR(1) CHARACTER SET UTF8)
+RETURNS
+ (OPNEWID BIGINT)
+AS
+BEGIN
+  opNEWID = GEN_ID(GEN_SEO_DATA_ID, 1);
+
+  INSERT INTO SEO_DATA_PAGE_VIEWS (
+    ID,
+    SEO_DATA_ID,
+    URL,
+    VISITED,
+    SECONDS,
+    REFERRER,
+    POST_BACK
+  ) VALUES (
+    :opNEWID,
+    :ipSEO_DATA_ID,
+    :ipURL,
+    :ipVISITED,
+    :ipSECONDS,
+    :ipREFERRER,
+    :ipPOST_BACK
+  );
+
+  SUSPEND;
+END^
+
+SET TERM ; ^ 
+
+
+
+
+GRANT EXECUTE ON PROCEDURE SPSEO_DATA_PAGE_VIEWS_INS TO PUBLIC;
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE SPSEO_INITIAL_REFERRER_INS
+ (IPURL VARCHAR(1000) CHARACTER SET UTF8)
+RETURNS
+ (OPNEWID BIGINT)
+AS
+BEGIN
+  IF (IPURL IS NULL) THEN
+    IPURL = 'Unknown';
+    
+  IF (EXISTS(SELECT ID FROM SEO_INITIAL_REFERRER WHERE URL = :ipURL)) THEN
+  BEGIN
+    SELECT ID
+    FROM SEO_INITIAL_REFERRER
+    WHERE URL = :ipURL
+    INTO :opNEWID;  
+  END ELSE
+  BEGIN
+    opNEWID = GEN_ID(GEN_SEO_DATA_ID, 1);
+
+    INSERT INTO SEO_INITIAL_REFERRER (
+      ID,
+      URL
+    ) VALUES (
+      :opNEWID,
+      :ipURL
+    );
+  END
+
+  SUSPEND;
+END^
+
+SET TERM ; ^ 
+
+
+GRANT EXECUTE ON PROCEDURE SPSEO_INITIAL_REFERRER_INS TO PUBLIC;
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE SPSEO_USER_AGENT_INS
+ (IPUSER_AGENT VARCHAR(1000) CHARACTER SET UTF8)
+RETURNS
+ (OPNEWID BIGINT)
+AS
+BEGIN
+  IF (ipUSER_AGENT IS NULL) THEN
+    ipUSER_AGENT = 'Unknown';
+    
+  IF (EXISTS(SELECT ID FROM SEO_USER_AGENT WHERE USER_AGENT = :ipUSER_AGENT)) THEN
+  BEGIN
+    SELECT ID
+    FROM SEO_USER_AGENT
+    WHERE USER_AGENT = :ipUSER_AGENT
+    INTO :opNEWID;  
+  END ELSE
+  BEGIN
+    opNEWID = GEN_ID(GEN_SEO_DATA_ID, 1);
+
+    INSERT INTO SEO_USER_AGENT (
+      ID,
+      USER_AGENT
+    ) VALUES (
+      :opNEWID,
+      :ipUSER_AGENT
+    );
+  END
+
+  SUSPEND;
+END^
+
+SET TERM ; ^ 
+
+
+GRANT EXECUTE ON PROCEDURE SPSEO_USER_AGENT_INS TO PUBLIC;
+
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE SPSEO_DATA_INS
+ (IPCREATED TIMESTAMP, 
+  IPSESSION_ID VARCHAR(100) CHARACTER SET UTF8, 
+  IPUSER_AGENT VARCHAR(1000) CHARACTER SET UTF8, 
+  IPINITIAL_REFERRER VARCHAR(1000) CHARACTER SET UTF8, 
+  IPIP_ADDRESS VARCHAR(15) CHARACTER SET UTF8, 
+  IPHOST_NAME VARCHAR(150) CHARACTER SET UTF8, 
+  IPIS_MOBILE_DEVICE CHAR(1) CHARACTER SET UTF8, 
+  IPIS_BROWSER_MOBILE CHAR(1) CHARACTER SET UTF8, 
+  IPMOBILE_REDIRECT CHAR(1) CHARACTER SET UTF8, 
+  IPREFERRAL_TYPE INTEGER, 
+  IPBOUNCED CHAR(1) CHARACTER SET UTF8, 
+  IPIS_BOT CHAR(1) CHARACTER SET UTF8, 
+  IPCITY_ID BIGINT, 
+  IPMOBILE_MANUFACTURER VARCHAR(100) CHARACTER SET UTF8, 
+  IPMOBILE_MODEL VARCHAR(100) CHARACTER SET UTF8, 
+  IPUSER_ID BIGINT, 
+  IPSCREEN_WIDTH INTEGER, 
+  IPSCREEN_HEIGHT INTEGER, 
+  IPSALE_AMOUNT BIGINT, 
+  IPSALE_CURRENCY VARCHAR(3) CHARACTER SET UTF8, 
+  IPOLDID BIGINT)
+RETURNS
+ (OPNEWID BIGINT)
+AS
+DECLARE VARIABLE vReferrer BIGINT;
+  DECLARE VARIABLE vUserAgent BIGINT;
+BEGIN
+  IF (ipOLDID = -9223372036854775808) THEN
+  BEGIN
+      opNEWID = GEN_ID(GEN_SEO_DATA_ID, 1);
+
+      EXECUTE PROCEDURE spSEO_INITIAL_REFERRER_INS(ipINITIAL_REFERRER) RETURNING_VALUES :vReferrer;
+      EXECUTE PROCEDURE spSEO_USER_AGENT_INS(ipUSER_AGENT) RETURNING_VALUES :vUserAgent;
+  
+      INSERT INTO SEO_DATA (
+        ID,
+        CREATED,
+        SESSION_ID,
+        USER_AGENT_ID,
+        INITIAL_REFERRER_ID,
+        IP_ADDRESS,
+        HOST_NAME,
+        IS_MOBILE_DEVICE,
+        IS_BROWSER_MOBILE,
+        MOBILE_REDIRECT,
+        REFERRAL_TYPE,
+        BOUNCED,
+        IS_BOT,
+        CITY_ID,
+        MOBILE_MANUFACTURER,
+        MOBILE_MODEL,
+        USER_ID,
+        SCREEN_WIDTH,
+        SCREEN_HEIGHT,
+        SALE_AMOUNT,
+        SALE_CURRENCY 
+      ) VALUES (
+        :opNEWID,
+        :ipCREATED,
+        :ipSESSION_ID,
+        :vUserAgent,
+        :vReferrer,
+        :ipIP_ADDRESS,
+        :ipHOST_NAME,
+        :ipIS_MOBILE_DEVICE,
+        :ipIS_BROWSER_MOBILE,
+        :ipMOBILE_REDIRECT,
+        :ipREFERRAL_TYPE,
+        :ipBOUNCED,
+        :ipIS_BOT,
+        :ipCITY_ID,
+        :ipMOBILE_MANUFACTURER,
+        :ipMOBILE_MODEL,
+        :ipUSER_ID,
+        :ipSCREEN_WIDTH,
+        :ipSCREEN_HEIGHT,
+        :ipSALE_AMOUNT,
+        :ipSALE_CURRENCY 
+      );
+  END ELSE BEGIN
+    opNEWID = IPOLDID;
+  
+    UPDATE SEO_DATA 
+    SET 
+        BOUNCED = :ipBOUNCED,
+        SALE_AMOUNT = :ipSALE_AMOUNT,
+        SALE_CURRENCY = :ipSALE_CURRENCY,
+        USER_ID = :IPUSER_ID
+
+    WHERE ID = :IPOLDID;
+  END
+  
+  
+  SUSPEND;
+END^
+
+SET TERM ; ^ 
+
+
+
+GRANT EXECUTE ON PROCEDURE SPSEO_DATA_INS TO PUBLIC;
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSF_INVOICE_CHEQUE_PAID
+ (IPINVOICEID INTEGER)
+AS
+DECLARE VARIABLE vUserID BIGINT;
+  DECLARE VARIABLE vUserName VARCHAR(100);
+  DECLARE VARIABLE vUserFirstName VARCHAR(50);
+  DECLARE VARIABLE vUserEmail VARCHAR(100);
+  DECLARE VARIABLE vProdID INTEGER; 
+  DECLARE VARIABLE vProdDesc VARCHAR(255); 
+  DECLARE VARIABLE vMsg VARCHAR(8100);
+  DECLARE VARIABLE vProdQty INTEGER; 
+  DECLARE VARIABLE vI INTEGER; 
+BEGIN 
+  /* verify the invoice exists */ 
+  IF (NOT EXISTS(SELECT ID FROM WS_INVOICE WHERE ID = :ipINVOICEID)) THEN 
+    EXCEPTION EXC_WS_INVALID_INVOICE; 
+
+  /* Update the invoice paid */ 
+  UPDATE WS_INVOICE i
+  SET i.STATUS = 1
+  WHERE i.ID = :ipINVOICEID;
+   
+  /* create individual invoice items */ 
+
+  /* Find user id */
+  SELECT i.USERID, m.EMAIL, m.USERNAME, m.FIRSTNAME
+  FROM WS_INVOICE i
+    LEFT JOIN WS_MEMBERS m ON (m.ID = i.USERID)
+  WHERE i.ID = :ipINVOICEID
+  INTO :vUserID, :vUserEMail, :vUserName, :vUserFirstName;
+
+  EXECUTE PROCEDURE WSF_SYSYEM_EMAIL_CREATE(4, vUserName, vUserEmail, vUserFirstName, vUserEmail, NULL, NULL, NULL, ipInvoiceID, NULL);
+END^
+
+SET TERM ; ^ 
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSF_INVOICE_RESEND
+ (IPINVOICEID INTEGER)
+AS
+DECLARE VARIABLE vI INTEGER; 
+  DECLARE VARIABLE vProdDesc VARCHAR(255); 
+  DECLARE VARIABLE vProdQty INTEGER; 
+  DECLARE VARIABLE vProdID INTEGER; 
+  DECLARE VARIABLE vInvPrice DECIMAL(6,2); 
+  DECLARE VARIABLE vInvQty INTEGER; 
+  DECLARE VARIABLE vInvDesc VARCHAR(255); 
+  DECLARE VARIABLE vInvCost DECIMAL(6,2);
+  DECLARE VARIABLE vInvCostShip DECIMAL(6,2); 
+  DECLARE VARIABLE vShipCost DECIMAL(6,2); 
+  DECLARE VARIABLE vMsg blob SUB_TYPE text;
+  DECLARE VARIABLE vUserID BIGINT;
+  DECLARE VARIABLE vUserFirstName VARCHAR(50);
+  DECLARE VARIABLE vUserEMail VARCHAR(100);
+  DECLARE VARIABLE vUserName VARCHAR(100);
+BEGIN 
+  /* verify the invoice exists */ 
+  IF (NOT EXISTS(SELECT ID FROM WS_INVOICE WHERE ID = :ipINVOICEID)) THEN 
+    EXCEPTION EXC_WS_INVALID_INVOICE; 
+
+  /* Find user info */
+  SELECT m.FIRSTNAME, m.EMAIL, m.USERNAME, m.ID
+  FROM WS_INVOICE i
+    LEFT JOIN WS_MEMBERS m ON (m.ID = i.USERID)
+  WHERE i.ID = :ipINVOICEID
+  INTO :vUserFirstName, :vUserEMail, :vUserName, :vUserID;
+
+  vMsg = '<img src="http://www.heavenbydeborahmitchell.co.uk/images/orders/heavenlogo.png" border=0><P>Hi ' || vUserFirstName || ',<P>Thankyou for your order at Heaven Health & Beauty Ltd, <P><B><FONT SIZE=4>Order Details</FONT></B><P>EMail Address: ' || vUserEMail || '<TABLE BORDER=0>';
+  
+  vMsg = vMsg || '<P>Invoice Number: WI' || ipInvoiceID || '</P>';
+
+  /* Create the invoice */
+  SELECT CAST(SUM(a.QTY) AS DECIMAL(6, 2))
+  FROM WS_INVOICE_ITEMS a 
+  WHERE (a.INVOICEID = :ipINVOICEID) 
+  INTO :vInvCostShip; 
+
+  SELECT a.TOTALCOST
+  FROM WS_INVOICE a 
+  WHERE (a.ID = :ipINVOICEID) 
+  INTO :vInvCost; 
+
+  vMsg = vMsg || '<TR><TD COLSPAN=3 ALIGN=LEFT><B>Cost</B></TD><TD COLSPAN=2 ALIGN=LEFT>£' || vInvCost || '</TD></TR>';
+  vMsg = vMsg || '<TR><TD COLSPAN=3 ALIGN=LEFT><B>Shipping</B></TD><TD COLSPAN=2 ALIGN=LEFT>£' || CAST(vInvCostShip AS DECIMAL(6, 2)) || '</TD></TR>';
+  vMsg = vMsg || '<TR><TD COLSPAN=3 ALIGN=LEFT><B>Total Cost</B></TD><TD COLSPAN=2 ALIGN=LEFT><B>£' || CAST(vInvCost + vInvCostShip AS DECIMAL(6, 2)) || '</B></TD></TR>';
+
+  vMsg = vMsg || '<TR><TD>&nbsp;</TD></TR><TR><TD>&nbsp;</TD></TR><TR><TD><B>Item</B></TD><TD><B>Price</B></TD><TD><B>Quantity</B></TD><TD><B>Total Price</B></TD><TD><B>Shipping Costs</B></TD></TR>';
+    
+  /* select individual invoice items */ 
+  FOR  
+    SELECT a.DESCRIPTION, a.COST, a.QTY, a.PRICE 
+    FROM WS_INVOICE_ITEMS a 
+    WHERE (a.INVOICEID = :ipINVOICEID) 
+  INTO :vInvDesc, :vInvCost, :vInvQty, :vInvPrice 
+  DO 
+  BEGIN 
+    vMsg = vMsg || '<TR><TD>' || vInvDesc || '</TD><TD>' || vInvPrice || '</TD><TD>' || vInvQty || '</TD><TD>' || vInvCost || '</TD><TD>' || vShipCost || '</TD></TR>';
+  END 
+
+  vMsg = vMsg || '</TABLE>';
+
+  vMsg = vMsg || '<P>If you have any queries regarding your order please feel free to <A HREF="http://www.heavenskincare.com/ContactUs.aspx">contact us</A><P>Sincerely<BR><BR>Heaven Health & Beauty Ltd';
+
+  /* send email to customer */
+  --EXECUTE PROCEDURE WSP_EMAIL_INSERT(vUserName, vUserEmail, 'Heaven', 'noreply@heavenbydeborahmitchell.co.uk', 'Your order from Heaven Health & Beauty Ltd', vMsg, 2) RETURNING_VALUES :vI;
+END^
+
+SET TERM ; ^ 
+
+DROP PROCEDURE WSF_WS_INVOICE_INS_REPLICATION;
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_DOWNLOADS_GET
+ (IPPAGESIZE BIGINT, 
+  IPPAGENUMBER BIGINT, 
+  IPDOWNLOADTYPE INTEGER)
+RETURNS
+ (OPID INTEGER, 
+  OPDESCRIPTION VARCHAR(200) CHARACTER SET UTF8, 
+  OPFILENAME VARCHAR(250) CHARACTER SET UTF8, 
+  OPDOWNLOADTYPE INTEGER, 
+  OPISPUBLIC CHAR(1) CHARACTER SET UTF8)
+AS
+DECLARE VARIABLE vPAGENO BIGINT;
+  DECLARE VARIABLE vCOUNTER BIGINT;
+BEGIN
+  IF (ipPAGENUMBER < 1) THEN
+    EXCEPTION EXC_INVALID_PAGE_NUM;
+
+  IF (ipPAGESIZE < 1) THEN
+    EXCEPTION EXC_INVALID_PAGE_SIZE;
+
+  vCOUNTER = 0;
+
+  vPAGENO = (ipPAGESIZE * ipPAGENUMBER) - ipPAGESIZE;
+
+  FOR SELECT ID, DESCRIPTION, FILENAME, DOWNLOADTYPE, IS_PUBLIC
+  FROM WS_DOWNLOADS
+  WHERE DOWNLOADTYPE = :ipDOWNLOADTYPE
+  INTO :opID, :opDESCRIPTION, :opFILENAME, :opDOWNLOADTYPE, :opISPUBLIC
+  DO
+  BEGIN
+    IF ((vCOUNTER >= vPAGENO) AND (vCOUNTER < (vPAGENO + ipPAGESIZE))) THEN
+    BEGIN
+      SUSPEND;
+    END
+
+    vCOUNTER = vCOUNTER + 1;
+
+    IF (vCOUNTER > (vPAGENO + ipPAGESIZE)) THEN
+    BEGIN
+      EXIT;
+    END
+  END
+  
+END^
+
+SET TERM ; ^ 
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_EMAIL_SENT
+ (IPID BIGINT, 
+  IPRESULT BLOB SUB_TYPE 1 )
+AS
+BEGIN
+  
+  IF (NOT EXISTS(SELECT ID FROM WS_EMAIL WHERE ID = :ipID)) THEN
+    EXCEPTION EXC_609002506;
+
+  
+  UPDATE WS_EMAIL
+  SET SENT_DATE = 'NOW', 
+     SENT = 'Y',
+     SEND_RESULT = :ipRESULT
+  WHERE ID = :ipID;
+
+
+  DELETE FROM WS_EMAIL WHERE ID = :ipID;
+END^
+
+SET TERM ; ^ 
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_EMAIL_SENT_ATTEMPT
+ (IPEMAILID BIGINT, 
+  IPSEND_RESULT BLOB SUB_TYPE 1 )
+AS
+DECLARE VARIABLE vTryCount INTEGER;
+		BEGIN
+			
+			SELECT SEND_ATTEMPTS FROM WS_EMAIL WHERE ID = :ipEMAILID INTO :vTryCount;
+
+			IF (vTryCount IS NULL) THEN
+				vTryCount = 1;
+
+			
+			vTryCount = vTryCount + 1;
+
+			
+			UPDATE WS_EMAIL
+			SET SEND_ATTEMPTS = :vTryCount, 
+				SEND_ATTEMPT_DATE = 'NOW',
+				 SEND_RESULT = :ipSEND_RESULT
+			WHERE ID = :ipEMAILID;
+		END^
+
+SET TERM ; ^ 
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_MEMBERS_DEL
+ (IPID BIGINT)
+AS
+BEGIN
+  /* verify record exists */
+  IF (NOT EXISTS(SELECT ID FROM WS_MEMBERS WHERE ID = :ipID)) THEN
+    EXCEPTION EXC_MEMBERS_DELETE_FAILED;
+
+  DELETE FROM WS_MEMBERS
+  WHERE ID = :ipID;
+END^
+
+SET TERM ; ^ 
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_MEMBERS_GET
+ (IPID BIGINT)
+RETURNS
+ (OPEMAIL VARCHAR(100) CHARACTER SET UTF8, 
+  OPUSERNAME VARCHAR(100) CHARACTER SET UTF8, 
+  OPFIRSTNAME VARCHAR(50) CHARACTER SET UTF8, 
+  OPLASTNAME VARCHAR(80) CHARACTER SET UTF8, 
+  OPPWORD VARCHAR(50) CHARACTER SET UTF8, 
+  OPBUSINESSNAME VARCHAR(100) CHARACTER SET UTF8, 
+  OPADDRESSLINE1 VARCHAR(50) CHARACTER SET UTF8, 
+  OPADDRESSLINE2 VARCHAR(50) CHARACTER SET UTF8, 
+  OPADDRESSLINE3 VARCHAR(50) CHARACTER SET UTF8, 
+  OPCITY VARCHAR(50) CHARACTER SET UTF8, 
+  OPCOUNTY VARCHAR(50) CHARACTER SET UTF8, 
+  OPCOUNTRY INTEGER, 
+  OPPOSTCODE VARCHAR(15) CHARACTER SET UTF8)
+AS
+BEGIN
+  /* verify record exists */
+  IF (NOT EXISTS(SELECT ID FROM WS_MEMBERS WHERE ID = :ipID)) THEN
+    EXCEPTION EXC_MEMBERS_NOT_FOUND;
+
+  FOR SELECT m.EMAIL, m.USERNAME, m.FIRSTNAME, m.LASTNAME, m.PWORD, m.BUSINESSNAME, m.ADDRESSLINE1, m.ADDRESSLINE2, m.ADDRESSLINE3, m.CITY, m.COUNTY, m.COUNTRY, m.POSTCODE
+  FROM WS_MEMBERS m
+  WHERE (m.ID = :ipID)
+  INTO :opEMAIL, :opUSERNAME, :opFIRSTNAME, :opLASTNAME, :opPWORD, :opBUSINESSNAME, :opADDRESSLINE1, :opADDRESSLINE2, :opADDRESSLINE3, :opCITY, :opCOUNTY, :opCOUNTRY, :opPOSTCODE
+  DO
+  BEGIN
+    SUSPEND;
+  END
+  
+END^
+
+SET TERM ; ^ 
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_WS_EMAIL_INS
+ (IPTO_NAME VARCHAR(50) CHARACTER SET UTF8, 
+  IPTO_EMAIL VARCHAR(100) CHARACTER SET UTF8, 
+  IPFROM_NAME VARCHAR(50) CHARACTER SET UTF8, 
+  IPFROM_MAIL VARCHAR(100) CHARACTER SET UTF8, 
+  IPSUBJECT VARCHAR(150) CHARACTER SET UTF8, 
+  IPMAIL_MESSAGE BLOB SUB_TYPE 1 , 
+  IPPRIORITY INTEGER, 
+  IPQUEUE_DATE DATE, 
+  IPSEND_ATTEMPTS INTEGER, 
+  IPSEND_ATTEMPT_DATE DATE, 
+  IPSENT_DATE DATE, 
+  IPSENT CHAR(1) CHARACTER SET UTF8, 
+  IPSEND_DATE_TIME TIMESTAMP)
+RETURNS
+ (OPNEWID BIGINT)
+AS
+DECLARE VARIABLE vMSG BLOB SUB_TYPE TEXT;
+BEGIN
+  IF (ipTO_NAME IS NULL) THEN
+    EXCEPTION EXC_609003195;
+
+  IF (ipTO_EMAIL IS NULL) THEN
+    EXCEPTION EXC_609003296;
+
+  IF (ipFROM_NAME IS NULL) THEN
+    EXCEPTION EXC_609003401;
+
+  IF (ipFROM_MAIL IS NULL) THEN
+    EXCEPTION EXC_609003403;
+
+  IF (ipSUBJECT IS NULL) THEN
+    EXCEPTION EXC_609003176;
+
+  IF (ipMAIL_MESSAGE IS NULL) THEN
+    EXCEPTION EXC_609003165;
+
+  IF (ipPRIORITY IS NULL) THEN
+    ipPRIORITY = 2;
+
+  IF (ipQUEUE_DATE IS NULL) THEN
+    ipQUEUE_DATE = 'NOW';
+
+  IF (ipSENT IS NULL) THEN
+    ipSENT =  'N';
+
+  vMSG = '<HTML><HEAD><LINK href="http://www.heavenbydeborahmitchell.co.uk/Styles/Popup.css" type="text/css" rel="stylesheet"></HEAD>';
+  vMSG = VMSG || '<body bgColor="#ffffff">';
+  vMSG = VMSG || '<TABLE cellSpacing="0" cellPadding="0" width="100%" border="0" height="100%"><TR>';
+  vMSG = VMSG || '<TD class="PageBorderTopLeftCorner" vAlign="top" align="left" width="18" height="17">&nbsp;</TD>';
+  vMSG = VMSG || '<TD class="PageBorderTop" vAlign="top" align="left" height="17">&nbsp;</TD>';
+  vMSG = VMSG || '<TD class="PageBorderTopRightCorner" vAlign="top" align="right" width="18" height="17">&nbsp;</TD>';
+  vMSG = VMSG || '</TR><TR><TD class="PageBorderLeft" vAlign="top" align="left" height="25"></TD>';
+  vMSG = VMSG || '<TD class="TextBodySubHeader" vAlign="middle" align="left" height="25">';
+  vMSG = VMSG || '<img src="http://www.heavenbydeborahmitchell.co.uk/Images/popuplogo.jpg" border=0 align=left><span class="TextBodySubHeader"><b>';
+  vMSG = VMSG || ipSUBJECT || '</b></span><br><hr>';
+  vMSG = VMSG || '</TD><TD class="PageBorderRight" vAlign="top" align="right" height="25"></TD></TR><TR>';
+  vMSG = VMSG || '<TD class="PageBorderLeft" vAlign="top" align="left">&nbsp;</TD><TD class="TextBodySmall">';
+  vMSG = VMSG || '<br><br>' || ipMAIL_MESSAGE;
+  vMSG = VMSG || '</TD><TD class="PageBorderRight" vAlign="top" align="right"></TD></TR><TR>';
+  vMSG = VMSG || '<TD class="PageBorderBottomLeftCorner" vAlign="top" align="left" width="18" height="18">&nbsp;</TD>';
+  vMSG = VMSG || '<TD class="PageBorderBottom" vAlign="bottom" align="left">&nbsp;</TD>';
+  vMSG = VMSG || '<TD class="PageBorderBottomRightCorner" vAlign="bottom" align="right" width="18" height="18">&nbsp;</TD>';
+  vMSG = VMSG || '</TR></TABLE></body></HTML>';
+
+  /* Get next ID */
+  opNewID = GEN_ID(GEN_WS_EMAIL_ID, 1);
+
+  INSERT INTO WS_EMAIL(
+    ID,
+    TO_NAME, 
+    TO_EMAIL, 
+    FROM_NAME, 
+    FROM_MAIL, 
+    SUBJECT, 
+    MAIL_MESSAGE, 
+    PRIORITY, 
+    QUEUE_DATE, 
+    SEND_ATTEMPTS, 
+    SEND_ATTEMPT_DATE, 
+    SENT_DATE, 
+    SENT, 
+    SEND_DATE_TIME
+  ) VALUES (
+    :opNewID,
+    :ipTO_NAME, 
+    :ipTO_EMAIL, 
+    :ipFROM_NAME, 
+    :ipFROM_MAIL, 
+    :ipSUBJECT, 
+    :vMSG,
+    :ipPRIORITY, 
+    :ipQUEUE_DATE, 
+    :ipSEND_ATTEMPTS, 
+    :ipSEND_ATTEMPT_DATE, 
+    :ipSENT_DATE, 
+    :ipSENT, 
+    :ipSEND_DATE_TIME
+  );
+  SUSPEND;
+
+  /* Notify listeners of insert */
+  POST_EVENT 'insert_wsp_ws_email_ins';  
+END^
+
+SET TERM ; ^ 
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_WS_DISTRIBUTORS_UPD
+ (IPID BIGINT, 
+  IPNAME VARCHAR(150) CHARACTER SET UTF8, 
+  IPURL VARCHAR(250) CHARACTER SET UTF8, 
+  IPIMAGE VARCHAR(250) CHARACTER SET UTF8, 
+  IPCONTACT_DETAILS VARCHAR(8100) CHARACTER SET UTF8)
+AS
+BEGIN
+  /* verify record exists */
+  IF (NOT EXISTS(SELECT ID FROM WS_DISTRIBUTORS WHERE ID = :ipID)) THEN
+    EXCEPTION EXC_DIST_NOT_FOUND;
+
+  IF (ipNAME IS NULL) THEN
+    EXCEPTION EXC_DIST_NAME_NULL;
+
+  IF (ipURL IS NULL) THEN
+    EXCEPTION EXC_120703781;
+
+  IF (ipIMAGE IS NULL) THEN
+    EXCEPTION EXC_120703950;
+
+  IF (ipCONTACT_DETAILS IS NULL) THEN
+    EXCEPTION EXC_120705077;
+
+  UPDATE WS_DISTRIBUTORS
+  SET NAME = :ipNAME, 
+     URL = :ipURL, 
+     IMAGE = :ipIMAGE, 
+     CONTACT_DETAILS = :ipCONTACT_DETAILS
+  WHERE ID = :ipID;
+
+  /* notify listeners of update */
+  POST_EVENT 'update_wsp_ws_distributors_upd';  
+END^
+
+SET TERM ; ^ 
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_KNOWLEDGEBASE_ITEMS_INS
+ (IPDESCRIPTION VARCHAR(80) CHARACTER SET UTF8, 
+  IPSUBGROUPID INTEGER, 
+  IPCONTENT VARCHAR(8100) CHARACTER SET UTF8, 
+  IPMEMBER_LEVEL INTEGER)
+RETURNS
+ (OPNEWID INTEGER)
+AS
+BEGIN
+  IF (ipDESCRIPTION IS NULL) THEN
+    EXCEPTION EXC_INV_KBITEM_DESC;
+
+  IF (ipSUBGROUPID IS NULL) THEN
+    EXCEPTION EXC_INV_KBITEM_SUBGROUP;
+
+  
+  opNewID = GEN_ID(GEN_KNOWLEDGEBASE_ITEMS_ID, 1);
+
+  INSERT INTO WS_KNOWLEDGEBASE_ITEMS(
+    ID,
+    DESCRIPTION, 
+    SUBGROUPID, 
+    CONTENT,
+    MEMBER_LEVEL
+  ) VALUES (
+    :opNewID,
+    :ipDESCRIPTION, 
+    :ipSUBGROUPID, 
+    :ipCONTENT,
+    :ipMEMBER_LEVEL
+  );
+  SUSPEND;
+
+  
+  POST_EVENT 'insert_wsp_ws_knowledgebase_items_ins';  
+END^
+
+SET TERM ; ^ 
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_EMAIL_MASS_INS
+ (IPTO_NAME VARCHAR(50) CHARACTER SET UTF8, 
+  IPTO_EMAIL VARCHAR(100) CHARACTER SET UTF8, 
+  IPFROM_NAME VARCHAR(50) CHARACTER SET UTF8, 
+  IPFROM_MAIL VARCHAR(100) CHARACTER SET UTF8, 
+  IPSUBJECT VARCHAR(150) CHARACTER SET UTF8, 
+  IPMAIL_MESSAGE BLOB SUB_TYPE 1 , 
+  IPSEND_DATE_TIME TIMESTAMP)
+RETURNS
+ (OPNEWID BIGINT)
+AS
+DECLARE VARIABLE vMSG BLOB SUB_TYPE TEXT;
+BEGIN
+  IF (ipTO_NAME IS NULL) THEN
+    EXCEPTION EXC_609003195;
+
+  IF (ipTO_EMAIL IS NULL) THEN
+    EXCEPTION EXC_609003296;
+
+  IF (ipFROM_NAME IS NULL) THEN
+    EXCEPTION EXC_609003401;
+
+  IF (ipFROM_MAIL IS NULL) THEN
+    EXCEPTION EXC_609003403;
+
+  IF (ipSUBJECT IS NULL) THEN
+    EXCEPTION EXC_609003176;
+
+  IF (ipMAIL_MESSAGE IS NULL) THEN
+    EXCEPTION EXC_609003165;
+
+  vMSG = '<HTML><HEAD><LINK href="http://www.heavenbydeborahmitchell.co.uk/Styles/Popup.css" type="text/css" rel="stylesheet"></HEAD>';
+  vMSG = VMSG || '<body bgColor="#ffffff">';
+  vMSG = VMSG || '<TABLE cellSpacing="0" cellPadding="0" width="100%" border="0" height="100%"><TR>';
+  vMSG = VMSG || '<TD class="PageBorderTopLeftCorner" vAlign="top" align="left" width="18" height="17">&nbsp;</TD>';
+  vMSG = VMSG || '<TD class="PageBorderTop" vAlign="top" align="left" height="17">&nbsp;</TD>';
+  vMSG = VMSG || '<TD class="PageBorderTopRightCorner" vAlign="top" align="right" width="18" height="17">&nbsp;</TD>';
+  vMSG = VMSG || '</TR><TR><TD class="PageBorderLeft" vAlign="top" align="left" height="25"></TD>';
+  vMSG = VMSG || '<TD class="TextBodySubHeader" vAlign="middle" align="left" height="25">';
+  vMSG = VMSG || '<img src="http://www.heavenbydeborahmitchell.co.uk/Images/popuplogo.jpg" border=0 align=left><span class="TextBodySubHeader"><b>';
+  vMSG = VMSG || ipSUBJECT || '</b></span><br><hr>';
+  vMSG = VMSG || '</TD><TD class="PageBorderRight" vAlign="top" align="right" height="25"></TD></TR><TR>';
+  vMSG = VMSG || '<TD class="PageBorderLeft" vAlign="top" align="left">&nbsp;</TD><TD class="TextBodySmall">';
+  vMSG = VMSG || '<br><br>' || ipMAIL_MESSAGE;
+  vMSG = VMSG || '</TD><TD class="PageBorderRight" vAlign="top" align="right"></TD></TR><TR>';
+  vMSG = VMSG || '<TD class="PageBorderBottomLeftCorner" vAlign="top" align="left" width="18" height="18">&nbsp;</TD>';
+  vMSG = VMSG || '<TD class="PageBorderBottom" vAlign="bottom" align="left">&nbsp;</TD>';
+  vMSG = VMSG || '<TD class="PageBorderBottomRightCorner" vAlign="bottom" align="right" width="18" height="18">&nbsp;</TD>';
+  vMSG = VMSG || '</TR></TABLE></body></HTML>';
+
+  /* Get next ID */
+  opNewID = GEN_ID(GEN_WS_EMAIL_ID, 1);
+
+  INSERT INTO WS_EMAIL(
+    ID,
+    TO_NAME, 
+    TO_EMAIL, 
+    FROM_NAME, 
+    FROM_MAIL, 
+    SUBJECT, 
+    MAIL_MESSAGE, 
+    SEND_DATE_TIME,
+    PRIORITY
+  ) VALUES (
+    :opNewID,
+    :ipTO_NAME, 
+    :ipTO_EMAIL, 
+    :ipFROM_NAME, 
+    :ipFROM_MAIL, 
+    :ipSUBJECT, 
+    :vMSG,
+    :ipSEND_DATE_TIME,
+    1 -- Low priority email
+  );
+  SUSPEND;
+
+  /* Notify listeners of insert */
+  POST_EVENT 'insert_wsp_ws_email_ins';  
+END^
+
+SET TERM ; ^ 
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_EMAIL_MAIL_SHOT_COUNTRY
+ (IPCOUNTRY INTEGER, 
+  IPSUBJECT VARCHAR(150) CHARACTER SET UTF8, 
+  IPMESSAGE BLOB SUB_TYPE 1 )
+RETURNS
+ (OPMESSAGESSENT INTEGER)
+AS
+DECLARE VARIABLE vEmail VARCHAR(100);
+DECLARE VARIABLE vUserName VARCHAR(100);
+DECLARE VARIABLE vNewID BIGINT;
+DECLARE VARIABLE vSendTime TIMESTAMP;
+DECLARE VARIABLE vMemberLevel INTEGER;
+BEGIN
+  opMESSAGESSENT = 0;
+  vSendTime = CURRENT_TIMESTAMP;
+  
+  
+  IF (ipSUBJECT IS NULL) THEN
+    EXCEPTION EXC_609003176;
+  IF (ipMESSAGE IS NULL) THEN
+    EXCEPTION EXC_609003165;
+  FOR 
+    SELECT a.EMAIL, a.USERNAME, a.MEMBER_LEVEL
+    FROM WS_MEMBERS a
+    WHERE (a.RECEIVE_EMAIL_SPECIAL_OFFERS = 'T')
+      AND a.COUNTRY = :ipCOUNTRY
+      AND a.MEMBER_LEVEL = 0
+  INTO :vEmail, :vUserName, :vMemberLevel
+  DO
+  BEGIN
+      
+      vNewID = GEN_ID(GEN_WS_EMAIL_ID, 1);
+    
+      
+      IF (MOD(opMESSAGESSENT,50) = 0) THEN
+      BEGIN
+        vSendTime = vSendTime + (5.00000000/1440);
+      END
+    
+      INSERT INTO WS_EMAIL(
+        ID,
+        TO_NAME, 
+        TO_EMAIL, 
+        FROM_NAME, 
+        FROM_MAIL, 
+        SUBJECT, 
+        MAIL_MESSAGE, 
+        PRIORITY, 
+        QUEUE_DATE,
+        SEND_DATE_TIME
+      ) VALUES (
+        :vNewID,
+        :vUserName, 
+        :vEmail, 
+        'Heaven Health & Beauty Ltd', 
+        'opt-in-marketing@heavenskincare.com', 
+        :ipSUBJECT, 
+        :ipMESSAGE, 
+        2, 
+        'NOW',
+        :vSendTime
+        );
+    
+        opMESSAGESSENT = opMESSAGESSENT + 1;
+    END
+  
+  SUSPEND;
+END^
+
+SET TERM ; ^ 
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_EMAIL_INSERT_MAIL_SHOT
+ (IPMEMBER_LEVEL INTEGER, 
+  IPUPPER_LEVELS INTEGER, 
+  IPSUBJECT VARCHAR(150) CHARACTER SET UTF8, 
+  IPMESSAGE BLOB SUB_TYPE 1 )
+RETURNS
+ (OPMESSAGESSENT INTEGER)
+AS
+DECLARE VARIABLE vEmail VARCHAR(100);
+DECLARE VARIABLE vUserName VARCHAR(100);
+DECLARE VARIABLE vNewID BIGINT;
+DECLARE VARIABLE vSendTime TIMESTAMP;
+DECLARE VARIABLE vMemberLevel INTEGER;
+BEGIN
+  opMESSAGESSENT = 0;
+  vSendTime = CURRENT_TIMESTAMP;
+  
+  
+  IF (ipSUBJECT IS NULL) THEN
+    EXCEPTION EXC_609003176;
+  IF (ipMESSAGE IS NULL) THEN
+    EXCEPTION EXC_609003165;
+  FOR 
+    SELECT a.EMAIL, a.USERNAME, a.MEMBER_LEVEL
+    FROM WS_MEMBERS a
+    WHERE (a.MEMBER_LEVEL >= :ipMEMBER_LEVEL)
+      AND (a.RECEIVE_EMAIL_SPECIAL_OFFERS = 'T')
+      AND (a.EMAIL LIKE '%@%')
+  INTO :vEmail, :vUserName, :vMemberLevel
+  DO
+  BEGIN
+    IF ((vMemberLevel = ipMEMBER_LEVEL) OR ((vMemberLevel > ipMEMBER_LEVEL) AND (ipUPPER_LEVELS > 0))) THEN
+    BEGIN
+      
+      vNewID = GEN_ID(GEN_WS_EMAIL_ID, 1);
+    
+      
+      IF (MOD(opMESSAGESSENT,50) = 0) THEN
+      BEGIN
+        vSendTime = vSendTime + (5.00000000/1440);
+      END
+    
+      INSERT INTO WS_EMAIL(
+        ID,
+        TO_NAME, 
+        TO_EMAIL, 
+        FROM_NAME, 
+        FROM_MAIL, 
+        SUBJECT, 
+        MAIL_MESSAGE, 
+        PRIORITY, 
+        QUEUE_DATE,
+        SEND_DATE_TIME
+      ) VALUES (
+        :vNewID,
+        :vUserName, 
+        :vEmail, 
+        'Heaven Health & Beauty Ltd', 
+        'opt-in-marketing@heavenskincare.com', 
+        :ipSUBJECT, 
+        :ipMESSAGE, 
+        2, 
+        'NOW',
+        :vSendTime
+        );
+    
+        opMESSAGESSENT = opMESSAGESSENT + 1;
+    END
+  END
+  
+  SUSPEND;
+END^
+
+SET TERM ; ^ 
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_EMAIL_GET
+RETURNS
+ (OPID BIGINT, 
+  OPTO_NAME VARCHAR(50) CHARACTER SET UTF8, 
+  OPTO_EMAIL VARCHAR(100) CHARACTER SET UTF8, 
+  OPFROM_NAME VARCHAR(50) CHARACTER SET UTF8, 
+  OPFROM_MAIL VARCHAR(100) CHARACTER SET UTF8, 
+  OPSUBJECT VARCHAR(150) CHARACTER SET UTF8, 
+  OPMESSAGE BLOB SUB_TYPE 1 , 
+  OPPRIORITY INTEGER, 
+  OPQUEUE_DATE TIMESTAMP)
+AS
+BEGIN
+  FOR SELECT FIRST 1000 ID, TO_NAME, TO_EMAIL, FROM_NAME, FROM_MAIL, SUBJECT, MAIL_MESSAGE, PRIORITY, QUEUE_DATE
+  FROM WS_EMAIL
+  WHERE SEND_DATE_TIME < CURRENT_TIMESTAMP 
+    and ((SENT = 'N') AND (SEND_ATTEMPTS < 10))
+  ORDER BY PRIORITY DESC, SEND_ATTEMPTS, QUEUE_DATE DESC
+  INTO :opID, :opTO_NAME, :opTO_EMAIL, :opFROM_NAME, :opFROM_MAIL, :opSUBJECT, :opMESSAGE, :opPRIORITY, :opQUEUE_DATE
+  DO
+  BEGIN
+    SUSPEND;
+  END
+  
+END^
+
+SET TERM ; ^ 
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_CUST_COMMENTS_PAGE
+ (IPPAGESIZE BIGINT, 
+  IPPAGENUMBER BIGINT)
+RETURNS
+ (OPID INTEGER, 
+  OPUSERID INTEGER, 
+  OPUSERNAME VARCHAR(100) CHARACTER SET UTF8, 
+  OPUSER_COMMENTS VARCHAR(8100) CHARACTER SET UTF8, 
+  OPSHOW_ON_WEB CHAR(1) CHARACTER SET UTF8)
+AS
+DECLARE VARIABLE vPAGENO BIGINT;
+  DECLARE VARIABLE vCOUNTER BIGINT;
+BEGIN
+  IF (ipPAGENUMBER < 1) THEN
+    EXCEPTION EXC_INVALID_PAGE_NUM;
+
+  IF (ipPAGESIZE < 1) THEN
+    EXCEPTION EXC_INVALID_PAGE_SIZE;
+
+  vCOUNTER = 0;
+
+  vPAGENO = (ipPAGESIZE * ipPAGENUMBER) - ipPAGESIZE;
+
+  FOR SELECT ID, USERID, USERNAME, USER_COMMENTS, SHOW_ON_WEB
+  FROM WS_CUSTOMER_COMMENTS
+  WHERE SHOW_ON_WEB = 'Y'
+  ORDER BY ID DESC
+  INTO :opID, :opUSERID, :opUSERNAME, :opUSER_COMMENTS, :opSHOW_ON_WEB
+  DO
+  BEGIN
+    IF ((vCOUNTER >= vPAGENO) AND (vCOUNTER < (vPAGENO + ipPAGESIZE))) THEN
+    BEGIN
+      SUSPEND;
+    END
+
+    vCOUNTER = vCOUNTER + 1;
+
+    IF (vCOUNTER > (vPAGENO + ipPAGESIZE)) THEN
+    BEGIN
+      EXIT;
+    END
+  END
+  
+END^
+
+SET TERM ; ^ 
+
+
+
+SET TERM ^ ; 
+
+CREATE OR ALTER PROCEDURE WSP_WS_SALON_UPDATES_MERGE
+ (IPUSERID BIGINT, 
+  IPSALONID BIGINT)
+AS
+DECLARE VARIABLE vNAME VARCHAR(150);
+ DECLARE VARIABLE vIMAGE VARCHAR(250);
+ DECLARE VARIABLE vCONTACT_NAME VARCHAR(100);
+ DECLARE VARIABLE vADDRESS VARCHAR(2000);
+ DECLARE VARIABLE vTELEPHONE VARCHAR(100);
+ DECLARE VARIABLE vFAX VARCHAR(100);
+ DECLARE VARIABLE vEMAIL VARCHAR(255);
+ DECLARE VARIABLE vURL VARCHAR(250);
+ DECLARE VARIABLE vSALON_STOCKIST INT;
+ DECLARE VARIABLE vLOCATION INT;
+ DECLARE VARIABLE vSHOW_ON_WEB INT;
+ DECLARE VARIABLE vSORT_ORDER INT;
+ DECLARE VARIABLE vPOSTCODE VARCHAR(15);
+ DECLARE VARIABLE vOPENINGTIMES VARCHAR(250);
+
+ DECLARE VARIABLE vNAME1 VARCHAR(150);
+ DECLARE VARIABLE vIMAGE1 VARCHAR(250);
+ DECLARE VARIABLE vCONTACT_NAME1 VARCHAR(100);
+ DECLARE VARIABLE vADDRESS1 VARCHAR(2000);
+ DECLARE VARIABLE vTELEPHONE1 VARCHAR(100);
+ DECLARE VARIABLE vFAX1 VARCHAR(100);
+ DECLARE VARIABLE vEMAIL1 VARCHAR(255);
+ DECLARE VARIABLE vURL1 VARCHAR(250);
+ DECLARE VARIABLE vPOSTCODE1 VARCHAR(15);
+ DECLARE VARIABLE vOPENINGTIMES1 VARCHAR(250);
+
+ DECLARE VARIABLE vUserFirstName VARCHAR(100);
+ DECLARE VARIABLE vUserName VARCHAR(100);
+ DECLARE VARIABLE vMsg blob SUB_TYPE text;
+ DECLARE VARIABLE vI BIGINT;
+BEGIN
+  /* verify record exists */
+  IF (NOT EXISTS(SELECT ID FROM WS_SALONS WHERE ID = :ipSALONID)) THEN
+    EXCEPTION EXC_729002746;
+
+  SELECT NAME, IMAGE, CONTACT_NAME, ADDRESS, TELEPHONE, FAX, EMAIL, URL, SALON_STOCKIST, LOCATION, SHOW_ON_WEB, SORT_ORDER, POSTCODE, OPENING_TIMES
+  FROM WS_SALONS
+  WHERE (ID = :ipSALONID)
+  INTO :vNAME, :vIMAGE, :vCONTACT_NAME, :vADDRESS, :vTELEPHONE, :vFAX, :vEMAIL, :vURL, :vSALON_STOCKIST, :vLOCATION, :vSHOW_ON_WEB, :vSORT_ORDER, :vPOSTCODE, :vOPENINGTIMES;
+
+  SELECT NAME, IMAGE, CONTACT_NAME, ADDRESS, TELEPHONE, FAX, EMAIL, URL, POSTCODE, OPENING_TIMES
+  FROM WS_SALON_UPDATES
+  WHERE (USERID = :ipUSERID) AND (SALONID = :ipSALONID)
+  INTO :vNAME1, :vIMAGE1, :vCONTACT_NAME1, :vADDRESS1, :vTELEPHONE1, :vFAX1, :vEMAIL1, :vURL1, :vPOSTCODE1, :vOPENINGTIMES1;
+  
+  IF (vImage1 = '') THEN
+  BEGIN
+    vImage1 = vImage;
+  END
+  
+  UPDATE WS_SALONS SET
+  NAME = :vName1,
+  IMAGE = :vImage1,
+  CONTACT_NAME = :vContact_Name1,
+  ADDRESS = :vAddress1,
+  TELEPHONE = :vTelephone1,
+  FAX = :vFAX1,
+  EMAIL = :vEMAIL1,
+  URL = :vURL1,
+  POSTCODE = :vPOSTCODE1,
+  OPENING_TIMES = :vOPENINGTIMES1
+  WHERE ID = :ipSALONID;
+  
+  -- remove updated RECORD_VERSION
+  DELETE FROM WS_SALON_UPDATES
+  WHERE (USERID = :ipUSERID) AND (SALONID = :ipSALONID);
+  
+  --send email
+  SELECT M.FIRSTNAME, M.EMAIL, M.USERNAME
+  FROM WS_MEMBERS M
+  WHERE (M.ID = :ipUSERID)
+  INTO :vUserFirstName, :vEMail, vUserName;
+
+  vMsg = '<P>Hi ' || vUserFirstName || ',</p><P>You recently updated your salon details on Heaven''s website, these updates have been accepted and your online salon details have been updated.</p><p>Thankyou</p>';
+  EXECUTE PROCEDURE WSP_EMAIL_INSERT(vUserName, vEmail, 'Heaven Health & Beauty Ltd', 'noreply@heavenskincare.com', 'Your Salon Update', vMsg, 2) RETURNING_VALUES :vI;
+
+END^
+
+SET TERM ; ^ 
+
+

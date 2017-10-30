@@ -1,0 +1,115 @@
+SET TERM ^ ;
+ALTER PROCEDURE WSP_MAINTENANCE_ORDERS
+AS
+DECLARE VARIABLE vOrderID INTEGER;
+  DECLARE VARIABLE vFirstName VARCHAR(50);
+  DECLARE VARIABLE vFullName VARCHAR(100);
+  DECLARE VARIABLE vEmail VARCHAR(100);
+  DECLARE VARIABLE vMessage BLOB SUB_TYPE TEXT;
+  DECLARE VARIABLE vNewID BIGINT;
+  DECLARE VARIABLE vCount integer;
+BEGIN
+  
+  EXECUTE PROCEDURE WSP_PROCEDURE_RUNNING('WSP_MAINTENANCE_ORDERS') RETURNING_VALUES :vCount;
+  
+  IF (vCount = 0) THEN
+  BEGIN
+      FOR 
+        SELECT r.ID, m.FIRSTNAME, m.EMAIL, m.USERNAME
+        FROM WS_INVOICE r
+          INNER JOIN WS_MEMBERS m ON (m.ID = r.USERID)
+        WHERE r.STATUS NOT IN (1, 6, 7, 8, 9, 11, 26)
+          AND r.USER_SESSION IS NOT NULL
+          AND r.REMOTE_HOST IS NOT NULL
+          AND r.ID NOT IN (SELECT ORDER_ID FROM WS_INVOICE_ORDERS)
+          AND r.NON_PAYMENT_REMINDER IS NULL
+          AND r.PURCHASEDATE < CURRENT_TIMESTAMP -7
+        INTO :vOrderID, :vFirstName, :vEmail, :vFullName
+      DO
+      BEGIN
+        vMessage = 'Dear ' || vFirstName || ',' || '
+
+    You recently placed an order on our website but did not complete the
+    process by paying.
+
+    If you would like to continue with this order please follow the link
+    below and click "Pay Now"
+
+    http://www.heavenskincare.com/Members/Accounts/OrderViewItem.aspx?AccountsID=' || vOrderID || '
+
+    If you do not wish to complete this order then please disregard this email.
+
+    Heaven Health & Beauty Ltd';
+        
+        
+        
+        UPDATE WS_INVOICE
+        SET NON_PAYMENT_REMINDER = CURRENT_TIMESTAMP
+        WHERE ID = :vOrderID;
+      END
+      
+
+      UPDATE WS_INVOICE r
+      SET r.STATUS = 10
+      WHERE r.STATUS NOT IN (1, 6, 7, 8, 9, 10, 11, 26)
+        AND r.NON_PAYMENT_REMINDER < CURRENT_TIMESTAMP -7;
+  END
+END^
+SET TERM ; ^
+
+SET TERM ^ ;
+
+CREATE OR ALTER PROCEDURE WSP_STATS_TOP_PRODUCTS
+(
+    ipNUM_DAYS INTEGER,
+    ipMAX_ITEMS INTEGER,
+    ipUPDATE_BEST_SELLERS WS_BOOL
+)
+RETURNS
+(
+    opPRODUCT_SKU VARCHAR(10),
+    opPRODUCT_NAME VARCHAR(200),
+    opPRODUCT_SIZE VARCHAR(60),
+    opPRODUCT_COUNT INTEGER
+)
+AS
+  DECLARE VARIABLE vCount INTEGER = 0;
+  DECLARE VARIABLE vProductID BIGINT;
+BEGIN
+  IF (ipUPDATE_BEST_SELLERS = 'Y') THEN
+  BEGIN
+    UPDATE WS_PRODUCTS
+    SET BEST_SELLER = 'N'
+    WHERE BEST_SELLER = 'Y';
+  END
+  
+  FOR
+    SELECT p.ID, pcs.SKU, p.NAME, pcs.PRODUCT_SIZE, SUM(ii.QTY)
+    FROM WS_PRODUCTS_COST_SIZE pcs
+      JOIN WS_PRODUCTS p ON (p.ID = pcs.PRODUCT_ID)
+      JOIN WS_INVOICE_ITEMS ii ON (ii.ITEM_ID = pcs.ID AND ii.ITEM_TYPE = 1)
+      JOIN WS_INVOICE_ORDERS io ON (io.ORDER_ID = ii.INVOICEID)
+    WHERE io.PURCHASEDATE >= CURRENT_TIMESTAMP - :ipNUM_DAYS
+    GROUP BY p.ID, pcs.SKU, p.NAME, pcs.PRODUCT_SIZE
+    ORDER BY SUM(ii.QTY) DESC
+    INTO :vProductID, :opPRODUCT_SKU, :opPRODUCT_NAME, opPRODUCT_SIZE, opPRODUCT_COUNT
+  DO
+  BEGIN
+    vCount = vCount + 1;
+    SUSPEND;
+
+    IF (ipUPDATE_BEST_SELLERS = 'Y') THEN
+    BEGIN
+        UPDATE WS_PRODUCTS
+        SET BEST_SELLER = 'Y'
+        WHERE ID = :vProductID;
+    END
+    
+    IF (vCount >= ipMAX_ITEMS) THEN
+        BREAK;
+  END
+END ^
+
+SET TERM ; ^
+
+GRANT EXECUTE ON PROCEDURE WSP_STATS_TOP_PRODUCTS TO PUBLIC;

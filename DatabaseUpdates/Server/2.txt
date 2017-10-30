@@ -1,0 +1,9 @@
+ALTER TABLE WS_CAMPAIGN_STATS DROP CONSTRAINT FK_WS_CAMPAIGN_STATS_ID;
+
+alter table WS_CAMPAIGN_STATS
+add constraint FK_WS_CAMPAIGN_STATS_ID
+foreign key (ID) 
+references WS_CAMPAIGNS (ID)
+on update CASCADE 
+on delete CASCADE;
+

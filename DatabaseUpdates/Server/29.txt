@@ -1,0 +1,59 @@
+SET TERM ^ ;
+ALTER PROCEDURE WD$GEO_DECODE_IP (
+    IPIPADDRESS WD$IP_ADDRESS1 )
+RETURNS (
+    OPID Bigint,
+    OPCOUNTRY Varchar(3),
+    OPCITY Varchar(200),
+    OPREGION Varchar(3),
+    OPPOSTCODE Varchar(30),
+    OPLATITUDE Decimal(10,4),
+    OPLONGITUDE Decimal(10,4),
+    OPMETROCODE Varchar(3),
+    OPAREACODE Varchar(3),
+    OPNUMERIC Bigint,
+    OPSTARTBLOCK Bigint,
+    OPENDBLOCK Bigint )
+AS
+DECLARE VARIABLE vIPAddressPart VARCHAR(3);
+  DECLARE VARIABLE vCount INTEGER = 0;
+  DECLARE VARIABLE vTotal BIGINT = 0;
+  DECLARE VARIABLE vPart BIGINT = 0;
+BEGIN
+  FOR
+    SELECT opPART
+    FROM WD$SPLITSTRING(:ipIPADDRESS, '.')
+    INTO :vIPAddressPart
+  DO
+  BEGIN
+    IF (vCount = 0) THEN
+        vPart = CAST(vIPAddressPart AS BIGINT) * 16777216;
+    ELSE IF (vCount = 1) THEN
+        vPart = CAST(vIPAddressPart AS BIGINT) * 65536;
+    ELSE IF (vCount = 2) THEN
+        vPart = CAST(vIPAddressPart AS BIGINT) * 256;
+    ELSE 
+        vPart = CAST(vIPAddressPart AS BIGINT);
+  
+    --increase the COUNT
+    vCount = vCount + 1;
+    
+    vTotal = vTotal + vPart;
+  END
+
+  opNUMERIC = vTotal;
+    
+  SELECT FIRST 1 ipc.WD$ID, c.WD$COUNTRY_CODE, ipc.WD$CITY, ipc.WD$REGION, 
+    ipc.WD$POSTCODE, ipc.WD$LATITUDE, ipc.WD$LONGITUDE,
+    ipc.WD$METRO_CODE, ipc.WD$AREA_CODE, c.WD$FROM_IP, c.WD$TO_IP
+  FROM WD$IPTOCOUNTRY c
+    LEFT JOIN WD$IPCITY ipc ON (ipc.WD$ID = c.WD$CITY_ID)
+  WHERE (c.WD$FROM_IP <= :vTotal) AND (c.WD$TO_IP >= :vTotal)
+  ORDER BY c.WD$VERSION
+  INTO :opID, :opCOUNTRY, :opCITY, :opREGION, :opPOSTCODE, :opLATITUDE, :opLONGITUDE, :OPMETROCODE, :OPAREACODE, :opSTARTBLOCK, :opENDBLOCK;
+
+  SUSPEND; 
+
+END^
+SET TERM ; ^
+

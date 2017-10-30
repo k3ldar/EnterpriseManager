@@ -1,0 +1,49 @@
+SET TERM ^ ;
+ALTER PROCEDURE SPSEO_DATA_PAGE_VIEWS_INS (
+    ipseoDataId Bigint,
+    ipSEO_SESSION_ID VARCHAR(100),
+    IPURL Varchar(1000),
+    IPVISITED Timestamp,
+    IPSECONDS Bigint,
+    IPREFERRER Varchar(1000),
+    IPPOST_BACK Char(1) )
+RETURNS (
+    OPNEWID Bigint )
+AS
+BEGIN
+  IF (NOT EXISTS(SELECT ID FROM SEO_DATA WHERE ID = :ipseoDataId)) THEN
+  BEGIN
+    SELECT ID
+    FROM SEO_DATA
+    WHERE SESSION_ID = :ipseoDataId
+    INTO :ipseoDataId;
+  END
+  
+  opNEWID = GEN_ID(GEN_SEO_DATA_ID, 1);
+
+  INSERT INTO SEO_DATA_PAGE_VIEWS (
+    ID,
+    SEO_DATA_ID,
+    URL,
+    VISITED,
+    SECONDS,
+    REFERRER,
+    POST_BACK
+  ) VALUES (
+    :opNEWID,
+    :ipseoDataId,
+    :ipURL,
+    :ipVISITED,
+    :ipSECONDS,
+    :ipREFERRER,
+    :ipPOST_BACK
+  );
+
+  SUSPEND;
+END^
+SET TERM ; ^
+
+
+GRANT EXECUTE
+ ON PROCEDURE SPSEO_DATA_PAGE_VIEWS_INS TO PUBLIC;
+
