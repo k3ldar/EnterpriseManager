@@ -1,0 +1,33 @@
+1>------ Rebuild All started: Project: Languages, Configuration: Release Any CPU ------
+2>------ Rebuild All started: Project: Library, Configuration: Release Any CPU ------
+2>T:\HeavenMain\Libraries\Library\BOL\Staff\StaffMember.cs(189,10,189,25): warning CS1030: #warning: 'finish this off'
+2>T:\HeavenMain\Libraries\Library\BOL\Users\CreditCard.cs(85,10,85,89): warning CS1030: #warning: 'every time card is decrypted, log the decryption date time, user and who's card'
+2>T:\HeavenMain\Libraries\Library\DAL\FirebirdDB.cs(3246,10,3246,40): warning CS1030: #warning: 'continue refactoring from here'
+2>T:\HeavenMain\Libraries\Library\Checks.cs(17,10,17,62): warning CS1030: #warning: 'Building Library.dll without support for WEB_LOGGING'
+2>T:\HeavenMain\Libraries\Library\BOL\Basket\ShoppingBasket.cs(398,34,398,72): warning CS0618: 'SharedUtils.VATRemove(decimal, double)' is obsolete: 'Only used for old invoice/version below 7'
+2>T:\HeavenMain\Libraries\Library\BOL\DeliveryAddress\DeliveryAddress.cs(253,55,253,71): warning CS0618: 'Country.Culture' is obsolete: 'This is now obsolete and the culture should be gotten from the active currency culture'
+2>T:\HeavenMain\Libraries\Library\BOL\Basket\ShoppingBasket.cs(1593,33,1593,71): warning CS0618: 'SharedUtils.VATRemove(decimal, double)' is obsolete: 'Only used for old invoice/version below 7'
+2>T:\HeavenMain\Libraries\Library\Utils\HSCUtils.cs(103,72,103,87): warning CS0618: 'Country.Culture' is obsolete: 'This is now obsolete and the culture should be gotten from the active currency culture'
+2>  Library -> T:\HeavenMain\Release\Library.dll
+1>  Languages -> T:\HeavenMain\Release\Languages.dll
+3>------ Rebuild All started: Project: Reports, Configuration: Release Any CPU ------
+4>------ Rebuild All started: Project: SalonDiary, Configuration: Release Any CPU ------
+3>T:\HeavenMain\Libraries\Reports\Vouchers\CreateVouchers.cs(254,55,254,71): warning CS0618: 'Country.Culture' is obsolete: 'This is now obsolete and the culture should be gotten from the active currency culture'
+3>T:\HeavenMain\Libraries\Reports\Vouchers\CreateVouchers.cs(268,33,268,49): warning CS0618: 'Country.Culture' is obsolete: 'This is now obsolete and the culture should be gotten from the active currency culture'
+3>T:\HeavenMain\Libraries\Reports\Vouchers\CreateVouchers.cs(478,51,478,67): warning CS0618: 'Country.Culture' is obsolete: 'This is now obsolete and the culture should be gotten from the active currency culture'
+3>  Reports -> T:\HeavenMain\Release\Reports.dll
+4>  SalonDiary -> T:\HeavenMain\Release\SalonDiary.dll
+5>------ Rebuild All started: Project: Website.Library, Configuration: Release Any CPU ------
+5>T:\HeavenMain\Libraries\Website.Library\Checks.cs(20,10,20,64): warning CS1030: #warning: 'Building without Error Manager for Website.Library.dll'
+5>T:\HeavenMain\Libraries\Website.Library\Checks.cs(34,10,34,70): warning CS1030: #warning: 'Building Website.Library.dll without support for WEB_LOGGING'
+5>T:\HeavenMain\Libraries\Website.Library\Classes\Web\BaseWebApplication.cs(2136,10,2136,30): warning CS1030: #warning: 'build site map now!!'
+5>T:\HeavenMain\Libraries\Website.Library\Classes\Web\LocalWebSessionData.cs(95,10,95,17): warning CS1030: #warning: 'tidy up'
+5>T:\HeavenMain\Libraries\Website.Library\Classes\Web\SharedWebBase.cs(478,41,478,70): warning CS0618: 'Country.Culture' is obsolete: 'This is now obsolete and the culture should be gotten from the active currency culture'
+5>T:\HeavenMain\Libraries\Website.Library\Classes\Web\SharedWebBase.cs(655,37,655,66): warning CS0618: 'Country.Culture' is obsolete: 'This is now obsolete and the culture should be gotten from the active currency culture'
+5>T:\HeavenMain\Libraries\Website.Library\Classes\Web\SharedWebBase.cs(705,33,705,53): warning CS0618: 'Country.Culture' is obsolete: 'This is now obsolete and the culture should be gotten from the active currency culture'
+5>T:\HeavenMain\Libraries\Website.Library\Classes\Web\SharedWebBase.cs(730,33,730,62): warning CS0618: 'Country.Culture' is obsolete: 'This is now obsolete and the culture should be gotten from the active currency culture'
+5>  Website.Library -> T:\HeavenMain\Libraries\Website.Library\Bin\Release\Website.Library.dll
+6>------ Rebuild All started: Project: POS, Configuration: Release Any CPU ------
+6>  POS -> T:\HeavenMain\Release\POS.dll
+========== Rebuild All: 6 succeeded, 0 failed, 0 skipped ==========
+

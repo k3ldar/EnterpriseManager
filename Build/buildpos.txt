@@ -1,0 +1,90 @@
+1>------ Rebuild All started: Project: Languages, Configuration: Release Any CPU ------
+2>------ Rebuild All started: Project: Library, Configuration: Release Any CPU ------
+2>T:\HeavenMain\Libraries\Library\BOL\Staff\StaffMember.cs(189,10,189,25): warning CS1030: #warning: 'finish this off'
+2>T:\HeavenMain\Libraries\Library\BOL\Users\CreditCard.cs(85,10,85,89): warning CS1030: #warning: 'every time card is decrypted, log the decryption date time, user and who's card'
+2>T:\HeavenMain\Libraries\Library\Checks.cs(17,10,17,62): warning CS1030: #warning: 'Building Library.dll without support for WEB_LOGGING'
+2>T:\HeavenMain\Libraries\Library\DAL\FirebirdDB.cs(3246,10,3246,40): warning CS1030: #warning: 'continue refactoring from here'
+2>T:\HeavenMain\Libraries\Library\BOL\Basket\ShoppingBasket.cs(398,34,398,72): warning CS0618: 'SharedUtils.VATRemove(decimal, double)' is obsolete: 'Only used for old invoice/version below 7'
+2>T:\HeavenMain\Libraries\Library\BOL\DeliveryAddress\DeliveryAddress.cs(253,55,253,71): warning CS0618: 'Country.Culture' is obsolete: 'This is now obsolete and the culture should be gotten from the active currency culture'
+2>T:\HeavenMain\Libraries\Library\BOL\Basket\ShoppingBasket.cs(1593,33,1593,71): warning CS0618: 'SharedUtils.VATRemove(decimal, double)' is obsolete: 'Only used for old invoice/version below 7'
+2>T:\HeavenMain\Libraries\Library\Utils\HSCUtils.cs(103,72,103,87): warning CS0618: 'Country.Culture' is obsolete: 'This is now obsolete and the culture should be gotten from the active currency culture'
+2>  Library -> T:\HeavenMain\Release\Library.dll
+1>  Languages -> T:\HeavenMain\Release\Languages.dll
+3>------ Rebuild All started: Project: SalonDiary, Configuration: Release Any CPU ------
+4>------ Rebuild All started: Project: Reports, Configuration: Release Any CPU ------
+4>T:\HeavenMain\Libraries\Reports\Vouchers\CreateVouchers.cs(254,55,254,71): warning CS0618: 'Country.Culture' is obsolete: 'This is now obsolete and the culture should be gotten from the active currency culture'
+4>T:\HeavenMain\Libraries\Reports\Vouchers\CreateVouchers.cs(268,33,268,49): warning CS0618: 'Country.Culture' is obsolete: 'This is now obsolete and the culture should be gotten from the active currency culture'
+4>T:\HeavenMain\Libraries\Reports\Vouchers\CreateVouchers.cs(478,51,478,67): warning CS0618: 'Country.Culture' is obsolete: 'This is now obsolete and the culture should be gotten from the active currency culture'
+4>  Reports -> T:\HeavenMain\Release\Reports.dll
+3>  SalonDiary -> T:\HeavenMain\Release\SalonDiary.dll
+5>------ Rebuild All started: Project: POS, Configuration: Release Any CPU ------
+5>  POS -> T:\HeavenMain\Release\POS.dll
+6>------ Rebuild All started: Project: PointOfSale, Configuration: Release x86 ------
+7>------ Rebuild All started: Project: POS.Invoices, Configuration: Release Any CPU ------
+8>------ Rebuild All started: Project: POS.Orders, Configuration: Release Any CPU ------
+9>------ Rebuild All started: Project: POS.Customers, Configuration: Release Any CPU ------
+7>T:\HeavenMain\Libraries\Plugins\POS.Invoices\Forms\CreateOrder.cs(33,7,33,29): warning CS0105: The using directive for 'SharedControls.Classes' appeared previously in this namespace
+7>  POS.Invoices -> T:\HeavenMain\Builds\POS\Release\Plugins\POS.Invoices.dll
+10>------ Rebuild All started: Project: POS.Debug, Configuration: Release Any CPU ------
+10>  POS.Debug -> T:\HeavenMain\Builds\POS\Release\Plugins\POS.Debug.dll
+6>T:\HeavenMain\Applications\Pos\Checks.cs(38,10,38,53): warning CS1030: #warning: 'Building Release Version of PointOfSale.exe'
+6>T:\HeavenMain\Applications\Pos\Forms\MainForm.cs(104,10,104,51): warning CS1030: #warning: 'Other settings like allow minimize etc...'
+6>  PointOfSale -> T:\HeavenMain\Builds\POS\Release\PointOfSale.exe
+11>------ Rebuild All started: Project: POS.Diary, Configuration: Release Any CPU ------
+12>------ Rebuild All started: Project: POS.Export, Configuration: Release Any CPU ------
+11>T:\HeavenMain\Libraries\Plugins\POS.Diary\Checks.cs(14,10,14,42): warning CS1030: #warning: 'Appointments cached in POS.Diary'
+11>  POS.Diary -> T:\HeavenMain\Builds\POS\Release\Plugins\POS.Diary.dll
+12>  POS.Export -> T:\HeavenMain\Builds\POS\Release\Plugins\POS.Export.dll
+13>------ Rebuild All started: Project: POS.HelpDesk, Configuration: Release Any CPU ------
+13>  POS.HelpDesk -> T:\HeavenMain\Builds\POS\Release\Plugins\POS.HelpDesk.dll
+14>------ Rebuild All started: Project: POS.StockControl, Configuration: Release Any CPU ------
+15>------ Rebuild All started: Project: POS.UpdateImages, Configuration: Release Any CPU ------
+14>  POS.StockControl -> T:\HeavenMain\Builds\POS\Release\Plugins\POS.StockControl.dll
+8>T:\HeavenMain\Libraries\Plugins\POS.Orders\Forms\MainScreenOrderManager.cs(309,17,309,31): warning CS0618: 'PDFInvoicePaid' is obsolete: 'Old Invoice Style, to be removed 12th Dec 2017....'
+8>T:\HeavenMain\Libraries\Plugins\POS.Orders\Forms\MainScreenOrderManager.cs(309,45,309,59): warning CS0618: 'PDFInvoicePaid' is obsolete: 'Old Invoice Style, to be removed 12th Dec 2017....'
+8>  POS.Orders -> T:\HeavenMain\Builds\POS\Release\Plugins\POS.Orders.dll
+16>------ Rebuild All started: Project: POS.VoucherManagement, Configuration: Release Any CPU ------
+15>  POS.UpdateImages -> T:\HeavenMain\Builds\POS\Release\Plugins\POS.UpdateImages.dll
+17>------ Rebuild All started: Project: POS.WebsiteAdministration, Configuration: Release Any CPU ------
+16>  POS.VoucherManagement -> T:\HeavenMain\Builds\POS\Release\Plugins\POS.VoucherManagement.dll
+18>------ Rebuild All started: Project: POS.Updater, Configuration: Release Any CPU ------
+9>  POS.Customers -> T:\HeavenMain\Builds\POS\Release\Plugins\POS.Customers.dll
+19>------ Rebuild All started: Project: POS.Marketing, Configuration: Release Any CPU ------
+20>------ Rebuild All started: Project: POS.Till, Configuration: Release Any CPU ------
+18>  POS.Updater -> T:\HeavenMain\Builds\POS\Release\Plugins\POS.Updater.dll
+17>  POS.WebsiteAdministration -> T:\HeavenMain\Builds\POS\Release\Plugins\POS.WebsiteAdministration.dll
+21>------ Rebuild All started: Project: POS.TrainingSchedule, Configuration: Release Any CPU ------
+20>  POS.Till -> T:\HeavenMain\Builds\POS\Release\Plugins\POS.Till.dll
+22>------ Rebuild All started: Project: POS.FileBackup, Configuration: Release Any CPU ------
+23>------ Rebuild All started: Project: POS.Staff, Configuration: Release Any CPU ------
+19>T:\HeavenMain\Libraries\Plugins\POS.Marketing\Controls\CreateEmailStep9.cs(118,10,118,45): warning CS1030: #warning: 'Re-Implement Mail Chimp Integration'
+19>T:\HeavenMain\Libraries\Plugins\POS.Marketing\Classes\MailChimpWrapper.cs(35,10,35,45): warning CS1030: #warning: 'Re-Implement Mail Chimp Integration'
+19>T:\HeavenMain\Libraries\Plugins\POS.Marketing\Classes\MailChimpWrapper.cs(60,10,60,45): warning CS1030: #warning: 'Re-Implement Mail Chimp Integration'
+19>T:\HeavenMain\Libraries\Plugins\POS.Marketing\Controls\CreateEmailStep9.cs(301,10,301,45): warning CS1030: #warning: 'Re-Implement Mail Chimp Integration'
+19>T:\HeavenMain\Libraries\Plugins\POS.Marketing\Classes\MailChimpWrapper.cs(85,10,85,45): warning CS1030: #warning: 'Re-Implement Mail Chimp Integration'
+19>T:\HeavenMain\Libraries\Plugins\POS.Marketing\Controls\CreateEmailStep9.cs(339,10,339,45): warning CS1030: #warning: 'Re-Implement Mail Chimp Integration'
+19>T:\HeavenMain\Libraries\Plugins\POS.Marketing\Controls\CreateEmailStep9.cs(351,10,351,45): warning CS1030: #warning: 'Re-Implement Mail Chimp Integration'
+19>T:\HeavenMain\Libraries\Plugins\POS.Marketing\Controls\MailChimpSettings.cs(62,10,62,45): warning CS1030: #warning: 'Re-Implement Mail Chimp Integration'
+19>T:\HeavenMain\Libraries\Plugins\POS.Marketing\Classes\MailChimpWrapper.cs(107,10,107,45): warning CS1030: #warning: 'Re-Implement Mail Chimp Integration'
+19>T:\HeavenMain\Libraries\Plugins\POS.Marketing\Classes\MailChimpWrapper.cs(142,10,142,45): warning CS1030: #warning: 'Re-Implement Mail Chimp Integration'
+19>T:\HeavenMain\Libraries\Plugins\POS.Marketing\Classes\MailChimpWrapper.cs(173,10,173,45): warning CS1030: #warning: 'Re-Implement Mail Chimp Integration'
+19>T:\HeavenMain\Libraries\Plugins\POS.Marketing\Classes\MailChimpWrapper.cs(210,10,210,45): warning CS1030: #warning: 'Re-Implement Mail Chimp Integration'
+19>T:\HeavenMain\Libraries\Plugins\POS.Marketing\Classes\MailChimpWrapper.cs(239,10,239,45): warning CS1030: #warning: 'Re-Implement Mail Chimp Integration'
+19>T:\HeavenMain\Libraries\Plugins\POS.Marketing\Classes\MailChimpWrapper.cs(258,10,258,45): warning CS1030: #warning: 'Re-Implement Mail Chimp Integration'
+19>  POS.Marketing -> T:\HeavenMain\Builds\POS\Release\Plugins\POS.Marketing.dll
+22>  POS.FileBackup -> T:\HeavenMain\Builds\POS\Release\Plugins\POS.FileBackupPluginModule.dll
+24>------ Rebuild All started: Project: POS.Administration, Configuration: Release Any CPU ------
+25>------ Rebuild All started: Project: POS.AutoUpdate, Configuration: Release Any CPU ------
+24>T:\HeavenMain\Libraries\Plugins\POS.Administration\Forms\Products\AdminPriceCalculator.cs(152,31,152,71): warning CS0618: 'SharedUtils.VATRemove(decimal, double)' is obsolete: 'Only used for old invoice/version below 7'
+24>  POS.Administration -> T:\HeavenMain\Builds\POS\Release\Plugins\POS.Administration.dll
+23>T:\HeavenMain\Libraries\Plugins\POS.Staff\Controls\Wizards\StaffSick\CreateSickness\Summary.cs(15,7,15,31): warning CS0105: The using directive for 'Library.BOL.Appointments' appeared previously in this namespace
+23>T:\HeavenMain\Libraries\Plugins\POS.Staff\Controls\Wizards\StaffSick\CreateSickness\Summary.cs(27,30,27,48): warning CS0169: The field 'Summary._staffAppointments' is never used
+23>  POS.Staff -> T:\HeavenMain\Builds\POS\Release\Plugins\POS.Staff.dll
+26>------ Rebuild All started: Project: POS.CashManager, Configuration: Release Any CPU ------
+21>  POS.TrainingSchedule -> T:\HeavenMain\Builds\POS\Release\Plugins\POS.TrainingSchedule.dll
+27>------ Rebuild All started: Project: POS.DatabaseBackup, Configuration: Release Any CPU ------
+25>  POS.AutoUpdate -> T:\HeavenMain\Builds\POS\Release\Plugins\POS.AutoUpdate.dll
+26>  POS.CashManager -> T:\HeavenMain\Builds\POS\Release\Plugins\POS.Cash.dll
+27>  POS.DatabaseBackup -> T:\HeavenMain\Builds\POS\Release\Plugins\POS.DatabaseBackupPluginModule.dll
+========== Rebuild All: 27 succeeded, 0 failed, 0 skipped ==========
+
