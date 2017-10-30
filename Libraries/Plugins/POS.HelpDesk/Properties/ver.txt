@@ -1,0 +1,10 @@
+Parameters
+/out=T:\HeavenMain\Libraries\Plugins\POS.HelpDesk\Properties\ver.txt
+/Debug
+/path=T:\HeavenMain\Libraries\Plugins\POS.HelpDesk\
+
+Path Exists
+
+T:\HeavenMain\Libraries\Plugins\POS.HelpDesk\properties\AssemblyInfo.cs Found
+
+New Version 4.0.0.1348
