@@ -1,0 +1,10 @@
+Parameters
+/out=T:\HeavenMain\Libraries\Plugins\POS.Debug\Properties\ver.txt
+/Debug
+/path=T:\HeavenMain\Libraries\Plugins\POS.Debug\
+
+Path Exists
+
+T:\HeavenMain\Libraries\Plugins\POS.Debug\properties\AssemblyInfo.cs Found
+
+New Version 4.0.0.1336
