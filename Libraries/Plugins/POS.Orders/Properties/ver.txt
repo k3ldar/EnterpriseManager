@@ -1,0 +1,10 @@
+Parameters
+/out=T:\HeavenMain\Libraries\Plugins\POS.Orders\Properties\ver.txt
+/Debug
+/path=T:\HeavenMain\Libraries\Plugins\POS.Orders\
+
+Path Exists
+
+T:\HeavenMain\Libraries\Plugins\POS.Orders\properties\AssemblyInfo.cs Found
+
+New Version 4.0.0.1353
