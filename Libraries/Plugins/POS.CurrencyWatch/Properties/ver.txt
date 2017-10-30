@@ -1,0 +1,10 @@
+Parameters
+/out=T:\HeavenMain\Libraries\Plugins\POS.CurrencyWatch\Properties\ver.txt
+/Debug
+/path=T:\HeavenMain\Libraries\Plugins\POS.CurrencyWatch\
+
+Path Exists
+
+T:\HeavenMain\Libraries\Plugins\POS.CurrencyWatch\properties\AssemblyInfo.cs Found
+
+New Version 4.0.0.775
