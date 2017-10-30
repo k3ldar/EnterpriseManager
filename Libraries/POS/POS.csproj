@@ -1,0 +1,409 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C5EA121E-69B3-499D-ACDE-C6DFD9779B73}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>POS.Base</RootNamespace>
+    <AssemblyName>POS.Base</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Builds\POS\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;ALLOW_NEW_PLUGINS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Release\</OutputPath>
+    <DefineConstants>ALLOW_NEW_PLUGINS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <DebugSymbols>false</DebugSymbols>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>POS.Base.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug Release|AnyCPU'">
+    <OutputPath>..\..\Release\</OutputPath>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <Optimize>false</Optimize>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\..\Applications\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="SharedControls, Version=2.8.0.0, Culture=neutral, PublicKeyToken=5e7029cf0b93cfbe, processorArchitecture=MSIL">
+      <HintPath>..\..\Applications\packages\SC.SharedControls.2.8.15\lib\net452\SharedControls.dll</HintPath>
+    </Reference>
+    <Reference Include="SharedLib, Version=2.5.0.0, Culture=neutral, PublicKeyToken=bcec03f2c05555a7, processorArchitecture=MSIL">
+      <HintPath>..\..\Applications\packages\SC.Shared.Library.2.5.13\lib\net452\SharedLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Checks.cs" />
+    <Compile Include="Classes\EventArgs.cs" />
+    <Compile Include="Classes\GraphicsExtension.cs" />
+    <Compile Include="Classes\HelpTopics.cs" />
+    <Compile Include="Classes\Icons.cs" />
+    <Compile Include="Classes\ImageData.cs" />
+    <Compile Include="Classes\PluginAlerts.cs" />
+    <Compile Include="Classes\PluginToastAction.cs" />
+    <Compile Include="Controls\BaseControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\BaseControl.Designer.cs">
+      <DependentUpon>BaseControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BaseHomeTabButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\BaseHomeTabButton.Designer.cs">
+      <DependentUpon>BaseHomeTabButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BaseOptionsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\BaseTabControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\BaseTabControl.Designer.cs">
+      <DependentUpon>BaseTabControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\BaseOptionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BaseOptionsForm.Designer.cs">
+      <DependentUpon>BaseOptionsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\ComboItem.cs" />
+    <Compile Include="Classes\UpdatePOS.cs" />
+    <Compile Include="Controls\BasketProductButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\BasketProductButton.Designer.cs">
+      <DependentUpon>BasketProductButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\OrderItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\OrderItem.Designer.cs">
+      <DependentUpon>OrderItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Permissions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Permissions.Designer.cs">
+      <DependentUpon>Permissions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ShoppingBasketHeader.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ShoppingBasketHeader.Designer.cs">
+      <DependentUpon>ShoppingBasketHeader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ShoppingBasketItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ShoppingBasketItem.Designer.cs">
+      <DependentUpon>ShoppingBasketItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Classes\AppController.cs" />
+    <Compile Include="Classes\ConfigurationSettings.cs" />
+    <Compile Include="Classes\Enums.cs" />
+    <Compile Include="Classes\PluginModule.cs" />
+    <Compile Include="Classes\StringConstants.cs" />
+    <Compile Include="Classes\ThreadClasses.cs" />
+    <Compile Include="Classes\UserSettings.cs" />
+    <Compile Include="Classes\XMLManipulation.cs" />
+    <Compile Include="Forms\CreateUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CreateUser.Designer.cs">
+      <DependentUpon>CreateUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Notes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Notes.Designer.cs">
+      <DependentUpon>Notes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NotesViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NotesViewForm.Designer.cs">
+      <DependentUpon>NotesViewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SelectUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SelectUser.Designer.cs">
+      <DependentUpon>SelectUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SplashScreen.Designer.cs">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\InvoiceOrderItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\InvoiceOrderItem.Designer.cs">
+      <DependentUpon>InvoiceOrderItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TrackingReference.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TrackingReference.Designer.cs">
+      <DependentUpon>TrackingReference.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ViewImageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ViewImageForm.Designer.cs">
+      <DependentUpon>ViewImageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Labels\BaseLabel.cs" />
+    <Compile Include="Labels\ShippingLabel.cs" />
+    <Compile Include="Plugins\BasePlugin.cs" />
+    <Compile Include="Plugins\HomeCard.cs" />
+    <Compile Include="Plugins\HomeCards.cs" />
+    <Compile Include="Plugins\IComparer.cs" />
+    <Compile Include="Plugins\TrayNotification.cs" />
+    <Compile Include="Plugins\Enums.cs" />
+    <Compile Include="Plugins\EventHandlerWrappers.cs" />
+    <Compile Include="Classes\PluginManager.cs" />
+    <Compile Include="Plugins\TrayNotificationCollection.cs" />
+    <Compile Include="Plugins\TrayNotificationCompare.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Translations\EnumTranslations.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\BaseHomeTabButton.resx">
+      <DependentUpon>BaseHomeTabButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\BaseOptionsControl.resx">
+      <DependentUpon>BaseOptionsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BaseOptionsForm.resx">
+      <DependentUpon>BaseOptionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\BasketProductButton.resx">
+      <DependentUpon>BasketProductButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\OrderItem.resx">
+      <DependentUpon>OrderItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Permissions.resx">
+      <DependentUpon>Permissions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ShoppingBasketHeader.resx">
+      <DependentUpon>ShoppingBasketHeader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ShoppingBasketItem.resx">
+      <DependentUpon>ShoppingBasketItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BaseForm.resx">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CreateUser.resx">
+      <DependentUpon>CreateUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Notes.resx">
+      <DependentUpon>Notes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NotesViewForm.resx">
+      <DependentUpon>NotesViewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SelectUser.resx">
+      <DependentUpon>SelectUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SplashScreen.resx">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\InvoiceOrderItem.resx">
+      <DependentUpon>InvoiceOrderItem.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TrackingReference.resx">
+      <DependentUpon>TrackingReference.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ViewImageForm.resx">
+      <DependentUpon>ViewImageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="POS.Base.pfx" />
+    <None Include="Resources\create_icon_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_icon_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_icon_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_Forward_16xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\callout_16xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gear_16xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\key_16xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pencil_005_16xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printer_16xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh_16xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_16xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\action_add_16xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\action_Cancel_16xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_back_16xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Symbols_Help_and_inclusive_16xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lightningBolt_16xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user_16xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\column_16xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Money_16xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Close_16xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notebook_16xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\note_16xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Team_16xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendar_16xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Counter_16xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Task_16xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\typography_Number_5_16xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Languages\Languages.csproj">
+      <Project>{2a685cd0-df5b-4ce3-bd18-5e6bf927ec7f}</Project>
+      <Name>Languages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library\Library.csproj">
+      <Project>{3444f493-5cbe-4d67-8bc9-1184e486c7e7}</Project>
+      <Name>Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SalonDiary\SalonDiary.csproj">
+      <Project>{fb4558aa-3653-4281-999b-d78d99f23437}</Project>
+      <Name>SalonDiary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Spell_16xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\house_16xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\package_delete_16xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\package_16xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\package_edit_16xLG - Copy.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>..\..\..\..\..\GitProjects\Builds\NetBuildTools\Release\UpdateVersion.exe /out="$(ProjectDir)Properties\ver.txt" /$(ConfigurationName) /path="$(ProjectDir)</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
