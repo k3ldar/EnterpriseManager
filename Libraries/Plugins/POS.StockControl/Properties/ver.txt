@@ -1,0 +1,10 @@
+Parameters
+/out=T:\HeavenMain\Libraries\Plugins\POS.StockControl\Properties\ver.txt
+/Debug
+/path=T:\HeavenMain\Libraries\Plugins\POS.StockControl\
+
+Path Exists
+
+T:\HeavenMain\Libraries\Plugins\POS.StockControl\properties\AssemblyInfo.cs Found
+
+New Version 4.0.0.1384
