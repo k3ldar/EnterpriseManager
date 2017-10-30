@@ -1,0 +1,10 @@
+Parameters
+/out=T:\HeavenMain\Applications\Pos\Properties\ver.txt
+/Debug
+/path=T:\HeavenMain\Applications\Pos\
+
+Path Exists
+
+T:\HeavenMain\Applications\Pos\properties\AssemblyInfo.cs Found
+
+New Version 4.0.0.3043
