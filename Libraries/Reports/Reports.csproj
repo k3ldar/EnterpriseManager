@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{74DCE6C6-8044-438D-B16A-B01ADD05ADD0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Reports</RootNamespace>
+    <AssemblyName>Reports</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;TAB_INTERFACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Release\</OutputPath>
+    <DefineConstants>TAB_INTERFACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>HeavenKey.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug Release|AnyCPU'">
+    <OutputPath>..\..\Release\</OutputPath>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <Optimize>false</Optimize>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\..\Applications\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>bin\Debug\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="QRCode, Version=1.0.6064.24870, Culture=neutral, PublicKeyToken=bbad4d2e9739b0c8, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\QRCode.dll</HintPath>
+    </Reference>
+    <Reference Include="SharedControls, Version=2.8.0.0, Culture=neutral, PublicKeyToken=5e7029cf0b93cfbe, processorArchitecture=MSIL">
+      <HintPath>..\..\Applications\packages\SC.SharedControls.2.8.15\lib\net452\SharedControls.dll</HintPath>
+    </Reference>
+    <Reference Include="SharedLib, Version=2.5.0.0, Culture=neutral, PublicKeyToken=bcec03f2c05555a7, processorArchitecture=MSIL">
+      <HintPath>..\..\Applications\packages\SC.Shared.Library.2.5.13\lib\net452\SharedLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Accounts\PDFOrder.cs" />
+    <Compile Include="BaseReport.cs" />
+    <Compile Include="Checks.cs" />
+    <Compile Include="Classes\Barcode2of5.cs" />
+    <Compile Include="Classes\Barcode3of9.cs" />
+    <Compile Include="Controls\UpDownEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Labels\Avery\CustomLabel.cs" />
+    <Compile Include="Labels\Avery\L7160.cs" />
+    <Compile Include="Labels\Avery\L7161.cs" />
+    <Compile Include="Labels\Avery\L7654.cs" />
+    <Compile Include="Labels\Avery\L7656.cs" />
+    <Compile Include="Labels\Enums.cs" />
+    <Compile Include="Labels\BaseLabel.cs" />
+    <Compile Include="Labels\PDFLabelCreator.cs" />
+    <Compile Include="Labels\TextChunk.cs" />
+    <Compile Include="Helpdesk\PDFSupportTicket.cs" />
+    <Compile Include="Accounts\PDFInvoice.cs" />
+    <Compile Include="Accounts\PDFInvoicePaid.cs" />
+    <Compile Include="Members\BirthdayReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Members\BirthdayReport.Designer.cs">
+      <DependentUpon>BirthdayReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Members\PDFBirthdayList.cs" />
+    <Compile Include="Products\PdfTopProductReports.cs" />
+    <Compile Include="Products\ProductReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Products\ProductReports.Designer.cs">
+      <DependentUpon>ProductReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportEngine.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportItem.cs" />
+    <Compile Include="Salons\CalendarReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Salons\CalendarReports.Designer.cs">
+      <DependentUpon>CalendarReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Salons\PDFAppointmentSummary.cs" />
+    <Compile Include="Salons\PDFCancelledAppointments.cs" />
+    <Compile Include="Salons\PDFChangedAppointments.cs" />
+    <Compile Include="Salons\PDFDailySalonReport.cs" />
+    <Compile Include="Salons\PDFSalonReport.cs" />
+    <Compile Include="Salons\PDFTherapistProductSales.cs" />
+    <Compile Include="Stock\PdfStockInReport.cs" />
+    <Compile Include="Stock\PdfStockOutReport.cs" />
+    <Compile Include="Stock\PdfStockReport.cs" />
+    <Compile Include="Stock\StockReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Stock\StockReports.Designer.cs">
+      <DependentUpon>StockReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TranslatedEnums.cs" />
+    <Compile Include="Vouchers\CreateVouchers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vouchers\CreateVouchers.Designer.cs">
+      <DependentUpon>CreateVouchers.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Members\BirthdayReport.resx">
+      <DependentUpon>BirthdayReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Products\ProductReports.resx">
+      <DependentUpon>ProductReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Salons\CalendarReports.resx">
+      <DependentUpon>CalendarReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stock\StockReports.resx">
+      <DependentUpon>StockReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vouchers\CreateVouchers.resx">
+      <DependentUpon>CreateVouchers.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="HeavenKey.pfx" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Languages\Languages.csproj">
+      <Project>{2a685cd0-df5b-4ce3-bd18-5e6bf927ec7f}</Project>
+      <Name>Languages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library\Library.csproj">
+      <Project>{3444f493-5cbe-4d67-8bc9-1184e486c7e7}</Project>
+      <Name>Library</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>..\..\..\..\..\GitProjects\Builds\NetBuildTools\Release\UpdateVersion.exe /out="$(ProjectDir)Properties\ver.txt" /$(ConfigurationName) /path="$(ProjectDir)</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

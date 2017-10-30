@@ -1,0 +1,5 @@
+Parameters
+/out=T:\HeavenMain\Libraries\Reports\Properties\ver.txt
+/ignore=20
+/Debug
+/path=T:\HeavenMain\Libraries\Reports\
