@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{355CC0CC-F8C4-4DC3-BA68-36EAFE2F10C6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>POS.Customers</RootNamespace>
+    <AssemblyName>POS.Customers</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Builds\POS\Debug\Plugins\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;TAB_INTERFACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\Builds\POS\Release\Plugins\</OutputPath>
+    <DefineConstants>TAB_INTERFACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Applications\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="SalonDiary, Version=1.3.10.460, Culture=neutral, PublicKeyToken=eb55daae66e87c80, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Release\SalonDiary.dll</HintPath>
+    </Reference>
+    <Reference Include="SharedControls, Version=2.8.0.0, Culture=neutral, PublicKeyToken=5e7029cf0b93cfbe, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Applications\packages\SC.SharedControls.2.8.15\lib\net452\SharedControls.dll</HintPath>
+    </Reference>
+    <Reference Include="SharedLib, Version=2.5.0.0, Culture=neutral, PublicKeyToken=bcec03f2c05555a7, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Applications\packages\SC.Shared.Library.2.5.13\lib\net452\SharedLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Checks.cs" />
+    <Compile Include="Classes\AffiliateCommissionWizards.cs" />
+    <Compile Include="Classes\ExportWizardWrapper.cs" />
+    <Compile Include="Controls\AffiliateSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\AffiliateSettings.Designer.cs">
+      <DependentUpon>AffiliateSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CustomerSearch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CustomerSearch.designer.cs">
+      <DependentUpon>CustomerSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Permissions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Permissions.Designer.cs">
+      <DependentUpon>Permissions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Wizards\Affiliate\PayCommission\Step1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Wizards\Affiliate\PayCommission\Step1.Designer.cs">
+      <DependentUpon>Step1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Wizards\Affiliate\PayCommission\Step2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Wizards\Affiliate\PayCommission\Step2.Designer.cs">
+      <DependentUpon>Step2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Wizards\Affiliate\PayCommission\Step3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Wizards\Affiliate\PayCommission\Step3.Designer.cs">
+      <DependentUpon>Step3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Wizards\Export\Step1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Wizards\Export\Step1.Designer.cs">
+      <DependentUpon>Step1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Wizards\Export\Step2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Wizards\Export\Step2.Designer.cs">
+      <DependentUpon>Step2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Wizards\Export\Step3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Wizards\Export\Step3.Designer.cs">
+      <DependentUpon>Step3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Wizards\Export\Step4.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Wizards\Export\Step4.Designer.cs">
+      <DependentUpon>Step4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Wizards\Export\Step5.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Wizards\Export\Step5.Designer.cs">
+      <DependentUpon>Step5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Wizards\Export\Step6.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Wizards\Export\Step6.Designer.cs">
+      <DependentUpon>Step6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerAffiliateCard.cs" />
+    <Compile Include="CustomerSearchCard.cs" />
+    <Compile Include="CustomersPluginModule.cs" />
+    <Compile Include="Forms\Affiliate\AffiliateItemEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Affiliate\AffiliateItemEdit.Designer.cs">
+      <DependentUpon>AffiliateItemEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Affiliate\CommissionAffiliateData.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Affiliate\CommissionAffiliateData.Designer.cs">
+      <DependentUpon>CommissionAffiliateData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CustomerEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CustomerEdit.designer.cs">
+      <DependentUpon>CustomerEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CustomerMerge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CustomerMerge.Designer.cs">
+      <DependentUpon>CustomerMerge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CustomerSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CustomerSearch.Designer.cs">
+      <DependentUpon>CustomerSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Languages\Languages.csproj">
+      <Project>{2a685cd0-df5b-4ce3-bd18-5e6bf927ec7f}</Project>
+      <Name>Languages</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Library\Library.csproj">
+      <Project>{3444f493-5cbe-4d67-8bc9-1184e486c7e7}</Project>
+      <Name>Library</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\POS\POS.csproj">
+      <Project>{c5ea121e-69b3-499d-acde-c6dfd9779b73}</Project>
+      <Name>POS</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\AffiliateSettings.resx">
+      <DependentUpon>AffiliateSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CustomerSearch.resx">
+      <DependentUpon>CustomerSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Permissions.resx">
+      <DependentUpon>Permissions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Wizards\Affiliate\PayCommission\Step1.resx">
+      <DependentUpon>Step1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Wizards\Affiliate\PayCommission\Step2.resx">
+      <DependentUpon>Step2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Wizards\Affiliate\PayCommission\Step3.resx">
+      <DependentUpon>Step3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Wizards\Export\Step1.resx">
+      <DependentUpon>Step1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Wizards\Export\Step2.resx">
+      <DependentUpon>Step2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Wizards\Export\Step3.resx">
+      <DependentUpon>Step3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Wizards\Export\Step4.resx">
+      <DependentUpon>Step4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Wizards\Export\Step5.resx">
+      <DependentUpon>Step5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Wizards\Export\Step6.resx">
+      <DependentUpon>Step6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Affiliate\AffiliateItemEdit.resx">
+      <DependentUpon>AffiliateItemEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Affiliate\CommissionAffiliateData.resx">
+      <DependentUpon>CommissionAffiliateData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CustomerEdit.resx">
+      <DependentUpon>CustomerEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CustomerMerge.resx">
+      <DependentUpon>CustomerMerge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CustomerSearch.resx">
+      <DependentUpon>CustomerSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Resources\users.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AffiliateCommission.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>..\..\..\..\..\GitProjects\Builds\NetBuildTools\Release\UpdateVersion.exe /out="$(ProjectDir)Properties\ver.txt" /$(ConfigurationName) /path="$(ProjectDir)</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
