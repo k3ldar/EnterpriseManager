@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="tvTreeImages.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>269, 17</value>
+  </metadata>
+  <data name="tvTreeImages.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAA+
+        DgAAAk1TRnQBSQFMAgEBBwEAARgBAAEYAQABEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
+        AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
+        AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
+        AWYDAAGZAwABzAIAATMDAAIzAgABMwFmAgABMwGZAgABMwHMAgABMwH/AgABZgMAAWYBMwIAAmYCAAFm
+        AZkCAAFmAcwCAAFmAf8CAAGZAwABmQEzAgABmQFmAgACmQIAAZkBzAIAAZkB/wIAAcwDAAHMATMCAAHM
+        AWYCAAHMAZkCAALMAgABzAH/AgAB/wFmAgAB/wGZAgAB/wHMAQABMwH/AgAB/wEAATMBAAEzAQABZgEA
+        ATMBAAGZAQABMwEAAcwBAAEzAQAB/wEAAf8BMwIAAzMBAAIzAWYBAAIzAZkBAAIzAcwBAAIzAf8BAAEz
+        AWYCAAEzAWYBMwEAATMCZgEAATMBZgGZAQABMwFmAcwBAAEzAWYB/wEAATMBmQIAATMBmQEzAQABMwGZ
+        AWYBAAEzApkBAAEzAZkBzAEAATMBmQH/AQABMwHMAgABMwHMATMBAAEzAcwBZgEAATMBzAGZAQABMwLM
+        AQABMwHMAf8BAAEzAf8BMwEAATMB/wFmAQABMwH/AZkBAAEzAf8BzAEAATMC/wEAAWYDAAFmAQABMwEA
+        AWYBAAFmAQABZgEAAZkBAAFmAQABzAEAAWYBAAH/AQABZgEzAgABZgIzAQABZgEzAWYBAAFmATMBmQEA
+        AWYBMwHMAQABZgEzAf8BAAJmAgACZgEzAQADZgEAAmYBmQEAAmYBzAEAAWYBmQIAAWYBmQEzAQABZgGZ
+        AWYBAAFmApkBAAFmAZkBzAEAAWYBmQH/AQABZgHMAgABZgHMATMBAAFmAcwBmQEAAWYCzAEAAWYBzAH/
+        AQABZgH/AgABZgH/ATMBAAFmAf8BmQEAAWYB/wHMAQABzAEAAf8BAAH/AQABzAEAApkCAAGZATMBmQEA
+        AZkBAAGZAQABmQEAAcwBAAGZAwABmQIzAQABmQEAAWYBAAGZATMBzAEAAZkBAAH/AQABmQFmAgABmQFm
+        ATMBAAGZATMBZgEAAZkBZgGZAQABmQFmAcwBAAGZATMB/wEAApkBMwEAApkBZgEAA5kBAAKZAcwBAAKZ
+        Af8BAAGZAcwCAAGZAcwBMwEAAWYBzAFmAQABmQHMAZkBAAGZAswBAAGZAcwB/wEAAZkB/wIAAZkB/wEz
+        AQABmQHMAWYBAAGZAf8BmQEAAZkB/wHMAQABmQL/AQABzAMAAZkBAAEzAQABzAEAAWYBAAHMAQABmQEA
+        AcwBAAHMAQABmQEzAgABzAIzAQABzAEzAWYBAAHMATMBmQEAAcwBMwHMAQABzAEzAf8BAAHMAWYCAAHM
+        AWYBMwEAAZkCZgEAAcwBZgGZAQABzAFmAcwBAAGZAWYB/wEAAcwBmQIAAcwBmQEzAQABzAGZAWYBAAHM
+        ApkBAAHMAZkBzAEAAcwBmQH/AQACzAIAAswBMwEAAswBZgEAAswBmQEAA8wBAALMAf8BAAHMAf8CAAHM
+        Af8BMwEAAZkB/wFmAQABzAH/AZkBAAHMAf8BzAEAAcwC/wEAAcwBAAEzAQAB/wEAAWYBAAH/AQABmQEA
+        AcwBMwIAAf8CMwEAAf8BMwFmAQAB/wEzAZkBAAH/ATMBzAEAAf8BMwH/AQAB/wFmAgAB/wFmATMBAAHM
+        AmYBAAH/AWYBmQEAAf8BZgHMAQABzAFmAf8BAAH/AZkCAAH/AZkBMwEAAf8BmQFmAQAB/wKZAQAB/wGZ
+        AcwBAAH/AZkB/wEAAf8BzAIAAf8BzAEzAQAB/wHMAWYBAAH/AcwBmQEAAf8CzAEAAf8BzAH/AQAC/wEz
+        AQABzAH/AWYBAAL/AZkBAAL/AcwBAAJmAf8BAAFmAf8BZgEAAWYC/wEAAf8CZgEAAf8BZgH/AQAC/wFm
+        AQABIQEAAaUBAANfAQADdwEAA4YBAAOWAQADywEAA7IBAAPXAQAD3QEAA+MBAAPqAQAD8QEAA/gBAAHw
+        AfsB/wEAAaQCoAEAA4ADAAH/AgAB/wMAAv8BAAH/AwAB/wEAAf8BAAL/AgAD/wsAAf8C9AH/BgAI9C0A
+        Af8B9ALsAfQB/wMAAf8B9AG8AewEFAHsAbwB9AH/AwAP9BgAAf8B9AHsAhQB7AH0Af8BAAH/AfQB7QgU
+        Ae0B9AH/AgAB9AMUAvQDFAL0AxQB9BcAA/QB7QMUAewB9AEAAfQB7QIUAZIB8gL0AfIBkgIUAe0B9AIA
+        AfQBFAH0ARQC9AEUAfQBFAL0ARQB9AEUAfQXAAH0BhQB7AL0AbwCFAG8BvQBvAIUAbwB9AEAAfQDFAL0
+        AxQC9AMUAfQTAAL/AgAB9AEUA/QC7AH0Af8B9AHsARQBkgj0AZIBFAHsAfQBAAL0ARQE9AEUBPQBFAL0
+        EgAB/wL0Af8BAAH0ARQC9ALsAvQBAAH0AhQB8gj0AfICFAH0AgAB9AEUBPQBFAT0ARQB9BIAAf8B9ALs
+        AfQB/wH0ARQB9AHsAhQB7AH0Af8B9AEUARME9AIUAbwD9AIUAfQCAAH0CxQB9BEAAf8B9AHsAhQB7AL0
+        ARQB9AHtAxQB7AL0ARQBEwT0AhQBbQP0AhQB9AIABvQBFAb0EQAB9AHsDBQB7AL0AhQB8gP0AbwBbQEU
+        AZIB9AHyAhQB9AcAAfQBFAH0FgAB9AHsBRQB7AT0AuwB9AH/AfQB7AEUAZIF9AGSARQBvAHyARMB7AH0
+        BQAD9AEUA/QUAAH/AfQB7AUUAewB9AL/AvQB/wEAAfQBvAIUAbwF9AG8AewB9AEHAbwB9AUAAfQFFAH0
+        FQAB/wH0AewEFAHsAfQB/wEAAv8DAAH0AewCFAGSAfIC9ALyAfQB8QL0BgAB9AEUA/QBFAH0FgAB/wH0
+        AewCFAHsAfQB/wcAAf8B9AHtBhQBEwEHAvQB/wYAAfQBFAP0ARQB9BcAAf8B9ALsAfQB/wkAAf8B9AG8
+        AewEFAHsAbwB9AH/BwAB9AUUAfQYAAH/AvQB/wwACPQJAAf0LgAC9BQAB/QiAAH0AfAB9AUADvQBAAH0
+        AZIB6gH0AeoBkgH0GgAC9AH/BAAB/wHzARMB9AUAAfQMFAH0AQAB9AEHARQB7wEUAQcK9AUAAfQB/wP0
+        Af8B9AUAAvQB8wL0Av8B9AFtARQB9AUAAfQBFAr0ARQB9AEAAf8B8wMUAQcJFAH0BAAE9AEUBPQEAAH/
+        AfQBbQHsAfcB8gH0AZICFAH0BQAB9AEUA/QBFAH0AhQD9AEUAfQBAAH0AfIDFAG8CRQB9AMAAvQBEwHv
+        AfQBFAH0Ae8BEwL0AgAD9AHwAxQBbQMUAfQFAAH0ARQD9AEUAfQBFAT0ARQB9AEAAfQB7QHsAfQB7AGS
+        AW0B9AEUAfQBFAH0AxQB9AMAAf8B9AHvARMB8wH0AfMBEwHvAfQB/wIAAxQB9AGSBhQB8wL0AwAB9AEU
+        A/QBFAL0ARQD9AEUAfQBAAH0Ae0B7AH0AewBkgf0AhQB9AMAA/QB8wP0AfMD9AIABfQBbQUUARMB7AEH
+        AvQBAAH0ARQC9AIUAfQCFAP0ARQB9AEAAfQB8gHqARQB6gHxBRQB9AMUAfQDAAH0AhQF9AIUAfQCAAH0
+        AhQC9AHvCBQB7AH0AQAB9AEUCvQBFAH0AgAB9AHvAbwJ9AIUAfQDAAP0AfMD9AHzA/QCAAX0AW0FFAHs
+        Ae8B8wL0AQAB9AwUAfQCAAH0AxQB9AUUAfQDFAH0AwAB/wH0Ae8BEwHzAfQB8wETAe8B9AH/AgADFAH0
+        Ae8GFAL0Af8DAAH0DBQB9AIAAfQCFAn0AhQB9AMAAvQBEwHvAfQBFAH0Ae8BEwL0AgAE9AHqAewB7wHy
+        Ae8CFAH0BQAB9AIUA/QCFAP0AhQB9AIAAfQDFAH0ARQB9AEUAfQBFAH0AxQB9AQABPQBFAT0BQAF9AH/
+        AfQB7QEUAfQFAAH0AhQB9AEUAfQCFAH0ARQB9AIUAfQCAAH0DRQB9AUAAfQB/wP0Af8B9AYAAf8B9AH/
+        AwAB/wH0AewB9AUABPQBFAT0ARQE9AIAAfQNFAH0GQAB/wL0CAAD9AIAA/QFAA/0GgAC9CQAAUIBTQE+
+        BwABPgMAASgDAAFAAwABIAMAAQEBAAEBBgABARYAA/8BAAH/AcMB8AEPAv8CAAH/AYEBwAEDAYADAAH/
+        AQABgAEBAYADAAH+AQABgAEBAYADAAH+AwABgAMAAeYDAAGAAwABwgEBAgABwAEBAgABgAMAAcABAQYA
+        AcABAQYAAf4BPwYAAfgBDwMAAQECAAH4AQ8CAAGAARMBgAEBAfgBDwIAAcABPwGAAQEB+AEPAgAB4AF/
+        AcABAwH4AQ8CAAHwAf8B8AEPAfgBDwIAA/8BzwL/AQEE/wGPAYACAQP/AY8BDwGAAQECAAH4AQ8BgAEP
+        AYABAQIAAfABBwGAAQ8BgAEBAgAB4AEDAQABDwGAAQECAAHgAQMBAAEDAYABAQIAAeABAwIAAYABAQIA
+        AeABAwIAAYABAQGAAQAB4AEDAgABgAEBAYABAAHgAQMBAAEDAYABAQGAAQAB4AEDAQABDwGAAQEBgAEA
+        AfABBwHAAQ8BgAEBAYABAAH4AQ8BxwEPAYABAQGAAQAD/wGPAfEBjwGAAQAD/wHPBP8L
+</value>
+  </data>
+  <metadata name="textBlockMap.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>143, 17</value>
+  </metadata>
+  <data name="textBlockMap.StringBlock" xml:space="preserve">
+    <value> &lt;!DOCTYPE html&gt; 
+&lt;html&gt; 
+&lt;head&gt;
+&lt;title&gt;#TITLE#&lt;/title&gt;
+&lt;style&gt;
+    .infomsg {display:none;}
+&lt;/style&gt;
+&lt;meta http-equiv="X-UA-Compatible" content="IE=edge"/&gt;
+
+&lt;/head&gt; 
+&lt;body&gt;  
+&lt;div class="wrapperStaff"&gt;&lt;div class="header"&gt; 
+
+&lt;script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?v=3&amp;key=AIzaSyBDtmYlTGa71O_OyqX0JPXAToiwE_0QYIc'&gt;&lt;/script&gt;
+
+&lt;div class="content"&gt;
+	&lt;div id="_ctl0_MainContent_chartCampaign_divMap" style="height:500px;width:800px;"&gt;
+		&lt;div style="float:right;overflow:hidden;height:500px;width:800px;padding-bottom:10px;"&gt;
+			&lt;div id="gmap_canvas1000025" style="height:500px;width:800px;"&gt;&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script type="text/javascript"&gt;
+&lt;!--
+        function init_map1000025() {
+            var locations = [#LOCATIONS#];
+
+            if (locations.length == 0)
+                return;
+
+            var myOptions = { zoom: 2, center: new google.maps.LatLng(0, 0), mapTypeId: google.maps.MapTypeId.ROADMAP };
+            map = new google.maps.Map(document.getElementById('gmap_canvas1000025'), myOptions);
+            var mapIcon = 'https://maps.google.com/mapfiles/ms/icons/red.png';
+
+            for (var i = 0; i &lt; locations.length; i++) {
+                var location = locations[i];
+                var contentString = location[0];
+                mapIcon = 'https://maps.google.com/mapfiles/ms/icons/' + location[3] + '.png';
+
+                var marker = new google.maps.Marker({
+                    position: { lat: location[1], lng: location[2] },
+                    map: map,
+                    title: location[0],
+                    optimized: false,
+                    buborek: contentString
+                });
+
+                marker.setIcon(mapIcon);
+
+                google.maps.event.addListener(marker, 'click', function () {
+                    infowindow.setContent(this.buborek);
+                    infowindow.open(map, this);
+                });
+            }
+        } google.maps.event.addDomListener(window, 'load', init_map1000025);
+    // --&gt;
+&lt;/script&gt;
+&lt;/form&gt;&lt;/body&gt;&lt;/html&gt;</value>
+  </data>
+</root>

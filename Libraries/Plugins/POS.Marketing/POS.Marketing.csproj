@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F8A5FAF3-7CE1-4EC6-96E0-2B8229C29734}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>POS.Marketing</RootNamespace>
+    <AssemblyName>POS.Marketing</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Builds\POS\Debug\Plugins\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\Builds\POS\Release\Plugins\</OutputPath>
+    <DefineConstants>TAB_INTERFACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Applications\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveSwitch.TextControl">
+      <HintPath>..\..\..\..\Tools\HTMLEditor\TextControl\bin\Release\LiveSwitch.TextControl.dll</HintPath>
+    </Reference>
+    <Reference Include="MailChimp.Net.V3, Version=2.1.0.0, Culture=neutral, PublicKeyToken=37d26d538413c581, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\3rdParty\MailChimp.Net.V3.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text, Version=4.0.0.0, Culture=neutral, PublicKeyToken=e06fbc6124f57c43, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\3rdParty\MailChimp\ServiceStack.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="SharedControls, Version=2.8.0.0, Culture=neutral, PublicKeyToken=5e7029cf0b93cfbe, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Applications\packages\SC.SharedControls.2.8.15\lib\net452\SharedControls.dll</HintPath>
+    </Reference>
+    <Reference Include="SharedLib, Version=2.5.0.0, Culture=neutral, PublicKeyToken=bcec03f2c05555a7, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Applications\packages\SC.Shared.Library.2.5.13\lib\net452\SharedLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CampaignsCard.cs" />
+    <Compile Include="Checks.cs" />
+    <Compile Include="Classes\CampaignNodeType.cs" />
+    <Compile Include="Classes\Enums.cs" />
+    <Compile Include="Controls\CreateEmailIntro.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CreateEmailIntro.Designer.cs">
+      <DependentUpon>CreateEmailIntro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CreateEmailStep1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CreateEmailStep1.Designer.cs">
+      <DependentUpon>CreateEmailStep1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CreateEmailStep15.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CreateEmailStep15.Designer.cs">
+      <DependentUpon>CreateEmailStep15.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CreateEmailStep2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CreateEmailStep2.Designer.cs">
+      <DependentUpon>CreateEmailStep2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CreateEmailStep3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CreateEmailStep3.Designer.cs">
+      <DependentUpon>CreateEmailStep3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CreateEmailStep9.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CreateEmailStep9.Designer.cs">
+      <DependentUpon>CreateEmailStep9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CreateEmailStep4.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CreateEmailStep4.Designer.cs">
+      <DependentUpon>CreateEmailStep4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CreateEmailStep8.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CreateEmailStep8.Designer.cs">
+      <DependentUpon>CreateEmailStep8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CreateEmailStep5.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CreateEmailStep5.Designer.cs">
+      <DependentUpon>CreateEmailStep5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CreateEmailStep6HomeImage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CreateEmailStep6HomeImage.Designer.cs">
+      <DependentUpon>CreateEmailStep6HomeImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CreateEmailStep7PageImage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CreateEmailStep7PageImage.Designer.cs">
+      <DependentUpon>CreateEmailStep7PageImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CreateEmailStep10.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CreateEmailStep10.Designer.cs">
+      <DependentUpon>CreateEmailStep10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CreateEmailStep11.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CreateEmailStep11.Designer.cs">
+      <DependentUpon>CreateEmailStep11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CreateEmailStep12.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CreateEmailStep12.Designer.cs">
+      <DependentUpon>CreateEmailStep12.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CreateEmailStep13.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CreateEmailStep13.Designer.cs">
+      <DependentUpon>CreateEmailStep13.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CreateEmailStep14.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CreateEmailStep14.Designer.cs">
+      <DependentUpon>CreateEmailStep14.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EmailWizardBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\GeneralSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\GeneralSettings.Designer.cs">
+      <DependentUpon>GeneralSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MailChimpSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\MailChimpSettings.Designer.cs">
+      <DependentUpon>MailChimpSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MarketingTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\MarketingTab.Designer.cs">
+      <DependentUpon>MarketingTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MassEmailSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\MassEmailSettings.Designer.cs">
+      <DependentUpon>MassEmailSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SelectProductControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SelectProductControl.Designer.cs">
+      <DependentUpon>SelectProductControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\MailChimpWrapper.cs" />
+    <Compile Include="Classes\MarketingEmail.cs" />
+    <Compile Include="MarketingPluginModule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\CreateEmailIntro.resx">
+      <DependentUpon>CreateEmailIntro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CreateEmailStep1.resx">
+      <DependentUpon>CreateEmailStep1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CreateEmailStep15.resx">
+      <DependentUpon>CreateEmailStep15.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CreateEmailStep2.resx">
+      <DependentUpon>CreateEmailStep2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CreateEmailStep3.resx">
+      <DependentUpon>CreateEmailStep3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CreateEmailStep9.resx">
+      <DependentUpon>CreateEmailStep9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CreateEmailStep4.resx">
+      <DependentUpon>CreateEmailStep4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CreateEmailStep8.resx">
+      <DependentUpon>CreateEmailStep8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CreateEmailStep5.resx">
+      <DependentUpon>CreateEmailStep5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CreateEmailStep6HomeImage.resx">
+      <DependentUpon>CreateEmailStep6HomeImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CreateEmailStep7PageImage.resx">
+      <DependentUpon>CreateEmailStep7PageImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CreateEmailStep10.resx">
+      <DependentUpon>CreateEmailStep10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CreateEmailStep11.resx">
+      <DependentUpon>CreateEmailStep11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CreateEmailStep12.resx">
+      <DependentUpon>CreateEmailStep12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CreateEmailStep13.resx">
+      <DependentUpon>CreateEmailStep13.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CreateEmailStep14.resx">
+      <DependentUpon>CreateEmailStep14.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\GeneralSettings.resx">
+      <DependentUpon>GeneralSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\MailChimpSettings.resx">
+      <DependentUpon>MailChimpSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\MarketingTab.resx">
+      <DependentUpon>MarketingTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\MassEmailSettings.resx">
+      <DependentUpon>MassEmailSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SelectProductControl.resx">
+      <DependentUpon>SelectProductControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Languages\Languages.csproj">
+      <Project>{2a685cd0-df5b-4ce3-bd18-5e6bf927ec7f}</Project>
+      <Name>Languages</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Library\Library.csproj">
+      <Project>{3444f493-5cbe-4d67-8bc9-1184e486c7e7}</Project>
+      <Name>Library</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\POS\POS.csproj">
+      <Project>{c5ea121e-69b3-499d-acde-c6dfd9779b73}</Project>
+      <Name>POS</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Marketing.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>..\..\..\..\..\GitProjects\Builds\NetBuildTools\Release\UpdateVersion.exe /out="$(ProjectDir)Properties\ver.txt" /$(ConfigurationName) /path="$(ProjectDir)</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
