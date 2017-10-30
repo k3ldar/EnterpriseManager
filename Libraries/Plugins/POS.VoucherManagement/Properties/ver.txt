@@ -1,0 +1,10 @@
+Parameters
+/out=T:\HeavenMain\Libraries\Plugins\POS.VoucherManagement\Properties\ver.txt
+/Debug
+/path=T:\HeavenMain\Libraries\Plugins\POS.VoucherManagement\
+
+Path Exists
+
+T:\HeavenMain\Libraries\Plugins\POS.VoucherManagement\properties\AssemblyInfo.cs Found
+
+New Version 4.0.0.1334
