@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<DatabaseConnection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>#NAME#</Name>
+  <Enabled>true</Enabled>
+  <ChildDatabase>user=sysdba;password=Sh1f00Us3r;database=#LOCALDATABASE#;datasource=127.0.0.1;port=#LOCALPORT#;dialect=3;pooling=False;minpoolsize=1;maxpoolsize=1;connection lifetime=600;packet size=8192;charset=UTF8;no garbage collect=True</ChildDatabase>
+  <SiteID>#SITENUMBER#</SiteID>
+  <ReplicationType>Child</ReplicationType>
+  <ReplicateDatabase>true</ReplicateDatabase>
+  <MasterDatabase>user=REPLICATION;password=Sh1f00Us3r;database=#REMOTEDATABASE#;datasource=70.38.12.38;port=3070;dialect=3;pooling=False;minpoolsize=1;maxpoolsize=1;connection lifetime=600;packet size=8192;charset=UTF8;no garbage collect=True</MasterDatabase>
+  <MaximumDownloadCount>400</MaximumDownloadCount>
+  <MaximumUploadCount>400</MaximumUploadCount>
+  <TimeOut>30</TimeOut>
+  <ReplicateInterval>5</ReplicateInterval>
+  <VerifyDataInterval>10000</VerifyDataInterval>
+  <VerifyErrorReset>1000</VerifyErrorReset>
+  <VerifyData>true</VerifyData>
+  <VerifyDataAfterHour>false</VerifyDataAfterHour>
+  <VerifyStart>131277024000000000</VerifyStart>
+  <VerifyEnd>14</VerifyEnd>
+  <ReplicateUpdateTriggers>true</ReplicateUpdateTriggers>
+  <InitialScriptExecuted>true</InitialScriptExecuted>
+  <RequireUniqueAccess>true</RequireUniqueAccess>
+  <BackupDatabase>true</BackupDatabase>
+  <LastBackup>131435450318194922</LastBackup>
+  <LastBackupAttempt>131344906498574028</LastBackupAttempt>
+  <BackupPath>#REPLICATIONINSTALL#\Backups</BackupPath>
+  <BackupUseSiteID>false</BackupUseSiteID>
+  <BackupName>shifoo.site#SITENUMBER#.</BackupName>
+  <BackupCompress>true</BackupCompress>
+  <BackupCopyRemote>false</BackupCopyRemote>
+  <BackupFTPUsername />
+  <BackupFTPPassword />
+  <BackupFTPHost />
+  <BackupFTPPort>21</BackupFTPPort>
+  <BackupDeleteOldFiles>false</BackupDeleteOldFiles>
+  <BackupMaximumAge>7</BackupMaximumAge>
+  <BackupAfterTimeEnabled>false</BackupAfterTimeEnabled>
+  <BackupAfterTime>2017-01-01T21:00:00</BackupAfterTime>
+  <RemoteUpdate>true</RemoteUpdate>
+  <RemoteUpdateXML>http://www.sieradelta.com/Download/DatabaseUpdates/ClientUpdate.xml</RemoteUpdateXML>
+  <RemoteUpdateLocation>http://www.sieradelta.com/Download/DatabaseUpdates/Client/</RemoteUpdateLocation>
+</DatabaseConnection>
