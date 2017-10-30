@@ -1,0 +1,370 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3444F493-5CBE-4D67-8BC9-1184E486C7E7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Library</RootNamespace>
+    <AssemblyName>Library</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;WEB_LOGGING_</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DocumentationFile>
+    </DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Release\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Library.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug Release|AnyCPU'">
+    <OutputPath>..\..\Release\</OutputPath>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <Optimize>false</Optimize>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FirebirdSql.Data.FirebirdClient, Version=4.1.0.0, Culture=neutral, PublicKeyToken=3750abcc3150b00c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\3rdParty\FirebirdSql.Data.FirebirdClient.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\..\Applications\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="SharedLib, Version=2.5.0.0, Culture=neutral, PublicKeyToken=bcec03f2c05555a7, processorArchitecture=MSIL">
+      <HintPath>..\..\Applications\packages\SC.Shared.Library.2.5.13\lib\net452\SharedLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Administration.cs" />
+    <Compile Include="Backup\DatabaseBackup.cs" />
+    <Compile Include="BOL\Accounts\PaymentStatus.cs" />
+    <Compile Include="BOL\Accounts\PaymentStatuses.cs" />
+    <Compile Include="BOL\Affiliate\AffiliateCommission.cs" />
+    <Compile Include="BOL\Affiliate\AffiliateCommissionItem.cs" />
+    <Compile Include="BOL\Affiliate\AffiliatedItem.cs" />
+    <Compile Include="BOL\Affiliate\AffiliatedItems.cs" />
+    <Compile Include="BOL\Affiliate\AffiliateProduct.cs" />
+    <Compile Include="BOL\Affiliate\AffiliateProducts.cs" />
+    <Compile Include="BOL\Affiliate\PayAffiliateCommissionSettings.cs" />
+    <Compile Include="BOL\Appointments\Appointment.cs" />
+    <Compile Include="BOL\Appointments\AppointmentGroup.cs" />
+    <Compile Include="BOL\Appointments\AppointmentGroups.cs" />
+    <Compile Include="BOL\Appointments\AppointmentHistory.cs" />
+    <Compile Include="BOL\Appointments\AppointmentHistoryItem.cs" />
+    <Compile Include="BOL\Appointments\Appointments.cs" />
+    <Compile Include="BOL\Appointments\AppointmentStatus.cs" />
+    <Compile Include="BOL\Appointments\AppointmentStatuses.cs" />
+    <Compile Include="BOL\Appointments\AppointmentTreatment.cs" />
+    <Compile Include="BOL\Appointments\AppointmentTreatments.cs" />
+    <Compile Include="BOL\Appointments\NewAppointments.cs" />
+    <Compile Include="BOL\Appointments\SpecialDate.cs" />
+    <Compile Include="BOL\Appointments\SpecialDates.cs" />
+    <Compile Include="BOL\Appointments\WaitingList.cs" />
+    <Compile Include="BOL\Appointments\WaitingLists.cs" />
+    <Compile Include="BOL\BaseCollection.cs" />
+    <Compile Include="BOL\BaseObject.cs" />
+    <Compile Include="BOL\BaseSettingsClass.cs" />
+    <Compile Include="BOL\Basket\BasketItem.cs" />
+    <Compile Include="BOL\Basket\BasketItems.cs" />
+    <Compile Include="BOL\Basket\Currencies.cs" />
+    <Compile Include="BOL\Basket\Currency.cs" />
+    <Compile Include="BOL\Basket\SavedBasket.cs" />
+    <Compile Include="BOL\Basket\SavedBaskets.cs" />
+    <Compile Include="BOL\Basket\ShoppingBasket.cs" />
+    <Compile Include="BOL\Campaigns\Campaign.cs" />
+    <Compile Include="BOL\Campaigns\Campaigns.cs" />
+    <Compile Include="BOL\Campaigns\CampaignSort.cs" />
+    <Compile Include="BOL\CashDrawer\CashDenomination.cs" />
+    <Compile Include="BOL\CashDrawer\CashDenominations.cs" />
+    <Compile Include="BOL\CashDrawer\CashDrawers.cs" />
+    <Compile Include="BOL\Celebrities\Celebrities.cs" />
+    <Compile Include="BOL\Celebrities\Celebrity.cs" />
+    <Compile Include="BOL\ContactDetails\Contact.cs" />
+    <Compile Include="BOL\ContactDetails\Contacts.cs" />
+    <Compile Include="BOL\Countries\Countries.cs" />
+    <Compile Include="BOL\Countries\Country.cs" />
+    <Compile Include="BOL\Coupons\Coupon.cs" />
+    <Compile Include="BOL\Coupons\Coupons.cs" />
+    <Compile Include="BOL\CustomWebPages\CustomPage.cs" />
+    <Compile Include="BOL\CustomWebPages\CustomPages.cs" />
+    <Compile Include="BOL\DatabaseUpdates\AutoUpdate.cs" />
+    <Compile Include="BOL\DatabaseUpdates\AutoUpdateItem.cs" />
+    <Compile Include="BOL\DatabaseUpdates\AutoUpdateItems.cs" />
+    <Compile Include="BOL\DatabaseUpdates\AutoUpdateRule.cs" />
+    <Compile Include="BOL\DatabaseUpdates\AutoUpdateRules.cs" />
+    <Compile Include="BOL\DatabaseUpdates\AutoUpdates.cs" />
+    <Compile Include="BOL\DatabaseUpdates\UpdateColumn.cs" />
+    <Compile Include="BOL\DeliveryAddress\DeliveryAddress.cs" />
+    <Compile Include="BOL\DeliveryAddress\DeliveryAddresses.cs" />
+    <Compile Include="BOL\Distributors\WebsiteDistributor.cs" />
+    <Compile Include="BOL\Distributors\WebsiteDistributors.cs" />
+    <Compile Include="BOL\Downloads\Download.cs" />
+    <Compile Include="BOL\Downloads\Downloads.cs" />
+    <Compile Include="BOL\DatabaseUpdates\Update.cs" />
+    <Compile Include="BOL\DatabaseUpdates\Updates.cs" />
+    <Compile Include="BOL\Downloads\DownloadType.cs" />
+    <Compile Include="BOL\Downloads\DownloadTypes.cs" />
+    <Compile Include="BOL\Email\Pop3Client.cs" />
+    <Compile Include="BOL\Email\SystemEmail.cs" />
+    <Compile Include="BOL\Email\SystemEmails.cs" />
+    <Compile Include="BOL\Export\ExportableItems.cs" />
+    <Compile Include="BOL\Export\ExportItem.cs" />
+    <Compile Include="BOL\FileBackup\BackupFile.cs" />
+    <Compile Include="BOL\FileBackup\Files.cs" />
+    <Compile Include="BOL\HashTags\HashTag.cs" />
+    <Compile Include="BOL\HashTags\HashTags.cs" />
+    <Compile Include="BOL\Helpdesk\FAQItem.cs" />
+    <Compile Include="BOL\Helpdesk\FAQItems.cs" />
+    <Compile Include="BOL\Hooks\Hook.cs" />
+    <Compile Include="BOL\Hooks\Hooks.cs" />
+    <Compile Include="BOL\Invoices\InvoiceViewItem.cs" />
+    <Compile Include="BOL\Invoices\InvoiceStockStatus.cs" />
+    <Compile Include="BOL\Invoices\InvoiceViewItems.cs" />
+    <Compile Include="BOL\Invoices\RecurringInvoice.cs" />
+    <Compile Include="BOL\Invoices\RecurringInvoiceItem.cs" />
+    <Compile Include="BOL\Invoices\RecurringInvoiceItems.cs" />
+    <Compile Include="BOL\Invoices\RecurringInvoices.cs" />
+    <Compile Include="BOL\IPAddress\IPCity.cs" />
+    <Compile Include="BOL\Licencing\Licence.cs" />
+    <Compile Include="BOL\Licencing\Licences.cs" />
+    <Compile Include="BOL\Locations\Locations.cs" />
+    <Compile Include="BOL\Locations\StoreLocation.cs" />
+    <Compile Include="BOL\MailList\MailLists.cs" />
+    <Compile Include="BOL\ModuleDocumentation\ModuleClass.cs" />
+    <Compile Include="BOL\ModuleDocumentation\ModuleClasses.cs" />
+    <Compile Include="BOL\ModuleDocumentation\ModuleMember.cs" />
+    <Compile Include="BOL\ModuleDocumentation\ModuleMembers.cs" />
+    <Compile Include="BOL\ModuleDocumentation\ModuleName.cs" />
+    <Compile Include="BOL\ModuleDocumentation\ModuleNames.cs" />
+    <Compile Include="BOL\ModuleDocumentation\ModuleParameter.cs" />
+    <Compile Include="BOL\ModuleDocumentation\ModuleParameters.cs" />
+    <Compile Include="BOL\POSInstall\POSInstall.cs" />
+    <Compile Include="BOL\POSInstall\POSInstaller.cs" />
+    <Compile Include="BOL\Products\Notification.cs" />
+    <Compile Include="BOL\Products\Notifications.cs" />
+    <Compile Include="BOL\Products\ProductCostType.cs" />
+    <Compile Include="BOL\Products\ProductCostTypes.cs" />
+    <Compile Include="BOL\Products\ProductGroupType.cs" />
+    <Compile Include="BOL\Products\ProductGroupTypes.cs" />
+    <Compile Include="BOL\Products\ProductType.cs" />
+    <Compile Include="BOL\Products\ProductTypes.cs" />
+    <Compile Include="BOL\Refunds\Refund.cs" />
+    <Compile Include="BOL\Refunds\Refunds.cs" />
+    <Compile Include="BOL\RSS\RSSFeed.cs" />
+    <Compile Include="BOL\RSS\RSSItem.cs" />
+    <Compile Include="BOL\Search\Search.cs" />
+    <Compile Include="BOL\Search\SearchItem.cs" />
+    <Compile Include="BOL\SEO\SeoData.cs" />
+    <Compile Include="BOL\SEO\SEOReport.cs" />
+    <Compile Include="BOL\SEO\SeoReports.cs" />
+    <Compile Include="BOL\SEO\WebVisitLogItem.cs" />
+    <Compile Include="BOL\SEO\WebVisitLogItems.cs" />
+    <Compile Include="BOL\SplitPayments\SplitPayment.cs" />
+    <Compile Include="BOL\SplitPayments\SplitPayments.cs" />
+    <Compile Include="BOL\Staff\CommissionPool.cs" />
+    <Compile Include="BOL\Staff\CommissionPools.cs" />
+    <Compile Include="BOL\Staff\CommissionSplit.cs" />
+    <Compile Include="BOL\Staff\PaidCommission.cs" />
+    <Compile Include="BOL\Staff\PaidCommissionItem.cs" />
+    <Compile Include="BOL\Staff\PayCommissionSettings.cs" />
+    <Compile Include="BOL\Staff\Staff.cs" />
+    <Compile Include="BOL\Staff\StaffCommission.cs" />
+    <Compile Include="BOL\Staff\StaffCommissionItem.cs" />
+    <Compile Include="BOL\Staff\StaffExpense.cs" />
+    <Compile Include="BOL\Staff\StaffExpenses.cs" />
+    <Compile Include="BOL\Staff\StaffLeave.cs" />
+    <Compile Include="BOL\Staff\StaffLeaveRequest.cs" />
+    <Compile Include="BOL\Staff\StaffMember.cs" />
+    <Compile Include="BOL\Staff\StaffMembers.cs" />
+    <Compile Include="BOL\Staff\StaffSicknessStatistics.cs" />
+    <Compile Include="BOL\Staff\StaffSickRecord.cs" />
+    <Compile Include="BOL\Staff\StaffSickRecords.cs" />
+    <Compile Include="BOL\Statistics\SimpleStatistic.cs" />
+    <Compile Include="BOL\Statistics\SimpleStatistics.cs" />
+    <Compile Include="BOL\StockControl\CreateStock.cs" />
+    <Compile Include="BOL\StockControl\CreateStockItem.cs" />
+    <Compile Include="BOL\StockControl\StockHistory.cs" />
+    <Compile Include="BOL\StockControl\StockIn.cs" />
+    <Compile Include="BOL\StockControl\StockInItem.cs" />
+    <Compile Include="BOL\StockControl\StockHistoryItem.cs" />
+    <Compile Include="BOL\StockControl\StockOut.cs" />
+    <Compile Include="BOL\StockControl\StockOutItem.cs" />
+    <Compile Include="BOL\Suppliers\Supplier.cs" />
+    <Compile Include="BOL\Suppliers\SupplierProduct.cs" />
+    <Compile Include="BOL\Suppliers\SupplierProducts.cs" />
+    <Compile Include="BOL\Suppliers\Suppliers.cs" />
+    <Compile Include="BOL\TagLines\TagLine.cs" />
+    <Compile Include="BOL\TagLines\TagLines.cs" />
+    <Compile Include="BOL\Therapists\Takings.cs" />
+    <Compile Include="BOL\Therapists\TherapistTakings.cs" />
+    <Compile Include="BOL\Therapists\WorkingDay.cs" />
+    <Compile Include="BOL\Therapists\WorkingDays.cs" />
+    <Compile Include="BOL\Trade\Action.cs" />
+    <Compile Include="BOL\Trade\Actions.cs" />
+    <Compile Include="BOL\Trade\Client.cs" />
+    <Compile Include="BOL\Trade\Clients.cs" />
+    <Compile Include="BOL\Trade\Note.cs" />
+    <Compile Include="BOL\Trade\Notes.cs" />
+    <Compile Include="BOL\Training\Attendees.cs" />
+    <Compile Include="BOL\Training\Course.cs" />
+    <Compile Include="BOL\Training\Attendee.cs" />
+    <Compile Include="BOL\Training\Courses.cs" />
+    <Compile Include="BOL\Training\TrainingCourse.cs" />
+    <Compile Include="BOL\Training\TrainingCourses.cs" />
+    <Compile Include="BOL\USAStates\USState.cs" />
+    <Compile Include="BOL\USAStates\USStates.cs" />
+    <Compile Include="BOL\Appointments\AppointmentType.cs" />
+    <Compile Include="BOL\Appointments\AppointmentTypes.cs" />
+    <Compile Include="BOL\Distributors\Distributor.cs" />
+    <Compile Include="BOL\Distributors\Distributors.cs" />
+    <Compile Include="BOL\Email\Delegates.cs" />
+    <Compile Include="BOL\Email\Email.cs" />
+    <Compile Include="BOL\Email\EmailMessage.cs" />
+    <Compile Include="BOL\Email\Emails.cs" />
+    <Compile Include="BOL\Email\EmailSettingsSingletonClass.cs" />
+    <Compile Include="BOL\Email\EmailStatusReport.cs" />
+    <Compile Include="BOL\Email\StatusReportEntry.cs" />
+    <Compile Include="BOL\Export\IBLM.cs" />
+    <Compile Include="BOL\Helpdesk\CustomerComment.cs" />
+    <Compile Include="BOL\Helpdesk\CustomerComments.cs" />
+    <Compile Include="BOL\Helpdesk\KBGroup.cs" />
+    <Compile Include="BOL\Helpdesk\KBGroups.cs" />
+    <Compile Include="BOL\Helpdesk\SupportTicket.cs" />
+    <Compile Include="BOL\Helpdesk\SupportTicketMessage.cs" />
+    <Compile Include="BOL\Helpdesk\SupportTicketMessages.cs" />
+    <Compile Include="BOL\Helpdesk\SupportTickets.cs" />
+    <Compile Include="BOL\Helpdesk\TicketDepartment.cs" />
+    <Compile Include="BOL\Helpdesk\TicketDepartments.cs" />
+    <Compile Include="BOL\Helpdesk\TicketPriorities.cs" />
+    <Compile Include="BOL\Helpdesk\TicketPriority.cs" />
+    <Compile Include="BOL\Helpdesk\TicketStatus.cs" />
+    <Compile Include="BOL\Helpdesk\TicketStatuses.cs" />
+    <Compile Include="BOL\Invoices\Invoice.cs" />
+    <Compile Include="BOL\Invoices\InvoiceItem.cs" />
+    <Compile Include="BOL\Invoices\InvoiceItems.cs" />
+    <Compile Include="BOL\Invoices\Invoices.cs" />
+    <Compile Include="BOL\MissingLinks\MissingLink.cs" />
+    <Compile Include="BOL\MissingLinks\MissingLinks.cs" />
+    <Compile Include="BOL\News\NewsItem.cs" />
+    <Compile Include="BOL\News\NewsItems.cs" />
+    <Compile Include="BOL\Orders\Order.cs" />
+    <Compile Include="BOL\Orders\OrderItem.cs" />
+    <Compile Include="BOL\Orders\OrderItems.cs" />
+    <Compile Include="BOL\Orders\Orders.cs" />
+    <Compile Include="BOL\Products\Product.cs" />
+    <Compile Include="BOL\Products\ProductCost.cs" />
+    <Compile Include="BOL\Products\ProductCosts.cs" />
+    <Compile Include="BOL\Products\ProductGroup.cs" />
+    <Compile Include="BOL\Products\ProductGroups.cs" />
+    <Compile Include="BOL\Products\Products.cs" />
+    <Compile Include="BOL\Salons\Salon.cs" />
+    <Compile Include="BOL\Salons\SalonDiscount.cs" />
+    <Compile Include="BOL\Salons\Salons.cs" />
+    <Compile Include="BOL\Statistics\Statistics.cs" />
+    <Compile Include="BOL\StockControl\Stock.cs" />
+    <Compile Include="BOL\StockControl\StockItem.cs" />
+    <Compile Include="BOL\Therapists\Therapist.cs" />
+    <Compile Include="BOL\Therapists\Therapists.cs" />
+    <Compile Include="BOL\TipsTricks\TipsTrick.cs" />
+    <Compile Include="BOL\TipsTricks\TipsTricks.cs" />
+    <Compile Include="BOL\Treatments\Treatment.cs" />
+    <Compile Include="BOL\Treatments\TreatmentGroup.cs" />
+    <Compile Include="BOL\Treatments\TreatmentGroups.cs" />
+    <Compile Include="BOL\Treatments\Treatments.cs" />
+    <Compile Include="BOL\Users\AppointmentHistory.cs" />
+    <Compile Include="BOL\Users\AppointmentHistoryItem.cs" />
+    <Compile Include="BOL\Users\CreditCard.cs" />
+    <Compile Include="BOL\Users\User.cs" />
+    <Compile Include="BOL\Users\Users.cs" />
+    <Compile Include="BOL\ValidationChecks\POSValidation.cs" />
+    <Compile Include="BOL\Video\Video.cs" />
+    <Compile Include="BOL\Video\Videos.cs" />
+    <Compile Include="BOL\Vouchers\Voucher.cs" />
+    <Compile Include="BOL\Vouchers\Vouchers.cs" />
+    <Compile Include="BOL\Websites\Website.cs" />
+    <Compile Include="BOL\Websites\Websites.cs" />
+    <Compile Include="Checks.cs" />
+    <Compile Include="ClassExtenders\StringExtender.cs" />
+    <Compile Include="Consts.cs" />
+    <Compile Include="DAL\XMLStatic.cs" />
+    <Compile Include="Download\Download.cs" />
+    <Compile Include="Enums\SecurityEnums.cs" />
+    <Compile Include="ErrorHandling.cs" />
+    <Compile Include="Events\Events.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="SalonUser.cs" />
+    <Compile Include="Utils\LibUtils.cs" />
+    <Compile Include="Utils\StringCipher.cs" />
+    <Compile Include="LibraryHelperClass.cs" />
+    <Compile Include="DAL\Database.cs" />
+    <Compile Include="DAL\FirebirdDB.cs" />
+    <Compile Include="Enums\Enums.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\BBCode.cs" />
+    <Compile Include="Utils\Utils.cs" />
+    <Compile Include="XMLManipulation\XML.cs" />
+    <Compile Include="ZipFiles\ZipFiles.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Library.pfx" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>..\..\..\..\..\GitProjects\Builds\NetBuildTools\Release\UpdateVersion.exe /out="$(ProjectDir)Properties\ver.txt" /$(ConfigurationName) /path="$(ProjectDir)</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
