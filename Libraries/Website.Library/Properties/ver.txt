@@ -1,0 +1,10 @@
+Parameters
+/out=T:\HeavenMain\Libraries\Website.Library\Properties\ver.txt
+/Debug
+/path=T:\HeavenMain\Libraries\Website.Library\
+
+Path Exists
+
+T:\HeavenMain\Libraries\Website.Library\properties\AssemblyInfo.cs Found
+
+New Version 3.0.97.2911

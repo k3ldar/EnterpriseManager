@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DEBAC29F-5438-4DB6-AF82-EAA02360B001}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Website.Library</RootNamespace>
+    <AssemblyName>Website.Library</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug\</OutputPath>
+    <DefineConstants>FAKE_ADDRESS_ DISPLAY_DEBUG_INFO_ DEBUG_PAYPAL_ WEB_LOGGING_</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>HeavenKey.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug Release|AnyCPU'">
+    <OutputPath>..\..\Release\</OutputPath>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <Optimize>false</Optimize>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FirebirdSql.Data.FirebirdClient, Version=4.1.0.0, Culture=neutral, PublicKeyToken=3750abcc3150b00c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\3rdParty\FirebirdSql.Data.FirebirdClient.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\..\Websites\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\3rdParty\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Languages, Version=3.0.50.227, Culture=neutral, PublicKeyToken=eb55daae66e87c80, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Languages\bin\Debug\Languages.dll</HintPath>
+    </Reference>
+    <Reference Include="Payflow_dotNET, Version=4.3.1.0, Culture=neutral, PublicKeyToken=14aa1e8d77f2a97c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Payflow_dotNET.dll</HintPath>
+    </Reference>
+    <Reference Include="SharedLib, Version=2.5.0.0, Culture=neutral, PublicKeyToken=bcec03f2c05555a7, processorArchitecture=MSIL">
+      <HintPath>..\..\..\SieraDelta\Website\packages\SC.Shared.Library.2.5.12\lib\net452\SharedLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Entity.Design" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Extensions.Design" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET MVC 4\Assemblies\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Checks.cs" />
+    <Compile Include="Classes\Annotation.cs" />
+    <Compile Include="Classes\Args.cs" />
+    <Compile Include="Classes\EmailSend.cs" />
+    <Compile Include="Classes\PaymentOptions\BasePaymentOption.cs" />
+    <Compile Include="Classes\PaymentOptions\PaymentOptionCashOnDelivery.cs" />
+    <Compile Include="Classes\PaymentOptions\PaymentOptionCheque.cs" />
+    <Compile Include="Classes\PaymentOptions\PaymentOptionDirectTransfer.cs" />
+    <Compile Include="Classes\PaymentOptions\PaymentOptionPayflow.cs" />
+    <Compile Include="Classes\PaymentOptions\PaymentOptionPaynet.cs" />
+    <Compile Include="Classes\PaymentOptions\PaymentOptionPaypal.cs" />
+    <Compile Include="Classes\PaymentOptions\PaymentOptionPhone.cs" />
+    <Compile Include="Classes\PaymentOptions\PaymentOptionRedirectInvoices.cs" />
+    <Compile Include="Classes\PaymentOptions\PaymentOptionSunTech24Payment.cs" />
+    <Compile Include="Classes\PaymentOptions\PaymentOptionSunTechBuySafe.cs" />
+    <Compile Include="Classes\PaymentOptions\PaymentOptionSunTechWebATM.cs" />
+    <Compile Include="Classes\PaymentOptions\PaymentOptionTestPurchase.cs" />
+    <Compile Include="Classes\StringConstants.cs" />
+    <Compile Include="Classes\Translations\EnumTranslations.cs" />
+    <Compile Include="Classes\WebsiteOptions.cs" />
+    <Compile Include="Classes\WebVisitLogItem.cs" />
+    <Compile Include="Classes\Web\BaseController.cs" />
+    <Compile Include="Classes\Web\BaseMasterClassWebForm.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Classes\Reports\BasePDFReport.cs" />
+    <Compile Include="Classes\Web\BaseWebApplication.cs" />
+    <Compile Include="Classes\Web\BaseWebFormOffers.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Classes\Web\BaseWebFormProduct.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Classes\Web\BaseWebFormSalesRep.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Classes\Web\DebugInfo.cs" />
+    <Compile Include="Classes\Web\LocalizedLanguages.cs" />
+    <Compile Include="Classes\Web\LocalWebSessionData.cs" />
+    <Compile Include="Classes\Web\MetaDescriptions.cs" />
+    <Compile Include="Classes\Web\SharedWebBase.cs" />
+    <Compile Include="Controls\EditSettingsText.ascx.cs">
+      <DependentUpon>EditSettingsText.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\EditSettingsText.ascx.designer.cs">
+      <DependentUpon>EditSettingsText.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.cs" />
+    <Compile Include="Classes\BaseSettingsClass.cs" />
+    <Compile Include="Classes\CaptchaImage.cs" />
+    <Compile Include="Classes\Delegates.cs" />
+    <Compile Include="Classes\Export\SageUsers.cs" />
+    <Compile Include="Classes\Objects\BaseCollection.cs" />
+    <Compile Include="Classes\Objects\BaseObject.cs" />
+    <Compile Include="Classes\Options.cs" />
+    <Compile Include="Classes\Paypal\APIError.aspx.cs">
+      <DependentUpon>APIError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Classes\Paypal\APIError.aspx.designer.cs">
+      <DependentUpon>APIError.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Paypal\paypalfunctions.cs" />
+    <Compile Include="Classes\Paypoint\ValCard.cs" />
+    <Compile Include="Classes\RoutineMaintenance\RoutineMaintenance.cs" />
+    <Compile Include="Classes\SettingsSingletonClass.cs" />
+    <Compile Include="Classes\StatusReportEntry.cs" />
+    <Compile Include="Classes\Webpage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Classes\Web\BaseControlClass.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Classes\Web\BaseWebForm.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Classes\Web\BaseWebFormAdmin.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Classes\Web\BaseWebFormMember.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Classes\Web\BaseWebFormSalonOwner.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Classes\Web\BaseWebFormStaff.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Classes\Web\Enums.cs" />
+    <Compile Include="Classes\Web\FixedTextBox.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Classes\WebsiteSettings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Classes\Paypal\APIError.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="Controls\EditSettingsText.ascx" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Classes\Paypal\APIError.aspx.resx">
+      <DependentUpon>APIError.aspx.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="HeavenKey.pfx" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="WebPages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Library\Library.csproj">
+      <Project>{3444f493-5cbe-4d67-8bc9-1184e486c7e7}</Project>
+      <Name>Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Reports\Reports.csproj">
+      <Project>{74dce6c6-8044-438d-b16a-b01add05add0}</Project>
+      <Name>Reports</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>..\..\..\..\..\GitProjects\Builds\NetBuildTools\Release\UpdateVersion.exe /out="$(ProjectDir)Properties\ver.txt" /$(ConfigurationName) /path="$(ProjectDir)</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
