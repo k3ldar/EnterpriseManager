@@ -1,0 +1,10 @@
+Parameters
+/out=T:\HeavenMain\Libraries\Plugins\POS.DatabaseBackup\Properties\ver.txt
+/Debug
+/path=T:\HeavenMain\Libraries\Plugins\POS.DatabaseBackup\
+
+Path Exists
+
+T:\HeavenMain\Libraries\Plugins\POS.DatabaseBackup\properties\AssemblyInfo.cs Found
+
+New Version 4.0.0.1332
