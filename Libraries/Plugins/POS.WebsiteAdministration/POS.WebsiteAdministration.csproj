@@ -1,0 +1,412 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5FB6C52B-21D2-4D63-BA4D-53FF6FD5ED18}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>POS.WebsiteAdministration</RootNamespace>
+    <AssemblyName>POS.WebsiteAdministration</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Builds\POS\Debug\Plugins\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;TAB_INTERFACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\Builds\POS\Release\Plugins\</OutputPath>
+    <DefineConstants>TAB_INTERFACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Applications\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="SharedControls, Version=2.8.0.0, Culture=neutral, PublicKeyToken=5e7029cf0b93cfbe, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Applications\packages\SC.SharedControls.2.8.15\lib\net452\SharedControls.dll</HintPath>
+    </Reference>
+    <Reference Include="SharedLib, Version=2.5.0.0, Culture=neutral, PublicKeyToken=bcec03f2c05555a7, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Applications\packages\SC.Shared.Library.2.5.13\lib\net452\SharedLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CelebritiesCard.cs" />
+    <Compile Include="Checks.cs" />
+    <Compile Include="Classes\CreateEditWebsiteWizard.cs" />
+    <Compile Include="Controls\SalonUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SalonUser.Designer.cs">
+      <DependentUpon>SalonUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WebSettings\BaseWebSetting.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\WebSettings\BaseWebSetting.Designer.cs">
+      <DependentUpon>BaseWebSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WebSettings\HomeBanners.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\WebSettings\HomeBanners.Designer.cs">
+      <DependentUpon>HomeBanners.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WebSettings\PageBanner.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\WebSettings\PageBanner.Designer.cs">
+      <DependentUpon>PageBanner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WebSettings\PageBanners.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\WebSettings\PageBanners.Designer.cs">
+      <DependentUpon>PageBanners.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WebsiteSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\WebsiteSettings.Designer.cs">
+      <DependentUpon>WebsiteSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WebSettings\HomeBanner.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\WebSettings\HomeBanner.Designer.cs">
+      <DependentUpon>HomeBanner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Wizards\Website\WebsiteAddUpdateStep1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Wizards\Website\WebsiteAddUpdateStep1.Designer.cs">
+      <DependentUpon>WebsiteAddUpdateStep1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CountriesCard.cs" />
+    <Compile Include="CustomerCommentsCard.cs" />
+    <Compile Include="DistributorsCard.cs" />
+    <Compile Include="Forms\AdminWebsites.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\AdminWebsites.Designer.cs">
+      <DependentUpon>AdminWebsites.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Countries\AdminCountryAddressSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Countries\AdminCountryAddressSettings.Designer.cs">
+      <DependentUpon>AdminCountryAddressSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Countries\AdminEditCountries.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Countries\AdminEditCountries.Designer.cs">
+      <DependentUpon>AdminEditCountries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CustomerComments\AdminCustomerCommentsForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\CustomerComments\AdminCustomerCommentsForm.Designer.cs">
+      <DependentUpon>AdminCustomerCommentsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Distributors\AdminDistributors.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Distributors\AdminDistributors.Designer.cs">
+      <DependentUpon>AdminDistributors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Distributors\AdminDistributorEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Distributors\AdminDistributorEdit.designer.cs">
+      <DependentUpon>AdminDistributorEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MissingLinks\AdminMissingLinkEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MissingLinks\AdminMissingLinkEdit.Designer.cs">
+      <DependentUpon>AdminMissingLinkEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MissingLinks\AdminMissingLinks.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\MissingLinks\AdminMissingLinks.Designer.cs">
+      <DependentUpon>AdminMissingLinks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Distributors\AdminSalonToUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Distributors\AdminSalonToUser.Designer.cs">
+      <DependentUpon>AdminSalonToUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Distributors\AdminDistributorUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Distributors\AdminDistributorUpdate.Designer.cs">
+      <DependentUpon>AdminDistributorUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Distributors\AdminDstriutorsUpdates.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Distributors\AdminDstriutorsUpdates.Designer.cs">
+      <DependentUpon>AdminDstriutorsUpdates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TipsAndTricks\AdminTipsAndTricks.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\TipsAndTricks\AdminTipsAndTricks.Designer.cs">
+      <DependentUpon>AdminTipsAndTricks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TipsAndTricks\AdminTipsAndTricksEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TipsAndTricks\AdminTipsAndTricksEdit.Designer.cs">
+      <DependentUpon>AdminTipsAndTricksEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Treatments\AdminTreatmentGroupEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Treatments\AdminTreatmentGroupEdit.Designer.cs">
+      <DependentUpon>AdminTreatmentGroupEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Treatments\AdminTreatmentEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Treatments\AdminTreatmentEdit.Designer.cs">
+      <DependentUpon>AdminTreatmentEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Treatments\AdminTreatmentGroups.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Treatments\AdminTreatmentGroups.Designer.cs">
+      <DependentUpon>AdminTreatmentGroups.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Treatments\AdminTreatments.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Treatments\AdminTreatments.Designer.cs">
+      <DependentUpon>AdminTreatments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Website\AdminCelebrities.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Website\AdminCelebrities.Designer.cs">
+      <DependentUpon>AdminCelebrities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Website\AdminVideos.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Website\AdminVideos.Designer.cs">
+      <DependentUpon>AdminVideos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HintsAndTipsCard.cs" />
+    <Compile Include="MissingLinksCard.cs" />
+    <Compile Include="OnlineTreatmentGroupsCard.cs" />
+    <Compile Include="OnlineTreatmentsCard.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Controls\SalonUpdate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SalonUpdate.Designer.cs">
+      <DependentUpon>SalonUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SalonUpdateTrayNotification.cs" />
+    <Compile Include="UpdateDistributorDetailsCard.cs" />
+    <Compile Include="WebsiteAdministrationPluginModule.cs" />
+    <Compile Include="WebsiteCommentsTrayNotification.cs" />
+    <Compile Include="WebsitesCard.cs" />
+    <Compile Include="WebSiteVideosCard.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Resources\delete_icon_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\SalonUser.resx">
+      <DependentUpon>SalonUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\WebSettings\HomeBanner.resx">
+      <DependentUpon>HomeBanner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\WebSettings\HomeBanners.resx">
+      <DependentUpon>HomeBanners.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\WebSettings\PageBanner.resx">
+      <DependentUpon>PageBanner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\WebSettings\PageBanners.resx">
+      <DependentUpon>PageBanners.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\WebsiteSettings.resx">
+      <DependentUpon>WebsiteSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Wizards\Website\WebsiteAddUpdateStep1.resx">
+      <DependentUpon>WebsiteAddUpdateStep1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AdminWebsites.resx">
+      <DependentUpon>AdminWebsites.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Countries\AdminCountryAddressSettings.resx">
+      <DependentUpon>AdminCountryAddressSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Countries\AdminEditCountries.resx">
+      <DependentUpon>AdminEditCountries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CustomerComments\AdminCustomerCommentsForm.resx">
+      <DependentUpon>AdminCustomerCommentsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Distributors\AdminDistributors.resx">
+      <DependentUpon>AdminDistributors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Distributors\AdminDistributorEdit.resx">
+      <DependentUpon>AdminDistributorEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MissingLinks\AdminMissingLinkEdit.resx">
+      <DependentUpon>AdminMissingLinkEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MissingLinks\AdminMissingLinks.resx">
+      <DependentUpon>AdminMissingLinks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Distributors\AdminSalonToUser.resx">
+      <DependentUpon>AdminSalonToUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Distributors\AdminDistributorUpdate.resx">
+      <DependentUpon>AdminDistributorUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Distributors\AdminDstriutorsUpdates.resx">
+      <DependentUpon>AdminDstriutorsUpdates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TipsAndTricks\AdminTipsAndTricks.resx">
+      <DependentUpon>AdminTipsAndTricks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TipsAndTricks\AdminTipsAndTricksEdit.resx">
+      <DependentUpon>AdminTipsAndTricksEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Treatments\AdminTreatmentGroupEdit.resx">
+      <DependentUpon>AdminTreatmentGroupEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Treatments\AdminTreatmentEdit.resx">
+      <DependentUpon>AdminTreatmentEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Treatments\AdminTreatmentGroups.resx">
+      <DependentUpon>AdminTreatmentGroups.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Treatments\AdminTreatments.resx">
+      <DependentUpon>AdminTreatments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Website\AdminCelebrities.resx">
+      <DependentUpon>AdminCelebrities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Website\AdminVideos.resx">
+      <DependentUpon>AdminVideos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SalonUpdate.resx">
+      <DependentUpon>SalonUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\create_icon_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_icon_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Languages\Languages.csproj">
+      <Project>{2a685cd0-df5b-4ce3-bd18-5e6bf927ec7f}</Project>
+      <Name>Languages</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Library\Library.csproj">
+      <Project>{3444f493-5cbe-4d67-8bc9-1184e486c7e7}</Project>
+      <Name>Library</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\POS\POS.csproj">
+      <Project>{c5ea121e-69b3-499d-acde-c6dfd9779b73}</Project>
+      <Name>POS</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Countries.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OnlineTreatmentGroups.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OnlineTreatments.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CustomerReviews.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Videos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Celebrities.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HintandTips.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TipsAndTricks.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Distributors.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MissingLinks.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UpdateDistributorDetails.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Websites.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>..\..\..\..\..\GitProjects\Builds\NetBuildTools\Release\UpdateVersion.exe /out="$(ProjectDir)Properties\ver.txt" /$(ConfigurationName) /path="$(ProjectDir)</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
