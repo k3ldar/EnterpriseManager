@@ -11,29 +11,15 @@
  *
  *  The Original Code was created by Simon Carter (s1cart3r@gmail.com)
  *
- *  Copyright (c) 2010 - 2017 Simon Carter.  All Rights Reserved.
+ *  Copyright (c) 2010 - {CREATE:yyyy} Simon Carter.  All Rights Reserved.
  *
  *  Product:  Enterprise Manager
  *  
- *  File: Checks.cs
+ *  File: {FILENAME}
  *
  *  Purpose:  
  *
  *  Date        Name                Reason
- *  
+ *  {CREATE:dd/MM/yyyy}  Simon Carter        Initially Created
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-using System;
-
-namespace POS.Base
-{
-#if !DEBUG
-#if TRACE
-#warning Trace enabled for release
-#endif
-#endif
-
-#if LOCALHOST && DEBUG
-#warning POS.dll build with support for local host only.  Remove for release
-#endif
-}

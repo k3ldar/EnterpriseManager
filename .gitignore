@@ -98,3 +98,10 @@
 /Websites/MainWebsite/Images/Banners/
 /Websites/MainWebsite/Images/Celebs/
 /Websites/MainWebsite/Images/sl/thick as pig shit.png
+/Applications/POS/Classes/CHBackup/
+/Applications/POS/CHBackup
+/Applications/POS/Controls/InitialSetupWizard/CHBackup/
+/Applications/POS/Controls/Settings/Admin/CHBackup/
+/Applications/POS/Controls/Settings/LocalUser/CHBackup/
+/Applications/POS/Forms/Other/CHBackup/
+**/CHBackup/**
