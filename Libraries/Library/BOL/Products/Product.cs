@@ -214,6 +214,14 @@ namespace Library.BOL.Products
             }
         }
 
+        public string NameSEO
+        {
+            get
+            {
+                return (Utils.SharedUtils.SEOName(Name));
+            }
+        }
+
         public string Description
         {
             get
@@ -431,7 +439,7 @@ namespace Library.BOL.Products
             {
                 if (String.IsNullOrEmpty(PageLink))
                 {
-                    return (String.Format("/Products/Index.aspx?ID={0}", ID));
+                    return (String.Format("/Products/{0}/{1}/", PrimaryGroup.SEODescripton, NameSEO));
                 }
                 else
                 {

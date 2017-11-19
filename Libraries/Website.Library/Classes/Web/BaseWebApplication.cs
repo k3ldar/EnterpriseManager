@@ -2,10 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
 using System.Threading;
 using System.Web;
-using System.Web.Management;
+using System.Web.Routing;
 
 using lib = Library;
 using Library.Utils;
@@ -19,7 +18,7 @@ using ErrorManager.ErrorClient;
 
 using Shared;
 using Shared.Classes;
-using Library.BOL.SEO;
+using Library.BOL.Products;
 using Library.BOL.IPAddresses;
 
 namespace Website.Library.Classes
@@ -74,11 +73,11 @@ namespace Website.Library.Classes
         /// <param name="?"></param>
         /// <returns></returns>
         internal bool IsLoaded
-        { 
-            get 
+        {
+            get
             {
                 if (_loadsettings)
-                { 
+                {
                     TimeSpan span = DateTime.Now - _lastLoadAttempt;
 
                     if (_loadAttempts < 10 && span.TotalSeconds > 180)
@@ -91,8 +90,8 @@ namespace Website.Library.Classes
                     }
                 }
 
-                return (!_loadsettings); 
-            } 
+                return (!_loadsettings);
+            }
         }
 
         internal static object EmailLockObject = new object();
@@ -102,6 +101,9 @@ namespace Website.Library.Classes
         #endregion Internal Members
 
         #region Public Members
+
+        public static Dictionary<string, Int64> AllRoutes = new Dictionary<string, Int64>();
+
 
         public static bool AllowMobileWebsite = false;
 
@@ -163,7 +165,7 @@ namespace Website.Library.Classes
         public static string RootHost;
         public static bool UseHTTPS;
         public static string Path;
-        
+
         public static CultureInfo WebsiteCulture = new CultureInfo("en-GB");
         public static bool WebsiteCultureOverride = false;
         public static string DefaultCountrySettings = "GB";
@@ -219,7 +221,7 @@ namespace Website.Library.Classes
 
         public static string CookiePrefix = "SD";
 
-       
+
 
         public static int InvoiceVersion = 6;
 
@@ -411,13 +413,13 @@ namespace Website.Library.Classes
         /// SMTP Host
         /// </summary>
         public static string SMTPHost;
-        
+
         public static string SMTPUserName;
-        
+
         public static string SMTPPassword;
-        
+
         public static bool SMTPUseSSL;
-        
+
         public static int SMTPPort;
 
         public static bool SendEmails;
@@ -479,8 +481,8 @@ namespace Website.Library.Classes
         /// <summary>
         /// Determines wether the website will automatically update the geo update table
         /// </summary>
-        public static bool AllowWebsiteGeoUpdate 
-        { 
+        public static bool AllowWebsiteGeoUpdate
+        {
             get
             {
                 return (_allowWebsiteGeoUpdate);
@@ -494,7 +496,7 @@ namespace Website.Library.Classes
                 {
                     string rootPath = Utilities.AddTrailingBackSlash(RootPath);
                     GeoIPLatestVersion = Shared.XML.GetXMLValue("Version", "GeoIPData", (long)0, rootPath + "download\\Versions.xml");
-                    string file = String.Format("{0}Download\\Files\\GeoIP\\GeoIP_{1}.dat", rootPath , GeoIPLatestVersion);
+                    string file = String.Format("{0}Download\\Files\\GeoIP\\GeoIP_{1}.dat", rootPath, GeoIPLatestVersion);
 
                     if (System.IO.File.Exists(file))
                     {
@@ -1323,7 +1325,7 @@ namespace Website.Library.Classes
                 PricesIncludeVAT = ConfigSettingGet("Settings.PricesIncludeVAT", false);
                 ShippingIsTaxable = ConfigSettingGet("Settings.ShippingIsTaxable", ShippingIsTaxable);
                 ShowBasketItemsWithVAT = ConfigSettingGet("Settings.ShowBasketItemsWithVAT", ShowBasketItemsWithVAT);
-                ShowBasketSubTotalWithVAT = ConfigSettingGet("Settings.ShowBasketSubTotalWithVAT", ShowBasketSubTotalWithVAT); 
+                ShowBasketSubTotalWithVAT = ConfigSettingGet("Settings.ShowBasketSubTotalWithVAT", ShowBasketSubTotalWithVAT);
 
                 #endregion VAT/Tax Settings
 
@@ -1393,7 +1395,7 @@ namespace Website.Library.Classes
                 GlobalClass.StyleSheetLocation = ConfigSettingGet("SITE.STYLE_SHEET_LOCATION", GlobalClass.StyleSheetLocation);
 
                 CustomScrollerStrapLine = ConfigSettingGet("Settings.CustomIndexScroller", false);
-                CustomScrollerText = ConfigSettingGet("Settings.CustomScrollerText", 
+                CustomScrollerText = ConfigSettingGet("Settings.CustomScrollerText",
                     Languages.LanguageStrings.CheckOutLatestGreatest);
 
                 #region Blog
@@ -1425,7 +1427,7 @@ namespace Website.Library.Classes
             }
             catch (Exception error)
             {
-                Shared.EventLog.Add(error);
+                EventLog.Add(error);
             }
 
             return (Result);
@@ -1472,7 +1474,7 @@ namespace Website.Library.Classes
         /// Method called when a session needs to be retrieved
         /// </summary>
         /// <param name="session"></param>
-        public virtual UserSession SessionRetrieve (string sessionID)
+        public virtual UserSession SessionRetrieve(string sessionID)
         {
             return (null);
         }
@@ -1524,7 +1526,7 @@ namespace Website.Library.Classes
                         Shared.Classes.ThreadManager.MaximumPoolSize = 100000;
                         _initialiseThreads = false;
                     }
-                    
+
                     //InitialiseWebDefender();
 #if ERROR_MANAGER
                     InitialiseErrorManager();
@@ -1536,7 +1538,7 @@ namespace Website.Library.Classes
                     Shared.EventLog.Add(err);
                 }
 
-                if (WebFarm && 
+                if (WebFarm &&
                     !String.IsNullOrEmpty(WebFarmMutexName) &&
                     Shared.Utilities.LocalIPAddress(WebFarmMasterIP))
                 {
@@ -1547,7 +1549,7 @@ namespace Website.Library.Classes
                     // others will not be the master controller.
 
                     _mutex = new MutexEx(WebFarmMutexName);
-                    
+
                     if (!_mutex.Exists)
                     {
                         _mutex.CreateMutex();
@@ -1558,11 +1560,14 @@ namespace Website.Library.Classes
                 }
 
             }
+
+
+            RegisterRoutes(RouteTable.Routes);
         }
 
         protected void ApplicationEnd()
         {
-            Shared.EventLog.Add("ApplicationEnd");
+            EventLog.Add("ApplicationEnd");
 
             if (_mutex != null)
                 _mutex.Dispose();
@@ -1745,8 +1750,8 @@ namespace Website.Library.Classes
         {
             //if (e.Thread.Name != "Management Thread")
             //{
-                //Shared.EventLog.Add(String.Format("Thread Usage - Name: {0}; Process Usage: {1}; Previous Process Usage: {2}; System Usage: {3}",
-                //    e.Thread.Name, e.Thread.ProcessCpuUsage.ToString("n1"), e.Thread.PreviousProcessCpuUsage.ToString("n1"), e.Thread.SystemCpuUsage.ToString("n1")));
+            //Shared.EventLog.Add(String.Format("Thread Usage - Name: {0}; Process Usage: {1}; Previous Process Usage: {2}; System Usage: {3}",
+            //    e.Thread.Name, e.Thread.ProcessCpuUsage.ToString("n1"), e.Thread.PreviousProcessCpuUsage.ToString("n1"), e.Thread.SystemCpuUsage.ToString("n1")));
             //}
         }
 
@@ -1798,11 +1803,11 @@ namespace Website.Library.Classes
             SessionSaveData(e.Session);
         }
 
-#endregion SessionManager Events
+        #endregion SessionManager Events
 
-#endregion Protected Methods
+        #endregion Protected Methods
 
-#region Internal Methods
+        #region Internal Methods
 
         internal static bool WebFarmMaster()
         {
@@ -1815,11 +1820,11 @@ namespace Website.Library.Classes
             return (false);
         }
 
-#endregion Internal Methods
+        #endregion Internal Methods
 
-#region Public Methods
+        #region Public Methods
 
-#region Send Emails
+        #region Send Emails
 
         /// <summary>
         /// Sends an email to webadmin
@@ -1860,14 +1865,14 @@ namespace Website.Library.Classes
                 return;
         }
 
-#endregion Send Emails
+        #endregion Send Emails
 
-#endregion Public Methods
+        #endregion Public Methods
 
-#region Private Methods
+        #region Private Methods
 
 
-#region Thread Manager Events
+        #region Thread Manager Events
 
         void ThreadManager_ThreadExceptionRaised(object sender, ThreadManagerExceptionEventArgs e)
         {
@@ -1900,7 +1905,45 @@ namespace Website.Library.Classes
             Shared.EventLog.Add(String.Format("Thread Abort Forced: {0}", e.Thread.ToString()));
         }
 
-#endregion Thread Manager Events
+        #endregion Thread Manager Events
+
+        private void RegisterRoutes(RouteCollection routes)
+        {
+            using (routes.GetWriteLock())
+            {
+                routes.MapPageRoute("productsGroupRoute",
+                    "Products/{group}/{name}/",
+                    "~/Products/Index.aspx");
+
+                foreach (ProductType productType in ProductTypes.Get())
+                {
+                    Products allProducts = Products.Get(productType, 1, 10000);
+
+                    foreach (Product product in allProducts)
+                    {
+                        // add primary product
+                        AllRoutes.Add(product.NameSEO, product.ID);
+
+                        // add priimary group/product
+                        AllRoutes.Add(String.Format("{0}{1}", product.PrimaryGroup.Description,
+                            product.NameSEO), product.ID);
+                    }
+                }
+
+                routes.MapPageRoute("groupRoute",
+                    "Product/Group/{group}/",
+                    "~/Products.aspx");
+
+                foreach (lib.MemberLevel mLevel in Enum.GetValues(typeof(lib.MemberLevel)))
+                {
+                    foreach (ProductGroup group in ProductGroups.Get(mLevel, true))
+                    {
+                        AllRoutes.Add(String.Format("{0}{1}", mLevel.ToString(), group.SEODescripton), group.ID);
+                    }
+                }
+            }
+        }
+
 
 #if ERROR_MANAGER
         private static void GetErrorClient_AdditionalInformation(object sender, AdditionalInformationEventArgs e)
@@ -1943,7 +1986,7 @@ namespace Website.Library.Classes
             }
         }
 
-#endregion Private Methods
+        #endregion Private Methods
     }
 
     /// <summary>
@@ -2017,15 +2060,15 @@ namespace Website.Library.Classes
     /// </summary>
     public sealed class GlobalGeoIPCityCache : Shared.Classes.ThreadManager
     {
-#region Private Static Members
- 
+        #region Private Static Members
+
         private static bool _initialised = false;
         private static IPCity[] _allCityData;
         private static int _count = 0;
 
-#endregion Private Static Members
+        #endregion Private Static Members
 
-#region Constructors
+        #region Constructors
 
         internal GlobalGeoIPCityCache()
             : base(null, new TimeSpan(24, 0, 0), null, 0, 200, true, false)
@@ -2033,9 +2076,9 @@ namespace Website.Library.Classes
             Shared.Classes.ThreadManager.ThreadStart(this, "Load All GeoIP Data", System.Threading.ThreadPriority.Lowest);
         }
 
-#endregion Constructors
+        #endregion Constructors
 
-#region Overridden Methods
+        #region Overridden Methods
 
         protected override bool Run(object parameters)
         {
@@ -2052,9 +2095,9 @@ namespace Website.Library.Classes
 #endif
         }
 
-#endregion Overridden Methods
+        #endregion Overridden Methods
 
-#region Internal Methods
+        #region Internal Methods
 #if CACHE_IP_CITY_DATA
         internal static IPCity GetIPCity(string ipAddress, bool useMemory = true)
         {
@@ -2081,15 +2124,15 @@ namespace Website.Library.Classes
 
 #endif
 
-#endregion Internal Methods
+        #endregion Internal Methods
 
-#region Properties
+        #region Properties
 
         internal bool Initialised { get { return (_initialised); } }
 
-#endregion Properties
+        #endregion Properties
 
-#region Private Methods
+        #region Private Methods
 
 #if CACHE_IP_CITY_DATA
         private static IPCity GetMemoryCity(string ipAddress)
@@ -2125,7 +2168,7 @@ namespace Website.Library.Classes
         }
 #endif
 
-#endregion Private Methods
+        #endregion Private Methods
     }
 
     internal class UpdateSiteMapThread : Shared.Classes.ThreadManager
@@ -2200,7 +2243,7 @@ namespace Website.Library.Classes
                                     break;
                             }
 
-                            
+
                             string newXMLEntry = String.Format("  <url>\r\n    <loc>{0}</loc>\r\n    <changefreq>weekly</changefreq>\r\n" +
                                 "    <priority>0.7</priority>\r\n  </url>\r\n", HTMLEncode(url));
 
@@ -2273,8 +2316,8 @@ namespace Website.Library.Classes
         {
             HangTimeout = 0;
             RunAtStartup = false;
-            _emailSettings = EmailSettingsSingletonClass.GetInstance(BaseWebApplication.SMTPHost, 
-                BaseWebApplication.SMTPPort, BaseWebApplication.SMTPUserName, 
+            _emailSettings = EmailSettingsSingletonClass.GetInstance(BaseWebApplication.SMTPHost,
+                BaseWebApplication.SMTPPort, BaseWebApplication.SMTPUserName,
                 BaseWebApplication.SMTPPassword, BaseWebApplication.SMTPUseSSL);
         }
 
@@ -2527,7 +2570,7 @@ namespace Website.Library.Classes
     internal class UpdateCustomPagesThread : Shared.Classes.ThreadManager
     {
         internal UpdateCustomPagesThread()
-            : base (null, new TimeSpan(0, 0, 10))
+            : base(null, new TimeSpan(0, 0, 10))
         {
 
         }
@@ -2541,7 +2584,7 @@ namespace Website.Library.Classes
         }
     }
 
-#region Class WebsiteError
+    #region Class WebsiteError
 
     public class WebsiteError : System.Exception
     {
@@ -2549,6 +2592,6 @@ namespace Website.Library.Classes
     }
 
 
-#endregion Class WebsiteError
+    #endregion Class WebsiteError
 
 }

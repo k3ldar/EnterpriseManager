@@ -1384,7 +1384,7 @@ namespace Library.BOL.Basket
         /// <param name="user"></param>
         /// <param name="priceColumn"></param>
         /// <returns></returns>
-        public void DecreaseQuantity(ProductCost Item, int Quantity, User user, int priceColumn = -1)
+        public void DecreaseQuantity(ProductCost Item, decimal Quantity, User user, int priceColumn = -1)
         {
             BasketItem bItem = Items.Get(Item);
 

@@ -64,16 +64,12 @@
     <Reference Include="itextsharp">
       <HintPath>..\3rdParty\itextsharp.dll</HintPath>
     </Reference>
-    <Reference Include="Languages, Version=3.0.50.227, Culture=neutral, PublicKeyToken=eb55daae66e87c80, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Languages\bin\Debug\Languages.dll</HintPath>
-    </Reference>
     <Reference Include="Payflow_dotNET, Version=4.3.1.0, Culture=neutral, PublicKeyToken=14aa1e8d77f2a97c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Payflow_dotNET.dll</HintPath>
     </Reference>
     <Reference Include="SharedLib, Version=2.5.0.0, Culture=neutral, PublicKeyToken=bcec03f2c05555a7, processorArchitecture=MSIL">
-      <HintPath>..\..\..\SieraDelta\Website\packages\SC.Shared.Library.2.5.12\lib\net452\SharedLib.dll</HintPath>
+      <HintPath>..\..\..\SieraDelta\Website\packages\SC.Shared.Library.2.5.13\lib\net452\SharedLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -207,6 +203,10 @@
     <Folder Include="WebPages\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Languages\Languages.csproj">
+      <Project>{2a685cd0-df5b-4ce3-bd18-5e6bf927ec7f}</Project>
+      <Name>Languages</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Library\Library.csproj">
       <Project>{3444f493-5cbe-4d67-8bc9-1184e486c7e7}</Project>
       <Name>Library</Name>

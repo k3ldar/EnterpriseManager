@@ -54,9 +54,9 @@ namespace Website.Library.Classes
             {
                 string msg = String.Format("Exception Get User Session {0}\r\n" +
                     "Session {1}\r\nSession ID {2}",
-                    err.Message, 
+                    err.Message,
                     Session == null ? "No Session" : Session.ToString(),
-                    Session == null ? "No Session" : 
+                    Session == null ? "No Session" :
                         String.IsNullOrEmpty(Session.SessionID) ? "Session ID is Null" : Session.SessionID);
                 Shared.EventLog.Add(msg);
             }
@@ -307,7 +307,8 @@ namespace Website.Library.Classes
             // if the string starts with a number, remove the number and try and translate what's left
             if (SharedUtils.StartsWithNumber(stringToTranslate))
             {
-                string num = stringToTranslate.Substring(0, stringToTranslate.IndexOf(" "));
+                int length = stringToTranslate.IndexOf(" ");
+                string num = stringToTranslate.Substring(0, length == -1 ? stringToTranslate.Length : length);
 
                 Result = LanguageStrings.ResourceManager.GetString(stringToTranslate.Substring(num.Length).Replace(" ", ""), Thread.CurrentThread.CurrentUICulture);
 
@@ -344,7 +345,7 @@ namespace Website.Library.Classes
 
                     string amt = SharedUtils.FormatMoney(order.TotalCost, GetWebsiteCurrency());
 
-                    if (amt == SharedUtils.FormatMoney(Countries.Get(GetUserCountry()).ShippingCosts, 
+                    if (amt == SharedUtils.FormatMoney(Countries.Get(GetUserCountry()).ShippingCosts,
                         GetWebsiteCurrency()))
                         throw new Exception("Error with order, shipping cost only detected!");
 
@@ -506,9 +507,9 @@ namespace Website.Library.Classes
             if (lib.DAL.DALHelper.AllowCaching && cachedResult == null)
             {
                 Products carousel = Products.GetCarousel();
-                cachedResult = new CacheItem(String.Format(Consts.CACHE_NAME_CAROUSEL, currency, 
+                cachedResult = new CacheItem(String.Format(Consts.CACHE_NAME_CAROUSEL, currency,
                     Thread.CurrentThread.CurrentUICulture), GetCarouselProducts(carousel));
-                GlobalClass.InternalCache.Add(String.Format(Consts.CACHE_NAME_CAROUSEL, currency, 
+                GlobalClass.InternalCache.Add(String.Format(Consts.CACHE_NAME_CAROUSEL, currency,
                     Thread.CurrentThread.CurrentUICulture), cachedResult);
             }
 
@@ -566,7 +567,7 @@ namespace Website.Library.Classes
                         lowestPrice += SharedUtils.VATCalculate(lowestPrice, WebVATRate);
                     }
 
-                    item += String.Format("<br /><div class=\"textDirection\">{0}<strong>{2} {1}</strong></div>\r</a>\r</li>\r", 
+                    item += String.Format("<br /><div class=\"textDirection\">{0}<strong>{2} {1}</strong></div>\r</a>\r</li>\r",
                         product.Name,
                         SharedUtils.FormatMoney(lowestPrice, GetWebsiteCurrency(), false),
                         LanguageStrings.From);
@@ -995,7 +996,7 @@ namespace Website.Library.Classes
             string TreatmentLength = "";
 
             if (treatment.TreatmentLength != "")
-                TreatmentLength = String.Format("<strong>{1}: </strong>{0} **<br />", 
+                TreatmentLength = String.Format("<strong>{1}: </strong>{0} **<br />",
                     treatment.TreatmentLength, Languages.LanguageStrings.TreatmentLength);
 
             string MoreInfo = "";
@@ -1127,7 +1128,7 @@ namespace Website.Library.Classes
                 return (String.Empty);
 
             if (isResize && (width != 700 && height != 320))
-                return (String.Format("<img src=\"/Controls/ImageResize.aspx?image={0}&width={1}&height={2}\" alt=\"\" width=\"{1}\" height=\"{2}\" />", 
+                return (String.Format("<img src=\"/Controls/ImageResize.aspx?image={0}&width={1}&height={2}\" alt=\"\" width=\"{1}\" height=\"{2}\" />",
                     url, width, height));
             else
                 return (String.Format("<img src=\"{0}\" alt=\"\" width=\"{1}\" height=\"{2}\" />", url, 700, 320));
@@ -1237,7 +1238,7 @@ namespace Website.Library.Classes
             return (Result);
         }
 
-        protected string GetProductCategories(bool addStyles, bool isMobile)
+        protected string GetProductCategories(Int64 groupID, bool addStyles, bool isMobile)
         {
             User user = GetUser();
 
@@ -1253,9 +1254,8 @@ namespace Website.Library.Classes
             }
 
             string Result = "";
-            int Current = GetFormValue("GroupID", -1);
 
-            if (Current == -1) // group not found
+            if (groupID == -1) // group not found
             {
                 Int64 prodID = GetFormValue("ID", -1);
 
@@ -1264,7 +1264,7 @@ namespace Website.Library.Classes
                     Product currProduct = Products.Get(prodID);
 
                     if (currProduct != null)
-                        Current = currProduct.PrimaryGroup.ID;
+                        groupID = currProduct.PrimaryGroup.ID;
                 }
             }
 
@@ -1318,7 +1318,7 @@ namespace Website.Library.Classes
 
                 if (String.IsNullOrEmpty(group.URL))
                 {
-                    if (group.ID == Current || (nameMatch) || (Current == -1 && first))
+                    if (group.ID == groupID || (nameMatch) || (groupID == -1 && first))
                         Result += String.Format("<li class=\"current{3}\"{5}><a {4} href=\"{2}/Products.aspx?GroupID={0}\">{1}</a></li>\r\n",
                             group.ID, description, GlobalRootURL(), " " + groupColor, groupStyle, image);
                     else
@@ -1327,7 +1327,7 @@ namespace Website.Library.Classes
                 }
                 else
                 {
-                    if (group.ID == Current || (nameMatch))
+                    if (group.ID == groupID || (nameMatch))
                         Result += String.Format("<li class=\"current{2}\"{3}><a href=\"{0}\">{1}</a></li>\r\n",
                             group.URL, description, " " + groupColor, image);
                     else
@@ -1345,12 +1345,18 @@ namespace Website.Library.Classes
 
         protected string GetProductCategories(ProductGroupType productGroupType)
         {
+            Int64 Current = GetFormValue("GroupID", -1);
+            return (GetProductCategories(Current, productGroupType));
+        }
+
+        protected string GetProductCategories(Int64 current, ProductGroupType productGroupType)
+        {
             string Result = "";
-            int Current = GetFormValue("GroupID", -1);
 
             lib.BOL.Users.User user = GetUser();
 
-            ProductGroups groups = ProductGroups.Get(productGroupType, user == null ? lib.MemberLevel.StandardUser : user.MemberLevel);
+            ProductGroups groups = ProductGroups.Get(productGroupType, 
+                user == null ? lib.MemberLevel.StandardUser : user.MemberLevel);
             bool first = true;
 
 
@@ -1363,17 +1369,21 @@ namespace Website.Library.Classes
 
                     if (String.IsNullOrEmpty(group.URL))
                     {
-                        if (group.ID == Current || (nameMatch) || (Current == -1 && first))
-                            Result += String.Format("<li class=\"current\"><a href=\"{2}/Products.aspx?GroupID={0}\">{1}</a></li>\r\n", group.ID, translatedName, GlobalRootURL());
+                        if (group.ID == current || (nameMatch) || (current == -1 && first))
+                            Result += String.Format("<li class=\"current\"><a href=\"{1}/Product/Group/{2}/\">{0}</a></li>\r\n",
+                                translatedName, GlobalRootURL(), SharedUtils.SEOName(group.SEODescripton));
                         else
-                            Result += String.Format("<li><a href=\"{2}/Products.aspx?GroupID={0}\">{1}</a></li>\r\n", group.ID, translatedName, GlobalRootURL());
+                            Result += String.Format("<li><a href=\"{1}/Product/Group/{2}/\">{0}</a></li>\r\n",
+                                translatedName, GlobalRootURL(), SharedUtils.SEOName(group.SEODescripton));
                     }
                     else
                     {
-                        if (group.ID == Current || (nameMatch))
-                            Result += String.Format("<li class=\"current\"><a href=\"{0}\">{1}</a></li>\r\n", group.URL, translatedName);
+                        if (group.ID == current || (nameMatch))
+                            Result += String.Format("<li class=\"current\"><a href=\"{0}\">{1}</a></li>\r\n",
+                                group.URL, translatedName);
                         else
-                            Result += String.Format("<li><a href=\"{0}\">{1}</a></li>\r\n", group.URL, translatedName);
+                            Result += String.Format("<li><a href=\"{0}\">{1}</a></li>\r\n",
+                                group.URL, translatedName);
                     }
 
                     first = false;
@@ -1392,12 +1402,12 @@ namespace Website.Library.Classes
             string Result = "";
 
             lib.BOL.Products.Products products = lib.BOL.Products.Products.Get(
-                ProductTypes.Get("All Products"), GetFormValue("Page", 1), 12);
+                ProductTypes.Get("All"), GetFormValue("Page", 1), 12);
             int priceColumn = ((LocalWebSessionData)GetUserSession().Tag).PriceColumn;
 
             foreach (Product product in products)
             {
-                if (product.PrimaryProduct.ID == ProductTypes.Get("All Products").ID)
+                if (product.PrimaryProduct.ID == ProductTypes.Get("All").ID)
                 {
                     string PriceFrom = "";
 
@@ -1429,67 +1439,7 @@ namespace Website.Library.Classes
                         "<span class=\"new\" {5}>{6}</span><span class=\"best\" {4}>{7}</span>{2}{3}</a></li>\r\n",
                         product.URL, image, product.Name, PriceFrom,
                         product.BestSeller ? " style=\"display:block;\"" : "", product.NewProduct ? " style=\"display:block;\"" : "",
-                        Languages.LanguageStrings.NewProduct, Languages.LanguageStrings.BestSeller);
-                }
-            }
-
-            return (Result);
-        }
-
-        protected string GetProducts(int ProductGroupID, int size)
-        {
-            Country localCountry = WebCountry;
-
-            string Result = "";
-
-            if (ProductGroupID == -1)
-                Result = GetProducts(ProductTypes.Get("All Products"), size);
-            else
-            {
-                ProductGroup group = ProductGroups.Get(ProductGroupID);
-                lib.BOL.Products.Products products = lib.BOL.Products.Products.Get(ProductTypes.Get("All Products"), GetFormValue("Page", 1), 12, group);
-                int priceColumn = ((LocalWebSessionData)GetUserSession().Tag).PriceColumn;
-
-                foreach (Product product in products)
-                {
-                    string PriceFrom = "";
-
-                    if (ShowPriceData)
-                    {
-                        decimal priceFrom = product.LowestPrice(SharedWebBase.WebsiteCurrency(Session, Request), priceColumn, WebCountry);
-
-                        if (priceFrom > 999999.0m && !product.FreeProduct)
-                        {
-                            continue;
-                        }
-
-                        if (BaseWebApplication.PricesIncludeVAT)
-                        {
-                            priceFrom += SharedUtils.VATCalculate(priceFrom, WebVATRate);
-                        }
-
-                        if (product.FreeProduct)
-                            PriceFrom = "<strong>Free</strong>";
-                        else
-                            PriceFrom = String.Format("<strong>{1} {0}</strong>",
-                                SharedUtils.FormatMoney(priceFrom, GetWebsiteCurrency(), false),
-                                Languages.LanguageStrings.From);
-                    }
-
-                    string image = product.Image.ToLower();
-
-                    if (!image.Contains(".png") && !image.Contains(".jpg"))
-                        image += "_178.jpg";
-
-                    image = SharedUtils.ResizeImage(image, size);
-
-
-                    Result += String.Format("<li class=\"professional\"><a href=\"{0}\"><img src=\"/Images/Products/{1}\" alt=\"I\" border=\"0\" width=\"178\" height=\"128\"/>" +
-                        "<span class=\"new\" {5}>{6}</span><span class=\"best\" {4}>{7}</span><br />{2}{3}</a></li>\r\n",
-                        product.URL, image, product.Name, PriceFrom,
-                        product.BestSeller ? " style=\"display:block;\"" : "", product.NewProduct ? " style=\"display:block;\"" : "",
-                        Languages.LanguageStrings.NewProduct, Languages.LanguageStrings.BestSeller);
-
+                        LanguageStrings.NewProduct, LanguageStrings.BestSeller);
                 }
             }
 

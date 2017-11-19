@@ -269,6 +269,9 @@ namespace Library.BOL.Users
             }
         }
 
+        /// <summary>
+        /// Gets or sets all Stock Control permissions for a user;
+        /// </summary>
         public SecurityEnums.SecurityPermissionsStockControl PermissionsStock
         {
             get

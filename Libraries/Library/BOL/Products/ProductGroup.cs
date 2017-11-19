@@ -39,7 +39,7 @@ namespace Library.BOL.Products
     {
         #region Private Members
 
-        private int _ID;
+        private Int64 _ID;
         private string _Description;
         private int _SortOrder;
         private string _TagLine;
@@ -51,7 +51,7 @@ namespace Library.BOL.Products
 
         #region Constructors / Destructors
 
-        public ProductGroup(int ID, string Description, int SortOrder, string TagLine, bool ShowOnWebsite,
+        public ProductGroup(Int64 ID, string Description, int SortOrder, string TagLine, bool ShowOnWebsite,
             MemberLevel MemberLevel, string url, 
             ProductGroupType groupType, string mainHeader, string subHeader,
             string mobileImage, bool mobileWebsite)
@@ -77,7 +77,7 @@ namespace Library.BOL.Products
         /// <summary>
         /// ID of the product group
         /// </summary>
-        public int ID
+        public Int64 ID
         {
             get
             {
@@ -98,6 +98,14 @@ namespace Library.BOL.Products
             set
             {
                 _url = value;
+            }
+        }
+
+        public string SEODescripton
+        {
+            get
+            {
+                return (Utils.SharedUtils.SEOName(_Description));
             }
         }
 

@@ -47,6 +47,23 @@ namespace Library.Utils
     {
         #region Public Methods
 
+        public static string SEOName(string s)
+        {
+            const string ACCEPTABLE_CHARACTERS = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXY";
+
+            string Result = String.Empty;
+
+            foreach (char c in s)
+            {
+                if (ACCEPTABLE_CHARACTERS.Contains(c.ToString()))
+                    Result += c;
+                else
+                    Result += "-";
+            }
+
+            return (Result);
+        }
+
         /// <summary>
         /// Determines wether a string starts with a number or not
         /// </summary>

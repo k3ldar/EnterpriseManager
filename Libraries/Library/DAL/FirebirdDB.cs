@@ -21275,7 +21275,7 @@ namespace Library.DAL
             return (Result);
         }
 
-        internal static int ProductsCountByProduct(int ProductGroup)
+        internal static int ProductsCountByProduct(Int64 ProductGroup)
         {
             int Result = 0;
 
@@ -21285,14 +21285,16 @@ namespace Library.DAL
             {
                 try
                 {
-                    string SQL = String.Format("SELECT count(*) FROM WS_PRODUCTS p LEFT join WS_PRODUCT_TO_PRODUCT_GROUP ppg ON (ppg.PRODUCT_ID = p.ID) WHERE (p.SHOW_ON_WEB = 0) AND p.IS_DELETED = 'N' " +
+                    string SQL = String.Format("SELECT count(*) FROM WS_PRODUCTS p " +
+                        "LEFT join WS_PRODUCT_TO_PRODUCT_GROUP ppg ON (ppg.PRODUCT_ID = p.ID) " +
+                        "WHERE (p.SHOW_ON_WEB = 0) AND p.IS_DELETED = 'N' " +
                         "AND (ppg.GROUP_ID = {0});", ProductGroup);
-
+                    FbDataReader rdr = null;
                     FbCommand cmd = new FbCommand(SQL, db, tran);
-                    FbDataReader rdr = cmd.ExecuteReader();
-
                     try
                     {
+                        rdr = cmd.ExecuteReader();
+
                         if (rdr.Read())
                         {
                             Result = rdr.GetInt32(0);
@@ -21952,7 +21954,7 @@ namespace Library.DAL
             return (Result);
         }
 
-        internal static ProductGroup ProductGroupGet(int ID)
+        internal static ProductGroup ProductGroupGet(Int64 ID)
         {
             ProductGroup Result = null;
 
@@ -21962,7 +21964,8 @@ namespace Library.DAL
             {
                 try
                 {
-                    string SQL = String.Format("SELECT pg.ID, pg.DESCRIPTION, pg.SORT_ORDER, pg.TAGLINE, pg.SHOW_ON_WEBSITE, pg.MEMBER_LEVEL, " +
+                    string SQL = String.Format("SELECT pg.ID, pg.DESCRIPTION, pg.SORT_ORDER, pg.TAGLINE, " +
+                        "pg.SHOW_ON_WEBSITE, pg.MEMBER_LEVEL, " +
                         "pg.URL, pg.GROUP_TYPE, pg.HEADER_MAIN_TEXT, pg.HEADER_SUB_TEXT, pgt.DESCRIPTION, " +
                         "pg.MOBILE_IMAGE, pg.MOBILE_WEBSITE " +
                         "FROM WS_PRODUCT_GROUP pg JOIN WS_PRODUCT_GROUP_TYPE pgt ON (pgt.ID = pg.GROUP_TYPE) " +
@@ -21975,7 +21978,7 @@ namespace Library.DAL
 
                         if (rdr.Read())
                         {
-                            Result = new ProductGroup(rdr.GetInt32(0), rdr.GetString(1), rdr.GetInt32(2),
+                            Result = new ProductGroup(rdr.GetInt64(0), rdr.GetString(1), rdr.GetInt32(2),
                                 rdr.GetString(3), rdr.GetString(4) == "Y", (MemberLevel)rdr.GetInt32(5),
                                 rdr.IsDBNull(6) ? "" : rdr.GetString(6),
                                 new ProductGroupType(rdr.GetInt32(7), rdr.GetString(10)), rdr.GetString(8), rdr.GetString(9),
@@ -25407,38 +25410,39 @@ namespace Library.DAL
             FbConnection db = ConnectToDatabase(ref tran, DatabaseType.Standard);
             try
             {
+                string SQL = String.Format("SELECT FIRST 1 r.ID, r.EMAIL, r.USERNAME, r.FIRSTNAME, r.LASTNAME, r.PWORD, " +
+                    "r.LASTVISIT, r.BUSINESSNAME, r.ADDRESSLINE1, r.ADDRESSLINE2, r.ADDRESSLINE3, r.CITY, r.COUNTY, " +
+                    "r.POSTCODE, r.MEMBER_LEVEL, r.COUNTRY, r.TELEPHONE, r.SALONID, r.RECEIVE_EMAIL_SPECIAL_OFFERS, " +
+                    "r.RECEIVE_PHONE_SPECIAL_OFFERS, r.RECEIVE_POSTAL_SPECIAL_OFFERS, r.BIRTH_DATE, r.STYLE, r.RECORD_TYPE, r.AUTO_DISCOUNT " +
+                    "FROM WS_MEMBERS r WHERE (r.MEMBER_LEVEL = {0})", (int)MemberLevel.System);
+                FbDataReader rdr = null;
+                FbCommand cmd = new FbCommand(SQL, db, tran);
                 try
                 {
-                    string SQL = String.Format("SELECT FIRST 1 r.ID, r.EMAIL, r.USERNAME, r.FIRSTNAME, r.LASTNAME, r.PWORD, " +
-                        "r.LASTVISIT, r.BUSINESSNAME, r.ADDRESSLINE1, r.ADDRESSLINE2, r.ADDRESSLINE3, r.CITY, r.COUNTY, " +
-                        "r.POSTCODE, r.MEMBER_LEVEL, r.COUNTRY, r.TELEPHONE, r.SALONID, r.RECEIVE_EMAIL_SPECIAL_OFFERS, " +
-                        "r.RECEIVE_PHONE_SPECIAL_OFFERS, r.RECEIVE_POSTAL_SPECIAL_OFFERS, r.BIRTH_DATE, r.STYLE, r.RECORD_TYPE, r.AUTO_DISCOUNT " +
-                        "FROM WS_MEMBERS r WHERE (r.MEMBER_LEVEL = {0})", (int)MemberLevel.System);
-
-                    FbCommand cmd = new FbCommand(SQL, db, tran);
-
-                    FbDataReader rdr = cmd.ExecuteReader();
+                    rdr = cmd.ExecuteReader();
 
                     if (rdr.Read())
                     {
                         Result = new User(rdr.GetInt64(0), rdr.GetString(1), rdr.GetString(3), rdr.GetString(4),
-                            DecryptPassword(rdr.GetString(5)),
-                            rdr.GetDateTime(6), rdr.GetString(7), rdr.GetString(8), rdr.GetString(9), rdr.GetString(10), rdr.GetString(11),
-                            rdr.GetString(12), rdr.GetString(13), (MemberLevel)rdr.GetInt32(14),
-                            rdr.GetInt32(15), rdr.IsDBNull(16) ? "" : rdr.GetString(16), rdr.IsDBNull(17) ? false : rdr.GetInt32(17) == 0,
-                            rdr.GetString(18) == "T", rdr.GetString(19) == "T", rdr.GetString(20) == "T", rdr.IsDBNull(21) ? DateTime.MinValue : rdr.GetDateTime(21),
+                            DecryptPassword(rdr.GetString(5)), rdr.GetDateTime(6), rdr.GetString(7), rdr.GetString(8), 
+                            rdr.GetString(9), rdr.GetString(10), rdr.GetString(11), rdr.GetString(12), rdr.GetString(13),
+                            (MemberLevel)rdr.GetInt32(14), rdr.GetInt32(15), rdr.IsDBNull(16) ? "" : rdr.GetString(16), 
+                            rdr.IsDBNull(17) ? false : rdr.GetInt32(17) == 0, rdr.GetString(18) == "T", 
+                            rdr.GetString(19) == "T", rdr.GetString(20) == "T", 
+                            rdr.IsDBNull(21) ? DateTime.MinValue : rdr.GetDateTime(21),
                             rdr.GetString(22), (Enums.UserRecordType)rdr.GetInt32(23), rdr.GetInt32(24));
                     }
-
-                    CloseAndDispose(ref cmd, ref rdr);
-
-                    tran.Rollback();
                 }
                 catch (Exception err)
                 {
                     ErrorHandling.LogError(MethodBase.GetCurrentMethod(), err);
-                    tran.Rollback();
                     throw;
+                }
+                finally
+                {
+                    CloseAndDispose(ref cmd, ref rdr);
+
+                    tran.Rollback();
                 }
             }
             finally
@@ -35223,7 +35227,7 @@ namespace Library.DAL
                     }
                     else
                     {
-                        Shared.EventLog.Add(err);
+                        EventLog.Add(err);
                         throw new DatabaseConnectionException("Unable to connect to database");
                     }
                 }

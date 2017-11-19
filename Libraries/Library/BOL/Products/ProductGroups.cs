@@ -113,7 +113,7 @@ namespace Library.BOL.Products
         /// </summary>
         /// <param name="ProductGroupID">ID of ProductGroup to retrieve</param>
         /// <returns>ProductGroup if found, otherwise null</returns>
-        public static ProductGroup Get(int ProductGroupID)
+        public static ProductGroup Get(Int64 ProductGroupID)
         {
             if (ProductGroupID == -1)
                 return (null);

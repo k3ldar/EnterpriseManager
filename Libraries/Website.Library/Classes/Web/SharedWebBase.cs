@@ -475,7 +475,7 @@ namespace Website.Library.Classes
                 }
                 else
                 {
-                    localData.Culture = localData.UserCountry.Culture;
+                    localData.Culture = Currencies.Get(localData.UserCountry.DefaultCurrency).Culture;
                 }
 
                 localData.Basket.Country = localData.UserCountry;
@@ -652,7 +652,7 @@ namespace Website.Library.Classes
                 }
 
                 localData.DeliveryAddressID = -1;
-                localData.Culture = localData.UserCountry.Culture;
+                localData.Culture = localData.Culture;
                 localData.Basket.Country = localData.UserCountry;
 
                 localData.Basket.Currency = Currencies.Get(localData.UserCountry.DefaultCurrency);
@@ -702,7 +702,7 @@ namespace Website.Library.Classes
             localData.LoggedIn = true;
             localData.Basket.User = user;
 
-            localData.Culture = user.Country.Culture;
+            localData.Culture = lib.DAL.DALHelper.DefaultCulture;// GlobalClass user.Culture;
 
             //for each item in the basket, reset the price depending on the new price option
             localData.Basket.Reset(localData.PriceColumn);
@@ -727,7 +727,7 @@ namespace Website.Library.Classes
             localData.CountryCode = lib.LibraryHelperClass.IPAddressToCountry(ipAddress);
             localData.UserCountry = lib.BOL.Countries.Countries.Get(localData.CountryCode);
 
-            localData.Culture = localData.UserCountry.Culture;
+            localData.Culture = localData.Culture;
             
             //for each item in the basket, reset the price depending on the new price option
             localData.Basket.ApplyDiscount(0, String.Empty);

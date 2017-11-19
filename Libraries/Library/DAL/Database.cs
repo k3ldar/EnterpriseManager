@@ -3722,6 +3722,8 @@ namespace Library.DAL
         private static bool _hideVATOnWebsiteAndInvoices = false;
         private static string _cultureOverride = "en-GB";
 
+        private const string PASSWORD_ENCRYPTION_KEY = "Pasd;flpjawwoeuw7[qn22';c/adj;f";
+
 #if INHERITED_DAL
         private static DatabaseBaseClass _database = null;
 #endif
@@ -4226,10 +4228,10 @@ namespace Library.DAL
                 return (false);
 
             // Set Connection String
-            string password = EncryptDecrypt(GetXMLValue(XMLFile, "Connection", "Password"));
+            string password = Utilities.Decrypt(GetXMLValue(XMLFile, "Connection", "Password"), PASSWORD_ENCRYPTION_KEY);
             string standardConnectionString = GetXMLValue(XMLFile, "Connection", "ConnectionString");
             standardConnectionString = String.Format(standardConnectionString, password);
-            FirebirdDB.ConnectionStringSet(Library.DatabaseType.Standard, standardConnectionString);
+            FirebirdDB.ConnectionStringSet(DatabaseType.Standard, standardConnectionString);
 
             foreach (string connectionName in Enum.GetNames(typeof(DatabaseType)))
             {
