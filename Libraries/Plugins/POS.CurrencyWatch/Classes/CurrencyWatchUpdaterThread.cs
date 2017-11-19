@@ -28,6 +28,8 @@ using System;
 using POS.Base.Classes;
 using Shared.Classes;
 
+#pragma warning disable IDE1005
+
 namespace POS.CurrencyWatch.Classes
 {
     public class CurrencyWatchUpdaterThread : ThreadManager
@@ -86,12 +88,15 @@ namespace POS.CurrencyWatch.Classes
             Shared.FileDownload.Download(String.Format(UPDATE_URL, currencies),
                 AppController.POSFolder(FolderType.Temp, true) + StringConstants.FILE_YAHOO_CURRENCIES_TEMP, 100, 250);
 
-            string fileContents = Shared.Utilities.FileRead(AppController.POSFolder(FolderType.Temp, true) + StringConstants.FILE_YAHOO_CURRENCIES_TEMP, false);
+            string fileContents = Shared.Utilities.FileRead(AppController.POSFolder(FolderType.Temp, true) + 
+                StringConstants.FILE_YAHOO_CURRENCIES_TEMP, false);
 
             if (!String.IsNullOrEmpty(fileContents))
-                Shared.Utilities.FileWrite(AppController.POSFolder(FolderType.Temp, true) + StringConstants.FILE_YAHOO_CURRENCIES, fileContents);
+                Shared.Utilities.FileWrite(AppController.POSFolder(FolderType.Temp, true) + 
+                    StringConstants.FILE_YAHOO_CURRENCIES, fileContents);
 
-            System.IO.File.Delete(AppController.POSFolder(FolderType.Temp, true) + StringConstants.FILE_YAHOO_CURRENCIES_TEMP);
+            System.IO.File.Delete(AppController.POSFolder(FolderType.Temp, true) + 
+                StringConstants.FILE_YAHOO_CURRENCIES_TEMP);
 
             if (AfterUpdate != null)
                 AfterUpdate(this, EventArgs.Empty);

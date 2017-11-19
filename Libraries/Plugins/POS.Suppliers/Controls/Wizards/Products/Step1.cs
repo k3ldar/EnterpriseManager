@@ -36,6 +36,8 @@ using POS.Base;
 using POS.Base.Classes;
 using POS.Suppliers.Classes;
 
+#pragma warning disable IDE1006
+
 namespace POS.Suppliers.Controls.Wizards.Products
 {
     public partial class Step1 : SharedControls.WizardBase.BaseWizardPage

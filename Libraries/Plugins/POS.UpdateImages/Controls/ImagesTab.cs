@@ -37,10 +37,12 @@ using Plasmoid.Extensions;
 
 using POS.Base.Classes;
 using POS.Base.Plugins;
-using POS.Images.Classes;
 using POS.Base;
 
 using SharedControls.Classes;
+
+#pragma warning disable IDE1006
+#pragma warning disable IDE0017
 
 namespace POS.Images.Controls
 {

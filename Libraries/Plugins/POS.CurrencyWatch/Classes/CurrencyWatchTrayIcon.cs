@@ -93,7 +93,9 @@ namespace POS.CurrencyWatch.Classes
 
                 return (String.Format(StringConstants.CURRENCY_CONVERSION, 
                     AppController.LocalSettings.CurrencyBase, activeCurrency.Rate, activeCurrency.ID,
-                    activeCurrency.LastMovement == CurrencyMovement.Same ? StringConstants.CURRENCY_SAME : activeCurrency.LastMovement == CurrencyMovement.Up ? StringConstants.CURRENCY_UP : StringConstants.CURRENCY_DOWN));
+                    activeCurrency.LastMovement == CurrencyMovement.Same ? StringConstants.CURRENCY_SAME : 
+                    activeCurrency.LastMovement == CurrencyMovement.Up ? StringConstants.CURRENCY_UP : 
+                    StringConstants.CURRENCY_DOWN));
             }
             catch
             {
