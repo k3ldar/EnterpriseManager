@@ -17,7 +17,7 @@
  *  
  *  File: InitialSetupWizard.cs
  *
- *  Purpose:  
+ *  Purpose:  Loads the initial setup wizard dialog
  *
  *  Date        Name                Reason
  *  
@@ -61,6 +61,38 @@ namespace PointOfSale.Classes
 
     internal class InitialSetupSettings
     {
+        #region Constructors
+
+        internal InitialSetupSettings()
+        {
+            BusinessName = AppController.LocalSettings.BusinessName;
+            Telephone = AppController.LocalSettings.BusinessTelephone;
+            Email = AppController.LocalSettings.BusinessEmail;
+            Address = AppController.LocalSettings.BusinessAddress;
+            RegistrationNumber = AppController.LocalSettings.BusinessRegNo;
+            VatNumber = AppController.LocalSettings.BusinessVatNo;
+
+            Logo = AppController.POSFolder(ImageTypes.Logo) + 
+                ImageTypes.Logo.ToString() + 
+                StringConstants.IMAGE_DEFAULT
+                + StringConstants.FILE_EXTENSION_JPG;
+            LogoExists = File.Exists(Logo);
+
+            Website = Websites.Primary();
+            FTPTested = false;
+
+            EmailUser = AppController.LocalSettings.EmailUser;
+            EmailHost = AppController.LocalSettings.EmailServer;
+            EmailSSL = AppController.LocalSettings.EmailSSL;
+            EmailPassword = AppController.LocalSettings.EmailPassword;
+            EmailPort = AppController.LocalSettings.EmailPort;
+            EmailTested = false;
+        }
+
+        #endregion Constructors
+
+        #region Properties
+
         // step 1 is set automagically!
 
         // step 2
@@ -73,6 +105,7 @@ namespace PointOfSale.Classes
 
         // step 3
         internal string Logo { get; set; }
+        internal bool LogoExists { get; set; }
 
         // step 4
         internal Website Website { get; set; }
@@ -86,5 +119,7 @@ namespace PointOfSale.Classes
         internal int EmailPort { get; set; }
         internal bool EmailSSL { get; set; }
         internal bool EmailTested { get; set; }
+
+        #endregion Properties
     }
 }

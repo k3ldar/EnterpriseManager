@@ -20,7 +20,7 @@
  *  Purpose:  
  *
  *  Date        Name                Reason
- *  
+ *  10/11/2017  Simon Carter        Add ability to load existing settings
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 using System;
@@ -57,6 +57,16 @@ namespace PointOfSale.Controls.InitialSetupWizard
             : this()
         {
             _settings = settings;
+
+            if (_settings.Website != null)
+            {
+                txtWebsite.Text = _settings.Website.URL;
+                txtFTPHost.Text = _settings.Website.FtpHost;
+                txtFTPPassword.Text = _settings.Website.FtpPassword;
+                udFTPPort.Value = _settings.Website.FtpPort;
+                txtFTPUsername.Text = _settings.Website.FtpUserName;
+                txtRootPath.Text = _settings.Website.RootPath;
+            }
         }
 
         #endregion Constructors

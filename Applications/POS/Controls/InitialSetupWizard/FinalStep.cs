@@ -111,7 +111,14 @@ namespace PointOfSale.Controls.InitialSetupWizard
             }
 
             ImageData imgData = new ImageData(ImageTypes.Logo, AppController.POSFolder(ImageTypes.Logo));
-            imgData.GenerateImages(_settings.Logo);
+
+            if (AppController.POSFolder(ImageTypes.Logo) +
+                ImageTypes.Logo.ToString() +
+                StringConstants.IMAGE_DEFAULT
+                + StringConstants.FILE_EXTENSION_JPG != _settings.Logo)
+            {
+                imgData.GenerateImages(_settings.Logo);
+            }
 
             AppController.SaveSettings();
 

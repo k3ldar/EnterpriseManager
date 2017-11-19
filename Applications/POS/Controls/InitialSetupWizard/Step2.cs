@@ -20,7 +20,7 @@
  *  Purpose:  
  *
  *  Date        Name                Reason
- *  
+ *  10/11/2017  Simon Carter        Add ability to load existing settings
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 using Languages;
@@ -50,6 +50,13 @@ namespace PointOfSale.Controls.InitialSetupWizard
             : this()
         {
             _settings = settings;
+
+            txtBusinessName.Text = _settings.BusinessName;
+            txtAddress.Text = _settings.Address;
+            txtEmail.Text = _settings.Email;
+            txtRegistrationNumber.Text = _settings.RegistrationNumber;
+            txtTelephone.Text = _settings.Telephone;
+            txtVATNumber.Text = _settings.VatNumber;
         }
 
         #endregion Constructors

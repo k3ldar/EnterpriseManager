@@ -20,7 +20,7 @@
  *  Purpose:  
  *
  *  Date        Name                Reason
- *  
+ *  10/11/2017  Simon Carter        Add ability to load existing settings
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 using System;
@@ -57,6 +57,13 @@ namespace PointOfSale.Controls.InitialSetupWizard
             : this()
         {
             _settings = settings;
+
+            txtEmailHost.Text = _settings.EmailHost;
+            txtEmailPassword.Text = _settings.EmailPassword;
+            udEmailPort.Value = _settings.EmailPort;
+            txtEmailUsername.Text = _settings.EmailUser;
+            cbUseSSL.Checked = _settings.EmailSSL;
+
         }
 
         #endregion Constructors

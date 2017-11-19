@@ -20,7 +20,7 @@
  *  Purpose:  
  *
  *  Date        Name                Reason
- *  
+ *  10/11/2017  Simon Carter        Add ability to load existing settings
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 using System;
@@ -70,6 +70,9 @@ namespace PointOfSale.Controls.InitialSetupWizard
             : this()
         {
             _settings = settings;
+
+            if (System.IO.File.Exists(settings.Logo))
+                pictureLogo.ImageLocation = settings.Logo;
         }
 
         #endregion Constructors
