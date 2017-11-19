@@ -38,7 +38,7 @@ Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescrip
 
 [Files]
 ; setup help file
-Source: "T:\HeavenMain\Help\_tmphhp\erminstaller.chm"; DestDir: "{pf}\{#MyAppPublisher}"; Flags: deleteafterinstall
+Source: "..\..\Help\_tmphhp\erminstaller.chm"; DestDir: "{pf}\{#MyAppPublisher}"; Flags: deleteafterinstall
 
 ;firebird
 Source: "..\..\Installer\Firebird.3.0.2.64Bit\lib\*"; DestDir: "{pf}\{#MyAppPublisher}\Firebird\lib"; Flags: createallsubdirs recursesubdirs promptifolder sharedfile; Components: Firebird
@@ -212,6 +212,8 @@ Source: "..\..\Builds\POS\Release\es-ES\Languages.resources.dll"; DestDir: "{app
 Source: "..\..\Builds\POS\Release\en-US\Languages.resources.dll"; DestDir: "{app}\Languages\en-US"; Flags: ignoreversion; Components: SBM
 Source: "..\..\Builds\POS\Release\zh-TW\Languages.resources.dll"; DestDir: "{app}\Languages\zh-TW"; Flags: ignoreversion; Components: SBM
 
+; temp currency file
+Source: "T:\ShifooMain\Installer\CurrencyConversions.dat"; DestDir: "{app}\Temp"; Flags: onlyifdestfileexists
 
 ;Source: "..\..\Builds\POS\Debug\PluginConfig.xml"; DestDir: "{app}"; Flags: ignoreversion onlyifdoesntexist
 
