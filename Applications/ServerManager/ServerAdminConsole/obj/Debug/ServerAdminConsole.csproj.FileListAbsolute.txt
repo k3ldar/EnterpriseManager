@@ -1,0 +1,11 @@
+T:\ShifooMain\Applications\ServerManager\ServerAdminConsole\obj\Debug\ServerAdminConsole.csprojResolveAssemblyReference.cache
+T:\ShifooMain\Applications\ServerManager\ServerAdminConsole\obj\Debug\ServerAdminConsole.csproj.CoreCompileInputs.cache
+T:\ShifooMain\Applications\ServerManager\ServerAdminConsole\bin\Debug\ServerAdminConsole.exe.config
+T:\ShifooMain\Applications\ServerManager\ServerAdminConsole\bin\Debug\ServerAdminConsole.exe
+T:\ShifooMain\Applications\ServerManager\ServerAdminConsole\bin\Debug\ServerAdminConsole.pdb
+T:\ShifooMain\Applications\ServerManager\ServerAdminConsole\bin\Debug\ICSharpCode.SharpZipLib.dll
+T:\ShifooMain\Applications\ServerManager\ServerAdminConsole\bin\Debug\SharedLib.dll
+T:\ShifooMain\Applications\ServerManager\ServerAdminConsole\bin\Debug\SharedLib.xml
+T:\ShifooMain\Applications\ServerManager\ServerAdminConsole\obj\Debug\ServerAdminConsole.exe
+T:\ShifooMain\Applications\ServerManager\ServerAdminConsole\obj\Debug\ServerAdminConsole.pdb
+T:\ShifooMain\Applications\ServerManager\ServerAdminConsole\bin\Debug\Microsoft.Web.Administration.dll
