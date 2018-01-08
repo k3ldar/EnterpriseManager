@@ -39,7 +39,7 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>HeavenKey.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>Reports.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug Release|AnyCPU'">
     <OutputPath>..\..\Release\</OutputPath>
@@ -167,6 +167,7 @@
     <None Include="app.config" />
     <None Include="HeavenKey.pfx" />
     <None Include="packages.config" />
+    <None Include="Reports.pfx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Languages\Languages.csproj">

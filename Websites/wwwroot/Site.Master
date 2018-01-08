@@ -1,0 +1,145 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="SieraDelta.Website.Site" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
+<%@ Register src="~/Controls/CountryLanguageSelect.ascx" tagname="CountryLanguageSelect" tagprefix="uc1" %>
+
+
+<!DOCTYPE html">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="/css/style4.css" type="text/css" media="screen" />
+
+    <link rel="stylesheet" href="/css/combined.css" type="text/css" media="screen" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="Description" content="<%=GetMetaDescription()%>" />
+    <meta name="Keywords" content="<%=GetMetaKeyWords()%>" />
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <script type="text/javascript" src="/js/jquery-1.7.1.min.js"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+<cc1:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" CombineScripts="true" ScriptMode="Release">
+    <ControlBundles>
+        <cc1:ControlBundle Name="Standard" />
+    </ControlBundles>
+</cc1:ToolkitScriptManager>
+    <form id="frmIndex" runat="server">
+        <div class="wrapper">
+            <!-- Header Start -->
+            <div class="header">
+                <a href="/Index.aspx" title="Bespoke Software Development" class="logo">Bespoke Software Development</a>
+
+                <div class="rightContainer">
+                    <uc1:CountryLanguageSelect ID="CountryLanguageSelect1" runat="server" />
+                    <div class="socialMedia">
+                        <ul>
+                            <li id="socialFB" runat="server"><a href="<%=SieraDelta.Website.Global.SocialMediaFacebook %>" target="_blank">
+                                <img src="/images/fb.jpg" alt="<%=SieraDelta.Languages.LanguageStrings.JoinUsOnFacebook %>" /></a></li>
+                            <li id="socialTwitter" runat="server"><a href="<%=SieraDelta.Website.Global.SocialMediaTwitter %>" target="_blank">
+                                <img src="/images/twitter.jpg" alt="<%=SieraDelta.Languages.LanguageStrings.JoinUsOnTwitter %>" /></a></li>
+                            <li id="socialGPlus" runat="server"><a href="<%=SieraDelta.Website.Global.SocialMediaGPlus %>" target="_blank">
+                                <img src="/images/googleplus.jpg" alt="<%=SieraDelta.Languages.LanguageStrings.JoinUsOnTwitter %>" /></a></li>
+                            <li id="socialRSS" runat="server"><a href="<%=SieraDelta.Website.Global.SocialMediaRSSFeed %>" target="_blank">
+                                <img src="/images/rss-blog.jpg" alt="<%=SieraDelta.Languages.LanguageStrings.SubscribeToOurBlog %>" /></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="clear">
+                    <!-- clear -->
+                </div>
+            </div>
+            <!-- end of #header -->
+
+            <div class="navigation">
+                <div class="menuBorder leftMenu">
+                    <ul>
+                        <li><a href="/Products.aspx"><%=SieraDelta.Languages.LanguageStrings.Products %></a>
+                            <div class="sub">
+                                <div class="cat">
+                                    <!--<h6>WebDefender</h6>-->
+                                    <ul>
+                                        <li><a href="/Products/WebDefenderServer.aspx">WebDefender - Server</a></li>
+                                        <li><a href="/Products/WebDefenderWebsite.aspx">WebDefender - Website</a></li>
+                                        <li><a href="/Products/WebdefenderFirebird.aspx">WebDefender - Firebird</a></li>
+                                        <li><a href="/Products/GeoIP.aspx">Geo IP Update</a></li>
+                                        <li><a href="/Products/WebMonitor.aspx">WebMonitor</a></li>
+                                        <li><a href="/Products/FBTaskScheduler.aspx">Firebird Task Scheduler</a></li>
+                                        <li><a href="/Products/FBCompare.aspx">Firebird Compare</a></li>
+                                        <li><a href="/Products/FBSPGen.aspx">Firebird SP Generator</a></li>
+                                    </ul>
+                                </div>
+                                <div class="clear">
+                                    <!-- clear -->
+                                </div>
+                            </div>
+                        </li>
+                        <li><a href="/Services/Index.aspx"><%=SieraDelta.Languages.LanguageStrings.Services %></a></li>
+                        <li><a href="/Download/Index.aspx"><%=SieraDelta.Languages.LanguageStrings.Downloads %></a></li>
+                        <li><a href="/Members/Index.aspx"><%=SieraDelta.Languages.LanguageStrings.MyAccount %></a></li>
+                        <li><a href="/Helpdesk/Index.aspx"><%=SieraDelta.Languages.LanguageStrings.Helpdesk %></a></li>
+                        <li><a href="/Basket/Basket.aspx"><%=SieraDelta.Languages.LanguageStrings.Purchase %></a></li>
+                        <li><a href="/Helpdesk/Feedback.aspx"><%=SieraDelta.Languages.LanguageStrings.Feedback %></a></li>
+                    </ul>
+                </div>
+                <!-- end of #navigation -->
+
+                <div class="searchWrapper">
+                    <div class="frm_search">
+                        <asp:TextBox ID="txtSearchTerms" runat="server" onblur="clickrecall(this)" onclick="clickclear(this)"></asp:TextBox>
+                        <input type="image" src="/images/search.gif" runat="server" id="btnSearch" />
+                    </div>
+                </div>
+            </div>
+            <!-- Header End -->
+
+
+            <!-- Main Content -->
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder" runat="server">
+            </asp:ContentPlaceHolder>
+            <!-- Main Content End -->
+        </div>
+
+        
+        <!-- End of Wrapper -->
+
+
+        <!-- Footer -->
+        <div class="footer png_bg">
+            <p><%=WebsitePostalAddress() %></p>
+            <p id="pFooterDetails" runat="server">
+                <a href="/ContactUs.aspx"><%=SieraDelta.Languages.LanguageStrings.ContactUs %></a> - <a href="/About.aspx"><%=SieraDelta.Languages.LanguageStrings.AboutUs %></a> - <a href="/Terms.aspx"><%=SieraDelta.Languages.LanguageStrings.Terms %></a>
+            </p>
+
+            <p>&copy; Copyright 2011 - <%=CurrentYear() %> Siera Delta. All rights reserved. </p>
+        </div>
+        <!-- Footer -->
+    </form>
+
+
+    
+    <script type="text/javascript" src="/js/jquery.hoverIntent.minified.js"></script>
+
+    <script type="text/javascript" src="/js/jquery.jcarousel.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.nivo.slider.pack.js"></script>
+
+    <script type="text/javascript">
+        $(window).load(function () { $('.slider').nivoSlider({ animSpeed: 500, directionNav: false, effect: 'fade', pauseTime: 6000 }); });
+        jQuery(document).ready(function () { jQuery('.mycarousel').jcarousel({ scroll: 4, wrap: "circular" }); });
+
+
+        function clickclear(a) { var defaulttext = '<%=GetSearchString()%>'; if (a.value == defaulttext) { a.value = ""; } }
+        function clickrecall(a) { var defaulttext = '<%=GetSearchString()%>'; if (a.value == "") { a.value = defaulttext; } }
+    </script>
+
+    <%=GetCookieConsent() %>
+
+    <%=GetMobileOnlyScripts() %>
+
+</body>
+</html>

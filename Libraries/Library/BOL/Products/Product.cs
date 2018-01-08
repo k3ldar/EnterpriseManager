@@ -40,24 +40,30 @@ namespace Library.BOL.Products
     {
         #region Private / Protected Members
 
-        private Int64 _ID;
-        private string _Name;
-        private string _Description;
-        private string _Image;
-        private int _PopupID;
-        private bool _Regal;
-        private bool _OutOfStock;
-        private bool _ShowOnWeb;
-        private ProductCosts _ProductCosts;
-        private int _SortOrder;
-        private bool _SpecialOffer;
-        private string _SKU;
-        private bool _BestSeller;
-        private bool _NewProduct;
-        private bool _Featured;
-        private bool _Carousel;
-        private ProductGroups _ProductGroups;
-        private ProductGroup _PrimaryGroup;
+        private Int64 _id;
+        private string _name;
+        private string _description;
+        private string _seoDescription;
+        private string _image;
+        private int _popupID;
+        private bool _regal;
+        private bool _outOfStock;
+        private bool _showOnWeb;
+        private ProductCosts _productCosts;
+        private int _sortOrder;
+        private bool _specialOffer;
+        private string _sku;
+        private bool _bestSeller;
+        private bool _newProduct;
+        private bool _featured;
+        private bool _carousel;
+        private ProductGroups _productGroups;
+        private ProductGroup _primaryGroup;
+
+        private string _webDescription;
+        private string _webFeatures;
+        private string _webIngredients;
+        private string _webHowToUse;
 
         #endregion Private / Protected Members
 
@@ -68,7 +74,13 @@ namespace Library.BOL.Products
         /// </summary>
         public Product()
         {
-            _ID = -1;
+            _id = -1;
+        }
+
+        public Product(Int64 id, string name)
+        {
+            _id = id;
+            _name = name;
         }
 
         public Product(Int64 ID, string Name, string Description, bool ShowOnWeb, string Image,
@@ -76,23 +88,22 @@ namespace Library.BOL.Products
             bool Regal, bool OutOfStock, bool BestSeller, bool NewProduct, bool Featured, bool Carousel,
             string videoLink, bool preOrder, string features, string ingredients, string howToUse,
             ProductType primaryProductType, bool freeShipping, string pageLink, bool freeProduct)
+            : this(ID, Name)
         {
-            _ID = ID;
-            _Name = Name;
-            _Description = Description;
-            _ShowOnWeb = ShowOnWeb;
-            _Image = Image;
-            _SortOrder = SortOrder;
-            _SpecialOffer = SpecialOffer;
-            _PrimaryGroup = ProductGroup;
-            _PopupID = PopupID;
-            _SKU = SKU;
-            _Regal = Regal;
-            _OutOfStock = OutOfStock;
-            _BestSeller = BestSeller;
-            _NewProduct = NewProduct;
-            _Featured = Featured;
-            _Carousel = Carousel;
+            _description = Description;
+            _showOnWeb = ShowOnWeb;
+            _image = Image;
+            _sortOrder = SortOrder;
+            _specialOffer = SpecialOffer;
+            _primaryGroup = ProductGroup;
+            _popupID = PopupID;
+            _sku = SKU;
+            _regal = Regal;
+            _outOfStock = OutOfStock;
+            _bestSeller = BestSeller;
+            _newProduct = NewProduct;
+            _featured = Featured;
+            _carousel = Carousel;
 
             VideoLink = videoLink;
             PreOrder = preOrder;
@@ -112,20 +123,19 @@ namespace Library.BOL.Products
             bool Regal, bool OutOfStock, ProductCosts costs,
             string videoLink, bool preOrder, string features, string ingredients, string howToUse,
             ProductType primaryProductType, bool freeShipping, string pageLink, bool freeProduct)
+            : this(ID, Name)
         {
-            _ID = ID;
-            _Name = Name;
-            _Description = Description;
-            _ShowOnWeb = ShowOnWeb;
-            _Image = Image;
-            _SortOrder = SortOrder;
-            _SpecialOffer = SpecialOffer;
-            _PrimaryGroup = ProductGroup;
-            _PopupID = PopupID;
-            _SKU = SKU;
-            _Regal = Regal;
-            _OutOfStock = OutOfStock;
-            _ProductCosts = costs;
+            _description = Description;
+            _showOnWeb = ShowOnWeb;
+            _image = Image;
+            _sortOrder = SortOrder;
+            _specialOffer = SpecialOffer;
+            _primaryGroup = ProductGroup;
+            _popupID = PopupID;
+            _sku = SKU;
+            _regal = Regal;
+            _outOfStock = OutOfStock;
+            _productCosts = costs;
 
             VideoLink = videoLink;
             PreOrder = preOrder;
@@ -176,15 +186,15 @@ namespace Library.BOL.Products
         {
             get
             {
-                if (_ProductCosts == null)
-                    _ProductCosts = Library.DAL.FirebirdDB.ProductCostsGet(this);
+                if (_productCosts == null)
+                    _productCosts = Library.DAL.FirebirdDB.ProductCostsGet(this);
 
-                return (_ProductCosts);
+                return (_productCosts);
             }
 
             set
             {
-                _ProductCosts = value;
+                _productCosts = value;
             }
         }
 
@@ -192,12 +202,12 @@ namespace Library.BOL.Products
         {
             get
             {
-                return (_ID);
+                return (_id);
             }
 
             set
             {
-                _ID = value;
+                _id = value;
             }
         }
 
@@ -205,12 +215,12 @@ namespace Library.BOL.Products
         {
             get
             {
-                return (_Name);
+                return (_name);
             }
 
             set
             {
-                _Name = value;
+                _name = value;
             }
         }
 
@@ -218,7 +228,10 @@ namespace Library.BOL.Products
         {
             get
             {
-                return (Utils.SharedUtils.SEOName(Name));
+                if (String.IsNullOrWhiteSpace(_seoDescription))
+                    _seoDescription = Utils.SharedUtils.SEOName(_name);
+
+                return (_seoDescription);
             }
         }
 
@@ -226,12 +239,12 @@ namespace Library.BOL.Products
         {
             get
             {
-                return (_Description);
+                return (_description);
             }
 
             set
             {
-                _Description = value;
+                _description = value;
             }
         }
 
@@ -239,12 +252,12 @@ namespace Library.BOL.Products
         {
             get
             {
-                return (_Image);
+                return (_image);
             }
 
             set
             {
-                _Image = value;
+                _image = value;
             }
         }
 
@@ -252,12 +265,12 @@ namespace Library.BOL.Products
         {
             get
             {
-                return (_PopupID);
+                return (_popupID);
             }
 
             set
             {
-                _PopupID = value;
+                _popupID = value;
             }
         }
 
@@ -265,12 +278,12 @@ namespace Library.BOL.Products
         {
             get
             {
-                return (_Regal);
+                return (_regal);
             }
 
             set
             {
-                _Regal = value;
+                _regal = value;
             }
         }
 
@@ -278,12 +291,12 @@ namespace Library.BOL.Products
         {
             get
             {
-                return (_OutOfStock);
+                return (_outOfStock);
             }
 
             set
             {
-                _OutOfStock = value;
+                _outOfStock = value;
             }
         }
 
@@ -291,12 +304,12 @@ namespace Library.BOL.Products
         {
             get
             {
-                return (_SKU);
+                return (_sku);
             }
 
             set
             {
-                _SKU = value;
+                _sku = value;
             }
         }
 
@@ -304,12 +317,12 @@ namespace Library.BOL.Products
         {
             get
             {
-                return (_ShowOnWeb);
+                return (_showOnWeb);
             }
 
             set
             {
-                _ShowOnWeb = value;
+                _showOnWeb = value;
             }
         }
 
@@ -317,12 +330,12 @@ namespace Library.BOL.Products
         {
             get
             {
-                return (_SortOrder);
+                return (_sortOrder);
             }
 
             set
             {
-                _SortOrder = value;
+                _sortOrder = value;
             }
         }
 
@@ -330,12 +343,12 @@ namespace Library.BOL.Products
         {
             get
             {
-                return (_SpecialOffer);
+                return (_specialOffer);
             }
 
             set
             {
-                _SpecialOffer = value;
+                _specialOffer = value;
             }
         }
 
@@ -343,16 +356,16 @@ namespace Library.BOL.Products
         {
             get
             {
-                if (_ProductGroups == null)
-                    _ProductGroups = DAL.FirebirdDB.AdminProductGroupsGet(this);
+                if (_productGroups == null)
+                    _productGroups = DAL.FirebirdDB.AdminProductGroupsGet(this);
 
-                ProductGroups Result = _ProductGroups;
+                ProductGroups Result = _productGroups;
                 return (Result);
             }
 
             set
             {
-                _ProductGroups = value;
+                _productGroups = value;
             }
         }
 
@@ -360,12 +373,12 @@ namespace Library.BOL.Products
         {
             get
             {
-                return (_BestSeller);
+                return (_bestSeller);
             }
 
             set
             {
-                _BestSeller = value;
+                _bestSeller = value;
             }
         }
 
@@ -373,12 +386,12 @@ namespace Library.BOL.Products
         {
             get
             {
-                return (_NewProduct);
+                return (_newProduct);
             }
 
             set
             {
-                _NewProduct = value;
+                _newProduct = value;
             }
         }
 
@@ -386,12 +399,12 @@ namespace Library.BOL.Products
         {
             get
             {
-                return (_Featured);
+                return (_featured);
             }
 
             set
             {
-                _Featured = value;
+                _featured = value;
             }
         }
 
@@ -399,12 +412,12 @@ namespace Library.BOL.Products
         {
             get
             {
-                return (_Carousel);
+                return (_carousel);
             }
 
             set
             {
-                _Carousel = value;
+                _carousel = value;
             }
         }
 
@@ -412,12 +425,12 @@ namespace Library.BOL.Products
         {
             get
             {
-                return (_PrimaryGroup);
+                return (_primaryGroup);
             }
 
             set
             {
-                _PrimaryGroup = value;
+                _primaryGroup = value;
             }
         }
 
@@ -439,7 +452,7 @@ namespace Library.BOL.Products
             {
                 if (String.IsNullOrEmpty(PageLink))
                 {
-                    return (String.Format("/Products/{0}/{1}/", PrimaryGroup.SEODescripton, NameSEO));
+                    return (String.Format("/All-Products/Group/{0}/{1}/", PrimaryGroup.SEODescripton, NameSEO));
                 }
                 else
                 {
@@ -452,6 +465,79 @@ namespace Library.BOL.Products
         /// Indicates the product is free
         /// </summary>
         public bool FreeProduct { get; set; }
+
+        #region Website Only Properties
+
+        public string WebDescription
+        {
+            get
+            {
+                if (_webDescription == null)
+                {
+                    string[] lines = Description.Trim().Replace("\n", String.Empty).Split('\r');
+                    string description = String.Empty;
+
+                    foreach (string line in lines)
+                    {
+                        if (String.IsNullOrEmpty(line.Trim()))
+                            continue;
+
+                        description += String.Format("<p>{0}</p>", line.Trim());
+                    }
+
+                    _webDescription = Library.Utils.LibUtils.PreProcessPost(description);
+                }
+
+                return (_webDescription);
+            }
+        }
+
+        public string WebFeatures
+        {
+            get
+            {
+                if (_webFeatures == null)
+                {
+                    _webFeatures = String.Empty;
+                    string[] lines = Features.Trim().Split('\r');
+
+                    foreach (string line in lines)
+                    {
+                        if (String.IsNullOrEmpty(line.Trim()))
+                            continue;
+
+                        _webFeatures += String.Format("<li>{0}</li>", line.Trim());
+                    }
+                }
+
+                return (_webFeatures);
+            }
+        }
+
+        public string WebIngredients
+        {
+            get
+            {
+                if (_webIngredients == null)
+                    _webIngredients = Ingredients.Trim().Replace("\r", "<br />");
+
+                return (_webIngredients);
+            }
+        }
+
+        public string WebHowToUse
+        {
+            get
+            {
+                if (_webHowToUse == null)
+                    _webHowToUse = HowToUse.Trim().Replace("\r", "<br />");
+
+                return (_webHowToUse);
+            }
+        }
+
+
+        #endregion Website Only Properties
 
         #endregion Properties
 
@@ -489,14 +575,14 @@ namespace Library.BOL.Products
 
         public void UpdateProductCosts(User user)
         {
-            _ProductCosts = DAL.FirebirdDB.ProductCostsGet(this, user);
+            _productCosts = DAL.FirebirdDB.ProductCostsGet(this, user);
         }
 
         public void UpdateProductCosts(User user, Country country)
         {
             if (DAL.DALHelper.AllowCaching)
             {
-                string name = String.Format("Product Cost Cache {0} {1}", _ID, user == null ? country.CountryCode : user.Country.CountryCode);
+                string name = String.Format("Product Cost Cache {0} {1}", _id, user == null ? country.CountryCode : user.Country.CountryCode);
                 Shared.Classes.CacheItem item = CachedItemGetShort(name);
 
                 if (item == null)
@@ -505,29 +591,29 @@ namespace Library.BOL.Products
                     CachedItemAddShort(name, item);
                 }
 
-                _ProductCosts = (ProductCosts)item.Value;
+                _productCosts = (ProductCosts)item.Value;
             }
             else
             {
-                _ProductCosts = DAL.FirebirdDB.ProductCostsGet(this, user, country);
+                _productCosts = DAL.FirebirdDB.ProductCostsGet(this, user, country);
             }
         }
 
         public ProductCost NewProductCostInfo(User user, string productItemName, ProductCostType costType)
         {
             Utils.LibUtils.CanCreate(user);
-            _ProductCosts = null;
+            _productCosts = null;
             return (DAL.FirebirdDB.AdminProductCostCreate(this, productItemName, costType));
         }
 
         public void UpdateProductCostInfo(User user)
         {
-            _ProductCosts = DAL.FirebirdDB.ProductCostsGet(this, user);
+            _productCosts = DAL.FirebirdDB.ProductCostsGet(this, user);
         }
 
         public void UpdateProductCostInfo(MemberLevel memberLevel)
         {
-            _ProductCosts = DAL.FirebirdDB.ProductCostsGet(this, memberLevel);
+            _productCosts = DAL.FirebirdDB.ProductCostsGet(this, memberLevel);
         }
 
         /// <summary>
@@ -571,7 +657,7 @@ namespace Library.BOL.Products
 
         public override string ToString()
         {
-            return (String.Format("Product: {0}; Description: {1}", ID, _Description));
+            return (String.Format("Product: {0}; Description: {1}", ID, _description));
         }
 
         #endregion Overridden Methods

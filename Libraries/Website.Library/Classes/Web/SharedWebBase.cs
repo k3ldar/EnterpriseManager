@@ -364,7 +364,6 @@ namespace Website.Library.Classes
                 LocalWebSessionData localData = (LocalWebSessionData)Result.Tag;
 
                 localData.CurrentUser = GetUser(Session, Request, Response, Result);
-                localData.Basket = GetShoppingBasket(Session, Request, Response, Result);
 
                 if (localData.CurrentUser != null)
                 {
@@ -402,6 +401,7 @@ namespace Website.Library.Classes
                     localData.LoggedIn = false;
                 }
 
+                localData.Basket = GetShoppingBasket(Session, Request, Response, Result);
 
                 #region Affiliate
 
@@ -502,8 +502,8 @@ namespace Website.Library.Classes
                 localData.Basket.Reset(localData.PriceColumn);
 
                 LocalizedLanguages.SetLanguage(Session, Request, Response,
-                    userSelectedCountry == null ? defaultCountry : userSelectedCountry,
-                    userSelectedCurrency == null ? defaultCurrency : userSelectedCurrency, true);
+                    userSelectedCountry ?? defaultCountry,
+                    userSelectedCurrency ?? defaultCurrency, true);
 
 #if TRACE
                 TimeSpan span = DateTime.Now - startSessionTimer;
@@ -770,7 +770,7 @@ namespace Website.Library.Classes
         /// <param name="Request"></param>
         /// <returns></returns>
         private static ShoppingBasket GetShoppingBasket(System.Web.SessionState.HttpSessionState Session, 
-            System.Web.HttpRequest Request, System.Web.HttpResponse Response, UserSession userSession)
+            HttpRequest Request, HttpResponse Response, UserSession userSession)
         {
             ShoppingBasket Result = null;
 

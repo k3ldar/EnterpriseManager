@@ -28,11 +28,44 @@ namespace Website.Library
         #region Properties
 
 
+        #region Site Template Settings
+
         /// <summary>
-        /// Determines wether the Distributors menu is shown or not
+        /// if true, top products shown on products menu, otherwise categories are shown
         /// </summary>
+        public static bool ShowTopProducts { get; set; }
+
+        public static bool ShowSalonsMenu { get; set; }
+
+        public static bool ShowTreatmentsMenu { get; set; }
+
+        public static bool ShowTreatmentsBrochure { get; set; }
+
         public static bool ShowDistributorsMenu { get; set; }
 
+        public static bool ShowTipsAndTricksMenu { get; set; }
+
+        public static bool ShowDownloadMenu { get; set; }
+
+        public static bool ShowTradeMenu { get; set; }
+
+
+        /// <summary>
+        /// Determines wether terms and conditions are shown
+        /// </summary>
+        public static bool ShowTermsAndConditions { get; set; }
+
+        /// <summary>
+        /// Determines wether the returns policy is shown or not
+        /// </summary>
+        public static bool ShowReturnsPolicy { get; set; }
+
+        /// <summary>
+        /// Determines wether the Privacy Policy is shown or not
+        /// </summary>
+        public static bool ShowPrivacyPolicy { get; set; }
+
+        #endregion Site Template Settings
 
 
         /// <summary>

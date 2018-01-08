@@ -40,7 +40,7 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>HeavenKey.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>Website.Library.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug Release|AnyCPU'">
     <OutputPath>..\..\Release\</OutputPath>
@@ -198,6 +198,10 @@
     </None>
     <None Include="HeavenKey.pfx" />
     <None Include="packages.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Website.Library.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="WebPages\" />

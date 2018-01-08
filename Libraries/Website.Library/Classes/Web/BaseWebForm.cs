@@ -362,7 +362,7 @@ namespace Website.Library.Classes
                 }
             }
             else
-                DoRedirect("/Basket/BasketSignIn.aspx");
+                DoRedirect("/Shopping/Basket/SignIn/");
         }
 
         protected string GetWebsiteTelephoneNumber()
@@ -411,7 +411,7 @@ namespace Website.Library.Classes
                         break;
 
                     case Enums.SearchResultType.Feedback:
-                        link = String.Format("/helpdesk/feedback.aspx?ID={0}", item.ID);
+                        link = String.Format("/Helpdesk/Feedback/{0}/", item.ID);
                         break;
 
                     case Enums.SearchResultType.HashTags:
@@ -423,10 +423,17 @@ namespace Website.Library.Classes
                         break;
 
                     case Enums.SearchResultType.Products:
+                        Product product = Products.Get(item.ID);
+
+                        if (product == null)
+                            throw new NullReferenceException(nameof(product));
+
                         if (String.IsNullOrEmpty(item.URL))
-                            link = String.Format("/Products/Stratosphere.aspx?ID={0}", item.ID);
+                            link = String.Format("/All-Products/Group/{0}/{1}/",
+                                product.PrimaryGroup.SEODescripton, product.NameSEO);
                         else
                             link = String.Format("{0}", item.URL);
+
                         break;
 
                     case Enums.SearchResultType.Salons:
@@ -441,7 +448,7 @@ namespace Website.Library.Classes
                         throw new Exception("Invalid SearchResult Type");
                 }
 
-                results += String.Format("<li><h3>{0}</h3><div class=\"searchType\">{1}</div><div><a href=\"{2}\">{0}</a></div></li>",
+                results += String.Format("<li><h3>{0}</h3><div class=\"searchType\">{1}</div><div><a href=\"{2}\" style=\"    font-size: 1.4em;\">{0}</a></div></li>",
                     item.Description, SharedUtils.SplitCamelCase(item.Type.ToString()), link);
             }
 
@@ -546,7 +553,7 @@ namespace Website.Library.Classes
                 image = LibUtils.ResizeImage(image, 200);
                 string item = String.Format("<li>\r<a href=\"/Products/Product.aspx?ID={0}\">\r", product.ID);
 
-                item += String.Format("<img src=\"https://static.heavenskincare.com/Images/Products/{0}\" alt=\"I\" border=\"0\" width=\"200\" height=\"145\"/>\r", image);
+                item += String.Format("<img src=\"/Images/Products/{0}\" alt=\"I\" border=\"0\" width=\"200\" height=\"145\"/>\r", image);
 
                 if (product.NewProduct)
                     item += String.Format("<span class=\"new\" style=\"display:block;\">{0}</span>\r", LanguageStrings.NewProduct);
@@ -621,7 +628,7 @@ namespace Website.Library.Classes
 
                     image = LibUtils.ResizeImage(image, size);
 
-                    Result += String.Format("<li class=\"professional\"><a href=\"/Products/stratosphere.aspx?ID={0}\"><img src=\"https://static.heavenskincare.com/Images/Products/{1}\" alt=\"I\" border=\"0\" width=\"178\" height=\"128\"/>" +
+                    Result += String.Format("<li class=\"professional\"><a href=\"/Products/stratosphere.aspx?ID={0}\"><img src=\"/Images/Products/{1}\" alt=\"I\" border=\"0\" width=\"178\" height=\"128\"/>" +
                         "<span class=\"new\" {5}>{6}</span><span class=\"best\" {4}>{7}</span>{2}{3}</a></li>\r\n",
                         product.ID, image, product.Name, PriceFrom,
                         product.BestSeller ? " style=\"display:block;\"" : "", product.NewProduct ? " style=\"display:block;\"" : "",
@@ -687,7 +694,7 @@ namespace Website.Library.Classes
 
                     image = LibUtils.ResizeImage(image, size);
 
-                    Result += String.Format("<li class=\"professional\"><a href=\"/Products/stratosphere.aspx?ID={0}\"><img src=\"https://static.heavenskincare.com/Images/Products/{1}\" alt=\"I\" border=\"0\" width=\"178\" height=\"128\"/>" +
+                    Result += String.Format("<li class=\"professional\"><a href=\"/Products/stratosphere.aspx?ID={0}\"><img src=\"/Images/Products/{1}\" alt=\"I\" border=\"0\" width=\"178\" height=\"128\"/>" +
                         "<span class=\"new\" {5}>{6}</span><span class=\"best\" {4}>{7}</span>{2}{3}</a></li>\r\n",
                         product.ID, image, product.Name, PriceFrom,
                         product.BestSeller ? " style=\"display:block;\"" : "", product.NewProduct ? " style=\"display:block;\"" : "",
@@ -706,7 +713,8 @@ namespace Website.Library.Classes
 
             if (group != null)
             {
-                Result = String.Format("<li>&rsaquo;</li>\r\n<li><a href=\"/Products.aspx?GroupID={0}\">{1}</a></li>", group.ID, group.Description);
+                Result = String.Format("<li>&rsaquo;</li>\r\n<li><a href=\"/All-Products/Group/{0}/\">{1}</a></li>", 
+                    group.SEODescripton, group.Description);
             }
 
             return (Result);
@@ -747,7 +755,7 @@ namespace Website.Library.Classes
 
                     image = LibUtils.ResizeImage(image, size);
 
-                    Result += String.Format("<li><a href=\"/Products/Product.aspx?ID={0}\"><img src=\"https://static.heavenskincare.com/Images/Products/{1}\" alt=\"I\" border=\"0\" width=\"178\" height=\"128\"/>" +
+                    Result += String.Format("<li><a href=\"/Products/Product.aspx?ID={0}\"><img src=\"/Images/Products/{1}\" alt=\"I\" border=\"0\" width=\"178\" height=\"128\"/>" +
                         "<span class=\"new\" {5}>{6}</span><span class=\"best\" {4}>{7}</span>{2}{3}</a></li>\r\n",
                         product.ID, image, product.Name, PriceFrom,
                         product.BestSeller ? " style=\"display:block;\"" : "", product.NewProduct ? " style=\"display:block;\"" : "",
@@ -803,7 +811,7 @@ namespace Website.Library.Classes
 
                     image = LibUtils.ResizeImage(image, size);
 
-                    Result += String.Format("<li class=\"professional\"><a href=\"/Products/Product.aspx?ID={0}\"><img src=\"https://static.heavenskincare.com/Images/Products/{1}\" alt=\"I\" border=\"0\" width=\"178\" height=\"128\"/>" +
+                    Result += String.Format("<li class=\"professional\"><a href=\"/Products/Product.aspx?ID={0}\"><img src=\"/Images/Products/{1}\" alt=\"I\" border=\"0\" width=\"178\" height=\"128\"/>" +
                         "<span class=\"new\" {5}>{6}</span><span class=\"best\" {4}>{7}</span>{2}{3}</a></li>\r\n",
                         product.ID, image, product.Name, PriceFrom,
                         product.BestSeller ? " style=\"display:block;\"" : "", product.NewProduct ? " style=\"display:block;\"" : "",
@@ -1163,12 +1171,13 @@ namespace Website.Library.Classes
             return (Result);
         }
 
-        protected virtual string BuildPagination(int PageCount, int ItemsPerPage, int CurrentPage, string Page)
+        protected virtual string BuildPagination(int PageCount, int ItemsPerPage, int CurrentPage, string Page, bool routing)
         {
-            return (BuildPagination(PageCount, ItemsPerPage, CurrentPage, Page, ""));
+            return (BuildPagination(PageCount, ItemsPerPage, CurrentPage, Page, "", routing));
         }
 
-        protected virtual string BuildPagination(int PageCount, int ItemsPerPage, int CurrentPage, string Page, string Parameters)
+        protected virtual string BuildPagination(int PageCount, int ItemsPerPage, int CurrentPage, 
+            string Page, string Parameters, bool routing)
         {
             string Result = "";
             PageCount = SharedUtils.RoundUp(PageCount, ItemsPerPage);
@@ -1183,9 +1192,16 @@ namespace Website.Library.Classes
             }
 
             if (CurrentPage == 1 || PageCount == 1)
-                Result += String.Format("<li class=\"disabled\"><a href=\"javascript: void(0)\">&laquo; {0}</a></li>", Languages.LanguageStrings.Previous);
+            {
+                Result += String.Format("<li class=\"disabled\"><a href=\"javascript: void(0)\">&laquo; {0}</a></li>", LanguageStrings.Previous);
+            }
             else
-                Result += String.Format("<li><a href=\"{0}?Page={1}{2}\">&laquo; {3}</a></li>", Page, CurrentPage - 1, Parameters, Languages.LanguageStrings.Previous);
+            {
+                if (routing)
+                    Result += String.Format("<li><a href=\"{0}Page/{1}/{2}\">&laquo; {3}</a></li>", Page, CurrentPage - 1, Parameters, LanguageStrings.Previous);
+                else
+                    Result += String.Format("<li><a href=\"{0}?Page={1}{2}\">&laquo; {3}</a></li>", Page, CurrentPage - 1, Parameters, Languages.LanguageStrings.Previous);
+            }
 
             //can only allow max of 7 items normal page and 5 for mobile
             int startFrom = 1;
@@ -1225,15 +1241,29 @@ namespace Website.Library.Classes
             for (int i = startFrom; i <= endAt; i++)
             {
                 if (i == CurrentPage)
-                    Result += String.Format("<li class=\"current\"><a href=\"{0}?Page={1}{2}\">{1}</a></li>", Page, i, Parameters);
+                {
+                    Result += String.Format("<li class=\"current\"><a href=\"{0}Page/{1}/{2}\">{1}</a></li>", Page, i, Parameters);
+                }
                 else
-                    Result += String.Format("<li><a href=\"{0}?Page={1}{2}\">{1}</a></li>", Page, i, Parameters);
+                {
+                    if (routing)
+                        Result += String.Format("<li><a href=\"{0}Page/{1}/{2}\">{1}</a></li>", Page, i, Parameters);
+                    else
+                        Result += String.Format("<li><a href=\"{0}?Page={1}{2}\">{1}</a></li>", Page, i, Parameters);
+                }
             }
 
             if (CurrentPage >= PageCount)
-                Result += String.Format("<li class=\"disabled\"><a href=\"javascript: void(0)\">{0} &raquo;</a></li>", Languages.LanguageStrings.Next);
+            {
+                Result += String.Format("<li class=\"disabled\"><a href=\"javascript: void(0)\">{0} &raquo;</a></li>", LanguageStrings.Next);
+            }
             else
-                Result += String.Format("<li><a href=\"{0}?Page={1}{2}\">{3} &raquo;</a></li>", Page, CurrentPage + 1, Parameters, Languages.LanguageStrings.Next);
+            {
+                if (routing)
+                    Result += String.Format("<li><a href=\"{0}Page/{1}/{2}\">{3} &raquo;</a></li>", Page, CurrentPage + 1, Parameters, LanguageStrings.Next);
+                else
+                    Result += String.Format("<li><a href=\"{0}?Page={1}{2}\">{3} &raquo;</a></li>", Page, CurrentPage + 1, Parameters, LanguageStrings.Next);
+            }
 
             return (Result);
         }
@@ -1246,11 +1276,14 @@ namespace Website.Library.Classes
             string name = String.Format("Product Category Cache {0} {1} {2} {3}",
                 user == null ? 0 : user.MemberLevel, addStyles, isMobile, priceColumn);
 
-            CacheItem cached = GlobalClass.InternalCache.Get(name);
-
-            if (cached != null)
+            if (lib.DAL.DALHelper.AllowCaching)
             {
-                return ((string)cached.Value);
+                CacheItem cached = GlobalClass.InternalCache.Get(name);
+
+                if (cached != null)
+                {
+                    return ((string)cached.Value);
+                }
             }
 
             string Result = "";
@@ -1270,7 +1303,7 @@ namespace Website.Library.Classes
 
             ProductGroups groups = ProductGroups.Get(user == null ? lib.MemberLevel.StandardUser : user.MemberLevel, true);
             bool first = !isMobile;
-            ProductGroupType prodTypeOther = ProductGroupTypes.Get("Other");
+            ProductGroupType prodTypeOther = ProductGroupTypes.Get("General");
 
             foreach (ProductGroup group in groups)
             {
@@ -1311,7 +1344,7 @@ namespace Website.Library.Classes
                     }
 
                     if (String.IsNullOrEmpty(groupColor))
-                        groupColor = "Other";
+                        groupColor = "General";
                 }
 
                 string groupStyle = addStyles ? group.GroupType.ID == prodTypeOther.ID ? String.Empty : "style=\"display: block; width: 130px; text-align: center;\"" : "";
@@ -1319,11 +1352,11 @@ namespace Website.Library.Classes
                 if (String.IsNullOrEmpty(group.URL))
                 {
                     if (group.ID == groupID || (nameMatch) || (groupID == -1 && first))
-                        Result += String.Format("<li class=\"current{3}\"{5}><a {4} href=\"{2}/Products.aspx?GroupID={0}\">{1}</a></li>\r\n",
-                            group.ID, description, GlobalRootURL(), " " + groupColor, groupStyle, image);
+                        Result += String.Format("<li class=\"current{3}\"{5}><a {4} href=\"{2}/All-Products/Group/{0}/\">{1}</a></li>\r\n",
+                            group.SEODescripton, description, GlobalRootURL(), " " + groupColor, groupStyle, image);
                     else
-                        Result += String.Format("<li class=\"{3}\"{5}><a {4} href=\"{2}/Products.aspx?GroupID={0}\">{1}</a></li>\r\n",
-                            group.ID, description, GlobalRootURL(), groupColor, groupStyle, image);
+                        Result += String.Format("<li class=\"{3}\"{5}><a {4} href=\"{2}/All-Products/Group/{0}/\">{1}</a></li>\r\n",
+                            group.SEODescripton, description, GlobalRootURL(), " " + groupColor, groupStyle, image);
                 }
                 else
                 {
@@ -1338,20 +1371,24 @@ namespace Website.Library.Classes
                 first = false;
             }
 
-            GlobalClass.InternalCache.Add(name, new CacheItem(name, Result));
+            if (lib.DAL.DALHelper.AllowCaching)
+            {
+                Result = Result.Replace("current ", String.Empty);
+
+                GlobalClass.InternalCache.Add(name, new CacheItem(name, Result));
+            }
 
             return (Result);
         }
 
         protected string GetProductCategories(ProductGroupType productGroupType)
         {
-            Int64 Current = GetFormValue("GroupID", -1);
-            return (GetProductCategories(Current, productGroupType));
+            return (GetProductCategories(GetFormValue("GroupID", -1), productGroupType));
         }
 
         protected string GetProductCategories(Int64 current, ProductGroupType productGroupType)
         {
-            string Result = "";
+            string Result = String.Empty;
 
             lib.BOL.Users.User user = GetUser();
 
@@ -1370,10 +1407,10 @@ namespace Website.Library.Classes
                     if (String.IsNullOrEmpty(group.URL))
                     {
                         if (group.ID == current || (nameMatch) || (current == -1 && first))
-                            Result += String.Format("<li class=\"current\"><a href=\"{1}/Product/Group/{2}/\">{0}</a></li>\r\n",
+                            Result += String.Format("<li class=\"current\"><a href=\"{1}/All-Products/Group/{2}/\">{0}</a></li>\r\n",
                                 translatedName, GlobalRootURL(), SharedUtils.SEOName(group.SEODescripton));
                         else
-                            Result += String.Format("<li><a href=\"{1}/Product/Group/{2}/\">{0}</a></li>\r\n",
+                            Result += String.Format("<li><a href=\"{1}/All-Products/Group/{2}/\">{0}</a></li>\r\n",
                                 translatedName, GlobalRootURL(), SharedUtils.SEOName(group.SEODescripton));
                     }
                     else
@@ -1393,6 +1430,48 @@ namespace Website.Library.Classes
             return (Result);
         }
 
+        protected string GetProductCategories(Int64 current)
+        {
+            string Result = String.Empty;
+
+            lib.BOL.Users.User user = GetUser();
+
+            ProductGroups groups = ProductGroups.Get(
+                user == null ? lib.MemberLevel.StandardUser : user.MemberLevel,
+                true);
+            bool first = true;
+
+
+            foreach (ProductGroup group in groups)
+            {
+                string translatedName = GetTranslatedDescription(group.Description);
+                bool nameMatch = !String.IsNullOrEmpty(group.URL) && Request.Path.ToLower().Contains(group.URL.ToLower());
+
+                if (String.IsNullOrEmpty(group.URL))
+                {
+                    if (group.ID == current || (nameMatch) || (current == -1 && first))
+                        Result += String.Format("<li class=\"current\"><a href=\"{1}/All-Products/Group/{2}/\">{0}</a></li>\r\n",
+                            translatedName, GlobalRootURL(), SharedUtils.SEOName(group.SEODescripton));
+                    else
+                        Result += String.Format("<li><a href=\"{1}/All-Products/Group/{2}/\">{0}</a></li>\r\n",
+                            translatedName, GlobalRootURL(), SharedUtils.SEOName(group.SEODescripton));
+                }
+                else
+                {
+                    if (group.ID == current || (nameMatch))
+                        Result += String.Format("<li class=\"current\"><a href=\"{0}\">{1}</a></li>\r\n",
+                            group.URL, translatedName);
+                    else
+                        Result += String.Format("<li><a href=\"{0}\">{1}</a></li>\r\n",
+                            group.URL, translatedName);
+                }
+
+                first = false;
+            }
+
+            return (Result);
+        }
+
         #region Product Specific
 
         #region Professional
@@ -1401,8 +1480,13 @@ namespace Website.Library.Classes
         {
             string Result = "";
 
+            int productPage = GetFormValue("Page", 1);
+
+            if (Page.RouteData.Values.ContainsKey("Page"))
+                productPage = SharedUtils.StrToIntDef((string)Page.RouteData.Values["page"], productPage);
+
             lib.BOL.Products.Products products = lib.BOL.Products.Products.Get(
-                ProductTypes.Get("All"), GetFormValue("Page", 1), 12);
+                ProductTypes.Get("All"), productPage, 12);
             int priceColumn = ((LocalWebSessionData)GetUserSession().Tag).PriceColumn;
 
             foreach (Product product in products)
@@ -1454,7 +1538,8 @@ namespace Website.Library.Classes
 
             if (group != null)
             {
-                Result = String.Format("<li>&rsaquo;</li>\r\n<li><a href=\"/Products.aspx?GroupID={0}\">{1}</a></li>", group.ID, group.Description);
+                Result = String.Format("<li>&rsaquo;</li>\r\n<li><a href=\"/All-Products/Group/{0}/\">{1}</a></li>", 
+                    group.SEODescripton, group.Description);
             }
 
             return (Result);
@@ -1776,9 +1861,7 @@ namespace Website.Library.Classes
             if (Value.IndexOf("#") > 0)
                 Value = Value.Substring(0, Value.IndexOf("#"));
 
-            int result = SharedUtils.StrToIntDef(Value, Default);
-
-            return (result);
+            return (SharedUtils.StrToIntDef(Value, Default));
         }
 
         protected Int64 GetFormValue(string Name, Int64 Default)

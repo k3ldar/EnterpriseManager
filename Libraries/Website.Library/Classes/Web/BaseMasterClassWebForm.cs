@@ -14,6 +14,7 @@ using Library.BOL.Countries;
 using Library.BOL.Products;
 using Library.BOL.Users;
 using Library.BOL.HashTags;
+using Library.BOL.Statistics;
 
 namespace Website.Library.Classes
 {
@@ -75,6 +76,28 @@ namespace Website.Library.Classes
                 return (1);
             else
                 return (4);
+        }
+
+        protected string GetHighlightedItems()
+        {
+            if (GlobalClass.ShowTopProducts)
+                return (GetTopProducts());
+            else
+                return (GetProductCategories());
+        }
+
+        protected string GetTopProducts()
+        {
+            SimpleStatistics topProducts = Products.TopProducts(15);
+            string Result = String.Empty;
+
+            foreach (SimpleStatistic topProduct in topProducts)
+            {
+                Result += String.Format("<li><a href=\"/All-Products/Group/{0}/{1}/\">{2}</a></li>",
+                    topProduct.Name1, SharedUtils.SEOName(topProduct.Description), topProduct.Description);
+            }
+
+            return (Result);
         }
 
         protected override void OnInit(EventArgs e)
@@ -278,7 +301,7 @@ namespace Website.Library.Classes
         {
             string Result = String.Empty;
 
-            if (BaseWebApplication.ShowTermsAndConditions)
+            if (GlobalClass.ShowTermsAndConditions)
                 Result = String.Format(" - <a href=\"/Terms.aspx\">{0}</a>", Languages.LanguageStrings.Terms);
 
             return (Result);
@@ -288,7 +311,7 @@ namespace Website.Library.Classes
         {
             string Result = String.Empty;
 
-            if (BaseWebApplication.ShowPrivacyPolicy)
+            if (GlobalClass.ShowPrivacyPolicy)
                 Result = String.Format(" - <a href=\"/Privacy.aspx\">{0}</a>", Languages.LanguageStrings.Privacy);
 
             return (Result);
@@ -298,7 +321,7 @@ namespace Website.Library.Classes
         {
             string Result = String.Empty;
 
-            if (BaseWebApplication.ShowReturnsPolicy)
+            if (GlobalClass.ShowReturnsPolicy)
                 Result = String.Format(" - <a href=\"/Returns.aspx\">{0}</a>", Languages.LanguageStrings.Returns);
 
             return (Result);
@@ -350,7 +373,7 @@ namespace Website.Library.Classes
 
         protected string GetMetaKeyWords()
         {
-            string MetaTag = GlobalClass.DefaultMetaKeyWords;;
+            string MetaTag = GlobalClass.DefaultMetaKeyWords;
 
             HashTags tags = HashTags.GetPageTags(Request.Url.ToString());
             MetaTag += tags.HashTagList(true) + ", ";
@@ -369,7 +392,7 @@ namespace Website.Library.Classes
 
         protected string GetFeaturedProduct()
         {
-            return (GetFeaturedProduct(ProductTypes.Get("Professional")));
+            return (GetFeaturedProduct(ProductTypes.Get("All")));
         }
 
         /// <summary>
@@ -415,7 +438,7 @@ namespace Website.Library.Classes
 
                     Result = String.Format("<a href=\"/Products/Product.aspx?ID={0}\">", featured.ID);
 
-                    Result += String.Format("<img src=\"https://static.heavenskincare.com/Images/Products/{0}\" " +
+                    Result += String.Format("<img src=\"/Images/Products/{0}\" " +
                         "alt=\"I\" border=\"0\" width=\"148\" height=\"114\"/>", image);
 
                     if (ShowPriceData)
@@ -427,7 +450,7 @@ namespace Website.Library.Classes
                             lowestPrice += SharedUtils.VATCalculate(lowestPrice, WebVATRate);
                         }
 
-                        if (primaryProductType.ID == ProductTypes.Get("Stratosphere").ID)
+                        if (primaryProductType.ID == ProductTypes.Get("All").ID)
                         {
                             Result += String.Format("<p>{0}<strong>{2} {1}</strong></p></a>",
                                 featured.Name, SharedUtils.FormatMoney(lowestPrice, GetWebsiteCurrency(), false),
@@ -455,6 +478,42 @@ namespace Website.Library.Classes
         }
 
         /// <summary>
+        /// Returns menu if Treatments are shown or not
+        /// </summary>
+        /// <returns></returns>
+        protected string ShowTreatments()
+        {
+            if (!GlobalClass.ShowTreatmentsMenu)
+                return (String.Empty);
+
+            return (String.Format("<li><a href=\"/Treatments.aspx\">{0}</a></li>", Languages.LanguageStrings.Treatments));
+        }
+
+        /// <summary>
+        /// Returns menu if salons are shown or not
+        /// </summary>
+        /// <returns></returns>
+        protected string ShowSalons()
+        {
+            if (!GlobalClass.ShowSalonsMenu)
+                return (String.Empty);
+
+            return (String.Format("<li><a href=\"/Salons.aspx\">{0}</a></li>", Languages.LanguageStrings.Salons));
+        }
+
+        /// <summary>
+        /// Returns menu if salons are shown or not
+        /// </summary>
+        /// <returns></returns>
+        protected string ShowTipsAndTricks()
+        {
+            if (!GlobalClass.ShowTipsAndTricksMenu)
+                return (String.Empty);
+
+            return (String.Format("<li><a href=\"/TipsnTricks.aspx\">{0}</a></li>", Languages.LanguageStrings.TipsAndTricks));
+        }
+
+        /// <summary>
         /// Returns menu if salons are shown or not
         /// </summary>
         /// <returns></returns>
@@ -463,7 +522,23 @@ namespace Website.Library.Classes
             if (!GlobalClass.ShowDistributorsMenu)
                 return (String.Empty);
 
-            return (String.Format("<li><a href=\"/Distributors.aspx\">{1}</a></li>", GlobalClass.RootURL, Languages.LanguageStrings.Distributors));
+            return (String.Format("<li><a href=\"/Distributors.aspx\">{0}</a></li>", Languages.LanguageStrings.Distributors));
+        }
+
+        protected string ShowTrade()
+        {
+            if (!GlobalClass.ShowTradeMenu)
+                return (String.Empty);
+
+            return (String.Format("<li><a href=\"/Trade.aspx\">{0}</a></li>", Languages.LanguageStrings.Trade));
+        }
+
+        protected string ShowDownloads()
+        {
+            if (!GlobalClass.ShowDownloadMenu)
+                return (String.Empty);
+
+            return (String.Format("<li><a href=\"/Download/Index.aspx\">{0}</a></li>", Languages.LanguageStrings.Downloads));
         }
 
         /// <summary>
@@ -568,7 +643,7 @@ namespace Website.Library.Classes
         {
             string Result = String.Empty;
             ProductGroups groups = ProductGroups.Get(user == null ? lib.MemberLevel.StandardUser : user.MemberLevel, true);
-            ProductGroupType prodTypeOther = ProductGroupTypes.Get("Other");
+            ProductGroupType prodTypeOther = ProductGroupTypes.Get("General");
 
             foreach (ProductGroup group in groups)
             {
@@ -578,8 +653,8 @@ namespace Website.Library.Classes
 
                 if (String.IsNullOrEmpty(group.URL))
                 {
-                    Result += String.Format("<li class=\"{3}\"><a href=\"{2}/Products.aspx?GroupID={0}\">{1}</a></li>\r\n",
-                        group.ID, description, GlobalClass.RootURL, groupColor);
+                    Result += String.Format("<li class=\"{3}\"><a href=\"{2}/All-Products/Group/{0}/\">{1}</a></li>\r\n",
+                        group.SEODescripton, description, GlobalClass.RootURL, groupColor);
                 }
                 else
                 {
@@ -793,12 +868,13 @@ namespace Website.Library.Classes
 
         #endregion Properties
 
-
+        [Obsolete("No longer used")]
         public void AddToWebLog(string Value, string SubValue)
         {
             AddToWebLog("DEBUG", Value, "");
         }
 
+        [Obsolete("No longer used")]
         public void AddToWebLog(string Method, string Value, string SubValue)
         {
             string Referrer = "";

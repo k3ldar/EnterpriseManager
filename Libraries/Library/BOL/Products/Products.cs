@@ -67,6 +67,28 @@ namespace Library.BOL.Products
 
         #region Static Methods
 
+        public static SimpleStatistics TopProducts(int quantity)
+        {
+            if (quantity < 1)
+                throw new ArgumentOutOfRangeException(nameof(quantity));
+
+            if (CacheAvailable)
+            {
+                CacheItem Result = CachedItemGet(Consts.CACHE_NAME_PRODUCTS_TOP);
+
+                if (Result == null)
+                {
+                    // item not found, add and return
+                    Result = new CacheItem(Consts.CACHE_NAME_PRODUCTS_TOP, DAL.FirebirdDB.ProductsGetTopProducts(quantity));
+                    CachedItemAdd(Consts.CACHE_NAME_PRODUCTS_TOP, Result);
+                }
+
+                return ((SimpleStatistics)Result.Value);
+            }
+            else
+                return (DAL.FirebirdDB.ProductsGetTopProducts(quantity));
+        }
+
         public static SimpleStatistics FeaturedProducts()
         {
             return (DAL.FirebirdDB.AdminProductsStatsFeaturedProducts());

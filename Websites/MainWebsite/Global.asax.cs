@@ -332,10 +332,10 @@ namespace Heavenskincare.WebsiteTemplate
             EventLog.Add("Application Starting");
 
             if (String.IsNullOrEmpty(Global.WebsiteTelephoneNumber))
-                Global.WebsiteTelephoneNumber = "+44(0) 1952 462505 or +44(0) 1952 463574";
+                WebsiteTelephoneNumber = "+44(0) 1952 462505 or +44(0) 1952 463574";
 
             if (String.IsNullOrEmpty(Global.WebsiteEmail))
-                Global.WebsiteEmail = "sales@heavenskincare.com";
+                WebsiteEmail = "sales@heavenskincare.com";
 
             LocalizedLanguages.OnSelectPriceColumn += LocalizedLanguages_OnSelectPriceColumn;
 

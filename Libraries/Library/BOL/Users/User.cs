@@ -422,7 +422,7 @@ namespace Library.BOL.Users
 
             set
             {
-                _BusinessName = value == null ? String.Empty : value;
+                _BusinessName = value ?? String.Empty;
             }
         }
 
@@ -435,7 +435,7 @@ namespace Library.BOL.Users
 
             set
             {
-                _AddressLine1 = value == null ? String.Empty : value;
+                _AddressLine1 = value ?? String.Empty;
             }
         }
 
@@ -448,7 +448,7 @@ namespace Library.BOL.Users
 
             set
             {
-                _AddressLine2 = value == null ? String.Empty : value;
+                _AddressLine2 = value ?? String.Empty;
             }
         }
 
@@ -461,7 +461,7 @@ namespace Library.BOL.Users
 
             set
             {
-                _AddressLine3 = value == null ? String.Empty : value;
+                _AddressLine3 = value ?? String.Empty;
             }
         }
 
@@ -474,7 +474,7 @@ namespace Library.BOL.Users
 
             set
             {
-                _City = value = value == null ? String.Empty : value;
+                _City = value ?? String.Empty;
             }
 
         }
@@ -488,7 +488,7 @@ namespace Library.BOL.Users
 
             set
             {
-                _County = value = value == null ? String.Empty : value;
+                _County = value ?? String.Empty;
             }
 
         }
@@ -502,7 +502,7 @@ namespace Library.BOL.Users
 
             set
             {
-                _PostCode = value = value == null ? String.Empty : value;
+                _PostCode = value ?? String.Empty;
             }
 
         }

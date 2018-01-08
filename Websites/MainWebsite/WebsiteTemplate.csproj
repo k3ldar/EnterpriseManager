@@ -507,7 +507,6 @@
     <Content Include="Press\Index.aspx" />
     <Content Include="Press\View.aspx" />
     <Content Include="Privacy.aspx" />
-    <Content Include="Products\BeeVenomGold.aspx" />
     <Content Include="Products\BlackLabel.aspx" />
     <Content Include="Products\ChristmasGiftSets.aspx" />
     <Content Include="Products\HeavenNails.aspx" />
@@ -1500,14 +1499,12 @@
     </Compile>
     <Compile Include="Nails.Master.cs">
       <DependentUpon>Nails.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Nails.Master.designer.cs">
       <DependentUpon>Nails.Master</DependentUpon>
     </Compile>
     <Compile Include="Offers\BeeMine.aspx.cs">
       <DependentUpon>BeeMine.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Offers\BeeMine.aspx.designer.cs">
       <DependentUpon>BeeMine.aspx</DependentUpon>
@@ -1577,7 +1574,6 @@
     </Compile>
     <Compile Include="Offers\Signal107.aspx.cs">
       <DependentUpon>Signal107.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Offers\Signal107.aspx.designer.cs">
       <DependentUpon>Signal107.aspx</DependentUpon>
@@ -1624,16 +1620,8 @@
     <Compile Include="Privacy.aspx.designer.cs">
       <DependentUpon>Privacy.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Products\BeeVenomGold.aspx.cs">
-      <DependentUpon>BeeVenomGold.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Products\BeeVenomGold.aspx.designer.cs">
-      <DependentUpon>BeeVenomGold.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Products\BlackLabel.aspx.cs">
       <DependentUpon>BlackLabel.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Products\BlackLabel.aspx.designer.cs">
       <DependentUpon>BlackLabel.aspx</DependentUpon>
@@ -1647,14 +1635,12 @@
     </Compile>
     <Compile Include="Products\HeavenNails.aspx.cs">
       <DependentUpon>HeavenNails.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Products\HeavenNails.aspx.designer.cs">
       <DependentUpon>HeavenNails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Products\LLB.aspx.cs">
       <DependentUpon>LLB.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Products\LLB.aspx.designer.cs">
       <DependentUpon>LLB.aspx</DependentUpon>
@@ -1668,7 +1654,6 @@
     </Compile>
     <Compile Include="Products\Prism.aspx.cs">
       <DependentUpon>Prism.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Products\Prism.aspx.designer.cs">
       <DependentUpon>Prism.aspx</DependentUpon>
@@ -1696,7 +1681,6 @@
     </Compile>
     <Compile Include="Products\Stratosphere.aspx.cs">
       <DependentUpon>Stratosphere.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Products\Stratosphere.aspx.designer.cs">
       <DependentUpon>Stratosphere.aspx</DependentUpon>
@@ -2273,28 +2257,24 @@
     </Compile>
     <Compile Include="Treatments\Lia.aspx.cs">
       <DependentUpon>Lia.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Treatments\Lia.aspx.designer.cs">
       <DependentUpon>Lia.aspx</DependentUpon>
     </Compile>
     <Compile Include="Treatments\Shellac.aspx.cs">
       <DependentUpon>Shellac.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Treatments\Shellac.aspx.designer.cs">
       <DependentUpon>Shellac.aspx</DependentUpon>
     </Compile>
     <Compile Include="Treatments\SpaDay.aspx.cs">
       <DependentUpon>SpaDay.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Treatments\SpaDay.aspx.designer.cs">
       <DependentUpon>SpaDay.aspx</DependentUpon>
     </Compile>
     <Compile Include="Treatments\SpaDays.aspx.cs">
       <DependentUpon>SpaDays.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Treatments\SpaDays.aspx.designer.cs">
       <DependentUpon>SpaDays.aspx</DependentUpon>
@@ -2473,7 +2453,7 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PreBuildEvent>T:\HeavenMain\Build\UpdateVer\UpdateVersion.exe /out="$(ProjectDir)Properties\ver.txt" /$(ConfigurationName) /path="$(ProjectDir)</PreBuildEvent>
+    <PreBuildEvent>T:\GitProjects\Builds\NetBuildTools\Release\UpdateVersion.exe /out="$(ProjectDir)Properties\ver.txt" /$(ConfigurationName) /path="$(ProjectDir)</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>

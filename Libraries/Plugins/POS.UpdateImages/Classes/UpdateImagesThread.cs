@@ -86,6 +86,7 @@ namespace POS.Images.Classes
                                 foreach (string line in details)
                                 {
                                     FTPEntry entry = null;
+
                                     if (FTPEntry.ParseFTPLine(line, ref entry))
                                         items.Add(entry);
                                 }
@@ -150,7 +151,16 @@ namespace POS.Images.Classes
                     // log to upload the file...
                     _updatedFiles.Add(new UpdatedFile(true, localFile, imageType));
                    string remoteFolder = String.Format(StringConstants.IMAGE_FTP_ROOT, site.RootPath, imageType.ToString(), file);
-                    client.Upload(remoteFolder, localFile);
+
+                    try
+                    {
+                        client.Upload(remoteFolder, localFile);
+                    }
+                    catch (Exception err)
+                    {
+                        Shared.EventLog.Add(err, String.Format("Failed to upload image file: {0}", localFile));
+                    }
+                    
                 }
             }
         }
@@ -191,8 +201,16 @@ namespace POS.Images.Classes
                 {
                     // log to upload the file...
                     _updatedFiles.Add(new UpdatedFile(true, remoteFile.Name, imageType));
-                    string remoteFolder = String.Format(StringConstants.IMAGE_FTP_ROOT, site.RootPath, imageType.ToString(), remoteFile.Name); 
-                    client.Download(remoteFolder, Shared.Utilities.AddTrailingBackSlash(localPath) + remoteFile.Name);
+                    string remoteFolder = String.Format(StringConstants.IMAGE_FTP_ROOT, site.RootPath, imageType.ToString(), remoteFile.Name);
+
+                    try
+                    {
+                        client.Download(remoteFolder, Shared.Utilities.AddTrailingBackSlash(localPath) + remoteFile.Name);
+                    }
+                    catch (Exception err)
+                    {
+                        Shared.EventLog.Add(err, String.Format("Failed to download image file: {0}", remoteFolder));
+                    }
                 }
             }
         }

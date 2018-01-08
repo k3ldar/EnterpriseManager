@@ -21424,6 +21424,52 @@ namespace Library.DAL
             return (Result);
         }
 
+        internal static SimpleStatistics ProductsGetTopProducts(int quantity)
+        {
+            if (quantity < 1)
+                throw new ArgumentException(nameof(quantity));
+
+            SimpleStatistics Result = new SimpleStatistics();
+
+            FbTransaction tran = null;
+            FbConnection db = ConnectToDatabase(ref tran, DatabaseType.Standard);
+            try
+            {
+                try
+                {
+                    string SQL = String.Format("SELECT FIRST {0} a.PRODUCT_ID, a.NAME, a.PRIMARY_GROUP_NAME " +
+                        "FROM VW_TOP_PRODUCTS a " +
+                        "ORDER BY a.QUANTITY DESC, a.TOP_TYPE, a.SORT_ORDER", quantity);
+
+                    FbCommand cmd = new FbCommand(SQL, db, tran);
+                    FbDataReader rdr = cmd.ExecuteReader();
+
+                    try
+                    {
+                        while (rdr.Read())
+                        {
+                            Result.Add(new SimpleStatistic(rdr.GetInt64(0), rdr.GetString(1), rdr.GetString(2)));
+                        }
+                    }
+                    finally
+                    {
+                        CloseAndDispose(ref cmd, ref rdr);
+                        tran.Rollback();
+                    }
+                }
+                catch (Exception err)
+                {
+                    ErrorHandling.LogError(MethodBase.GetCurrentMethod(), err);
+                    throw;
+                }
+            }
+            finally
+            {
+                CloseAndDispose(ref db, ref tran);
+            }
+
+            return (Result);
+        }
 
         /// <summary>
         /// Gets the product associated with a product cost item
@@ -22005,7 +22051,7 @@ namespace Library.DAL
             return (Result);
         }
 
-        internal static ProductGroups ProductGroupsGet(MemberLevel MemberLevel,bool visibleOnWebsite)
+        internal static ProductGroups ProductGroupsGet(MemberLevel MemberLevel, bool visibleOnWebsite)
         {
             ProductGroups Result = new ProductGroups();
 
@@ -23157,39 +23203,32 @@ namespace Library.DAL
             FbConnection db = ConnectToDatabase(ref tran, DatabaseType.Standard);
             try
             {
+                string SQL = String.Format("SELECT p.OPID, p.OPITEMID, p.OPDESCRIPTION, p.OPQTY, " +
+                    "p.OPPRICE, p.OPIMAGE, p.OPOUT_OF_STOCK, " +
+                    "p.OPITEM_TYPE, p.opUSER_ID, p.OPPRODUCTTYPE, p.opPRICE_COLUMN, p.opDISCOUNT_VALUE, " +
+                    "p.opUSER_DISCOUNT, p.OPPRODUCTTYPETEXT, p.opPRODUCTTYPEITEM " +
+                    "FROM WSP_SHOPPINGBASKET ({0}) p  ",
+                    basket.ID);
+
+                FbDataReader rdr = null;
+                FbCommand cmd = new FbCommand(SQL, db, tran);
                 try
                 {
-                    string SQL = String.Format("SELECT p.OPID, p.OPITEMID, p.OPDESCRIPTION, p.OPQTY, " +
-                        "p.OPPRICE, p.OPIMAGE, p.OPOUT_OF_STOCK, " +
-                        "p.OPITEM_TYPE, p.opUSER_ID, p.OPPRODUCTTYPE, p.opPRICE_COLUMN, p.opDISCOUNT_VALUE, " +
-                        "p.opUSER_DISCOUNT, p.OPPRODUCTTYPETEXT, p.opPRODUCTTYPEITEM " +
-                        "FROM WSP_SHOPPINGBASKET ({0}) p  ",
-                        basket.ID);
+                    rdr = cmd.ExecuteReader();
 
-                    FbDataReader rdr = null;
-                    FbCommand cmd = new FbCommand(SQL, db, tran);
-                    try
+                    while (rdr.Read())
                     {
-                        rdr = cmd.ExecuteReader();
-
-                        while (rdr.Read())
-                        {
-                            Result.Add(new BasketItem(basket, rdr.GetInt64(0), rdr.GetInt32(1), rdr.GetString(2), rdr.GetDecimal(3),
-                                rdr.GetDecimal(4), rdr.GetString(5), rdr.GetString(6) == "T",
-                                (ProductCostItemType)rdr.GetInt32(7), rdr.IsDBNull(8) ? -1 : rdr.GetInt32(8),
-                                new ProductCostType(rdr.GetInt32(9), rdr.GetString(13), (ProductCostItemType)rdr.GetInt32(14)),
-                                rdr.GetInt32(10), rdr.GetDecimal(11), rdr.IsDBNull(12) ? 0.00m : rdr.GetDecimal(12)));
-                        }
-                    }
-                    finally
-                    {
-                        CloseAndDispose(ref cmd, ref rdr);
-                        tran.Rollback();
+                        Result.Add(new BasketItem(basket, rdr.GetInt64(0), rdr.GetInt32(1), rdr.GetString(2), rdr.GetDecimal(3),
+                            rdr.GetDecimal(4), rdr.GetString(5), rdr.GetString(6) == "T",
+                            (ProductCostItemType)rdr.GetInt32(7), rdr.IsDBNull(8) ? -1 : rdr.GetInt32(8),
+                            new ProductCostType(rdr.GetInt32(9), rdr.GetString(13), (ProductCostItemType)rdr.GetInt32(14)),
+                            rdr.GetInt32(10), rdr.GetDecimal(11), rdr.IsDBNull(12) ? 0.00m : rdr.GetDecimal(12)));
                     }
                 }
-                catch
+                finally
                 {
-                    throw;
+                    CloseAndDispose(ref cmd, ref rdr);
+                    tran.Rollback();
                 }
             }
             finally

@@ -39,11 +39,12 @@ namespace Library.BOL.Products
     {
         #region Private Members
 
-        private Int64 _ID;
-        private string _Description;
-        private int _SortOrder;
-        private string _TagLine;
-        private bool _ShowOnWebsite;
+        private Int64 _id;
+        private string _description;
+        private string _seoDescription;
+        private int _sortOrder;
+        private string _tagLine;
+        private bool _showOnWebsite;
         private MemberLevel _memberLevel;
         private string _url;
 
@@ -56,16 +57,22 @@ namespace Library.BOL.Products
             ProductGroupType groupType, string mainHeader, string subHeader,
             string mobileImage, bool mobileWebsite)
         {
-            _ID = ID;
-            _Description = Description;
-            _SortOrder = SortOrder;
-            _TagLine = TagLine;
-            _ShowOnWebsite = ShowOnWebsite;
-            _memberLevel = MemberLevel;
-            _url = url;
-            GroupType = groupType;
+            _id = ID;
+            GroupType = groupType ?? throw new ArgumentNullException(nameof(groupType));
+
             MainHeader = mainHeader;
             SubHeader = subHeader;
+
+            if (GroupType.ID != 0)
+                _description = String.Format("{0} - {1}", SubHeader, MainHeader);
+            else
+                _description = Description;
+
+            _sortOrder = SortOrder;
+            _tagLine = TagLine;
+            _showOnWebsite = ShowOnWebsite;
+            _memberLevel = MemberLevel;
+            _url = url;
             MobileWebsite = mobileWebsite;
             MobileImage = mobileImage;
         }
@@ -81,7 +88,7 @@ namespace Library.BOL.Products
         {
             get
             {
-                return (_ID);
+                return (_id);
             }
         }
 
@@ -105,7 +112,17 @@ namespace Library.BOL.Products
         {
             get
             {
-                return (Utils.SharedUtils.SEOName(_Description));
+                if (String.IsNullOrEmpty(_seoDescription))
+                {
+                    string description = _description;
+
+                    if (GroupType.ID != 0)
+                        description = String.Format("{0} - {1}", SubHeader, MainHeader);
+
+                    _seoDescription = Utils.SharedUtils.SEOName(description);
+                }
+
+                return (_seoDescription);
             }
         }
 
@@ -116,12 +133,12 @@ namespace Library.BOL.Products
         {
             get
             {
-                return (_Description);
+                return (_description);
             }
 
             set
             {
-                _Description = value;
+                _description = value;
             }
         }
 
@@ -132,12 +149,12 @@ namespace Library.BOL.Products
         {
             get
             {
-                return (_SortOrder);
+                return (_sortOrder);
             }
 
             set
             {
-                _SortOrder = value;
+                _sortOrder = value;
             }
         }
 
@@ -148,12 +165,12 @@ namespace Library.BOL.Products
         {
             get
             {
-                return (_ShowOnWebsite);
+                return (_showOnWebsite);
             }
 
             set
             {
-                _ShowOnWebsite = value;
+                _showOnWebsite = value;
             }
         }
 
@@ -169,12 +186,12 @@ namespace Library.BOL.Products
         {
             get
             {
-                return (_TagLine);
+                return (_tagLine);
             }
 
             set
             {
-                _TagLine = value;
+                _tagLine = value;
             }
         }
 
@@ -241,7 +258,7 @@ namespace Library.BOL.Products
 
         public override string ToString()
         {
-            return (String.Format("ProductGroup: {0}; Description: {1}", ID, _Description));
+            return (String.Format("ProductGroup: {0}; Description: {1}", ID, _description));
         }
 
         #endregion Overridden Methods

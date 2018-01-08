@@ -1,0 +1,7 @@
+User-Agent: *
+Allow: /
+Disallow: /Admin/
+Disallow: /bin/
+Disallow: /Toolbar/
+Dissalow: /Staff/
+# WebMatrix 1.0

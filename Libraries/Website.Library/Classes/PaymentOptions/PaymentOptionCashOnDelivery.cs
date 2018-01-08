@@ -37,7 +37,7 @@ namespace Website.Library.Classes.PaymentOptions
         {
             try
             {
-                webResponse.Redirect(GlobalClass.RootURL + "/Basket/BasketOrderComplete.aspx?InternalPaymentType=cod", false);
+                webResponse.Redirect(GlobalClass.RootURL + "/Shopping/Basket/Order-Complete/Payment-Type/cod/", false);
             }
             catch (Exception err)
             {

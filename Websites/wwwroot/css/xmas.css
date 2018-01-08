@@ -1,0 +1,12 @@
+﻿body {
+	background: url('/images/New-Heaven-website-Background-xmas.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover; /* For WebKit*/
+    -moz-background-size: cover;    /* Mozilla*/
+    -o-background-size: cover;      /* Opera*/
+    background-size: cover;         
+	font-family: "nimbus-sans", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 62.5%;
+	line-height: 1;
+}

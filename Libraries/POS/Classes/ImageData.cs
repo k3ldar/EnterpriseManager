@@ -77,8 +77,8 @@ namespace POS.Base.Classes
                     // logo is a special case
                     case ImageTypes.Logo:
                         return (new int[,] { { 178, 121 }, { 66, 66 }, { 220, 110 },
-                        { 835, 221 }, { 178, 121 }, { 107, 73 }, { 239, 65 }, 
-                        { 250, 209 }, { 25, 0 } });
+                        { 835, 221 }, { 178, 121 }, { 107, 73 }, { 239, 65 },
+                        { 250, 209 }, { 25, 0 }, { 323, 99 } } );
 
                     // always return largest to smallest files for all except the logo
                     case ImageTypes.Products:

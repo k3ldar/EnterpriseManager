@@ -49,6 +49,7 @@ namespace Library.Utils
 
         public static string SEOName(string s)
         {
+            s = s.Replace(" & ", " and ");
             const string ACCEPTABLE_CHARACTERS = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXY";
 
             string Result = String.Empty;
@@ -60,6 +61,9 @@ namespace Library.Utils
                 else
                     Result += "-";
             }
+
+            while (Result.Contains("--"))
+                Result = Result.Replace("--", "-");
 
             return (Result);
         }

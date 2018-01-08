@@ -88,6 +88,9 @@ namespace Library.BOL.Products
         /// <returns>ProductGroups collection</returns>
         public static ProductGroups Get(ProductGroupType groupType, MemberLevel MemberLevel)
         {
+            if (groupType == null)
+                throw new ArgumentNullException(nameof(groupType));
+
             if (CacheAvailable)
             {
                 string cacheName = String.Format(Consts.CACHE_NAME_PRODUCT_GROUPS_GET, groupType.ID, MemberLevel.ToString());

@@ -1,0 +1,289 @@
+﻿
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="Description" content="" />
+    <meta name="Keywords" content="SieraDelta, Bespoke, Software, Development, " />
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/css/style4.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/css/nivo-slider.css" type="text/css" media="screen" />
+    <link rel="Stylesheet" href="/css/sdTags.css" type="text/css" media="screen" />
+
+    <script type="text/javascript" src="/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.hoverIntent.minified.js"></script>
+
+    <script type="text/javascript" src="/js/jquery.jcarousel.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.nivo.slider.pack.js"></script>
+
+    <script type="text/javascript">
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-45181427-1', 'SieraDelta.com');
+        ga('send', 'pageview');
+
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            p = navigator.platform;
+
+            if (p === 'iPad' || p === 'iPhone' || p === 'iPod') {
+                $("div.navigation").each(function () {
+                    var onClick; // this will be a function
+                    var firstClick = function () {
+                        onClick = secondClick;
+                        return false;
+                    };
+                    var secondClick = function () {
+                        onClick = firstClick;
+                        return true;
+                    };
+                    onClick = firstClick;
+                    $(this).click(function () {
+                        return onClick();
+                    });
+                });
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        $(window).load(function () {
+            $('.slider').nivoSlider({
+                animSpeed: 500,
+                directionNav: false,
+                effect: 'fade',
+                pauseTime: 6000
+            });
+        });
+
+        jQuery(document).ready(function () {
+            jQuery('.mycarousel').jcarousel({
+                scroll: 4,
+                wrap: "circular"
+            });
+        });
+
+
+        function clickclear(thisfield) {
+            var defaulttext = 'Search...';
+
+            if (thisfield.value == defaulttext) {
+                thisfield.value = "";
+            }
+        }
+        function clickrecall(thisfield) {
+            var defaulttext = 'Search...';
+
+            if (thisfield.value == "") {
+                thisfield.value = defaulttext;
+            }
+        }
+    </script>
+
+    <title>Bespoke Software Development - Web Defender</title>
+
+
+
+</head>
+<body>
+    <form name="aspnetForm" method="post" action="Index.aspx" id="aspnetForm">
+        <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+        <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJMTYyOTI2NzU5D2QWAmYPZBYCAgEPZBYGAgEPFgIeB1Zpc2libGVoZAIDDxYCHwBoZAIGD2QWAgIBD2QWBgIBDxYCHglpbm5lcmh0bWwF1wE8ZGl2IGNsYXNzPSJmYi1saWtlIiBkYXRhLWhyZWY9Imh0dHA6Ly9sb2NhbGhvc3Q6NjAwMDEvSW5kZXguYXNweCIgZGF0YS13aWR0aD0iODAiIGRhdGEtaGVpZ2h0PSIxMCIgZGF0YS1jb2xvcnNjaGVtZT0ibGlnaHQiIGRhdGEtbGF5b3V0PSJzdGFuZGFyZCIgZGF0YS1hY3Rpb249Imxpa2UiIGRhdGEtc2hvdy1mYWNlcz0iZmFsc2UiIGRhdGEtc2VuZD0iZmFsc2UiPjwvZGl2PmQCAw8WAh8BBWU8YSBocmVmPSJodHRwczovL3R3aXR0ZXIuY29tL3NoYXJlIiBjbGFzcz0idHdpdHRlci1zaGFyZS1idXR0b24iIGRhdGEtaGFzaHRhZ3M9IlNpZXJhRGVsdGEiPlR3ZWV0PC9hPmQCBw8WAh8BBYgBPGRpdiBjbGFzcz0iZy1wbHVzb25lIiBkYXRhLXNpemU9Im1lZGl1bSIgZGF0YS1hbm5vdGF0aW9uPSJpbmxpbmUiIGRhdGEtd2lkdGg9IjMwMCIgZGF0YS1ocmVmPSJodHRwOi8vbG9jYWxob3N0OjYwMDAxL0luZGV4LmFzcHgiPjwvZGl2PmQYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgEFD19jdGwwOmJ0blNlYXJjaDjqhvy6eZzEPOlTryyzuR45utEmgKlE3kliOn7VyrCe" />
+
+        <script type="text/javascript">
+<!--
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+// -->
+        </script>
+
+
+        <div class="wrapper">
+            <!-- Header Start -->
+            <div class="header">
+                <a href="/Index.aspx" title="Bespoke Software Development" class="logo">Bespoke Software Development</a>
+
+                <div class="rightContainer">
+                    <div class="selectCountry">
+                        <a href="?country=dk"><img src="/images/flags/24/dk.png" /></a>
+                        <a href="?country=gb"><img src="/images/flags/24/gb.png" /></a>
+                        <a href="?country=us"><img src="/images/flags/24/us.png" /></a>
+                    </div>
+                    <div class="socialMedia">
+                        <ul>
+                            <li id="_ctl0_socialFB">
+                                <a href="https://www.facebook.com/pages/SieraDelta/1633090896936805" target="_blank">
+                                    <img src="/images/fb.jpg" alt="Join us on Facebook" />
+                                </a>
+                            </li>
+
+                            <li id="_ctl0_socialGPlus">
+                                <a href="https://plus.google.com/u/0/+SieraDelta/posts" target="_blank">
+                                    <img src="/images/googleplus.jpg" alt="Join us on Twitter" />
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="clear">
+                    <!-- clear -->
+                </div>
+            </div>
+            <!-- end of #header -->
+
+            <div class="navigation">
+                <div class="menuBorder leftMenu">
+                    <ul>
+                        <li>
+                            <a href="http://localhost:60001/All-Products/">Products</a>
+                            <div class="sub">
+                                <div class="cat">
+                                    <h6>WebDefender</h6>
+                                    <ul>
+                                        <li><a href="/Products/WebDefenderServer.aspx">WebDefender - Server</a></li>
+                                        <li><a href="/Products/WebDefenderWebsite.aspx">WebDefender - Website</a></li>
+                                        <!--<li><a href="/Products/WebdefenderFirebird.aspx">WebDefender - Firebird</a></li>-->
+                                        <li><a href="/Products/WebMonitor.aspx">WebMonitor</a></li>
+                                    </ul>
+                                </div>
+                                <div class="clear">
+                                    <!-- clear -->
+                                </div>
+                            </div>
+                        </li>
+                        <li><a href="/Services/Index.aspx">Services</a></li>
+                        <li><a href="/Download/Index.aspx">Downloads</a></li>
+                        <li><a href="/Members/Index.aspx">My Account</a></li>
+                        <li><a href="/Helpdesk/Index.aspx">Helpdesk</a></li>
+                        <li><a href="/Shopping/Basket/">Purchase</a></li>
+                        <li><a href="/Helpdesk/Feedback.aspx">Feedback</a></li>
+                    </ul>
+                </div>
+                <!-- end of #navigation -->
+
+                <div class="searchWrapper">
+                    <div class="frm_search">
+                        <input name="_ctl0:txtSearchTerms" type="text" value="Search..." id="_ctl0_txtSearchTerms" onblur="clickrecall(this)" onclick="clickclear(this)" />
+                        <input src="/images/search.gif" name="_ctl0:btnSearch" type="image" id="_ctl0_btnSearch" />
+                    </div>
+                </div>
+            </div>
+            <!-- Header End -->
+            <!-- Main Content -->
+
+            <div class="content">
+
+                <div class="feature">
+                    <div class="slider-wrapper theme-default">
+                        <div class="ribbon"></div>
+                        <div class="slider nivoSlider">
+
+                        </div>
+                    </div>
+                </div><!-- end of #feature -->
+
+                <div class="banners">
+                    <!-- Max of 4
+
+                    <a href="/appointments/Index.aspx" id="_ctl0_ContentPlaceHolder_linkBookings" class="banner4">
+                        <div class="overlay"><h6>Title</h6></div>
+                        <span><strong>Overlay1</strong> Overlay2</span>
+                    </a>
+                    -->
+                    <div class="clear"><!-- clear --></div>
+                </div><!-- end of #banners -->
+
+
+
+                <table width="350px" cellpadding="0" cellspacing="0" border="0" style="padding-top: 15px; padding-bottom: 15px; padding-right: 10px; border-collapse: separate; margin-left: auto; margin-right: auto;">
+                    <tr>
+                        <td id="_ctl0_ContentPlaceHolder_MediaLinks1_tdFacebook" align="left" valign="top"><div class="fb-like" data-href="http://localhost:60001/Index.aspx" data-width="80" data-height="10" data-colorscheme="light" data-layout="standard" data-action="like" data-show-faces="false" data-send="false"></div></td>
+
+                        <td id="_ctl0_ContentPlaceHolder_MediaLinks1_tdTwitter" align="left" valign="top"><a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="SieraDelta">Tweet</a></td>
+
+                        <td id="_ctl0_ContentPlaceHolder_MediaLinks1_tdPinIt" align="left" valign="top" style="padding-right: 10px;"></td>
+
+                        <td id="_ctl0_ContentPlaceHolder_MediaLinks1_tdPlusOne" align="left" valign="top"><div class="g-plusone" data-size="medium" data-annotation="inline" data-width="300" data-href="http://localhost:60001/Index.aspx"></div></td>
+
+                    </tr>
+                </table>
+
+                <div id="fb-root"></div>
+                <script type="text/javascript">
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+
+                <script type="text/javascript">
+                    !function (d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+                        if (!d.getElementById(id)) {
+                            js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js';
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }
+                    }(document, 'script', 'twitter-wjs');
+                </script>
+
+                <script type="text/javascript">
+                    (function () {
+                        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                        po.src = 'https://apis.google.com/js/plusone.js';
+                        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+                    })();
+                </script>
+
+
+            </div><!-- end of #content -->
+            <!-- Main Content End -->
+        </div>
+
+        <!-- End of Wrapper -->
+        <!-- Footer -->
+        <div class="footer png_bg">
+            <p>  </p>
+            <p id="_ctl0_pFooterDetails">
+                <a href="http://localhost:60001/ContactUs.aspx">Contact Us</a> - <a href="http://localhost:60001/About.aspx">About Us</a> - <a href="http://localhost:60001/Terms.aspx">Terms & Conditions</a>
+            </p>
+            <p>&copy; Copyright 2011 - 2015 Siera Delta. All rights reserved. </p>
+        </div>
+        <!-- Footer -->
+
+        <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="90059987" />
+        <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAPGpatDguu1xfRCMCvg4s6GjJ0porsChoSKz5B7yvr9ubqOVDBVtZfZk6WY/jRBK7qf7o1nqjfTSTpp+zHvQ33PZea59WiYVVeae94vjheTQQ==" />
+    </form>
+
+    <!-- Visual Studio Browser Link -->
+    <script type="application/json" id="__browserLink_initializationData">
+        {"appName":"Internet Explorer","requestId":"83e5a8b94f06471ebd9cf34af0f8d905"}
+    </script>
+    <script type="text/javascript" src="http://localhost:57105/6fd833d4e9e248cbb7ce6b332eaf150a/browserLink" async="async"></script>
+    <!-- End Browser Link -->
+
+</body>
+</html>

@@ -414,9 +414,10 @@ namespace Website.Library.Classes
 
         public virtual List<string> WebSiteOptionHeaders()
         {
-            List<string> Result = new List<string>();
-
-            Result.Add("General Settings");
+            List<string> Result = new List<string>
+            {
+                "General Settings"
+            };
 
             if (!BaseWebApplication.StaticWebSite)
             {

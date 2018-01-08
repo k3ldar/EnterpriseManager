@@ -36,9 +36,6 @@ using Languages;
 using POS.Base.Classes;
 using POS.Base.Plugins;
 
-#pragma warning disable IDE1005 // Delegate invocation can be simplified
-#pragma warning disable IDE0017 // object initialization can be simplified
-#pragma warning disable IDE0029 // Null checks can be simplified
 #pragma warning disable IDE1006 // naming rule violation
 
 namespace POS.Images

@@ -1,0 +1,553 @@
+﻿.cartConfirm {
+    width: 350px;
+    height: 200px;
+    left: 785px;
+    top: 90px;
+    visibility: visible;
+    z-index: 5000;
+    background-color: #FFFFFF;
+    border-width: 3px;
+    border-style: solid;
+    border-color: Gray;
+    padding: 3px;
+    float: right;
+    position: fixed;
+    display: block;
+    font-size: 1.2em;
+}
+
+    .cartConfirm h2 {
+        font-size: 1.9em;
+    }
+
+    .cartConfirm .cartItemDescription {
+        font-size: 1.5em;
+        height: 70px;
+    }
+
+        .cartConfirm .cartItemDescription img {
+            width: 90px;
+            height: 70px;
+            padding-right: 20px;
+        }
+
+    .cartConfirm .buttonWrapper {
+        width: auto;
+        height: 30px;
+        font-size: 1.1em;
+    }
+
+    .cartConfirm .subTotal {
+        font-size: 1.2em;
+    }
+
+        .cartConfirm .subTotal p {
+            color: #999;
+            margin: 0 10px 4px 70px;
+            text-align: left;
+        }
+
+            .cartConfirm .subTotal p strong {
+                float: right;
+                text-align: right;
+                width: 80px;
+            }
+
+
+        .scrollFixIPLookup { line-height: 1.35; white-space: nowrap; }
+        .ipLookupDetails {
+            width: 180px;
+            float: left;
+            font-family: "nimbus-sans", Helvetica, Arial, "Lucida Grande", sans-serif;
+            font-size: 1.4em;
+            line-height: 1.5em;
+        }
+            .ipLookupDetails td
+            {
+                text-align: left;
+                vertical-align: top;
+            }
+            .ipLookupDetails th strong
+            {
+                font-weight: 200;
+                vertical-align: top;
+            }
+
+
+.webDefenderStatistics
+{
+    margin: 0 0 1.5em 0;
+    background: none;
+    padding: 5px;
+    border: none;
+    text-align: left;
+    float: left;
+    padding: 10px 0 0px 0px;
+    cursor: pointer;
+    width: 250px;
+    left: 40px;
+}
+
+    .webDefenderStatistics strong
+    {
+        font-size: 1.3em;
+    }
+
+.statisticsPopup {
+    margin: 70px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    position: relative;
+    transition: all 5s ease-in-out;
+    width: 80%;
+}
+
+    .statisticsPopup h2 {
+        margin-top: 0;
+        color: #333;
+        font-family: Tahoma, Arial, sans-serif;
+    }
+
+    .statisticsPopup .close {
+        position: absolute;
+        top: 0px;
+        left: 10px;
+        transition: all 200ms;
+        font-size: 30px;
+        font-weight: bold;
+        text-decoration: none;
+        color: #333;
+    }
+
+    .statisticsPopup .close:hover 
+    {
+        color: orange;
+    }
+
+    .statisticsPopup .content 
+    {
+        padding-left: 0px;
+        padding-top: 5px;
+        max-height: 30%;
+        overflow: auto;
+        font-size: 1.0em;
+    }
+
+
+/* lang sel*/
+
+.ModalPopupBG
+{
+    background-color: #666699;
+    filter: alpha(opacity=50);
+    opacity: 0.7;
+}
+
+.languageCurrencyBox 
+{
+  width: 90px;
+  margin: 0;
+  background: none;
+  padding: 5px;
+  border: none;
+  text-align: right;
+  float: left;
+  cursor: pointer;
+  color: black;
+  background: white;
+}
+
+    languageCurrencyBox:hover 
+    {
+      background: black;
+      color: white; 
+    }
+
+    .languageCurrencyBox ul li
+    {
+        padding-top: 8px;
+    }
+
+        .languageCurrencyBox ul li span
+        {
+            left: -10px;
+            font-size: 1.3em;
+        }
+
+
+.langCurrOverlay 
+{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    opacity: 0;
+}
+
+.langCurrOverlay:target {
+    opacity: 1;
+}
+
+.langCurrPopup {
+    margin: 70px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    position: relative;
+    transition: all 5s ease-in-out;
+}
+
+    .langCurrPopup h2 {
+        margin-top: 0;
+        color: #333;
+        font-family: Tahoma, Arial, sans-serif;
+    }
+
+    .langCurrPopup .close {
+        position: absolute;
+        top: 0px;
+        left: 380px;
+        transition: all 200ms;
+        font-size: 30px;
+        font-weight: bold;
+        text-decoration: none;
+        color: #333;
+    }
+
+    .langCurrPopup .close:hover 
+    {
+        color: orange;
+    }
+
+    .langCurrPopup .content 
+    {
+        padding-left: 0px;
+        padding-top: 5px;
+        max-height: 30%;
+        overflow: auto;
+        font-size: 1.2em;
+    }
+
+    		.langCurrPopup input[type="submit"] {
+			background-color: #000000;
+			background-image: url('/images/btn_fallback.gif');
+			background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#2c2c2c), to(#000000));
+			background-image: -webkit-linear-gradient(top, #2c2c2c, #000000);
+			background-image:    -moz-linear-gradient(top, #2c2c2c, #000000);
+			background-image:     -ms-linear-gradient(top, #2c2c2c, #000000);
+			background-image:      -o-linear-gradient(top, #2c2c2c, #000000);
+			border: none;
+			-moz-border-radius: 4px;  
+			-webkit-border-radius: 4px;  
+			border-radius: 4px;
+			color: #fff;
+			cursor: pointer;
+			float: right;
+			font-weight: bold;
+			padding: 6px 16px;
+			text-shadow: 0 -1px 0 #000;
+			margin-right: 10px;
+            margin-right: 5px;
+            top: -10px;
+		}
+
+
+/* sdtags */
+.hashTags
+{
+    display: inline-block;
+}
+
+    .hashTags h4
+    {
+        font-size: 1.4em;
+        padding: 0px 0px 0.6em;
+    }
+
+    .hashTags ul li
+    {        
+        float: left;
+	    display: inline-block;
+	    white-space: nowrap;
+	    background-color: #ccc;
+	    border: 1px solid #777;
+        padding: 0 1.0em;
+        margin: 0.3em;
+        font: 0.9em/1.5em Arial, Helvetica;
+        text-decoration: none;
+        color: #333;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, .8);
+        -moz-border-radius: .2em;
+        -webkit-border-radius: .2em;
+        border-radius: .2em;
+        -moz-box-shadow: 0 0 1px 1px rgba(255, 255, 255, .8) inset, 0 1px 0 rgba(0, 0, 0, .3);
+        -webkit-box-shadow: 0 0 1px 1px rgba(255, 255, 255, .8) inset, 0 1px 0 rgba(0, 0, 0, .3);
+        box-shadow: 0 0 1px 1px rgba(255, 255, 255, .8) inset, 0 1px 0 rgba(0, 0, 0, .3);
+        background-image: linear-gradient(top, #eee, #ccc);
+    }
+
+
+	
+
+    .hashTagsTable
+    {
+	    color: #333;
+	    font-size: 1.5em;
+	    margin: 30px 0 30px 0;
+	    width: 740px;
+    }
+    
+	    .hashTagsTable th {
+		    background-color: #000;
+		    border-left: 1px solid #fff;
+		    color: #fff;
+		    font-weight: bold;
+		    padding: 6px 10px;
+		    text-align: center;
+	    }
+	    
+        .hashTags table th.first
+        {
+            border: none; 
+            text-align: left;
+        }
+        
+ 	    .hashTagsTable td 
+ 	    {
+		    border-bottom: 1px solid #ccc;
+		    padding: 6px 10px;
+		    text-align: left;
+	    }
+
+    
+.hashTags:focus
+{
+	outline: 0;
+	background: #fafafa;
+}    
+
+.hashTag:before
+{
+    background: #ccc;
+    background: rgba(0,0,0,.1);
+    float: left;
+    width: 1em;
+    text-align: center;
+    font-size: 1.0em;
+    margin: 0 1em 0 -1em;
+    padding: 0 .2em;
+    -moz-box-shadow: 1px 0 0 rgba(0,0,0,.5), 2px 0 0 rgba(255,255,255,.5);
+    -webkit-box-shadow: 1px 0 0 rgba(0,0,0,.5), 2px 0 0 rgba(255,255,255,.5);
+    box-shadow: 1px 0 0 rgba(0,0,0,.5), 2px 0 0 rgba(255,255,255,.5);
+    -moz-border-radius: .15em 0 0 .15em;
+    -webkit-border-radius: .15em 0 0 .15em;
+    border-radius: .15em 0 0 .15em;
+    pointer-events: none;
+}
+/*
+.hashTag:before
+{
+    content: "#";
+}*/
+
+.hashTagError
+{
+    font-size: 1.1em;
+    color: #FF0000;
+}
+
+
+/* nivo slider */
+/*
+ * jQuery Nivo Slider v2.7.1
+ * http://nivo.dev7studios.com
+ *
+ * Copyright 2011, Gilbert Pellegrom
+ * Free to use and abuse under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+ * 
+ * March 2010
+ */
+ 
+ 
+/* The Nivo Slider styles */
+.nivoSlider {
+	position:relative;
+	margin: 0 0 12px 0;
+	width: 700px; height: 320px;
+}
+.nivoSlider img {
+	position:absolute;
+	top:0px;
+	left:0px;
+	display: none;
+}
+.nivoSlider a {
+    border:0;
+    display:block;
+}
+/* If an image is wrapped in a link */
+.nivoSlider a.nivo-imageLink {
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	border:0;
+	padding:0;
+	margin:0;
+	z-index:6;
+	display:none;
+}
+/* The slices and boxes in the Slider */
+.nivo-slice {
+	display:block;
+	position:absolute;
+	z-index:5;
+	height:100%;
+}
+.nivo-box {
+	display:block;
+	position:absolute;
+	z-index:5;
+}
+/* Caption styles */
+.nivo-caption {
+	position:absolute;
+	left:0px;
+	bottom:0px;
+	background:#000;
+	color:#fff;
+	opacity:0.8; /* Overridden by captionOpacity setting */
+	width:100%;
+	z-index:8;
+}
+.nivo-caption p {
+	padding:5px;
+	margin:0;
+}
+.nivo-caption a {
+	display:inline !important;
+}
+.nivo-html-caption {
+    display:none;
+}
+/* Direction nav styles (e.g. Next & Prev) */
+.nivo-directionNav a {
+	display: block;
+	text-indent: -9999px;
+	overflow: hidden;
+	position:absolute;
+	width: 50px; height: 50px;
+	top:50%;
+	margin: -25px 0 0 0;
+	z-index:9;
+	cursor:pointer;
+	opacity: 0.5;
+}
+.nivo-prevNav {
+	left:10px;
+	background: url(../images/arrows.png) no-repeat 0 0;
+	
+}
+.nivo-nextNav {
+	right:10px;
+	background: url(../images/arrows.png) no-repeat 100% 0;
+}
+
+.nivo-directionNav a:hover { opacity: 1; }
+
+.nivo-controlNav {
+	position:absolute;
+	right: 6px;
+	bottom:8px;
+	opacity: 0.75;
+	z-index: 9;
+}
+.nivo-controlNav a {
+	display:block;
+	width: 10px;
+	height:10px;
+	background:url(../images/bullets.png) no-repeat 0 -10px;
+	text-indent:-9999px;
+	border:0;
+	margin-right:2px;
+	float:left;
+	cursor: pointer;
+}
+
+.nivo-controlNav a.active { background-position:0 0; }
+
+
+/* Control nav styles (e.g. 1,2,3...) */
+/*
+.nivo-controlNav a {
+	position:relative;
+	z-index:9;
+	cursor:pointer;
+}
+.nivo-controlNav a.active {
+	font-weight:bold;
+}
+*/
+
+
+
+/* Modal */
+.watermark {
+	background: #FFAAFF;
+}
+
+.popupControl {
+	background-color:#AAD4FF;
+	position:absolute;
+	visibility:hidden;
+	border-style:solid;
+	border-color: Black;
+	border-width: 2px;
+}
+
+.modalBackground {
+	background-color:Gray;
+	filter:alpha(opacity=70);
+	opacity:0.7;
+}
+
+.modalPopup
+{
+    background-color: #FFFFFF;
+    border-width: 3px;
+    border-style: solid;
+    border-color: Gray;
+    padding: 3px;
+    width: 250px;
+}
+
+.sampleStyleA {
+	background-color:#FFF;
+}
+
+.sampleStyleB {
+	background-color:#FFF;
+	font-family:monospace;
+	font-size:10pt;
+	font-weight:bold;
+}
+
+.sampleStyleC {
+	background-color:#ddffdd;
+	font-family:sans-serif;
+	font-size:10pt;
+	font-style:italic;
+}
+
+.sampleStyleD {
+	background-color:Blue;
+	color:White;
+	font-family:Arial;
+	font-size:10pt;
+}

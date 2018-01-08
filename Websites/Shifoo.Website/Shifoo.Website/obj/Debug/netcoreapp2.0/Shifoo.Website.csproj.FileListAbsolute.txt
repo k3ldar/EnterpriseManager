@@ -1,0 +1,14 @@
+T:\ShifooMain\Websites\Shifoo.Website\Shifoo.Website\bin\Debug\netcoreapp2.0\Shifoo.Website.deps.json
+T:\ShifooMain\Websites\Shifoo.Website\Shifoo.Website\bin\Debug\netcoreapp2.0\Shifoo.Website.runtimeconfig.json
+T:\ShifooMain\Websites\Shifoo.Website\Shifoo.Website\bin\Debug\netcoreapp2.0\Shifoo.Website.runtimeconfig.dev.json
+T:\ShifooMain\Websites\Shifoo.Website\Shifoo.Website\bin\Debug\netcoreapp2.0\Shifoo.Website.dll
+T:\ShifooMain\Websites\Shifoo.Website\Shifoo.Website\bin\Debug\netcoreapp2.0\Shifoo.Website.pdb
+T:\ShifooMain\Websites\Shifoo.Website\Shifoo.Website\obj\Debug\netcoreapp2.0\Shifoo.Website.csprojResolveAssemblyReference.cache
+T:\ShifooMain\Websites\Shifoo.Website\Shifoo.Website\obj\Debug\netcoreapp2.0\Shifoo.Website.csproj.CoreCompileInputs.cache
+T:\ShifooMain\Websites\Shifoo.Website\Shifoo.Website\obj\Debug\netcoreapp2.0\Shifoo.Website.AssemblyInfoInputs.cache
+T:\ShifooMain\Websites\Shifoo.Website\Shifoo.Website\obj\Debug\netcoreapp2.0\Shifoo.Website.AssemblyInfo.cs
+T:\ShifooMain\Websites\Shifoo.Website\Shifoo.Website\obj\Debug\netcoreapp2.0\Shifoo.Website.dll
+T:\ShifooMain\Websites\Shifoo.Website\Shifoo.Website\obj\Debug\netcoreapp2.0\Shifoo.Website.pdb
+T:\ShifooMain\Websites\Shifoo.Website\Shifoo.Website\bin\Debug\netcoreapp2.0\Shifoo.Website.Global.dll
+T:\ShifooMain\Websites\Shifoo.Website\Shifoo.Website\bin\Debug\netcoreapp2.0\Shifoo.Website.Global.pdb
+T:\ShifooMain\Websites\Shifoo.Website\Shifoo.Website\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs

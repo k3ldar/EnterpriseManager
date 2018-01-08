@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+
+<WebDefender>
+  <Settings>
+    <DataAccessLayer>WebDefender.Firebird</DataAccessLayer>
+    <ConnectionString>User=SIMON;Password=carte079;Database=T:\\SieraDelta\\Database\\WEBDEFENDER.FDB;DataSource=127.0.0.1;Dialect=3;MinPoolSize=1;MaxPoolSize=5;Pooling=true;Connection Lifetime=600;Packet Size=8192;CharSet=UTF8</ConnectionString>
+    <Path>T:\SieraDelta\Website</Path>
+  </Settings>
+</WebDefender>

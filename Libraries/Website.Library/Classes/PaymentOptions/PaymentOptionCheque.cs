@@ -37,7 +37,7 @@ namespace Website.Library.Classes.PaymentOptions
         {
             try
             {
-                webResponse.Redirect(GlobalClass.RootURL + "/Basket/BasketOrderComplete.aspx?InternalPaymentType=cpo", false);
+                webResponse.Redirect(GlobalClass.RootURL + "/Shopping/Basket/Order-Complete/Payment-Type/cpo/", false);
             }
             catch (Exception err)
             {

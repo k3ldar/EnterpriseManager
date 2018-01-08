@@ -147,7 +147,7 @@ namespace Website.Library.Classes
         /// </summary>
         public static string SupportEMail { get; set; }
 
-        public static string CookieRootURL = ".heavenskincare.com";
+        public static string CookieRootURL;
 
         /// <summary>
         /// Date and time website was started
@@ -235,8 +235,8 @@ namespace Website.Library.Classes
 
         public static string DefaultStyle = "Default";
 
-        public static string CSSCookieName = "heaven_Style";
-        public static string PageTitle = "Heaven Health and Beauty";
+        public static string CSSCookieName = "style_cookie";
+        public static string PageTitle;
 
 
         /// <summary>
@@ -457,22 +457,6 @@ namespace Website.Library.Classes
         #endregion Social Media
 
         /// <summary>
-        /// Determines wether terms and conditions are shown
-        /// </summary>
-        public static bool ShowTermsAndConditions { get; set; }
-
-        /// <summary>
-        /// Determines wether the returns policy is shown or not
-        /// </summary>
-        public static bool ShowReturnsPolicy { get; set; }
-
-        /// <summary>
-        /// Determines wether the Privacy Policy is shown or not
-        /// </summary>
-        public static bool ShowPrivacyPolicy { get; set; }
-
-
-        /// <summary>
         /// are characters left to right or right to left??
         /// </summary>
         public static bool UseLeftToRight = true;
@@ -611,9 +595,11 @@ namespace Website.Library.Classes
 
         #endregion Mail Chimp
 
+        #region Maintenance
 
         public static bool AutoMaintenanceMode;
 
+        #endregion Maintenance
 
         #region Rotating Home Banners
 
@@ -745,26 +731,26 @@ namespace Website.Library.Classes
 
         private static void CreateInitializationThread()
         {
-            if (Shared.Classes.ThreadManager.Exists("Auto Rule Update"))
-                Shared.Classes.ThreadManager.Cancel("Auto Rule Update");
+            if (ThreadManager.Exists("Auto Rule Update"))
+                ThreadManager.Cancel("Auto Rule Update");
 
-            if (Shared.Classes.ThreadManager.Exists("Routine Maintenance"))
-                Shared.Classes.ThreadManager.Cancel("Routine Maintenance");
+            if (ThreadManager.Exists("Routine Maintenance"))
+                ThreadManager.Cancel("Routine Maintenance");
 
-            if (Shared.Classes.ThreadManager.Exists("GeoIP Update"))
-                Shared.Classes.ThreadManager.Cancel("GeoIP Update");
+            if (ThreadManager.Exists("GeoIP Update"))
+                ThreadManager.Cancel("GeoIP Update");
 
-            if (Shared.Classes.ThreadManager.Exists("Email Send Thread"))
-                Shared.Classes.ThreadManager.Cancel("Email Send Thread");
+            if (ThreadManager.Exists("Email Send Thread"))
+                ThreadManager.Cancel("Email Send Thread");
 
-            if (Shared.Classes.ThreadManager.Exists("Update Site Map"))
-                Shared.Classes.ThreadManager.Cancel("Update Site Map");
+            if (ThreadManager.Exists("Update Site Map"))
+                ThreadManager.Cancel("Update Site Map");
 
-            if (Shared.Classes.ThreadManager.Exists("Routine Maintenance Campaigns"))
-                Shared.Classes.ThreadManager.Cancel("Routine Maintenance Campaigns");
+            if (ThreadManager.Exists("Routine Maintenance Campaigns"))
+                ThreadManager.Cancel("Routine Maintenance Campaigns");
 
-            if (!Shared.Classes.ThreadManager.Exists("Website Initialisation Thread Manager"))
-                Shared.Classes.ThreadManager.ThreadStart(new WebsiteInitialisationThreadManager(),
+            if (!ThreadManager.Exists("Website Initialisation Thread Manager"))
+                ThreadManager.ThreadStart(new WebsiteInitialisationThreadManager(),
                     "Website Initialisation Thread Manager", ThreadPriority.Lowest);
         }
 
@@ -1375,9 +1361,21 @@ namespace Website.Library.Classes
 
                 lib.DAL.DALHelper.WebsiteAddress = RootURL;
 
-                ShowTermsAndConditions = ConfigSettingGet("Settings.ShowTermsAndConditions", false);
-                ShowPrivacyPolicy = ConfigSettingGet("Settings.ShowPrivacyPolicy", false);
-                ShowReturnsPolicy = ConfigSettingGet("Settings.ShowReturnsPolicy", false);
+                #region Global Page Options
+
+                GlobalClass.ShowSalonsMenu = ConfigSettingGet("Settings.ShowSalons", true);
+                GlobalClass.ShowTreatmentsMenu = ConfigSettingGet("Settings.ShowTreatments", false);
+                GlobalClass.ShowDistributorsMenu = ConfigSettingGet("Settings.ShowDistributors", false);
+                GlobalClass.ShowTipsAndTricksMenu = ConfigSettingGet("Settings.ShowTipsAndTricks", false);
+                GlobalClass.ShowDownloadMenu = ConfigSettingGet("Settings.ShowDownloads", false);
+                GlobalClass.ShowTradeMenu = ConfigSettingGet("Settings.ShowTrade", false);
+
+                GlobalClass.ShowTreatmentsBrochure = ConfigSettingGet("Settings.ShowTreatmentBrochure", true);
+                GlobalClass.ShowTermsAndConditions = ConfigSettingGet("Settings.ShowTermsAndConditions", false);
+                GlobalClass.ShowPrivacyPolicy = ConfigSettingGet("Settings.ShowPrivacyPolicy", false);
+                GlobalClass.ShowReturnsPolicy = ConfigSettingGet("Settings.ShowReturnsPolicy", false);
+
+                #endregion Global Page Options
 
                 AlterTextColorBasedOnBasketContents = ConfigSettingGet("Settings.AlterTextColorBasedOnBasketContents", false);
                 ItemDoesNotExistsInShoppingBagTextColour = ConfigSettingGet("Settings.ItemDoesNotExistsInShoppingBagTextColour", "white");
@@ -1514,16 +1512,16 @@ namespace Website.Library.Classes
                 {
                     if (_initialiseThreads)
                     {
-                        Shared.EventLog.Add("Initialise Thread Manager");
-                        Shared.Classes.ThreadManager.ThreadExceptionRaised += ThreadManager_ThreadExceptionRaised;
-                        Shared.Classes.ThreadManager.ThreadAbortForced += ThreadManager_ThreadAbortForced;
-                        Shared.Classes.ThreadManager.ThreadCancellAll += ThreadManager_ThreadCancellAll;
-                        Shared.Classes.ThreadManager.ThreadForcedToClose += ThreadManager_ThreadForcedToClose;
-                        Shared.Classes.ThreadManager.ThreadStarted += ThreadManager_ThreadStarted;
-                        Shared.Classes.ThreadManager.ThreadStopped += ThreadManager_ThreadStopped;
-                        Shared.Classes.ThreadManager.Initialise();
-                        Shared.Classes.ThreadManager.AllowThreadPool = true;
-                        Shared.Classes.ThreadManager.MaximumPoolSize = 100000;
+                        EventLog.Add("Initialise Thread Manager");
+                        ThreadManager.ThreadExceptionRaised += ThreadManager_ThreadExceptionRaised;
+                        ThreadManager.ThreadAbortForced += ThreadManager_ThreadAbortForced;
+                        ThreadManager.ThreadCancellAll += ThreadManager_ThreadCancellAll;
+                        ThreadManager.ThreadForcedToClose += ThreadManager_ThreadForcedToClose;
+                        ThreadManager.ThreadStarted += ThreadManager_ThreadStarted;
+                        ThreadManager.ThreadStopped += ThreadManager_ThreadStopped;
+                        ThreadManager.Initialise();
+                        ThreadManager.AllowThreadPool = true;
+                        ThreadManager.MaximumPoolSize = 100000;
                         _initialiseThreads = false;
                     }
 
@@ -1578,13 +1576,13 @@ namespace Website.Library.Classes
 
             //shut down internal threads
             Shared.EventLog.Add("Finalise Thread Manager");
-            Shared.Classes.ThreadManager.Finalise();
+            ThreadManager.Finalise();
 
-            Shared.Classes.ThreadManager.ThreadAbortForced -= ThreadManager_ThreadAbortForced;
-            Shared.Classes.ThreadManager.ThreadCancellAll -= ThreadManager_ThreadCancellAll;
-            Shared.Classes.ThreadManager.ThreadForcedToClose -= ThreadManager_ThreadForcedToClose;
-            Shared.Classes.ThreadManager.ThreadStarted -= ThreadManager_ThreadStarted;
-            Shared.Classes.ThreadManager.ThreadStopped -= ThreadManager_ThreadStopped;
+            ThreadManager.ThreadAbortForced -= ThreadManager_ThreadAbortForced;
+            ThreadManager.ThreadCancellAll -= ThreadManager_ThreadCancellAll;
+            ThreadManager.ThreadForcedToClose -= ThreadManager_ThreadForcedToClose;
+            ThreadManager.ThreadStarted -= ThreadManager_ThreadStarted;
+            ThreadManager.ThreadStopped -= ThreadManager_ThreadStopped;
             _initialiseThreads = true;
         }
 
@@ -1680,20 +1678,16 @@ namespace Website.Library.Classes
         /// <returns>true if ip address should be banned, otherwise false</returns>
         protected static bool AutoBanIPAddress(string path, string ipAddress, bool ForceBan = false)
         {
-            bool Result = false;
-
             if (path.ToLower().Contains("/staff/"))
-                return (Result);
+                return (false);
 
             if (path.ToLower().Contains("/admin/"))
-                return (Result);
+                return (false);
 
             if (path.ToLower().Contains(".axd"))
-                return (Result);
+                return (false);
 
-            Result = lib.WebsiteAdministration.AutoBanIPAddress(path, ipAddress, ForceBan);
-
-            return (Result);
+            return (lib.WebsiteAdministration.AutoBanIPAddress(path, ipAddress, ForceBan));
         }
 
         /// <summary>
@@ -1911,8 +1905,24 @@ namespace Website.Library.Classes
         {
             using (routes.GetWriteLock())
             {
+                routes.MapPageRoute("homeRoute",
+                    "Home/",
+                    "~/Index.aspx");
+
+                routes.MapPageRoute("contactUsRoute",
+                    "Contact-Us/",
+                    "~/ContactUs.aspx");
+
+                routes.MapPageRoute("aboutRoute",
+                    "About/",
+                    "~/About.aspx");
+
+                routes.MapPageRoute("termsRoute",
+                    "Terms/",
+                    "~/Terms.aspx");
+
                 routes.MapPageRoute("productsGroupRoute",
-                    "Products/{group}/{name}/",
+                    "All-Products/Group/{group}/{name}/",
                     "~/Products/Index.aspx");
 
                 foreach (ProductType productType in ProductTypes.Get())
@@ -1921,26 +1931,78 @@ namespace Website.Library.Classes
 
                     foreach (Product product in allProducts)
                     {
-                        // add primary product
-                        AllRoutes.Add(product.NameSEO, product.ID);
+                        if (!AllRoutes.ContainsKey(product.NameSEO))
+                        {
+                            // add primary product
+                            AllRoutes.Add(product.NameSEO, product.ID);
 
-                        // add priimary group/product
-                        AllRoutes.Add(String.Format("{0}{1}", product.PrimaryGroup.Description,
-                            product.NameSEO), product.ID);
+                            // add primary group/product
+                            AllRoutes.Add(String.Format("{0}{1}", product.PrimaryGroup.Description,
+                                product.NameSEO), product.ID);
+                        }
                     }
                 }
+                
+                routes.MapPageRoute("groupPageRoute",
+                    "All-Products/Group/{group}/Page/{page}/",
+                    "~/Products.aspx");
 
                 routes.MapPageRoute("groupRoute",
-                    "Product/Group/{group}/",
+                    "All-Products/Group/{group}/",
                     "~/Products.aspx");
 
                 foreach (lib.MemberLevel mLevel in Enum.GetValues(typeof(lib.MemberLevel)))
                 {
                     foreach (ProductGroup group in ProductGroups.Get(mLevel, true))
                     {
-                        AllRoutes.Add(String.Format("{0}{1}", mLevel.ToString(), group.SEODescripton), group.ID);
+                        string keyName = String.Format("{0}{1}", mLevel.ToString(), group.SEODescripton);
+
+                        if (!AllRoutes.ContainsKey(keyName))
+                            AllRoutes.Add(keyName, group.ID);
                     }
                 }
+
+                routes.MapPageRoute("productsRoute",
+                    "All-Products/",
+                    "~/Products.aspx");
+
+                routes.MapPageRoute("productsPageRoute",
+                    "All-Products/Page/{page}/",
+                    "~/Products.aspx");
+
+                // basket
+                routes.MapPageRoute("basketShopping",
+                    "Shopping/Basket/",
+                    "~/Basket/Basket.aspx");
+
+                routes.MapPageRoute("basketShoppingSignIn",
+                    "Shopping/Basket/SignIn/",
+                    "~/Basket/BasketSignIn.aspx");
+
+                routes.MapPageRoute("basketShoppingAddress",
+                    "Shopping/Basket/Delivery-Address/",
+                    "~/Basket/BasketDeliveryAddress.aspx");
+
+                routes.MapPageRoute("basketShoppingSummary",
+                    "Shopping/Basket/Confirm-Order/",
+                    "~/Basket/BasketCheckout.aspx");
+
+                routes.MapPageRoute("basketShoppingOrderComplete",
+                    "Shopping/Basket/Order-Complete/",
+                    "~/Basket/BasketOrderComplete.aspx");
+
+                routes.MapPageRoute("basketShoppingOrderCompleteType",
+                    "Shopping/Basket/Order-Complete/Payment-Type/{type}/",
+                    "~/Basket/BasketOrderComplete.aspx");
+
+                // help desk
+                routes.MapPageRoute("helpDeskFeedback",
+                    "Helpdesk/Feedback/",
+                    "~/Helpdesk/Feedback.aspx");
+
+                routes.MapPageRoute("helpDeskFeedbackPage",
+                    "Helpdesk/Feedback/Page/{page}/",
+                    "~/Helpdesk/Feedback.aspx");
             }
         }
 
@@ -2011,20 +2073,20 @@ namespace Website.Library.Classes
                 {
                     if (BaseWebApplication.WebFarmMaster())
                     {
-                        Shared.Classes.ThreadManager.ThreadStart(new UpdateAutoRulesThread(),
+                        ThreadManager.ThreadStart(new UpdateAutoRulesThread(),
                             "Auto Rule Update", ThreadPriority.Lowest);
 
-                        Shared.Classes.ThreadManager.ThreadStart(new UpdateCustomPagesThread(),
+                        ThreadManager.ThreadStart(new UpdateCustomPagesThread(),
                             "Update Custom Pages", ThreadPriority.Lowest);
                     }
 
                     if (!BaseWebApplication.WebFarm && Website.Library.GlobalClass.AllowRoutineMaintenance)
                     {
                         // if the site is part of a web farm then routine maintenance must be handled via a task scheduler
-                        Shared.Classes.ThreadManager.ThreadStart(new RoutineMaintenanceThread(),
+                        ThreadManager.ThreadStart(new RoutineMaintenanceThread(),
                             "Routine Maintenance", ThreadPriority.Lowest);
 
-                        Shared.Classes.ThreadManager.ThreadStart(new RoutineMaintenanceCampaignsThread(),
+                        ThreadManager.ThreadStart(new RoutineMaintenanceCampaignsThread(),
                             "Routine Maintenance Campaigns", ThreadPriority.Lowest);
                     }
 
@@ -2032,15 +2094,15 @@ namespace Website.Library.Classes
                     {
 #if GeoIPUpdates
                         if (BaseWebApplication.AllowWebsiteGeoUpdate)
-                            Shared.Classes.ThreadManager.ThreadStart(new GeoIPUpdateThread(),
+                            ThreadManager.ThreadStart(new GeoIPUpdateThread(),
                                 "GeoIP Update", ThreadPriority.Lowest);
 #endif
 
                         if (BaseWebApplication.SendEmails)
-                            Shared.Classes.ThreadManager.ThreadStart(new SendEmailThread(),
+                            ThreadManager.ThreadStart(new SendEmailThread(),
                                 "Email Send Thread", ThreadPriority.Lowest);
 
-                        Shared.Classes.ThreadManager.ThreadStart(new UpdateSiteMapThread(), "Update Site Map", ThreadPriority.Lowest);
+                        ThreadManager.ThreadStart(new UpdateSiteMapThread(), "Update Site Map", ThreadPriority.Lowest);
                     }
                 }
                 catch (Exception err)
@@ -2073,7 +2135,7 @@ namespace Website.Library.Classes
         internal GlobalGeoIPCityCache()
             : base(null, new TimeSpan(24, 0, 0), null, 0, 200, true, false)
         {
-            Shared.Classes.ThreadManager.ThreadStart(this, "Load All GeoIP Data", System.Threading.ThreadPriority.Lowest);
+            ThreadManager.ThreadStart(this, "Load All GeoIP Data", System.Threading.ThreadPriority.Lowest);
         }
 
         #endregion Constructors
@@ -2326,15 +2388,16 @@ namespace Website.Library.Classes
             try
             {
                 // Create new Email Object
-                _emailClass = new EmailMessage();
-
-                // Set SMTP Sever Settings
-                _emailClass.SMTPServerName = _emailSettings.SMTPServer;
-                _emailClass.SMTPServerPort = _emailSettings.SMTPServerPort;
-                _emailClass.SMTPUserName = _emailSettings.SMTPUsername;
-                _emailClass.SMTPUserPassword = _emailSettings.SMTPPassword;
-                _emailClass.SMTPSSL = _emailSettings.SMTPSslConnection;
-                _emailClass.MaximumSendAttempts = _emailSettings.EmailMaxSendAttempt;
+                _emailClass = new EmailMessage
+                {
+                    // Set SMTP Sever Settings
+                    SMTPServerName = _emailSettings.SMTPServer,
+                    SMTPServerPort = _emailSettings.SMTPServerPort,
+                    SMTPUserName = _emailSettings.SMTPUsername,
+                    SMTPUserPassword = _emailSettings.SMTPPassword,
+                    SMTPSSL = _emailSettings.SMTPSslConnection,
+                    MaximumSendAttempts = _emailSettings.EmailMaxSendAttempt
+                };
 
                 // Send email and record any errors
 

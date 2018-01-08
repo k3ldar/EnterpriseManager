@@ -1,0 +1,9 @@
+T:\ShifooMain\Websites\Shifoo.Website.Global\bin\Debug\netcoreapp2.0\Shifoo.Website.Global.deps.json
+T:\ShifooMain\Websites\Shifoo.Website.Global\bin\Debug\netcoreapp2.0\Shifoo.Website.Global.dll
+T:\ShifooMain\Websites\Shifoo.Website.Global\obj\Debug\netcoreapp2.0\Shifoo.Website.Global.csprojResolveAssemblyReference.cache
+T:\ShifooMain\Websites\Shifoo.Website.Global\obj\Debug\netcoreapp2.0\Shifoo.Website.Global.csproj.CoreCompileInputs.cache
+T:\ShifooMain\Websites\Shifoo.Website.Global\obj\Debug\netcoreapp2.0\Shifoo.Website.Global.AssemblyInfoInputs.cache
+T:\ShifooMain\Websites\Shifoo.Website.Global\obj\Debug\netcoreapp2.0\Shifoo.Website.Global.AssemblyInfo.cs
+T:\ShifooMain\Websites\Shifoo.Website.Global\bin\Debug\netcoreapp2.0\Shifoo.Website.Global.pdb
+T:\ShifooMain\Websites\Shifoo.Website.Global\obj\Debug\netcoreapp2.0\Shifoo.Website.Global.dll
+T:\ShifooMain\Websites\Shifoo.Website.Global\obj\Debug\netcoreapp2.0\Shifoo.Website.Global.pdb

@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
 using System.Threading;
-using System.Web;
 
 using Shared;
 using Shared.Classes;
 
 using Library.BOL.Basket;
 using Library.BOL.Countries;
-using Library.BOL.Products;
 
 namespace Website.Library.Classes
 {
@@ -138,8 +134,8 @@ namespace Website.Library.Classes
                 //for each item in the basket, reset the price depending on the new price option
                 localData.PriceColumn = (int)Session[StringConstants.SESSION_NAME_WEBSITE_PRICE_COLUMN];
 
-                localData.Basket.Currency = newCurrency == null ? (Currency)Session[
-                    StringConstants.SESSION_NAME_USER_BASKET_CURRENCY] : newCurrency;
+                localData.Basket.Currency = newCurrency ?? (Currency)Session[
+                    StringConstants.SESSION_NAME_USER_BASKET_CURRENCY];
                 localData.Basket.Country = country;
                 localData.Basket.FreeShipping = BaseWebApplication.FreeShippingAllow;
                 localData.Basket.Reset(localData.PriceColumn);

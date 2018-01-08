@@ -74,7 +74,6 @@
                     <ul id="topNav" class="topNav">
                         <!--<li class="current"><a href="/Index.aspx"><span class="png_bg"></span></a></li>-->
                         <li><a href="/Products.aspx"><%=Languages.LanguageStrings.Products %></a>
-
                             <div class="sub" id="subMenu">
                                 <div class="cat">
                                     <h6 id="hCategories" runat="server"><%=Languages.LanguageStrings.Categories %></h6>

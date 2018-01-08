@@ -122,7 +122,7 @@ namespace Website.Library.Classes
                 else
                     Result += "<li>\r";
 
-                Result += String.Format("<img src=\"https://static.heavenskincare.com/Images/Products/{0}\" alt=\"I\" border=\"0\" width=\"200\" height=\"145\"/>\r", image);
+                Result += String.Format("<img src=\"/Images/Products/{0}\" alt=\"I\" border=\"0\" width=\"200\" height=\"145\"/>\r", image);
 
                 if (ShowNew && product.NewProduct)
                     Result += String.Format("<span class=\"new\" style=\"display:block;\">{0}</span>\r", Languages.LanguageStrings.NewProduct);
@@ -173,11 +173,12 @@ namespace Website.Library.Classes
                 image = LibUtils.ResizeImage(image, 200);
 
                 if (Clickable)
-                    Result += String.Format("<li>\r<a href=\"/Products/Product.aspx?ID={0}\">\r", product.ID);
+                    Result += String.Format("<li>\r<a href=\"/All-Products/Group/{0}/{1}/\">\r", 
+                        product.PrimaryGroup.SEODescripton, product.NameSEO);
                 else
                     Result += "<li>\r";
 
-                Result += String.Format("<img src=\"https://static.heavenskincare.com/Images/Products/{0}\" " +
+                Result += String.Format("<img src=\"/Images/Products/{0}\" " +
                     "alt=\"I\" style=\"border: 0;\" width=\"200\" height=\"145\"/>\r", image);
 
                 if (product.NewProduct)
@@ -224,11 +225,13 @@ namespace Website.Library.Classes
             {
                 if (String.IsNullOrEmpty(group.URL))
                 {
-                    Result += String.Format("<li><a href=\"/Products.aspx?GroupID={0}\">{1}</a></li>\r\n", group.ID, group.Description);
+                    Result += String.Format("<li><a href=\"/All-Products/Group/{0}/\">{1}</a></li>\r\n", 
+                        group.SEODescripton, group.Description);
                 }
                 else
                 {
-                    Result += String.Format("<li><a href=\"{0}\">{1}</a></li>\r\n", group.URL, group.Description);
+                    Result += String.Format("<li><a href=\"{0}\">{1}</a></li>\r\n", 
+                        group.URL, group.Description);
                 }
             }
 

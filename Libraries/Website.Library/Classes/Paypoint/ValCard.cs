@@ -39,7 +39,7 @@ namespace Website.Library.Classes.Paypoint
 		#region Constants
 
 		private const string _URLSuccess = "http://www.heavenskincare.com/Basket/BasketValCard.aspx";
-		//private const string URLCancel = "http://www.heavenskincare.com/Basket/Basket.aspx";
+		//private const string URLCancel = "http://www.heavenskincare.com/Basket/";
 		private const string _RemotePassword = "chall3ng3 Auth0r1ty 13A";
 		//private const string Digest = "th1s 1s th3 way th1ngs are d0n3";
 		private const string _MerchantID = "heaven01";

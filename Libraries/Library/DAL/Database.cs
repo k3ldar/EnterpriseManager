@@ -4257,7 +4257,7 @@ namespace Library.DAL
         {
             if (e.Thread.Name == "Cache Management Thread")
             {
-                DALHelper.AllowCaching = false;
+                AllowCaching = false;
                 CacheManager.ClearAllCaches();
             }
         }

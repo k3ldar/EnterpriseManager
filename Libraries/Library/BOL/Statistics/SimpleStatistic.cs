@@ -35,6 +35,13 @@ namespace Library.BOL.Statistics
     {
         #region Constructor
 
+        public SimpleStatistic(Int64 id, string description, string groupName)
+        {
+            ID = id;
+            Description = description;
+            Name1 = groupName;
+        }
+
         public SimpleStatistic(string productName, string URL, string title, 
             int hashTagCount, string description)
         {
@@ -85,6 +92,11 @@ namespace Library.BOL.Statistics
         #endregion Constructor
 
         #region Properties
+
+        /// <summary>
+        /// Record ID
+        /// </summary>
+        public Int64 ID { get; private set; }
 
         /// <summary>
         /// Website Description

@@ -95,6 +95,8 @@ namespace Library
         public const string CACHE_NAME_PRODUCT_COSTS_GET_ID_MEMBER = "28 Product Costs Get By ID Member {0} {1}";
         public const string CACHE_NAME_PRODUCT_COSTS_BY_SKU = "29 Product Cost By SKU {0}";
 
+        public const string CACHE_NAME_PRODUCTS_TOP = "30 Top Products";
+
 
         public const string CACHE_NAME_SELECTABLE_LANGUAGE = "Language Select";
         public const string CACHE_NAME_SELECTABLE_CURRENCY = "Selected Currencies ";

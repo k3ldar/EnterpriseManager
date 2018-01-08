@@ -48,12 +48,12 @@ namespace Website.Library.Classes
         /// <returns></returns>
         protected string GetPrimaryProductGroup()
         {
-            string Result = "<a href=\"/Products.aspx?GroupID={0}\">{1}</a>";
+            string Result = "<a href=\"/All-Products/Group/{0}/\">{1}</a>";
 
             ProductGroup group = Product.PrimaryGroup;
 
             if (group != null)
-                Result = String.Format(Result, group.ID, group.Description.Trim());
+                Result = String.Format(Result, group.SEODescripton, group.Description.Trim());
 
             return (Result);
         }
