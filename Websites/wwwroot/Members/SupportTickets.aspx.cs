@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+using Library.Utils;
 using Website.Library.Classes;
 
 namespace SieraDelta.Website.Members
@@ -15,6 +16,11 @@ namespace SieraDelta.Website.Members
         {
             LeftContainerControl1.SubHeader = Languages.LanguageStrings.MyAccount;
             LeftContainerControl1.SubOptions = GetAccountOptions();
+        }
+
+        protected int GetSupportTicketPage()
+        {
+            return (SharedUtils.StrToIntDef((string)Page.RouteData.Values["page"], 1));
         }
     }
 }

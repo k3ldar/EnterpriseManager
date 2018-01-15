@@ -96,10 +96,10 @@ namespace SieraDelta.Website.Helpdesk.Tickets
                     string EMail = String.Format(@"{0},<br /><br />Your ticket has been received, one of the staff members will review it and reply accordingly. " +
                         "Listed below are details of this ticket.<br /><br /><b>Ticket ID</b>: {1}<br /><b>Subject</b>: {2}<br /><b>Department</b>: {3}<br />" +
                         "<b>Priority</b>: {4}<br /><b>Status</b>: Open<br /><br />You can check the status or reply to this ticket online at: " +
-                        "http://www.SieraDelta.com/helpdesk/Tickets/Showticket.aspx?TicketID={1}&Email={5}<br /><br />kind regards,<br /><br />SieraDelta.com",
+                        "/Help-Desk/Tickets/View/Email/{5}/Ticket/{1}<br /><br />kind regards,<br /><br />SieraDelta.com",
                         UserName, TicketID, Subject, lstDepartment.SelectedItem.Text, lstPriority.SelectedItem.Text, Email);
                     Global.SendEMail(UserName, Email, String.Format("{0}: {1}", TicketID, Subject), EMail);
-                    DoRedirect(String.Format("/Helpdesk/Tickets/ShowTicket.aspx?Email={0}&TicketID={1}", Email, TicketID), true);
+                    DoRedirect(String.Format("/Help-Desk/Tickets/View/Email/{0}/Ticket/{1}/", Email, TicketID), true);
                 }
                 catch (Exception err)
                 {

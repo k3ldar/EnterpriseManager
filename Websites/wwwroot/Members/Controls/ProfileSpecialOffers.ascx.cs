@@ -36,7 +36,7 @@ namespace SieraDelta.Website.Members.Controls
                 user.OffersPost = cbPostalOffers.Checked;
                 user.OffersEmail = cbEmailOffers.Checked;
                 user.Save();
-                DoRedirect("/Members/Index.aspx?profileUpdated=true", true);
+                DoRedirect("/Account/?profileUpdated=true", true);
             }
             catch (System.Exception Err)
             {

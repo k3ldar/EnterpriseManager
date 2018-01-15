@@ -30,7 +30,7 @@
 			<div class="breadcrumb">
 			
 				<ul class="fixed">
-					<li><a href="/Index.aspx"><%=Languages.LanguageStrings.Home %></a></li>
+					<li><a href="/Home/"><%=Languages.LanguageStrings.Home %></a></li>
 					<li>&rsaquo;</li>
 					<li><a href="/Shopping/Basket/"><%=Languages.LanguageStrings.ShoppingCart %></a></li>
 				</ul>

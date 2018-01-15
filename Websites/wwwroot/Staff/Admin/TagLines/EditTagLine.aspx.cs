@@ -18,7 +18,7 @@ namespace SieraDelta.Website.Staff.Admin.TagLines
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!GetUser().HasPermissionWebsite(SecurityEnums.SecurityPermissionsWebsite.TagLines))
-                DoRedirect("http://www.SieraDelta.com/Error/InvalidPermissions.aspx", true);
+                DoRedirect("/Site-Error/Invalid-Permission/", true);
 
             Int64 id = GetFormValue("ID", -1);
             _tag = Library.BOL.TagLines.TagLines.Find(id);

@@ -14,7 +14,7 @@ namespace SieraDelta.Website.Website
         protected void Page_Load(object sender, EventArgs e)
         {
             bool goMobile = GetFormValue("m", false);
-            string returnPath = GetFormValue("l", "/Index.aspx");
+            string returnPath = GetFormValue("l", "/Home/");
 
             UserSession session = GetUserSession();
 

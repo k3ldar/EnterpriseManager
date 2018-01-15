@@ -82,7 +82,7 @@ namespace SieraDelta.Website.Members.Controls
                 "{2} you requested your Login Details for Heaven Health & Beauty Ltd Member Area " +
                 "<br /><br />Your User Name and Password are:<br /><br />--------------------------------" +
                 "<br />Username: {3}<br />Password: {4}<br />--------------------------------<br /><br />" +
-                "To login to the members area visit {5}/Members/Login.aspx" +
+                "To login to the members area visit {5}/Account/Login/" +
                 "<br /><br />Thanks<br /><br />Heaven Health & Beauty Ltd", user.FirstName,
                 DateTime.Now.ToString("dd/MM/yyyy"), Request.ServerVariables["REMOTE_HOST"], 
                 SharedUtils.ReplaceHTMLElements(txtUsername.Text, CaseType.Ignore), user.Password, Global.RootURL);

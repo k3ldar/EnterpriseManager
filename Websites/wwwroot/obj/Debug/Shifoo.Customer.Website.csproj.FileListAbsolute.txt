@@ -47,3 +47,4 @@ T:\ShifooMain\Websites\wwwroot\obj\Debug\Shifoo.Customer.Website.csproj.Generate
 T:\ShifooMain\Websites\wwwroot\obj\Debug\Shifoo.Customer.Website.csproj.CoreCompileInputs.cache
 T:\ShifooMain\Websites\wwwroot\obj\Debug\SieraDelta.Website.dll
 T:\ShifooMain\Websites\wwwroot\obj\Debug\SieraDelta.Website.pdb
+T:\ShifooMain\Websites\wwwroot\bin\Library.dll.config

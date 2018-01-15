@@ -13,7 +13,7 @@ namespace SieraDelta.Website.Error
         protected void Page_Load(object sender, EventArgs e)
         {
             pErrorDescription.InnerHtml = String.Format(Languages.LanguageStrings.ErrorUnexpectedDescription,
-                "<a href=\"/ContactUs.aspx\">", "</a>");
+                "<a href=\"/Company/Contact-Us/\">", "</a>");
         }
     }
 }

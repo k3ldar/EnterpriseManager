@@ -11,6 +11,6 @@
                         ID="btnLostPassword" runat="server" Text="Forgot Password" 
                         onclick="btnLostPassword_Click" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnLogin" runat="server" Text="Login" 
         onclick="btnLogin_Click" /><div class="spacer"></div><br />
-        <a id="aSignUpLink" runat="server" href="/Members/Signup.aspx"><%=Languages.LanguageStrings.CreateAnAccount %></a>
+        <a id="aSignUpLink" runat="server" href="/Account/Signup/"><%=Languages.LanguageStrings.CreateAnAccount %></a>
 
 </div>

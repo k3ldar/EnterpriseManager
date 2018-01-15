@@ -44,7 +44,7 @@ namespace SieraDelta.Website.Members.Controls
             ListItem selected = ddlLicenceType.Items[ddlLicenceType.SelectedIndex];
             LicenceType trialType = (LicenceType)Convert.ToInt32(selected.Value);
             Library.BOL.Licencing.Licences.CreateTrial(GetUser(), trialType);
-            DoRedirect("/Members/Licences.aspx", true);
+            DoRedirect("/Account/Licences/", true);
         }
     }
 }

@@ -47,7 +47,7 @@ namespace SieraDelta.Website.Members.Controls
                 user.Email = SharedUtils.ReplaceHTMLElements(txtEmail.Text);
                 user.Telephone = SharedUtils.ReplaceHTMLElements(txtTelephone.Text);
                 user.Save();
-                DoRedirect("/Members/Index.aspx?profileUpdated=true", true);
+                DoRedirect("/Account/?profileUpdated=true", true);
             }
             catch (Exception err)
             {

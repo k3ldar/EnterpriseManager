@@ -68,7 +68,7 @@ namespace SieraDelta.Website.Members.Controls
                     //view
                     HtmlTableCell cDescription = new HtmlTableCell();
                     r.Cells.Add(cDescription);
-                    cDescription.InnerHtml = String.Format("<a href=\"/Helpdesk/Tickets/ShowTicket.aspx?Email={2}&TicketID={1}\">{0}</a>",
+                    cDescription.InnerHtml = String.Format("<a href=\"/Help-Desk/Tickets/View/Email/{2}/Ticket/{1}/\">{0}</a>",
                         Languages.LanguageStrings.View, ticket.TicketKey, ticket.CreatedByEmail);
                 }
 

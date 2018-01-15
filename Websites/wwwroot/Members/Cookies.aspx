@@ -18,11 +18,11 @@
         <div class="breadcrumb">
 
             <ul class="fixed">
-                <li><a href="/Index.aspx"><%=Languages.LanguageStrings.Home %></a></li>
+                <li><a href="/Home/"><%=Languages.LanguageStrings.Home %></a></li>
                 <li>&rsaquo;</li>
-                <li><a href="/Members/Index.aspx"><%=Languages.LanguageStrings.MyAccount %></a></li>
+                <li><a href="/Account/"><%=Languages.LanguageStrings.MyAccount %></a></li>
                 <li>&rsaquo;</li>
-                <li><a href="/Members/CardDetails.aspx"><%=Languages.LanguageStrings.Cookies %></a></li>
+                <li><a href="/Account/Card/"><%=Languages.LanguageStrings.Cookies %></a></li>
             </ul>
 
         </div>

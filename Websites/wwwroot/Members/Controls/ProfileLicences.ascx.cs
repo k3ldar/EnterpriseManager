@@ -57,7 +57,7 @@ namespace SieraDelta.Website.Members.Controls
                     r.Cells.Add(cExpires);
 
                     HtmlTableCell cEdit = new HtmlTableCell();
-                    cEdit.InnerHtml = String.Format("<a href=\"/Members/LicenceEdit.aspx?id={0}\">{1}</a>", licence.ID, Languages.LanguageStrings.View);
+                    cEdit.InnerHtml = String.Format("<a href=\"/Account/Licences/Edit/{0}/\">{1}</a>", licence.ID, Languages.LanguageStrings.View);
                     r.Cells.Add(cEdit);
                 }
 

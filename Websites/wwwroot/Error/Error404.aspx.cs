@@ -23,7 +23,7 @@ namespace SieraDelta.Website.Error
                 txtSearchTerms.Text = GetSearchString();
             }
 
-            if (page == "/error/error404.aspx" | page.Contains("ScriptResource.axd"))
+            if (page == "/Site-Error/Page-Not-Found/" | page.Contains("ScriptResource.axd"))
                 page = String.Empty;
 
 

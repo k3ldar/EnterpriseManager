@@ -35,7 +35,7 @@ namespace Website.Library.Classes
             if (GetUsersMemberLevel() < 7)
             {
                 if (!Shared.Utilities.DateWithin(PageAvailable, PageExpires, DateTime.Now))
-                    DoRedirect("/Offers/Offers.aspx", true);
+                    DoRedirect("/Special-Offers/", true);
             }
         }
 

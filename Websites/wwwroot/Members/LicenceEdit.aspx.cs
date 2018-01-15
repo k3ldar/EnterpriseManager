@@ -34,7 +34,7 @@ namespace SieraDelta.Website.Members
             _licence = user.Licences.Find(GetFormValue("id", -1));
 
             if (_licence == null)
-                DoRedirect("/Members/Licences.aspx", true);
+                DoRedirect("/Account/Licences/", true);
 
             if (!IsPostBack)
                 UpdateFields();
@@ -81,7 +81,7 @@ namespace SieraDelta.Website.Members
         {
             _licence.Domain = txtDomain.Text;
             _licence.Save();
-            DoRedirect(String.Format("/Members/LicenceEdit.aspx?id={0}", _licence.ID));
+            DoRedirect(String.Format("/Account/Licences/Edit/{0}/", _licence.ID));
         }
 
         protected void btnSendEmail_Click(object sender, EventArgs e)

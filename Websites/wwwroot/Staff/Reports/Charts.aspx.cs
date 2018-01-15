@@ -33,7 +33,7 @@ namespace SieraDelta.Website.Statistics
         {
             if (!GetUser().HasPermissionWebsite(Library.SecurityEnums.SecurityPermissionsWebsite.ViewOnlineReports))
             {
-                DoRedirect("/Error/InvalidPermissions.aspx");
+                DoRedirect("/Site-Error/Invalid-Permission/");
                 return;
             }
 

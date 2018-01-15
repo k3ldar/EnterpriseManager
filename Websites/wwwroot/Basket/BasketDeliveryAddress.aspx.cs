@@ -54,7 +54,7 @@ namespace SieraDelta.Website.Basket
             DeliveryAddress deladdr = user.DeliveryAddresses.Create(user.ID, String.Empty, String.Empty, String.Empty,
                 String.Empty, String.Empty, String.Empty, String.Empty, 0);
 
-            DoRedirect(String.Format("/Members/DeliveryAddressEdit.aspx?ID={0}&redirect=/Shopping/Basket/Delivery-Address/", deladdr.ID));
+            DoRedirect(String.Format("/Account/Address/Delivery/Edit/{0}/&redirect=/Shopping/Basket/Delivery-Address/", deladdr.ID));
         }
     }
 }

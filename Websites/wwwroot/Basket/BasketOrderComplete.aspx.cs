@@ -90,7 +90,7 @@ namespace SieraDelta.Website.Basket
                 ShippingAddress = inv.DeliveryAddress.Address(true);
             }
 
-            pPostalAddress.InnerHtml = String.Format(Languages.LanguageStrings.DeliveryAddressUpdate + "<br /><br />", "<a href=\"/Members/DeliveryAddress.aspx\">", "</a>");
+            pPostalAddress.InnerHtml = String.Format(Languages.LanguageStrings.DeliveryAddressUpdate + "<br /><br />", "<a href=\"/Account/Address/Delivery/\">", "</a>");
             pPostalAddress.InnerHtml += ShippingAddress;
         }
 

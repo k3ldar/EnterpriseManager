@@ -179,8 +179,7 @@ namespace Heavenskincare.WebsiteTemplate
 
             ShowHomeBanners = ConfigSettingGet("Settings.ShowHomeBanners", false, true);
 
-            ShowBlackLabelMenu = ConfigSettingGet("Settings.ShowBlackLabel", true);
-            ShowSalonsMenu = ConfigSettingGet("Settings.ShowSalons", true);
+            ShowSalonsMenu = ConfigSettingGet("Settings.ShowSalons", false);
             ShowTreatmentsMenu = ConfigSettingGet("Settings.ShowTreatments", true);
             ShowTreatmentsBrochure = ConfigSettingGet("Settings.ShowTreatmentBrochure", true);
             ShowDistributorsMenu = ConfigSettingGet("Settings.ShowDistributors", true);
@@ -614,8 +613,6 @@ namespace Heavenskincare.WebsiteTemplate
                     break;
 
                 case "Menu Items":
-                    options.AddOption("ShowBlackLabelMenu", Global.ShowBlackLabelMenu, 
-                        "Determines wether the Black Label menu item is shown or not", "Settings.ShowBlackLabel", true);
                     options.AddOption("ShowSalonsMenu", Global.ShowSalonsMenu, 
                         "Determines wether the Salons menu item is shown or not", "Settings.ShowSalons", true);
                     options.AddOption("ShowTreatmentsMenu", Global.ShowTreatmentsMenu, 

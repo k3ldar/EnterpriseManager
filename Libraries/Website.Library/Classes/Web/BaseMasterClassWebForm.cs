@@ -302,7 +302,7 @@ namespace Website.Library.Classes
             string Result = String.Empty;
 
             if (GlobalClass.ShowTermsAndConditions)
-                Result = String.Format(" - <a href=\"/Terms.aspx\">{0}</a>", Languages.LanguageStrings.Terms);
+                Result = String.Format(" - <a href=\"/Company/Terms-And-Conditions/\">{0}</a>", Languages.LanguageStrings.Terms);
 
             return (Result);
         }
@@ -312,7 +312,7 @@ namespace Website.Library.Classes
             string Result = String.Empty;
 
             if (GlobalClass.ShowPrivacyPolicy)
-                Result = String.Format(" - <a href=\"/Privacy.aspx\">{0}</a>", Languages.LanguageStrings.Privacy);
+                Result = String.Format(" - <a href=\"/Company/Privacy-Policy/\">{0}</a>", Languages.LanguageStrings.Privacy);
 
             return (Result);
         }
@@ -322,7 +322,7 @@ namespace Website.Library.Classes
             string Result = String.Empty;
 
             if (GlobalClass.ShowReturnsPolicy)
-                Result = String.Format(" - <a href=\"/Returns.aspx\">{0}</a>", Languages.LanguageStrings.Returns);
+                Result = String.Format(" - <a href=\"/Company/Returns-Policy/\">{0}</a>", Languages.LanguageStrings.Returns);
 
             return (Result);
         }
@@ -486,7 +486,7 @@ namespace Website.Library.Classes
             if (!GlobalClass.ShowTreatmentsMenu)
                 return (String.Empty);
 
-            return (String.Format("<li><a href=\"/Treatments.aspx\">{0}</a></li>", Languages.LanguageStrings.Treatments));
+            return (String.Format("<li><a href=\"/Treatments/\">{0}</a></li>", Languages.LanguageStrings.Treatments));
         }
 
         /// <summary>
@@ -498,7 +498,7 @@ namespace Website.Library.Classes
             if (!GlobalClass.ShowSalonsMenu)
                 return (String.Empty);
 
-            return (String.Format("<li><a href=\"/Salons.aspx\">{0}</a></li>", Languages.LanguageStrings.Salons));
+            return (String.Format("<li><a href=\"/Salons/\">{0}</a></li>", Languages.LanguageStrings.Salons));
         }
 
         /// <summary>
@@ -510,7 +510,7 @@ namespace Website.Library.Classes
             if (!GlobalClass.ShowTipsAndTricksMenu)
                 return (String.Empty);
 
-            return (String.Format("<li><a href=\"/TipsnTricks.aspx\">{0}</a></li>", Languages.LanguageStrings.TipsAndTricks));
+            return (String.Format("<li><a href=\"/Tips-And-Tricks/\">{0}</a></li>", Languages.LanguageStrings.TipsAndTricks));
         }
 
         /// <summary>
@@ -522,15 +522,15 @@ namespace Website.Library.Classes
             if (!GlobalClass.ShowDistributorsMenu)
                 return (String.Empty);
 
-            return (String.Format("<li><a href=\"/Distributors.aspx\">{0}</a></li>", Languages.LanguageStrings.Distributors));
+            return (String.Format("<li><a href=\"/Distributors/\">{0}</a></li>", LanguageStrings.Distributors));
         }
 
         protected string ShowTrade()
         {
-            if (!GlobalClass.ShowTradeMenu)
+            if (!GlobalClass.ShowTradePage)
                 return (String.Empty);
 
-            return (String.Format("<li><a href=\"/Trade.aspx\">{0}</a></li>", Languages.LanguageStrings.Trade));
+            return (String.Format("<li><a href=\"/Trade-Customers/\">{0}</a></li>", LanguageStrings.Trade));
         }
 
         protected string ShowDownloads()
@@ -566,8 +566,8 @@ namespace Website.Library.Classes
 
         protected virtual string GetMetaDescription()
         {
-            string MetaDescription = "heaven skin care";
-            string page = "heaven skin care";
+            string MetaDescription = "";
+            string page = "";
 
             try
             {

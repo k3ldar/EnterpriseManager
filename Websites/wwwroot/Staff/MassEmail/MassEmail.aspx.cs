@@ -16,7 +16,7 @@ namespace SieraDelta.Website.WebsiteMassEmail
         {
             if (!GetUser().HasPermissionWebsite(Library.SecurityEnums.SecurityPermissionsWebsite.SendMassEmail))
             {
-                DoRedirect("/Error/InvalidPermissions.aspx", true);
+                DoRedirect("/Site-Error/Invalid-Permission/", true);
             }
 
             if (!IsPostBack && GetUser().HasPermissionWebsite(Library.SecurityEnums.SecurityPermissionsWebsite.SendMassEmailSalonOwners))

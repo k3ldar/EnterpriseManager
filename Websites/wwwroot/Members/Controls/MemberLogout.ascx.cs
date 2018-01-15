@@ -17,7 +17,7 @@ namespace SieraDelta.Website.Members.Controls
             btnAccountLogout.Text = Languages.LanguageStrings.Logout;
 
             if (GetUser() == null)
-                DoRedirect("/Members/Login.aspx", true);
+                DoRedirect("/Account/Login/", true);
         }
 
         protected void btnAccountLogout_Click(object sender, EventArgs e)
@@ -32,7 +32,7 @@ namespace SieraDelta.Website.Members.Controls
                 Library.BOL.Countries.Countries.Get(GetUserCountry()),
                 SharedWebBase.WebsiteCurrency(Session, Request), false);
 
-            DoRedirect("/Index.aspx");
+            DoRedirect("/Home/");
         }
     }
 }

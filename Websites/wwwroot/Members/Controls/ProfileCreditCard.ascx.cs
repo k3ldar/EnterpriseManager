@@ -133,7 +133,7 @@ namespace SieraDelta.Website.Members.Controls
                         cardValidFrom, cardValidTo, txtName.Text, txtLast3.Text, (Shared.AcceptedCreditCardTypes)Convert.ToInt32(ddlCardType.SelectedValue));
 
                 Library.BOL.Users.CreditCard.Add(newCard, GetUser());
-                DoRedirect("/Members/Index.aspx?profileUpdated=true", true);
+                DoRedirect("/Account/?profileUpdated=true", true);
             }
             catch (Exception err)
             {

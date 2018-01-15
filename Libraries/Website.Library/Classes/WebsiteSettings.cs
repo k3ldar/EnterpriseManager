@@ -16,8 +16,6 @@ namespace Website.Library.Classes
                 case "General Settings":
                     options.AddOption("Default Page Title", BaseWebApplication.PageTitle, 
                         "Default title for pages where the title is not set", "Settings.DefaultTitle");
-                    options.AddOption("Login Page", BaseWebApplication.LoginPage, "Page used for user login", 
-                        "Settings.LoginPage");
                     options.AddOption("Root Path", BaseWebApplication.RootPath, "Path of website on server", "Settings.RootPath");
                     options.AddOption("Root URL", BaseWebApplication.RootURL, "Root URL of website", "Settings.RootURL");
                     options.AddOption("Path", BaseWebApplication.Path, "Physical Path of website", "Settings.Path", 400);
@@ -36,6 +34,46 @@ namespace Website.Library.Classes
                         "Determines wether the website uses https or not", "Settings.UseHTTPS");
                     options.AddOption("Style Sheet", Website.Library.GlobalClass.StyleSheet, 
                         "Current style sheet used by the website.", "SITE.STYLE_SHEET");
+
+                    break;
+
+                case "Pages":
+                    options.AddHeader("Pages");
+                    options.AddDescription("There are certain pages which can be turned off if they are not used or relevant");
+
+                    options.AddOption("Show Salons Page", GlobalClass.ShowSalonsMenu,
+                        "Show Salons page", "Settings.ShowSalons");
+                    options.AddOption("Show Salon Finder Page", GlobalClass.ShowSalonFinder,
+                        "Show Salon Search on Salon Page", "Settings.ShowSalonFinder");
+                    options.AddOption("Show Salon Client Header", GlobalClass.ShowClientHeader,
+                        "Show Salon Client Header", "Settings.ShowSalonClientHeader");
+                    options.AddOption("Show Salon Header", GlobalClass.ShowSalonHeader,
+                        "Show Salon Header", "Settings.ShowSalonHeader");
+
+                    options.AddOption("Show Treatments Page", GlobalClass.ShowTreatmentsMenu,
+                        "Show Treatments Page", "Settings.ShowTreatments");
+                    options.AddOption("Show Distributors Page", GlobalClass.ShowDistributorsMenu,
+                        "Show Distributors Page", "Settings.ShowDistributors");
+                    options.AddOption("Show Distributors Page", GlobalClass.ShowTipsAndTricksMenu,
+                        "Show Distributors Page", "Settings.ShowTipsAndTricks");
+                    options.AddOption("Show Download Page", GlobalClass.ShowDownloadMenu,
+                        "Show Download Page", "Settings.ShowDownloads");
+
+                    options.AddOption("Show Treatments Brochure", GlobalClass.ShowTreatmentsBrochure,
+                        "Shows a page with treatments", "Settings.ShowTreatmentBrochure");
+                    options.AddOption("Show Terms and Conditions", GlobalClass.ShowTermsAndConditions,
+                        "Shows a page with terms and conditions.", "Settings.ShowTermsAndConditions");
+                    options.AddOption("Show Privacy Policy", GlobalClass.ShowPrivacyPolicy, 
+                        "Shows a page with privacy policy information", "Settings.ShowPrivacyPolicy");
+                    options.AddOption("Show Returns Policy", GlobalClass.ShowReturnsPolicy, 
+                        "Shows a page with returns policy", "Settings.ShowReturnsPolicy");
+                    options.AddOption("Show Trade Page", GlobalClass.ShowTradePage, 
+                        "Shows a page with trade data, also includes a form where new clients can sign up",
+                        "Settings.ShowTradePage");
+
+                    break;
+
+                case "Menu Items":
 
                     break;
 
@@ -193,6 +231,12 @@ namespace Website.Library.Classes
                         "Hide's the valid from date from Credit Cards", "Settings.AlwaysHideValidFrom");
                     options.AddOption("Always Show Valid From For UK", BaseWebApplication.CreditCardAlwaysShowValidFromForUK, 
                         "Always show the valid from date for UK visitors", "Settings.AlwaysShowCCForUK");
+
+                    break;
+
+                case "Licences":
+                    options.AddOption("Allow Licences", BaseWebApplication.AllowLicences,
+                        "Only enable if you sell licenced software on your site", "Settings.AllowLicences");
 
                     break;
 
@@ -416,7 +460,9 @@ namespace Website.Library.Classes
         {
             List<string> Result = new List<string>
             {
-                "General Settings"
+                "General Settings",
+                "Pages",
+                "Menu Items"
             };
 
             if (!BaseWebApplication.StaticWebSite)
@@ -438,7 +484,7 @@ namespace Website.Library.Classes
             Result.Add("Display Multiple Languages");
             Result.Add("Google Analytics");
             Result.Add("MailChimp");
-
+            Result.Add("Licences");
 
             return (Result);
         }

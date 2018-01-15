@@ -12,7 +12,7 @@
     <div class="content">
         <div class="breadcrumb">
             <ul class="fixed">
-                <li><a href="/Index.aspx"><%=Languages.LanguageStrings.Home %></a></li>
+                <li><a href="/Home/"><%=Languages.LanguageStrings.Home %></a></li>
                 <li>&rsaquo;</li>
                 <li><%=GetPrimaryProductGroup()%></li>
                 <li>&rsaquo;</li>
@@ -107,7 +107,7 @@
                 <p>
                     <img src="/Images/Products/GeoIP/GeoIPDatabases.png" border="0" alt="" />
                 </p>
-                <p>Please note you will need to <a href="/Members/Signup.aspx">sign up for an account</a> to obtain the free 3 database licence, once signed up you can goto your <a href="/Members/Licences.aspx">licence page</a> to view and activate your licence. </p>
+                <p>Please note you will need to <a href="/Account/Signup/">sign up for an account</a> to obtain the free 3 database licence, once signed up you can goto your <a href="/Account/Licences/">licence page</a> to view and activate your licence. </p>
             </div>
 
             <div class="productFeatures">
@@ -155,7 +155,7 @@
 
 
             <div class="productDescription">
-                <p>*  A licence is created in your <a href="/Members/Licences.aspx">licence page</a> when you sign up for an account.</p>
+                <p>*  A licence is created in your <a href="/Account/Licences/">licence page</a> when you sign up for an account.</p>
             </div>
 
             <div class="productDescription">

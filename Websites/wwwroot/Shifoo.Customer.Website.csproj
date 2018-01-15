@@ -168,6 +168,7 @@
     <Content Include="Controls\CountryLanguageSelect.ascx" />
     <Content Include="Controls\CreditCardPaymentControl.ascx" />
     <Content Include="Controls\DownloadableFile.ascx" />
+    <Content Include="Controls\FeaturedProducts.ascx" />
     <Content Include="Controls\FileDownload.ascx" />
     <Content Include="Controls\ImageResize.aspx" />
     <Content Include="Controls\JpegImage.aspx" />
@@ -181,6 +182,10 @@
     <Content Include="Controls\SeoCharts.ascx" />
     <Content Include="Controls\SeoPagePopup.ascx" />
     <Content Include="Controls\StatisticsInfo.ascx" />
+    <Content Include="Controls\TradeSignup1.ascx" />
+    <Content Include="Controls\TradeSignup2.ascx" />
+    <Content Include="Controls\TradeSignup3.ascx" />
+    <Content Include="Controls\TradeSignupFinished.ascx" />
     <Content Include="Controls\VerificationImage.ascx" />
     <Content Include="Controls\WebPageTags.ascx" />
     <Content Include="css\ajax.css" />
@@ -195,8 +200,10 @@
     <Content Include="css\PopupStyle.css" />
     <Content Include="css\shCoreDefault.css" />
     <Content Include="css\BuyItNow.css" />
-    <Content Include="css\Style.css" />
-    <Content Include="css\Style_m.css" />
+    <Content Include="css\style.css" />
+    <Content Include="css\StyleMain.css" />
+    <Content Include="css\StyleMain_m.css" />
+    <Content Include="Distributors.aspx" />
     <Content Include="Download\Index.aspx" />
     <Content Include="Download\Versions.xml">
       <SubType>Designer</SubType>
@@ -356,11 +363,15 @@
     <Content Include="Members\Password.aspx" />
     <Content Include="Members\Products\POSInstallerUpdater.aspx" />
     <Content Include="Members\Products\PosModuleUpdater.aspx" />
+    <Content Include="Members\Appointments.aspx" />
     <Content Include="Members\Signup.aspx" />
     <Content Include="Members\SpecialOffers.aspx" />
     <Content Include="Members\SupportTickets.aspx" />
+    <Content Include="Members\SystemHooks.aspx" />
     <Content Include="Members\Unsubscribe.aspx" />
     <Content Include="Members\Services\WebDefender\Cloud.aspx" />
+    <Content Include="Members\Outlets.aspx" />
+    <Content Include="Members\AppointmentsView.aspx" />
     <Content Include="Mobile\Switch.aspx" />
     <Content Include="Modules\Class.aspx" />
     <Content Include="Modules\Classes.aspx" />
@@ -370,6 +381,7 @@
     <Content Include="Papers\FirebirdReplicationForHighAvailability.aspx" />
     <Content Include="Press\Index.aspx" />
     <Content Include="Press\View.aspx" />
+    <Content Include="Privacy.aspx" />
     <Content Include="Products\Defender\BannedIPAddresses.aspx" />
     <Content Include="Products\FBCompare.aspx" />
     <Content Include="Products\FBLockUDF.aspx" />
@@ -386,6 +398,7 @@
     <Content Include="Products\WebDefenderWebsite.aspx" />
     <Content Include="Products\WebMonitor.aspx" />
     <Content Include="Redirect\Index.aspx" />
+    <Content Include="Returns.aspx" />
     <Content Include="robots.txt" />
     <Content Include="packages.config" />
   </ItemGroup>
@@ -560,6 +573,13 @@
     <Compile Include="Controls\DownloadableFile.ascx.designer.cs">
       <DependentUpon>DownloadableFile.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\FeaturedProducts.ascx.cs">
+      <DependentUpon>FeaturedProducts.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\FeaturedProducts.ascx.designer.cs">
+      <DependentUpon>FeaturedProducts.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\FileDownload.ascx.cs">
       <DependentUpon>FileDownload.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -648,6 +668,34 @@
     <Compile Include="Controls\StatisticsInfo.ascx.designer.cs">
       <DependentUpon>StatisticsInfo.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\TradeSignup1.ascx.cs">
+      <DependentUpon>TradeSignup1.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\TradeSignup1.ascx.designer.cs">
+      <DependentUpon>TradeSignup1.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TradeSignup2.ascx.cs">
+      <DependentUpon>TradeSignup2.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\TradeSignup2.ascx.designer.cs">
+      <DependentUpon>TradeSignup2.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TradeSignup3.ascx.cs">
+      <DependentUpon>TradeSignup3.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\TradeSignup3.ascx.designer.cs">
+      <DependentUpon>TradeSignup3.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TradeSignupFinished.ascx.cs">
+      <DependentUpon>TradeSignupFinished.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\TradeSignupFinished.ascx.designer.cs">
+      <DependentUpon>TradeSignupFinished.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\VerificationImage.ascx.cs">
       <DependentUpon>VerificationImage.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -662,7 +710,77 @@
     <Compile Include="Controls\WebPageTags.ascx.designer.cs">
       <DependentUpon>WebPageTags.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Members\Appointments.aspx.cs">
+      <DependentUpon>Appointments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Members\Appointments.aspx.designer.cs">
+      <DependentUpon>Appointments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Members\SystemHooks.aspx.cs">
+      <DependentUpon>SystemHooks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Members\SystemHooks.aspx.designer.cs">
+      <DependentUpon>SystemHooks.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Members\Outlets.aspx.cs">
+      <DependentUpon>Outlets.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Members\Outlets.aspx.designer.cs">
+      <DependentUpon>Outlets.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Members\AppointmentsView.aspx.cs">
+      <DependentUpon>AppointmentsView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Members\AppointmentsView.aspx.designer.cs">
+      <DependentUpon>AppointmentsView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Salons.aspx.cs">
+      <DependentUpon>Salons.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Salons.aspx.designer.cs">
+      <DependentUpon>Salons.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tips\TipsnTricks.aspx.cs">
+      <DependentUpon>TipsnTricks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tips\TipsnTricks.aspx.designer.cs">
+      <DependentUpon>TipsnTricks.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Trade.aspx.cs">
+      <DependentUpon>Trade.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Trade.aspx.designer.cs">
+      <DependentUpon>Trade.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Trade\Signup.aspx.cs">
+      <DependentUpon>Signup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Trade\Signup.aspx.designer.cs">
+      <DependentUpon>Signup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Treatments.aspx.cs">
+      <DependentUpon>Treatments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Treatments.aspx.designer.cs">
+      <DependentUpon>Treatments.aspx</DependentUpon>
+    </Compile>
     <Content Include="css\LangCurrSel.css" />
+    <Compile Include="Distributors.aspx.cs">
+      <DependentUpon>Distributors.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Distributors.aspx.designer.cs">
+      <DependentUpon>Distributors.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Download\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1192,6 +1310,13 @@
     <Compile Include="Press\View.aspx.designer.cs">
       <DependentUpon>View.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Privacy.aspx.cs">
+      <DependentUpon>Privacy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Privacy.aspx.designer.cs">
+      <DependentUpon>Privacy.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Products\Defender\BannedIPAddresses.aspx.cs">
       <DependentUpon>BannedIPAddresses.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1304,6 +1429,13 @@
     </Compile>
     <Compile Include="Redirect\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Returns.aspx.cs">
+      <DependentUpon>Returns.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Returns.aspx.designer.cs">
+      <DependentUpon>Returns.aspx</DependentUpon>
     </Compile>
     <Compile Include="Search\SearchResults.aspx.cs">
       <DependentUpon>SearchResults.aspx</DependentUpon>
@@ -1810,6 +1942,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Salons.aspx" />
     <Content Include="Search\SearchResults.aspx" />
     <Content Include="Services\BespokeSoftware.aspx" />
     <Content Include="Services\CustomWebsites.aspx" />
@@ -1881,6 +2014,10 @@
     <Content Include="Staff\SEO\VisitorLocations.aspx" />
     <Content Include="Staff\Statistics\Index.aspx" />
     <Content Include="Terms.aspx" />
+    <Content Include="Tips\TipsnTricks.aspx" />
+    <Content Include="Trade.aspx" />
+    <Content Include="Trade\Signup.aspx" />
+    <Content Include="Treatments.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

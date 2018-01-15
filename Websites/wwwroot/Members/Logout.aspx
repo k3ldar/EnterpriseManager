@@ -12,11 +12,11 @@
 			<div class="breadcrumb">
 			
 				<ul class="fixed">
-					<li><a href="/Index.aspx"><%=Languages.LanguageStrings.Home %></a></li>
+					<li><a href="/Home/"><%=Languages.LanguageStrings.Home %></a></li>
 					<li>&rsaquo;</li>
-					<li><a href="/Members/Index.aspx"><%=Languages.LanguageStrings.MyAccount %></a></li>
+					<li><a href="/Account/"><%=Languages.LanguageStrings.MyAccount %></a></li>
 					<li>&rsaquo;</li>
-					<li><a href="/Members/Logout.aspx"><%=Languages.LanguageStrings.Logout %></a></li>
+					<li><a href="/Account/Logout/"><%=Languages.LanguageStrings.Logout %></a></li>
 				</ul>
 				
 			</div><!-- end of #breadcrumb -->

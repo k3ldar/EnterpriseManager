@@ -39,7 +39,7 @@ namespace SieraDelta.Website.Members.Controls
 
                         user.Password = SharedUtils.ReplaceHTMLElements(txtPasswordNew.Text);
                         user.Save();
-                        DoRedirect("/Members/Index.aspx?profileUpdated=true", true);
+                        DoRedirect("/Account/?profileUpdated=true", true);
                     }
                     else
                         throw new Exception(Languages.LanguageStrings.NewPasswordNotConfirmed);

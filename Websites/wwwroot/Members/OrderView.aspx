@@ -11,13 +11,13 @@
 			<div class="breadcrumb">
 			
 				<ul class="fixed">
-					<li><a href="/Index.aspx"><%=Languages.LanguageStrings.Home %></a></li>
+					<li><a href="/Home/"><%=Languages.LanguageStrings.Home %></a></li>
 					<li>&rsaquo;</li>
-					<li><a href="/Members/Index.aspx"><%=Languages.LanguageStrings.MyAccount %></a></li>
+					<li><a href="/Account/"><%=Languages.LanguageStrings.MyAccount %></a></li>
 					<li>&rsaquo;</li>
-					<li><a href="/Members/Orders.aspx"><%=Languages.LanguageStrings.Orders %></a></li>
+					<li><a href="/Account/Orders/"><%=Languages.LanguageStrings.Orders %></a></li>
 					<li>&rsaquo;</li>
-					<li><a href="/Members/OrderView.aspx?ID=<%=GetOrderNumber() %>"><%=Languages.LanguageStrings.View %></a></li>
+					<li><a href="/Account/Orders/View/<%=GetOrderNumber() %>/"><%=Languages.LanguageStrings.View %></a></li>
 				</ul>
 			</div><!-- end of #breadcrumb -->
 			

@@ -19,6 +19,6 @@ namespace SieraDelta.Website.Staff.Reports.SEO {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UserControl SeoCharts1;
+        protected global::SieraDelta.Website.Controls.SeoCharts SeoCharts1;
     }
 }

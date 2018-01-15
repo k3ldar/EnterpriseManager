@@ -36,7 +36,7 @@ namespace SieraDelta.Website.Helpdesk.Tickets
             }
             else
             {
-                DoRedirect(String.Format("/Helpdesk/Tickets/ShowTicket.aspx?email={0}&ticketid={1}", txtEmail.Text, txtTicketID.Text), true);
+                DoRedirect(String.Format("/Help-Desk/Tickets/View/Email/{0}/Ticket/{1}/", txtEmail.Text, txtTicketID.Text), true);
             }
         }
     }

@@ -78,10 +78,10 @@ namespace SieraDelta.Website.Members.Controls
                         otherItems = String.Format(" (+ {0} {2}{1})", itemCount, itemCount > 1 ? "s" : "", Languages.LanguageStrings.Item);
 
                     if (firstItem != null)
-                        cDescription.InnerHtml = String.Format("<a href=\"/Members/OrderView.aspx?ID={1}\"><strong>{0}{2}</strong><br />{3} #{1}</a>", 
+                        cDescription.InnerHtml = String.Format("<a href=\"/Account/Orders/View/{1}/\"><strong>{0}{2}</strong><br />{3} #{1}</a>", 
                             firstItem.Description, order.ID, otherItems, Languages.LanguageStrings.Order);
                     else
-                        cDescription.InnerHtml = String.Format("<strong>{2}</strong><br /><a href=\"/Members/OrderView.aspx?ID={0}\">{1} #{0}</a>",
+                        cDescription.InnerHtml = String.Format("<strong>{2}</strong><br /><a href=\"/Account/Orders/View/{0}/\">{1} #{0}</a>",
                             order.ID, Languages.LanguageStrings.Order, Languages.LanguageStrings.Unknown);
 
                     HtmlTableCell cDispatched = new HtmlTableCell();

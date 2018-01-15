@@ -18,5 +18,10 @@ namespace SieraDelta.Website.Members
             LeftContainerControl1.SubHeader = Languages.LanguageStrings.MyInvoices;
             LeftContainerControl1.SubOptions = GetAccountOptions();
         }
+
+        protected int GetInvoicePage()
+        {
+            return (SharedUtils.StrToIntDef((string)Page.RouteData.Values["page"], 1));
+        }
     }
 }

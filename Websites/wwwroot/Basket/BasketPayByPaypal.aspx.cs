@@ -39,7 +39,7 @@ namespace SieraDelta.Website.Basket
         {
             int InvoiceID = (int)Session["INVOICE_NUMBER"];
             Order inv = Orders.Get(InvoiceID);
-            DoRedirect("/Members/Index.aspx");
+            DoRedirect("/Account/");
         }
 
         protected void btnContactUs_Click(object sender, EventArgs e)

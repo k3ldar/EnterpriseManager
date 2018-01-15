@@ -27,7 +27,7 @@
 			<div class="breadcrumb">
 			
 				<ul class="fixed">
-					<li><a href="/Index.aspx"><%=Languages.LanguageStrings.Home %></a></li>
+					<li><a href="/Home/"><%=Languages.LanguageStrings.Home %></a></li>
 					<li>&rsaquo;</li>
 					<li><a href="/Staff/Reports/Index.aspx">Reports</a></li>
 					<li>&rsaquo;</li>

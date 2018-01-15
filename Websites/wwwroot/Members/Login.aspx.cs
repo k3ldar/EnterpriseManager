@@ -17,7 +17,7 @@ namespace SieraDelta.Website.Members
 
         private void MemberLogin1_AfterLogin(object sender, EventArgs e)
         {
-            string url = GetFormValue("Redirect", "/Members/Index.aspx");
+            string url = GetFormValue("Redirect", "/Account/");
             DoRedirect(url, true);
         }
     }

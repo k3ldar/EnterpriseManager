@@ -11,9 +11,9 @@
 			<div class="breadcrumb">
 			
 				<ul class="fixed">
-					<li><a href="/Index.aspx"><%=Languages.LanguageStrings.Home %></a></li>
+					<li><a href="/Home/"><%=Languages.LanguageStrings.Home %></a></li>
 					<li>&rsaquo;</li>
-					<li><a href="/Helpdesk/Index.aspx"><%=Languages.LanguageStrings.Helpdesk %></a></li>
+					<li><a href="/Help-Desk/"><%=Languages.LanguageStrings.Helpdesk %></a></li>
 				</ul>
 				
 			</div><!-- end of .breadcrumb -->
@@ -28,10 +28,10 @@
 				<p><%=Languages.LanguageStrings.HelpdeskDescription %></p>
 
 				<ul class="helpOptions memberOptions fixed">
-					<li class="submit"><a href="/Helpdesk/Tickets/Submit.aspx"><%=Languages.LanguageStrings.SubmitATicket %></a></li>
-					<li class="find"><a href="/Helpdesk/Tickets/Find.aspx"><%=Languages.LanguageStrings.FindATicket %></a></li>
-                    <li class="faq"><a href="/Helpdesk/FAQ/Index.aspx"><%=Languages.LanguageStrings.FrequentlyAskedQuestions %></a></li>
-                    <li class="feedback"><a href="/Helpdesk/Feedback/"><%=Languages.LanguageStrings.Feedback %></a></li>
+					<li class="submit"><a href="/Help-Desk/Tickets/Submit/"><%=Languages.LanguageStrings.SubmitATicket %></a></li>
+					<li class="find"><a href="/Help-Desk/Tickets/Find/"><%=Languages.LanguageStrings.FindATicket %></a></li>
+                    <li class="faq"><a href="/Help-Desk/Frequently-Asked-Questions/"><%=Languages.LanguageStrings.FrequentlyAskedQuestions %></a></li>
+                    <li class="feedback"><a href="/Help-Desk/Feedback/"><%=Languages.LanguageStrings.Feedback %></a></li>
 				</ul>
 				
 			</div><!-- end of .mainContent -->

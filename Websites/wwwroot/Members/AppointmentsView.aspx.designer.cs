@@ -7,45 +7,45 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SieraDelta.WebsiteTemplate.Website.Tips {
+namespace SieraDelta.Website.Members {
     
     
-    public partial class PageTip {
+    public partial class ViewSalonAppointment {
         
         /// <summary>
-        /// LeftContainerControl1 control.
+        /// pCancelReason control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SieraDelta.WebsiteTemplate.Website.Controls.LeftContainerControl LeftContainerControl1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pCancelReason;
         
         /// <summary>
-        /// MediaLinks1 control.
+        /// lblError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SieraDelta.WebsiteTemplate.Website.Controls.MediaLinks MediaLinks1;
+        protected global::System.Web.UI.WebControls.Label lblError;
         
         /// <summary>
-        /// FeaturedProducts1 control.
+        /// txtCancelReason control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SieraDelta.WebsiteTemplate.Website.Controls.FeaturedProducts FeaturedProducts1;
+        protected global::System.Web.UI.WebControls.TextBox txtCancelReason;
         
         /// <summary>
-        /// WebPageTags1 control.
+        /// btnCancel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SieraDelta.WebsiteTemplate.Website.Controls.WebPageTags WebPageTags1;
+        protected global::System.Web.UI.WebControls.Button btnCancel;
     }
 }

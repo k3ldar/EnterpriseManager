@@ -76,12 +76,12 @@ namespace SieraDelta.Website.Basket
 
         private void PaymentReceived()
         {
-            pPaymentText.InnerHtml = String.Format(Languages.LanguageStrings.OrderCompletePaynet + "</a>.", "<a href=\"/Members/Address.aspx\">");
+            pPaymentText.InnerHtml = String.Format(Languages.LanguageStrings.OrderCompletePaynet + "</a>.", "<a href=\"/Account/Address/\">");
         }
 
         private void PaymentReceivedHashWrong()
         {
-            pPaymentText.InnerHtml = String.Format(Languages.LanguageStrings.OrderCompletePaynet + "</a>.", "<a href=\"/Members/Address.aspx\">");
+            pPaymentText.InnerHtml = String.Format(Languages.LanguageStrings.OrderCompletePaynet + "</a>.", "<a href=\"/Account/Address/\">");
         }
 
         private bool ValidateHashCode()

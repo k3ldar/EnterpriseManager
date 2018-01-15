@@ -11,7 +11,7 @@
 		<div class="breadcrumb">
 			
 			<ul class="fixed">
-				<li><a href="/Index.aspx"><%=Languages.LanguageStrings.Home %></a></li>
+				<li><a href="/Home/"><%=Languages.LanguageStrings.Home %></a></li>
 				<li>&rsaquo;</li>
 				<li><%=GetPrimaryProductGroup()%></li>
 				<li>&rsaquo;</li>
@@ -95,7 +95,7 @@
                         <!--<li>Configure single data store for instant updates between multiple servers</li>-->
                         <li>Highly Configurable</li>
                         <li>Unlimited Updates/Patches</li>
-                        <li>Immediate Access to Licence via our <a href="/Members/Licences.aspx">Licence Page</a></li>
+                        <li>Immediate Access to Licence via our <a href="/Account/Licences/">Licence Page</a></li>
                         <li>3 Week Trial Licence.</li>
                     </ul>
                 </div>

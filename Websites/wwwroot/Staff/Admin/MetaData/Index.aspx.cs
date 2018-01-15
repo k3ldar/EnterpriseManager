@@ -16,7 +16,7 @@ namespace SieraDelta.Website.Staff.Admin.MetaData
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!GetUser().HasPermissionWebsite(SecurityEnums.SecurityPermissionsWebsite.MetaData))
-                DoRedirect("http://www.SieraDelta.com/Error/InvalidPermissions.aspx", true);
+                DoRedirect("/Site-Error/Invalid-Permission/", true);
 
             if (!IsPostBack)
             {

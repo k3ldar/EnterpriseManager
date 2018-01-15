@@ -13,15 +13,6 @@ namespace SieraDelta.Website {
     public partial class ContactUs {
         
         /// <summary>
-        /// LeftContainerControl1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::SieraDelta.Website.Controls.LeftContainerControl LeftContainerControl1;
-        
-        /// <summary>
         /// divTranslated control.
         /// </summary>
         /// <remarks>

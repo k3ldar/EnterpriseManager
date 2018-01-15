@@ -27,18 +27,18 @@ namespace SieraDelta.Website.Helpdeks.FAQ
             _group = KBGroups.Get(GetUser(), GetFormValue("GroupID", -1));
 
             if (_group == null)
-                DoRedirect("/Helpdesk/FAQ/Index.aspx");
+                DoRedirect("/Hel-Ddesk/FAQ/Index.aspx");
         }
 
         protected string GroupBreadCrumb()
         {
-            string Result = String.Format("<li><a href=\"/Helpdesk/FAQ/FAQ.aspx?GroupID={0}\">{1}</a></li>", _group.ID, _group.Name);
+            string Result = String.Format("<li><a href=\"/Help-Desk/FAQ/FAQ.aspx?GroupID={0}\">{1}</a></li>", _group.ID, _group.Name);
             KBGroup root = _group;
 
             while (root.Parent != null)
             {
                 root = root.Parent;
-                Result = String.Format("<li><a href=\"/Helpdesk/FAQ/FAQ.aspx?GroupID={2}\">{0}</a></li><li>&rsaquo;</li>{1}", root.Name, Result, root.ID);
+                Result = String.Format("<li><a href=\"/Help-Desk/FAQ/FAQ.aspx?GroupID={2}\">{0}</a></li><li>&rsaquo;</li>{1}", root.Name, Result, root.ID);
             }
 
             return (Result);
@@ -64,7 +64,7 @@ namespace SieraDelta.Website.Helpdeks.FAQ
                 else
                     Sub = String.Format(" ({0} {2}{1})", grp.Items.Count, grp.Items.Count == 1 ? "" : "s", Languages.LanguageStrings.Item);
 
-                Result += String.Format("<li><a href=\"/Helpdesk/FAQ/FAQ.aspx?GroupID={1}\">{0}</a>{2}</li>", grp.Name, grp.ID, Sub);
+                Result += String.Format("<li><a href=\"/Help-Desk/FAQ/FAQ.aspx?GroupID={1}\">{0}</a>{2}</li>", grp.Name, grp.ID, Sub);
             }
 
             return (Result);
@@ -78,7 +78,7 @@ namespace SieraDelta.Website.Helpdeks.FAQ
 
             foreach (FAQItem item in items)
             {
-                Result += String.Format("<li><a href=\"/Helpdesk/FAQ/ViewFAQItem.aspx?ItemID={0}\">{1} ({2} views)</a></li>", item.ID, item.Description, item.ViewCount);
+                Result += String.Format("<li><a href=\"/Help-Desk/Frequently-Asked-Questions/View/{0}/{1}/\">{1} ({2} views)</a></li>", item.ID, item.Description, item.ViewCount);
             }
 
             return (Result);

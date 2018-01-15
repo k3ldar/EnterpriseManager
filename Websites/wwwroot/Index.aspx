@@ -24,10 +24,10 @@
             <!-- clear -->
         </div>
 
-        <p>
-            We offer a range of services to both small and medium sized companies, from bespoke software, custom web sites to software consultancy. All our services are tailored to meet the needs of the client whilst reducing overall cost and maximising productivity. 
-        </p>
-        <div class="featureWrapper">
+        <div id="divTranslated" runat="server">
+        </div>			
+
+        <div id="divBanners" runat="server" class="featureWrapper">
 			<div class="banners">
 			
 				<a href="/Services/BespokeSoftware.aspx" class="banner1" title="<%=Languages.LanguageStrings.Banner1Name %>">

@@ -44,7 +44,7 @@ namespace SieraDelta.Website.Members.Controls
 
                 HtmlTableCell cLink = new HtmlTableCell();
                 r.Cells.Add(cLink);
-                cLink.InnerHtml = String.Format("<a href=\"/Members/ViewSalonAppointment.aspx?id={0}\">{1}</a>", appt.ID, Languages.LanguageStrings.View);
+                cLink.InnerHtml = String.Format("<a href=\"/Account/Appointments/View/{0}/\">{1}</a>", appt.ID, Languages.LanguageStrings.View);
             }
         }
 

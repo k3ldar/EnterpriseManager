@@ -32,10 +32,10 @@ namespace SieraDelta.Website.Members
 
             User user = GetUser();
 
-            _invoice = user.Invoices.Find(GetFormValue("ID", -1));
+            _invoice = user.Invoices.Find(SharedUtils.StrToIntDef((string)Page.RouteData.Values["invoice"], -1));
 
             if (_invoice == null)
-                DoRedirect("/Members/Invoices.aspx", true);
+                DoRedirect("/Account/Invoices/", true);
 
             BuildItems();
 

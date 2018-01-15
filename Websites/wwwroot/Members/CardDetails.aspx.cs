@@ -16,7 +16,7 @@ namespace SieraDelta.Website.Members
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Global.AllowCreditCards)
-                DoRedirect("/Error/InvalidPermissions.aspx");
+                DoRedirect("/Site-Error/Invalid-Permission/");
 
             btnRemove.Text = Languages.LanguageStrings.RemoveCardDetails;
             LeftContainerControl1.SubHeader = Languages.LanguageStrings.MyAccount;
@@ -42,7 +42,7 @@ namespace SieraDelta.Website.Members
         protected void btnRemove_Click(object sender, EventArgs e)
         {
             _cardDetails.Delete();
-            DoRedirect("/Members/CardDetails.aspx");
+            DoRedirect("/Account/Card/");
         }
     }
 }

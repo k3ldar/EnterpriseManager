@@ -91,15 +91,6 @@ namespace Heavenskincare.WebsiteTemplate
         }
 
         /// <summary>
-        /// Returns wether Black Label is shown or not
-        /// </summary>
-        /// <returns></returns>
-        protected bool ShowBlackLabel()
-        {
-            return (Global.ShowBlackLabelMenu);
-        }
-
-        /// <summary>
         /// Returns the featured product for a primary product type
         /// </summary>
         /// <param name="primaryProductType"></param>

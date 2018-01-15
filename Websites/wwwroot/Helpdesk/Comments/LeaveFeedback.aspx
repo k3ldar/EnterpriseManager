@@ -13,13 +13,13 @@
 			<div class="breadcrumb">
 			
 				<ul class="fixed">
-					<li><a href="/Index.aspx"><%=Languages.LanguageStrings.Home %></a></li>
+					<li><a href="/Home/"><%=Languages.LanguageStrings.Home %></a></li>
 					<li>&rsaquo;</li>
-					<li><a href="/Helpdesk/Index.aspx"><%=Languages.LanguageStrings.Helpdesk %></a></li>
+					<li><a href="/Help-Desk/"><%=Languages.LanguageStrings.Helpdesk %></a></li>
 					<li>&rsaquo;</li>
-					<li><a href="/Helpdesk/Feedback/"><%=Languages.LanguageStrings.Feedback %></a></li>
+					<li><a href="/Help-Desk/Feedback/"><%=Languages.LanguageStrings.Feedback %></a></li>
 					<li>&rsaquo;</li>
-					<li><a href="/Helpdesk/Comments/LeaveFeedback.aspx"><%=Languages.LanguageStrings.LeaveFeedback %></a></li>
+					<li><a href="/Help-Desk/Feedback/Leave/"><%=Languages.LanguageStrings.LeaveFeedback %></a></li>
 				</ul>
 				
 			</div><!-- end of .breadcrumb -->
@@ -32,7 +32,7 @@
 				<h1><%=Languages.LanguageStrings.Feedback %></h1>
 				
 				<p><%=Languages.LanguageStrings.HelpdeskLeaveFeedbackDescription %></p>
-                <p><%=Languages.LanguageStrings.NotSupportArea %> <a href="/Helpdesk/Tickets/Submit.aspx"><%=Languages.LanguageStrings.SupportTicket %></a></p>
+                <p><%=Languages.LanguageStrings.NotSupportArea %> <a href="/Help-Desk/Tickets/Submit/"><%=Languages.LanguageStrings.SupportTicket %></a></p>
 				
                 <uc2:LeaveFeedback ID="LeaveFeedback1" runat="server" />
                 <p></p>

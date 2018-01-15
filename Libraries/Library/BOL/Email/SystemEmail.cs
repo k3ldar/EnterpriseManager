@@ -181,7 +181,7 @@ namespace Library.BOL.Mail
                 message = message.Replace("[CONTACTUS]", "<a href=\"" + defaultSite.URL + "/Contactus.aspx\">");
                 message = message.Replace("[CONTACTUS_END]", "</a>");
 
-                message = message.Replace("[ORDERURL]", "<a href=\"" + defaultSite.URL + "/Members/Orders.aspx\">");
+                message = message.Replace("[ORDERURL]", "<a href=\"" + defaultSite.URL + "/Account/Orders/\">");
                 message = message.Replace("[ORDERURLEND]", "</a>");
             }
 

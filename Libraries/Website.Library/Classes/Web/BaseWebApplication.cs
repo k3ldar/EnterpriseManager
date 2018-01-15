@@ -154,11 +154,6 @@ namespace Website.Library.Classes
         /// </summary>
         public static DateTime DateLoaded;
 
-        /// <summary>
-        /// Retrieves the page used for login
-        /// </summary>
-        public static string LoginPage { get; set; }
-
         public static string RootPath;
         public static string BasketName;
         public static string RootURL;
@@ -255,6 +250,11 @@ namespace Website.Library.Classes
         public static bool ShowTradeDownloads { get; set; }
 
 
+        public static bool ShowDistributorsMenu { get; set; }
+
+
+
+
         /// <summary>
         /// Determines wether custom text is shown on home page scroller
         /// </summary>
@@ -264,6 +264,9 @@ namespace Website.Library.Classes
         /// The custom text to show on home page
         /// </summary>
         public static string CustomScrollerText { get; set; }
+
+
+        public static bool ShowHomeBanners { get; set; }
 
         #region Blog
 
@@ -589,7 +592,7 @@ namespace Website.Library.Classes
         public static string MailChimpKey = "";
 
         /// <summary>
-        /// Optional pop up on main /index.aspx and /offers/offers.aspx page
+        /// Optional pop up on main /index.aspx and /Special-Offers/ page
         /// </summary>
         public static string MailChimpPopupDialog = "";
 
@@ -982,7 +985,7 @@ namespace Website.Library.Classes
         {
             page = page.ToLower();
 
-            if (page.Contains("scriptresource.axd") || page.Contains("error404.aspx") || page.Contains("webresource.axd"))
+            if (page.Contains("scriptresource.axd") || page.Contains("Site-Error/Page-Not-Found/") || page.Contains("webresource.axd"))
                 return (true);
             else
                 return (false);
@@ -1023,7 +1026,7 @@ namespace Website.Library.Classes
 
                 #region Language / Culture Options
 
-                lib.BOL.CustomWebPages.CustomPages.UseCustomPages = ConfigSettingGet("Settings.CustomPages", false);
+                lib.BOL.CustomWebPages.CustomPages.UseCustomPages = ConfigSettingGet("Settings.CustomPages", true);
 
                 WebsiteCulture = new CultureInfo(ConfigSettingGet("Settings.WebsiteCulture", "en-GB"));
                 WebsiteCultureOverride = ConfigSettingGet("Settings.WebCultureOverride", false);
@@ -1194,6 +1197,12 @@ namespace Website.Library.Classes
 
                 #endregion Credit Card Options
 
+                #region Licence Options
+
+                AllowLicences = ConfigSettingGet("Settings.AllowLicences", false);
+
+                #endregion Licence Options
+
                 #region Test Purchase Options
 
                 ShowPaymentTestPurchase = ConfigSettingGet("Settings.TestPurchase", false);
@@ -1297,7 +1306,6 @@ namespace Website.Library.Classes
                 #endregion User Menu Items
 
 
-                LoginPage = ConfigSettingGet("Settings.LoginPage", "/Members/Login.aspx");
                 RootPath = ConfigSettingGet("Settings.RootPath", String.Empty);
 
                 //email/smtp settings
@@ -1364,16 +1372,20 @@ namespace Website.Library.Classes
                 #region Global Page Options
 
                 GlobalClass.ShowSalonsMenu = ConfigSettingGet("Settings.ShowSalons", true);
-                GlobalClass.ShowTreatmentsMenu = ConfigSettingGet("Settings.ShowTreatments", false);
-                GlobalClass.ShowDistributorsMenu = ConfigSettingGet("Settings.ShowDistributors", false);
-                GlobalClass.ShowTipsAndTricksMenu = ConfigSettingGet("Settings.ShowTipsAndTricks", false);
+                GlobalClass.ShowSalonFinder = ConfigSettingGet("Settings.ShowSalonFinder", true);
+                GlobalClass.ShowClientHeader = ConfigSettingGet("Settings.ShowSalonClientHeader", true);
+                GlobalClass.ShowSalonHeader = ConfigSettingGet("Settings.ShowSalonHeader", true);
+
+                GlobalClass.ShowTreatmentsMenu = ConfigSettingGet("Settings.ShowTreatments", true);
+                GlobalClass.ShowDistributorsMenu = ConfigSettingGet("Settings.ShowDistributors", true);
+                GlobalClass.ShowTipsAndTricksMenu = ConfigSettingGet("Settings.ShowTipsAndTricks", true);
                 GlobalClass.ShowDownloadMenu = ConfigSettingGet("Settings.ShowDownloads", false);
-                GlobalClass.ShowTradeMenu = ConfigSettingGet("Settings.ShowTrade", false);
 
                 GlobalClass.ShowTreatmentsBrochure = ConfigSettingGet("Settings.ShowTreatmentBrochure", true);
-                GlobalClass.ShowTermsAndConditions = ConfigSettingGet("Settings.ShowTermsAndConditions", false);
-                GlobalClass.ShowPrivacyPolicy = ConfigSettingGet("Settings.ShowPrivacyPolicy", false);
-                GlobalClass.ShowReturnsPolicy = ConfigSettingGet("Settings.ShowReturnsPolicy", false);
+                GlobalClass.ShowTermsAndConditions = ConfigSettingGet("Settings.ShowTermsAndConditions", true);
+                GlobalClass.ShowPrivacyPolicy = ConfigSettingGet("Settings.ShowPrivacyPolicy", true);
+                GlobalClass.ShowReturnsPolicy = ConfigSettingGet("Settings.ShowReturnsPolicy", true);
+                GlobalClass.ShowTradePage = ConfigSettingGet("Settings.ShowTradePage", true);
 
                 #endregion Global Page Options
 
@@ -1395,6 +1407,10 @@ namespace Website.Library.Classes
                 CustomScrollerStrapLine = ConfigSettingGet("Settings.CustomIndexScroller", false);
                 CustomScrollerText = ConfigSettingGet("Settings.CustomScrollerText",
                     Languages.LanguageStrings.CheckOutLatestGreatest);
+
+                ShowHomeBanners = ConfigSettingGet("Settings.HomeBanners", false);
+
+
 
                 #region Blog
 
@@ -1722,12 +1738,16 @@ namespace Website.Library.Classes
                 lib.BOL.Basket.Currencies.Get();
 
                 UserSessionManager.InitialiseWebsite = false;
+                UserSessionManager.Instance.IPAddressDetails += Instance_IPAddressDetails;
+
+#if SAVE_SESSION_DATA
                 UserSessionManager.Instance.OnSessionCreated += Instance_OnSessionCreated;
                 UserSessionManager.Instance.OnSessionClosing += Instance_OnSessionClosing;
-                UserSessionManager.Instance.IPAddressDetails += Instance_IPAddressDetails;
                 UserSessionManager.Instance.OnSessionRetrieve += Instance_OnSessionRetrieve;
                 UserSessionManager.Instance.OnSessionSave += Instance_OnSessionSave;
                 UserSessionManager.Instance.OnSavePage += Instance_OnSavePage;
+#endif
+
                 ThreadManager.ThreadCpuChanged += ThreadManager_ThreadCpuChanged;
                 Result = true;
             }
@@ -1772,6 +1792,7 @@ namespace Website.Library.Classes
                 e.CountryCode = "ZZ";
         }
 
+#if SAVE_SESSION_DATA
         void Instance_OnSessionRetrieve(object sender, UserSessionRequiredArgs e)
         {
             e.Session = SessionRetrieve(e.SessionID);
@@ -1796,6 +1817,7 @@ namespace Website.Library.Classes
         {
             SessionSaveData(e.Session);
         }
+#endif
 
         #endregion SessionManager Events
 
@@ -1814,11 +1836,11 @@ namespace Website.Library.Classes
             return (false);
         }
 
-        #endregion Internal Methods
+#endregion Internal Methods
 
-        #region Public Methods
+#region Public Methods
 
-        #region Send Emails
+#region Send Emails
 
         /// <summary>
         /// Sends an email to webadmin
@@ -1859,14 +1881,14 @@ namespace Website.Library.Classes
                 return;
         }
 
-        #endregion Send Emails
+#endregion Send Emails
 
-        #endregion Public Methods
+#endregion Public Methods
 
-        #region Private Methods
+#region Private Methods
 
 
-        #region Thread Manager Events
+#region Thread Manager Events
 
         void ThreadManager_ThreadExceptionRaised(object sender, ThreadManagerExceptionEventArgs e)
         {
@@ -1899,7 +1921,7 @@ namespace Website.Library.Classes
             Shared.EventLog.Add(String.Format("Thread Abort Forced: {0}", e.Thread.ToString()));
         }
 
-        #endregion Thread Manager Events
+#endregion Thread Manager Events
 
         private void RegisterRoutes(RouteCollection routes)
         {
@@ -1909,17 +1931,53 @@ namespace Website.Library.Classes
                     "Home/",
                     "~/Index.aspx");
 
+                routes.MapPageRoute("tipsRoute",
+                    "Tips-And-Tricks/",
+                    "~/Tips/TipsnTricks.aspx");
+
+                routes.MapPageRoute("tipsPageRoute",
+                    "Tips-And-Tricks/Page/{page}/",
+                    "~/Tips/TipsnTricks.aspx");
+
+                routes.MapPageRoute("tradeCustomerRoute",
+                    "Trade-Customers/",
+                    "~/Trade.aspx");
+
+                routes.MapPageRoute("tradeCustomerSignupRoute",
+                    "Trade-Customers/Sign-up/",
+                    "~/Trade/Signup.aspx");
+
+                routes.MapPageRoute("distributorsRoute",
+                    "Distributors/",
+                    "~/Distributors.aspx");
+
                 routes.MapPageRoute("contactUsRoute",
-                    "Contact-Us/",
+                    "Company/Contact-Us/",
                     "~/ContactUs.aspx");
 
                 routes.MapPageRoute("aboutRoute",
-                    "About/",
+                    "Company/About/",
                     "~/About.aspx");
 
                 routes.MapPageRoute("termsRoute",
-                    "Terms/",
+                    "Company/Terms-And-Conditions/",
                     "~/Terms.aspx");
+
+                routes.MapPageRoute("privacyRoute",
+                    "Company/Privacy-Policy/",
+                    "~/Privacy.aspx");
+
+                routes.MapPageRoute("returnsRoute",
+                    "Company/Returns-Policy/",
+                    "~/Returns.aspx");
+
+                routes.MapPageRoute("salonsRoute",
+                    "Salons/",
+                    "~/Salons.aspx");
+
+                routes.MapPageRoute("salonsPageRoute",
+                    "Salons/Page/{page}/",
+                    "~/Salons.aspx");
 
                 routes.MapPageRoute("productsGroupRoute",
                     "All-Products/Group/{group}/{name}/",
@@ -1970,39 +2028,256 @@ namespace Website.Library.Classes
                     "All-Products/Page/{page}/",
                     "~/Products.aspx");
 
+                // treatments
+                routes.MapPageRoute("treatmentsRoute",
+                    "Treatments/",
+                    "~/Treatments.aspx");
+
+                routes.MapPageRoute("treatmentsPageRoute",
+                    "Treatments/Page/{page}/",
+                    "~/Treatments.aspx");
+
+                routes.MapPageRoute("treatmentsGroupRoute",
+                    "Treatments/Group/{group}/",
+                    "~/Treatments.aspx");
+
+                routes.MapPageRoute("treatmentsGroupPageRoute",
+                    "Treatments/Group/{group}/Page/{page}/",
+                    "~/Treatments.aspx");
+
+                routes.MapPageRoute("offersRoute",
+                    "Special-Offers/",
+                    "~/Offers/Offers.aspx");
+
                 // basket
-                routes.MapPageRoute("basketShopping",
+                routes.MapPageRoute("basketShoppingRoute",
                     "Shopping/Basket/",
                     "~/Basket/Basket.aspx");
 
-                routes.MapPageRoute("basketShoppingSignIn",
+                routes.MapPageRoute("basketShoppingSignInRoute",
                     "Shopping/Basket/SignIn/",
                     "~/Basket/BasketSignIn.aspx");
 
-                routes.MapPageRoute("basketShoppingAddress",
+                routes.MapPageRoute("basketShoppingAddressRoute",
                     "Shopping/Basket/Delivery-Address/",
                     "~/Basket/BasketDeliveryAddress.aspx");
 
-                routes.MapPageRoute("basketShoppingSummary",
+                routes.MapPageRoute("basketShoppingSummaryRoute",
                     "Shopping/Basket/Confirm-Order/",
                     "~/Basket/BasketCheckout.aspx");
 
-                routes.MapPageRoute("basketShoppingOrderComplete",
+                routes.MapPageRoute("basketShoppingOrderCompleteRoute",
                     "Shopping/Basket/Order-Complete/",
                     "~/Basket/BasketOrderComplete.aspx");
 
-                routes.MapPageRoute("basketShoppingOrderCompleteType",
+                routes.MapPageRoute("basketShoppingOrderCompleteTypeRoute",
                     "Shopping/Basket/Order-Complete/Payment-Type/{type}/",
                     "~/Basket/BasketOrderComplete.aspx");
 
+                // Members
+                routes.MapPageRoute("customerAccountRoute",
+                    "Account/",
+                    "~/Members/Index.aspx");
+
+                routes.MapPageRoute("customerAccountAddressRoute",
+                    "Account/Address/Billing/",
+                    "~/Members/Address.aspx");
+
+                routes.MapPageRoute("customerAccountCardDetailsRoute",
+                    "Account/Card/",
+                    "~/Members/CardDetails.aspx");
+
+                routes.MapPageRoute("customerAccountCookiesRoute",
+                    "Account/Cookies/",
+                    "~/Members/Cookies.aspx");
+
+                routes.MapPageRoute("customerAccountDeliveryAddressRoute",
+                    "Account/Address/Delivery/",
+                    "~/Members/DeliveryAddress.aspx");
+
+                routes.MapPageRoute("customerAccountDeliveryAddressEditRoute",
+                    "Account/Address/Delivery/Edit/{id}/",
+                    "~/Members/DeliveryAddressEdit.aspx");
+
+                routes.MapPageRoute("customerAccountInvoicesRoute",
+                    "Account/Invoices/",
+                    "~/Members/Invoices.aspx");
+
+                routes.MapPageRoute("customerAccountInvoicesViewRoute",
+                    "Account/Invoices/View/{invoice}/",
+                    "~/Members/InvoiceView.aspx");
+
+                routes.MapPageRoute("customerAccountInvoicesPageRoute",
+                    "Account/Invoices/Page/{page}/",
+                    "~/Members/Invoices.aspx");
+
+                routes.MapPageRoute("customerAccountLicencesRoute",
+                    "Account/Licences/",
+                    "~/Members/Licences.aspx");
+
+                routes.MapPageRoute("customerAccountLicenceEditRoute",
+                    "Account/Licences/Edit/{id}/",
+                    "~/Members/LicenceEdit.aspx");
+
+                routes.MapPageRoute("customerAccountLicencesPageRoute",
+                    "Account/Licences/Page/{page}/",
+                    "~/Members/Licences.aspx");
+
+                routes.MapPageRoute("customerAccountLoginRoute",
+                    "Account/Login/",
+                    "~/Members/Login.aspx");
+
+                routes.MapPageRoute("customerAccountLogoutRoute",
+                    "Account/Logout/",
+                    "~/Members/Logout.aspx");
+
+                routes.MapPageRoute("customerAccountDetailsRoute",
+                    "Account/Details/",
+                    "~/Members/MemberDetails.aspx");
+
+                routes.MapPageRoute("customerAccountOrdersRoute",
+                    "Account/Orders/",
+                    "~/Members/Orders.aspx");
+
+                routes.MapPageRoute("customerAccountOrdersViewRoute",
+                    "Account/Orders/View/{order}/",
+                    "~/Members/OrderView.aspx");
+
+                routes.MapPageRoute("customerAccountOrdersPageRoute",
+                    "Account/Orders/Page/{page}/",
+                    "~/Members/Orders.aspx");
+
+                routes.MapPageRoute("customerAccountPasswordRoute",
+                    "Account/Password/",
+                    "~/Members/Password.aspx");
+
+                routes.MapPageRoute("customerAccountSignupRoute",
+                    "Account/Signup/",
+                    "~/Members/Signup.aspx");
+
+#warning add all offer pages
+                routes.MapPageRoute("customerAccountOffersRoute",
+                    "Account/Special-Offers/",
+                    "~/Members/SpecialOffers.aspx");
+
+#warning add papers
+
+
+#warning add press
+
+#warning add services
+
+#warning add modules
+
+#warning add redirect
+
+
+#warning add appointments
+
+#warning add download
+
+
+                routes.MapPageRoute("customerAccountSupportTicketsRoute",
+                    "Account/Help-Desk/Tickets/",
+                    "~/Members/SupportTickets.aspx");
+
+                routes.MapPageRoute("customerAccountAppointmentsRoute",
+                    "Account/Appointments/",
+                    "~/Members/Appointments.aspx");
+
+                routes.MapPageRoute("customerAccountAppointmentsViewRoute",
+                    "Account/Appointments/View/{id}/",
+                    "~/Members/AppointmentsView.aspx");
+
+                routes.MapPageRoute("customerAccountAppointmentsPageRoute",
+                    "Account/Appointments/Page/{page}/",
+                    "~/Members/Appointments.aspx");
+
+                routes.MapPageRoute("customerAccountSystemHooksRoute",
+                    "Account/System/Hooks/",
+                    "~/Members/SystemHooks.aspx");
+
+                routes.MapPageRoute("customerAccountSystemHooksActionRoute",
+                    "Account/System/Hooks/Action/{action}/{id}/",
+                    "~/Members/SystemHooks.aspx");
+
+                routes.MapPageRoute("customerAccountUnsubscribeRoute",
+                    "Account/Unsubscribe/",
+                    "~/Members/Unsubscribe.aspx");
+
+                routes.MapPageRoute("customerAccountDistributorOutletsRoute",
+                    "Account/Distributor/Outlet/",
+                    "~/Members/Outlets.aspx");
+
+                routes.MapPageRoute("customerAccountDistributorOutletsViewRoute",
+                    "Account/Distributor/Outlet/View/{salonid}/",
+                    "~/Members/Outlets.aspx");
+
                 // help desk
-                routes.MapPageRoute("helpDeskFeedback",
-                    "Helpdesk/Feedback/",
+                routes.MapPageRoute("helpdeskMainRoute",
+                    "Help-Desk/",
+                    "~/Helpdesk/Index.aspx");
+
+                routes.MapPageRoute("helpDeskFeedbackRoute",
+                    "Help-Desk/Feedback/",
                     "~/Helpdesk/Feedback.aspx");
 
-                routes.MapPageRoute("helpDeskFeedbackPage",
-                    "Helpdesk/Feedback/Page/{page}/",
+                routes.MapPageRoute("helpDeskFeedbackPageRoute",
+                    "Help-Desk/Feedback/Page/{page}/",
                     "~/Helpdesk/Feedback.aspx");
+
+                routes.MapPageRoute("helpDeskLeaveFeedbackPageRoute",
+                    "Help-Desk/Feedback/Leave/",
+                    "~/Helpdesk/Comments/LeaveFeedback.aspx");
+
+                routes.MapPageRoute("helpDeskTicketSubmitRoute",
+                    "Help-Desk/Tickets/Submit/",
+                    "~/Helpdesk/Tickets/Submit.aspx");
+
+                routes.MapPageRoute("helpDeskTicketShowRoute",
+                    "Help-Desk/Tickets/View/",
+                    "~/Helpdesk/Tickets/ShowTicket.aspx");
+
+                routes.MapPageRoute("helpDeskTicketShowTicketRoute",
+                    "Help-Desk/Tickets/View/Email/{email}/Ticket/{ticketid}/",
+                    "~/Helpdesk/Tickets/ShowTicket.aspx");
+
+                routes.MapPageRoute("helpDeskTicketFindRoute",
+                    "Help-Desk/Tickets/Find/",
+                    "~/Helpdesk/Tickets/Find.aspx");
+
+                routes.MapPageRoute("helpDeskFAQRoute",
+                    "Help-Desk/Frequently-Asked-Questions/",
+                    "~/Helpdesk/FAQ/Index.aspx");
+
+                routes.MapPageRoute("helpDeskFAQViewGroupRoute",
+                    "Help-Desk/Frequently-Asked-Questions/Group/{itemid}/{name}/",
+                    "~/Helpdesk/FAQ/FAQ.aspx");
+
+                routes.MapPageRoute("helpDeskFAQViewItemRoute",
+                    "Help-Desk/Frequently-Asked-Questions/View/{itemid}/{name}/",
+                    "~/Helpdesk/FAQ/ViewFAQItem.aspx");
+
+                // errors
+                routes.MapPageRoute("errorRoute",
+                    "Site-Error/",
+                    "~/Error/Error.aspx");
+
+                routes.MapPageRoute("errorMessageRoute",
+                    "Site-Error/Message/{message}/",
+                    "~/Error/Error.aspx");
+
+                routes.MapPageRoute("errorNoFoundRoute",
+                    "Site-Error/Page-Not-Found/",
+                    "~/Error/Error404.aspx");
+
+                routes.MapPageRoute("errorPermissionRoute",
+                    "Site-Error/Invalid-Permission/",
+                    "~/Error/InvalidPermissions.aspx");
+
+                routes.MapPageRoute("errorIPBannedRoute",
+                    "Site-Error/IP-Banned/",
+                    "~/Error/IPIsBaned.aspx");
             }
         }
 
@@ -2014,7 +2289,7 @@ namespace Website.Library.Classes
         }
 #endif
 
-        private static void ErrorHandling_InternalException(object sender, lib.BOLEvents.InternalErrorEventArgs e)
+            private static void ErrorHandling_InternalException(object sender, lib.BOLEvents.InternalErrorEventArgs e)
         {
             string msg = String.Format("Internal Exception in Website - {5}\r\n\r\nMethod: {0}\r\n\r\nMessage: {4}\r\n\r\nSource: {1}\r\n\r\nParameters:\r\n\r\n{2}\r\n\r\nCallstack:\r\n\r\n{3}",
                 e.Method, e.Source, e.Parameters, e.CallStack, e.Message, DistributorWebsite);
@@ -2048,7 +2323,7 @@ namespace Website.Library.Classes
             }
         }
 
-        #endregion Private Methods
+#endregion Private Methods
     }
 
     /// <summary>
@@ -2122,15 +2397,15 @@ namespace Website.Library.Classes
     /// </summary>
     public sealed class GlobalGeoIPCityCache : Shared.Classes.ThreadManager
     {
-        #region Private Static Members
+#region Private Static Members
 
         private static bool _initialised = false;
         private static IPCity[] _allCityData;
         private static int _count = 0;
 
-        #endregion Private Static Members
+#endregion Private Static Members
 
-        #region Constructors
+#region Constructors
 
         internal GlobalGeoIPCityCache()
             : base(null, new TimeSpan(24, 0, 0), null, 0, 200, true, false)
@@ -2138,9 +2413,9 @@ namespace Website.Library.Classes
             ThreadManager.ThreadStart(this, "Load All GeoIP Data", System.Threading.ThreadPriority.Lowest);
         }
 
-        #endregion Constructors
+#endregion Constructors
 
-        #region Overridden Methods
+#region Overridden Methods
 
         protected override bool Run(object parameters)
         {
@@ -2157,9 +2432,9 @@ namespace Website.Library.Classes
 #endif
         }
 
-        #endregion Overridden Methods
+#endregion Overridden Methods
 
-        #region Internal Methods
+#region Internal Methods
 #if CACHE_IP_CITY_DATA
         internal static IPCity GetIPCity(string ipAddress, bool useMemory = true)
         {
@@ -2186,15 +2461,15 @@ namespace Website.Library.Classes
 
 #endif
 
-        #endregion Internal Methods
+#endregion Internal Methods
 
-        #region Properties
+#region Properties
 
         internal bool Initialised { get { return (_initialised); } }
 
-        #endregion Properties
+#endregion Properties
 
-        #region Private Methods
+#region Private Methods
 
 #if CACHE_IP_CITY_DATA
         private static IPCity GetMemoryCity(string ipAddress)
@@ -2230,7 +2505,7 @@ namespace Website.Library.Classes
         }
 #endif
 
-        #endregion Private Methods
+#endregion Private Methods
     }
 
     internal class UpdateSiteMapThread : Shared.Classes.ThreadManager
@@ -2647,7 +2922,7 @@ namespace Website.Library.Classes
         }
     }
 
-    #region Class WebsiteError
+#region Class WebsiteError
 
     public class WebsiteError : System.Exception
     {
@@ -2655,6 +2930,6 @@ namespace Website.Library.Classes
     }
 
 
-    #endregion Class WebsiteError
+#endregion Class WebsiteError
 
 }

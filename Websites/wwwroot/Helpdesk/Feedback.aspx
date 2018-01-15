@@ -10,11 +10,11 @@
 			
 			<div class="breadcrumb">
 				<ul class="fixed">
-					<li><a href="/Index.aspx"><%=Languages.LanguageStrings.Home %></a></li>
+					<li><a href="/Home/"><%=Languages.LanguageStrings.Home %></a></li>
 					<li>&rsaquo;</li>
-					<li><a href="/Helpdesk/Index.aspx"><%=Languages.LanguageStrings.Helpdesk %></a></li>
+					<li><a href="/Help-Desk/"><%=Languages.LanguageStrings.Helpdesk %></a></li>
 					<li>&rsaquo;</li>
-					<li><a href="/Helpdesk/Feedback/"><%=Languages.LanguageStrings.Feedback %></a></li>
+					<li><a href="/Help-Desk/Feedback/"><%=Languages.LanguageStrings.Feedback %></a></li>
 				</ul>
 				
 			</div><!-- end of .breadcrumb -->
@@ -26,13 +26,13 @@
 			
 				<h1><%=Languages.LanguageStrings.Feedback %></h1>
 				
-				<p><%=Languages.LanguageStrings.HelpdeskFeedbackDescription %> <a href="/Helpdesk/Comments/LeaveFeedback.aspx"><%=Languages.LanguageStrings.ClickHere %></a>.</p>
+				<p><%=Languages.LanguageStrings.HelpdeskFeedbackDescription %> <a href="/Help-Desk/Feedback/Leave/"><%=Languages.LanguageStrings.ClickHere %></a>.</p>
 				
                 <%=GetFeedback() %>
 				
 				<div class="pagination">
 					<ul class="fixed">
-						<%=BuildPagination(Library.BOL.Helpdesk.CustomerComments.GetCount(), 6, GetFormValue("Page", 1), "/Helpdesk/Feedback/", true) %>
+						<%=BuildPagination(Library.BOL.Helpdesk.CustomerComments.GetCount(), 6, GetFormValue("Page", 1), "/Help-Desk/Feedback/", true) %>
 					</ul>
 				</div><!-- end of .pagination -->
 												

@@ -15,7 +15,8 @@ namespace SieraDelta.Website
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            divBanners.Visible = Global.ShowHomeBanners;
+            UpdateCustomTranslatedPageData("Home Page", divTranslated, false);
         }
     }
 }

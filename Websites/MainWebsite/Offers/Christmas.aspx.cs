@@ -188,14 +188,6 @@ namespace Heavenskincare.WebsiteTemplate.Offers
             return (String.Format("<li><a href=\"/TipsnTricks.aspx\">{1}</a></li>", Global.RootURL, Languages.LanguageStrings.TipsAndTricks));
         }
 
-        /// <summary>
-        /// Returns wether Black Label is shown or not
-        /// </summary>
-        /// <returns></returns>
-        protected bool ShowBlackLabel()
-        {
-            return (Global.ShowBlackLabelMenu);
-        }
 
         protected string GetURL()
         {

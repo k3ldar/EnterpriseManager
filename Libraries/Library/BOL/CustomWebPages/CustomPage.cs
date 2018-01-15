@@ -38,6 +38,8 @@ namespace Library.BOL.CustomWebPages
 
         private Int64 _id;
 
+        private string _htmlReadyPageData;
+
         #endregion Private Members
 
         #region Constructors
@@ -113,6 +115,19 @@ namespace Library.BOL.CustomWebPages
         /// Custom page type
         /// </summary>
         public CustomPagesType PageType { get; set; }
+
+        public string HtmlReadyPageData
+        {
+            get
+            {
+                if (_htmlReadyPageData == null)
+                {
+
+                }
+
+                return (_htmlReadyPageData);
+            }
+        }
 
         #endregion Properties
     }

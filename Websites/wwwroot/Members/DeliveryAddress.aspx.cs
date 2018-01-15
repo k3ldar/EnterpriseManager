@@ -37,7 +37,7 @@ namespace SieraDelta.Website.Members
 
         private void addr_SelectAddress(object sender, DeliveryAddressEventArgs e)
         {
-            DoRedirect(String.Format("/Members/DeliveryAddressEdit.aspx?ID={0}", e.Address.ID), true);
+            DoRedirect(String.Format("/Account/Address/Delivery/Edit/{0}/", e.Address.ID), true);
         }
 
         protected void btnNew_Click(object sender, EventArgs e)
@@ -46,7 +46,7 @@ namespace SieraDelta.Website.Members
             DeliveryAddress deladdr = user.DeliveryAddresses.Create(user.ID, String.Empty, String.Empty, String.Empty,
                 String.Empty, String.Empty, String.Empty, String.Empty, 0);
 
-            DoRedirect(String.Format("/Members/DeliveryAddressEdit.aspx?ID={0}", deladdr.ID));
+            DoRedirect(String.Format("/Account/Address/Delivery/Edit/{0}/", deladdr.ID));
         }
     }
 }

@@ -5692,6 +5692,7 @@
   },
   "packageFolders": {
     "C:\\Users\\Simon\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -5707,11 +5708,13 @@
       "outputPath": "T:\\ShifooMain\\Websites\\Shifoo.Website.Global\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
         "C:\\Users\\Simon\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
@@ -5736,25 +5739,25 @@
         "dependencies": {
           "Microsoft.AspNet.Mvc": {
             "target": "Package",
-            "version": "5.2.3"
+            "version": "[5.2.3, )"
           },
           "Microsoft.AspNetCore": {
             "target": "Package",
-            "version": "2.0.0"
+            "version": "[2.0.0, )"
           },
-          "SC.Shared.Library": {
+          "Microsoft.AspNetCore.Session": {
             "target": "Package",
-            "version": "2.5.13"
+            "version": "[2.0.0, )"
           },
           "Microsoft.NETCore.App": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "2.0.0",
+            "version": "[2.0.0, )",
             "autoReferenced": true
           },
-          "Microsoft.AspNetCore.Session": {
+          "SC.Shared.Library": {
             "target": "Package",
-            "version": "2.0.0"
+            "version": "[2.5.13, )"
           }
         },
         "imports": [

@@ -25,7 +25,7 @@ namespace SieraDelta.Website.Staff.Admin
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!GetUser().HasPermissionWebsite(SecurityEnums.SecurityPermissionsWebsite.ManageCustomPages))
-                DoRedirect("/Error/InvalidPermissions.aspx", true);
+                DoRedirect("/Site-Error/Invalid-Permission/", true);
 
             Library.DAL.DALHelper.SetCustomPages();
 

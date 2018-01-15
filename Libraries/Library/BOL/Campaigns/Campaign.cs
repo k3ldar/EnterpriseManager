@@ -449,7 +449,7 @@ namespace Library.BOL.Campaigns
             get
             {
                 if (String.IsNullOrEmpty(_linkOverride))
-                    return ("/Offers/Offers.aspx");
+                    return ("/Special-Offers/");
                 else
                     return (_linkOverride);
             }

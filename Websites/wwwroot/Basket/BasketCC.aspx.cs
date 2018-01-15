@@ -54,7 +54,7 @@ namespace SieraDelta.Website.Basket
 
         private void PaymentReceived()
         {
-            pPaymentText.InnerHtml = String.Format(Languages.LanguageStrings.OrderCompleteCreditCard + "</a>.", "<a href=\"/Members/Address.aspx\">");
+            pPaymentText.InnerHtml = String.Format(Languages.LanguageStrings.OrderCompleteCreditCard + "</a>.", "<a href=\"/Account/Address/\">");
         }
 
         private void TransactionNotAuthorised()

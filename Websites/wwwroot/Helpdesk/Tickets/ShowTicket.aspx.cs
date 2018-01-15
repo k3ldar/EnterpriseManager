@@ -21,10 +21,12 @@ namespace SieraDelta.Website.Helpdesk.Tickets
         protected void Page_Load(object sender, EventArgs e)
         {
             lblError.Visible = false;
-            _ticket = SupportTickets.Get(GetFormValue("TicketID"), GetFormValue("Email"));
+            string ticketID = (string)Page.RouteData.Values["ticketid"];
+            string email = (string)Page.RouteData.Values["email"];
+            _ticket = SupportTickets.Get(ticketID, email);
 
             if (_ticket == null)
-                DoRedirect("/Helpdesk/Index.aspx", true);
+                DoRedirect("/Help-Desk/", true);
 
             if (!IsPostBack)
                 LoadStatuses();
@@ -132,7 +134,7 @@ namespace SieraDelta.Website.Helpdesk.Tickets
 
                 ticket.Reply(Message, Name, false);
 
-                DoRedirect(String.Format("/Helpdesk/Tickets/ShowTicket.aspx?Email={0}&TicketID={1}", email, ticketid));
+                DoRedirect(String.Format("/Help-Desk/Tickets/View/Email/{0}/Ticket/{1}/", email, ticketid));
             }
             catch (Exception err)
             {

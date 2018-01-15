@@ -22,7 +22,7 @@ namespace SieraDelta.Website.Staff.Admin
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!GetUser().HasPermissionWebsite(SecurityEnums.SecurityPermissionsWebsite.AlterWebsiteOptions))
-                DoRedirect("/Error/InvalidPermissions.aspx", true);
+                DoRedirect("/Site-Error/Invalid-Permission/", true);
 
             WebsiteSettings settings = new WebsiteSettings();
             string currentOption = GetFormValue("Option", "General Settings");

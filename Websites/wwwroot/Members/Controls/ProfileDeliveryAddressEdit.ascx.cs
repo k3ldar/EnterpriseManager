@@ -20,10 +20,10 @@ namespace SieraDelta.Website.Members.Controls
             cbConfirmDelete.Text = Languages.LanguageStrings.ConfirmDelete;
 
             lblError.Visible = false;
-            _address = GetUser().DeliveryAddresses.Find(GetFormValue("ID", -1));
+            _address = GetUser().DeliveryAddresses.Find(SharedUtils.StrToIntDef((string)Page.RouteData.Values["id"], -1));
 
             if (_address == null)
-                DoRedirect("/Members/Index.aspx", true);
+                DoRedirect("/Account/", true);
 
             if (!IsPostBack)
             {
@@ -63,7 +63,7 @@ namespace SieraDelta.Website.Members.Controls
                 if (GetFormValue("redirect") != "")
                     DoRedirect(GetFormValue("redirect"));
                 else
-                    DoRedirect("/Members/Index.aspx?profileUpdated=true", true);
+                    DoRedirect("/Account/?profileUpdated=true", true);
             }
             catch (System.Exception Err)
             {
@@ -100,7 +100,7 @@ namespace SieraDelta.Website.Members.Controls
                 if (cbConfirmDelete.Checked)
                 {
                     GetUser().DeliveryAddresses.Delete(_address);
-                    DoRedirect("/Members/DeliveryAddress.aspx", true);
+                    DoRedirect("/Account/Address/Delivery/", true);
                 }
             }
             catch (System.Exception Err)

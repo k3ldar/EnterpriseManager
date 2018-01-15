@@ -9,7 +9,6 @@
 <head id="Head1" runat="server">
     <title>SieraDelta.com - Staff</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="/css/style4.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="/css/ajax.css" type="text/css" media="screen" />
 
@@ -28,9 +27,9 @@
 	
         <!-- Header Start -->
         <div class="header">
-            <a href="/Index.aspx" title="SieraDelta.com" class="logo">SieraDelta.com</a>
+            <a href="/Home/" title="SieraDelta.com" class="logo">SieraDelta.com</a>
            	<div class="actions">
-           		<p><a href="/Members/Index.aspx">my account</a> | <a href="/helpdesk/Index.aspx">helpdesk</a></p>
+           		<p><a href="/Account/">my account</a> | <a href="/help-Desk/">helpdesk</a></p>
         	</div><!-- end of #actions -->
     	    <div class="clear"><!-- clear --></div>        
         </div><!-- end of #header -->

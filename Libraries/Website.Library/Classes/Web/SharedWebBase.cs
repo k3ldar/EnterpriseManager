@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Web.UI;
 using System.Web;
 
 using lib = Library;
@@ -14,8 +7,6 @@ using Library.BOL.Affiliate;
 using Library.BOL.Basket;
 using Library.BOL.Countries;
 using Library.BOL.Users;
-using Library.BOL.Email;
-using Library.BOL.SEO;
 
 #if ERROR_MANAGER
 using ErrorManager.ErrorClient;

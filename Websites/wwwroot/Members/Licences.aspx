@@ -15,11 +15,11 @@
 			<div class="breadcrumb">
 			
 				<ul class="fixed">
-					<li><a href="/Index.aspx"><%=Languages.LanguageStrings.Home %></a></li>
+					<li><a href="/Home/"><%=Languages.LanguageStrings.Home %></a></li>
 					<li>&rsaquo;</li>
-					<li><a href="/Members/Index.aspx"><%=Languages.LanguageStrings.MyAccount %></a></li>
+					<li><a href="/Account/"><%=Languages.LanguageStrings.MyAccount %></a></li>
 					<li>&rsaquo;</li>
-					<li><a href="/Members/Licences.aspx"><%=Languages.LanguageStrings.MyLicences %></a></li>
+					<li><a href="/Account/Licences/"><%=Languages.LanguageStrings.MyLicences %></a></li>
 				</ul>
 				
 			</div><!-- end of #breadcrumb -->
@@ -44,7 +44,7 @@
                 </div>
                 <div class="pagination">
 					<ul class="fixed">
-						 <%=BuildPagination(Library.BOL.Licencing.Licence.LicenceCount(GetUser()), 10, GetFormValue("Page", 1), "/Members/Licences.aspx")%>
+						 <%=BuildPagination(Library.BOL.Licencing.Licence.LicenceCount(GetUser()), 10, GetLicencePage(), "/Account/Licences/", true)%>
 					</ul>
 				</div><!-- end of .pagination -->
 			</div><!-- end of #mainContent -->

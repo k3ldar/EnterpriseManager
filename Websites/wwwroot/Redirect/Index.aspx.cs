@@ -27,7 +27,7 @@ namespace SieraDelta.Website.Redirect
             if (String.IsNullOrEmpty(webPage))
             {
                 if (Request.UrlReferrer == null)
-                    webPage = "/Index.aspx";
+                    webPage = "/Home/";
                 else
                     webPage = Request.UrlReferrer.ToString();
 

@@ -21,6 +21,7 @@ using Library.BOL.HashTags;
 using Library.BOL.Orders;
 using Library.BOL.Search;
 using Library.BOL.CustomWebPages;
+using Library.BOL.Helpdesk;
 
 namespace Website.Library.Classes
 {
@@ -111,6 +112,20 @@ namespace Website.Library.Classes
                         Shared.EventLog.Add(err, userSession == null ? "Session not known" : userSession.SessionID);
                 }
             }
+        }
+
+        protected string GroupBreadCrumb(KBGroup group)
+        {
+            string Result = String.Format("<li><a href=\"/Help-Desk/FAQ/FAQ.aspx?GroupID={0}\">{1}</a></li>", group.ID, group.Name);
+            KBGroup root = group;
+
+            while (root.Parent != null)
+            {
+                root = root.Parent;
+                Result = String.Format("<li><a href=\"/Help-Desk/FAQ/FAQ.aspx?GroupID={2}\">{0}</a></li><li>&rsaquo;</li>{1}", root.Name, Result, root.ID);
+            }
+
+            return (Result);
         }
 
         protected override void OnLoad(EventArgs e)
@@ -284,8 +299,6 @@ namespace Website.Library.Classes
 
         protected void UpdateCustomTranslatedPageData(string name, HtmlGenericControl control, bool hideIfEmpty = true)
         {
-            Country country = Countries.Get(GetUserCountry());
-
             CustomPage page = CustomPages.Get(name);
 
             if (page != null && page.IsActive)
@@ -411,7 +424,7 @@ namespace Website.Library.Classes
                         break;
 
                     case Enums.SearchResultType.Feedback:
-                        link = String.Format("/Helpdesk/Feedback/{0}/", item.ID);
+                        link = String.Format("/Help-Desk/Feedback/{0}/", item.ID);
                         break;
 
                     case Enums.SearchResultType.HashTags:
@@ -419,7 +432,7 @@ namespace Website.Library.Classes
                         break;
 
                     case Enums.SearchResultType.KnowledgeBase:
-                        link = String.Format("/helpdesk/FAQ/ViewFAQItem.aspx?ItemID={0}", item.ID);
+                        link = String.Format("/Help-Desk/Frequently-Asked-Questions/View/{0}/{1}/", item.ID, item.Description);
                         break;
 
                     case Enums.SearchResultType.Products:
@@ -437,11 +450,11 @@ namespace Website.Library.Classes
                         break;
 
                     case Enums.SearchResultType.Salons:
-                        link = String.Format("/Salons.aspx?ID={0}", item.ID);
+                        link = String.Format("/Salons/?ID={0}", item.ID);
                         break;
 
                     case Enums.SearchResultType.Treatments:
-                        link = String.Format("/Treatments.aspx?ID={0}", item.ID);
+                        link = String.Format("/Treatments/Group/{0}/", item.ID);
                         break;
 
                     default:
@@ -471,33 +484,22 @@ namespace Website.Library.Classes
 
         #region Professional
 
-        protected string GetProductGroupStratosphere()
-        {
-            string Result = "";
-
-            ProductGroup group = ProductGroups.Get(GetFormValue("GroupID", -1));
-
-            if (group != null)
-            {
-                Result = String.Format("<li>&rsaquo;</li>\r\n<li><a href=\"/Products/ProductsS.aspx?GroupID={0}\">{1}</a></li>", group.ID, group.Description);
-            }
-
-            return (Result);
-        }
-
         protected string GetTreatmentGroupTagLine()
         {
-            string Result = "";
+            if (Page.RouteData.Values["group"] == null)
+                return (String.Empty);
+
+            string s = (string)Page.RouteData.Values["group"];
 
             TreatmentGroup group = TreatmentGroups.Get(GetFormValue("GroupID", -1));
 
             if (group != null)
             {
                 if (group.TagLine.Trim() != "")
-                    Result = String.Format("<h4>{0}</h4>", group.TagLine);
+                    return (String.Format("<h4>{0}</h4>", group.TagLine.Trim()));
             }
 
-            return (Result);
+            return (String.Empty);
         }
 
         protected string GetCarouselText()
@@ -954,17 +956,27 @@ namespace Website.Library.Classes
 
         #region Treatments Page
 
+        protected int GetTreatmentGroupID()
+        {
+            return (SharedUtils.StrToInt((string)Page.RouteData.Values["group"], -1));
+        }
+
+        protected int GetTreatmentPage()
+        {
+            return (SharedUtils.StrToInt((string)Page.RouteData.Values["page"], 1));
+        }
+
         protected string GetTreatments(int PageSize)
         {
             string Result = "";
-            lib.BOL.Treatments.Treatments treats;
+            Treatments treats;
 
-            TreatmentGroup group = TreatmentGroups.Get(GetFormValue("GroupID", -1));
+            TreatmentGroup group = TreatmentGroups.Get(GetTreatmentGroupID());
 
             if (group == null)
-                treats = lib.BOL.Treatments.Treatments.Get(GetFormValue("Page", 1), PageSize);
+                treats = Treatments.Get(GetTreatmentPage(), PageSize);
             else
-                treats = lib.BOL.Treatments.Treatments.Get(GetFormValue("Page", 1), PageSize, group);
+                treats = Treatments.Get(GetTreatmentPage(), PageSize, group);
 
             int i = 1;
 
@@ -979,17 +991,29 @@ namespace Website.Library.Classes
 
         protected string GetProductGroupTagLine()
         {
-            string Result = "";
+            lib.MemberLevel level = lib.MemberLevel.StandardUser;
 
-            ProductGroup group = ProductGroups.Get(GetFormValue("GroupID", -1));
+            if (GetUser() != null)
+                level = GetUser().MemberLevel;
+
+            string keyName = String.Format("{0}{1}", 
+                level.ToString(), 
+                (string)Page.RouteData.Values["group"] ?? String.Empty);
+
+            long groupID = -1;
+
+            if (BaseWebApplication.AllRoutes.ContainsKey(keyName))
+                groupID = BaseWebApplication.AllRoutes[keyName];
+
+            ProductGroup group = ProductGroups.Get(groupID);
 
             if (group != null)
             {
                 if (group.TagLine.Trim() != "")
-                    Result = String.Format("<h4 class=\"{1}\">{0}</h4>", group.TagLine, group.GroupType.Description);
+                    return (String.Format("<h4 class=\"{1}\">{0}</h4>", group.TagLine.Trim(), group.GroupType.Description.Trim()));
             }
 
-            return (Result);
+            return (String.Empty);
         }
 
         private string BuildTreatment(Treatment treatment, bool AddLine)
@@ -1036,7 +1060,7 @@ namespace Website.Library.Classes
 
             if (group != null)
             {
-                Result = String.Format("<li>&rsaquo;</li>\r\n<li><a href=\"/Treatments.aspx?GroupID={0}\">{1}</a></li>", group.ID, group.Description);
+                Result = String.Format("<li>&rsaquo;</li>\r\n<li><a href=\"/Treatments/Group/{0}/\">{1}</a></li>", group.ID, group.Description);
             }
 
             return (Result);
@@ -1052,12 +1076,10 @@ namespace Website.Library.Classes
             foreach (TreatmentGroup group in groups)
             {
                 if (group.ID == Current)
-                    Result += String.Format("<li class=\"current\"><a href=\"/Treatments.aspx?GroupID={0}\">{1}</a></li>\r\n", group.ID, group.Description);
+                    Result += String.Format("<li class=\"current\"><a href=\"/Treatments/Group/{0}/\">{1}</a></li>\r\n", group.ID, group.Description);
                 else
-                    Result += String.Format("<li><a href=\"/Treatments.aspx?GroupID={0}\">{1}</a></li>\r\n", group.ID, group.Description);
+                    Result += String.Format("<li><a href=\"/Treatments/Group/{0}/\">{1}</a></li>\r\n", group.ID, group.Description);
             }
-
-            Result += "<li><a href=\"/Treatments/SpaDays.aspx\">Spa Days</a></li>\r\n";
             return (Result);
         }
 
@@ -1660,9 +1682,9 @@ namespace Website.Library.Classes
             }
         }
 
-        protected void DoError(string Error)
+        protected void DoError(string error)
         {
-            DoRedirect("/Error/Error.aspx?error=" + Error);
+            DoRedirect($"/Site-Error/Message/{error}/");
         }
 
 
@@ -1672,9 +1694,9 @@ namespace Website.Library.Classes
         protected void DoRedirect()
         {
             if (Request.IsLocal)
-                DoRedirect(BaseWebApplication.LoginPage + String.Format("?Redirect={0}", Request.Url.ToString()), true);
+                DoRedirect(String.Format("/Account/Login/?Redirect={0}", Request.Url.ToString()), true);
             else
-                DoRedirect(String.Format("{1}?Redirect={0}", Request.Url.ToString(), BaseWebApplication.LoginPage), true);
+                DoRedirect(String.Format("/Account/Login/?Redirect={0}", Request.Url.ToString()), true);
         }
 
 
@@ -1908,6 +1930,37 @@ namespace Website.Library.Classes
 
             LocalWebSessionData localData = (LocalWebSessionData)session.Tag;
             return (localData.CountryCode);
+        }
+
+
+        protected string GetTermsAndConditions()
+        {
+            string Result = String.Empty;
+
+            if (GlobalClass.ShowTermsAndConditions)
+                Result = String.Format(" - <a href=\"/Terms.aspx\">{0}</a>", Languages.LanguageStrings.Terms);
+
+            return (Result);
+        }
+
+        protected string GetPrivacyPolicy()
+        {
+            string Result = String.Empty;
+
+            if (GlobalClass.ShowPrivacyPolicy)
+                Result = String.Format(" - <a href=\"/Privacy.aspx\">{0}</a>", Languages.LanguageStrings.Privacy);
+
+            return (Result);
+        }
+
+        protected string GetReturnsPolicy()
+        {
+            string Result = String.Empty;
+
+            if (GlobalClass.ShowReturnsPolicy)
+                Result = String.Format(" - <a href=\"/Returns.aspx\">{0}</a>", Languages.LanguageStrings.Returns);
+
+            return (Result);
         }
 
 

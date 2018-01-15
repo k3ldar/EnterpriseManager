@@ -37,6 +37,11 @@ namespace Website.Library
 
         public static bool ShowSalonsMenu { get; set; }
 
+        public static bool ShowSalonFinder { get; set; }
+        public static bool ShowClientHeader { get; set; }
+        public static bool ShowSalonHeader { get; set; }
+
+
         public static bool ShowTreatmentsMenu { get; set; }
 
         public static bool ShowTreatmentsBrochure { get; set; }
@@ -47,7 +52,7 @@ namespace Website.Library
 
         public static bool ShowDownloadMenu { get; set; }
 
-        public static bool ShowTradeMenu { get; set; }
+        
 
 
         /// <summary>
@@ -59,6 +64,11 @@ namespace Website.Library
         /// Determines wether the returns policy is shown or not
         /// </summary>
         public static bool ShowReturnsPolicy { get; set; }
+
+        /// <summary>
+        /// Show Trade Page
+        /// </summary>
+        public static bool ShowTradePage { get; set; }
 
         /// <summary>
         /// Determines wether the Privacy Policy is shown or not

@@ -51,20 +51,22 @@ namespace Library.BOL.CustomWebPages
         /// Returns an individual Custom Static Page
         /// </summary>
         /// <param name="title">Title of page to return</param>
-        /// <param name="country">Countrt for who's custom page is to be returned</param>
+        /// <param name="country">Country for who's custom page is to be returned</param>
         /// <returns>CustomPage object if found, otherwise null</returns>
         public static CustomPage Get(string title, Country country, int webSiteID)
         {
-            if (country == null || !country.CanLocalize)
+            if (country == null)
+                throw new ArgumentNullException(nameof(country));
+
+            if (String.IsNullOrEmpty(title))
+                throw new ArgumentNullException(nameof(title));
+
+            if (!country.CanLocalize)
             {
                 if (UseCustomPages)
                 {
                     webSiteID = 0;
                     country = Countries.Countries.Get(0);
-                }
-                else
-                {
-                    country = Countries.Countries.Get(1);
                 }
             }
 
@@ -90,19 +92,24 @@ namespace Library.BOL.CustomWebPages
 
         public static CustomPage Get(string title)
         {
-            CustomPage Result;
-
-            Country country = Countries.Countries.Get(Thread.CurrentThread.CurrentUICulture);
-            int websiteID = DAL.DALHelper.WebsiteID;
-
-            Result = Get(title, country, DAL.DALHelper.WebsiteID);
-
-            if (Result == null)
+            if (UseCustomPages)
             {
-                Result = Get(title, null, 0);
-            }
+                Country country = Countries.Countries.Get(Thread.CurrentThread.CurrentUICulture);
+                int websiteID = DAL.DALHelper.WebsiteID;
 
-            return (Result);
+                CustomPage Result = Get(title, country, DAL.DALHelper.WebsiteID);
+
+                if (Result == null)
+                {
+                    return (Get(title, Countries.Countries.Get(0), 0));
+                }
+
+                return (Result);
+            }
+            else
+            {
+                return (Get(title, Countries.Countries.Get(0), 0));
+            }
         }
 
         /// <summary>

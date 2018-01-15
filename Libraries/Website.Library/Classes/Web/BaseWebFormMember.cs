@@ -2,22 +2,17 @@ using System;
 using System.Collections.Generic;
 
 using lib = Library;
-using Library.BOL.Basket;
 using Library.BOL.Users;
-using Library.BOL.Countries;
 using Library.BOL.Helpdesk;
-using Library.BOL.Orders;
-using Library.Utils;
-using Library.BOL.SEO;
 
 using Shared.Classes;
 
 namespace Website.Library.Classes
 {
-	/// <summary>
-	/// Base Web Form for Members who need to be logged in.
-	/// </summary>
-	public class BaseWebFormMember : BaseWebForm
+    /// <summary>
+    /// Base Web Form for Members who need to be logged in.
+    /// </summary>
+    public class BaseWebFormMember : BaseWebForm
 	{
 		public BaseWebFormMember()
 		{
@@ -47,29 +42,29 @@ namespace Website.Library.Classes
         /// <returns></returns>
         protected virtual string GetAccountOptionsHome()
         {
-            string Result = String.Format("<li class=\"email\"><a href=\"/Members/MemberDetails.aspx\">{0}</a></li>", Languages.LanguageStrings.MyMemberDetails);
-            Result += String.Format("<li class=\"password\"><a href=\"/Members/Password.aspx\">{0}</a></li>", Languages.LanguageStrings.MyPassword);
-            Result += String.Format("<li class=\"billing\"><a href=\"/Members/Address.aspx\">{0}</a></li>", Languages.LanguageStrings.MyBillingAddress);
-            Result += String.Format("<li class=\"delivery\"><a href=\"/Members/DeliveryAddress.aspx\">{0}</a></li>", Languages.LanguageStrings.MyDeliveryAddresses);
-            Result += String.Format("<li class=\"offers\"><a href=\"/Members/SpecialOffers.aspx\">{0}</a></li>", Languages.LanguageStrings.MySpecialOffers);
+            string Result = String.Format("<li class=\"email\"><a href=\"/Account/Details/\">{0}</a></li>", Languages.LanguageStrings.MyMemberDetails);
+            Result += String.Format("<li class=\"password\"><a href=\"/Account/Password/\">{0}</a></li>", Languages.LanguageStrings.MyPassword);
+            Result += String.Format("<li class=\"billing\"><a href=\"/Account/Address/Billing/\">{0}</a></li>", Languages.LanguageStrings.MyBillingAddress);
+            Result += String.Format("<li class=\"delivery\"><a href=\"/Account/Address/Delivery/\">{0}</a></li>", Languages.LanguageStrings.MyDeliveryAddresses);
+            Result += String.Format("<li class=\"offers\"><a href=\"/Account/Special-Offers/\">{0}</a></li>", Languages.LanguageStrings.MySpecialOffers);
 
             if (BaseWebApplication.AllowLicences)
             {
-                Result += String.Format("<li class=\"licences\"><a href=\"/Members/Licences.aspx\">{0}</a></li>", Languages.LanguageStrings.MyLicences);
+                Result += String.Format("<li class=\"licences\"><a href=\"/Account/Licences/\">{0}</a></li>", Languages.LanguageStrings.MyLicences);
             }
 
             if (BaseWebApplication.AllowCreditCards)
             {
-                Result += String.Format("<li class=\"creditcards\"><a href=\"/Members/CardDetails.aspx\">{0}</a></li>", Languages.LanguageStrings.MyCreditCard);
+                Result += String.Format("<li class=\"creditcards\"><a href=\"/Account/Card/\">{0}</a></li>", Languages.LanguageStrings.MyCreditCard);
             }
 
-            Result += String.Format("<li class=\"orders\"><a href=\"/Members/Orders.aspx\">{0}</a></li>", Languages.LanguageStrings.MyOrders);
-            Result += String.Format("<li class=\"invoices\"><a href=\"/Members/Invoices.aspx\">{0}</a></li>", Languages.LanguageStrings.MyInvoices);
-            Result += String.Format("<li class=\"tickets\"><a href=\"/Members/SupportTickets.aspx\">{0}</a></li>", Languages.LanguageStrings.MySupportTickets);
+            Result += String.Format("<li class=\"orders\"><a href=\"/Account/Orders/\">{0}</a></li>", Languages.LanguageStrings.MyOrders);
+            Result += String.Format("<li class=\"invoices\"><a href=\"/Account/Invoices/\">{0}</a></li>", Languages.LanguageStrings.MyInvoices);
+            Result += String.Format("<li class=\"tickets\"><a href=\"/Account/Help-Desk/Tickets/\">{0}</a></li>", Languages.LanguageStrings.MySupportTickets);
 
             if (BaseWebApplication.AllowCreditCards && BaseWebApplication.ShowAppointments)
             {
-                Result += String.Format("<li class=\"appointments\"><a href=\"/Members/SalonAppointments.aspx\">{0}</a></li>", Languages.LanguageStrings.MyAppointments);
+                Result += String.Format("<li class=\"appointments\"><a href=\"/Account/Appointments/\">{0}</a></li>", Languages.LanguageStrings.MyAppointments);
             }
 
             User user = GetUser();
@@ -80,7 +75,7 @@ namespace Website.Library.Classes
                 if (user.MemberLevel >= lib.MemberLevel.Distributor)
                 {
                     if (BaseWebApplication.ShowSalonUpdate)
-                        Result += String.Format("<li class=\"salons\"><a href=\"/Members/UpdateSalon.aspx\">{0}</a></li>", Languages.LanguageStrings.MySalons);
+                        Result += String.Format("<li class=\"salons\"><a href=\"/Account/Distributor/Outlet/\">{0}</a></li>", Languages.LanguageStrings.MySalons);
 
                     if (BaseWebApplication.ShowTradeDownloads)
                         Result += String.Format("<li class=\"tradeDownload\"><a href=\"/Members/TradeDownloads.aspx\">{0}</a></li>", Languages.LanguageStrings.TradeDownloads);
@@ -97,57 +92,57 @@ namespace Website.Library.Classes
 
         protected virtual string GetAccountOptions()
         {
-            string Result = String.Format("<li {0}><a href=\"/Members/MemberDetails.aspx\">{1}</a></li>", 
-                Request.Path.Contains("/MemberDetails.aspx") ? "class=\"current\"" : "",
+            string Result = String.Format("<li {0}><a href=\"/Account/Details/\">{1}</a></li>", 
+                Request.Path.Contains("/Account/Details/") ? "class=\"current\"" : "",
                 Languages.LanguageStrings.MyMemberDetails);
 
-            Result += String.Format("<li {0}><a href=\"/Members/Password.aspx\">{1}</a></li>", 
-                Request.Path.Contains("/Password.aspx") ? "class=\"current\"" : "",
+            Result += String.Format("<li {0}><a href=\"/Account/Password/\">{1}</a></li>", 
+                Request.Path.Contains("/Account/Password/") ? "class=\"current\"" : "",
                 Languages.LanguageStrings.MyPassword);
             
-            Result += String.Format("<li {0}><a href=\"/Members/Address.aspx\">{1}</a></li>", 
-                Request.Path.Contains("/Address.aspx") ? "class=\"current\"" : "", 
+            Result += String.Format("<li {0}><a href=\"/Account/Address/Billing/\">{1}</a></li>", 
+                Request.Path.Contains("Account/Address/Billing/") ? "class=\"current\"" : "", 
                 Languages.LanguageStrings.MyBillingAddress);
             
-            Result += String.Format("<li {0}><a href=\"/Members/DeliveryAddress.aspx\">{1}</a></li>", 
-                Request.Path.Contains("/DeliveryAddress.aspx") ? "class=\"current\"" : "", 
+            Result += String.Format("<li {0}><a href=\"/Account/Address/Delivery/\">{1}</a></li>", 
+                Request.Path.Contains("/Account/Address/Delivery/") ? "class=\"current\"" : "", 
                 Languages.LanguageStrings.MyDeliveryAddresses);
 
-            Result += String.Format("<li {0}><a href=\"/Members/SpecialOffers.aspx\">{1}</a></li>", 
-                Request.Path.Contains("/SpecialOffers.aspx") ? "class=\"current\"" : "",
+            Result += String.Format("<li {0}><a href=\"/Account/Special-Offers/\">{1}</a></li>", 
+                Request.Path.Contains("/Account/Special-Offers/") ? "class=\"current\"" : "",
                 Languages.LanguageStrings.MySpecialOffers);
 
             if (BaseWebApplication.AllowLicences)
             {
-                Result += String.Format("<li {0}><a href=\"/Members/Licences.aspx\">{1}</a></li>",
-                    Request.Path.Contains("/Licences.aspx") ? "class=\"current\"" : "",
+                Result += String.Format("<li {0}><a href=\"/Account/Licences/\">{1}</a></li>",
+                    Request.Path.Contains("/Account/Licences/") ? "class=\"current\"" : "",
                     Languages.LanguageStrings.MyLicences);
             }
 
             if (BaseWebApplication.AllowCreditCards)
             {
-                Result += String.Format("<li {0}><a href=\"/Members/CardDetails.aspx\">{1}</a></li>",
-                    Request.Path.Contains("/CardDetails.aspx") ? "class=\"current\"" : "",
+                Result += String.Format("<li {0}><a href=\"/Account/Card/\">{1}</a></li>",
+                    Request.Path.Contains("/Account/Card/") ? "class=\"current\"" : "",
                     Languages.LanguageStrings.MyCreditCard);
             }
 
-            Result += String.Format("<li {0}><a href=\"/Members/Orders.aspx\">{1}</a></li>", 
-                Request.Path.Contains("/Orders.aspx") ? "class=\"current\"" : "", 
+            Result += String.Format("<li {0}><a href=\"/Account/Orders/\">{1}</a></li>", 
+                Request.Path.Contains("/Account/Orders/") ? "class=\"current\"" : "", 
                 Languages.LanguageStrings.MyOrders);
 
-            Result += String.Format("<li {0}><a href=\"/Members/Invoices.aspx\">{1}</a></li>", 
-                Request.Path.Contains("/Invoices.aspx") ? "class=\"current\"" : "", 
+            Result += String.Format("<li {0}><a href=\"/Account/Invoices/\">{1}</a></li>", 
+                Request.Path.Contains("/Account/Invoices/") ? "class=\"current\"" : "", 
                 Languages.LanguageStrings.MyInvoices);
 
             if (BaseWebApplication.AllowCreditCards && BaseWebApplication.ShowAppointments)
             {
-                Result += String.Format("<li {0}><a href=\"/Members/SalonAppointments.aspx\">{1}</a></li>",
-                    Request.Path.Contains("/SalonAppointments.aspx") ? "class=\"current\"" : "",
+                Result += String.Format("<li {0}><a href=\"/Account/Appointments/\">{1}</a></li>",
+                    Request.Path.Contains("/Account/Appointments/") ? "class=\"current\"" : "",
                     Languages.LanguageStrings.MySalonAppointments);
             }
 
-            Result += String.Format("<li {0}><a href=\"/Members/SupportTickets.aspx\">{1}</a></li>",
-                Request.Path.Contains("/SupportTickets.aspx") ? "class=\"current\"" : "",
+            Result += String.Format("<li {0}><a href=\"/Account/Help-Desk/Tickets/\">{1}</a></li>",
+                Request.Path.Contains("/Account/Help-Desk/Tickets/") ? "class=\"current\"" : "",
                 Languages.LanguageStrings.MySupportTickets);
 
             User user = GetUser();
@@ -158,8 +153,8 @@ namespace Website.Library.Classes
                 if (user.MemberLevel >= lib.MemberLevel.Distributor)
                 {
                     if (BaseWebApplication.ShowSalonUpdate)
-                        Result += String.Format("<li {0}><a href=\"/Members/UpdateSalons.aspx\">{1}</a></li>", 
-                            Request.Path.Contains("/UpdateSalons.aspx") ? "class=\"current\"" : "",
+                        Result += String.Format("<li {0}><a href=\"/Account/Distributor/Outlet/\">{1}</a></li>", 
+                            Request.Path.Contains("/Account/Distributor/Outlet/") ? "class=\"current\"" : "",
                             Languages.LanguageStrings.MySalons);
 
                     if (BaseWebApplication.ShowTradeDownloads)
@@ -170,7 +165,7 @@ namespace Website.Library.Classes
 
                 if (user.MemberLevel >= lib.MemberLevel.StaffMember)
                 {
-                    Result += String.Format("<li><a href=\"/Members/SystemHooks.aspx\">{0}</a></li>",
+                    Result += String.Format("<li><a href=\"/Account/System/Hooks/\">{0}</a></li>",
                         Languages.LanguageStrings.SystemHooks);
                     Result += String.Format("<li><a href=\"/staff/index.aspx\">{0}</a></li>",
                         Languages.LanguageStrings.StaffHomePage);
@@ -187,8 +182,8 @@ namespace Website.Library.Classes
             }
 
 
-            Result += String.Format("<li {0}><a href=\"/Members/Logout.aspx\">{1}</a></li>", 
-                Request.Path.Contains("/Logout.aspx") ? "class=\"current\"" : "", 
+            Result += String.Format("<li {0}><a href=\"/Account/Logout/\">{1}</a></li>", 
+                Request.Path.Contains("/Account/Logout/") ? "class=\"current\"" : "", 
                 Languages.LanguageStrings.Logout);
 
             return (Result);

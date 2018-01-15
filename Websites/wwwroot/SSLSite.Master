@@ -22,7 +22,7 @@
 </head>
 <body>
     <%=GetStyleSheet() %>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-1.7.1.min.js"></script>
     <cc1:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" CombineScripts="true" ScriptMode="Release">
         <ControlBundles>
             <cc1:ControlBundle Name="Standard" />
@@ -55,10 +55,10 @@
                     </div>
 
                     <div class="actions">
-                        <p><a href="/Members/Index.aspx"><%=Languages.LanguageStrings.MyAccount %></a> | <a href="/Helpdesk/Index.aspx"><%=Languages.LanguageStrings.Helpdesk %></a></p>
+                        <p><a href="/Account/"><%=Languages.LanguageStrings.MyAccount %></a> | <a href="/Help-Desk/"><%=Languages.LanguageStrings.Helpdesk %></a></p>
                         <div class="bag" id="divShoppingCart" runat="server">
                             <p><%=BasketInfo()%></p>
-                            <a href="/Basket/Basket.aspx"><%=Languages.LanguageStrings.ViewShoppingBag %> &raquo;</a>
+                            <a href="/Shopping/Basket/"><%=Languages.LanguageStrings.ViewShoppingBag %> &raquo;</a>
                             <span class="png_bg"></span>
                         </div>
                         <!-- end of #bag -->
@@ -92,7 +92,7 @@
                         <%=ShowTipsAndTricks() %>
                         <%=ShowTrade() %>
                         <%=ShowDownloads() %>
-                        <li><a href="/Helpdesk/Feedback/"><%=Languages.LanguageStrings.Feedback %></a></li>
+                        <li><a href="/Help-Desk/Feedback/"><%=Languages.LanguageStrings.Feedback %></a></li>
                         <li id="liMobileNavigator" runat="server" class="icon"><a href="javascript:void(0);" style="font-size: 15px;" onclick="openNavigation()">&#9776;</a></li>
                     </ul>
                 </div>
@@ -114,7 +114,9 @@
         <div class="footer png_bg">
             <p id="pMobileSite" runat="server">View Desktop Website</p>
             <p id="pFooterDetails" runat="server">
-                <a href="/Contact-Us/"><%=Languages.LanguageStrings.ContactUs %></a> - <a href="/About/"><%=Languages.LanguageStrings.AboutUs %></a> - <a href="/Terms/"><%=Languages.LanguageStrings.Terms %></a>
+                <a href="/Company/Contact-Us/"><%=Languages.LanguageStrings.ContactUs %></a> - <a href="/Company/About/"><%=Languages.LanguageStrings.AboutUs %></a>
+                <%=GetTermsAndConditions() %><%=GetPrivacyPolicy() %>  <%=GetReturnsPolicy() %>
+
             </p>
             <p>&copy; Copyright 2011 - <%=CurrentYear() %> <a href="http://shifoo.systems" target="_blank">Shifoo Systems</a>. All rights reserved. </p>
         </div>

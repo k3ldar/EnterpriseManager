@@ -83,7 +83,7 @@ namespace SieraDelta.Website.Basket
                 }
 
                 if (CookieGetValue("SIERADELTA_TEST_COOKIE", "invalid") == "invalid")
-                    DoRedirect("/Members/Cookies.aspx");
+                    DoRedirect("/Account/Cookies/");
 
                 if (!UserIsLoggedOn())
                     DoRedirect("/Shopping/Basket/");
@@ -223,28 +223,28 @@ namespace SieraDelta.Website.Basket
 
             //switch (PayMethod.ID)
             //{
-                //case 2: //Enums.PaymentStatus.PaypalNotPaid:
-                //    PayWithPaypal();
-                //    break;
-                //case 3: //Enums.PaymentStatus.PhoneNotPaid:
-                //    DoRedirect("", true);
-                //    break;
-                //case 4: //Enums.PaymentStatus.ChequeNotPaid:
-                //    DoRedirect("", true);
-                //    break;
-                //case 5: //Enums.PaymentStatus.PaynetNotPaid:
-                //    PayWithPaypoint();
-                //    break;
-                //case 13: //Enums.PaymentStatus.CreditCardNotPaid:
-                //    PayWithPayflow();
-                //    break;
+            //case 2: //Enums.PaymentStatus.PaypalNotPaid:
+            //    PayWithPaypal();
+            //    break;
+            //case 3: //Enums.PaymentStatus.PhoneNotPaid:
+            //    DoRedirect("", true);
+            //    break;
+            //case 4: //Enums.PaymentStatus.ChequeNotPaid:
+            //    DoRedirect("", true);
+            //    break;
+            //case 5: //Enums.PaymentStatus.PaynetNotPaid:
+            //    PayWithPaypoint();
+            //    break;
+            //case 13: //Enums.PaymentStatus.CreditCardNotPaid:
+            //    PayWithPayflow();
+            //    break;
 
-                //case 6: //Enums.PaymentStatus.PaypalPaid:
-                //case 9: //Enums.PaymentStatus.PaynetPaid:
-                //case 7: //Enums.PaymentStatus.PhonePaid:
-                //case 8: //Enums.PaymentStatus.ChequePaid:
-                //    DoRedirect("/Members/Invoices.aspx", true);
-                //    break;
+            //case 6: //Enums.PaymentStatus.PaypalPaid:
+            //case 9: //Enums.PaymentStatus.PaynetPaid:
+            //case 7: //Enums.PaymentStatus.PhonePaid:
+            //case 8: //Enums.PaymentStatus.ChequePaid:
+            //    DoRedirect("/Account/Invoices/", true);
+            //    break;
 
             //    default:
             //        throw new Exception("Unknown payment status");

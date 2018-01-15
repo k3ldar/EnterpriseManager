@@ -13,7 +13,7 @@ namespace SieraDelta.Website.Members
         protected void Page_Load(object sender, EventArgs e)
         {
             if (GetUser() != null)
-                DoRedirect("/Members/Index.aspx", true);
+                DoRedirect("Account/", true);
 
             CreateAccount1.AfterCreateAccount += CreateAccount1_AfterCreateAccount;
         }
@@ -21,7 +21,7 @@ namespace SieraDelta.Website.Members
         void CreateAccount1_AfterCreateAccount(object sender, Controls.CreateAccount.CreateAccountArgs e)
         {
             if (GetUser() != null)
-                DoRedirect("/Members/Index.aspx");
+                DoRedirect("/Account/");
         }
     }
 }

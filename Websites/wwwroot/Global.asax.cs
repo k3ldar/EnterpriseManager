@@ -30,13 +30,15 @@ namespace SieraDelta.Website
 		public Global()
 		{
 			InitializeComponent();
-		}	
-		
+		}
 
 
-		#endregion Constructors/Destructors
 
-        #region Overridden Methods
+        #endregion Constructors/Destructors
+
+#region Overridden Methods
+
+#if SAVE_SESSION_DATA
 
         public override void SessionClosed(Shared.Classes.UserSession session)
         {
@@ -53,6 +55,8 @@ namespace SieraDelta.Website
             Library.BOL.SEO.SeoData.SEOSaveSession(session);
         }
 
+#endif
+
         public override void LoadCustomSettings()
         {
             LocalizedLanguages.Active = true;
@@ -62,7 +66,7 @@ namespace SieraDelta.Website
             ShowSalonUpdate = false;
             ShowAppointments = false;
             ShowTradeDownloads = false;
-            AllowLicences = true;
+            AllowLicences = false;
 
             GlobalClass.Address = String.Format("{0} {1} {2}",
                 webLib.BaseWebApplication.AddressLine1,
@@ -71,15 +75,15 @@ namespace SieraDelta.Website
 
             Library.DAL.DALHelper.SetCacheLimit(new TimeSpan(24, 0, 0));
             GlobalClass.InternalCache.MaximumAge = Library.DAL.DALHelper.CacheLimit;
-            GlobalClass.StyleSheet = "Style.css";
+            GlobalClass.StyleSheet = "StyleMain.css";
             AllowMobileWebsite = true;
 
             Shared.Classes.ThreadManager.ThreadStart(new ReloadBannedIPAddresses(), "Banned IP Addresses", ThreadPriority.Lowest);
         }
 
-        #endregion Overridden Methods
+#endregion Overridden Methods
 
-        #region Private Methods
+#region Private Methods
 
         void ErrorHandling_InternalException(object sender, Library.BOLEvents.InternalErrorEventArgs e)
         {
@@ -112,9 +116,9 @@ namespace SieraDelta.Website
         }
 
 
-        #endregion Private Methods
+#endregion Private Methods
 
-        #region WebAppEvents
+#region WebAppEvents
 
         protected void Application_Start(Object sender, EventArgs e)
 		{
@@ -229,7 +233,7 @@ namespace SieraDelta.Website
             ApplicationEnd();
 		}
 			
-		#region Web Form Designer generated code
+#region Web Form Designer generated code
 		/// <summary>
 		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
@@ -238,18 +242,18 @@ namespace SieraDelta.Website
 		{    
         }
 
-		#endregion
+#endregion
 
-		#endregion WebAppEvents
+#endregion WebAppEvents
 	}
 
-	#endregion Class Global
+#endregion Class Global
 
-    #region Banned IP Load Thread
+#region Banned IP Load Thread
 
     internal sealed class ReloadBannedIPAddresses : Shared.Classes.ThreadManager
     {
-        #region Constructors
+#region Constructors
 
         internal ReloadBannedIPAddresses()
             : base(null, new TimeSpan(1, 0, 0))
@@ -269,9 +273,9 @@ namespace SieraDelta.Website
             return (true);
         }
 
-        #endregion Constructors
+#endregion Constructors
     }
 
-    #endregion Banned IP Load Thread
+#endregion Banned IP Load Thread
 }
 

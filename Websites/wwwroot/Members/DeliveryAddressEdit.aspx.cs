@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 using Website.Library.Classes;
 
@@ -14,6 +10,11 @@ namespace SieraDelta.Website.Members
         {
             LeftContainerControl1.SubHeader = Languages.LanguageStrings.DeliveryAddressEdit;
             LeftContainerControl1.SubOptions = GetAccountOptions();
+        }
+
+        protected string GetAddressID()
+        {
+            return ((string)Page.RouteData.Values["id"]);
         }
     }
 }

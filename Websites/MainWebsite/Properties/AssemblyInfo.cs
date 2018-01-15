@@ -62,4 +62,4 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyKeyName("")]
 [assembly: AssemblyFileVersionAttribute("2.0.0.1")]
 
-[assembly: AssemblyFileVersion("1.0.0.3")]
+[assembly: AssemblyFileVersion("1.0.0.4")]

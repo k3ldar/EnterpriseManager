@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 using Website.Library.Classes;
 using Library.BOL.Helpdesk;
@@ -41,7 +37,7 @@ namespace SieraDelta.Website.Helpdesk.FAQ
                 else
                     Sub = String.Format(" ({0} {2}{1})", grp.Items.Count, grp.Items.Count == 1 ? "" : "s", Languages.LanguageStrings.Item);
 
-                Result += String.Format("<li><a href=\"/Helpdesk/FAQ/FAQ.aspx?GroupID={1}\">{0}</a>{2}</li>", grp.Name, grp.ID, Sub);
+                Result += String.Format("<li><a href=\"/Help-Desk/Frequently-Asked-Questions/Group/{1}/{0}/\">{0}</a>{2}</li>", grp.Name, grp.ID, Sub);
             }
 
             return (Result);

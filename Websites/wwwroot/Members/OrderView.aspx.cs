@@ -26,10 +26,10 @@ namespace SieraDelta.Website.Members
 
             User user = GetUser();
 
-            _order = user.Orders.Find(GetFormValue("ID", -1));
+            _order = user.Orders.Find(SharedUtils.StrToIntDef((string)Page.RouteData.Values["order"], -1));
 
             if (_order == null)
-                DoRedirect("/Members/Orders.aspx", true);
+                DoRedirect("/Account/Orders/", true);
 
             BuildItems();
 

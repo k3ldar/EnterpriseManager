@@ -40,8 +40,6 @@
                     <p id="pPostalAddress" runat="server" class="content form">
                         
                     </p>
-
-                    <p style="max-width:80%;"><a href="/helpdesk/FAQ/ViewFAQItem.aspx?ItemID=2"><%=Languages.LanguageStrings.ClickToTrackOrder %></a></p>
             </div><!-- end of #mainContent -->
 
             <div class="clear"><!-- clear --></div>

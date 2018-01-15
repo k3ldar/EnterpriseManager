@@ -32,7 +32,7 @@ namespace Website.Library.Classes
             if (UserIsLoggedOn())
             {
                 if (GetUsersMemberLevel() < (int)lib.MemberLevel.Distributor)
-                    DoRedirect("/Error/InvalidPermissions.aspx");
+                    DoRedirect("/Site-Error/Invalid-Permission/");
             }
             else
             {

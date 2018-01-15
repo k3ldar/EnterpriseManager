@@ -53,7 +53,7 @@ namespace Website.Library.Classes
             lib.MemberLevel level = GetUser().MemberLevel;
 
             if (level < lib.MemberLevel.AdminReadOnly)
-				DoRedirect("/Error/InvalidPermissions.aspx");
+				DoRedirect("/Site-Error/Invalid-Permission/");
 		}
 
 

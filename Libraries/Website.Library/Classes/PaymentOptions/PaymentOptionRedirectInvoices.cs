@@ -40,7 +40,7 @@ namespace Website.Library.Classes.PaymentOptions
         {
             try
             {
-                webResponse.Redirect(GlobalClass.RootURL + "/Members/Invoices.aspx", false);
+                webResponse.Redirect(GlobalClass.RootURL + "/Account/Invoices/", false);
             }
             catch (Exception err)
             {

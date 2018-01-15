@@ -75,7 +75,7 @@ namespace SieraDelta.Website.Members.Controls
                     HtmlTableCell cDescription = new HtmlTableCell();
                     r.Cells.Add(cDescription);
                     cDescription.Width = "46%";
-                    cDescription.InnerHtml = String.Format("<a href=\"/Members/InvoiceView.aspx?ID={1}\"><strong>{0}{2}</strong><br />{3}{1}</a>", firstItem == null ? "Unknown" : firstItem.Description, invoice.ID, otherItems, Languages.LanguageStrings.InvoicePrefix);
+                    cDescription.InnerHtml = String.Format("<a href=\"/Account/Invoices/View/{1}/\"><strong>{0}{2}</strong><br />{3}{1}</a>", firstItem == null ? "Unknown" : firstItem.Description, invoice.ID, otherItems, Languages.LanguageStrings.InvoicePrefix);
 
                     HtmlTableCell cDispatched = new HtmlTableCell();
                     r.Cells.Add(cDispatched);

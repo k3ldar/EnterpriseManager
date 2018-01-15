@@ -17,5 +17,10 @@ namespace SieraDelta.Website.Members
             LeftContainerControl1.SubHeader = Languages.LanguageStrings.MyAccount;
             LeftContainerControl1.SubOptions = GetAccountOptions();
         }
+
+        protected int GetOrderPage()
+        {
+            return (SharedUtils.StrToIntDef((string)Page.RouteData.Values["page"], 1));
+        }
     }
 }

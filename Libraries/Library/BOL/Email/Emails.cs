@@ -294,7 +294,7 @@ namespace Library.BOL.Mail
                     sMsg = LibUtils.PreProcessPost(Library.DAL.DALHelper.WebsiteAddress, sMsg);
 
                     sMsg += String.Format("<P>If you do not wish to receive special offers and promotions " +
-                        "please change your preferences by <a href=\"{0}/Members/SpecialOffers.aspx\">clicking here</a></p>",
+                        "please change your preferences by <a href=\"{0}/Account/Special-Offers/\">clicking here</a></p>",
                         DAL.DALHelper.WebsiteAddress);
 
                     try

@@ -58,7 +58,7 @@ namespace SieraDelta.Website.Members.Controls
 
                 Session["FLAG"] = null;
                 Session["USASTATE"] = null;
-                DoRedirect("/Members/Index.aspx?profileUpdated=true", true);
+                DoRedirect("/Account/?profileUpdated=true", true);
             }
             catch (Exception err)
             {

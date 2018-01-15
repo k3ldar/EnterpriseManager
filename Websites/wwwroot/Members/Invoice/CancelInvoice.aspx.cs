@@ -27,7 +27,7 @@ namespace SieraDelta.Website.Members.Invoice
             _invoice = user.Invoices.Find(GetFormValue("ID", -1));
 
             //if (_invoice == null)
-            DoRedirect("/Members/Invoices.aspx", true);
+            DoRedirect("/Account/Invoices/", true);
 
         }
 
@@ -89,7 +89,7 @@ namespace SieraDelta.Website.Members.Invoice
                 _invoice.CancelInvoice(GetUser());
 
                 //return to invoices page
-                DoRedirect("/Members/Invoices.aspx");
+                DoRedirect("/Account/Invoices/");
             }
             catch (Exception err)
             {

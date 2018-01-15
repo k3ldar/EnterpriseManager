@@ -35,8 +35,6 @@ using Library.BOL.Users;
 using Shared;
 using Shared.Classes;
 
-#pragma warning disable IDE0018 // Variable declaration can be inlined
-
 namespace Library.Utils
 {
 
@@ -500,9 +498,6 @@ namespace Library.Utils
         /// <returns></returns>
         public static string PreProcessPost(string RootURL, string S)
         {
-            if (!Library.Utils.SharedUtils.IsValidURL(RootURL))
-                throw new ArgumentException("Invalid URL", RootURL);
-
             // replace all line breaks with <BR>
             string Result = BBCode.MakeHtml(RootURL, S, false, true, true);
             Result = Result.Replace("\r\n", "<br />");
@@ -510,7 +505,6 @@ namespace Library.Utils
 
             return (Result);
         }
-
 
         public static int RoundUp(int Total, int DivBy)
         {
@@ -701,6 +695,101 @@ namespace Library.Utils
             return (Result);
         }
 
+        private enum LastEntry { None, Paragraph, Text, Header, ListStart, ListItem, ListEnd }
+
+        public static string CreateBasicHTML(string data)
+        {
+            string Result = data ?? String.Empty;
+
+            Result = Result.Trim();
+
+            // assume it is html ?? dodgy but........
+            //if (Result.Contains("/>") || Result.Contains("/ >") || Result.Contains("</"))
+            //    return (Result);
+
+            //LastEntry lastEntry = LastEntry.None;
+
+            //Result = Result.Replace("\r\n", "\n");
+
+            //while (Result.Contains("\n\n"))
+            //    Result = Result.Replace("\n\n", "\n");
+
+            //string[] lines = Result.Split('\n');
+            //Result = String.Empty;
+
+            //foreach(string line in lines)
+            //{
+            //    if (line.StartsWith("#"))
+            //    {
+            //        if (lastEntry == LastEntry.Paragraph)
+            //        {
+            //            Result += "</p>";
+            //            lastEntry = LastEntry.None;
+            //        }
+
+            //        string start = line.Substring(0, line.IndexOf(" "));
+
+            //        switch (start)
+            //        {
+            //            case "#1":
+            //                Result += $"<h1>{line}</h1>";
+            //                lastEntry = LastEntry.Header;
+            //                break;
+
+            //            case "#2":
+            //                Result += $"<h2>{line}</h2>";
+            //                lastEntry = LastEntry.Header;
+            //                break;
+
+            //            case "#3":
+            //                Result += $"<h3>{line}</h3>";
+            //                lastEntry = LastEntry.Header;
+            //                break;
+
+            //            case "#4":
+            //                Result += $"<h4>{line}</h4>";
+            //                lastEntry = LastEntry.Header;
+            //                break;
+
+            //            case "#B":
+            //                switch (lastEntry)
+            //                {
+            //                    case LastEntry.Paragraph:
+            //                    case LastEntry.Text:
+            //                        Result += "</p><ul>";
+            //                        break;
+
+            //                    case LastEntry.Header:
+            //                    case LastEntry.ListItem:
+            //                    case LastEntry.None:
+            //                        Result += "<ul>";
+            //                        break;
+
+            //                    case LastEntry.ListEnd:
+            //                        Result += "<ul>";
+            //                        break;
+
+            //                    case LastEntry.ListItem:
+            //                        break;
+            //                }
+
+            //                Result += $"<li>{line}</li>";
+            //                break;
+
+            //            default:
+            //                Result += $"<p>{line}</p>";
+            //                break;
+            //        }
+            //    }
+            //    else if (String.IsNullOrEmpty(line)) // asume end of paragraph
+            //    {
+            //        if (Result.Length > 0 && !Result.EndsWith("</p>"))
+            //            Result += "</p>";
+            //    }
+            //}
+
+            return (Result);
+        }
 
         /// <summary>
         /// Converts a string to a shortint (Int16)

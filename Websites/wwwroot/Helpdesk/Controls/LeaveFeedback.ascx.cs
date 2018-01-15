@@ -33,7 +33,7 @@ namespace SieraDelta.Helpdesk.Controls
                     string comments = SharedUtils.ReplaceHTMLElements(txtComments.Text);
 
                     Library.BOL.Helpdesk.CustomerComments.Add(GetUser(), user, comments);
-                    DoRedirect("/Helpdesk/Feedback/", true);
+                    DoRedirect("/Help-Desk/Feedback/", true);
                 }
             }
             catch (Exception err)

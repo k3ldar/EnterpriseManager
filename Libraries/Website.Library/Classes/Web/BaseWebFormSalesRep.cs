@@ -15,7 +15,7 @@ namespace Website.Library.Classes
 
             // if not a member of staff then redirect to diary page
             if (GetUsersMemberLevel() < (int)lib.MemberLevel.SalesAdvisor)
-                DoRedirect("/Error/InvalidPermissions.aspx");
+                DoRedirect("/Site-Error/Invalid-Permission/");
         }
 
 

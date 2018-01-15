@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SieraDelta.Website.Tips {
+namespace SieraDelta.Website.Trade {
     
     
-    public partial class PageTip {
+    public partial class Signup {
         
         /// <summary>
         /// LeftContainerControl1 control.
@@ -22,30 +22,39 @@ namespace SieraDelta.Website.Tips {
         protected global::SieraDelta.Website.Controls.LeftContainerControl LeftContainerControl1;
         
         /// <summary>
-        /// MediaLinks1 control.
+        /// TradeSignup11 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SieraDelta.Website.Controls.MediaLinks MediaLinks1;
+        protected global::SieraDelta.Website.Controls.Controls.TradeSignup1 TradeSignup11;
         
         /// <summary>
-        /// FeaturedProducts1 control.
+        /// TradeSignup21 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SieraDelta.Website.Controls.FeaturedProducts FeaturedProducts1;
+        protected global::SieraDelta.Website.Controls.Controls.TradeSignup2 TradeSignup21;
         
         /// <summary>
-        /// WebPageTags1 control.
+        /// TradeSignup31 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SieraDelta.Website.Controls.WebPageTags WebPageTags1;
+        protected global::SieraDelta.Website.Controls.Controls.TradeSignup3 TradeSignup31;
+        
+        /// <summary>
+        /// TradeSignupFinished1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::SieraDelta.Website.Controls.Controls.TradeSignupFinished TradeSignupFinished1;
     }
 }

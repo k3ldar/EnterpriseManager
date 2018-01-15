@@ -11,13 +11,13 @@
 			<div class="breadcrumb">
 			
 				<ul class="fixed">
-					<li><a href="/Index.aspx">Home</a></li>
+					<li><a href="/Home/">Home</a></li>
 					<li>&rsaquo;</li>
-					<li><a href="/Members/Index.aspx">my account</a></li>
+					<li><a href="/Account/">my account</a></li>
 					<li>&rsaquo;</li>
-					<li><a href="/Members/Invoices.aspx">invoices</a></li>
+					<li><a href="/Account/Invoices/">invoices</a></li>
 					<li>&rsaquo;</li>
-					<li><a href="/Members/InvoiceView.aspx?ID=<%=GetInvoiceNumber() %>">view</a></li>
+					<li><a href="/Account/Invoices/View/<%=GetInvoiceNumber() %>/">view</a></li>
 					<li>&rsaquo;</li>
 					<li><a href="/Members/Invoice/CancelInvoice.aspx?ID=<%=GetInvoiceNumber() %>">cancel</a></li>
 				</ul>
