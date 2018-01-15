@@ -26,7 +26,11 @@
 using System;
 using System.IO;
 using System.Threading;
+
+#if !DEBUG
 using System.Reflection;
+#endif
+
 using System.Windows.Forms;
 using System.Diagnostics;
 

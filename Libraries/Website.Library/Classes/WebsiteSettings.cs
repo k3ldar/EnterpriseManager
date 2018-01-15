@@ -54,7 +54,7 @@ namespace Website.Library.Classes
                         "Show Treatments Page", "Settings.ShowTreatments");
                     options.AddOption("Show Distributors Page", GlobalClass.ShowDistributorsMenu,
                         "Show Distributors Page", "Settings.ShowDistributors");
-                    options.AddOption("Show Distributors Page", GlobalClass.ShowTipsAndTricksMenu,
+                    options.AddOption("Show Tips and Tricks Page", GlobalClass.ShowTipsAndTricksMenu,
                         "Show Distributors Page", "Settings.ShowTipsAndTricks");
                     options.AddOption("Show Download Page", GlobalClass.ShowDownloadMenu,
                         "Show Download Page", "Settings.ShowDownloads");

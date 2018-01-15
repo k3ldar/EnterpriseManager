@@ -263,7 +263,7 @@ namespace SieraDelta.Website
 
             foreach (ProductCost cost in _product.ProductCosts)
             {
-                decimal prodCost = cost.PriceGet(localData.Basket.Country);
+                decimal prodCost = cost.PriceGet(localData.PriceColumn, localData.Basket.Country);
 
                 if (prodCost > 0.00m)
                 {

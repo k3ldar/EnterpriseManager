@@ -91,6 +91,9 @@ namespace POS.CurrencyWatch.Classes
                     }
                 }
 
+                if (activeCurrency == null)
+                    return (String.Empty);
+
                 return (String.Format(StringConstants.CURRENCY_CONVERSION, 
                     AppController.LocalSettings.CurrencyBase, activeCurrency.Rate, activeCurrency.ID,
                     activeCurrency.LastMovement == CurrencyMovement.Same ? StringConstants.CURRENCY_SAME : 

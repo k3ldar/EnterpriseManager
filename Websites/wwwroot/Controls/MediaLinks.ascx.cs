@@ -9,6 +9,7 @@ using Library.BOL.Products;
 using Library.BOL.SEO;
 using Library.Utils;
 using Shared.Classes;
+using Website.Library;
 
 namespace SieraDelta.Website.Controls
 {
@@ -32,11 +33,31 @@ namespace SieraDelta.Website.Controls
 
         protected string GetMediaLinks(bool facebook = true, bool twitter = true, bool pinIt = true, bool plusOne = true)
         {
+            bool isMobile = false;
+
+            try
+            {
+                UserSession session = (UserSession)UserSessionManager.UserSessions.Get(Session.SessionID).Value;
+                isMobile = session.MobileRedirect;
+            }
+            catch
+            {
+
+            }
+
             string Result = String.Empty;
 
-            UserSession session = (UserSession)UserSessionManager.UserSessions.Get(Session.SessionID).Value;
+            string cacheName = String.Format("Media Cache {0} {1} {2} {3} {4}", facebook, twitter, pinIt, plusOne, isMobile);
 
-            if (session.MobileRedirect)
+            if (Library.DAL.DALHelper.AllowCaching)
+            {
+                CacheItem cachedResult = GlobalClass.InternalCache.Get(cacheName);
+
+                if (cachedResult != null)
+                    return ((string)cachedResult.Value);
+            }
+
+            if (isMobile)
             {
                 Result = String.Empty;
 
@@ -110,6 +131,9 @@ namespace SieraDelta.Website.Controls
 
                 Result += "</tr>";
             }
+
+            if (Library.DAL.DALHelper.AllowCaching)
+                GlobalClass.InternalCache.Add(cacheName, new CacheItem(cacheName, Result));
 
             return (Result);
         }

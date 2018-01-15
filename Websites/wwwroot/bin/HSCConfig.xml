@@ -3,8 +3,8 @@
 <SieraDelta>
   <Connection>
     <DatabaseClass>Library.DAL.FirebirdDB</DatabaseClass>
-    <ConnectionString-skincare>User=SHIFOO_WEBSITE;Password={0};Database=C:\Databases\skincareorganics.com\SKINCARE.ORGANICS.SITE1.fdb;DataSource=109.228.47.69;Port=3060;Dialect=3;MinPoolSize=1;MaxPoolSize=150;Pooling=True;Connection lifetime=0;Packet Size=8192;CharSet=UTF8</ConnectionString-skincare>
-    <ConnectionString>User=SHIFOO_WEBSITE;Password={0};Database=T:\Databases\SkincareOrganics\Skincare.Organics.Site1.fdb;DataSource=127.0.0.1;Port=7091;Dialect=3;MinPoolSize=1;MaxPoolSize=150;Pooling=True;Connection lifetime=0;Packet Size=8192;CharSet=UTF8</ConnectionString>
+    <ConnectionString>User=SHIFOO_WEBSITE;Password={0};Database=C:\Databases\skincareorganics.com\SKINCARE.ORGANICS.SITE1.fdb;DataSource=109.228.47.69;Port=3060;Dialect=3;MinPoolSize=1;MaxPoolSize=150;Pooling=True;Connection lifetime=0;Packet Size=8192;CharSet=UTF8</ConnectionString>
+    <ConnectionString1>User=SHIFOO_WEBSITE;Password={0};Database=T:\Databases\SkincareOrganics\Skincare.Organics.Site1.fdb;DataSource=127.0.0.1;Port=7091;Dialect=3;MinPoolSize=1;MaxPoolSize=150;Pooling=True;Connection lifetime=0;Packet Size=8192;CharSet=UTF8</ConnectionString1>
     <FailOver>User=SHIFOO_WEBSITE;Password={0};Database=T:\SieraDelta\Database\Main.fdb;DataSource=127.0.0.1;Port=3050;Dialect=3;MinPoolSize=1;MaxPoolSize=150;Pooling=True;Connection lifetime=0;Packet Size=8192;CharSet=UTF8</FailOver>
     <GeoIPUpdates>User=SHIFOO_WEBSITE;Password={0};Database=T:\SieraDelta\Database\Main.fdb;DataSource=127.0.0.1;Port=3050;Dialect=3;MinPoolSize=1;MaxPoolSize=150;Pooling=True;Connection lifetime=0;Packet Size=8192;CharSet=UTF8</GeoIPUpdates>
     <BackupConnectionString>User=SIMON;Password={0};Database=T:\SieraDelta\Database\Main.fdb;DataSource=localhost</BackupConnectionString>

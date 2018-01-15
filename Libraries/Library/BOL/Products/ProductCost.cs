@@ -400,17 +400,10 @@ namespace Library.BOL.Products
 
         public decimal PriceGet(Countries.Country country)
         {
-            switch (country.PriceColumn)
-            {
-                case 0:
-                    return (Cost1);
-                case 1:
-                    return (Cost2);
-                case 2:
-                    return (Cost3);
-                default:
-                    throw new Exception("Invalid Cost Requested");
-            }
+            if (country == null)
+                throw new ArgumentNullException(nameof(country));
+
+            return (PriceGet(country.PriceColumn, country));
         }
 
         public decimal PriceGet(int priceColumn, Countries.Country country)
