@@ -1,6 +1,5 @@
 T:\ShifooMain\Websites\wwwroot\bin\SieraDelta.Website.dll.config
 T:\ShifooMain\Websites\wwwroot\bin\SieraDelta.Website.dll
-T:\ShifooMain\Websites\wwwroot\bin\SieraDelta.Website.pdb
 T:\ShifooMain\Websites\wwwroot\bin\ICSharpCode.SharpZipLib.dll
 T:\ShifooMain\Websites\wwwroot\bin\Languages.dll
 T:\ShifooMain\Websites\wwwroot\bin\Library.dll
@@ -45,4 +44,14 @@ T:\ShifooMain\Websites\wwwroot\obj\Release\SieraDelta.Website.Global.resources
 T:\ShifooMain\Websites\wwwroot\obj\Release\Shifoo.Customer.Website.csproj.GenerateResource.Cache
 T:\ShifooMain\Websites\wwwroot\obj\Release\Shifoo.Customer.Website.csproj.CoreCompileInputs.cache
 T:\ShifooMain\Websites\wwwroot\obj\Release\SieraDelta.Website.dll
-T:\ShifooMain\Websites\wwwroot\obj\Release\SieraDelta.Website.pdb
+T:\ShifooMain\Websites\wwwroot\bin\AjaxControlToolkit.dll
+T:\ShifooMain\Websites\wwwroot\bin\AjaxControlToolkit.StaticResources.dll
+T:\ShifooMain\Websites\wwwroot\bin\Antlr3.Runtime.dll
+T:\ShifooMain\Websites\wwwroot\bin\AspNet.ScriptManager.jQuery.dll
+T:\ShifooMain\Websites\wwwroot\bin\Newtonsoft.Json.dll
+T:\ShifooMain\Websites\wwwroot\bin\System.Web.Optimization.dll
+T:\ShifooMain\Websites\wwwroot\bin\WebGrease.dll
+T:\ShifooMain\Websites\wwwroot\bin\Library.dll.config
+T:\ShifooMain\Websites\wwwroot\bin\Antlr3.Runtime.pdb
+T:\ShifooMain\Websites\wwwroot\bin\Newtonsoft.Json.xml
+T:\ShifooMain\Websites\wwwroot\bin\System.Web.Optimization.xml

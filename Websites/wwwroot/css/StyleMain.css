@@ -1241,17 +1241,26 @@ body {
 		text-decoration: none;
 		width: 224px; height: 224px;
 	}
-	
-	.banners .banner1 		{ background: url('/images/Banner1.png') no-repeat 0 0; }
+
+    .banners .banner1 {
+        background: url('/images/HomeFixedBanners/Banner1.png') no-repeat 0 0;
+        margin: 0;
+    }
 	.banners .banner1:hover { background-position: 100% 0; }
-	
-	.banners .banner2 		{ background: url('/images/Banner2.png') no-repeat 0 0; }
+
+    .banners .banner2 {
+        background: url('/images/HomeFixedBanners/Banner2.png') no-repeat 0 0;
+        margin: 0;
+    }
 	.banners .banner2:hover { background-position: 100% 0; }
-	
-	.banners .banner3 		{ background: url('/images/Banner3.png') no-repeat 0 0; }
+
+    .banners .banner3 {
+        background: url('/images/HomeFixedBanners/Banner3.png') no-repeat 0 0;
+        margin: 0;
+    }
 	.banners .banner3:hover { background-position: 100% 0; }
 	
-	.banners .banner4 		{ background: url('/images/Banner4.png') no-repeat 0 0; margin: 0; }
+	.banners .banner4 { background: url('/images/HomeFixedBanners/Banner4.png') no-repeat 0 0; margin: 0;}
 	.banners .banner4:hover { background-position: 100% 0; }
 		
 		.banners a .overlay {
@@ -1446,33 +1455,6 @@ body {
 				}
 				
 /*   PRODUCT SCROLLER STRATOSPHERE END   */
-
-.jcarousel-clip {
-	left: 40px;
-	overflow: hidden;
-	width: 880px;
-    direction: ltr;
-}
-
-.jcarousel-item { width: 200px; }
-
-.jcarousel-prev-horizontal, .jcarousel-next-horizontal {
-	cursor: pointer;
-	opacity: 0.8;
-	position: absolute;
-	top: 62px;
-	width: 25px; height: 46px;
-}
-
-.jcarousel-prev-horizontal { background: transparent url('/images/arrow-previous.png') no-repeat center 0; left: 14px; }
-.jcarousel-next-horizontal { background: transparent url('/images/arrow-next.png') no-repeat center 0; right: -2px; }
-
-.jcarousel-next-horizontal:hover, .jcarousel-next-horizontal:focus, .jcarousel-next-horizontal:active,
-.jcarousel-prev-horizontal:hover, .jcarousel-prev-horizontal:focus, .jcarousel-prev-horizontal:active { opacity: 1; }
-
-.jcarousel-next-disabled-horizontal, .jcarousel-next-disabled-horizontal:hover, .jcarousel-next-disabled-horizontal:focus, .jcarousel-next-disabled-horizontal:active,
-.jcarousel-prev-disabled-horizontal, .jcarousel-prev-disabled-horizontal:hover, .jcarousel-prev-disabled-horizontal:focus, .jcarousel-prev-disabled-horizontal:active
-{ opacity: 0.2; }
 
 
 /* !--- CONTENT / Breadcrumb --- */

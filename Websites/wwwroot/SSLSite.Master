@@ -1,7 +1,6 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SSLSite.Master.cs" Inherits="SieraDelta.Website.SSLSite" %>
 
 <%@ Register Src="~/Controls/CountryLanguageSelect.ascx" TagName="CountryLanguageSelect" TagPrefix="uc1" %>
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <!DOCTYPE html>
 
@@ -14,20 +13,24 @@
     <meta name="Keywords" content="<%=GetMetaKeyWords()%>" />
 
 
-    <script type="text/javascript">if (top.location != window.location) { window.top.location.href = '<%#GetURL() %>'; }</script>
-
 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
+
+    <script type="text/javascript">if (top.location != window.location) { window.top.location.href = '<%#GetURL() %>'; }</script>
     <%=GetStyleSheet() %>
-    <script type="text/javascript" src="/js/jquery-1.7.1.min.js"></script>
-    <cc1:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" CombineScripts="true" ScriptMode="Release">
-        <ControlBundles>
-            <cc1:ControlBundle Name="Standard" />
-        </ControlBundles>
-    </cc1:ToolkitScriptManager>
+    <script type="text/javascript" src="/scripts/jquery-3.3.1.min.js"></script>
+    <asp:ScriptManager runat="server">
+        <Scripts>
+            <asp:ScriptReference Path="~/Scripts/AjaxControlToolkit/Bundle" />
+        </Scripts>
+    </asp:ScriptManager>
+ 
+    <asp:PlaceHolder runat="server">
+        <%: System.Web.Optimization.Styles.Render("~/Content/AjaxControlToolkit/Styles/Bundle") %>
+    </asp:PlaceHolder>
     <form id="frmIndex" runat="server">
         <div class="wrapper">
             <!-- Header Start -->
@@ -126,19 +129,12 @@
 
 
 
-    <script type="text/javascript" src="/js/jquery-1.7.1.min.js"></script>
-
     <script type="text/javascript" src="/js/jquery.hoverIntent.minified.js"></script>
-
-    <script type="text/javascript" src="/js/jquery.jcarousel.min.js"></script>
-
-    <script type="text/javascript" src="/js/jquery.nivo.slider.pack.js"></script>
 
     <%=GetMobileOnlyScripts() %>
 
     <script type="text/javascript">
-        $(window).load(function () { $('.slider').nivoSlider({ animSpeed: 500, directionNav: false, effect: 'fade', pauseTime: 6000 }); });
-        jQuery(document).ready(function () { jQuery('.mycarousel').jcarousel({ scroll: 4, wrap: "circular" }); });
+        //jQuery(document).on('load', function () { jQuery('.mycarousel').jcarousel({ scroll: 4, wrap: "circular" }); });
 
 
         function clickclear(a) { var defaulttext = '<%=GetSearchString()%>'; if (a.value == defaulttext) { a.value = ""; } }

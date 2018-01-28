@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Website.Library")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Heaven Health & Beauty Ltd")]
+[assembly: AssemblyCompany("Shifoo Systems")]
 [assembly: AssemblyProduct("Website.Library")]
-[assembly: AssemblyCopyright("Copyright © Heaven Health & Beauty Ltd 2012 - 2017.  All Rights Reserved")]
+[assembly: AssemblyCopyright("Copyright © Shifoo Systems 2012 - 2018.  All Rights Reserved")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,6 +32,6 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("3.0.97.2911")]
+[assembly: AssemblyVersion("4.0.97.2911")]
 
-[assembly: AssemblyFileVersion("1.0.10.234")]
+[assembly: AssemblyFileVersion("1.0.16.269")]

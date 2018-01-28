@@ -13153,4 +13153,24 @@ If this continues, please contact support.</comment>
     <value>The email settings are invalid!</value>
     <comment>The email settings are invalid!</comment>
   </data>
+  <data name="AppHomeFixedBanners" xml:space="preserve">
+    <value>Fixed Home Page Banners</value>
+    <comment>Fixed Home Page Banners</comment>
+  </data>
+  <data name="AppHomeFixedBanner" xml:space="preserve">
+    <value>Fixed Home Banner {0}</value>
+    <comment>Fixed Home Banner {0}</comment>
+  </data>
+  <data name="AppHomeFixedBannerDesc" xml:space="preserve">
+    <value>You can have upto four, fixed, static home page banners on the homepage, these will appear below campaign banners (if shown).</value>
+    <comment>You can have upto four, fixed, static home page banners on the homepage, these will appear below campaign banners (if shown).</comment>
+  </data>
+  <data name="AppHomeFixedBannersShow" xml:space="preserve">
+    <value>Show Home Page Fixed Banners</value>
+    <comment>Show Home Page Fixed Banners</comment>
+  </data>
+  <data name="AppWebSettingHomeFixedBanners" xml:space="preserve">
+    <value>Fixed Home Banners</value>
+    <comment>Fixed Home Banners</comment>
+  </data>
 </root>

@@ -60,7 +60,7 @@ namespace PointOfSale.Controls.InitialSetupWizard
 
             txtEmailHost.Text = _settings.EmailHost;
             txtEmailPassword.Text = _settings.EmailPassword;
-            udEmailPort.Value = _settings.EmailPort;
+            udEmailPort.Value = Shared.Utilities.CheckMinMax(_settings.EmailPort, 1, 65535);
             txtEmailUsername.Text = _settings.EmailUser;
             cbUseSSL.Checked = _settings.EmailSSL;
 

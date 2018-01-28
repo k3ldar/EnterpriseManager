@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace WebApplication2.Models
+namespace Shifoo.Systems.Web.Models
 {
     public class IndexViewModel
     {

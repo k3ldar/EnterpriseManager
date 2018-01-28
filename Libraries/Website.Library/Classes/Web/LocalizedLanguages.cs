@@ -80,79 +80,128 @@ namespace Website.Library.Classes
             System.Web.HttpRequest Request, System.Web.HttpResponse Response, Country country,
             Currency newCurrency, bool allowRedirect = true)
         {
-            UserSession session = (UserSession)Session[StringConstants.SESSION_NAME_USER_SESSION];
-
-            if (session == null || session.Status == SessionStatus.Continuing)
+            int extra = 0;
+            int extra2 = 0;
+            try
             {
-                SharedWebBase.UserSessionContinue(Session, Request, Response, ref session);
-                UserSessionManager.UpdateSession(session);
-            }
+                extra = 1;
+                UserSession session = (UserSession)Session[StringConstants.SESSION_NAME_USER_SESSION];
+                extra = 2;
 
-            LocalWebSessionData localData = (LocalWebSessionData)session.Tag;
+                if (session == null || session.Status == SessionStatus.Continuing)
+                {
+                    extra = 3;
+                    SharedWebBase.UserSessionContinue(Session, Request, Response, ref session);
+                    UserSessionManager.UpdateSession(session);
+                }
 
-            if (session == null)
-                return;
+                extra = 4;
+                LocalWebSessionData localData = (LocalWebSessionData)session.Tag;
 
-            bool languageSet = localData.Culture != null &&
-                Session[StringConstants.SESSION_NAME_WEBSITE_COUNTRY] != null;
+                extra = 5;
+                if (session == null)
+                    return;
 
-            if ((!Active && languageSet) || BaseWebApplication.StaticWebSite)
-                return;
+                extra = 6;
+                bool languageSet = localData.Culture != null &&
+                    Session[StringConstants.SESSION_NAME_WEBSITE_COUNTRY] != null;
 
-            bool changedSettings = !languageSet || 
-                (
-                    (Country)Session[StringConstants.SESSION_NAME_WEBSITE_COUNTRY]).ID != country.ID ||
-                    ((newCurrency != null && Session[StringConstants.SESSION_NAME_USER_BASKET_CURRENCY] != null) &&
-                        (
-                            ((Currency)Session[StringConstants.SESSION_NAME_USER_BASKET_CURRENCY]).ID != newCurrency.ID)
-                        );
+                extra = 7;
+                if ((!Active && languageSet) || BaseWebApplication.StaticWebSite)
+                    return;
+
+                extra = 8;
+                bool changedSettings = !languageSet ||
+                    (
+                        (Country)Session[StringConstants.SESSION_NAME_WEBSITE_COUNTRY]).ID != country.ID ||
+                        ((newCurrency != null && Session[StringConstants.SESSION_NAME_USER_BASKET_CURRENCY] != null) &&
+                            (
+                                ((Currency)Session[StringConstants.SESSION_NAME_USER_BASKET_CURRENCY]).ID != newCurrency.ID)
+                            );
 
 #if DEBUG
             Shared.EventLog.DebugText(String.Format("Changed: {0}", changedSettings.ToString()));
             Shared.EventLog.DebugText(String.Format("Basket Currency: {0}", 
                 Session[StringConstants.SESSION_NAME_USER_BASKET_CURRENCY]));
 #endif
+                extra = 9;
 
-            if (changedSettings)
+                if (changedSettings)
+                {
+                    extra = 10;
+                    if (BaseWebApplication.WebsiteCultureOverride)
+                    {
+                        extra = 11;
+                        localData.Culture = BaseWebApplication.WebsiteCulture.Name;
+                    }
+                    else
+                    {
+                        extra = 12;
+                        localData.Culture = country.LocalizedCulture;
+                    }
+
+                    extra = 13;
+                    if (newCurrency != null)
+                        Session[StringConstants.SESSION_NAME_USER_BASKET_CURRENCY] = newCurrency;
+                    extra = 14;
+
+                    Session[StringConstants.SESSION_NAME_WEBSITE_PRICE_COLUMN] = RaiseSelectPriceColumn(Session, Request,
+                        session,
+                        newCurrency == null ? country.PriceColumn : newCurrency.PriceColumn);
+                    extra = 15;
+                    Session[StringConstants.SESSION_NAME_WEBSITE_COUNTRY] = country;
+                    //for each item in the basket, reset the price depending on the new price option
+                    extra = 16;
+                    localData.PriceColumn = (int)Session[StringConstants.SESSION_NAME_WEBSITE_PRICE_COLUMN];
+
+                    extra = 17;
+
+                    if (newCurrency == null)
+                        extra2 = 1;
+
+                    if (Session[StringConstants.SESSION_NAME_USER_BASKET_CURRENCY] == null)
+                    {
+                        if (extra2 == 1)
+                            extra2 = 20;
+                        else
+                            extra2 = 5;
+                    }
+
+                    
+                    localData.Basket.Currency = newCurrency ?? (Currency)Session[
+                        StringConstants.SESSION_NAME_USER_BASKET_CURRENCY];
+                    extra = 18;
+                    localData.Basket.Country = country;
+                    extra = 19;
+                    localData.Basket.FreeShipping = BaseWebApplication.FreeShippingAllow;
+                    extra = 20;
+                    localData.Basket.Reset(localData.PriceColumn);
+
+                    extra = 21;
+
+                    System.Globalization.CultureInfo cultureInfo = new System.Globalization.CultureInfo(country.LocalizedCulture);
+                    extra =22;
+                    Thread.CurrentThread.CurrentUICulture = cultureInfo;
+                    extra = 23;
+
+                    string currentPath = String.Empty;
+                    extra = 24;
+
+                    if (Request.UrlReferrer != null && !String.IsNullOrEmpty(Request.UrlReferrer.Query))
+                    {
+                        extra = 25;
+                        currentPath = Request.UrlReferrer.Query;
+                    }
+                    extra = 26;
+
+                    if (allowRedirect)
+                        Response.Redirect(Request.Path + currentPath, true);
+                }
+                extra = 27;
+            }
+            catch (Exception err)
             {
-                if (BaseWebApplication.WebsiteCultureOverride)
-                {
-                    localData.Culture = BaseWebApplication.WebsiteCulture.Name;
-                }
-                else
-                {
-                    localData.Culture = country.LocalizedCulture;
-                }
-
-                if (newCurrency != null)
-                    Session[StringConstants.SESSION_NAME_USER_BASKET_CURRENCY] = newCurrency;
-
-                Session[StringConstants.SESSION_NAME_WEBSITE_PRICE_COLUMN] = RaiseSelectPriceColumn(Session, Request,
-                    session,
-                    newCurrency == null ? country.PriceColumn : newCurrency.PriceColumn); 
-                Session[StringConstants.SESSION_NAME_WEBSITE_COUNTRY] = country;
-                //for each item in the basket, reset the price depending on the new price option
-                localData.PriceColumn = (int)Session[StringConstants.SESSION_NAME_WEBSITE_PRICE_COLUMN];
-
-                localData.Basket.Currency = newCurrency ?? (Currency)Session[
-                    StringConstants.SESSION_NAME_USER_BASKET_CURRENCY];
-                localData.Basket.Country = country;
-                localData.Basket.FreeShipping = BaseWebApplication.FreeShippingAllow;
-                localData.Basket.Reset(localData.PriceColumn);
-                
-                
-                System.Globalization.CultureInfo cultureInfo = new System.Globalization.CultureInfo(country.LocalizedCulture);
-                Thread.CurrentThread.CurrentUICulture = cultureInfo;
-
-                string currentPath = String.Empty;
-
-                if (Request.UrlReferrer != null && !String.IsNullOrEmpty(Request.UrlReferrer.Query))
-                {
-                    currentPath = Request.UrlReferrer.Query;
-                }
-
-                if (allowRedirect)
-                    Response.Redirect(Request.Path + currentPath, true);
+                Shared.EventLog.Add(err, String.Format("extra {0}; extra2 {1}", extra, extra2));
             }
         }
 

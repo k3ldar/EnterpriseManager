@@ -47,7 +47,7 @@ namespace POS.WebsiteAdministration.Controls
 
         public override void LanguageChanged(System.Globalization.CultureInfo culture)
         {
-            cbWebsiteMenus.Text = Languages.LanguageStrings.AppShowWebsiteMenus;
+            cbWebsiteMenus.Text = LanguageStrings.AppShowWebsiteMenus;
         }
 
         public override bool SettingsSave()

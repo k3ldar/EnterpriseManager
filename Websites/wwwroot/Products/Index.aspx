@@ -12,14 +12,6 @@
     <title><%=GetProductGroupName()%> - <%=GetProductName() %> - <%=GetWebTitle()%></title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
-    <script type="text/javascript">
-        jQuery(document).ready(function () {
-            jQuery('.mycarousel').jcarousel({
-                scroll: 3,
-                wrap: "circular"
-            });
-        });
-    </script>
     <link property="stylesheet" rel="stylesheet" href="/css/Modal.css" type="text/css" media="screen" />
     <uc1:BasketSummary runat="server" ID="BasketSummary" Visible="false" />
 
@@ -123,5 +115,15 @@
         </div>
 
     </div>
+
+        <script type="text/javascript">
+            jQuery(document).on('load', function () {
+                jQuery('.jcarousel').jcarousel({
+                    scroll: 1000,
+                    wrap: "circular"
+                });
+            });
+    </script>
+
     <!-- end of #content -->
 </asp:Content>

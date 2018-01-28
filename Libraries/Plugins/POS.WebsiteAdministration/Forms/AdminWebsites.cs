@@ -43,6 +43,8 @@ namespace POS.WebsiteAdministration.Forms
 
         private ToolStripComboBox _toolStripWebsites;
 
+        private Library.BOL.Websites.Website WebSite;
+
         #endregion Private Members
 
         #region Constructors
@@ -178,10 +180,9 @@ namespace POS.WebsiteAdministration.Forms
             {
                 tvOptions.Nodes.Clear();
 
-                //Library.BOL.Websites.Website website = (Library.BOL.Websites.Website)_toolStripWebsites.Items[_toolStripWebsites.SelectedIndex];
-
                 TreeNode root = tvOptions.Nodes.Add(LanguageStrings.AppHomePageBanners);
                 HomeBanners banners = new HomeBanners();
+                banners.Website = WebSite;
                 root.Tag = banners;
 
                 for (int i = 1; i < 6; i++)
@@ -195,9 +196,26 @@ namespace POS.WebsiteAdministration.Forms
 
                 root.Expand();
 
+                root = tvOptions.Nodes.Add(LanguageStrings.AppHomeFixedBanners);
+                HomeFixedBanners fixedBanners = new HomeFixedBanners();
+                fixedBanners.Website = WebSite;
+                root.Tag = fixedBanners;
+
+                for (int i = 0; i < 4; i++)
+                {
+                    HomeFixedBanner homeFixedBanner = new HomeFixedBanner();
+                    homeFixedBanner.UpdateSetting(StringConstants.WEB_SETTING_HOME_FIXED_BANNER, false, i);
+                    TreeNode node = new TreeNode(String.Format(LanguageStrings.AppHomeFixedBanner, 1));
+                    root.Nodes.Add(node);
+                    node.Tag = homeFixedBanner;
+                }
+
+                root.Expand();
+
 
                 root = tvOptions.Nodes.Add(LanguageStrings.AppPageBanners);
                 PageBanners pageBanners = new PageBanners();
+                pageBanners.Website = WebSite;
                 root.Tag = pageBanners;
 
                 for (int i = 1; i < 4; i++)
@@ -210,7 +228,6 @@ namespace POS.WebsiteAdministration.Forms
                 }
 
                 root.Expand();
-
 
 
                 // finally select first node in the list and make sure shown
@@ -277,7 +294,10 @@ namespace POS.WebsiteAdministration.Forms
             this.Controls.Add(settingPage);
 
             if (_toolStripWebsites.SelectedIndex > -1)
-                settingPage.WebsiteChanged((Library.BOL.Websites.Website)_toolStripWebsites.Items[_toolStripWebsites.SelectedIndex]);
+            {
+                WebSite = (Library.BOL.Websites.Website)_toolStripWebsites.Items[_toolStripWebsites.SelectedIndex];
+                settingPage.WebsiteChanged(WebSite);
+            }
 
             IsEditing = false;
             AllowDelete = settingPage.AllowDelete();

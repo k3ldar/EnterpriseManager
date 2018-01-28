@@ -64,7 +64,7 @@ namespace POS.WebsiteAdministration.Controls.WebSettings
 
         public void WebsiteChanged(Website website)
         {
-            WebSite = website;
+            Website = website;
 
             Reload();
         }
@@ -89,7 +89,7 @@ namespace POS.WebsiteAdministration.Controls.WebSettings
             return (false);
         }
 
-        public Website WebSite { get; private set; }
+        public Website Website { get; set; }
 
         public bool IsGlobal { get; private set; }
 

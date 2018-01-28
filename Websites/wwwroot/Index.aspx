@@ -7,7 +7,9 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
-		<div class="content">
+    <link rel="stylesheet" href="/css/nivo-slider.css" type="text/css" />
+    <script type="text/javascript" src="/js/jquery.nivo.slider.pack.js"></script>
+	<div class="content">
 			
         <div class="featureWrapper">
 			<div class="feature">
@@ -29,25 +31,17 @@
 
         <div id="divBanners" runat="server" class="featureWrapper">
 			<div class="banners">
-			
-				<a href="/Services/BespokeSoftware.aspx" class="banner1" title="<%=Languages.LanguageStrings.Banner1Name %>">
-					<div class="overlay"><h6><%=Languages.LanguageStrings.Banner1Description %></h6></div>
-					<span><strong><%=Languages.LanguageStrings.Banner1Name %></strong></span>
-				</a>
-     		    <a href="/Products/WebDefenderServer.aspx" class="banner2" title="<%=Languages.LanguageStrings.ServerProtection %>">
-					<div class="overlay"><h6><%=Languages.LanguageStrings.ServerProtectionDescription %></h6></div>
-					<span><strong><%=Languages.LanguageStrings.ServerProtection %></strong></span>
-				</a>
-     		    <a href="/Modules/Index.aspx" class="banner3" title="<%=Languages.LanguageStrings.FreeSoftware %>">
-					<div class="overlay"><h6><%=Languages.LanguageStrings.FreeSoftwareDescription %></h6></div>
-					<span><strong><%=Languages.LanguageStrings.FreeSoftware %></strong></span>
-				</a>
+			    <%=GetBannerLinks() %>
            
 				<div class="clear"><!-- clear --></div>
 			</div><!-- end of #banners -->
 		</div>
-				<uc1:MediaLinks ID="MediaLinks1" runat="server" class="CenteredDiv" />
+				
+        <uc1:MediaLinks ID="MediaLinks1" runat="server" class="CenteredDiv" />
 
-		</div><!-- end of #content -->
+	</div><!-- end of #content -->
 
+    <script type="text/javascript">
+        $(window).on('load', function () { $('.slider').nivoSlider({ animSpeed: 500, directionNav: false, effect: 'fade', pauseTime: 6000 }); });
+    </script>
 </asp:Content>

@@ -36,7 +36,13 @@ namespace Website.Library.Classes
                         "Current style sheet used by the website.", "SITE.STYLE_SHEET");
 
                     break;
+                case "Home Page":
+                    options.AddHeader("Home Page");
+                    options.AddDescription("Settings that affect the home page");
+                    options.AddOption("Show Banners", BaseWebApplication.ShowHomeBanners,
+                        "Home Banners", "Settings.HomeBanners", false);
 
+                    break;
                 case "Pages":
                     options.AddHeader("Pages");
                     options.AddDescription("There are certain pages which can be turned off if they are not used or relevant");
@@ -462,6 +468,7 @@ namespace Website.Library.Classes
             {
                 "General Settings",
                 "Pages",
+                "Home Page",
                 "Menu Items"
             };
 

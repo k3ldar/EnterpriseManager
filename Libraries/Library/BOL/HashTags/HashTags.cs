@@ -51,32 +51,34 @@ namespace Library.BOL.HashTags
         /// <summary>
         /// Returns all hash tags for a page
         /// </summary>
-        /// <param name="PageName">Name of page</param>
+        /// <param name="pageName">Name of page</param>
         /// <returns>HashTags collection</returns>
-        public static HashTags GetPageTags(string PageName)
+        public static HashTags GetPageTags(Uri pageUri)
         {
-            if (PageName.Length > 500)
-                PageName = PageName.Substring(0, 500);
+            string pageName = pageUri.AbsolutePath.ToUpper();
 
-            PageName = PageName.ToUpper();
+            if (pageName.Length > 500)
+                pageName = pageName.Substring(0, 500);
+
+            pageName = pageName.ToUpper();
 
             if (DAL.DALHelper.AllowCaching)
             {
-                string cacheName = String.Format("Cached Page Tags {0}", PageName);
+                string cacheName = String.Format("Cached Page Tags {0}", pageName);
 
                 CacheItem item = DAL.DALHelper.InternalCache.Get(cacheName);
 
                 if (item != null)
                     return ((HashTags)item.Value);
 
-                HashTags Result = DAL.FirebirdDB.HashTagsGet(PageName);
+                HashTags Result = DAL.FirebirdDB.HashTagsGet(pageName);
 
                 DAL.DALHelper.InternalCache.Add(cacheName, new CacheItem(cacheName, Result));
 
                 return (Result);
             }
 
-            return (DAL.FirebirdDB.HashTagsGet(PageName));
+            return (DAL.FirebirdDB.HashTagsGet(pageName));
         }
 
         /// <summary>
@@ -106,12 +108,14 @@ namespace Library.BOL.HashTags
         /// <summary>
         /// Creates a hash tag and adds it to the page
         /// </summary>
-        /// <param name="PageName">Name of Page</param>
+        /// <param name="pageName">Name of Page</param>
         /// <param name="TagName">HashTag to create</param>
-        public static void CreateHashTag(string PageName, string TagName)
+        public static void CreateHashTag(Uri pageUri, string TagName)
         {
-            if (PageName.Length > 500)
-                PageName = PageName.Substring(0, 500);
+            string pageName = pageUri.AbsolutePath.ToUpper();
+
+            if (pageName.Length > 500)
+                pageName = pageName.Substring(0, 500);
 
             if (TagName.Length > 30)
                 throw new Exception("Tag Name Too Long");
@@ -119,7 +123,7 @@ namespace Library.BOL.HashTags
             TagName = Shared.Utilities.ProperCase(TagName);
 
             HashTag newTag = DAL.FirebirdDB.HashTagCreate(TagName);
-            DAL.FirebirdDB.HashTagAdd(newTag, PageName.ToUpper());
+            DAL.FirebirdDB.HashTagAdd(newTag, pageName.ToUpper());
             PageTagsClearCache();
         }
 
@@ -127,13 +131,15 @@ namespace Library.BOL.HashTags
         /// Adds a HashTag to a page
         /// </summary>
         /// <param name="Tag">Tag to add</param>
-        /// <param name="PageName">Page</param>
-        public static void AddHashTag(HashTag Tag, string PageName)
+        /// <param name="pageUri">Page</param>
+        public static void AddHashTag(HashTag Tag, Uri pageUri)
         {
-            if (PageName.Length > 500)
-                PageName = PageName.Substring(0, 500);
+            string pageName = pageUri.AbsolutePath.ToUpper();
 
-            DAL.FirebirdDB.HashTagAdd(Tag, PageName.ToUpper());
+            if (pageName.Length > 500)
+                pageName = pageName.Substring(0, 500);
+
+            DAL.FirebirdDB.HashTagAdd(Tag, pageName);
             PageTagsClearCache();
         }
 
@@ -141,13 +147,15 @@ namespace Library.BOL.HashTags
         /// Removes a hashtag from a page
         /// </summary>
         /// <param name="Tag">Tag to remove</param>
-        /// <param name="PageName">Page</param>
-        public static void RemoveHashTag(HashTag Tag, string PageName)
+        /// <param name="pageName">Page</param>
+        public static void RemoveHashTag(HashTag Tag, Uri pageUri)
         {
-            if (PageName.Length > 500)
-                PageName = PageName.Substring(0, 500);
+            string pageName = pageUri.AbsolutePath.ToUpper();
+
+            if (pageName.Length > 500)
+                pageName = pageName.Substring(0, 500);
             
-            DAL.FirebirdDB.HashTagRemove(Tag, PageName.ToUpper());
+            DAL.FirebirdDB.HashTagRemove(Tag, pageName.ToUpper());
             PageTagsClearCache();
         }
 

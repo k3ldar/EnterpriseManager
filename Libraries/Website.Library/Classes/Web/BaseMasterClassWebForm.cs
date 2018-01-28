@@ -375,7 +375,7 @@ namespace Website.Library.Classes
         {
             string MetaTag = GlobalClass.DefaultMetaKeyWords;
 
-            HashTags tags = HashTags.GetPageTags(Request.Url.ToString());
+            HashTags tags = HashTags.GetPageTags(Request.Url);
             MetaTag += tags.HashTagList(true) + ", ";
             MetaTag += lib.LibraryHelperClass.MetaKeyWords();
 
@@ -643,7 +643,7 @@ namespace Website.Library.Classes
         {
             string Result = String.Empty;
             ProductGroups groups = ProductGroups.Get(user == null ? lib.MemberLevel.StandardUser : user.MemberLevel, true);
-            ProductGroupType prodTypeOther = ProductGroupTypes.Get("General");
+            ProductGroupType prodTypeOther = ProductGroupTypes.Get("General") ?? ProductGroupTypes.Get()[0];
 
             foreach (ProductGroup group in groups)
             {

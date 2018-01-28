@@ -41,54 +41,54 @@ Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescrip
 Source: "..\..\Help\_tmphhp\erminstaller.chm"; DestDir: "{pf}\{#MyAppPublisher}"; Flags: deleteafterinstall
 
 ;firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\lib\*"; DestDir: "{pf}\{#MyAppPublisher}\Firebird\lib"; Flags: createallsubdirs recursesubdirs promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\misc\*"; DestDir: "{pf}\{#MyAppPublisher}\Firebird\misc"; Flags: createallsubdirs recursesubdirs promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\plugins\*"; DestDir: "{pf}\{#MyAppPublisher}\Firebird\plugins"; Flags: createallsubdirs recursesubdirs promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\udf\*"; DestDir: "{pf}\{#MyAppPublisher}\Firebird\udf"; Flags: createallsubdirs recursesubdirs promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\fbtrace.conf"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\firebird.conf"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\firebird.msg"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\IDPLicense.txt"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\IPLicense.txt"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\Readme.txt"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\security3.fdb"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\doc\*"; DestDir: "{pf}\{#MyAppPublisher}\Firebird\doc"; Flags: createallsubdirs recursesubdirs promptifolder sharedfile; Components: Firebird
-;Source: "..\..\Installer\Firebird.3.0.2.64Bit\examples\*"; DestDir: "{pf}\{#MyAppPublisher}\Firebird\examples"; Flags: createallsubdirs recursesubdirs promptifolder sharedfile; Components: Firebird
-;Source: "..\..\Installer\Firebird.3.0.2.64Bit\help\*"; DestDir: "{pf}\{#MyAppPublisher}\Firebird\help"; Flags: createallsubdirs recursesubdirs promptifolder sharedfile; Components: Firebird
-;Source: "..\..\Installer\Firebird.3.0.2.64Bit\include\*"; DestDir: "{pf}\{#MyAppPublisher}\Firebird\include"; Flags: createallsubdirs recursesubdirs promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\intl\*"; DestDir: "{pf}\{#MyAppPublisher}\Firebird\intl"; Flags: createallsubdirs recursesubdirs promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\firebird.exe"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird; AfterInstall: FirebirdPostInstallCheck
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\fbsvcmgr.exe"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\fbtracemgr.exe"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\gbak.exe"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\gfix.exe"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\gpre.exe"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\gsec.exe"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\gsplit.exe"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\gstat.exe"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\ib_util.dll"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\icudt52.dll"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\icuin52.dll"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\icuuc52.dll"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\icudt52l.dat"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\instclient.exe"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\instreg.exe"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\instsvc.exe"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\isql.exe"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\msvcp100.dll"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\msvcr100.dll"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\nbackup.exe"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\qli.exe"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\fb_lock_print.exe"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\fbclient.dll"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\fbguard.exe"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\zlib1.dll"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\InstallFBShifoo.bat"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
-Source: "..\..\Installer\Firebird.3.0.2.64Bit\UnInstallFBShifoo.bat"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\lib\*"; DestDir: "{pf}\{#MyAppPublisher}\Firebird\lib"; Flags: createallsubdirs recursesubdirs promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\misc\*"; DestDir: "{pf}\{#MyAppPublisher}\Firebird\misc"; Flags: createallsubdirs recursesubdirs promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\plugins\*"; DestDir: "{pf}\{#MyAppPublisher}\Firebird\plugins"; Flags: createallsubdirs recursesubdirs promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\udf\*"; DestDir: "{pf}\{#MyAppPublisher}\Firebird\udf"; Flags: createallsubdirs recursesubdirs promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\fbtrace.conf"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\firebird.conf"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\firebird.msg"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\IDPLicense.txt"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\IPLicense.txt"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\Readme.txt"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\security3.fdb"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\doc\*"; DestDir: "{pf}\{#MyAppPublisher}\Firebird\doc"; Flags: createallsubdirs recursesubdirs promptifolder sharedfile; Components: Firebird
+;;Source: "..\..\Installer\Firebird.3.0.2.64Bit\examples\*"; DestDir: "{pf}\{#MyAppPublisher}\Firebird\examples"; Flags: createallsubdirs recursesubdirs promptifolder sharedfile; Components: Firebird
+;;Source: "..\..\Installer\Firebird.3.0.2.64Bit\help\*"; DestDir: "{pf}\{#MyAppPublisher}\Firebird\help"; Flags: createallsubdirs recursesubdirs promptifolder sharedfile; Components: Firebird
+;;Source: "..\..\Installer\Firebird.3.0.2.64Bit\include\*"; DestDir: "{pf}\{#MyAppPublisher}\Firebird\include"; Flags: createallsubdirs recursesubdirs promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\intl\*"; DestDir: "{pf}\{#MyAppPublisher}\Firebird\intl"; Flags: createallsubdirs recursesubdirs promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\firebird.exe"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird; AfterInstall: FirebirdPostInstallCheck
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\fbsvcmgr.exe"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\fbtracemgr.exe"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\gbak.exe"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\gfix.exe"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\gpre.exe"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\gsec.exe"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\gsplit.exe"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\gstat.exe"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\ib_util.dll"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\icudt52.dll"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\icuin52.dll"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\icuuc52.dll"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\icudt52l.dat"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\instclient.exe"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\instreg.exe"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\instsvc.exe"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\isql.exe"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\msvcp100.dll"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\msvcr100.dll"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\nbackup.exe"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\qli.exe"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\fb_lock_print.exe"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\fbclient.dll"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\fbguard.exe"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\zlib1.dll"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\InstallFBShifoo.bat"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
+;Source: "..\..\Installer\Firebird.3.0.2.64Bit\UnInstallFBShifoo.bat"; DestDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: promptifolder sharedfile; Components: Firebird
 
 
 ;database
-Source: "T:\Shifoo\Shifoo.Store.1.fdb"; DestDir: "{pf}\{#MyAppPublisher}\Databases"; DestName: "SBMDatabase.fdb"; Flags: ignoreversion confirmoverwrite onlyifdoesntexist uninsneveruninstall; Components: Database; AfterInstall: AfterDatabaseInstall
+;Source: "T:\Shifoo\Shifoo.Store.1.fdb"; DestDir: "{pf}\{#MyAppPublisher}\Databases"; DestName: "SBMDatabase.fdb"; Flags: ignoreversion confirmoverwrite onlyifdoesntexist uninsneveruninstall; Components: Database; AfterInstall: AfterDatabaseInstall
 
 
 ; the following are for the actual application
@@ -226,13 +226,13 @@ Source: "..\..\Help\_tmphhp\POS.chm"; DestDir: "{app}\Help"; DestName: "SBM.chm"
 
 
 ;replication
-Source: "..\..\..\GitProjects\Builds\FbReplicationEngine\Release\FirebirdSql.Data.FirebirdClient.dll"; DestDir: "{pf}\Firebird Replication"; Flags: sharedfile promptifolder; Components: ReplicationEngine
-Source: "..\..\..\GitProjects\Builds\FbReplicationEngine\Release\ICSharpCode.SharpZipLib.dll"; DestDir: "{pf}\Firebird Replication"; Flags: sharedfile promptifolder; Components: ReplicationEngine
-Source: "..\..\..\GitProjects\Builds\FbReplicationEngine\Release\Replication.Engine.dll"; DestDir: "{pf}\Firebird Replication"; Flags: sharedfile promptifolder; Components: ReplicationEngine
-Source: "..\..\..\GitProjects\Builds\FbReplicationEngine\Release\Replication.Service.Console.exe"; DestDir: "{pf}\Firebird Replication"; Flags: uninsrestartdelete sharedfile promptifolder; Components: ReplicationEngine
-Source: "..\..\..\GitProjects\Builds\FbReplicationEngine\Release\Replication.Service.exe"; DestDir: "{pf}\Firebird Replication"; Flags: uninsrestartdelete sharedfile promptifolder; Components: ReplicationEngine
-Source: "..\..\..\GitProjects\Builds\FbReplicationEngine\Release\SharedControls.dll"; DestDir: "{pf}\Firebird Replication"; Flags: sharedfile promptifolder; Components: ReplicationEngine
-Source: "..\..\..\GitProjects\Builds\FbReplicationEngine\Release\Sharedlib.dll"; DestDir: "{pf}\Firebird Replication"; Flags: sharedfile promptifolder; Components: ReplicationEngine
+;Source: "..\..\..\GitProjects\Builds\FbReplicationEngine\Release\FirebirdSql.Data.FirebirdClient.dll"; DestDir: "{pf}\Firebird Replication"; Flags: sharedfile promptifolder; Components: ReplicationEngine
+;Source: "..\..\..\GitProjects\Builds\FbReplicationEngine\Release\ICSharpCode.SharpZipLib.dll"; DestDir: "{pf}\Firebird Replication"; Flags: sharedfile promptifolder; Components: ReplicationEngine
+;Source: "..\..\..\GitProjects\Builds\FbReplicationEngine\Release\Replication.Engine.dll"; DestDir: "{pf}\Firebird Replication"; Flags: sharedfile promptifolder; Components: ReplicationEngine
+;Source: "..\..\..\GitProjects\Builds\FbReplicationEngine\Release\Replication.Service.Console.exe"; DestDir: "{pf}\Firebird Replication"; Flags: uninsrestartdelete sharedfile promptifolder; Components: ReplicationEngine
+;Source: "..\..\..\GitProjects\Builds\FbReplicationEngine\Release\Replication.Service.exe"; DestDir: "{pf}\Firebird Replication"; Flags: uninsrestartdelete sharedfile promptifolder; Components: ReplicationEngine
+;Source: "..\..\..\GitProjects\Builds\FbReplicationEngine\Release\SharedControls.dll"; DestDir: "{pf}\Firebird Replication"; Flags: sharedfile promptifolder; Components: ReplicationEngine
+;Source: "..\..\..\GitProjects\Builds\FbReplicationEngine\Release\Sharedlib.dll"; DestDir: "{pf}\Firebird Replication"; Flags: sharedfile promptifolder; Components: ReplicationEngine
 
 ; next line is the template replication file
 Source: "..\EnterpriseManager\POSTemplateReplication.txt"; DestDir: "{pf}\Firebird Replication"; DestName: "POSTemplateReplication.txt"; Flags: deleteafterinstall
@@ -255,7 +255,7 @@ Filename: "{pf}\Firebird Replication\Replication.Service.exe"; Parameters: "/i";
 
 [UninstallRun]
 Filename: "{pf}\{#MyAppPublisher}\Firebird\UnInstallFBShifoo.bat"; WorkingDir: "{pf}\{#MyAppPublisher}\Firebird"; Flags: waituntilterminated runhidden; StatusMsg: "Installing Firebird Database Engine"; Components: Firebird
-Filename: "{pf}\Firebird Replication\Replication.Service.exe"; Parameters: "/u"; WorkingDir: "{pf}\Firebird Replication"; Flags: shellexec skipifdoesntexist; StatusMsg: "Removing Replication Service"; Components: ReplicationEngine
+;Filename: "{pf}\Firebird Replication\Replication.Service.exe"; Parameters: "/u"; WorkingDir: "{pf}\Firebird Replication"; Flags: shellexec skipifdoesntexist; StatusMsg: "Removing Replication Service"; Components: ReplicationEngine
 
 [Components]
 Name: "Firebird"; Description: "Firebird 3.0.2"; Types: full custom

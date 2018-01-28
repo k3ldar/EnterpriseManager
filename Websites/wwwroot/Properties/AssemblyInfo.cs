@@ -6,12 +6,12 @@ using System.Runtime.CompilerServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 //
-[assembly: AssemblyTitle("SieraDelta.com")]
-[assembly: AssemblyDescription("SieraDelta.com - Website")]
+[assembly: AssemblyTitle("Shifoo Systems")]
+[assembly: AssemblyDescription("Shifoo Systems - Website")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("SieraDelta.com")]
-[assembly: AssemblyProduct("SieraDelta.com Web Site")]
-[assembly: AssemblyCopyright("Copyright (c) 2010 - 2016.  All rights reserved.")]
+[assembly: AssemblyCompany("Shifoo Systems")]
+[assembly: AssemblyProduct("Shifoo Systems Web Site")]
+[assembly: AssemblyCopyright("Copyright (c) 2010 - 2018.  All rights reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]		
 
@@ -26,7 +26,7 @@ using System.Runtime.CompilerServices;
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
 
-[assembly: AssemblyVersion("3.2.0.8")]
+[assembly: AssemblyVersion("4.2.0.8")]
 //[assembly: AssemblyFileVersion("1.1.0.0")]
 
 //

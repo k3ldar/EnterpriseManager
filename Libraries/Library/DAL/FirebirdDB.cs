@@ -9910,7 +9910,6 @@ namespace Library.DAL
                     if (!err.Message.Contains("violation of PRIMARY or UNIQUE KEY"))
                     {
                         ErrorHandling.LogError(MethodBase.GetCurrentMethod(), err, tag, pageName);
-                        tran.Rollback();
                         throw;
                     }
                 }
@@ -27575,8 +27574,7 @@ namespace Library.DAL
 
         internal static int AdminStatsInvoices(InvoiceStatistics Option)
         {
-            int Result = 0;
-            string SQL = "";
+            string SQL = String.Empty;
 
             switch (Option)
             {
@@ -27601,14 +27599,10 @@ namespace Library.DAL
 #if DEBUG
                 default:
                     throw new Exception("Invalid Option");
-#else
-                    return (Result);
 #endif
             }
 
-            Result = GetDBCount(SQL);
-
-            return (Result);
+            return (GetDBCount(SQL));
         }
 
         internal static string AdminStatsDownloads()
@@ -27750,9 +27744,9 @@ namespace Library.DAL
             return (Result);
         }
 
-        #endregion Admin Stats
+#endregion Admin Stats
 
-        #region Admin Helpdesk
+#region Admin Helpdesk
 
         internal static SupportTicket AdminHelpdeskSupportTicketGet(string ticketKey)
         {
@@ -28108,9 +28102,9 @@ namespace Library.DAL
             return (Result);
         }
 
-        #endregion Admin Helpdesk
+#endregion Admin Helpdesk
 
-        #region Admin Orders
+#region Admin Orders
 
         internal static Orders AdminOrdersGet(int UserID, int InvoiceID, bool TodayOnly, ProcessStatuses processStatuses)
         {
@@ -28177,9 +28171,9 @@ namespace Library.DAL
             return (Result);
         }
 
-        #endregion Admin Orders
+#endregion Admin Orders
 
-        #region Admin Products
+#region Admin Products
 
         /// <summary>
         /// Returns all featured products
@@ -28777,9 +28771,9 @@ namespace Library.DAL
 
 
 
-        #endregion Admin Products
+#endregion Admin Products
 
-        #region Admin Product Groups
+#region Admin Product Groups
 
         internal static ProductGroups AdminProductGroupsGet(int PageNumber, int PageSize)
         {
@@ -29088,9 +29082,9 @@ namespace Library.DAL
             return (Result);
         }
 
-        #endregion Admin Product Groups
+#endregion Admin Product Groups
 
-        #region Admin Treatment Groups
+#region Admin Treatment Groups
 
         internal static int AdminTreatmentGroupsCount()
         {
@@ -29319,9 +29313,9 @@ namespace Library.DAL
             return (Result);
         }
 
-        #endregion Admin Treatment Groups
+#endregion Admin Treatment Groups
 
-        #region admin Product Cost / Size
+#region admin Product Cost / Size
 
         /// <summary>
         /// Removes a product cost item from all lists by changing to is_deleted true (soft delete)
@@ -29605,9 +29599,9 @@ namespace Library.DAL
             return (Result);
         }
 
-        #endregion Admin Product Cost / Size
+#endregion Admin Product Cost / Size
 
-        #region Admin Tips and Tricks
+#region Admin Tips and Tricks
 
         internal static int AdminTipsTricksCount()
         {
@@ -29841,9 +29835,9 @@ namespace Library.DAL
             return (Result);
         }
 
-        #endregion Admin Tips and Tricks
+#endregion Admin Tips and Tricks
 
-        #region Admin Users
+#region Admin Users
 
         internal static Users AdminUsersGet(MemberLevel MemberLevel)
         {
@@ -30083,9 +30077,9 @@ namespace Library.DAL
             return (Result);
         }
 
-        #endregion Admin Users
+#endregion Admin Users
 
-        #region Admin Invoices
+#region Admin Invoices
 
         internal static int AdminInvoicesGetCount(int UserID, int InvoiceID, bool TodayOnly, ProcessStatuses processStatuses)
         {
@@ -30608,9 +30602,9 @@ namespace Library.DAL
             return (Result);
         }
 
-        #endregion Admin Invoices
+#endregion Admin Invoices
 
-        #region Admin Treatments
+#region Admin Treatments
 
         internal static Treatment AdminTreatmentGet(int TreatmentID)
         {
@@ -30773,9 +30767,9 @@ namespace Library.DAL
             }
         }
 
-        #endregion Admin Treatments
+#endregion Admin Treatments
 
-        #region Admin Salon Owners
+#region Admin Salon Owners
 
         internal static int AdminSalonOwnersCount()
         {
@@ -31312,9 +31306,9 @@ namespace Library.DAL
             return (Result);
         }
 
-        #endregion Admin Salon Owners
+#endregion Admin Salon Owners
 
-        #region Admin Salons
+#region Admin Salons
 
         internal static Salons AdminSalonsGet(string SalonName)
         {
@@ -31733,9 +31727,9 @@ namespace Library.DAL
         }
 
 
-        #endregion Admin Salons
+#endregion Admin Salons
 
-        #region Admin Missing Links
+#region Admin Missing Links
 
         internal static MissingLink AdminMissingLinkAdd(string DeprecatedLink, string ReplacementLink)
         {
@@ -31966,9 +31960,9 @@ namespace Library.DAL
             return (Result);
         }
 
-        #endregion Admin Missing Links
+#endregion Admin Missing Links
 
-        #region Admin Distributors
+#region Admin Distributors
 
         internal static Distributor AdminDistributorGet(int DistributorID)
         {
@@ -32148,9 +32142,9 @@ namespace Library.DAL
             }
         }
 
-        #endregion Admin Distributors
+#endregion Admin Distributors
 
-        #region Admin Coupons
+#region Admin Coupons
 
         internal static int AdminCouponCount()
         {
@@ -32757,9 +32751,9 @@ namespace Library.DAL
             return (Result);
         }
 
-        #endregion Admin Coupons
+#endregion Admin Coupons
 
-        #region Database Specific
+#region Database Specific
 
         internal static string AdminDatabaseVersion()
         {
@@ -32820,11 +32814,11 @@ namespace Library.DAL
             return (Result);
         }
 
-        #endregion Database Specific
+#endregion Database Specific
 
-        #endregion Administration Functions
+#endregion Administration Functions
 
-        #region Popup
+#region Popup
 
         internal static string GetPopupData(int PopupID, out string Title)
         {
@@ -32867,9 +32861,9 @@ namespace Library.DAL
         }
 
 
-        #endregion Popup
+#endregion Popup
 
-        #region Email
+#region Email
 
         internal static void EmailQueueStatistics(out Int64 QueueSize)
         {
@@ -33194,9 +33188,9 @@ namespace Library.DAL
         }
 
 
-        #endregion Email
+#endregion Email
 
-        #region Web Logging
+#region Web Logging
 
 #if WEB_LOGGING
         internal static void LogWebVisits(WebVisitLogItems items)
@@ -33339,9 +33333,9 @@ namespace Library.DAL
             }
         }
 
-        #endregion Web Logging
+#endregion Web Logging
 
-        #region Settings
+#region Settings
 
         internal static Dictionary<string, string> SettingsLoad()
         {
@@ -33576,9 +33570,9 @@ namespace Library.DAL
             return (Result);
         }
 
-        #endregion Settings
+#endregion Settings
 
-        #region Missing Links
+#region Missing Links
 
         internal static MissingLink MissingLinkGet(string DeprecatedLink)
         {
@@ -33619,13 +33613,13 @@ namespace Library.DAL
             return (Result);
         }
 
-        #endregion Missing Links
+#endregion Missing Links
 
-        #region Stock Control
+#region Stock Control
 
         //individual stores will all use till id = 1
 
-        #region Stock History
+#region Stock History
 
         /// <summary>
         /// Retrieves history about a stock item
@@ -33752,9 +33746,9 @@ namespace Library.DAL
             return (Result);
         }
 
-        #endregion Stock History
+#endregion Stock History
 
-        #region Build Stock
+#region Build Stock
 
         internal static void StockCreate(StockItem stockCreated, User currentUser, int quantity)
         {
@@ -33956,7 +33950,7 @@ namespace Library.DAL
             }
         }
 
-        #endregion Build Stock
+#endregion Build Stock
 
         private static void UpdateMissingStockItems(FbConnection db, FbTransaction tran)
         {
@@ -34609,9 +34603,9 @@ namespace Library.DAL
             return (Result);
         }
 
-        #endregion Stock Control
+#endregion Stock Control
 
-        #region Maintenance
+#region Maintenance
 
         internal static void ExecuteRoutineMaintenance(RoutineMaintenanceType maintenanceType)
         {
@@ -34665,9 +34659,9 @@ namespace Library.DAL
             }
         }
 
-        #endregion Maintenance
+#endregion Maintenance
 
-        #region Local Database
+#region Local Database
 
 
         /// <summary>
@@ -34721,9 +34715,9 @@ namespace Library.DAL
             return (Result);
         }
 
-        #endregion Local Database
+#endregion Local Database
 
-        #region Data Storage
+#region Data Storage
 
 
         /// <summary>
@@ -34752,11 +34746,11 @@ namespace Library.DAL
             return (Result);
         }
 
-        #endregion Data Storage
+#endregion Data Storage
 
-        #endregion Internal Methods
+#endregion Internal Methods
 
-        #region Debug Methods
+#region Debug Methods
 
         internal static void ThrowInternalError(string one, object two, int three, double four, object five)
         {
@@ -34770,11 +34764,11 @@ namespace Library.DAL
             }
         }
 
-        #endregion Debug Methods
+#endregion Debug Methods
 
-        #region private static Methods
+#region private static Methods
 
-        #region Payment Statuses
+#region Payment Statuses
 
         /// <summary>
         /// Returns a collection of payment statuses
@@ -34811,9 +34805,9 @@ namespace Library.DAL
         }
 
 
-        #endregion Payment Statuses
+#endregion Payment Statuses
 
-        #region Statistics
+#region Statistics
 
         private static void UpdateStatistics(string url, int attempt)
         {
@@ -34859,9 +34853,9 @@ namespace Library.DAL
             }
         }
 
-        #endregion Statistics
+#endregion Statistics
 
-        #region Password Encryption/Decryption
+#region Password Encryption/Decryption
 
         private static string EncryptPassword(string password)
         {
@@ -34893,9 +34887,9 @@ namespace Library.DAL
             }
         }
 
-        #endregion Password Encryption/Decryption
+#endregion Password Encryption/Decryption
 
-        #region Orders
+#region Orders
 
         internal static ProductGroup ProductGroupGet(FbConnection db, FbTransaction tran, int ID)
         {
@@ -35006,9 +35000,9 @@ namespace Library.DAL
             order.SetOrderItems(Result);
         }
 
-        #endregion Orders
+#endregion Orders
 
-        #region Users
+#region Users
 
         private static void UserGet(Int64 UserID, Order order, FbConnection Connection, FbTransaction Transaction)
         {
@@ -35109,9 +35103,9 @@ namespace Library.DAL
             return (Result);
         }
 
-        #endregion Users
+#endregion Users
 
-        #region Locations
+#region Locations
 
 
         /// <summary>
@@ -35138,9 +35132,9 @@ namespace Library.DAL
             return (Result);
         }
 
-        #endregion Locations
+#endregion Locations
 
-        #region Global Procs
+#region Global Procs
 
         private static void ExecuteCloseAndDispose(ref FbCommand command)
         {
@@ -35369,7 +35363,7 @@ namespace Library.DAL
                 return false;
         }
 
-        #region Firebird Wrapper Methods
+#region Firebird Wrapper Methods
 
         /// <summary>
         /// Prepares an FbCommand to be used as stored procedure
@@ -35494,7 +35488,7 @@ namespace Library.DAL
             cmd.Parameters[parameterName].Value = parameterValue;
         }
 
-        #endregion Firebird Wrapper Methods
+#endregion Firebird Wrapper Methods
 
         private static string LikeParam(string s)
         {
@@ -35512,9 +35506,9 @@ namespace Library.DAL
                         "be at least {1} characters long.", Field, MinLength)));
         }
 
-        #endregion Global Procs
+#endregion Global Procs
 
-        #region DB Methods
+#region DB Methods
 
         private static string BuildInvoceWhereClause(int UserID, int InvoiceID, bool TodayOnly,
             bool hideCancelled, ProcessStatuses statuses)
@@ -35728,17 +35722,17 @@ namespace Library.DAL
             return (Count);
         }
 
-        #endregion DB Methods
+#endregion DB Methods
 
-        #endregion private static Methods
+#endregion private static Methods
 
-        #region Protected Methods
+#region Protected Methods
 
         internal static void Prepare()
         {
 
         }
 
-        #endregion Protected Methods
+#endregion Protected Methods
     }
 }

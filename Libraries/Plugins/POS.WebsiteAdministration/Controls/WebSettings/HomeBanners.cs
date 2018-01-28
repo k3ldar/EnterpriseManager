@@ -43,7 +43,7 @@ namespace POS.WebsiteAdministration.Controls.WebSettings
 
         public override string HelpString()
         {
-            return (POS.Base.Classes.HelpTopics.WebsiteSettingBanners);
+            return (Base.Classes.HelpTopics.WebsiteSettingBanners);
         }
     }
 }

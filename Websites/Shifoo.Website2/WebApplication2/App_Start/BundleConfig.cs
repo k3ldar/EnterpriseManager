@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace WebApplication2
+namespace Shifoo.Systems.Web
 {
     public class BundleConfig
     {

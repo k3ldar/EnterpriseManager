@@ -19,7 +19,7 @@ namespace Languages {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class LanguageStrings {
@@ -8644,6 +8644,42 @@ namespace Languages {
         public static string AppHintViewUser {
             get {
                 return ResourceManager.GetString("AppHintViewUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fixed Home Banner {0}.
+        /// </summary>
+        public static string AppHomeFixedBanner {
+            get {
+                return ResourceManager.GetString("AppHomeFixedBanner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can have upto four, fixed, static home page banners on the homepage, these will appear below campaign banners (if shown)..
+        /// </summary>
+        public static string AppHomeFixedBannerDesc {
+            get {
+                return ResourceManager.GetString("AppHomeFixedBannerDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fixed Home Page Banners.
+        /// </summary>
+        public static string AppHomeFixedBanners {
+            get {
+                return ResourceManager.GetString("AppHomeFixedBanners", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show Home Page Fixed Banners.
+        /// </summary>
+        public static string AppHomeFixedBannersShow {
+            get {
+                return ResourceManager.GetString("AppHomeFixedBannersShow", resourceCulture);
             }
         }
         
@@ -20171,6 +20207,15 @@ namespace Languages {
         public static string AppWebSettingHomeBanners {
             get {
                 return ResourceManager.GetString("AppWebSettingHomeBanners", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fixed Home Banners.
+        /// </summary>
+        public static string AppWebSettingHomeFixedBanners {
+            get {
+                return ResourceManager.GetString("AppWebSettingHomeFixedBanners", resourceCulture);
             }
         }
         

@@ -51,4 +51,13 @@
 			<div class="clear"><!-- clear --></div>
 						
 		</div><!-- end of #content -->
+
+    <script type="text/javascript">
+        jQuery(document).on('load', function () {
+            jQuery('.mycarousel').jcarousel({
+                scroll: 3,
+                wrap: "circular"
+            });
+        });
+    </script>
 </asp:Content>

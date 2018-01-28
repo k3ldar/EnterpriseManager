@@ -26,7 +26,7 @@ OutputBaseFilename=Shifoo_SMB_v_{#MyAppVersion}
 SetupIconFile=..\..\Applications\POS\favicon.ico
 Compression=lzma
 SolidCompression=yes
-AppCopyright=Copyright (c) 2010 - 2017.  Shifoo Systems.
+AppCopyright=Copyright (c) 2010 - 2018.  Shifoo Systems.
 PrivilegesRequired=lowest
 DisableDirPage=auto
 ShowLanguageDialog=auto
@@ -40,7 +40,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; OnlyBelowVersion: 0,6.1
 
 [Files]
-Source: "..\..\Builds\POS\Release\Shifoo.System.exe"; DestDir: "{app}\SMB"; DestName: "Shifoo.SMB.exe"; Flags: ignoreversion; Components: SMB
+Source: "..\..\Builds\POS\Release\Shifoo.System.exe"; DestDir: "{app}\SMB"; Flags: ignoreversion; Components: SMB
 ;Source: "T:\HeavenMain\Manuals\POS Manual.pdf"; DestDir: "{app}\POS"; Flags: ignoreversion; Components: SMB
 Source: "..\..\Builds\POS\Release\CelebrityImages.xml"; DestDir: "{app}\SMB"; Flags: ignoreversion; Components: SMB
 Source: "..\..\Builds\POS\Release\ControlHints.xml"; DestDir: "{app}\SMB"; Flags: ignoreversion; Components: SMB
@@ -118,36 +118,45 @@ Source: "..\..\Builds\POS\Release\Images\till-icon.png"; DestDir: "{app}\SMB\Ima
 Source: "..\..\Builds\POS\Release\Images\treatments.bmp"; DestDir: "{app}\SMB\Images"; Flags: ignoreversion; Components: SMB
 Source: "..\..\Builds\POS\Release\Images\treatments1.bmp"; DestDir: "{app}\SMB\Images"; Flags: ignoreversion; Components: SMB
 Source: "..\..\Builds\POS\Release\Images\warning.bmp"; DestDir: "{app}\SMB\Images"; Flags: ignoreversion; Components: SMB
-Source: "..\..\Builds\POS\Release\Plugins\POS.Cash.dll"; DestDir: "{app}\SMB\Plugins"; DestName: "POS.Cash.dll"; Flags: ignoreversion; Components: SMB
-Source: "..\..\Builds\POS\Release\Plugins\POS.Administration.dll"; DestDir: "{app}\SMB\Plugins"; DestName: "POS.Administration.dll"; Flags: ignoreversion; Components: SMB
-Source: "..\..\Builds\POS\Release\Plugins\POS.Invoices.dll"; DestDir: "{app}\SMB\Plugins"; DestName: "POS.Invoices.dll"; Flags: ignoreversion; Components: SMB
-Source: "..\..\Builds\POS\Release\Plugins\POS.Orders.dll"; DestDir: "{app}\SMB\Plugins"; DestName: "POS.Orders.dll"; Flags: ignoreversion; Components: SMB
-Source: "..\..\Builds\POS\Release\Plugins\POS.Customers.dll"; DestDir: "{app}\SMB\Plugins"; DestName: "POS.Customers.dll"; Flags: ignoreversion; Components: SMB
-Source: "..\..\Builds\POS\Release\Plugins\POS.WebsiteAdministration.dll"; DestDir: "{app}\SMB\Plugins"; DestName: "POS.WebsiteAdministration.dll"; Flags: ignoreversion; Components: SMB
-Source: "..\..\Builds\POS\Release\Plugins\POS.VoucherManagement.dll"; DestDir: "{app}\SMB\Plugins"; DestName: "POS.VoucherManagement.dll"; Flags: ignoreversion; Components: SMB
-Source: "..\..\Builds\POS\Release\Plugins\POS.UpdateImages.dll"; DestDir: "{app}\SMB\Plugins"; DestName: "POS.UpdateImages.dll"; Flags: ignoreversion; Components: SMB
-Source: "..\..\Builds\POS\Release\Plugins\POS.TrainingSchedule.dll"; DestDir: "{app}\SMB\Plugins"; DestName: "POS.TrainingSchedule.dll"; Flags: ignoreversion; Components: SMB
-Source: "..\..\Builds\POS\Release\Plugins\POS.Till.dll"; DestDir: "{app}\SMB\Plugins"; DestName: "POS.Till.dll"; Flags: ignoreversion; Components: SMB
-Source: "..\..\Builds\POS\Release\Plugins\POS.StockControl.dll"; DestDir: "{app}\SMB\Plugins"; DestName: "POS.StockControl.dll"; Flags: ignoreversion; Components: SMB
-Source: "..\..\Builds\POS\Release\Plugins\POS.Marketing.dll"; DestDir: "{app}\SMB\Plugins"; DestName: "POS.Marketing.dll"; Flags: ignoreversion; Components: SMB
-Source: "..\..\Builds\POS\Release\Plugins\POS.HelpDesk.dll"; DestDir: "{app}\SMB\Plugins"; DestName: "POS.HelpDesk.dll"; Flags: ignoreversion; Components: SMB
-Source: "..\..\Builds\POS\Release\Plugins\POS.Export.dll"; DestDir: "{app}\SMB\Plugins"; DestName: "POS.Export.dll"; Flags: ignoreversion; Components: SMB
-Source: "..\..\Builds\POS\Release\Plugins\POS.Diary.dll"; DestDir: "{app}\SMB\Plugins"; DestName: "POS.Diary.dll"; Flags: ignoreversion; Components: SMB
-Source: "..\..\Builds\POS\Release\Plugins\POS.Debug.dll"; DestDir: "{app}\SMB\Plugins"; DestName: "POS.Debug.dll"; Flags: ignoreversion; Components: SMB
-Source: "..\..\Builds\POS\Release\Plugins\POS.DatabaseBackupPluginModule.dll"; DestDir: "{app}\SMB\Plugins"; DestName: "POS.DatabaseBackupPluginModule.dll"; Flags: ignoreversion; Components: SMB
-Source: "..\..\Builds\POS\Release\Plugins\POS.Updater.dll"; DestDir: "{app}\SMB\Plugins"; DestName: "POS.Updater.dll"; Flags: ignoreversion; Components: SMB
-Source: "..\..\Builds\POS\Release\Plugins\POS.Staff.dll"; DestDir: "{app}\SMB\Plugins"; DestName: "POS.Staff.dll"; Flags: ignoreversion; Components: SMB
-Source: "..\..\Builds\POS\Release\Plugins\POS.AutoUpdate.dll"; DestDir: "{app}\SMB\Plugins"; DestName: "POS.AutoUpdate.dll"; Flags: ignoreversion; Components: SMB
-Source: "..\..\Builds\POS\Release\da-DK\Languages.resources.dll"; DestDir: "{app}\Languages\SMB\da-DK"; Flags: ignoreversion; Components: SMB
-Source: "..\..\Builds\POS\Release\zh-SG\Languages.resources.dll"; DestDir: "{app}\Languages\SMB\zh-SG"; Flags: ignoreversion; Components: SMB
-Source: "..\..\Builds\POS\Release\zh-CN\Languages.resources.dll"; DestDir: "{app}\Languages\SMB\zh-CN"; Flags: ignoreversion; Components: SMB
-Source: "..\..\Builds\POS\Release\sl-SI\Languages.resources.dll"; DestDir: "{app}\Languages\SMB\sl-SI"; Flags: ignoreversion; Components: SMB
-Source: "..\..\Builds\POS\Release\nl-NL\Languages.resources.dll"; DestDir: "{app}\Languages\SMB\nl-NL"; Flags: ignoreversion; Components: SMB
-Source: "..\..\Builds\POS\Release\ms-MY\Languages.resources.dll"; DestDir: "{app}\Languages\SMB\ms-MY"; Flags: ignoreversion; Components: SMB
-Source: "..\..\Builds\POS\Release\he\Languages.resources.dll"; DestDir: "{app}\Languages\SMB\he"; Flags: ignoreversion; Components: SMB
-Source: "..\..\Builds\POS\Release\es-ES\Languages.resources.dll"; DestDir: "{app}\Languages\SMB\es-ES"; Flags: ignoreversion; Components: SMB
-Source: "..\..\Builds\POS\Release\en-US\Languages.resources.dll"; DestDir: "{app}\Languages\SMB\en-US"; Flags: ignoreversion; Components: SMB
-Source: "..\..\Builds\POS\Release\zh-TW\Languages.resources.dll"; DestDir: "{app}\Languages\SMB\zh-TW"; Flags: ignoreversion; Components: SMB
+Source: "..\..\Builds\POS\Release\Plugins\POS.Accounts.dll"; DestDir: "{app}\Plugins"; DestName: "POS.Accounts.dll"; Flags: ignoreversion; Components: SMB
+Source: "..\..\Builds\POS\Release\Plugins\POS.Administration.dll"; DestDir: "{app}\Plugins"; DestName: "POS.Administration.dll"; Flags: ignoreversion; Components: SMB
+Source: "..\..\Builds\POS\Release\Plugins\POS.AutoUpdate.dll"; DestDir: "{app}\Plugins"; DestName: "POS.AutoUpdate.dll"; Flags: ignoreversion; Components: SMB
+Source: "..\..\Builds\POS\Release\Plugins\POS.Cash.dll"; DestDir: "{app}\Plugins"; DestName: "POS.Cash.dll"; Flags: ignoreversion; Components: SMB
+Source: "..\..\Builds\POS\Release\Plugins\POS.Cash.dll"; DestDir: "{app}\Plugins"; DestName: "POS.CashManager.dll"; Flags: ignoreversion; Components: SMB
+Source: "..\..\Builds\POS\Release\Plugins\POS.CurrencyWatch.dll"; DestDir: "{app}\Plugins"; DestName: "POS.CurrencyWatch.dll"; Flags: ignoreversion; Components: SMB
+Source: "..\..\Builds\POS\Release\Plugins\POS.Customers.dll"; DestDir: "{app}\Plugins"; DestName: "POS.Customers.dll"; Flags: ignoreversion; Components: SMB
+Source: "..\..\Builds\POS\Release\Plugins\POS.DatabaseBackupPluginModule.dll"; DestDir: "{app}\Plugins"; DestName: "POS.DatabaseBackupPluginModule.dll"; Flags: ignoreversion; Components: SMB
+;Source: "..\..\Builds\POS\Release\Plugins\POS.Debug.dll"; DestDir: "{app}\Plugins"; DestName: "POS.Debug.dll"; Flags: ignoreversion; Components: SMB
+Source: "..\..\Builds\POS\Release\Plugins\POS.Diary.dll"; DestDir: "{app}\Plugins"; DestName: "POS.Diary.dll"; Flags: ignoreversion; Components: SMB
+Source: "..\..\Builds\POS\Release\Plugins\POS.Export.dll"; DestDir: "{app}\Plugins"; DestName: "POS.Export.dll"; Flags: ignoreversion; Components: SMB
+Source: "..\..\Builds\POS\Release\Plugins\POS.FileBackup.dll"; DestDir: "{app}\Plugins"; DestName: "POS.FileBackup.dll"; Flags: ignoreversion; Components: SMB
+Source: "..\..\Builds\POS\Release\Plugins\POS.HelpDesk.dll"; DestDir: "{app}\Plugins"; DestName: "POS.HelpDesk.dll"; Flags: ignoreversion; Components: SMB
+Source: "..\..\Builds\POS\Release\Plugins\POS.Images.dll"; DestDir: "{app}\Plugins"; DestName: "POS.Images.dll"; Flags: ignoreversion; Components: SMB
+Source: "..\..\Builds\POS\Release\Plugins\POS.Invoices.dll"; DestDir: "{app}\Plugins"; DestName: "POS.Invoices.dll"; Flags: ignoreversion; Components: SMB
+Source: "..\..\Builds\POS\Release\Plugins\POS.Marketing.dll"; DestDir: "{app}\Plugins"; DestName: "POS.Marketing.dll"; Flags: ignoreversion; Components: SMB
+Source: "..\..\Builds\POS\Release\Plugins\POS.Orders.dll"; DestDir: "{app}\Plugins"; DestName: "POS.Orders.dll"; Flags: ignoreversion; Components: SMB
+Source: "..\..\Builds\POS\Release\Plugins\POS.PurchaseOrders.dll"; DestDir: "{app}\Plugins"; DestName: "POS.PurchaseOrders.dll"; Flags: ignoreversion; Components: SMB
+Source: "..\..\Builds\POS\Release\Plugins\POS.Staff.dll"; DestDir: "{app}\Plugins"; DestName: "POS.Staff.dll"; Flags: ignoreversion; Components: SMB
+Source: "..\..\Builds\POS\Release\Plugins\POS.StockControl.dll"; DestDir: "{app}\Plugins"; DestName: "POS.StockControl.dll"; Flags: ignoreversion; Components: SMB
+Source: "..\..\Builds\POS\Release\Plugins\POS.Suppliers.dll"; DestDir: "{app}\Plugins"; DestName: "POS.Suppliers.dll"; Flags: ignoreversion; Components: SMB
+Source: "..\..\Builds\POS\Release\Plugins\POS.Till.dll"; DestDir: "{app}\Plugins"; DestName: "POS.Till.dll"; Flags: ignoreversion; Components: SMB
+Source: "..\..\Builds\POS\Release\Plugins\POS.TrainingSchedule.dll"; DestDir: "{app}\Plugins"; DestName: "POS.TrainingSchedule.dll"; Flags: ignoreversion; Components: SMB
+Source: "..\..\Builds\POS\Release\Plugins\POS.Updater.dll"; DestDir: "{app}\Plugins"; DestName: "POS.Updater.dll"; Flags: ignoreversion; Components: SMB
+Source: "..\..\Builds\POS\Release\Plugins\POS.VoucherManagement.dll"; DestDir: "{app}\Plugins"; DestName: "POS.VoucherManagement.dll"; Flags: ignoreversion; Components: SMB
+Source: "..\..\Builds\POS\Release\Plugins\POS.WebsiteAdministration.dll"; DestDir: "{app}\Plugins"; DestName: "POS.WebsiteAdministration.dll"; Flags: ignoreversion; Components: SMB
+
+; language files
+Source: "..\..\Builds\POS\Release\da-DK\Languages.resources.dll"; DestDir: "{app}\Languages\da-DK"; Flags: ignoreversion; Components: SMB
+Source: "..\..\Builds\POS\Release\zh-SG\Languages.resources.dll"; DestDir: "{app}\Languages\zh-SG"; Flags: ignoreversion; Components: SMB
+Source: "..\..\Builds\POS\Release\zh-CN\Languages.resources.dll"; DestDir: "{app}\Languages\zh-CN"; Flags: ignoreversion; Components: SMB
+Source: "..\..\Builds\POS\Release\sl-SI\Languages.resources.dll"; DestDir: "{app}\Languages\sl-SI"; Flags: ignoreversion; Components: SMB
+Source: "..\..\Builds\POS\Release\nl-NL\Languages.resources.dll"; DestDir: "{app}\Languages\nl-NL"; Flags: ignoreversion; Components: SMB
+Source: "..\..\Builds\POS\Release\ms-MY\Languages.resources.dll"; DestDir: "{app}\Languages\ms-MY"; Flags: ignoreversion; Components: SMB
+Source: "..\..\Builds\POS\Release\he\Languages.resources.dll"; DestDir: "{app}\Languages\he"; Flags: ignoreversion; Components: SMB
+Source: "..\..\Builds\POS\Release\es-ES\Languages.resources.dll"; DestDir: "{app}\Languages\es-ES"; Flags: ignoreversion; Components: SMB
+Source: "..\..\Builds\POS\Release\en-US\Languages.resources.dll"; DestDir: "{app}\Languages\en-US"; Flags: ignoreversion; Components: SMB
+Source: "..\..\Builds\POS\Release\zh-TW\Languages.resources.dll"; DestDir: "{app}\Languages\zh-TW"; Flags: ignoreversion; Components: SMB
+
 ; NEVER remove the following line, this is required so that the installation process works
 Source: "PosUpdate.exe.installed"; DestDir: "{app}\SMB"; Flags: ignoreversion; Components: SMB
 ;Source: "T:\HeavenMain\Installer\POS\PosConfiguration.dat"; DestDir: "{app}\SMB"; Flags: ignoreversion onlyifdoesntexist; Components: SMB

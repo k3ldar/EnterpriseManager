@@ -1,0 +1,17 @@
+T:\ShifooMain\Websites\Shifoo.Systems.Website\bin\Debug\netcoreapp2.0\Shifoo.Systems.Website.deps.json
+T:\ShifooMain\Websites\Shifoo.Systems.Website\bin\Debug\netcoreapp2.0\Shifoo.Systems.Website.runtimeconfig.json
+T:\ShifooMain\Websites\Shifoo.Systems.Website\bin\Debug\netcoreapp2.0\Shifoo.Systems.Website.runtimeconfig.dev.json
+T:\ShifooMain\Websites\Shifoo.Systems.Website\bin\Debug\netcoreapp2.0\Shifoo.Systems.Website.dll
+T:\ShifooMain\Websites\Shifoo.Systems.Website\obj\Debug\netcoreapp2.0\Shifoo.Systems.Website.csprojResolveAssemblyReference.cache
+T:\ShifooMain\Websites\Shifoo.Systems.Website\obj\Debug\netcoreapp2.0\Shifoo.Systems.Website.csproj.CoreCompileInputs.cache
+T:\ShifooMain\Websites\Shifoo.Systems.Website\obj\Debug\netcoreapp2.0\Shifoo.Systems.Website.AssemblyInfoInputs.cache
+T:\ShifooMain\Websites\Shifoo.Systems.Website\obj\Debug\netcoreapp2.0\Shifoo.Systems.Website.AssemblyInfo.cs
+T:\ShifooMain\Websites\Shifoo.Systems.Website\bin\Debug\netcoreapp2.0\Library.dll
+T:\ShifooMain\Websites\Shifoo.Systems.Website\bin\Debug\netcoreapp2.0\FirebirdSql.Data.FirebirdClient.dll
+T:\ShifooMain\Websites\Shifoo.Systems.Website\bin\Debug\netcoreapp2.0\Library.pdb
+T:\ShifooMain\Websites\Shifoo.Systems.Website\bin\Debug\netcoreapp2.0\Library.dll.config
+T:\ShifooMain\Websites\Shifoo.Systems.Website\bin\Debug\netcoreapp2.0\FirebirdSql.Data.FirebirdClient.pdb
+T:\ShifooMain\Websites\Shifoo.Systems.Website\bin\Debug\netcoreapp2.0\Shifoo.Systems.Website.pdb
+T:\ShifooMain\Websites\Shifoo.Systems.Website\obj\Debug\netcoreapp2.0\Shifoo.Systems.Website.dll
+T:\ShifooMain\Websites\Shifoo.Systems.Website\obj\Debug\netcoreapp2.0\Shifoo.Systems.Website.pdb
+T:\ShifooMain\Websites\Shifoo.Systems.Website\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs

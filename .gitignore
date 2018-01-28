@@ -105,3 +105,4 @@
 /Applications/POS/Controls/Settings/LocalUser/CHBackup/
 /Applications/POS/Forms/Other/CHBackup/
 **/CHBackup/**
+/Installer/EnterpriseManager/Builds/

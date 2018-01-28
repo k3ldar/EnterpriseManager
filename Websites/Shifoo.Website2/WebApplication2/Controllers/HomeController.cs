@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace WebApplication2.Controllers
+namespace Shifoo.Systems.Web.Controllers
 {
     public class HomeController : Controller
     {

@@ -244,9 +244,15 @@ namespace POS.Base.Classes
 
         public const string WEB_SETTING_HOME_BANNER = "{0}.HOMEBANNER{1}";
         public const string WEB_SETTING_HOME_BANNER_LINK = "{0}.HOMEBANNER{1}LINK";
+
         public const string WEB_SETTING_PAGE_BANNER = "{0}.PAGEBANNER{1}";
         public const string WEB_SETTING_PAGE_BANNER_LINK = "{0}.PAGEBANNER{1}LINK";
 
+        public const string WEB_SETTING_HOME_FIXED_BANNER_SHOW = "{0}.SETTINGS.HOMEBANNERS";
+        public const string WEB_SETTING_HOME_FIXED_BANNER = "{0}.FIXEDBANNER{1}";
+        public const string WEB_SETTING_HOME_FIXED_BANNER_LINK = "{0}.FIXEDBANNER{1}LINK";
+        public const string WEB_SETTING_HOME_FIXED_BANNER_TITLE = "{0}.FIXEDBANNER{1}TITLE";
+        public const string WEB_SETTING_HOME_FIXED_BANNER_DESCRIPTION = "{0}.FIXEDBANNER{1}NAME";
 
 
 
@@ -277,6 +283,7 @@ namespace POS.Base.Classes
         public const string IMAGE_SEARCH_TREATMENTS = "*_148*";
         public const string IMAGE_SEARCH_WEB_TREATMENTS = "*_130*";
         public const string IMAGE_SEARCH_CELEBRITIES = "*_172*";
+        public const string IMAGE_SEARCH_FIXED_HOME_BANNERS = "*_449*";
 
 
         public const string IMAGE_LOGO_INVOICE = "LOGO_239.jpg";

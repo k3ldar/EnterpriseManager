@@ -336,6 +336,9 @@ namespace Library.BOL.Products
         /// <returns>Products collection</returns>
         public static Products Get(ProductType primaryProductType, int PageNumber, int PageSize)
         {
+            if (primaryProductType == null)
+                throw new ArgumentNullException(nameof(primaryProductType));
+                    
             if (CacheAvailable)
             {
                 string cacheName = String.Format(Consts.CACHE_NAME_PRODUCTS_GET_PRODUCT_BY_TYPE,

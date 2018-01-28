@@ -32,7 +32,7 @@ namespace SieraDelta.Website.Controls
             if (!IsPostBack)
             {
                 //Get hash tags for page
-                _pageTags = HashTags.GetPageTags(Request.Url.ToString());
+                _pageTags = HashTags.GetPageTags(Request.Url);
 
                 foreach (HashTag tag in _pageTags)
                 {
@@ -71,7 +71,7 @@ namespace SieraDelta.Website.Controls
         {
             try
             {
-                HashTags.CreateHashTag(Request.Url.ToString(), txtCreateTag.Text);
+                HashTags.CreateHashTag(Request.Url, txtCreateTag.Text);
                 webLib.Classes.BaseMasterClassWebForm.ResetMetaDescriptions();
                 tdError.Visible = false;
                 DoRedirect(Request.Url.ToString());
@@ -93,7 +93,7 @@ namespace SieraDelta.Website.Controls
                 if (item == null)
                     return;
 
-                HashTags.RemoveHashTag(new HashTag(Convert.ToInt64(item.Value), item.Text), Request.Url.ToString());
+                HashTags.RemoveHashTag(new HashTag(Convert.ToInt64(item.Value), item.Text), Request.Url);
                 webLib.Classes.BaseMasterClassWebForm.ResetMetaDescriptions();
                 trError.Visible = false;
                 DoRedirect(Request.Url.ToString());
@@ -115,7 +115,7 @@ namespace SieraDelta.Website.Controls
                 if (item == null)
                     return;
 
-                HashTags.AddHashTag(new HashTag(Convert.ToInt64(item.Value), item.Text), Request.Url.ToString());
+                HashTags.AddHashTag(new HashTag(Convert.ToInt64(item.Value), item.Text), Request.Url);
                 webLib.Classes.BaseMasterClassWebForm.ResetMetaDescriptions();
                 trError.Visible = false;
                 DoRedirect(Request.Url.ToString());

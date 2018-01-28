@@ -77,6 +77,18 @@
     <Compile Include="Controls\WebSettings\HomeBanners.Designer.cs">
       <DependentUpon>HomeBanners.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\WebSettings\HomeFixedBanner.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\WebSettings\HomeFixedBanner.Designer.cs">
+      <DependentUpon>HomeFixedBanner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WebSettings\HomeFixedBanners.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\WebSettings\HomeFixedBanners.Designer.cs">
+      <DependentUpon>HomeFixedBanners.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\WebSettings\PageBanner.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -261,6 +273,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\WebSettings\HomeBanners.resx">
       <DependentUpon>HomeBanners.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\WebSettings\HomeFixedBanner.resx">
+      <DependentUpon>HomeFixedBanner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\WebSettings\HomeFixedBanners.resx">
+      <DependentUpon>HomeFixedBanners.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\WebSettings\PageBanner.resx">
       <DependentUpon>PageBanner.cs</DependentUpon>

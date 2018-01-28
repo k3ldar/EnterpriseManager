@@ -53,6 +53,8 @@ namespace POS.Base.Classes
 
         OfferImages,
 
+        HomeFixedBanners,
+
         HomePageBanners,
 
         PageBanners,

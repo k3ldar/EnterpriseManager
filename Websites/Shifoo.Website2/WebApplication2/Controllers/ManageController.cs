@@ -6,9 +6,9 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using WebApplication2.Models;
+using Shifoo.Systems.Web.Models;
 
-namespace WebApplication2.Controllers
+namespace Shifoo.Systems.Web.Controllers
 {
     [Authorize]
     public class ManageController : Controller

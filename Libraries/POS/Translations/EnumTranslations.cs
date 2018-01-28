@@ -74,6 +74,8 @@ namespace POS.Base
                     return (LanguageStrings.AppTreatmentsOnline);
                 case ImageTypes.HomePageBanners:
                     return (LanguageStrings.AppHomePageBanners);
+                case ImageTypes.HomeFixedBanners:
+                    return (LanguageStrings.AppHomeFixedBanners);
                 case ImageTypes.OfferImages:
                     return (LanguageStrings.AppCampaign);
                 case ImageTypes.PageBanners:

@@ -1325,7 +1325,7 @@ namespace Website.Library.Classes
 
             ProductGroups groups = ProductGroups.Get(user == null ? lib.MemberLevel.StandardUser : user.MemberLevel, true);
             bool first = !isMobile;
-            ProductGroupType prodTypeOther = ProductGroupTypes.Get("General");
+            ProductGroupType prodTypeOther = ProductGroupTypes.Get("General") ?? ProductGroupTypes.Get()[0];
 
             foreach (ProductGroup group in groups)
             {
@@ -1777,7 +1777,7 @@ namespace Website.Library.Classes
         {
             string MetaTag = lib.LibraryHelperClass.SettingsGetMeta("META_DESCRIPTION");
 
-            HashTags tags = HashTags.GetPageTags(Request.Url.ToString());
+            HashTags tags = HashTags.GetPageTags(Request.Url);
             MetaTag += tags.HashTagList(true);
 
             return (MetaTag);
@@ -1802,7 +1802,7 @@ namespace Website.Library.Classes
         {
             string MetaTag = "";
 
-            HashTags tags = HashTags.GetPageTags(Request.Url.ToString());
+            HashTags tags = HashTags.GetPageTags(Request.Url);
             MetaTag += tags.HashTagList(true) + " ";
             MetaTag += lib.LibraryHelperClass.SettingsGetMeta("META_KEYWORDS");
 

@@ -91,6 +91,8 @@ namespace POS.Base.Classes
                         return (new int[,] { { 130, 175 } });
                     case ImageTypes.HomePageBanners:
                         return (new int[,] { { 700, 320 }, { 300, 137 } });
+                    case ImageTypes.HomeFixedBanners:
+                        return (new int[,] { { 449, 194 } });
                     case ImageTypes.PageBanners:
                         return (new int[,] { { 154, 0 } });
                     case ImageTypes.OfferImages:

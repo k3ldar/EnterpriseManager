@@ -51,7 +51,7 @@
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\..\Builds\POS\Release\</OutputPath>
-    <DefineConstants>TAB_INTERFACE LINEAR_TAB_</DefineConstants>
+    <DefineConstants>TAB_INTERFACE LINEAR_TAB_ </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoStdLib>false</NoStdLib>

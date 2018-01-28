@@ -55,6 +55,8 @@ namespace POS.Base.Classes
         public const string WebSiteAddWebsite = "websiteaddwebsite";
         public const string WebsiteSettingBanners = "websitesettingbanners";
         public const string WebsiteSettingBanner = "websitesettingbanner";
+        public const string WebsiteSettingFixedBanner = "websitesettingfixedbanner";
+        public const string WebsiteSettingFixedBanners = "websitesettingfixedbanners";
         public const string WebsiteSettingPageBanners = "websitepagebanners";
         public const string WebsiteSettingPageBanner = "websitepagebanner";
 

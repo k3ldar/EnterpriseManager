@@ -149,7 +149,12 @@ namespace POS.Base.Classes
                         }
                     }
                 }
-            } // plugin data file not found
+            } 
+            else
+            {
+                // load everything that can be loaded
+                CheckForNewPlugins(parentForm);
+            }
 
 #if !DEBUG
             if (!Parameters.OptionExists("IgnoreNewPlugins"))
@@ -173,9 +178,8 @@ namespace POS.Base.Classes
         /// <param name="newPlugin"></param>
         public static void LoadPlugin(Plugins.BasePlugin newPlugin)
         {
-            PluginModule newModule = new PluginModule("PointOfSale.Plugins." + newPlugin.GetType().Name);
-            newModule.PluginModuleInstance = newPlugin;
-            newModule.PluginFile = Shared.Utilities.CurrentPath(true) + "PointOfSale.exe";
+            PluginModule newModule = new PluginModule(newPlugin, Utilities.CurrentPath(true) + "PointOfSale.exe", "PointOfSale.Plugins." + newPlugin.GetType().Name);
+
             LoadPlugin(newModule);
             newModule.IsActive = newModule.IsLoaded;
 
@@ -477,8 +481,11 @@ namespace POS.Base.Classes
 
         public static bool WebsitesEnabled()
         {
-            NotificationEventArgs args = new NotificationEventArgs(StringConstants.PLUGIN_EVENT_WEBSITE_COUNT);
-            args.Result = -1;
+            NotificationEventArgs args = new NotificationEventArgs(StringConstants.PLUGIN_EVENT_WEBSITE_COUNT)
+            {
+                Result = -1
+            };
+
             PluginManager.RaiseEvent(args);
 
             if ((int)args.Result < 1)
@@ -553,9 +560,12 @@ namespace POS.Base.Classes
                                     {
                                         if (type.BaseType != null && type.BaseType.FullName == typeof(BasePlugin).FullName)
                                         {
-                                            PluginModule newModule = new PluginModule(pluginFile, type.ToString());
-                                            newModule.Disabled = false;
-                                            newModule.CanLoad = true;
+                                            PluginModule newModule = new PluginModule(pluginFile, type.ToString())
+                                            {
+                                                Disabled = false,
+                                                CanLoad = true
+                                            };
+
                                             Type trp = pluginAssembly.GetType(type.ToString());
                                             newModule.PluginModuleInstance = (BasePlugin)Activator.CreateInstance(trp, parentForm);
 

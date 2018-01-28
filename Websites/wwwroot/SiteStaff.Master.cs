@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 using Website.Library.Classes;
-using Library.BOL.Products;
-using Library.Utils;
-using Library.BOL.Countries;
 using Library.BOL.Users;
 
 using webLib = Website.Library;
@@ -20,7 +14,7 @@ namespace SieraDelta.Website
         {
             base.OnInit(e);
 
-            if (!Request.IsLocal && Request.Url.ToString().ToLower().StartsWith("http://") && Global.UseHTTPS)
+            if (Global.UseHTTPS && !Request.IsLocal && Request.Url.ToString().ToLower().StartsWith("http://"))
             {
                 Response.Redirect(Request.Url.ToString().Replace("http://", "https://"));
             }
