@@ -234,8 +234,8 @@ namespace Library
 
             if (DAL.DALHelper.AllowCaching)
             {
-                Name = String.Format("Cached Setting {0}", Name);
-                DAL.DALHelper.InternalCache.Add(Name, new CacheItem(Name, value), true);
+                string cacheName = String.Format("Cached Setting {0}", Name);
+                DAL.DALHelper.InternalCache.Add(cacheName, new CacheItem(cacheName, value), true);
             }
 
             DAL.FirebirdDB.SettingsSetMeta(Name, value);

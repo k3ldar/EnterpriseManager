@@ -25,7 +25,6 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 using System;
 using System.IO;
-using System.Xml;
 using System.Windows.Forms;
 using System.Reflection;
 
@@ -38,6 +37,7 @@ using Library.BOL.ValidationChecks;
 using Library;
 using Library.Utils;
 using POS.Base.Classes;
+using POS.Base.Plugins;
 
 using POS.Administration.Controls;
 
@@ -87,8 +87,32 @@ namespace POS.Administration.Forms.Products
                 tabProductDetails.TabPages.Remove(tabPageDetailHowToUse);
                 tabProductDetails.TabPages.Remove(tabPageDetailIngredients);
             }
-        }
 
+            NotificationEventArgs args = new NotificationEventArgs(StringConstants.PLUGIN_EVENT_WEBSITE_NAME);
+            PluginManager.RaiseEvent(args);
+
+            if (String.IsNullOrEmpty((string)args.Result))
+            {
+                tabControlMain.TabPages.Remove(tabPageProductSEO);
+            }
+            else
+            {
+                try
+                {
+                    string url = (string)args.Result;
+
+                    if (!url.StartsWith(StringConstants.BASE_WEB_HTTP) && !url.StartsWith(StringConstants.BASE_WEB_HTTPS))
+                        url = StringConstants.BASE_WEB_HTTP + url;
+
+                    Uri uri = new Uri(url + _product.URL);
+                    seoSettings1.Url = uri;
+                }
+                catch
+                {
+                    tabControlMain.TabPages.Remove(tabPageProductSEO);
+                }
+            }
+        }
 
         #endregion Constructors
 
@@ -120,6 +144,7 @@ namespace POS.Administration.Forms.Products
             tabPageProductItems.Text = LanguageStrings.AppProductItems;
             tabPageProductGroups.Text = LanguageStrings.AppProductGroups;
             tabPageSettings.Text = LanguageStrings.AppSettings;
+            tabPageProductSEO.Text = LanguageStrings.SEO;
 
             cbAllowPreOrder.Text = LanguageStrings.AppProductAllowPreOrder;
             cbBestSeller.Text = LanguageStrings.BestSeller;
@@ -475,6 +500,7 @@ namespace POS.Administration.Forms.Products
                 }
 
                 _product.Save(_User);
+                seoSettings1.Save();
                 PluginManager.RaiseEvent(StringConstants.PLUGIN_EVENT_PRODUCT_ADD_REMOVE_UPDATE);
             }
             catch (Exception err)
@@ -625,7 +651,9 @@ namespace POS.Administration.Forms.Products
             else if (tabControlMain.SelectedTab == tabPageProductItems)
                 HelpTopic = HelpTopics.ProductEditProductItems;
             else if (tabControlMain.SelectedTab == tabPageProductGroups)
-                HelpTopic =HelpTopics.ProductEditProductGroups;
+                HelpTopic = HelpTopics.ProductEditProductGroups;
+            else if (tabControlMain.SelectedTab == tabPageProductSEO)
+                HelpTopic = HelpTopics.ProductEditProductSEO;
         }
 
         private void cmbImage_Format(object sender, ListControlConvertEventArgs e)

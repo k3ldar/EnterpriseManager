@@ -105,6 +105,12 @@
     <Compile Include="Controls\BaseTabControl.Designer.cs">
       <DependentUpon>BaseTabControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\SEOSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SEOSettings.Designer.cs">
+      <DependentUpon>SEOSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\BaseOptionsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +165,12 @@
     </Compile>
     <Compile Include="Forms\CreateUser.Designer.cs">
       <DependentUpon>CreateUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NewTagName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NewTagName.Designer.cs">
+      <DependentUpon>NewTagName.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Notes.cs">
       <SubType>Form</SubType>
@@ -229,6 +241,9 @@
     <EmbeddedResource Include="Controls\BaseOptionsControl.resx">
       <DependentUpon>BaseOptionsControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SEOSettings.resx">
+      <DependentUpon>SEOSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\BaseOptionsForm.resx">
       <DependentUpon>BaseOptionsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -252,6 +267,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CreateUser.resx">
       <DependentUpon>CreateUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NewTagName.resx">
+      <DependentUpon>NewTagName.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Notes.resx">
       <DependentUpon>Notes.cs</DependentUpon>

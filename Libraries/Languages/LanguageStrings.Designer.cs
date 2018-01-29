@@ -20501,6 +20501,15 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Available Tags.
+        /// </summary>
+        public static string AvailableTags {
+            get {
+                return ResourceManager.GetString("AvailableTags", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Banned IP Address.
         /// </summary>
         public static string BannedIPAddress {
@@ -24189,6 +24198,15 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to META Description.
+        /// </summary>
+        public static string MetaDescription {
+            get {
+                return ResourceManager.GetString("MetaDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ml.
         /// </summary>
         public static string MilliLitre {
@@ -26346,6 +26364,15 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Selected Tags.
+        /// </summary>
+        public static string SelectedTags {
+            get {
+                return ResourceManager.GetString("SelectedTags", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select Language.
         /// </summary>
         public static string SelectLanguage {
@@ -26387,6 +26414,15 @@ namespace Languages {
         public static string SendEmail {
             get {
                 return ResourceManager.GetString("SendEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SEO.
+        /// </summary>
+        public static string SEO {
+            get {
+                return ResourceManager.GetString("SEO", resourceCulture);
             }
         }
         
@@ -27129,6 +27165,42 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create New SEO Tag.
+        /// </summary>
+        public static string TagCreate {
+            get {
+                return ResourceManager.GetString("TagCreate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tag Error.
+        /// </summary>
+        public static string TagError {
+            get {
+                return ResourceManager.GetString("TagError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tag Name.
+        /// </summary>
+        public static string TagName {
+            get {
+                return ResourceManager.GetString("TagName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tag&apos;s can  not contain spaces.
+        /// </summary>
+        public static string TagNameSpaceError {
+            get {
+                return ResourceManager.GetString("TagNameSpaceError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tags.
         /// </summary>
         public static string Tags {
@@ -27507,6 +27579,15 @@ namespace Languages {
         public static string TipsAndTricks {
             get {
                 return ResourceManager.GetString("TipsAndTricks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title.
+        /// </summary>
+        public static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
             }
         }
         

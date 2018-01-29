@@ -13173,4 +13173,40 @@ If this continues, please contact support.</comment>
     <value>Fixed Home Banners</value>
     <comment>Fixed Home Banners</comment>
   </data>
+  <data name="AvailableTags" xml:space="preserve">
+    <value>Available Tags</value>
+    <comment>Available Tags</comment>
+  </data>
+  <data name="MetaDescription" xml:space="preserve">
+    <value>META Description</value>
+    <comment>META Description</comment>
+  </data>
+  <data name="SelectedTags" xml:space="preserve">
+    <value>Selected Tags</value>
+    <comment>Selected Tags</comment>
+  </data>
+  <data name="SEO" xml:space="preserve">
+    <value>SEO</value>
+    <comment>SEO</comment>
+  </data>
+  <data name="TagCreate" xml:space="preserve">
+    <value>Create New SEO Tag</value>
+    <comment>Create New SEO Tag</comment>
+  </data>
+  <data name="TagError" xml:space="preserve">
+    <value>Tag Error</value>
+    <comment>Tag Error</comment>
+  </data>
+  <data name="TagName" xml:space="preserve">
+    <value>Tag Name</value>
+    <comment>Tag Name</comment>
+  </data>
+  <data name="TagNameSpaceError" xml:space="preserve">
+    <value>Tag's can  not contain spaces</value>
+    <comment>Tag's can  not contain spaces</comment>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title</value>
+    <comment>Title</comment>
+  </data>
 </root>

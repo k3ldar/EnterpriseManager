@@ -17,7 +17,7 @@
  *  
  *  File: BaseOptionsControl.cs
  *
- *  Purpose:  
+ *  Purpose:  Base Options Control
  *
  *  Date        Name                Reason
  *  

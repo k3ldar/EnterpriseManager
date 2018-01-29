@@ -89,6 +89,7 @@ namespace POS.WebsiteAdministration
         #region Internal Static Members
 
         internal static int WebsiteCount = 0;
+        internal static string DefaultWebsite = String.Empty;
 
         #endregion Internal Static Members
 
@@ -129,6 +130,9 @@ namespace POS.WebsiteAdministration
         {
             Library.BOL.Websites.Websites allSites = Library.BOL.Websites.Websites.All();
             WebsiteCount = allSites.Count;
+
+            if (allSites.Count > 0)
+                DefaultWebsite = allSites[0].Domain;
 
             return (true);
         }
@@ -291,6 +295,11 @@ namespace POS.WebsiteAdministration
                     e.Result = WebsiteCount;
                     break;
 
+                case StringConstants.PLUGIN_EVENT_WEBSITE_NAME:
+                    e.AllowContinue = false;
+                    e.Result = DefaultWebsite;
+                    break;
+
                 default:
                     foreach (HomeCard card in HomeCards())
                     {
@@ -308,6 +317,7 @@ namespace POS.WebsiteAdministration
             names.Add(StringConstants.PLUGIN_EVENT_EDIT_SALON);
             names.Add(StringConstants.PLUGIN_EVENT_WEBSITE_MODULE);
             names.Add(StringConstants.PLUGIN_EVENT_WEBSITE_COUNT);
+            names.Add(StringConstants.PLUGIN_EVENT_WEBSITE_NAME);
         }
 
         #endregion Notification Events

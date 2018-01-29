@@ -56,4 +56,4 @@ using System.Resources;
 //      Revision
 //
 [assembly: AssemblyVersion("4.0.0.0")]
-[assembly: AssemblyFileVersion("4.0.44.779")]
+[assembly: AssemblyFileVersion("4.0.44.783")]

@@ -134,6 +134,7 @@ namespace POS.Base.Classes
         public const string ProductEditProductGroups = "producteditproductgroups";
         public const string ProductEditProductSettings = "producteditsettings";
         public const string ProductEditProductItems = "producteditproductitems";
+        public const string ProductEditProductSEO = "producteditproductseo";
         public const string ProductTopSelling = "productedittopsellingproducts";
         public const string ProductEditItem = "editproductitem";
         public const string ProductInvalidSKU = "invalidproductsku";

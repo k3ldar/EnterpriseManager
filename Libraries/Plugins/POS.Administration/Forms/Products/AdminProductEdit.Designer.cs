@@ -36,13 +36,9 @@
             this.tabPageDetails = new System.Windows.Forms.TabPage();
             this.tabProductDetails = new System.Windows.Forms.TabControl();
             this.tabPageDetailDescription = new System.Windows.Forms.TabPage();
-            this.productEditTextDescription = new POS.Administration.Controls.ProductEditText();
             this.tabPageDetailHowToUse = new System.Windows.Forms.TabPage();
-            this.productEditTextHowToUse = new POS.Administration.Controls.ProductEditText();
             this.tabPageDetailIngredients = new System.Windows.Forms.TabPage();
-            this.productEditTextIngredients = new POS.Administration.Controls.ProductEditText();
             this.tabPageDetailFeatures = new System.Windows.Forms.TabPage();
-            this.productEditTextFeatures = new POS.Administration.Controls.ProductEditText();
             this.cmbGroup = new System.Windows.Forms.ComboBox();
             this.lblPrimaryGroup = new System.Windows.Forms.Label();
             this.imgPicture = new System.Windows.Forms.PictureBox();
@@ -78,6 +74,12 @@
             this.cmbPrimaryType = new System.Windows.Forms.ComboBox();
             this.btnSpellCheck = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
+            this.tabPageProductSEO = new System.Windows.Forms.TabPage();
+            this.productEditTextDescription = new POS.Administration.Controls.ProductEditText();
+            this.productEditTextHowToUse = new POS.Administration.Controls.ProductEditText();
+            this.productEditTextIngredients = new POS.Administration.Controls.ProductEditText();
+            this.productEditTextFeatures = new POS.Administration.Controls.ProductEditText();
+            this.seoSettings1 = new POS.Base.Controls.SEOSettings();
             this.tabControlMain.SuspendLayout();
             this.tabPageDetails.SuspendLayout();
             this.tabProductDetails.SuspendLayout();
@@ -91,6 +93,7 @@
             this.tabPageSettings.SuspendLayout();
             this.tabPageProductItems.SuspendLayout();
             this.tabPageProductGroups.SuspendLayout();
+            this.tabPageProductSEO.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnDelete
@@ -142,6 +145,7 @@
             this.tabControlMain.Controls.Add(this.tabPageSettings);
             this.tabControlMain.Controls.Add(this.tabPageProductItems);
             this.tabControlMain.Controls.Add(this.tabPageProductGroups);
+            this.tabControlMain.Controls.Add(this.tabPageProductSEO);
             this.tabControlMain.Location = new System.Drawing.Point(16, 88);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedIndex = 0;
@@ -195,44 +199,16 @@
             this.tabPageDetailDescription.Text = "Description";
             this.tabPageDetailDescription.UseVisualStyleBackColor = true;
             // 
-            // productEditTextDescription
-            // 
-            this.productEditTextDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.productEditTextDescription.HintControl = null;
-            this.productEditTextDescription.Location = new System.Drawing.Point(2, 2);
-            this.productEditTextDescription.Margin = new System.Windows.Forms.Padding(2);
-            this.productEditTextDescription.MaximumLength = 4000;
-            this.productEditTextDescription.Name = "productEditTextDescription";
-            this.productEditTextDescription.PageType = Library.CustomPagesType.WebPage;
-            this.productEditTextDescription.Size = new System.Drawing.Size(569, 196);
-            this.productEditTextDescription.TabIndex = 0;
-            // 
             // tabPageDetailHowToUse
             // 
             this.tabPageDetailHowToUse.Controls.Add(this.productEditTextHowToUse);
             this.tabPageDetailHowToUse.Location = new System.Drawing.Point(4, 22);
             this.tabPageDetailHowToUse.Name = "tabPageDetailHowToUse";
             this.tabPageDetailHowToUse.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageDetailHowToUse.Size = new System.Drawing.Size(444, 200);
+            this.tabPageDetailHowToUse.Size = new System.Drawing.Size(573, 200);
             this.tabPageDetailHowToUse.TabIndex = 1;
             this.tabPageDetailHowToUse.Text = "How to use";
             this.tabPageDetailHowToUse.UseVisualStyleBackColor = true;
-            // 
-            // productEditTextHowToUse
-            // 
-            this.productEditTextHowToUse.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.productEditTextHowToUse.HintControl = null;
-            this.productEditTextHowToUse.Location = new System.Drawing.Point(2, 2);
-            this.productEditTextHowToUse.Margin = new System.Windows.Forms.Padding(2);
-            this.productEditTextHowToUse.MaximumLength = 4000;
-            this.productEditTextHowToUse.Name = "productEditTextHowToUse";
-            this.productEditTextHowToUse.PageType = Library.CustomPagesType.WebPage;
-            this.productEditTextHowToUse.Size = new System.Drawing.Size(440, 196);
-            this.productEditTextHowToUse.TabIndex = 0;
             // 
             // tabPageDetailIngredients
             // 
@@ -240,24 +216,10 @@
             this.tabPageDetailIngredients.Location = new System.Drawing.Point(4, 22);
             this.tabPageDetailIngredients.Name = "tabPageDetailIngredients";
             this.tabPageDetailIngredients.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageDetailIngredients.Size = new System.Drawing.Size(444, 200);
+            this.tabPageDetailIngredients.Size = new System.Drawing.Size(573, 200);
             this.tabPageDetailIngredients.TabIndex = 2;
             this.tabPageDetailIngredients.Text = "Ingredients";
             this.tabPageDetailIngredients.UseVisualStyleBackColor = true;
-            // 
-            // productEditTextIngredients
-            // 
-            this.productEditTextIngredients.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.productEditTextIngredients.HintControl = null;
-            this.productEditTextIngredients.Location = new System.Drawing.Point(2, 2);
-            this.productEditTextIngredients.Margin = new System.Windows.Forms.Padding(2);
-            this.productEditTextIngredients.MaximumLength = 4000;
-            this.productEditTextIngredients.Name = "productEditTextIngredients";
-            this.productEditTextIngredients.PageType = Library.CustomPagesType.WebPage;
-            this.productEditTextIngredients.Size = new System.Drawing.Size(440, 196);
-            this.productEditTextIngredients.TabIndex = 0;
             // 
             // tabPageDetailFeatures
             // 
@@ -265,24 +227,10 @@
             this.tabPageDetailFeatures.Location = new System.Drawing.Point(4, 22);
             this.tabPageDetailFeatures.Name = "tabPageDetailFeatures";
             this.tabPageDetailFeatures.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageDetailFeatures.Size = new System.Drawing.Size(444, 200);
+            this.tabPageDetailFeatures.Size = new System.Drawing.Size(573, 200);
             this.tabPageDetailFeatures.TabIndex = 3;
             this.tabPageDetailFeatures.Text = "Features";
             this.tabPageDetailFeatures.UseVisualStyleBackColor = true;
-            // 
-            // productEditTextFeatures
-            // 
-            this.productEditTextFeatures.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.productEditTextFeatures.HintControl = null;
-            this.productEditTextFeatures.Location = new System.Drawing.Point(2, 2);
-            this.productEditTextFeatures.Margin = new System.Windows.Forms.Padding(2);
-            this.productEditTextFeatures.MaximumLength = 4000;
-            this.productEditTextFeatures.Name = "productEditTextFeatures";
-            this.productEditTextFeatures.PageType = Library.CustomPagesType.WebPage;
-            this.productEditTextFeatures.Size = new System.Drawing.Size(440, 196);
-            this.productEditTextFeatures.TabIndex = 0;
             // 
             // cmbGroup
             // 
@@ -393,7 +341,7 @@
             this.tabPageSettings.Location = new System.Drawing.Point(4, 22);
             this.tabPageSettings.Name = "tabPageSettings";
             this.tabPageSettings.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSettings.Size = new System.Drawing.Size(464, 365);
+            this.tabPageSettings.Size = new System.Drawing.Size(593, 365);
             this.tabPageSettings.TabIndex = 3;
             this.tabPageSettings.Text = "Settings";
             this.tabPageSettings.UseVisualStyleBackColor = true;
@@ -514,7 +462,7 @@
             this.tabPageProductItems.Location = new System.Drawing.Point(4, 22);
             this.tabPageProductItems.Name = "tabPageProductItems";
             this.tabPageProductItems.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageProductItems.Size = new System.Drawing.Size(464, 365);
+            this.tabPageProductItems.Size = new System.Drawing.Size(593, 365);
             this.tabPageProductItems.TabIndex = 1;
             this.tabPageProductItems.Text = "Product Items";
             this.tabPageProductItems.UseVisualStyleBackColor = true;
@@ -550,7 +498,7 @@
             this.tabPageProductGroups.Location = new System.Drawing.Point(4, 22);
             this.tabPageProductGroups.Name = "tabPageProductGroups";
             this.tabPageProductGroups.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageProductGroups.Size = new System.Drawing.Size(464, 365);
+            this.tabPageProductGroups.Size = new System.Drawing.Size(593, 365);
             this.tabPageProductGroups.TabIndex = 2;
             this.tabPageProductGroups.Text = "Product Groups";
             this.tabPageProductGroups.UseVisualStyleBackColor = true;
@@ -654,6 +602,85 @@
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
+            // tabPageProductSEO
+            // 
+            this.tabPageProductSEO.Controls.Add(this.seoSettings1);
+            this.tabPageProductSEO.Location = new System.Drawing.Point(4, 22);
+            this.tabPageProductSEO.Name = "tabPageProductSEO";
+            this.tabPageProductSEO.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageProductSEO.Size = new System.Drawing.Size(593, 365);
+            this.tabPageProductSEO.TabIndex = 4;
+            this.tabPageProductSEO.Text = "SEO";
+            this.tabPageProductSEO.UseVisualStyleBackColor = true;
+            // 
+            // productEditTextDescription
+            // 
+            this.productEditTextDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.productEditTextDescription.HintControl = null;
+            this.productEditTextDescription.Location = new System.Drawing.Point(2, 2);
+            this.productEditTextDescription.Margin = new System.Windows.Forms.Padding(2);
+            this.productEditTextDescription.MaximumLength = 4000;
+            this.productEditTextDescription.Name = "productEditTextDescription";
+            this.productEditTextDescription.PageType = Library.CustomPagesType.WebPage;
+            this.productEditTextDescription.Size = new System.Drawing.Size(569, 196);
+            this.productEditTextDescription.TabIndex = 0;
+            // 
+            // productEditTextHowToUse
+            // 
+            this.productEditTextHowToUse.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.productEditTextHowToUse.HintControl = null;
+            this.productEditTextHowToUse.Location = new System.Drawing.Point(2, 2);
+            this.productEditTextHowToUse.Margin = new System.Windows.Forms.Padding(2);
+            this.productEditTextHowToUse.MaximumLength = 4000;
+            this.productEditTextHowToUse.Name = "productEditTextHowToUse";
+            this.productEditTextHowToUse.PageType = Library.CustomPagesType.WebPage;
+            this.productEditTextHowToUse.Size = new System.Drawing.Size(569, 196);
+            this.productEditTextHowToUse.TabIndex = 0;
+            // 
+            // productEditTextIngredients
+            // 
+            this.productEditTextIngredients.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.productEditTextIngredients.HintControl = null;
+            this.productEditTextIngredients.Location = new System.Drawing.Point(2, 2);
+            this.productEditTextIngredients.Margin = new System.Windows.Forms.Padding(2);
+            this.productEditTextIngredients.MaximumLength = 4000;
+            this.productEditTextIngredients.Name = "productEditTextIngredients";
+            this.productEditTextIngredients.PageType = Library.CustomPagesType.WebPage;
+            this.productEditTextIngredients.Size = new System.Drawing.Size(569, 196);
+            this.productEditTextIngredients.TabIndex = 0;
+            // 
+            // productEditTextFeatures
+            // 
+            this.productEditTextFeatures.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.productEditTextFeatures.HintControl = null;
+            this.productEditTextFeatures.Location = new System.Drawing.Point(2, 2);
+            this.productEditTextFeatures.Margin = new System.Windows.Forms.Padding(2);
+            this.productEditTextFeatures.MaximumLength = 4000;
+            this.productEditTextFeatures.Name = "productEditTextFeatures";
+            this.productEditTextFeatures.PageType = Library.CustomPagesType.WebPage;
+            this.productEditTextFeatures.Size = new System.Drawing.Size(569, 196);
+            this.productEditTextFeatures.TabIndex = 0;
+            // 
+            // seoSettings1
+            // 
+            this.seoSettings1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.seoSettings1.HintControl = null;
+            this.seoSettings1.Location = new System.Drawing.Point(6, 6);
+            this.seoSettings1.MinimumSize = new System.Drawing.Size(329, 302);
+            this.seoSettings1.Name = "seoSettings1";
+            this.seoSettings1.Size = new System.Drawing.Size(581, 359);
+            this.seoSettings1.TabIndex = 0;
+            // 
             // AdminProductEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -694,6 +721,7 @@
             this.tabPageProductItems.ResumeLayout(false);
             this.tabPageProductGroups.ResumeLayout(false);
             this.tabPageProductGroups.PerformLayout();
+            this.tabPageProductSEO.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -751,5 +779,7 @@
         private Controls.ProductEditText productEditTextFeatures;
         private Controls.ProductEditText productEditTextIngredients;
         private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.TabPage tabPageProductSEO;
+        private Base.Controls.SEOSettings seoSettings1;
     }
 }

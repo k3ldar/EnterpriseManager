@@ -110,7 +110,7 @@ namespace Library.BOL.HashTags
         /// </summary>
         /// <param name="pageName">Name of Page</param>
         /// <param name="TagName">HashTag to create</param>
-        public static void CreateHashTag(Uri pageUri, string TagName)
+        public static HashTag CreateHashTag(Uri pageUri, string TagName)
         {
             string pageName = pageUri.AbsolutePath.ToUpper();
 
@@ -125,6 +125,7 @@ namespace Library.BOL.HashTags
             HashTag newTag = DAL.FirebirdDB.HashTagCreate(TagName);
             DAL.FirebirdDB.HashTagAdd(newTag, pageName.ToUpper());
             PageTagsClearCache();
+            return (newTag);
         }
 
         /// <summary>

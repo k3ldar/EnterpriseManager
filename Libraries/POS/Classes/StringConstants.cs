@@ -891,6 +891,7 @@ namespace POS.Base.Classes
         public const string PLUGIN_EVENT_UPDATE_STATUS_BAR = "Update Status Bars";
         public const string PLUGIN_EVENT_WEBSITE_MODULE = "Website Module";
         public const string PLUGIN_EVENT_WEBSITE_COUNT = "Website Count";
+        public const string PLUGIN_EVENT_WEBSITE_NAME = "Website Name";
         public const string PLUGIN_EVENT_LEAVE_ADD = "Leave Request Add";
         public const string PLUGIN_EVENT_PRODUCT_ADD_REMOVE_UPDATE = "Product add or updated";
         public const string PLUGIN_EVENT_TREATMENT_ADD_REMOVE_UPDATE = "Treatment add or updated";
