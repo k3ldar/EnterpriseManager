@@ -99,7 +99,14 @@ namespace Library.BOL.Products
         {
             get
             {
-                return (_url);
+                if (String.IsNullOrEmpty(_url))
+                {
+                    return (String.Format("/All-Products/Group/{0}/", SEODescripton));
+                }
+                else
+                {
+                    return (_url);
+                }
             }
 
             set

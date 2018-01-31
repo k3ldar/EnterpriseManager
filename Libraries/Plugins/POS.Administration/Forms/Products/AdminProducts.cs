@@ -24,21 +24,15 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 using Languages;
 
 using Library;
-using Library.Utils;
 using Library.BOL.Users;
 using Library.BOL.Products;
 
-using POS.Base;
+#pragma warning disable IDE1006
 
 namespace POS.Administration.Forms.Products
 {

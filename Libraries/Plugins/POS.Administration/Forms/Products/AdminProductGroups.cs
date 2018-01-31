@@ -31,9 +31,9 @@ using Languages;
 using Library;
 using Library.BOL.Products;
 
-using SharedControls.Classes;
-
 using POS.Base.Classes;
+
+#pragma warning disable IDE1006
 
 namespace POS.Administration.Forms.Products
 {

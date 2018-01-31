@@ -41,6 +41,8 @@ using POS.Base.Plugins;
 
 using POS.Administration.Controls;
 
+#pragma warning disable IDE1006
+
 namespace POS.Administration.Forms.Products
 {
     public partial class AdminProductEdit : POS.Base.Forms.BaseForm

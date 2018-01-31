@@ -28,6 +28,8 @@ using System.Windows.Forms;
 
 using Languages;
 
+#pragma warning disable IDE1006
+
 namespace POS.Base.Controls
 {
     public class BaseOptionsControl : BaseTabControl

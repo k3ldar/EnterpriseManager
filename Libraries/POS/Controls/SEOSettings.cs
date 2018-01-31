@@ -24,19 +24,14 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
 
 using Languages;
 
 using Library.BOL.HashTags;
+
+#pragma warning disable IDE1006
 
 namespace POS.Base.Controls
 {
@@ -74,9 +69,10 @@ namespace POS.Base.Controls
 
             set
             {
-                _url = value ?? throw new ArgumentOutOfRangeException(nameof(Url));
+                _url = value;
 
-                LoadSeoData();
+                if (_url != null)
+                    LoadSeoData();
             }
         }
 
@@ -115,6 +111,9 @@ namespace POS.Base.Controls
 
         public void LoadSeoData()
         {
+            if (Url == null)
+                throw new ArgumentNullException(nameof(Url));
+
             PageTags = HashTags.GetPageTags(Url);
 
             lstAvailableTags.Items.Clear();
@@ -170,6 +169,9 @@ namespace POS.Base.Controls
 
             if (Forms.NewTagName.CreateTag(out newTagName))
             {
+                if (String.IsNullOrEmpty(newTagName))
+                    return;
+
                 HashTag newTag = HashTags.CreateHashTag(Url, newTagName);
                 lstSelectedTags.Items.Add(newTag);
             }

@@ -35,6 +35,8 @@ using Library.BOL.Products;
 using POS.Base.Classes;
 using POS.Base.Plugins;
 
+#pragma warning disable IDE1006
+
 namespace POS.Administration.Forms.Products
 {
     public partial class AdminProductGroupEdit : POS.Base.Forms.BaseForm
@@ -75,28 +77,32 @@ namespace POS.Administration.Forms.Products
             LoadMemberLevels();
 
             cmbMemberLevel.SelectedIndex = Shared.Utilities.CheckMinMax((int)_group.MemberLevel, 0, 10);
-            NotificationEventArgs args = new NotificationEventArgs(StringConstants.PLUGIN_EVENT_WEBSITE_NAME);
-            PluginManager.RaiseEvent(args);
 
-            if (String.IsNullOrEmpty((string)args.Result))
+            if (AppController.ApplicationRunning)
             {
-                tabControlMain.TabPages.Remove(tabPageSEO);
-            }
-            else
-            {
-                try
-                {
-                    string url = (string)args.Result;
+                NotificationEventArgs args = new NotificationEventArgs(StringConstants.PLUGIN_EVENT_WEBSITE_NAME);
+                PluginManager.RaiseEvent(args);
 
-                    if (!url.StartsWith(StringConstants.BASE_WEB_HTTP) && !url.StartsWith(StringConstants.BASE_WEB_HTTPS))
-                        url = StringConstants.BASE_WEB_HTTP + url;
-
-                    Uri uri = new Uri(url + _group.URL);
-                    seoSettings1.Url = uri;
-                }
-                catch
+                if (String.IsNullOrEmpty((string)args.Result))
                 {
                     tabControlMain.TabPages.Remove(tabPageSEO);
+                }
+                else
+                {
+                    try
+                    {
+                        string url = (string)args.Result;
+
+                        if (!url.StartsWith(StringConstants.BASE_WEB_HTTP) && !url.StartsWith(StringConstants.BASE_WEB_HTTPS))
+                            url = StringConstants.BASE_WEB_HTTP + url;
+
+                        Uri uri = new Uri(url + _group.URL);
+                        seoSettings1.Url = uri;
+                    }
+                    catch
+                    {
+                        tabControlMain.TabPages.Remove(tabPageSEO);
+                    }
                 }
             }
         }
@@ -113,7 +119,7 @@ namespace POS.Administration.Forms.Products
 
         protected override void LanguageChanged(System.Globalization.CultureInfo culture)
         {
-            this.Text = LanguageStrings.AppMenuProductGroups;
+            this.Text = LanguageStrings.AppProductGroup;
             tabPageSEO.Text = LanguageStrings.SEO;
             tabPageGeneral.Text = LanguageStrings.AppGeneral;
             tabPageMobile.Text = LanguageStrings.AppMobileSettings;
@@ -206,7 +212,7 @@ namespace POS.Administration.Forms.Products
                 _group.MobileImage = (string)cmbMobileImage.Items[cmbMobileImage.SelectedIndex];
 
                 _group.Save(AppController.ActiveUser);
-
+                seoSettings1.Save();
                 DialogResult = DialogResult.OK;
             }
             catch (Exception error)

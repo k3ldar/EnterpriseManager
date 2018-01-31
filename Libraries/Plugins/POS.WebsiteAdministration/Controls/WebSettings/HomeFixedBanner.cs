@@ -32,6 +32,8 @@ using Languages;
 using POS.Base.Classes;
 using System.Globalization;
 
+#pragma warning disable IDE1006
+
 namespace POS.WebsiteAdministration.Controls.WebSettings
 {
     public partial class HomeFixedBanner : BaseWebSetting

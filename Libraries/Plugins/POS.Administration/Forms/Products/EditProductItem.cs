@@ -30,6 +30,8 @@ using Languages;
 using POS.Base.Classes;
 using Library.BOL.Products;
 
+#pragma warning disable IDE1006
+
 namespace POS.Administration.Forms.Products
 {
     public partial class EditProductItem : POS.Base.Forms.BaseForm

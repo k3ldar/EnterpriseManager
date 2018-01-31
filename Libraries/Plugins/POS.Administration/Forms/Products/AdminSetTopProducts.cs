@@ -31,6 +31,8 @@ using Languages;
 using Library;
 using Library.BOL.Statistics;
 
+#pragma warning disable IDE1006
+
 namespace POS.Administration.Forms.Products
 {
     public partial class AdminSetTopProducts : POS.Base.Controls.BaseTabControl
