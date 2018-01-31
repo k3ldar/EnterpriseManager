@@ -8,7 +8,6 @@
 	<meta name="Keywords" content="<%=GetMetaKeyWords()%>" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
-    <link property="stylesheet" rel="stylesheet" href="https://www.heavenskincare.com/css/Modal.css" type="text/css" media="screen" />
         <div class="content">
 			
 			<div class="breadcrumb">

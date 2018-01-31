@@ -11788,6 +11788,15 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mobile.
+        /// </summary>
+        public static string AppMobileSettings {
+            get {
+                return ResourceManager.GetString("AppMobileSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Monthly.
         /// </summary>
         public static string AppMonthly {

@@ -33,6 +33,7 @@ using Library;
 using Library.BOL.Products;
 
 using POS.Base.Classes;
+using POS.Base.Plugins;
 
 namespace POS.Administration.Forms.Products
 {
@@ -74,12 +75,36 @@ namespace POS.Administration.Forms.Products
             LoadMemberLevels();
 
             cmbMemberLevel.SelectedIndex = Shared.Utilities.CheckMinMax((int)_group.MemberLevel, 0, 10);
+            NotificationEventArgs args = new NotificationEventArgs(StringConstants.PLUGIN_EVENT_WEBSITE_NAME);
+            PluginManager.RaiseEvent(args);
+
+            if (String.IsNullOrEmpty((string)args.Result))
+            {
+                tabControlMain.TabPages.Remove(tabPageSEO);
+            }
+            else
+            {
+                try
+                {
+                    string url = (string)args.Result;
+
+                    if (!url.StartsWith(StringConstants.BASE_WEB_HTTP) && !url.StartsWith(StringConstants.BASE_WEB_HTTPS))
+                        url = StringConstants.BASE_WEB_HTTP + url;
+
+                    Uri uri = new Uri(url + _group.URL);
+                    seoSettings1.Url = uri;
+                }
+                catch
+                {
+                    tabControlMain.TabPages.Remove(tabPageSEO);
+                }
+            }
         }
 
         #endregion Constructors
 
         #region Overridden Methods
-        
+
         protected override void OnActivated(EventArgs e)
         {
             base.OnActivated(e);
@@ -88,6 +113,11 @@ namespace POS.Administration.Forms.Products
 
         protected override void LanguageChanged(System.Globalization.CultureInfo culture)
         {
+            this.Text = LanguageStrings.AppMenuProductGroups;
+            tabPageSEO.Text = LanguageStrings.SEO;
+            tabPageGeneral.Text = LanguageStrings.AppGeneral;
+            tabPageMobile.Text = LanguageStrings.AppMobileSettings;
+
             btnCancel.Text = LanguageStrings.AppMenuButtonCancel;
             btnDelete.Text = LanguageStrings.AppMenuButtonDelete;
             btnSave.Text = LanguageStrings.AppMenuButtonSave;

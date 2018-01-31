@@ -21,12 +21,7 @@
 
     <script type="text/javascript">if (top.location != window.location) { window.top.location.href = '<%#GetURL() %>'; }</script>
     <%=GetStyleSheet() %>
-    <script type="text/javascript" src="/scripts/jquery-3.3.1.min.js"></script>
-    <asp:ScriptManager runat="server">
-        <Scripts>
-            <asp:ScriptReference Path="~/Scripts/AjaxControlToolkit/Bundle" />
-        </Scripts>
-    </asp:ScriptManager>
+    <script async="async" type="text/javascript" src="/scripts/jquery-3.3.1.min.js"></script>
  
     <asp:PlaceHolder runat="server">
         <%: System.Web.Optimization.Styles.Render("~/Content/AjaxControlToolkit/Styles/Bundle") %>
@@ -128,15 +123,17 @@
     </form>
 
 
+    <asp:ScriptManager runat="server" ScriptMode="Release" enablecdn="true">
+        <Scripts>
+            <asp:ScriptReference Path="~/Scripts/AjaxControlToolkit/Bundle" />
+        </Scripts>
+    </asp:ScriptManager>
 
-    <script type="text/javascript" src="/js/jquery.hoverIntent.minified.js"></script>
+    <script async="async" type="text/javascript" src="/js/jquery.hoverIntent.minified.js"></script>
 
     <%=GetMobileOnlyScripts() %>
 
     <script type="text/javascript">
-        //jQuery(document).on('load', function () { jQuery('.mycarousel').jcarousel({ scroll: 4, wrap: "circular" }); });
-
-
         function clickclear(a) { var defaulttext = '<%=GetSearchString()%>'; if (a.value == defaulttext) { a.value = ""; } }
         function clickrecall(a) { var defaulttext = '<%=GetSearchString()%>'; if (a.value == "") { a.value = defaulttext; } }
     </script>

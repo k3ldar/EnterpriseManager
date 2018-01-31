@@ -13209,4 +13209,8 @@ If this continues, please contact support.</comment>
     <value>Title</value>
     <comment>Title</comment>
   </data>
+  <data name="AppMobileSettings" xml:space="preserve">
+    <value>Mobile</value>
+    <comment>Mobile</comment>
+  </data>
 </root>

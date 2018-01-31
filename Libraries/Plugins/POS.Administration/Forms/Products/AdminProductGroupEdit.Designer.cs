@@ -55,17 +55,20 @@
             this.cmbMobileImage = new System.Windows.Forms.ComboBox();
             this.lblMobileImage = new System.Windows.Forms.Label();
             this.cbShowOnMobilePage = new System.Windows.Forms.CheckBox();
+            this.tabPageSEO = new System.Windows.Forms.TabPage();
+            this.seoSettings1 = new POS.Base.Controls.SEOSettings();
             this.tabControlMain.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spnSortOrder)).BeginInit();
             this.tabPageMobile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMobileImage)).BeginInit();
+            this.tabPageSEO.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.Location = new System.Drawing.Point(320, 94);
+            this.btnSave.Location = new System.Drawing.Point(377, 94);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(93, 23);
             this.btnSave.TabIndex = 19;
@@ -77,7 +80,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(320, 65);
+            this.btnCancel.Location = new System.Drawing.Point(377, 65);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(93, 23);
             this.btnCancel.TabIndex = 18;
@@ -87,7 +90,7 @@
             // btnDelete
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDelete.Location = new System.Drawing.Point(320, 12);
+            this.btnDelete.Location = new System.Drawing.Point(377, 12);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(93, 23);
             this.btnDelete.TabIndex = 17;
@@ -97,12 +100,16 @@
             // 
             // tabControlMain
             // 
+            this.tabControlMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControlMain.Controls.Add(this.tabPageGeneral);
             this.tabControlMain.Controls.Add(this.tabPageMobile);
+            this.tabControlMain.Controls.Add(this.tabPageSEO);
             this.tabControlMain.Location = new System.Drawing.Point(12, 12);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedIndex = 0;
-            this.tabControlMain.Size = new System.Drawing.Size(302, 376);
+            this.tabControlMain.Size = new System.Drawing.Size(355, 376);
             this.tabControlMain.TabIndex = 20;
             this.tabControlMain.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
@@ -128,7 +135,7 @@
             this.tabPageGeneral.Location = new System.Drawing.Point(4, 22);
             this.tabPageGeneral.Name = "tabPageGeneral";
             this.tabPageGeneral.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageGeneral.Size = new System.Drawing.Size(294, 350);
+            this.tabPageGeneral.Size = new System.Drawing.Size(347, 350);
             this.tabPageGeneral.TabIndex = 0;
             this.tabPageGeneral.Text = "General";
             this.tabPageGeneral.UseVisualStyleBackColor = true;
@@ -300,7 +307,7 @@
             this.tabPageMobile.Location = new System.Drawing.Point(4, 22);
             this.tabPageMobile.Name = "tabPageMobile";
             this.tabPageMobile.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageMobile.Size = new System.Drawing.Size(294, 350);
+            this.tabPageMobile.Size = new System.Drawing.Size(347, 350);
             this.tabPageMobile.TabIndex = 1;
             this.tabPageMobile.Text = "Mobile Website";
             this.tabPageMobile.UseVisualStyleBackColor = true;
@@ -342,13 +349,34 @@
             this.cbShowOnMobilePage.Text = "Show on Mobile Homepage";
             this.cbShowOnMobilePage.UseVisualStyleBackColor = true;
             // 
+            // tabPageSEO
+            // 
+            this.tabPageSEO.Controls.Add(this.seoSettings1);
+            this.tabPageSEO.Location = new System.Drawing.Point(4, 22);
+            this.tabPageSEO.Name = "tabPageSEO";
+            this.tabPageSEO.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageSEO.Size = new System.Drawing.Size(347, 350);
+            this.tabPageSEO.TabIndex = 2;
+            this.tabPageSEO.Text = "tabPageSEO";
+            this.tabPageSEO.UseVisualStyleBackColor = true;
+            // 
+            // seoSettings1
+            // 
+            this.seoSettings1.HintControl = null;
+            this.seoSettings1.Location = new System.Drawing.Point(7, 7);
+            this.seoSettings1.MinimumSize = new System.Drawing.Size(329, 302);
+            this.seoSettings1.Name = "seoSettings1";
+            this.seoSettings1.Size = new System.Drawing.Size(329, 302);
+            this.seoSettings1.TabIndex = 0;
+            this.seoSettings1.Url = null;
+            // 
             // AdminProductGroupEdit
             // 
             this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(425, 396);
+            this.ClientSize = new System.Drawing.Size(482, 396);
             this.Controls.Add(this.tabControlMain);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnCancel);
@@ -366,6 +394,7 @@
             this.tabPageMobile.ResumeLayout(false);
             this.tabPageMobile.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMobileImage)).EndInit();
+            this.tabPageSEO.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -399,5 +428,7 @@
         private System.Windows.Forms.ComboBox cmbMobileImage;
         private System.Windows.Forms.Label lblMobileImage;
         private System.Windows.Forms.CheckBox cbShowOnMobilePage;
+        private System.Windows.Forms.TabPage tabPageSEO;
+        private Base.Controls.SEOSettings seoSettings1;
     }
 }

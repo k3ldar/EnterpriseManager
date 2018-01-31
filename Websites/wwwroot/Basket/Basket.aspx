@@ -5,8 +5,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title><%=Languages.LanguageStrings.ShoppingCart %> - <%=GetWebTitle()%></title>
-    <link rel="stylesheet" href="/css/Modal.css" type="text/css" media="screen" />
-
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
     <script type="text/javascript">
         function clickclearVoucher(thisfield) {
             var defaulttext = '<%=GetVoucherString()%>';
@@ -23,8 +23,6 @@
             }
         }
     </script>
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
         <div class="content">
 			
 			<div class="breadcrumb">

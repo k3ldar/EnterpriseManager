@@ -12,7 +12,6 @@
     <title><%=GetProductGroupName()%> - <%=GetProductName() %> - <%=GetWebTitle()%></title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
-    <link property="stylesheet" rel="stylesheet" href="/css/Modal.css" type="text/css" media="screen" />
     <uc1:BasketSummary runat="server" ID="BasketSummary" Visible="false" />
 
     <div class="content">
