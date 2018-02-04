@@ -640,7 +640,7 @@ body {
         font-size:1.3em;
 		color: #666;
 		line-height: 1.5;
-		margin: 0 0 1.0em 1.0em;
+		margin: 0 0 1.0em 0.2em;
 	}
 	
 		.content p strong { font-weight: bold; }
@@ -953,18 +953,13 @@ body {
 		width: 224px; height: 224px;
         padding: 15px 0 0 0;
 	}
-	
-	.banners .banner1 		{ background: url('/images/Banner1.png') no-repeat 0 0; }
-	.banners .banner1:hover { background-position: 100% 0; }
-	
-	.banners .banner2 		{ background: url('/images/View-All-Cleansers-both.jpg') no-repeat 0 0; }
-	.banners .banner2:hover { background-position: 100% 0; }
-	
-	.banners .banner3 		{ background: url('/images/View-All-Moisturisers-both.jpg') no-repeat 0 0; }
-	.banners .banner3:hover { background-position: 100% 0; }
-	
-	.banners .banner4 		{ background: url('/images/Book-a-treatment-both.jpg') no-repeat 0 0; margin: 0; }
-	.banners .banner4:hover { background-position: 100% 0; }
+
+    .banners .bannerHome {
+        margin: 0;
+    }
+    .banners .bannerHome:hover {
+        background-position: 100% 0;
+    }
 		
 		.banners a .overlay {
 			background: rgb(0,0,0);
@@ -1379,7 +1374,7 @@ body {
 
 /* !--- CONTENT / Main Content --- */
 
-.mainContent { float: left; padding: 5px 0 0 0;}
+.mainContent { float: left; padding: 5px 0 0 0; width:100%;}
 
 .mainContentStaff 
 { 
@@ -2898,3 +2893,145 @@ body {
     font-family: Arial;
     font-size: 10pt;
 }
+
+.jcarousel {
+    left: 50px;
+    overflow: hidden;
+    width: 240px;
+    direction: ltr;
+    position: relative;
+}
+
+    .jcarousel ul {
+        width: 20000em;
+        position: relative;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .jcarousel li {
+        width: 220px;
+        float: left;
+        height: 215px;
+        padding-left: 10px;
+    }
+
+.jcarousel-control-prev, .jcarousel-control-next {
+    position: absolute;
+    top: 120px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    background: #4E443C;
+    color: #fff;
+    text-decoration: none;
+    text-shadow: 0 0 1px #000;
+    font: 24px/27px Arial, sans-serif;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    -webkit-box-shadow: 0 0 2px #999;
+    -moz-box-shadow: 0 0 2px #999;
+    box-shadow: 0 0 2px #999;
+}
+
+.jcarousel-control-prev {
+    left: 0px;
+    cursor: pointer;
+}
+
+.jcarousel-control-next {
+    right: 0px;
+    cursor: pointer;
+}
+
+    .jcarousel-control-prev:hover span,
+    .jcarousel-control-next:hover span {
+        display: block;
+    }
+
+    .jcarousel-control-prev.inactive,
+    .jcarousel-control-next.inactive {
+        opacity: .5;
+        cursor: default;
+    }
+
+.jcarousel ul li a span.new, .jcarousel ul li a span.best {
+    background: #000;
+    color: #fff;
+    overflow: hidden;
+    position: absolute;
+    text-align: center;
+    text-indent: 0px;
+    top: 5px;
+    right: 5px;
+    width: 60px;
+    height: 40px;
+    padding-top: 10px;
+    font-size: 0.8em;
+}
+
+.jcarousel ul li a {
+    color: #333;
+    display: block;
+    font-size: 1.4em;
+    font-weight: normal;
+    line-height: 1.2;
+    text-decoration: none;
+}
+
+    .jcarousel ul li a span.info {
+        display: block;
+        margin: 0 0 10px 0;
+        height: 62px;
+    }
+
+        .jcarousel ul li a span.info strong {
+            padding: 10px 0 0 0;
+        }
+
+    .jcarousel ul li a img {
+        -moz-border-radius: 2px;
+        -webkit-border-radius: 2px;
+        border-radius: 2px;
+        background-color: #fff;
+    }
+
+    .jcarousel ul li a:hover img {
+        border-color: #999;
+    }
+
+    .jcarousel ul li a strong {
+        color: #999;
+        display: block;
+        font-size: 0.8em;
+    }
+
+.jcarousel-pagination {
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+}
+
+    .jcarousel-pagination a {
+        text-decoration: none;
+        display: inline-block;
+        font-size: 11px;
+        line-height: 14px;
+        min-width: 14px;
+        background: #fff;
+        color: #4E443C;
+        border-radius: 14px;
+        padding: 3px;
+        text-align: center;
+        margin-right: 2px;
+        opacity: .75;
+    }
+
+        .jcarousel-pagination a.active {
+            background: #4E443C;
+            color: #fff;
+            opacity: 1;
+            text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.75);
+        }

@@ -8,6 +8,7 @@ using Library;
 using Website.Library.Classes;
 using Library.Utils;
 using Library.BOL.Products;
+using Shared.Classes;
 
 namespace SieraDelta.Website.Controls
 {
@@ -16,6 +17,16 @@ namespace SieraDelta.Website.Controls
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        protected string GetScrollCount()
+        {
+            UserSession session = GetUserSession();
+
+            if (session.IsMobileDevice)
+                return ("1");
+            else
+                return ("3");
         }
     }
 }

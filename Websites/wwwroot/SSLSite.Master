@@ -18,10 +18,10 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
+    <script type="text/javascript" src="/scripts/jquery-3.3.1.min.js"></script>
 
     <script type="text/javascript">if (top.location != window.location) { window.top.location.href = '<%#GetURL() %>'; }</script>
     <%=GetStyleSheet() %>
-    <script async="async" type="text/javascript" src="/scripts/jquery-3.3.1.min.js"></script>
  
     <asp:PlaceHolder runat="server">
         <%: System.Web.Optimization.Styles.Render("~/Content/AjaxControlToolkit/Styles/Bundle") %>

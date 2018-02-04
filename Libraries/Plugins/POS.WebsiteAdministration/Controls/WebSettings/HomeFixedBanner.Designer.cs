@@ -60,6 +60,7 @@
             this.cmbImage.Size = new System.Drawing.Size(800, 21);
             this.cmbImage.TabIndex = 7;
             this.cmbImage.SelectedIndexChanged += new System.EventHandler(this.cmbImage_SelectedIndexChanged);
+            this.cmbImage.Format += new System.Windows.Forms.ListControlConvertEventHandler(this.cmbImage_Format);
             // 
             // lblImage
             // 

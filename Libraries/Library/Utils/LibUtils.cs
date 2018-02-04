@@ -188,7 +188,7 @@ namespace Library.Utils
                 }
                 else
                 {
-                    Library.ErrorHandling.LogError(MethodBase.GetCurrentMethod(), err, storeID);
+                    ErrorHandling.LogError(MethodBase.GetCurrentMethod(), err, storeID);
                     Result = false;
                 }
             }

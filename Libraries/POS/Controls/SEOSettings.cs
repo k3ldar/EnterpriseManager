@@ -98,6 +98,9 @@ namespace POS.Base.Controls
 
         public void Save()
         {
+            if (Url == null)
+                return;
+
             string page = Url.ToString();
 
             if (page.Length > 38)

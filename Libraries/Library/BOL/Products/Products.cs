@@ -259,6 +259,25 @@ namespace Library.BOL.Products
                 return (DAL.FirebirdDB.ProductsGetCarousel());
         }
 
+        public static Products GetFeaturedProducts()
+        {
+            if (CacheAvailable)
+            {
+                CacheItem Result = CachedItemGet(Consts.CACHE_NAME_PRODUCTS_FEATURED);
+
+                if (Result == null)
+                {
+                    // item not found, add and return
+                    Result = new CacheItem(Consts.CACHE_NAME_PRODUCTS_CAROUSEL, DAL.FirebirdDB.ProductsGetFeatured());
+                    CachedItemAdd(Consts.CACHE_NAME_PRODUCTS_CAROUSEL, Result);
+                }
+
+                return ((Products)Result.Value);
+            }
+            else
+                return (DAL.FirebirdDB.ProductsGetFeatured());
+        }
+
         public static Products Get(Celebrity celebrity)
         {
             if (CacheAvailable)

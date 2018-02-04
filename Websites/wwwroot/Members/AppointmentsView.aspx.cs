@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+using Languages;
 using Website.Library.Classes;
 using Library.BOL.Appointments;
 using Library.Utils;
@@ -93,15 +94,14 @@ namespace SieraDelta.Website.Members
 
         protected string GetApptLocked()
         {
-#warning put strings into language file
-            return (String.Format("{0} {1} {2}", _appointment.IsLocked ? "Yes" : "No", 
-                _appointment.IsLocked ? "Locked By: " : "", 
-                _appointment.IsLocked ? _appointment.LockedByName : ""));
+            return (String.Format("{0} {1}", 
+                _appointment.IsLocked ? LanguageStrings.Yes : Languages.LanguageStrings.No, 
+                _appointment.IsLocked ? String.Format(LanguageStrings.AppDiaryApptLockedBy, _appointment.LockedByName) : String.Empty));
         }
 
         protected string GetApptNotes()
         {
-            return (Library.Utils.LibUtils.PreProcessPost(_appointment.Notes));
+            return (LibUtils.PreProcessPost(_appointment.Notes));
         }
 
         protected void btnCancel_Click(object sender, EventArgs e)

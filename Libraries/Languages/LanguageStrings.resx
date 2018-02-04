@@ -12768,8 +12768,16 @@ banners, they will appear after any campaign banners.</comment>
     <comment>Page Banner {0}</comment>
   </data>
   <data name="AppWebSettingPageBanners" xml:space="preserve">
-    <value>You can have upto three static page banners, these will appear on the left hand side of each page where it is enabled and will be shown after any campaign banners.</value>
-    <comment>You can have upto three static page banners, these will appear on the left hand side of each page where it is enabled and will be shown after any campaign banners.</comment>
+    <value>You can have upto three static page banners, these will appear on the left hand 
+side of each page where it is enabled.  
+
+Page banner 1 is a prefix banner and will be shown before any campaign page banners, 
+banners 2 and 3 are suffix banners and will be shown after any campaign banners.</value>
+    <comment>You can have upto three static page banners, these will appear on the left hand 
+side of each page where it is enabled.  
+
+Page banner 1 is a prefix banner and will be shown before any campaign page banners, 
+banners 2 and 3 are suffix banners and will be shown after any campaign banners.</comment>
   </data>
   <data name="AppCampaignFuture" xml:space="preserve">
     <value>Future Campaigns</value>

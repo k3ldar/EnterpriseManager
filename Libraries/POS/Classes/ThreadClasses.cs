@@ -45,23 +45,28 @@ namespace POS.Base.Classes
 
         protected override bool Run(object parameters)
         {
+#if DEBUG
+            AppController._validInstall = true;
+            return (true);
+#else
             AppController._validInstall = Library.Utils.LibUtils.GetInstallValid(Library.DAL.DALHelper.StoreID);
 
             return (false);
+#endif
         }
     }
 
     public class CashDrawerRandomCheckThread : ThreadManager
     {
-        #region Private Members
+#region Private Members
 
         private DateTime _nextSpotCheck;
 
         private int _bypassedChecks = 0;
 
-        #endregion Private Members
+#endregion Private Members
 
-        #region Constructors
+#region Constructors
 
         public CashDrawerRandomCheckThread()
             : base(null, new TimeSpan(0, 0, 10))
@@ -72,9 +77,9 @@ namespace POS.Base.Classes
             _nextSpotCheck = DateTime.Now.AddHours(next);
         }
 
-        #endregion Constructors
+#endregion Constructors
 
-        #region Overridden Methods
+#region Overridden Methods
 
         protected override bool Run(object parameters)
         {
@@ -127,13 +132,13 @@ namespace POS.Base.Classes
             return (true);
         }
 
-        #endregion Overridden Methods
+#endregion Overridden Methods
 
-        #region Events
+#region Events
 
         public event CheckCashDrawerHandler CheckCashDrawer;
 
-        #endregion Events
+#endregion Events
     }
 
     public class ValidateCashDrawer
@@ -153,7 +158,7 @@ namespace POS.Base.Classes
 
     public class CashDrawerStartOfDayChecksThread : ThreadManager
     {
-        #region Constructors
+#region Constructors
 
         public CashDrawerStartOfDayChecksThread()
             : base(null, new TimeSpan(), null, 500)
@@ -161,9 +166,9 @@ namespace POS.Base.Classes
             HangTimeout = 0;
         }
 
-        #endregion Constructors
+#endregion Constructors
 
-        #region Overridden Methods
+#region Overridden Methods
 
         protected override bool Run(object parameters)
         {
@@ -189,13 +194,13 @@ namespace POS.Base.Classes
             return (true);
         }
 
-        #endregion Overridden Methods
+#endregion Overridden Methods
 
-        #region Events
+#region Events
 
         public event EventHandler ForceStartOfDay;
 
-        #endregion Events
+#endregion Events
     }
 
     public class MaintenanceThreadClass : ThreadManager
@@ -344,7 +349,7 @@ namespace POS.Base.Classes
 
         private DateTime _lastChecked = DateTime.Now.AddSeconds(30);
 
-        #region Constructors
+#region Constructors
 
         public CommunicationServiceThreadClass()
             : base(null, new TimeSpan(0, 0, 1), null, 5000)
@@ -352,9 +357,9 @@ namespace POS.Base.Classes
             _lastChecked = DateTime.Now;
         }
 
-        #endregion Constructors
+#endregion Constructors
 
-        #region Overridden Methods
+#region Overridden Methods
 
         protected override bool Run(object parameters)
         {
@@ -398,18 +403,18 @@ namespace POS.Base.Classes
             return (true);
         }
 
-        #endregion Overridden Methods
+#endregion Overridden Methods
     }
 
     internal class AutoLogoutThreadClass : ThreadManager
     {
-        #region Private Members
+#region Private Members
 
         private DateTime _lastWarning = DateTime.Now.AddDays(-1);
 
-        #endregion Private Members
+#endregion Private Members
 
-        #region Constructors
+#region Constructors
 
         public AutoLogoutThreadClass()
             : base(null, new TimeSpan(0, 0, 1))
@@ -418,9 +423,9 @@ namespace POS.Base.Classes
             HangTimeout = 0;
         }
 
-        #endregion Constructors
+#endregion Constructors
 
-        #region Overridden Methods
+#region Overridden Methods
 
         protected override bool Run(object parameters)
         {
@@ -448,11 +453,11 @@ namespace POS.Base.Classes
             return (true);
         }
 
-        #endregion Overridden Methods
+#endregion Overridden Methods
 
-        #region Private Methods
+#region Private Methods
 
-        #endregion Private Methods
+#endregion Private Methods
     }
 
     //internal class LoadAllUsersThread : ThreadManager
@@ -488,7 +493,7 @@ namespace POS.Base.Classes
 
     internal class ValidateProductsForWebsite : ThreadManager
     {
-        #region Constructors
+#region Constructors
 
         internal ValidateProductsForWebsite(bool oneOfCheck)
             : base(oneOfCheck, new TimeSpan(0, 30, 0), null, 30000)
@@ -496,9 +501,9 @@ namespace POS.Base.Classes
             HangTimeout = 0;
         }
 
-        #endregion Constructors
+#endregion Constructors
 
-        #region Overridden Methods
+#region Overridden Methods
 
         protected override bool Run(object parameters)
         {
@@ -554,9 +559,9 @@ namespace POS.Base.Classes
             return (true);
         }
 
-        #endregion Overridden Methods
+#endregion Overridden Methods
 
-        #region Events
+#region Events
 
         internal event EventHandler FeaturedProductMissing;
 
@@ -569,6 +574,6 @@ namespace POS.Base.Classes
 
         internal event EventHandler CarouselProductsMissing;
 
-        #endregion Events
+#endregion Events
     }
 }

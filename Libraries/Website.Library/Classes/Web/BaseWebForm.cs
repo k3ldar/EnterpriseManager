@@ -1103,14 +1103,24 @@ namespace Website.Library.Classes
                 }
             }
 
+            string cacheName = String.Format("CACHE_HOME_BANNERS {0} {1} {2}", auto, width, height);
+
+            if (lib.DAL.DALHelper.AllowCaching)
+            {
+                CacheItem bannerCache = GlobalClass.InternalCache.Get(cacheName);
+
+                if (bannerCache != null)
+                    return ((string)bannerCache.Value);
+            }
+
             string Result = "";
 
             // static home page images
-            Result += GetNivoBannerLink(BaseWebApplication.HomeBanner1, auto, width, height);
+            Result += GetNivoBannerLink(BaseWebApplication.HomeBanner1Link, BaseWebApplication.HomeBanner1, auto, width, height);
 
-            Result += GetNivoBannerLink(BaseWebApplication.HomeBanner2, auto, width, height);
+            Result += GetNivoBannerLink(BaseWebApplication.HomeBanner2Link, BaseWebApplication.HomeBanner2, auto, width, height);
 
-            Campaigns currentCampaigns = Campaign.GetActive(lib.BOL.Countries.Countries.Get(GetUserCountry()));
+            Campaigns currentCampaigns = Campaign.GetActive(Countries.Get(GetUserCountry()));
 
             foreach (Campaign currentCampaign in currentCampaigns)
             {
@@ -1135,11 +1145,11 @@ namespace Website.Library.Classes
             }
 
             // static home page images
-            Result += GetNivoBannerLink(BaseWebApplication.HomeBanner3, auto, width, height);
+            Result += GetNivoBannerLink(BaseWebApplication.HomeBanner3Link, BaseWebApplication.HomeBanner3, auto, width, height);
 
-            Result += GetNivoBannerLink(BaseWebApplication.HomeBanner4, auto, width, height);
+            Result += GetNivoBannerLink(BaseWebApplication.HomeBanner4Link, BaseWebApplication.HomeBanner4, auto, width, height);
 
-            Result += GetNivoBannerLink(BaseWebApplication.HomeBanner5, auto, width, height);
+            Result += GetNivoBannerLink(BaseWebApplication.HomeBanner5Link, BaseWebApplication.HomeBanner5, auto, width, height);
 
             if (!Request.IsLocal && Request.IsSecureConnection)
                 Result = Result.ToLower().Replace("http://", "https://");
@@ -1149,19 +1159,36 @@ namespace Website.Library.Classes
                 Result = Result.Replace("style=\"width:700px;height:320px;\"", "style=\"width:280px;height:128px;\"");
             }
 
+            if (lib.DAL.DALHelper.AllowCaching)
+            {
+                GlobalClass.InternalCache.Add(cacheName, new CacheItem(cacheName, Result));
+            }
+
             return (Result);
         }
 
-        private string GetNivoBannerLink(string url, bool isResize, int width, int height)
+        private string GetNivoBannerLink(string url, string image, bool isResize, int width, int height)
         {
-            if (String.IsNullOrEmpty(url))
+            if (String.IsNullOrEmpty(image))
                 return (String.Empty);
 
-            if (isResize && (width != 700 && height != 320))
-                return (String.Format("<img src=\"/Controls/ImageResize.aspx?image={0}&width={1}&height={2}\" alt=\"\" width=\"{1}\" height=\"{2}\" />",
-                    url, width, height));
+            if (!String.IsNullOrEmpty(url))
+            {
+                if (isResize && (width != 700 && height != 320))
+                    return (String.Format("<a href=\"{3}\"><img src=\"/Images/HomePageBanners/{0}\" alt=\"\" width=\"{1}\" height=\"{2}\" /></a>",
+                        image.Replace("_700", "_" + width.ToString()), width, height, url));
+                else
+                    return (String.Format("<a href=\"{3}\"><img src=\"/Images/HomePageBanners/{0}\" alt=\"\" width=\"{1}\" height=\"{2}\" /></a>", 
+                        image, 700, 320, url));
+            }
             else
-                return (String.Format("<img src=\"{0}\" alt=\"\" width=\"{1}\" height=\"{2}\" />", url, 700, 320));
+            {
+                if (isResize && (width != 700 && height != 320))
+                    return (String.Format("<img src=\"/Images/HomePageBanners/{0}\" alt=\"\" width=\"{1}\" height=\"{2}\" />",
+                        image.Replace("_700", "_" + width.ToString()), width, height));
+                else
+                    return (String.Format("<img src=\"/Images/HomePageBanners/{0}\" alt=\"\" width=\"{1}\" height=\"{2}\" />", image, 700, 320));
+            }
         }
 
         private string CreateHomeImage(string url, string title, string image, string imageDescription)

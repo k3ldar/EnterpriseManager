@@ -11,8 +11,8 @@ namespace SieraDelta.Website.Controls
     {
         #region Private Members
 
-        private Int64 _currentlyBanned;
-        private Int64 _previouslyBanned;
+        private Int64 _currentlyBanned = 0;
+        private Int64 _previouslyBanned = 0;
 
         #endregion Private Members
 

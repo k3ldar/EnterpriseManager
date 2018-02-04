@@ -310,6 +310,7 @@ namespace POS.WebsiteAdministration.Forms
             if (tvOptions.SelectedNode == null || tvOptions.SelectedNode.Tag == null)
                 return;
 
+#warning save settings if changed
             BaseWebSetting settingPage = (BaseWebSetting)tvOptions.SelectedNode.Tag;
             settingPage.Changed -= settingChangedEvent;
             settingPage.Visible = false;

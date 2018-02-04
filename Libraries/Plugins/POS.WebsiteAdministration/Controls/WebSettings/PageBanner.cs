@@ -36,10 +36,14 @@ namespace POS.WebsiteAdministration.Controls.WebSettings
 {
     public partial class PageBanner : BaseWebSetting
     {
+        #region Constructors
+
         public PageBanner()
         {
             InitializeComponent();
         }
+
+        #endregion Constructors
 
         #region Overridden Methods
 
@@ -60,6 +64,9 @@ namespace POS.WebsiteAdministration.Controls.WebSettings
         {
             picBanner.Image = null;
             LoadImages();
+
+            string setting = String.Format(StringConstants.WEB_SETTING_PAGE_BANNER_LINK, Website.ID, SettingIndex);
+            txtLink.Text = Library.LibraryHelperClass.SettingsGet(setting, txtLink.Text);
         }
 
         public override void Save()
@@ -98,11 +105,8 @@ namespace POS.WebsiteAdministration.Controls.WebSettings
             if (!Directory.Exists(imageRoot))
                 Directory.CreateDirectory(imageRoot);
 
-            string setting = String.Format(StringConstants.WEB_SETTING_PAGE_BANNER_LINK, Website.ID, SettingIndex);
-            txtLink.Text = Library.LibraryHelperClass.SettingsGet(setting, String.Empty);
-
-            setting = Library.LibraryHelperClass.SettingsGet(
-                String.Format(base.SettingName, Website.ID, SettingIndex));
+            string setting = Library.LibraryHelperClass.SettingsGet(
+                String.Format(StringConstants.WEB_SETTING_PAGE_BANNER, Website.ID, SettingIndex));
             cmbImage.Items.Clear();
             string[] files = Directory.GetFiles(imageRoot, StringConstants.IMAGE_SEARCH_PAGE_IMAGES);
 

@@ -15,8 +15,11 @@
 
     <div id="subOptionsOther" runat="server" visible="false"></div>
 
+    <%=GetPrefixPageBanners() %>
+
     <%=GetCampaignText() %>	
 
+    <%=GetSuffixPageBanners() %>
 	<!--<a href="https://www.sieradelta.com/blog/" target="_blank" title="Follow SieraDelta blog" class="banner">
 	    <img src="/images/banner-blog.png" alt="Follow SieraDelta blog" width="158" height="351" />
 	</a>-->

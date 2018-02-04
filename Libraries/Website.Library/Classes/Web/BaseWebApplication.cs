@@ -268,6 +268,8 @@ namespace Website.Library.Classes
 
         public static bool ShowHomeBanners { get; set; }
 
+        public static bool ShowHomeFeaturedProducts { get; set; }
+
         #region Blog
 
         public static string BlogURL { get; set; }
@@ -603,6 +605,22 @@ namespace Website.Library.Classes
         public static bool AutoMaintenanceMode;
 
         #endregion Maintenance
+
+        #region Page Banners
+
+        public static string PageBanner1 { get; set; }
+
+        public static string PageBanner1Link { get; set; }
+
+        public static string PageBanner2 { get; set; }
+
+        public static string PageBanner2Link { get; set; }
+
+        public static string PageBanner3 { get; set; }
+
+        public static string PageBanner3Link { get; set; }
+
+        #endregion Page Banners
 
         #region Rotating Home Banners
 
@@ -1239,8 +1257,8 @@ namespace Website.Library.Classes
                 AutoMaintenanceMode = true;
                 MaintenanceMode = ConfigSettingGet("Settings.MaintenanceMode", false);
 
-                Website.Library.GlobalClass.AllowRoutineMaintenance = ConfigSettingGet("Settings.AllowRoutineMaintenance", true);
-                Website.Library.GlobalClass.CreateXMLImageFiles = ConfigSettingGet("Settings.CreateXMLImageFiles", false);
+                GlobalClass.AllowRoutineMaintenance = ConfigSettingGet("Settings.AllowRoutineMaintenance", true);
+                GlobalClass.CreateXMLImageFiles = ConfigSettingGet("Settings.CreateXMLImageFiles", false);
 
                 #endregion Maintenance Options
 
@@ -1267,6 +1285,19 @@ namespace Website.Library.Classes
                 HomeBanner5Link = ConfigSettingGet("HomeBanner5Link", String.Empty);
 
                 #endregion Rotating Home Page Banners
+
+                #region Page Banners
+
+                PageBanner1 = ConfigSettingGet("PAGEBANNER1", String.Empty);
+                PageBanner1Link = ConfigSettingGet("PAGEBANNER1LINK", String.Empty);
+
+                PageBanner2 = ConfigSettingGet("PAGEBANNER2", String.Empty);
+                PageBanner2Link = ConfigSettingGet("PAGEBANNER2LINK", String.Empty);
+
+                PageBanner3 = ConfigSettingGet("PAGEBANNER3", String.Empty);
+                PageBanner3Link = ConfigSettingGet("PAGEBANNER3LINK", String.Empty);
+
+                #endregion Page Banners
 
                 #region Google Analytics
 
@@ -1408,9 +1439,9 @@ namespace Website.Library.Classes
                 CustomScrollerText = ConfigSettingGet("Settings.CustomScrollerText",
                     Languages.LanguageStrings.CheckOutLatestGreatest);
 
-                ShowHomeBanners = ConfigSettingGet("Settings.HomeBanners", false);
+                ShowHomeBanners = ConfigSettingGet("Settings.HomeBanners", true);
 
-
+                ShowHomeFeaturedProducts = ConfigSettingGet("SETTINGS.HOMEFEATURED", false);
 
                 #region Blog
 
@@ -2400,8 +2431,11 @@ namespace Website.Library.Classes
 #region Private Static Members
 
         private static bool _initialised = false;
+
+#if CACHE_IP_CITY_DATA
         private static IPCity[] _allCityData;
         private static int _count = 0;
+#endif
 
 #endregion Private Static Members
 

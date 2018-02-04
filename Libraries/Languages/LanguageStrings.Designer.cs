@@ -20238,7 +20238,11 @@ namespace Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You can have upto three static page banners, these will appear on the left hand side of each page where it is enabled and will be shown after any campaign banners..
+        ///   Looks up a localized string similar to You can have upto three static page banners, these will appear on the left hand 
+        ///side of each page where it is enabled.  
+        ///
+        ///Page banner 1 is a prefix banner and will be shown before any campaign page banners, 
+        ///banners 2 and 3 are suffix banners and will be shown after any campaign banners..
         /// </summary>
         public static string AppWebSettingPageBanners {
             get {

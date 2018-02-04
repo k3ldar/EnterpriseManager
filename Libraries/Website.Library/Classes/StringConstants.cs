@@ -7,6 +7,15 @@ namespace Website.Library
 {
     public class StringConstants
     {
+        // translated Data
+        public const string TRANSLATED_DATA_HOME_PAGE = "Home Page";
+
+
+        // Cache Names
+        public const string CACHE_NAME_HOME_PAGE_FIXED_BANNERS = "Page Fixed Banner Cache";
+        public const string CACHE_NAME_PAGE_BANNERS_PREFIX = "Page Banners Prefex";
+        public const string CACHE_NAME_PAGE_BANNERS_SUFFIX = "Page Banners Suffix";
+
         // errors database
         public const string ERROR_FIREBIRD_LOCK_CONFLICT_1 = "update conflicts with concurrent update";
         public const string ERROR_FIREBIRD_LOCK_CONFLICT_2 = "lock conflict on no wait transaction";
@@ -44,6 +53,13 @@ namespace Website.Library
 
 
         public const string AFFILIATE_LIVE_DAYS = "AFFILIATE_LIVE_DAYS";
+
+
+        public const string WEB_SETTING_HOME_FIXED_BANNER_SHOW = "{0}.SETTINGS.HOMEBANNERS";
+        public const string WEB_SETTING_HOME_FIXED_BANNER = "{0}.FIXEDBANNER{1}";
+        public const string WEB_SETTING_HOME_FIXED_BANNER_LINK = "{0}.FIXEDBANNER{1}LINK";
+        public const string WEB_SETTING_HOME_FIXED_BANNER_TITLE = "{0}.FIXEDBANNER{1}TITLE";
+        public const string WEB_SETTING_HOME_FIXED_BANNER_DESCRIPTION = "{0}.FIXEDBANNER{1}NAME";
 
     }
 }

@@ -21371,6 +21371,59 @@ namespace Library.DAL
             return (Result);
         }
 
+        internal static Products ProductsGetFeatured()
+        {
+            Products Result = new Products();
+
+            FbTransaction tran = null;
+            FbConnection db = ConnectToDatabase(ref tran, DatabaseType.Standard);
+            try
+            {
+                try
+                {
+                    string SQL = "  SELECT p.ID, p.NAME, p.DESCRIPTION, p.SHOW_ON_WEB, p.IMAGE, p.SORT_ORDER, p.SPECIAL_OFFER, " +
+                        "p.PRODUCT_GROUP, p.POPUP_ID, p.SKU, p.REGAL, p.OUT_OF_STOCK, p.BEST_SELLER, p.NEW_PRODUCT, p.FEATURED_PRODUCT, " +
+                        "p.CAROUSEL, p.FEATURES, p.INGREDIENTS, p.PRE_ORDER, p.VIDEO_LINK, p.HOW_TO_USE, p.PRIMARY_GROUP_TYPE, " +
+                        "p.FREE_SHIPPING, p.PAGE_LINK, p.FREE_PRODUCT, pt.DESCRIPTION, pt.PRIMARY_TYPE " +
+                        "FROM WS_PRODUCTS P JOIN WS_PRODUCT_TYPE pt ON (pt.ID = p.PRIMARY_GROUP_TYPE) " +
+                        "WHERE(SHOW_ON_WEB = 0) AND(FEATURED_PRODUCT = 'Y') AND IS_DELETED = 'N' " +
+                        "ORDER BY SORT_ORDER, NAME;";
+
+                    FbCommand cmd = new FbCommand(SQL, db, tran);
+                    FbDataReader rdr = cmd.ExecuteReader();
+
+                    try
+                    {
+                        while (rdr.Read())
+                        {
+                            Result.Add(new Product(rdr.GetInt64(0), rdr.GetString(1), rdr.GetString(2), rdr.GetInt16(3) == 0, rdr.GetString(4),
+                                rdr.GetInt32(5), rdr.GetInt32(6) == 1, ProductGroupGet(db, tran, rdr.GetInt32(7)), rdr.GetInt32(8), rdr.GetString(9), rdr.GetInt32(5) == 1, rdr.GetString(6) == "T",
+                                rdr.GetString(12) == "Y", rdr.GetString(13) == "Y", rdr.GetString(14) == "Y", rdr.GetString(15) == "Y",
+                                rdr.GetString(20), rdr.GetString(18) == "Y", rdr.GetString(16), rdr.GetString(17), rdr.GetString(19),
+                                new ProductType(rdr.GetInt32(21), rdr.GetString(25), rdr.GetString(26) == "Y"), rdr.GetString(22) == "Y",
+                                rdr.IsDBNull(23) ? String.Empty : rdr.GetString(23), rdr.GetString(24) == "Y"));
+                        }
+                    }
+                    finally
+                    {
+                        CloseAndDispose(ref cmd, ref rdr);
+                        tran.Rollback();
+                    }
+                }
+                catch (Exception err)
+                {
+                    ErrorHandling.LogError(MethodBase.GetCurrentMethod(), err);
+                    throw;
+                }
+            }
+            finally
+            {
+                CloseAndDispose(ref db, ref tran);
+            }
+
+            return (Result);
+        }
+
         internal static Products ProductsGetCarousel()
         {
             Products Result = new Products();

@@ -106,3 +106,14 @@
 /Applications/POS/Forms/Other/CHBackup/
 **/CHBackup/**
 /Installer/EnterpriseManager/Builds/
+/Websites/wwwroot/Images/
+/Release/
+/Websites/wwwroot/bin/
+/Websites/wwwroot/bin/
+/Websites/wwwroot/obj/
+/Websites/wwwroot/obj/
+/Websites/wwwroot/obj/
+/Websites/wwwroot/obj/
+/Websites/wwwroot/obj/Release/SieraDelta.Website.dll
+/Websites/wwwroot/obj/Debug/SieraDelta.Website.pdb
+/Websites/wwwroot/obj/

@@ -1,11 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
-using System.IO;
 
 using Library.BOL.Basket;
 using Library.BOL.Countries;
@@ -13,18 +9,15 @@ using Library.BOL.Products;
 using Library.BOL.Users;
 using lib = Library;
 using Library.Utils;
-using Website;
-using Library.BOL.USAStates;
 using Library.BOL.Campaigns;
-using Library.BOL.SEO;
 using Shared.Classes;
 
 namespace Website.Library.Classes
 {
-	/// <summary>
-	/// Summary description for BaseControlClass.
-	/// </summary>
-	public class BaseControlClass : System.Web.UI.UserControl
+    /// <summary>
+    /// Summary description for BaseControlClass.
+    /// </summary>
+    public class BaseControlClass : System.Web.UI.UserControl
 	{
 		#region Private / Protected Members
 
@@ -101,6 +94,7 @@ namespace Website.Library.Classes
             return (Result);
         }
 
+        [Obsolete("do not use!!!")]
         private string GetCarouselProductsStratosphere(bool ShowPrices, bool ShowNew, bool ShowBest, bool Clickable, string FormattingOptions)
         {
             string Result = "";
