@@ -24,9 +24,6 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
 using System.Threading;
 
 using Shared.Classes;
@@ -41,7 +38,6 @@ namespace Library.BOL.CustomWebPages
     {
         #region Static Properties
 
-        public static bool UseCustomPages = false;
 
         #endregion Static Properties
 
@@ -63,7 +59,7 @@ namespace Library.BOL.CustomWebPages
 
             if (!country.CanLocalize)
             {
-                if (UseCustomPages)
+                if (Websites.WebsiteSettings.Languages.UseCustomPages)
                 {
                     webSiteID = 0;
                     country = Countries.Countries.Get(0);
@@ -92,7 +88,7 @@ namespace Library.BOL.CustomWebPages
 
         public static CustomPage Get(string title)
         {
-            if (UseCustomPages)
+            if (Websites.WebsiteSettings.Languages.UseCustomPages)
             {
                 Country country = Countries.Countries.Get(Thread.CurrentThread.CurrentUICulture);
                 int websiteID = DAL.DALHelper.WebsiteID;

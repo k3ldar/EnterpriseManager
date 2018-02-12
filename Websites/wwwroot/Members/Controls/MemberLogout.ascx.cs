@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 using Website.Library.Classes;
-using Library.BOL.Users;
-using Library.Utils;
+
+#pragma warning disable IDE1006
 
 namespace SieraDelta.Website.Members.Controls
 {
@@ -23,7 +19,7 @@ namespace SieraDelta.Website.Members.Controls
         protected void btnAccountLogout_Click(object sender, EventArgs e)
         {
             SharedWebBase.CookieSetValue(Request, Response, 
-                String.Format("SD{0}Session", Global.DistributorWebsite), "-1", 
+                String.Format("SD{0}Session", Library.BOL.Websites.WebsiteSettings.DistributorWebsite), "-1", 
                 DateTime.Now.AddYears(-10));
 
             SharedWebBase.UserLogout(Session, Request, GetUserSession());

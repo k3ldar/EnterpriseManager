@@ -1,8 +1,8 @@
 ﻿using System;
 
-using Website.Library;
 using Website.Library.Classes;
 using Library.BOL.Trade;
+using Library.BOL.Websites;
 
 namespace SieraDelta.Website.Trade
 {
@@ -10,7 +10,7 @@ namespace SieraDelta.Website.Trade
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!GlobalClass.ShowTradePage)
+            if (!WebsiteSettings.AllPages.ShowTradePage)
                 DoRedirect("/Home/");
 
 
@@ -39,7 +39,7 @@ namespace SieraDelta.Website.Trade
             email += TradeSignup21.GetData();
             email += TradeSignup31.GetData();
 
-            Global.SendEMail(Global.WebsiteEmail, Global.WebsiteEmail, "Trade Signup", email);
+            Global.SendEMail(WebsiteSettings.ContactDetails.WebsiteEmail, WebsiteSettings.ContactDetails.WebsiteEmail, "Trade Signup", email);
 
             TradeSignup31.Visible = false;
             TradeSignupFinished1.Visible = true;

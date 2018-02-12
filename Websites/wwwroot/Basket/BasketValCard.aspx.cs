@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 using Website.Library.Classes;
 using Library.Utils;
-using Library;
 using Library.BOL.Orders;
 using Library.BOL.Accounts;
+using Library.BOL.Websites;
 
 namespace SieraDelta.Website.Basket
 {
@@ -39,7 +35,7 @@ namespace SieraDelta.Website.Basket
                         if (order == null)
                         {
                             string Msg = String.Format("Order #{0} has been paid but could not be found when it was time to automatically set it as paid.\n\nPlease check paynet to confirm payment and adjust payment status.", InvoiceID);
-                            Global.SendEMail(Global.WebsiteEmail, Global.WebsiteEmail, "Order Paid but not Found", Msg);
+                            Global.SendEMail(WebsiteSettings.ContactDetails.WebsiteEmail, WebsiteSettings.ContactDetails.WebsiteEmail, "Order Paid but not Found", Msg);
                         }
                         else
                         {
@@ -55,7 +51,7 @@ namespace SieraDelta.Website.Basket
                             {
                                 PaymentReceivedHashWrong();
                                 string Msg = String.Format("Order #{0} had an invalid Hash, this is a potential fraudulant transaction.\n\nPlease check paynet to confirm payment.", InvoiceID);
-                                Global.SendEMail(Global.WebsiteEmail, Global.WebsiteEmail, "Transaction Query - Hash", Msg);
+                                Global.SendEMail(WebsiteSettings.ContactDetails.WebsiteEmail, WebsiteSettings.ContactDetails.WebsiteEmail, "Transaction Query - Hash", Msg);
                             }
                         }
                     }
@@ -106,7 +102,7 @@ namespace SieraDelta.Website.Basket
                 {
                     string Msg = String.Format("Transaction Failed\n\nValid: {0}\n\nTransID: {1}\n\nCode: {2}\n\nResp Code: {7}\n\nMessage: {3}\n\nIP Addres: {4}\n\nCV2: {5}\n\nHash: {6}\n\nHash2: {8}",
                         GetFormValue("valid"), GetFormValue("trans_id"), GetFormValue("code"), GetFormValue("message"), GetFormValue("ip"), GetFormValue("cv2avs"), GetFormValue("hash"), GetFormValue("resp_code"), s);
-                    Global.SendEMail(Global.WebsiteEmail, Global.WebsiteEmail, "Transaction Failed - Hash", Msg);
+                    Global.SendEMail(WebsiteSettings.ContactDetails.WebsiteEmail, WebsiteSettings.ContactDetails.WebsiteEmail, "Transaction Failed - Hash", Msg);
                 }
             }
 
@@ -142,7 +138,7 @@ namespace SieraDelta.Website.Basket
             {
                 string Msg = String.Format("Transaction Failed\n\nValid: {0}\n\nTransID: {1}\n\nCode: {2}\n\nResp Code: {7}\n\nMessage: {3}\n\nIP Addres: {4}\n\nCV2: {5}\n\nHash: {6}",
                     GetFormValue("valid"), GetFormValue("trans_id"), GetFormValue("code"), GetFormValue("message"), GetFormValue("ip"), GetFormValue("cv2avs"), GetFormValue("hash"), GetFormValue("resp_code"));
-                Global.SendEMail(Global.WebsiteEmail, Global.WebsiteEmail, "Transaction Failed", Msg);
+                Global.SendEMail(WebsiteSettings.ContactDetails.WebsiteEmail, WebsiteSettings.ContactDetails.WebsiteEmail, "Transaction Failed", Msg);
             }
         }
 

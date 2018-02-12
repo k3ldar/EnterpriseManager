@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Threading;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
+
+using Library.BOL.Websites;
+
+#pragma warning disable IDE1006
 
 namespace SieraDelta.Website.Controls
 {
@@ -121,7 +121,7 @@ namespace SieraDelta.Website.Controls
                     }
                     catch
                     {
-                        settingText.Text = Global.ConfigSettingGet(_settingCode, Global.WebsiteCulture.Name, _isGlobal);
+                        settingText.Text = Global.ConfigSettingGet(_settingCode, WebsiteSettings.Languages.WebsiteCulture.Name, _isGlobal);
                     }
                 }
                 else if (_isNumber)

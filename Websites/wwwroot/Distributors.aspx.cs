@@ -5,6 +5,7 @@ using Website.Library.Classes;
 
 using Library.Utils;
 using Library.BOL.Distributors;
+using Library.BOL.Websites;
 
 namespace SieraDelta.Website
 {
@@ -12,7 +13,7 @@ namespace SieraDelta.Website
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Global.ShowDistributorsMenu)
+            if (!WebsiteSettings.AllPages.ShowDistributorsMenu)
                 DoRedirect("/Home/");
 
             //pDescriptionA.InnerHtml = String.Format(Languages.LanguageStrings.DistributorsDescriptionA, "<a href=\"/Trade.aspx\">", "</a>");

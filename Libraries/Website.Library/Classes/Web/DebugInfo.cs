@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Web;
 
 using Shared.Classes;
 using lib = Library;
 using Library.BOL.Basket;
-using Library.BOL.SEO;
+using Library.BOL.Websites;
+
+#pragma warning disable IDE1006
+#pragma warning disable IDE0029
 
 namespace Website.Library.Classes.Web
 {
@@ -59,8 +59,8 @@ namespace Website.Library.Classes.Web
             Response.Write(String.Format("{1}: {0}<br />", ((Currency)Session[StringConstants.SESSION_NAME_USER_BASKET_CURRENCY]).ToString(), StringConstants.SESSION_NAME_USER_BASKET_CURRENCY));
 
             Response.Write("<h1>Culture</h1>");
-            Response.Write(String.Format("Website Culture: {0}<br />", BaseWebApplication.WebsiteCulture));
-            Response.Write(String.Format("Website Culture Override: {0}<br />", BaseWebApplication.WebsiteCultureOverride));
+            Response.Write(String.Format("Website Culture: {0}<br />", WebsiteSettings.Languages.WebsiteCulture));
+            Response.Write(String.Format("Website Culture Override: {0}<br />", WebsiteSettings.WebsiteCultureOverride));
             Response.Write(String.Format("Website DAL Culture Override: {0}<br />", lib.DAL.DALHelper.CultureOverride));
             Response.Write("<h1>Basket</h1>");
 
@@ -100,14 +100,14 @@ namespace Website.Library.Classes.Web
             Response.Write(String.Format("VoucherType: {0}<br />", basket.VoucherType.ToString()));
 
             Response.Write("<h1>Global Settings</h1>");
-            Response.Write(String.Format("FreeShipping: {0} <br />", BaseWebApplication.FreeShippingAllow.ToString()));
+            Response.Write(String.Format("FreeShipping: {0} <br />", WebsiteSettings.ShoppingCart.FreeShippingAllow.ToString()));
 
-            Response.Write(String.Format("FreeShippingSpend: {0} <br /><br />", BaseWebApplication.FreeShippingAmount.ToString()));
+            Response.Write(String.Format("FreeShippingSpend: {0} <br /><br />", WebsiteSettings.ShoppingCart.FreeShippingAmount.ToString()));
 
-            Response.Write(String.Format("WebFarm: {0} <br />", BaseWebApplication.WebFarm));
-            Response.Write(String.Format("WebFarm Master: {0} <br />", BaseWebApplication.WebFarmMaster()));
-            Response.Write(String.Format("WebFarm Master IP: {0} <br />", BaseWebApplication.WebFarmMasterIP));
-            Response.Write(String.Format("WebFarm Mutex: {0} <br />", BaseWebApplication.WebFarmMutexName));
+            Response.Write(String.Format("WebFarm: {0} <br />", WebsiteSettings.WebFarm.IsWebFarm));
+            Response.Write(String.Format("WebFarm Master: {0} <br />", WebsiteSettings.WebFarm.WebFarmMaster()));
+            Response.Write(String.Format("WebFarm Master IP: {0} <br />", WebsiteSettings.WebFarm.WebFarmMasterIP));
+            Response.Write(String.Format("WebFarm Mutex: {0} <br />", WebsiteSettings.WebFarm.WebFarmMutexName));
             Response.Write(String.Format("Process ID: {0} <br />", System.Diagnostics.Process.GetCurrentProcess().Id));
 
             Response.Write("<h1>Memory Caching</h1>");

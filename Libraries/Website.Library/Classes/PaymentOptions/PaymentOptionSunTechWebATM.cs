@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
-using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
@@ -15,49 +12,17 @@ using Library.BOL.Basket;
 using Library.BOL.Users;
 using Library.BOL.Countries;
 using Library.BOL.Orders;
+using Library.BOL.Websites;
 
 using Shared.Classes;
+
+#pragma warning disable IDE0028
 
 namespace Website.Library.Classes.PaymentOptions
 {
     public class PaymentOptionSunTechWebATM : BasePaymentOption
     {
         #region Static Properties
-
-        /// <summary>
-        /// Currencies supported by ChinaPay
-        /// </summary>
-        public static string SupportedCurrencies { get; set; }
-
-        /// <summary>
-        /// Merchant ID
-        /// </summary>
-        public static string MerchantID { get; set; }
-
-        /// <summary>
-        /// Merchant Password
-        /// </summary>
-        public static string MerchantPassword { get; set; }
-
-        /// <summary>
-        /// Time out in seconds for web call, default 30 seconds
-        /// </summary>
-        public static int TimeOut { get; set; }
-
-        /// <summary>
-        /// Indicates test mode or not
-        /// </summary>
-        public static bool TestMode { get; set; }
-
-        /// <summary>
-        /// The number of days added to current date to set duedate
-        /// </summary>
-        public static int DueDateDays { get; set; }
-
-        /// <summary>
-        /// The number of days added to current date to set duedate
-        /// </summary>
-        public static int BillDateDays { get; set; }
 
         #endregion Static Properties
 
@@ -66,7 +31,9 @@ namespace Website.Library.Classes.PaymentOptions
 
         public static string CreateCheckValue(string finalPaymentAmount)
         {
-            string Result = String.Format("{0}{1}{2}", MerchantID, MerchantPassword, finalPaymentAmount);
+            string Result = String.Format("{0}{1}{2}",
+                WebsiteSettings.PaymentGateways.SunTech.WebATM.MerchantID,
+                WebsiteSettings.PaymentGateways.SunTech.WebATM.MerchantPassword, finalPaymentAmount);
 
             Result = Hash(Result);
 
@@ -75,7 +42,9 @@ namespace Website.Library.Classes.PaymentOptions
 
         public static string CreateCheckValue(string buysafeCode, string finalPaymentAmount, string payCode)
         {
-            string Result = String.Format("{0}{1}{2}{3}{4}", MerchantID, MerchantPassword, buysafeCode, finalPaymentAmount, payCode);
+            string Result = String.Format("{0}{1}{2}{3}{4}",
+                WebsiteSettings.PaymentGateways.SunTech.WebATM.MerchantID,
+                WebsiteSettings.PaymentGateways.SunTech.WebATM.MerchantPassword, buysafeCode, finalPaymentAmount, payCode);
 
             Result = Hash(Result);
 
@@ -148,7 +117,7 @@ namespace Website.Library.Classes.PaymentOptions
             }
             catch (Exception err)
             {
-                if (!TestMode)
+                if (!WebsiteSettings.PaymentGateways.SunTech.WebATM.TestMode)
                     lib.ErrorHandling.LogError(System.Reflection.MethodBase.GetCurrentMethod(), err,
                         order, paymentStatus, webSession, webRequest, webResponse);
 
@@ -159,7 +128,7 @@ namespace Website.Library.Classes.PaymentOptions
 
         public override string Currencies()
         {
-            return (SupportedCurrencies);
+            return (WebsiteSettings.PaymentGateways.SunTech.WebATM.SupportedCurrencies);
         }
 
         #endregion Public Methods
@@ -201,7 +170,7 @@ namespace Website.Library.Classes.PaymentOptions
             {
                 string url = "https://www.esafe.com.tw/Service/Etopm.aspx";
 
-                if (TestMode)
+                if (WebsiteSettings.PaymentGateways.SunTech.WebATM.TestMode)
                     url = "https://test.esafe.com.tw/Service/Etopm.aspx";
 
                 pStresponsenvp = Shared.Communication.HttpPost.Post(url, pStrrequestforNvp);
@@ -218,7 +187,7 @@ namespace Website.Library.Classes.PaymentOptions
         private void ConfirmPayment(HttpResponse response, Order order, string finalPaymentAmount)
         {
             NVPCodec encoder = new NVPCodec();
-            encoder["web"] = MerchantID;
+            encoder["web"] = WebsiteSettings.PaymentGateways.SunTech.WebATM.MerchantID;
             encoder["MN"] = finalPaymentAmount;
             encoder["OrderInfo"] = GetOrderInfo(order);
             encoder["Td"] = order.ID.ToString();
@@ -227,8 +196,8 @@ namespace Website.Library.Classes.PaymentOptions
             encoder["email"] = order.User.Email;
             encoder["note1"] = String.Format("Order {0}", order.ID);
             encoder["note2"] = String.Format("Order {0}", order.ID);
-            encoder["DueDate"] = DateTime.Now.AddDays(DueDateDays).ToString("yyyyMMdd");
-            encoder["BillDate"] = DateTime.Now.AddDays(BillDateDays).ToString("yyyyMMdd");
+            encoder["DueDate"] = DateTime.Now.AddDays(WebsiteSettings.PaymentGateways.SunTech.WebATM.DueDateDays).ToString("yyyyMMdd");
+            encoder["BillDate"] = DateTime.Now.AddDays(WebsiteSettings.PaymentGateways.SunTech.WebATM.BillDateDays).ToString("yyyyMMdd");
 
             int i = 1;
 
@@ -262,7 +231,7 @@ namespace Website.Library.Classes.PaymentOptions
 
             string url = "https://www.esafe.com.tw/Service/Etopm.aspx";
 
-            if (TestMode)
+            if (WebsiteSettings.PaymentGateways.SunTech.WebATM.TestMode)
                 url = "https://test.esafe.com.tw/Service/Etopm.aspx";
 
             Shared.Communication.HttpPost.PostRedirect(response, url, encoder);

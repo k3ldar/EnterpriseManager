@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 using Website.Library.Classes;
 
 using Library;
+using Library.BOL.Websites;
+
+#pragma warning disable IDE1006
 
 namespace SieraDelta.Website.Staff.Admin
 {
@@ -69,14 +67,17 @@ namespace SieraDelta.Website.Staff.Admin
             {
                 string FileName = String.Format("homebanner1{0}", Path.GetExtension(FileUploadHomeBanner1.FileName));
 
-                if (File.Exists(String.Format("{1}Images\\Campaigns\\{0}", FileName, Global.Path)))
-                    File.Delete(String.Format("{1}Images\\Campaigns\\{0}", FileName, Global.Path));
+                if (File.Exists(String.Format("{1}Images\\Campaigns\\{0}", FileName,
+                    WebsiteSettings.RootPath)))
+                    File.Delete(String.Format("{1}Images\\Campaigns\\{0}", FileName,
+                        WebsiteSettings.RootPath));
 
-                FileUploadHomeBanner1.SaveAs(String.Format("{1}Images\\Campaigns\\{0}", FileName, Global.Path));
+                FileUploadHomeBanner1.SaveAs(String.Format("{1}Images\\Campaigns\\{0}", FileName,
+                    WebsiteSettings.RootPath));
 
-                string FileURL = Global.RootURL + "/Images/Campaigns/" + FileName;
+                string FileURL = Library.BOL.Websites.WebsiteSettings.RootURL + "/Images/Campaigns/" + FileName;
                 Global.ConfigSettingSet("HomeBanner1", FileURL);
-                Global.HomeBanner1 = FileURL;
+                WebsiteSettings.HomePage.HomeBanner1 = FileURL;
                 imageHomeBanner1.ImageUrl = FileURL;
                 DoRedirect("/Staff/Admin/StaticBanners.aspx");
             }
@@ -85,7 +86,7 @@ namespace SieraDelta.Website.Staff.Admin
         protected void btnClearHomeImage1_Click(object sender, EventArgs e)
         {
             Global.ConfigSettingSet("HomeBanner1", String.Empty);
-            Global.HomeBanner1 = "";
+            WebsiteSettings.HomePage.HomeBanner1 = "";
             DoRedirect("/Staff/Admin/StaticBanners.aspx");
         }
 
@@ -99,14 +100,17 @@ namespace SieraDelta.Website.Staff.Admin
             {
                 string FileName = String.Format("homebanner2{0}", Path.GetExtension(FileUploadHomeBanner2.FileName));
 
-                if (File.Exists(String.Format("{1}Images\\Campaigns\\{0}", FileName, Global.Path)))
-                    File.Delete(String.Format("{1}Images\\Campaigns\\{0}", FileName, Global.Path));
+                if (File.Exists(String.Format("{1}Images\\Campaigns\\{0}", FileName,
+                    Library.BOL.Websites.WebsiteSettings.RootPath)))
+                    File.Delete(String.Format("{1}Images\\Campaigns\\{0}", FileName,
+                        Library.BOL.Websites.WebsiteSettings.RootPath));
 
-                FileUploadHomeBanner2.SaveAs(String.Format("{1}Images\\Campaigns\\{0}", FileName, Global.Path));
+                FileUploadHomeBanner2.SaveAs(String.Format("{1}Images\\Campaigns\\{0}", FileName,
+                    Library.BOL.Websites.WebsiteSettings.RootPath));
 
-                string FileURL = Global.RootURL + "/Images/Campaigns/" + FileName;
+                string FileURL = Library.BOL.Websites.WebsiteSettings.RootURL + "/Images/Campaigns/" + FileName;
                 Global.ConfigSettingSet("HomeBanner2", FileURL);
-                Global.HomeBanner2 = FileURL;
+                WebsiteSettings.HomePage.HomeBanner2 = FileURL;
                 imageHomeBanner2.ImageUrl = FileURL;
                 DoRedirect("/Staff/Admin/StaticBanners.aspx");
             }
@@ -115,7 +119,7 @@ namespace SieraDelta.Website.Staff.Admin
         protected void btnClearHomeImage2_Click(object sender, EventArgs e)
         {
             Global.ConfigSettingSet("HomeBanner2", String.Empty);
-            Global.HomeBanner2 = "";
+            WebsiteSettings.HomePage.HomeBanner2 = "";
             DoRedirect("/Staff/Admin/StaticBanners.aspx");
         }
 
@@ -129,14 +133,17 @@ namespace SieraDelta.Website.Staff.Admin
             {
                 string FileName = String.Format("homebanner1{0}", Path.GetExtension(FileUploadHomeBanner3.FileName));
 
-                if (File.Exists(String.Format("{1}Images\\Campaigns\\{0}", FileName, Global.Path)))
-                    File.Delete(String.Format("{1}Images\\Campaigns\\{0}", FileName, Global.Path));
+                if (File.Exists(String.Format("{1}Images\\Campaigns\\{0}", FileName,
+                    Library.BOL.Websites.WebsiteSettings.RootPath)))
+                    File.Delete(String.Format("{1}Images\\Campaigns\\{0}", FileName,
+                        Library.BOL.Websites.WebsiteSettings.RootPath));
 
-                FileUploadHomeBanner1.SaveAs(String.Format("{1}Images\\Campaigns\\{0}", FileName, Global.Path));
+                FileUploadHomeBanner1.SaveAs(String.Format("{1}Images\\Campaigns\\{0}", FileName,
+                    Library.BOL.Websites.WebsiteSettings.RootPath));
 
-                string FileURL = Global.RootURL + "/Images/Campaigns/" + FileName;
+                string FileURL = Library.BOL.Websites.WebsiteSettings.RootURL + "/Images/Campaigns/" + FileName;
                 Global.ConfigSettingSet("HomeBanner3", FileURL);
-                Global.HomeBanner3 = FileURL;
+                WebsiteSettings.HomePage.HomeBanner3 = FileURL;
                 imageHomeBanner3.ImageUrl = FileURL;
                 DoRedirect("/Staff/Admin/StaticBanners.aspx");
             }
@@ -145,7 +152,7 @@ namespace SieraDelta.Website.Staff.Admin
         protected void btnClearHomeImage3_Click(object sender, EventArgs e)
         {
             Global.ConfigSettingSet("HomeBanner3", String.Empty);
-            Global.HomeBanner3 = "";
+            WebsiteSettings.HomePage.HomeBanner3 = "";
             DoRedirect("/Staff/Admin/StaticBanners.aspx");
         }
 
@@ -159,14 +166,17 @@ namespace SieraDelta.Website.Staff.Admin
             {
                 string FileName = String.Format("homebanner4{0}", Path.GetExtension(FileUploadHomeBanner4.FileName));
 
-                if (File.Exists(String.Format("{1}Images\\Campaigns\\{0}", FileName, Global.Path)))
-                    File.Delete(String.Format("{1}Images\\Campaigns\\{0}", FileName, Global.Path));
+                if (File.Exists(String.Format("{1}Images\\Campaigns\\{0}", FileName,
+                    Library.BOL.Websites.WebsiteSettings.RootPath)))
+                    File.Delete(String.Format("{1}Images\\Campaigns\\{0}", FileName,
+                    Library.BOL.Websites.WebsiteSettings.RootPath));
 
-                FileUploadHomeBanner1.SaveAs(String.Format("{1}Images\\Campaigns\\{0}", FileName, Global.Path));
+                FileUploadHomeBanner1.SaveAs(String.Format("{1}Images\\Campaigns\\{0}", FileName,
+                    Library.BOL.Websites.WebsiteSettings.RootPath));
 
-                string FileURL = Global.RootURL + "/Images/Campaigns/" + FileName;
+                string FileURL = Library.BOL.Websites.WebsiteSettings.RootURL + "/Images/Campaigns/" + FileName;
                 Global.ConfigSettingSet("HomeBanner4", FileURL);
-                Global.HomeBanner4 = FileURL;
+                WebsiteSettings.HomePage.HomeBanner4 = FileURL;
                 imageHomeBanner4.ImageUrl = FileURL;
                 DoRedirect("/Staff/Admin/StaticBanners.aspx");
             }
@@ -175,7 +185,7 @@ namespace SieraDelta.Website.Staff.Admin
         protected void btnClearHomeImage4_Click(object sender, EventArgs e)
         {
             Global.ConfigSettingSet("HomeBanner4", String.Empty);
-            Global.HomeBanner4 = "";
+            WebsiteSettings.HomePage.HomeBanner4 = "";
             DoRedirect("/Staff/Admin/StaticBanners.aspx");
         }
 
@@ -189,14 +199,17 @@ namespace SieraDelta.Website.Staff.Admin
             {
                 string FileName = String.Format("homebanner5{0}", Path.GetExtension(FileUploadHomeBanner5.FileName));
 
-                if (File.Exists(String.Format("{1}Images\\Campaigns\\{0}", FileName, Global.Path)))
-                    File.Delete(String.Format("{1}Images\\Campaigns\\{0}", FileName, Global.Path));
+                if (File.Exists(String.Format("{1}Images\\Campaigns\\{0}", FileName,
+                    Library.BOL.Websites.WebsiteSettings.RootPath)))
+                    File.Delete(String.Format("{1}Images\\Campaigns\\{0}", FileName,
+                        Library.BOL.Websites.WebsiteSettings.RootPath));
 
-                FileUploadHomeBanner1.SaveAs(String.Format("{1}Images\\Campaigns\\{0}", FileName, Global.Path));
+                FileUploadHomeBanner1.SaveAs(String.Format("{1}Images\\Campaigns\\{0}", FileName, 
+                    Library.BOL.Websites.WebsiteSettings.RootPath));
 
-                string FileURL = Global.RootURL + "/Images/Campaigns/" + FileName;
+                string FileURL = Library.BOL.Websites.WebsiteSettings.RootURL + "/Images/Campaigns/" + FileName;
                 Global.ConfigSettingSet("HomeBanner5", FileURL);
-                Global.HomeBanner5 = FileURL;
+                WebsiteSettings.HomePage.HomeBanner5 = FileURL;
                 imageHomeBanner5.ImageUrl = FileURL;
                 DoRedirect("/Staff/Admin/StaticBanners.aspx");
             }
@@ -205,7 +218,7 @@ namespace SieraDelta.Website.Staff.Admin
         protected void btnClearHomeImage5_Click(object sender, EventArgs e)
         {
             Global.ConfigSettingSet("HomeBanner5", String.Empty);
-            Global.HomeBanner5 = "";
+            WebsiteSettings.HomePage.HomeBanner5 = "";
             DoRedirect("/Staff/Admin/StaticBanners.aspx");
         }
 

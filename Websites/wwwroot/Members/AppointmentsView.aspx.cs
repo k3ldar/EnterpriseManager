@@ -1,14 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 using Languages;
 using Website.Library.Classes;
 using Library.BOL.Appointments;
+using Library.BOL.Websites;
+
 using Library.Utils;
+
+#pragma warning disable IDE1006
 
 namespace SieraDelta.Website.Members
 {
@@ -18,7 +18,7 @@ namespace SieraDelta.Website.Members
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Global.AllowCreditCards)
+            if (!WebsiteSettings.CreditCards.AllowCreditCards)
             {
                 DoRedirect("/Error/InvalidPermissions", true);
             }

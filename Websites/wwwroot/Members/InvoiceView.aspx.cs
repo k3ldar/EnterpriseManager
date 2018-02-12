@@ -1,20 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
-using System.Threading;
 
 using Website.Library.Classes;
-
-using Library;
 using Library.Utils;
 using Library.BOL.Basket;
 using Library.BOL.Users;
 using Library.BOL.Invoices;
-using Library.BOL.Accounts;
+using Library.BOL.Websites;
+
+#pragma warning disable IDE1006
 
 namespace SieraDelta.Website.Members
 {
@@ -56,7 +52,8 @@ namespace SieraDelta.Website.Members
 
         protected string GetConversionRate()
         {
-            return (String.Format("{1}1 = {0}", SharedUtils.FormatMoney(1.0m, _invoice.Currency), Shared.Utilities.GetCurrencySymbol(Global.WebsiteCulture)));
+            return (String.Format("{1}1 = {0}", SharedUtils.FormatMoney(1.0m, _invoice.Currency), 
+                Shared.Utilities.GetCurrencySymbol(WebsiteSettings.Languages.WebsiteCulture)));
         }
 
         protected string GetDiscount()
@@ -70,7 +67,7 @@ namespace SieraDelta.Website.Members
 
             Result += String.Format(" {0}", SharedUtils.FormatMoney(_invoice.DiscountAmount, _invoice.Currency));
 
-            if (_invoice.Culture != Global.WebsiteCulture.Name)
+            if (_invoice.Culture != WebsiteSettings.Languages.WebsiteCulture.Name)
                 Result += String.Format(" ({0})", SharedUtils.FormatMoney(_invoice.DiscountAmount, _invoice.Currency));
 
             return (Result);
@@ -104,7 +101,7 @@ namespace SieraDelta.Website.Members
         {
             string Result = SharedUtils.FormatMoney(_invoice.ShippingCosts, _invoice.Currency);
 
-            if (_invoice.Culture != Global.WebsiteCulture.Name)
+            if (_invoice.Culture != WebsiteSettings.Languages.WebsiteCulture.Name)
                 Result += String.Format(" ({0})", SharedUtils.FormatMoney(_invoice.ShippingCosts, _invoice.Currency));
 
             return (Result);
@@ -119,7 +116,7 @@ namespace SieraDelta.Website.Members
         {
             string Result = SharedUtils.FormatMoney(_invoice.VATAmount, _invoice.Currency);
 
-            if (_invoice.Culture != Global.WebsiteCulture.Name)
+            if (_invoice.Culture != WebsiteSettings.Languages.WebsiteCulture.Name)
                 Result += String.Format(" ({0})", SharedUtils.FormatMoney(_invoice.VATAmount, _invoice.Currency));
 
             return (Result);
@@ -129,7 +126,7 @@ namespace SieraDelta.Website.Members
         {
             string Result = SharedUtils.FormatMoney(_invoice.TotalCost, _invoice.Currency);
 
-            if (_invoice.Culture != Global.WebsiteCulture.Name)
+            if (_invoice.Culture != WebsiteSettings.Languages.WebsiteCulture.Name)
                 Result += String.Format(" ({0})", SharedUtils.FormatMoney(_invoice.TotalCost, _invoice.Currency));
 
             return (Result);

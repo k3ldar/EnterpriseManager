@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
 using System.Web;
 using System.Web.SessionState;
 
@@ -13,6 +11,7 @@ using Library.BOL.Accounts;
 using Library.BOL.Basket;
 using Library.BOL.Countries;
 using Library.BOL.Orders;
+using Library.BOL.Websites;
 
 using Shared.Classes;
 
@@ -93,7 +92,7 @@ namespace Website.Library.Classes.PaymentOptions
 
         public override string Currencies()
         {
-            return (ValCard.Currencies);
+            return (WebsiteSettings.PaymentGateways.WorldPay.Currencies);
         }
     }
 }

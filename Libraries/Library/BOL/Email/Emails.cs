@@ -24,7 +24,7 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 using System;
-using Library.BOL;
+using Library.BOL.Websites;
 using Library.Utils;
 using Library.BOL.Users;
 
@@ -291,16 +291,16 @@ namespace Library.BOL.Mail
                     string sToEmail = user.Email;
 
                     sMsg = String.Format("Hi {0},\r\r{1}", user.FirstName, sMsg);
-                    sMsg = LibUtils.PreProcessPost(Library.DAL.DALHelper.WebsiteAddress, sMsg);
+                    sMsg = LibUtils.PreProcessPost(WebsiteSettings.RootURL, sMsg);
 
                     sMsg += String.Format("<P>If you do not wish to receive special offers and promotions " +
                         "please change your preferences by <a href=\"{0}/Account/Special-Offers/\">clicking here</a></p>",
-                        DAL.DALHelper.WebsiteAddress);
+                        WebsiteSettings.RootURL);
 
                     try
                     {
                         if (Shared.Utilities.IsValidEmail(user.Email))
-                            WebsiteAdministration.EmailMassAdd(sTo, sToEmail, "Copyright � Shifoo Systems", 
+                            WebsiteAdministration.EmailMassAdd(sTo, sToEmail, "Copyright (c) Shifoo Systems", 
                                 "opt-in-marketing@heavenskincare.com", sTitle, sMsg, send);
                     }
                     catch (Exception err)

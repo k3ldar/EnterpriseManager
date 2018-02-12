@@ -1,7 +1,11 @@
 ﻿using System;
 
 using Website.Library.Classes;
+
 using Library.BOL.Products;
+using Library.BOL.Websites;
+
+#pragma warning disable IDE1006
 
 namespace SieraDelta.Website.Controls
 {
@@ -67,12 +71,12 @@ namespace SieraDelta.Website.Controls
 
         protected string GetAutoHide()
         {
-            return (Global.BasketSummaryAutoHide.ToString().ToLower());
+            return (WebsiteSettings.ShoppingCart.BasketSummaryAutoHide.ToString().ToLower());
         }
 
         protected string AutoHideTimeOut()
         {
-            int Result = Global.BasketSummaryTimeOut * 1000;
+            int Result = WebsiteSettings.ShoppingCart.BasketSummaryTimeOut * 1000;
 
             return (Result.ToString());
         }

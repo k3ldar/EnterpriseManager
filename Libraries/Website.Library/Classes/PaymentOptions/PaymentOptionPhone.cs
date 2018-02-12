@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Web;
 using System.Web.SessionState;
 
 using lib = Library;
 using Library.BOL.Accounts;
 using Library.BOL.Orders;
+using Library.BOL.Websites;
+
 using Website.Library.Classes.PaymentOptions;
 
 using Shared.Classes;
@@ -38,7 +38,7 @@ namespace Website.Library.Classes
         {
             try
             {
-                webResponse.Redirect(GlobalClass.RootURL + "/Shopping/Basket/Order-Complete/Payment-Type/pbf/", false);
+                webResponse.Redirect(WebsiteSettings.RootURL + "/Shopping/Basket/Order-Complete/Payment-Type/pbf/", false);
             }
             catch (Exception err)
             {
@@ -52,7 +52,7 @@ namespace Website.Library.Classes
 
         public override string Currencies()
         {
-            return (BaseWebApplication.PhoneCurrencies);
+            return (WebsiteSettings.PaymentGateways.Telephone.Currency);
         }
     }
 }

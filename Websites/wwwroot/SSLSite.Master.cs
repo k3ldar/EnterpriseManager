@@ -3,10 +3,8 @@ using System.Web.UI;
 using System.Threading;
 
 using Website.Library.Classes;
+using Library.BOL.Websites;
 using Shared.Classes;
-
-
-using webLib = Website.Library;
 
 #pragma warning disable IDE1006
 
@@ -21,12 +19,12 @@ namespace SieraDelta.Website
             aHomeLogo.Title = "";
             aHomeLogo.InnerText = "";
 
-            if (!Request.IsLocal && Request.Url.ToString().ToLower().StartsWith("http://") && Global.UseHTTPS)
+            if (!Request.IsLocal && Request.Url.ToString().ToLower().StartsWith("http://") && WebsiteSettings.UseHTTPS)
             {
                 Response.Redirect(Request.Url.ToString().ToLower().Replace("http://", "https://"));
             }
 
-            if (!Request.IsLocal && Request.Url.ToString().ToLower().StartsWith("https://") && !Global.UseHTTPS)
+            if (!Request.IsLocal && Request.Url.ToString().ToLower().StartsWith("https://") && !WebsiteSettings.UseHTTPS)
             {
                 Response.Redirect(Request.Url.ToString().ToLower().Replace("https://", "http://"));
             }
@@ -39,8 +37,8 @@ namespace SieraDelta.Website
                 txtSearchTerms.Text = GetSearchString();
             }
 
-            socialFB.Visible = !String.IsNullOrEmpty(SieraDelta.Website.Global.SocialMediaFacebook);
-            socialGPlus.Visible = !String.IsNullOrEmpty(SieraDelta.Website.Global.SocialMediaGPlus);
+            socialFB.Visible = !String.IsNullOrEmpty(WebsiteSettings.SocialMedia.Facebook.Url);
+            socialGPlus.Visible = !String.IsNullOrEmpty(WebsiteSettings.SocialMedia.Google.GPlus);
 
             UserSession session = GetUserSession();
 
@@ -95,7 +93,7 @@ namespace SieraDelta.Website
 
         protected string BaseURL()
         {
-            return (webLib.GlobalClass.RootURL);
+            return (Library.BOL.Websites.WebsiteSettings.RootURL);
         }
     }
 }

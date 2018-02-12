@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.IO;
-using System.Web.UI.WebControls;
 
-using Library.BOL.Downloads;
 using Website.Library.Classes;
+using Library.BOL.Websites;
+
+#pragma warning disable IDE1006
 
 namespace SieraDelta.Website.Members.Controls
 {
@@ -26,7 +23,7 @@ namespace SieraDelta.Website.Members.Controls
             lblDescription.InnerText = file.Description;
             lblFileName.InnerHtml = String.Format("{0} <span>({1})</span>", file.ShortFileName, file.FileSize);
 
-            string rootPathDestination = String.Format("{0}/Download/files/", Global.RootURL);
+            string rootPathDestination = String.Format("{0}/Download/files/", Library.BOL.Websites.WebsiteSettings.RootURL);
 
             switch (file.FileExtension)
             {
@@ -54,7 +51,7 @@ namespace SieraDelta.Website.Members.Controls
                     break;
             }
 
-            if (Global.UseHTTPS)
+            if (WebsiteSettings.UseHTTPS)
                 imgPreview.ImageUrl = rootPathDestination.Replace("http:", "https:");
             else
                 imgPreview.ImageUrl = rootPathDestination;
@@ -63,7 +60,8 @@ namespace SieraDelta.Website.Members.Controls
         protected void btnDownload_Click(object sender, EventArgs e)
         {
             //string file = String.Format("\\Downloads\\UPloads\\Final\\{0}", _download.ShortFileName);
-            string file = String.Format("{1}download\\files\\{0}", _download.ShortFileName, Global.Path);
+            string file = String.Format("{1}download\\files\\{0}", _download.ShortFileName, 
+                WebsiteSettings.RootPath);
             DownloadFile(file, true);
         }
 

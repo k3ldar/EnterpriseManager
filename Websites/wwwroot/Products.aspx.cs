@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
-
-using Library;
 using Library.Utils;
 using Library.BOL.Products;
+using Library.BOL.Websites;
+
 using Website.Library.Classes;
 
 namespace SieraDelta.Website
@@ -116,7 +113,7 @@ namespace SieraDelta.Website
                             continue;
                         }
 
-                        if (BaseWebApplication.PricesIncludeVAT)
+                        if (WebsiteSettings.Tax.PricesIncludeVAT)
                         {
                             priceFrom += SharedUtils.VATCalculate(priceFrom, WebVATRate);
                         }

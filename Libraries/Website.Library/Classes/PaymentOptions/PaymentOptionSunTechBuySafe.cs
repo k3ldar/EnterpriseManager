@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
-using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
@@ -15,48 +12,25 @@ using Library.BOL.Basket;
 using Library.BOL.Users;
 using Library.BOL.Countries;
 using Library.BOL.Orders;
+using Library.BOL.Websites;
 
 using Shared.Classes;
+
+#pragma warning disable IDE0028
 
 namespace Website.Library.Classes.PaymentOptions
 {
     public sealed class PaymentOptionSunTechBuySafe : BasePaymentOption
     {
-        #region Static Properties
-
-        /// <summary>
-        /// Currencies supported by ChinaPay
-        /// </summary>
-        public static string SupportedCurrencies { get; set; }
-
-        /// <summary>
-        /// Merchant ID
-        /// </summary>
-        public static string MerchantID { get; set; }
-
-        /// <summary>
-        /// Merchant Password
-        /// </summary>
-        public static string MerchantPassword { get; set; }
-
-        /// <summary>
-        /// Time out in seconds for web call, default 30 seconds
-        /// </summary>
-        public static int TimeOut { get; set; }
-
-        /// <summary>
-        /// Indicates test mode or not
-        /// </summary>
-        public static bool TestMode { get; set; }
-
-        #endregion Static Properties
 
         #region Static Methods
 
 
         public static string CreateCheckValue(string finalPaymentAmount)
         {
-            string Result = String.Format("{0}{1}{2}", MerchantID, MerchantPassword, finalPaymentAmount);
+            string Result = String.Format("{0}{1}{2}", 
+                WebsiteSettings.PaymentGateways.SunTech.BuySafe.MerchantID, 
+                WebsiteSettings.PaymentGateways.SunTech.BuySafe.MerchantPassword, finalPaymentAmount);
 
             Result = Hash(Result);
 
@@ -65,7 +39,9 @@ namespace Website.Library.Classes.PaymentOptions
 
         public static string CreateCheckValue(string buysafeCode, string finalPaymentAmount, string errorCode)
         {
-            string Result = String.Format("{0}{1}{2}{3}{4}", MerchantID, MerchantPassword, buysafeCode, finalPaymentAmount, errorCode);
+            string Result = String.Format("{0}{1}{2}{3}{4}",
+                WebsiteSettings.PaymentGateways.SunTech.BuySafe.MerchantID,
+                WebsiteSettings.PaymentGateways.SunTech.BuySafe.MerchantPassword, buysafeCode, finalPaymentAmount, errorCode);
 
             Result = Hash(Result);
 
@@ -143,7 +119,7 @@ namespace Website.Library.Classes.PaymentOptions
             }
             catch (Exception err)
             {
-                if (!TestMode)
+                if (!WebsiteSettings.PaymentGateways.SunTech.BuySafe.TestMode)
                     lib.ErrorHandling.LogError(System.Reflection.MethodBase.GetCurrentMethod(), err,
                         order, paymentStatus, webSession, webRequest, webResponse);
 
@@ -154,7 +130,7 @@ namespace Website.Library.Classes.PaymentOptions
 
         public override string Currencies()
         {
-            return (SupportedCurrencies);
+            return (WebsiteSettings.PaymentGateways.SunTech.BuySafe.SupportedCurrencies);
         }
 
         #endregion Public Methods
@@ -196,7 +172,7 @@ namespace Website.Library.Classes.PaymentOptions
             {
                 string url = "https://www.esafe.com.tw/Service/Etopm.aspx";
 
-                if (TestMode)
+                if (WebsiteSettings.PaymentGateways.SunTech.BuySafe.TestMode)
                     url = "https://test.esafe.com.tw/Service/Etopm.aspx";
 
                 pStresponsenvp = Shared.Communication.HttpPost.Post(url, pStrrequestforNvp);
@@ -213,7 +189,7 @@ namespace Website.Library.Classes.PaymentOptions
         private void ConfirmPayment(HttpResponse response, Order order, string finalPaymentAmount)
         {
             NVPCodec encoder = new NVPCodec();
-            encoder["web"] = MerchantID;
+            encoder["web"] = WebsiteSettings.PaymentGateways.SunTech.BuySafe.MerchantID;
             encoder["MN"] = finalPaymentAmount;
             encoder["OrderInfo"] = GetOrderInfo(order);
             encoder["Td"] = order.ID.ToString();
@@ -229,7 +205,7 @@ namespace Website.Library.Classes.PaymentOptions
 
             string url = "https://www.esafe.com.tw/Service/Etopm.aspx";
 
-            if (TestMode)
+            if (WebsiteSettings.PaymentGateways.SunTech.BuySafe.TestMode)
                 url = "https://test.esafe.com.tw/Service/Etopm.aspx";
 
             Shared.Communication.HttpPost.PostRedirect(response, url, encoder);

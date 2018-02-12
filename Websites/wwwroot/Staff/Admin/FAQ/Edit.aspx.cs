@@ -1,14 +1,13 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-using Library;
 using Website.Library.Classes;
 using Library.BOL.Helpdesk;
+
+#pragma warning disable IDE1006
 
 namespace SieraDelta.Website.Staff.Admin.FAQ
 {
@@ -38,14 +37,17 @@ namespace SieraDelta.Website.Staff.Admin.FAQ
 
         protected void HtmlEditorExtender1_ImageUploadComplete(object sender, AjaxControlToolkit.AjaxFileUploadEventArgs e)
         {
-            string[] files = Directory.GetFiles(String.Format(FILE_LOCATION, Global.RootPath));
+            string[] files = Directory.GetFiles(String.Format(FILE_LOCATION,
+                Library.BOL.Websites.WebsiteSettings.RootPath));
 
             int Count = files.Count() + 1;
-            string NewFile = String.Format("{0}{1}{2}", String.Format(FILE_LOCATION, Global.RootPath), 
+            string NewFile = String.Format("{0}{1}{2}", String.Format(FILE_LOCATION,
+                Library.BOL.Websites.WebsiteSettings.RootPath), 
                 Count, Path.GetExtension(e.FileName));
 
             HtmlEditorExtender1.AjaxFileUpload.SaveAs(NewFile);
-            e.PostedUrl = Page.ResolveUrl(String.Format(FILE_LOCATION2, Global.RootURL) + Path.GetFileName(NewFile));
+            e.PostedUrl = Page.ResolveUrl(String.Format(FILE_LOCATION2, 
+                Library.BOL.Websites.WebsiteSettings.RootURL) + Path.GetFileName(NewFile));
         }
 
         private void LoadKBGroups()

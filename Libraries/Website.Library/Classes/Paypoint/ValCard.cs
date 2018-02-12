@@ -1,21 +1,18 @@
 using System;
 using System.Text;
 using System.IO;
-using System.Web;
 using System.Net;
 using System.Collections.Specialized;
-using Library.Utils;
 using Library.BOL.Users;
-using Library.BOL.Basket;
 
 namespace Website.Library.Classes.Paypoint
 {
-	/// <summary>
-	/// determines what type of post to perform.
-	/// Get: Does a get against the source.
-	/// Post: Does a post against the source.
-	/// </summary>
-	public enum PostType {Get, Post}
+    /// <summary>
+    /// determines what type of post to perform.
+    /// Get: Does a get against the source.
+    /// Post: Does a post against the source.
+    /// </summary>
+    public enum PostType {Get, Post}
 
 	/// <summary>
 	/// Summary description for ValCard.
@@ -51,11 +48,6 @@ namespace Website.Library.Classes.Paypoint
 		#endregion Constants
 
         #region Static Properties
-
-        /// <summary>
-        /// Currencies available for Paynet
-        /// </summary>
-        public static string Currencies { get; set; }
 
         #endregion Static Properties
 

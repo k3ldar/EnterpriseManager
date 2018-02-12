@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using System.IO;
 
 using Website.Library.Classes;
-using Library.BOL.Downloads;
+using Library.BOL.Websites;
+
+#pragma warning disable IDE1005
+#pragma warning disable IDE1006
 
 namespace SieraDelta.Website.Controls
 {
@@ -21,7 +19,7 @@ namespace SieraDelta.Website.Controls
         public bool LoadNextFile()
         {
             bool Result = false;
-            string rootPath = String.Format("{0}Download\\Files\\Temp\\", Global.Path);
+            string rootPath = String.Format("{0}Download\\Files\\Temp\\", WebsiteSettings.RootPath);
 
             foreach (string nextFile in Directory.GetFiles(rootPath))
             {
@@ -51,8 +49,8 @@ namespace SieraDelta.Website.Controls
         protected void btnNext_Click(object sender, EventArgs e)
         {
             // save file to proper location
-            string rootPathSource = String.Format("{0}Download\\Files\\Temp\\", Global.Path);
-            string rootPathDestination = String.Format("{0}download\\Files\\", Global.Path);
+            string rootPathSource = String.Format("{0}Download\\Files\\Temp\\", WebsiteSettings.RootPath);
+            string rootPathDestination = String.Format("{0}download\\Files\\", WebsiteSettings.RootPath);
 
             if (System.IO.File.Exists(rootPathDestination + txtFileName.Text))
                 System.IO.File.Delete(rootPathDestination + txtFileName.Text);

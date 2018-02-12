@@ -10,6 +10,7 @@ using lib = Library;
 using Library.Utils;
 using Library.BOL.Mail;
 using Library.BOL.MissingLinks;
+using Library.BOL.Websites;
 using Classes.RoutineMaintenance;
 
 #if ERROR_MANAGER
@@ -56,10 +57,6 @@ namespace Website.Library.Classes
         private static int _loadAttempts = 0;
 
         private static bool _initialiseThreads = true;
-
-        private static bool _allowWebsiteGeoUpdate = false;
-
-        private static MutexEx _mutex = null;
 
         #endregion Private Members
 
@@ -108,44 +105,8 @@ namespace Website.Library.Classes
         public static bool AllowMobileWebsite = false;
 
         /// <summary>
-        /// Address line 1 for master form
-        /// </summary>
-        public static string AddressLine1 { set; get; }
-
-        /// <summary>
-        /// Address line 2 for master form
-        /// </summary>
-        public static string AddressLine2 { set; get; }
-
-        /// <summary>
-        /// Address line 2 for master form
-        /// </summary>
-        public static string AddressLine3 { set; get; }
-
-        /// <summary>
-        /// Enail address used by the website
-        /// </summary>
-        public static string WebsiteEmail { get; set; }
-
-        /// <summary>
-        /// Telephone Number used by website
-        /// </summary>
-        public static string WebsiteTelephoneNumber { get; set; }
-
-        /// <summary>
         /// Determines wether mail subscription is shown on the website or not
         /// </summary>
-        public static bool AllowMailListSubscribers = false;
-
-        /// <summary>
-        /// Name of person who supports the application
-        /// </summary>
-        public static string SupportName { get; set; }
-
-        /// <summary>
-        /// Email address of person supporting the application
-        /// </summary>
-        public static string SupportEMail { get; set; }
 
         public static string CookieRootURL;
 
@@ -154,100 +115,20 @@ namespace Website.Library.Classes
         /// </summary>
         public static DateTime DateLoaded;
 
-        public static string RootPath;
-        public static string BasketName;
-        public static string RootURL;
         public static string RootHost;
-        public static bool UseHTTPS;
-        public static string Path;
-
-        public static CultureInfo WebsiteCulture = new CultureInfo("en-GB");
-        public static bool WebsiteCultureOverride = false;
-        public static string DefaultCountrySettings = "GB";
-
-        /// <summary>
-        /// if true then the DefaultCountrySettings will be used by default with all new
-        /// connections, if false then the initial country (ergo language) will be set from
-        /// the users IP address
-        /// </summary>
-        public static bool ForceInitialDefaultLanguage = false;
-
-        #region VAT/Tax Options
-
-        /// <summary>
-        /// Standard VAT Rate for Website
-        /// </summary>
-        public static Double VatRate;
-
-        /// <summary>
-        /// Indicates wether prices include VAT or not
-        /// 
-        /// If prices include VAT then other vat options will apply to remove VAT when showing etc
-        /// </summary>
-        public static bool PricesIncludeVAT;
 
 
-        /// <summary>
-        /// if true show items in the basket with VAT, otherwise VAT is removed
-        /// </summary>
-        public static bool ShowBasketItemsWithVAT = false;
-
-        /// <summary>
-        /// If true the subtotal in the basket will be shown with vat
-        /// </summary>
-        public static bool ShowBasketSubTotalWithVAT = false;
-
-
-        public static bool ShippingIsTaxable = true;
-
-        #endregion VAT/Tax Options
-
-        #region GeoIP Settings
-
-        public static DateTime GeoIPLastUpdated;
-        public static long GeoIPLatestVersion;
-
-        #endregion GeoIP Settings
-
-        /// <summary>
-        /// The name of the distributor website
-        /// </summary>
-        public static string DistributorWebsite { get; set; }
-
-        public static string CookiePrefix = "SD";
+        public static string CookiePrefix { get; set; }
 
 
 
         public static int InvoiceVersion = 6;
 
-        public static bool ShowOffers;
-        public static bool ShowVoucher;
-
-        /// <summary>
-        /// Determines wether the website is in maintenance mode
-        /// </summary>
-        public static bool MaintenanceMode { get; set; }
 
         public static string DefaultStyle = "Default";
 
         public static string CSSCookieName = "style_cookie";
-        public static string PageTitle;
 
-
-        /// <summary>
-        /// Shows salon update menu items
-        /// </summary>
-        public static bool ShowSalonUpdate { get; set; }
-
-        /// <summary>
-        /// Show's appointments in user menu items
-        /// </summary>
-        public static bool ShowAppointments { get; set; }
-
-        /// <summary>
-        /// Shows trade download menu in user screen
-        /// </summary>
-        public static bool ShowTradeDownloads { get; set; }
 
 
         public static bool ShowDistributorsMenu { get; set; }
@@ -255,437 +136,9 @@ namespace Website.Library.Classes
 
 
 
-        /// <summary>
-        /// Determines wether custom text is shown on home page scroller
-        /// </summary>
-        public static bool CustomScrollerStrapLine { get; set; }
 
-        /// <summary>
-        /// The custom text to show on home page
-        /// </summary>
-        public static string CustomScrollerText { get; set; }
 
 
-        public static bool ShowHomeBanners { get; set; }
-
-        public static bool ShowHomeFeaturedProducts { get; set; }
-
-        #region Blog
-
-        public static string BlogURL { get; set; }
-
-        #endregion Blog
-
-        #region Affiliate
-
-        public static int AffiliateMaxDays { get; set; }
-
-        #endregion Affiliate
-
-        #region Payment Methods
-
-        #region Payflow
-
-        /// <summary>
-        /// Determines wether card payment is shown or not
-        /// </summary>
-        public static bool ShowPaymentCard;
-
-        /// <summary>
-        /// Payflow test mode, if true only staff members and above will see credit card payment pages
-        /// </summary>
-        public static bool PayflowTestMode { get; set; }
-
-        /// <summary>
-        /// Payflow User Name
-        /// </summary>
-        public static string PayflowUser { get; set; }
-
-        /// <summary>
-        /// Payflow Vendor
-        /// </summary>
-        public static string PayflowVendor { get; set; }
-
-        /// <summary>
-        /// Payflow Partner
-        /// </summary>
-        public static string PayflowPartner { get; set; }
-
-        /// <summary>
-        /// Payflow Password
-        /// </summary>
-        public static string PayflowPassword { get; set; }
-
-        /// <summary>
-        /// Acceptable currencies for Pay flow
-        /// 
-        /// multiple currencies seperted by ;
-        /// 
-        /// i.e.  USD;GBP;EUR
-        /// 
-        /// or just GBP
-        /// </summary>
-        public static string PayflowCurrencies { get; set; }
-
-        #endregion Payflow
-
-        #region Telephone
-
-        public static bool ShowPaymentTelephone;
-        public static string PhoneCurrencies;
-
-        #endregion Telephone
-
-        #region Cash On Delivery
-
-        public static bool ShowPaymentCashOnDelivery;
-        public static string CashOnDeliveryCurrency;
-
-        #endregion Cash On Delivery
-
-        #region Test Purchase
-
-
-        public static bool ShowPaymentTestPurchase = false;
-        public static string TestPurchaseCurrency;
-
-        #endregion Test Purchase
-
-        #region Cheques
-
-        public static bool ShowPaymentCheque;
-        public static string ChequeCurrency;
-
-        #endregion Cheques
-
-        #region Direct Bank Transfer
-
-        public static bool ShowPaymentDirectBankTransfer;
-        public static string DirectTransferCurrency;
-
-        #endregion Direct Bank Transfer
-
-        #region Paypal
-
-        //payment methods
-        public static bool ShowPaymentPaypal;
-        public static bool ShowPaymentPaypoint;
-
-        #endregion Paypal
-
-        #region Suntech
-
-        /// <summary>
-        /// SunTech 24Payment Option
-        /// </summary>
-        public static bool ShowPaymentSunTech24Payment = false;
-
-        /// <summary>
-        /// SunTech 24Payment Option
-        /// </summary>
-        public static bool ShowPaymentSunTechWebATM = false;
-
-        /// <summary>
-        /// SunTech 24Payment Option
-        /// </summary>
-        public static bool ShowPaymentSunTechBuySafe = false;
-
-        #endregion Suntech
-
-        #endregion Payment Methods
-
-        /// <summary>
-        /// Is user licence management enabled
-        /// </summary>
-        public static bool AllowLicences = false;
-
-
-        public static bool AllowCreditCards;
-
-        /// <summary>
-        /// Determines wether Valid From Date for credit cards is hidden or not
-        /// </summary>
-        public static bool CreditCardHideValidFrom { get; set; }
-
-        /// <summary>
-        /// Always shows valid from if user is in the uk
-        /// </summary>
-        public static bool CreditCardAlwaysShowValidFromForUK { get; set; }
-
-        #region Emails
-
-        /// <summary>
-        /// SMTP Host
-        /// </summary>
-        public static string SMTPHost;
-
-        public static string SMTPUserName;
-
-        public static string SMTPPassword;
-
-        public static bool SMTPUseSSL;
-
-        public static int SMTPPort;
-
-        public static bool SendEmails;
-
-        public static string NoReplyEmail;
-
-        public static string NoReplyName;
-
-        #endregion Emails
-
-        #region Social Media
-
-        public static string SocialMediaFacebook;
-        public static string SocialMediaTwitter;
-        public static string SocialMediaGPlus;
-        public static string SocialMediaRSSFeed;
-
-        /// <summary>
-        /// Default twitter tags
-        /// </summary>
-        public static string TwitterDefaultTags;
-
-        /// <summary>
-        /// Google analytics code
-        /// </summary>
-        public static string GoogleAnalytics = "(function (i, s, o, g, r, a, m) {\r\n" +
-            "i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {\r\n" +
-            "    (i[r].q = i[r].q || []).push(arguments)\r\n" +
-            "}, i[r].l = 1 * new Date(); a = s.createElement(o),\r\n" +
-            "m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)\r\n" +
-            "})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');\r\n" +
-            "ga('create', 'UA-45181427-1', '');\r\n" +
-            "ga('send', 'pageview');\r\n";
-
-        #endregion Social Media
-
-        /// <summary>
-        /// are characters left to right or right to left??
-        /// </summary>
-        public static bool UseLeftToRight = true;
-
-
-        /// <summary>
-        /// Determines wether the website will automatically update the geo update table
-        /// </summary>
-        public static bool AllowWebsiteGeoUpdate
-        {
-            get
-            {
-                return (_allowWebsiteGeoUpdate);
-            }
-
-            set
-            {
-                _allowWebsiteGeoUpdate = value;
-
-                if (value)
-                {
-                    string rootPath = Utilities.AddTrailingBackSlash(RootPath);
-                    GeoIPLatestVersion = Shared.XML.GetXMLValue("Version", "GeoIPData", (long)0, rootPath + "download\\Versions.xml");
-                    string file = String.Format("{0}Download\\Files\\GeoIP\\GeoIP_{1}.dat", rootPath, GeoIPLatestVersion);
-
-                    if (System.IO.File.Exists(file))
-                    {
-                        System.IO.FileInfo info = new System.IO.FileInfo(file);
-                        GeoIPLastUpdated = info.LastWriteTime;
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// Determines wether prices are shown if default can not be determined for country
-        /// </summary>
-        public static bool DefaultShowPrices = true;
-
-        #region Out of Stock
-
-        /// <summary>
-        /// If true user can opt to be notified when the item is back in stock
-        /// </summary>
-        public static bool OutOfStockAllowNotifyUser = false;
-
-        /// <summary>
-        /// If true then out of stock will be handled in the product page, otherwise in an external page (faster)
-        /// </summary>
-        public static bool OutOfStockInPage = false;
-
-        #endregion Out of Stock
-
-        #region Basket Options
-
-        /// <summary>
-        /// Determines wether the basket is cleared when order is paid (true) or 
-        /// when order is created (false)
-        /// </summary>
-        public static bool ClearBasketOnPayment = false;
-
-        /// <summary>
-        /// Wether free shipping is allowed or not
-        /// </summary>
-        public static bool FreeShippingAllow { get; set; }
-
-        /// <summary>
-        /// The minimum spend before free shipping is applied
-        /// </summary>
-        public static decimal FreeShippingAmount { get; set; }
-
-        /// <summary>
-        /// If true then after an item is added to the basket a redirct to the basket takes place
-        /// </summary>
-        public static bool JumpToBasketAfterAddItem = false;
-
-        /// <summary>
-        /// Maximum number of items of a specific item type that can be added to the basket
-        /// 
-        /// With fraud this was set to a default of 3
-        /// </summary>
-        public static int MaximumItemQuantity { get; set; }
-
-        /// <summary>
-        /// If true the color of the add to bag button changes depending on the contents of the basket
-        /// </summary>
-        public static bool AlterTextColorBasedOnBasketContents = false;
-
-        /// <summary>
-        /// The text color for the add to bag button if the item does not exist in the shopping bag
-        /// </summary>
-        public static string ItemDoesNotExistsInShoppingBagTextColour = "white";
-
-        /// <summary>
-        /// The text color for the add to bag button if the item already exists in the shopping bag
-        /// </summary>
-        public static string ItemExistsInShoppingBagTextColour = "red";
-
-        /// <summary>
-        /// Allows admins to hide the shopping cart
-        /// </summary>
-        public static bool HideShoppingCart = false;
-
-        /// <summary>
-        /// Shows summary after user adds item
-        /// </summary>
-        public static bool BasketSummaryShow = true;
-
-        /// <summary>
-        /// Hides the basket summary after nn milli seconds
-        /// </summary>
-        public static int BasketSummaryTimeOut = 10;
-
-        /// <summary>
-        /// Auto hides basket summary
-        /// </summary>
-        public static bool BasketSummaryAutoHide = true;
-
-        /// <summary>
-        /// Number of basket id's to retrieve in one go
-        /// </summary>
-        public static int BasketIDIncrement = 1000;
-
-        #endregion Basket Options
-
-        #region Mail Chimp
-
-        public static string MailChimpAPI = "";
-        public static string MailChimpList = "";
-        public static string MailChimpKey = "";
-
-        /// <summary>
-        /// Optional pop up on main /index.aspx and /Special-Offers/ page
-        /// </summary>
-        public static string MailChimpPopupDialog = "";
-
-        #endregion Mail Chimp
-
-        #region Maintenance
-
-        public static bool AutoMaintenanceMode;
-
-        #endregion Maintenance
-
-        #region Page Banners
-
-        public static string PageBanner1 { get; set; }
-
-        public static string PageBanner1Link { get; set; }
-
-        public static string PageBanner2 { get; set; }
-
-        public static string PageBanner2Link { get; set; }
-
-        public static string PageBanner3 { get; set; }
-
-        public static string PageBanner3Link { get; set; }
-
-        #endregion Page Banners
-
-        #region Rotating Home Banners
-
-        /// <summary>
-        /// Static Home Page Banner 1
-        /// </summary>
-        public static string HomeBanner1 = "";
-
-        /// <summary>
-        /// Static Home Page Banner 2
-        /// </summary>
-        public static string HomeBanner2 = "";
-
-        /// <summary>
-        /// Static Home Page Banner 3
-        /// </summary>
-        public static string HomeBanner3 = "";
-
-        /// <summary>
-        /// Static Home Page Banner 4
-        /// </summary>
-        public static string HomeBanner4 = "";
-
-        /// <summary>
-        /// Static Home Page Banner 5
-        /// </summary>
-        public static string HomeBanner5 = "";
-
-
-        /// <summary>
-        /// Static Home Page Banner 1
-        /// </summary>
-        public static string HomeBanner1Link = "";
-
-        /// <summary>
-        /// Static Home Page Banner 2
-        /// </summary>
-        public static string HomeBanner2Link = "";
-
-        /// <summary>
-        /// Static Home Page Banner 3
-        /// </summary>
-        public static string HomeBanner3Link = "";
-
-        /// <summary>
-        /// Static Home Page Banner 4
-        /// </summary>
-        public static string HomeBanner4Link = "";
-
-        /// <summary>
-        /// Static Home Page Banner 5
-        /// </summary>
-        public static string HomeBanner5Link = "";
-
-        #endregion Rotating Home Banners
-
-        #region Web Farm/Garden
-
-        public static bool WebFarm = false;
-
-        public static string WebFarmMasterIP;
-
-        public static string WebFarmMutexName;
-
-        #endregion Web Farm/Garden
 
         #endregion Public Members
 
@@ -705,11 +158,15 @@ namespace Website.Library.Classes
                     {
                         _loadsettings = false;
 
-                        RoutineMaintenance.ImageLocations.Add(new ImageCreateLocation(String.Format("{0}Images\\Product\\", GlobalClass.RootPath),
-                            "*_148.*", "ProductImages", String.Format("{0}Download\\ProductImages.xml", GlobalClass.RootPath)));
+                        RoutineMaintenance.ImageLocations.Add(new ImageCreateLocation(
+                            String.Format("{0}Images\\Product\\", WebsiteSettings.RootPath),
+                            "*_148.*", "ProductImages", String.Format("{0}Download\\ProductImages.xml",
+                            WebsiteSettings.RootPath)));
 
-                        RoutineMaintenance.ImageLocations.Add(new ImageCreateLocation(String.Format("{0}Images\\", GlobalClass.RootPath),
-                            "*.*", "Images", String.Format("{0}download\\Images.xml", GlobalClass.RootPath)));
+                        RoutineMaintenance.ImageLocations.Add(new ImageCreateLocation(
+                            String.Format("{0}Images\\", WebsiteSettings.RootPath),
+                            "*.*", "Images", String.Format("{0}download\\Images.xml",
+                            WebsiteSettings.RootPath)));
                     }
                 }
                 catch (Exception err)
@@ -728,7 +185,7 @@ namespace Website.Library.Classes
         /// <summary>
         /// Indicates wether the website is a static website or interactive
         /// </summary>
-        public static bool StaticWebSite { get; set; }
+        
 
         /// <summary>
         /// Gets the current email status report
@@ -1014,15 +471,259 @@ namespace Website.Library.Classes
             bool Result = false;
             try
             {
-                StaticWebSite = false;
+                WebsiteSettings.StaticWebSite = false;
 
                 lib.LibraryHelperClass.ResetCache();
 
                 lib.LibraryHelperClass.InitialiseSettings();
 
-                BaseWebApplication.CookiePrefix = "SD";
+                #region Base Website Options
 
-                #region Default Page Title
+                WebsiteSettings.PageTitle = ConfigSettingGet("Settings.DefaultTitle", String.Empty);
+
+                WebsiteSettings.RootURL = ConfigSettingGet("Settings.RootURL", String.Empty);
+
+                WebsiteSettings.RootPath = ConfigSettingGet("Settings.RootPath", String.Empty);
+
+                WebsiteSettings.WebsiteCultureOverride = ConfigSettingGet("Settings.WebCultureOverride", false);
+
+                WebsiteSettings.BasketName = ConfigSettingGet("Settings.ShoppingBasketName", String.Empty);
+
+                WebsiteSettings.DistributorWebsite = ConfigSettingGet("Settings.DistributorWebsite", String.Empty);
+
+                WebsiteSettings.WebsiteDateFormat = ConfigSettingGet("Settings.WebsiteDateFormat", String.Empty);
+
+                WebsiteSettings.UseLeftToRight = ConfigSettingGet("Settings.UseLeftToRight", true);
+
+                WebsiteSettings.UseHTTPS = ConfigSettingGet("Settings.UseHTTPS", true);
+
+                WebsiteSettings.StyleSheet = ConfigSettingGet("SITE.STYLE_SHEET", "StyleMain.css");
+
+                #endregion Base Website Options
+
+                #region Home Page Settings
+
+                WebsiteSettings.HomePage.ShowHomeBanners = ConfigSettingGet("Settings.HomeBanners", true);
+
+                WebsiteSettings.HomePage.ShowHomeFeaturedProducts = ConfigSettingGet("SETTINGS.HOMEFEATURED", false);
+
+                #region Page Banners
+
+                WebsiteSettings.HomePage.PageBanner1 = ConfigSettingGet("PAGEBANNER1", String.Empty);
+                WebsiteSettings.HomePage.PageBanner1Link = ConfigSettingGet("PAGEBANNER1LINK", String.Empty);
+
+                WebsiteSettings.HomePage.PageBanner2 = ConfigSettingGet("PAGEBANNER2", String.Empty);
+                WebsiteSettings.HomePage.PageBanner2Link = ConfigSettingGet("PAGEBANNER2LINK", String.Empty);
+
+                WebsiteSettings.HomePage.PageBanner3 = ConfigSettingGet("PAGEBANNER3", String.Empty);
+                WebsiteSettings.HomePage.PageBanner3Link = ConfigSettingGet("PAGEBANNER3LINK", String.Empty);
+
+                #endregion Page Banners
+
+                #region Rotating Home Page Banners
+
+                WebsiteSettings.HomePage.HomeBanner1 = ConfigSettingGet("HomeBanner1", String.Empty);
+                WebsiteSettings.HomePage.HomeBanner2 = ConfigSettingGet("HomeBanner2", String.Empty);
+                WebsiteSettings.HomePage.HomeBanner3 = ConfigSettingGet("HomeBanner3", String.Empty);
+                WebsiteSettings.HomePage.HomeBanner4 = ConfigSettingGet("HomeBanner4", String.Empty);
+                WebsiteSettings.HomePage.HomeBanner5 = ConfigSettingGet("HomeBanner5", String.Empty);
+
+                WebsiteSettings.HomePage.HomeBanner1Link = ConfigSettingGet("HomeBanner1Link", String.Empty);
+                WebsiteSettings.HomePage.HomeBanner2Link = ConfigSettingGet("HomeBanner2Link", String.Empty);
+                WebsiteSettings.HomePage.HomeBanner3Link = ConfigSettingGet("HomeBanner3Link", String.Empty);
+                WebsiteSettings.HomePage.HomeBanner4Link = ConfigSettingGet("HomeBanner4Link", String.Empty);
+                WebsiteSettings.HomePage.HomeBanner5Link = ConfigSettingGet("HomeBanner5Link", String.Empty);
+
+                #endregion Rotating Home Page Banners
+
+                #endregion Home Page Settings
+
+                #region Global Page Options
+
+                WebsiteSettings.AllPages.ShowTermsAndConditions = ConfigSettingGet("Settings.ShowTermsAndConditions", true);
+                WebsiteSettings.AllPages.ShowPrivacyPolicy = ConfigSettingGet("Settings.ShowPrivacyPolicy", true);
+                WebsiteSettings.AllPages.ShowReturnsPolicy = ConfigSettingGet("Settings.ShowReturnsPolicy", true);
+
+                WebsiteSettings.AllPages.ShowSalonsMenu = ConfigSettingGet("Settings.ShowSalons", true);
+                WebsiteSettings.AllPages.ShowSalonFinder = ConfigSettingGet("Settings.ShowSalonFinder", true);
+                WebsiteSettings.AllPages.ShowClientHeader = ConfigSettingGet("Settings.ShowSalonClientHeader", true);
+                WebsiteSettings.AllPages.ShowSalonHeader = ConfigSettingGet("Settings.ShowSalonHeader", true);
+
+                WebsiteSettings.AllPages.ShowTreatmentsMenu = ConfigSettingGet("Settings.ShowTreatments", true);
+                WebsiteSettings.AllPages.ShowTreatmentsBrochure = ConfigSettingGet("Settings.ShowTreatmentBrochure", true);
+                WebsiteSettings.AllPages.ShowDistributorsMenu = ConfigSettingGet("Settings.ShowDistributors", true);
+                WebsiteSettings.AllPages.ShowTipsAndTricksMenu = ConfigSettingGet("Settings.ShowTipsAndTricks", true);
+                WebsiteSettings.AllPages.ShowDownloadMenu = ConfigSettingGet("Settings.ShowDownloads", false);
+
+                WebsiteSettings.AllPages.ShowTradePage = ConfigSettingGet("Settings.ShowTradePage", true);
+
+                #endregion Global Page Options
+
+                #region General Contact Details
+
+                WebsiteSettings.ContactDetails.WebsiteTelephoneNumber = ConfigSettingGet("Settings.WebsiteTelephoneNumber", String.Empty);
+                WebsiteSettings.ContactDetails.WebsiteEmail = ConfigSettingGet("Settings.WebsiteEmail", String.Empty);
+                WebsiteSettings.ContactDetails.AddressLine1 = ConfigSettingGet("Settings.AddressLine1", String.Empty);
+                WebsiteSettings.ContactDetails.AddressLine2 = ConfigSettingGet("Settings.AddressLine2", String.Empty);
+                WebsiteSettings.ContactDetails.AddressLine3 = ConfigSettingGet("Settings.AddressLine3", String.Empty);
+
+                #endregion General Contact Details
+
+                #region Email Settings
+
+                WebsiteSettings.Email.SupportName = ConfigSettingGet("Settings.SupportName", String.Empty);
+                WebsiteSettings.Email.SupportEMail = ConfigSettingGet("Settings.SupportEMail", String.Empty);
+                WebsiteSettings.Email.SMTPHost = ConfigSettingGet("Settings.SMTPHost", String.Empty);
+                WebsiteSettings.Email.SMTPUserName = ConfigSettingGet("Settings.SMTPUserName", String.Empty);
+                WebsiteSettings.Email.SMTPPassword = ConfigSettingGet("Settings.SMTPPassword", String.Empty);
+                WebsiteSettings.Email.SMTPUseSSL = ConfigSettingGet("Settings.SMTPSSL", false);
+                WebsiteSettings.Email.SMTPPort = ConfigSettingGet("Settings.SMTPPort", 25);
+                WebsiteSettings.Email.SendEmails = ConfigSettingGet("Settings.SendEmail", false);
+
+                WebsiteSettings.Email.NoReplyName = ConfigSettingGet("Settings.NoReplyName", String.Empty);
+
+                WebsiteSettings.Email.NoReplyEmail = ConfigSettingGet("Settings.NoReplyEmail", String.Empty);
+
+                #endregion Email Settings
+
+                #region Payment Gateways
+
+                WebsiteSettings.PaymentGateways.ShowPaymentPaypal = ConfigSettingGet("Settings.ShowPaymentPaypal", true);
+                WebsiteSettings.PaymentGateways.ShowPaymentCard = ConfigSettingGet("Settings.ShowPaymentCard", false);
+                WebsiteSettings.PaymentGateways.ShowPaymentPaypoint = ConfigSettingGet("Settings.ShowPaymentPaypoint", false);
+                WebsiteSettings.PaymentGateways.ShowPaymentSunTechBuySafe = ConfigSettingGet("Settings.AllowSunTechBuySafe", false);
+                WebsiteSettings.PaymentGateways.ShowPaymentSunTech24Payment = ConfigSettingGet("Settings.AllowSunTech24Payment", false);
+                WebsiteSettings.PaymentGateways.ShowPaymentSunTechWebATM = ConfigSettingGet("Settings.AllowSunTechWebATM", false);
+                WebsiteSettings.PaymentGateways.ShowPaymentTelephone = ConfigSettingGet("Settings.ShowPaymentTelephone", true);
+                WebsiteSettings.PaymentGateways.ShowPaymentCashOnDelivery = ConfigSettingGet("Settings.ShowPaymentCOD", false);
+                WebsiteSettings.PaymentGateways.ShowPaymentDirectBankTransfer = ConfigSettingGet("Settings.ShowPaymentDBT", false);
+                WebsiteSettings.PaymentGateways.ShowPaymentTestPurchase = ConfigSettingGet("Settings.TestPurchase", false);
+                WebsiteSettings.PaymentGateways.ShowPaymentCheque = ConfigSettingGet("Settings.ShowPaymentCheque", true);
+
+
+                #region Payflow
+
+                if (WebsiteSettings.PaymentGateways.ShowPaymentCard)
+                {
+                    WebsiteSettings.PaymentGateways.Payflow.PayflowTestMode = ConfigSettingGet("Settings.PayflowTestMode", true);
+                    WebsiteSettings.PaymentGateways.Payflow.PayflowPartner = ConfigSettingGet("Settings.PayflowPartner", String.Empty);
+                    WebsiteSettings.PaymentGateways.Payflow.PayflowVendor = ConfigSettingGet("Settings.PayflowVendor", String.Empty);
+                    WebsiteSettings.PaymentGateways.Payflow.PayflowUser = ConfigSettingGet("Settings.PayflowUser", String.Empty);
+                    WebsiteSettings.PaymentGateways.Payflow.PayflowPassword = ConfigSettingGet("Settings.PayflowPassword", String.Empty);
+                    WebsiteSettings.PaymentGateways.Payflow.Currencies = ConfigSettingGet("Settings.PayflowCurrencies", "GBP;USD");
+                }
+
+                #endregion Payflow
+
+                #region Payment Providers Paypal
+
+                if (WebsiteSettings.PaymentGateways.ShowPaymentPaypal)
+                {
+                    WebsiteSettings.PaymentGateways.Paypal.APIUsername = ConfigSettingGet("Settings.PaypalAPIUserName", String.Empty);
+                    WebsiteSettings.PaymentGateways.Paypal.APIPassword = ConfigSettingGet("Settings.PaypalAPIPassword", String.Empty);
+                    WebsiteSettings.PaymentGateways.Paypal.APISignature = ConfigSettingGet("Settings.PaypalAPISignature", String.Empty);
+                    WebsiteSettings.PaymentGateways.Paypal.Subject = ConfigSettingGet("Settings.PaypalAPISubject", String.Empty);
+                    WebsiteSettings.PaymentGateways.Paypal.BNCode = ConfigSettingGet("Settings.PaypalAPIBNCode", String.Empty);
+                    WebsiteSettings.PaymentGateways.Paypal.DefaultCurrency = ConfigSettingGet("Settings.PaypalAPICurrency", "GBP;USD");
+                    WebsiteSettings.PaymentGateways.Paypal.APISuccessURL = ConfigSettingGet("Settings.PaypalSuccessURL", String.Empty);
+                    WebsiteSettings.PaymentGateways.Paypal.APIFailURL = ConfigSettingGet("Settings.PaypalFailURL", String.Empty);
+                }
+
+                #endregion Payment Providers Paypal
+
+                #region WorldPay
+
+                WebsiteSettings.PaymentGateways.WorldPay.Currencies = ConfigSettingGet("Settings.PaynetCurrency", "GBP");
+
+                #endregion WorldPay
+
+                #region Payment Providers Cheque
+
+                WebsiteSettings.PaymentGateways.Cheque.Currency = ConfigSettingGet("Settings.ChequeCurrency", "USD");
+
+                #endregion Payment Providers Cheque
+
+                #region Payment Providers Sun Tech
+
+                if (WebsiteSettings.PaymentGateways.ShowPaymentSunTechBuySafe)
+                {
+                    WebsiteSettings.PaymentGateways.SunTech.BuySafe.SupportedCurrencies = ConfigSettingGet("Settings.BuySafeCurrencies", "GBP");
+                    WebsiteSettings.PaymentGateways.SunTech.BuySafe.MerchantID = ConfigSettingGet("Settings.BuySafeMerchantID", "");
+                    WebsiteSettings.PaymentGateways.SunTech.BuySafe.MerchantPassword = ConfigSettingGet("Settings.BuySafeMerchantPW", "");
+                    WebsiteSettings.PaymentGateways.SunTech.BuySafe.TestMode = ConfigSettingGet("Settings.BuySafeTestMode", true);
+                }
+
+                if (WebsiteSettings.PaymentGateways.ShowPaymentSunTech24Payment)
+                {
+                    WebsiteSettings.PaymentGateways.SunTech.Payment24.SupportedCurrencies = ConfigSettingGet("Settings.24PaymentCurrencies", "GBP");
+                    WebsiteSettings.PaymentGateways.SunTech.Payment24.MerchantID = ConfigSettingGet("Settings.24PaymentMerchantID", "");
+                    WebsiteSettings.PaymentGateways.SunTech.Payment24.MerchantPassword = ConfigSettingGet("Settings.24PaymentMerchantPW", "");
+                    WebsiteSettings.PaymentGateways.SunTech.Payment24.TestMode = ConfigSettingGet("Settings.24PaymentTestMode", true);
+                    WebsiteSettings.PaymentGateways.SunTech.Payment24.DueDateDays = ConfigSettingGet("Settings.24PaymentDueDays", 30);
+                }
+
+                if (WebsiteSettings.PaymentGateways.ShowPaymentSunTechWebATM)
+                {
+                    WebsiteSettings.PaymentGateways.SunTech.WebATM.SupportedCurrencies = ConfigSettingGet("Settings.WebATMCurrencies", "GBP");
+                    WebsiteSettings.PaymentGateways.SunTech.WebATM.MerchantID = ConfigSettingGet("Settings.WebATMMerchantID", "");
+                    WebsiteSettings.PaymentGateways.SunTech.WebATM.MerchantPassword = ConfigSettingGet("Settings.WebATMMerchantPW", "");
+                    WebsiteSettings.PaymentGateways.SunTech.WebATM.TestMode = ConfigSettingGet("Settings.WebATMTestMode", true);
+                    WebsiteSettings.PaymentGateways.SunTech.WebATM.BillDateDays = ConfigSettingGet("Settings.WebATMBillDays", 30);
+                    WebsiteSettings.PaymentGateways.SunTech.WebATM.DueDateDays = ConfigSettingGet("Settings.WebAMTDueDays", 30);
+                }
+
+                #endregion Payment Providers Sun Tech
+
+                #region Payment Provider Telephone
+
+                WebsiteSettings.PaymentGateways.Telephone.Currency = ConfigSettingGet("Settings.PhoneCurrency", "GBP");
+
+                #endregion Payment Provider Telephone
+
+                #region Payment Provider Cash On Delivery
+
+                WebsiteSettings.PaymentGateways.CashOnDelivery.Currency = ConfigSettingGet("Settings.CODCurrency", "GBP");
+
+                #endregion Payment Provider Cash On Delivery
+
+                #region Direct Bank Transfer
+
+                //currencies for payment providers
+                WebsiteSettings.PaymentGateways.DirectTransfer.Currency = ConfigSettingGet("Settings.DTCurrency", "NZD");
+
+                #endregion Direct Bank Transfer
+
+                #region Credit Card Options
+
+                WebsiteSettings.CreditCards.CreditCardAlwaysShowValidFromForUK = ConfigSettingGet("Settings.AlwaysShowCCForUK", true);
+                WebsiteSettings.CreditCards.CreditCardHideValidFrom = ConfigSettingGet("Settings.AlwaysHideValidFrom", false);
+                WebsiteSettings.CreditCards.AllowCreditCards = ConfigSettingGet("Settings.AllowCreditCards", true);
+
+                #endregion Credit Card Options
+
+                #region Test Purchase Options
+
+                Classes.PaymentOptions.PaymentOptionTestPurchase.SupportedCurrencies = ConfigSettingGet(
+                    "Settings.TestPurchaseCurrencies", String.Empty);
+
+                #endregion Test Purchase Options
+
+
+                #endregion Payment Gateways
+
+                #region Web Farm/Garden
+
+                WebsiteSettings.WebFarm.IsWebFarm = ConfigSettingGet("WEB.FARM", false, true);
+                WebsiteSettings.WebFarm.WebFarmMasterIP = ConfigSettingGet("WEB.FARM.MASTER", String.Empty, true);
+                WebsiteSettings.WebFarm.WebFarmMutexName = ConfigSettingGet("WEB.FARM.MUTEX", "WEB_FARM_MUTEX", true);
+
+                #endregion Web Farm/Garden
+
+                #region Google Analytics
+
+                WebsiteSettings.Analytics.Google.GoogleAnalytics = ConfigSettingGet("SETTINGS.GOOGLE.ANALYTICS", String.Empty);
+
+                #endregion Google Analytics
 
                 #region Caching
 
@@ -1030,440 +731,183 @@ namespace Website.Library.Classes
                 lib.DAL.DALHelper.AllowCaching = ConfigSettingGet("Setting.AllowCaching", true);
                 lib.DAL.DALHelper.CacheLimit = new TimeSpan(0, ConfigSettingGet("Setting.CacheLimit", 30), 0);
 
+                GlobalClass.InternalCache.MaximumAge = lib.DAL.DALHelper.CacheLimit;
+
                 #endregion Caching
 
-                //page title
-                string pageTitle = ConfigSettingGet("Settings.DefaultTitle", PageTitle);
+                #region Stock
 
-                if (String.IsNullOrEmpty(pageTitle))
-                    pageTitle = PageTitle;
+                WebsiteSettings.Stock.OutOfStockAllowNotifyUser = ConfigSettingGet("Settings.OutOfStockAllowNotifyUser", false);
+                WebsiteSettings.Stock.OutOfStockInPage = ConfigSettingGet("Settings.OutOfStockInPage", false);
 
-                PageTitle = pageTitle;
-
-                #endregion Default Page Title
-
-                #region Language / Culture Options
-
-                lib.BOL.CustomWebPages.CustomPages.UseCustomPages = ConfigSettingGet("Settings.CustomPages", true);
-
-                WebsiteCulture = new CultureInfo(ConfigSettingGet("Settings.WebsiteCulture", "en-GB"));
-                WebsiteCultureOverride = ConfigSettingGet("Settings.WebCultureOverride", false);
-                lib.DAL.DALHelper.CultureOverride = ConfigSettingGet("Settings.CultureOverride", "en-GB");
-
-                lib.BOL.Countries.Country defCountry = lib.BOL.Countries.Countries.Get(ConfigSettingGet("Settings.DefaultCountry", "GB"));
-
-                if (defCountry == null)
-                    DefaultCountrySettings = "GB";
-                else
-                    DefaultCountrySettings = defCountry.CountryCode;
-
-                ForceInitialDefaultLanguage = lib.LibraryHelperClass.SettingsGetBool("SITE.FORCEINITIAL.LANGUAGE", false);
-
-                //localized pages
-
-                // indicates wether the change language/currency bar is visible or not
-                LocalizedLanguages.Active = lib.LibraryHelperClass.SettingsGetBool("SITE.LANGUAGES", false);
-
-                #endregion Language / Culture Options
-
-                #region Email Settings
-
-                SMTPHost = ConfigSettingGet("Settings.SMTPHost", String.Empty);
-                SMTPUserName = ConfigSettingGet("Settings.SMTPUserName", String.Empty);
-                SMTPPassword = ConfigSettingGet("Settings.SMTPPassword", String.Empty);
-                SMTPUseSSL = ConfigSettingGet("Settings.SMTPSSL", false);
-                SMTPPort = ConfigSettingGet("Settings.SMTPPort", 25);
-                SendEmails = ConfigSettingGet("Settings.SendEmail", false);
-
-                #endregion Email Settings
-
-                #region Shopping Cart
-
-                MaximumItemQuantity = ConfigSettingGet("Settings.MaximumItemQuantity", 5);
-                JumpToBasketAfterAddItem = ConfigSettingGet("Settings.JumpToBasketAfterAddItem", false);
-                BasketName = ConfigSettingGet("Settings.ShoppingBasketName", String.Empty);
-                Website.Library.GlobalClass.BasketName = ConfigSettingGet("Settings.ShoppingBasketName", String.Empty);
-                HideShoppingCart = ConfigSettingGet("Settings.HideShoppingCart", false);
-
-                BasketSummaryShow = ConfigSettingGet("Settings.BasketSummaryShow", true);
-                BasketSummaryAutoHide = ConfigSettingGet("Settings.BasketSummaryAutoHide", false);
-                BasketSummaryTimeOut = Shared.Utilities.CheckMinMax(ConfigSettingGet("SettingsBasketSummaryTimeout", 10), 5, 25);
-                BasketIDIncrement = Shared.Utilities.CheckMinMax(ConfigSettingGet("Settings.BasketIDCount", 500), 100, 10000);
-
-                #endregion Shopping Cart
-
-                #region Payment Providers
-
-                #region Payment Providers Paypal
-
-                //paypal settings
-                ShowPaymentPaypal = ConfigSettingGet("Settings.ShowPaymentPaypal", true);
-
-                if (ShowPaymentPaypal)
-                {
-                    NVPAPICaller.APIUsername = ConfigSettingGet("Settings.PaypalAPIUserName", String.Empty);
-                    NVPAPICaller.APIPassword = ConfigSettingGet("Settings.PaypalAPIPassword", String.Empty);
-                    NVPAPICaller.APISignature = ConfigSettingGet("Settings.PaypalAPISignature", String.Empty);
-                    NVPAPICaller.Subject = ConfigSettingGet("Settings.PaypalAPISubject", String.Empty);
-                    NVPAPICaller.BNCode = ConfigSettingGet("Settings.PaypalAPIBNCode", String.Empty);
-                    NVPAPICaller.DefaultCurrency = ConfigSettingGet("Settings.PaypalAPICurrency", "GBP;USD");
-                    NVPAPICaller.APISuccessURL = ConfigSettingGet("Settings.PaypalSuccessURL", String.Empty);
-                    NVPAPICaller.APIFailURL = ConfigSettingGet("Settings.PaypalFailURL", String.Empty);
-                    Classes.Paypoint.ValCard.Currencies = ConfigSettingGet("Settings.PaynetCurrency", "GBP");
-                }
-
-                #endregion Payment Providers Paypal
-
-                #region Payment Providers Cheque
-
-                ShowPaymentCheque = ConfigSettingGet("Settings.ShowPaymentCheque", true);
-                ChequeCurrency = ConfigSettingGet("Settings.ChequeCurrency", "USD");
-
-                #endregion Payment Providers Cheque
-
-                #region Paypoint
-
-                ShowPaymentPaypoint = ConfigSettingGet("Settings.ShowPaymentPaypoint", false);
-
-                #endregion Paypoint
-
-                #region Payment Provider Telephone
-
-                ShowPaymentTelephone = ConfigSettingGet("Settings.ShowPaymentTelephone", true);
-                PhoneCurrencies = ConfigSettingGet("Settings.PhoneCurrency", "GBP");
-
-                #endregion Payment Provider Telephone
-
-                #region Payment Provider Cash On Delivery
-
-                ShowPaymentCashOnDelivery = ConfigSettingGet("Settings.ShowPaymentCOD", false);
-                ShowPaymentDirectBankTransfer = ConfigSettingGet("Settings.ShowPaymentDBT", false);
-                CashOnDeliveryCurrency = ConfigSettingGet("Settings.CODCurrency", "GBP");
-
-                #endregion Payment Provider Cash On Delivery
-
-                #region Payment Provider Payflow
-
-                //payflow
-                ShowPaymentCard = ConfigSettingGet("Settings.ShowPaymentCard", false);
-
-                if (ShowPaymentCard)
-                {
-                    PayflowTestMode = ConfigSettingGet("Settings.PayflowTestMode", true);
-                    PayflowPartner = ConfigSettingGet("Settings.PayflowPartner", String.Empty);
-                    PayflowVendor = ConfigSettingGet("Settings.PayflowVendor", String.Empty);
-                    PayflowUser = ConfigSettingGet("Settings.PayflowUser", String.Empty);
-                    PayflowPassword = ConfigSettingGet("Settings.PayflowPassword", String.Empty);
-                    PayflowCurrencies = ConfigSettingGet("Settings.PayflowCurrencies", "GBP;USD");
-                }
-
-                #endregion Payment Provider Payflow
-
-                #region Direct Bank Transfer
-
-                //currencies for payment providers
-                DirectTransferCurrency = ConfigSettingGet("Settings.DTCurrency", "NZD");
-
-                #endregion Direct Bank Transfer
-
-                #region Payment Providers Sun Tech
-
-                //Sun Tech Buy Safe
-                ShowPaymentSunTechBuySafe = ConfigSettingGet("Settings.AllowSunTechBuySafe", false);
-
-                if (ShowPaymentSunTechBuySafe)
-                {
-                    Website.Library.Classes.PaymentOptions.PaymentOptionSunTechBuySafe.SupportedCurrencies = ConfigSettingGet("Settings.BuySafeCurrencies", "GBP");
-                    Website.Library.Classes.PaymentOptions.PaymentOptionSunTechBuySafe.MerchantID = ConfigSettingGet("Settings.BuySafeMerchantID", "");
-                    Website.Library.Classes.PaymentOptions.PaymentOptionSunTechBuySafe.MerchantPassword = ConfigSettingGet("Settings.BuySafeMerchantPW", "");
-                    Website.Library.Classes.PaymentOptions.PaymentOptionSunTechBuySafe.TestMode = ConfigSettingGet("Settings.BuySafeTestMode", true);
-                }
-
-                //Sun Tech 24Payment
-                ShowPaymentSunTech24Payment = ConfigSettingGet("Settings.AllowSunTech24Payment", false);
-
-                if (ShowPaymentSunTech24Payment)
-                {
-                    Website.Library.Classes.PaymentOptions.PaymentOptionSunTech24Payment.SupportedCurrencies = ConfigSettingGet("Settings.24PaymentCurrencies", "GBP");
-                    Website.Library.Classes.PaymentOptions.PaymentOptionSunTech24Payment.MerchantID = ConfigSettingGet("Settings.24PaymentMerchantID", "");
-                    Website.Library.Classes.PaymentOptions.PaymentOptionSunTech24Payment.MerchantPassword = ConfigSettingGet("Settings.24PaymentMerchantPW", "");
-                    Website.Library.Classes.PaymentOptions.PaymentOptionSunTech24Payment.TestMode = ConfigSettingGet("Settings.24PaymentTestMode", true);
-                    Website.Library.Classes.PaymentOptions.PaymentOptionSunTech24Payment.DueDateDays = ConfigSettingGet("Settings.24PaymentDueDays", 30);
-                }
-
-                //Sun Tech WebATM
-                ShowPaymentSunTechWebATM = ConfigSettingGet("Settings.AllowSunTechWebATM", false);
-
-                if (ShowPaymentSunTechWebATM)
-                {
-                    Website.Library.Classes.PaymentOptions.PaymentOptionSunTechWebATM.SupportedCurrencies = ConfigSettingGet("Settings.WebATMCurrencies", "GBP");
-                    Website.Library.Classes.PaymentOptions.PaymentOptionSunTechWebATM.MerchantID = ConfigSettingGet("Settings.WebATMMerchantID", "");
-                    Website.Library.Classes.PaymentOptions.PaymentOptionSunTechWebATM.MerchantPassword = ConfigSettingGet("Settings.WebATMMerchantPW", "");
-                    Website.Library.Classes.PaymentOptions.PaymentOptionSunTechWebATM.TestMode = ConfigSettingGet("Settings.WebATMTestMode", true);
-                    Website.Library.Classes.PaymentOptions.PaymentOptionSunTechWebATM.BillDateDays = ConfigSettingGet("Settings.WebATMBillDays", 30);
-                    Website.Library.Classes.PaymentOptions.PaymentOptionSunTechWebATM.DueDateDays = ConfigSettingGet("Settings.WebAMTDueDays", 30);
-                }
-
-                #endregion Payment Providers Sun Tech
-
-                #region Credit Card Options
-
-                //credit cards
-                CreditCardAlwaysShowValidFromForUK = ConfigSettingGet("Settings.AlwaysShowCCForUK", true);
-                CreditCardHideValidFrom = ConfigSettingGet("Settings.AlwaysHideValidFrom", false);
-                AllowCreditCards = ConfigSettingGet("Settings.AllowCreditCards", true);
-
-                #endregion Credit Card Options
+                #endregion Stock
 
                 #region Licence Options
 
-                AllowLicences = ConfigSettingGet("Settings.AllowLicences", false);
+                WebsiteSettings.Licences.AllowLicences = ConfigSettingGet("Settings.AllowLicences", false);
 
                 #endregion Licence Options
 
-                #region Test Purchase Options
+                #region Offers
 
-                ShowPaymentTestPurchase = ConfigSettingGet("Settings.TestPurchase", false);
-                Classes.PaymentOptions.PaymentOptionTestPurchase.SupportedCurrencies = ConfigSettingGet(
-                    "Settings.TestPurchaseCurrencies", String.Empty);
+                WebsiteSettings.Offers.ShowOffers = ConfigSettingGet("Settings.ShowOffers", true);
+                WebsiteSettings.Offers.ShowVoucher = ConfigSettingGet("Settings.ShowVoucher", false);
 
-                #endregion Test Purchase Options
-
-                #endregion Payment Providers
-
-                #region General Contact Details
-
-                WebsiteTelephoneNumber = ConfigSettingGet("Settings.WebsiteTelephoneNumber", String.Empty);
-                WebsiteEmail = ConfigSettingGet("Settings.WebsiteEmail", String.Empty);
-                AddressLine1 = ConfigSettingGet("Settings.AddressLine1", String.Empty);
-                AddressLine2 = ConfigSettingGet("Settings.AddressLine2", String.Empty);
-                AddressLine3 = ConfigSettingGet("Settings.AddressLine3", String.Empty);
-
-                #endregion General Contact Details
-
-                #region Social Media
-
-                SocialMediaFacebook = ConfigSettingGet("Settings.Facebook", "http://www.facebook.com/Heavenskincare");
-                SocialMediaTwitter = ConfigSettingGet("Settings.Twitter", "https://twitter.com/#!/Heavenskincare");
-                SocialMediaGPlus = ConfigSettingGet("Settings.GPlus", "https://plus.google.com/u/0/+DeborahMitchellheaven/posts");
-                SocialMediaRSSFeed = ConfigSettingGet("Settings.RSSFeed", "http://heavenbydeborahmitchell.me/feed/");
-
-                TwitterDefaultTags = ConfigSettingGet("Settings.TwitterTags", String.Empty);
-
-                #endregion Social Media
-
-                #region Maintenance Options
-
-                AutoMaintenanceMode = true;
-                MaintenanceMode = ConfigSettingGet("Settings.MaintenanceMode", false);
-
-                GlobalClass.AllowRoutineMaintenance = ConfigSettingGet("Settings.AllowRoutineMaintenance", true);
-                GlobalClass.CreateXMLImageFiles = ConfigSettingGet("Settings.CreateXMLImageFiles", false);
-
-                #endregion Maintenance Options
-
-                #region Geo Update
-
-                AllowWebsiteGeoUpdate = false;
-
-
-
-                #endregion Geo Update
-
-                #region Rotating Home Page Banners
-
-                HomeBanner1 = ConfigSettingGet("HomeBanner1", String.Empty);
-                HomeBanner2 = ConfigSettingGet("HomeBanner2", String.Empty);
-                HomeBanner3 = ConfigSettingGet("HomeBanner3", String.Empty);
-                HomeBanner4 = ConfigSettingGet("HomeBanner4", String.Empty);
-                HomeBanner5 = ConfigSettingGet("HomeBanner5", String.Empty);
-
-                HomeBanner1Link = ConfigSettingGet("HomeBanner1Link", String.Empty);
-                HomeBanner2Link = ConfigSettingGet("HomeBanner2Link", String.Empty);
-                HomeBanner3Link = ConfigSettingGet("HomeBanner3Link", String.Empty);
-                HomeBanner4Link = ConfigSettingGet("HomeBanner4Link", String.Empty);
-                HomeBanner5Link = ConfigSettingGet("HomeBanner5Link", String.Empty);
-
-                #endregion Rotating Home Page Banners
-
-                #region Page Banners
-
-                PageBanner1 = ConfigSettingGet("PAGEBANNER1", String.Empty);
-                PageBanner1Link = ConfigSettingGet("PAGEBANNER1LINK", String.Empty);
-
-                PageBanner2 = ConfigSettingGet("PAGEBANNER2", String.Empty);
-                PageBanner2Link = ConfigSettingGet("PAGEBANNER2LINK", String.Empty);
-
-                PageBanner3 = ConfigSettingGet("PAGEBANNER3", String.Empty);
-                PageBanner3Link = ConfigSettingGet("PAGEBANNER3LINK", String.Empty);
-
-                #endregion Page Banners
-
-                #region Google Analytics
-
-                GoogleAnalytics = ConfigSettingGet("SETTINGS.GOOGLE.ANALYTICS", GoogleAnalytics);
-
-                #endregion Google Analytics
+                #endregion Offers
 
                 #region Mail List Subscribers
 
                 // mail list subscription
-                AllowMailListSubscribers = ConfigSettingGet("SETTINGS.MAILLIST.ALLOW", false);
+                WebsiteSettings.Marketing.AllowMailListSubscribers = ConfigSettingGet("SETTINGS.MAILLIST.ALLOW", false);
 
                 #endregion Mail List Subscribers
 
                 #region Mail Chimp integration
 
-                //mail chimp
-                MailChimpAPI = ConfigSettingGet("Settings.MailChimpAPI", String.Empty);
-                MailChimpList = ConfigSettingGet("Settings.MailChimpList", String.Empty);
-                MailChimpKey = ConfigSettingGet("Settings.MailChimpKey", String.Empty);
-                MailChimpPopupDialog = ConfigSettingGet("Settings.MailChimpPopup", String.Empty);
+                WebsiteSettings.Marketing.MailChimp.MailChimpAPI = ConfigSettingGet("Settings.MailChimpAPI", String.Empty);
+                WebsiteSettings.Marketing.MailChimp.MailChimpList = ConfigSettingGet("Settings.MailChimpList", String.Empty);
+                WebsiteSettings.Marketing.MailChimp.MailChimpKey = ConfigSettingGet("Settings.MailChimpKey", String.Empty);
+                WebsiteSettings.Marketing.MailChimp.MailChimpPopupDialog = ConfigSettingGet("Settings.MailChimpPopup", String.Empty);
 
-                if (String.IsNullOrEmpty(MailChimpKey))
+                if (String.IsNullOrEmpty(WebsiteSettings.Marketing.MailChimp.MailChimpKey))
                 {
-                    MailChimpKey = Shared.Utilities.RandomPassword(25);
-                    ConfigSettingSet("Settings.MailChimpKey", MailChimpKey);
+                    WebsiteSettings.Marketing.MailChimp.MailChimpKey = Shared.Utilities.RandomPassword(25);
+                    ConfigSettingSet("Settings.MailChimpKey", WebsiteSettings.Marketing.MailChimp.MailChimpKey);
                 }
 
                 #endregion Mail Chimp Integration
 
-                #region User Menu Items
+                #region Shopping Cart
 
-                ShowSalonUpdate = ConfigSettingGet("Settings.UserMenuSalonUpdates", true);
-                ShowAppointments = ConfigSettingGet("Settings.UserMenuAppointments", true);
-                ShowTradeDownloads = ConfigSettingGet("Settings.UserMenuTradeDownloads", true);
+                WebsiteSettings.ShoppingCart.MaximumItemQuantity = ConfigSettingGet("Settings.MaximumItemQuantity", 5);
 
-                #endregion User Menu Items
+                WebsiteSettings.ShoppingCart.JumpToBasketAfterAddItem = ConfigSettingGet("Settings.JumpToBasketAfterAddItem", false);
 
+                WebsiteSettings.ShoppingCart.HideShoppingCart = ConfigSettingGet("Settings.HideShoppingCart", false);
 
-                RootPath = ConfigSettingGet("Settings.RootPath", String.Empty);
+                WebsiteSettings.ShoppingCart.BasketSummaryShow = ConfigSettingGet("Settings.BasketSummaryShow", true);
 
-                //email/smtp settings
-                SupportName = ConfigSettingGet("Settings.SupportName", String.Empty);
-                SupportEMail = ConfigSettingGet("Settings.SupportEMail", String.Empty);
+                WebsiteSettings.ShoppingCart.BasketSummaryAutoHide = ConfigSettingGet("Settings.BasketSummaryAutoHide", false);
+
+                WebsiteSettings.ShoppingCart.BasketSummaryTimeOut = Shared.Utilities.CheckMinMax(ConfigSettingGet("SettingsBasketSummaryTimeout", 10), 5, 25);
+
+                WebsiteSettings.ShoppingCart.BasketIDIncrement = Shared.Utilities.CheckMinMax(ConfigSettingGet("Settings.BasketIDCount", 500), 100, 10000);
+
+                WebsiteSettings.ShoppingCart.FreeShippingAllow = ConfigSettingGet("Settings.FreeShippingAllow", false);
+
+                WebsiteSettings.ShoppingCart.FreeShippingAmount = ConfigSettingGet("Settings.FreeShippingSpend", 100.00m);
+
+                WebsiteSettings.ShoppingCart.ClearBasketOnPayment = ConfigSettingGet("Settings.ClearBasketOnPayment", false, true);
+
+                WebsiteSettings.ShoppingCart.AlterTextColorBasedOnBasketContents = ConfigSettingGet("Settings.AlterTextColorBasedOnBasketContents", false);
+
+                WebsiteSettings.ShoppingCart.ItemDoesNotExistsInShoppingBagTextColour = ConfigSettingGet("Settings.ItemDoesNotExistsInShoppingBagTextColour", "white");
+
+                WebsiteSettings.ShoppingCart.ItemExistsInShoppingBagTextColour = ConfigSettingGet("Settings.ItemExistsInShoppingBagTextColour", "white");
+
+                WebsiteSettings.ShoppingCart.DefaultShowPrices = ConfigSettingGet("Settings.ShowPriceDefault", true);
+
+                WebsiteSettings.ShoppingCart.OverrideCostMultiplier = ConfigSettingGet("Settings.OverrideCostMultiplier", false);
+
+                WebsiteSettings.ShoppingCart.OverrideCostMultiplierValue = ConfigSettingGet("Settings.OverrideCostMultiplierValue", 0.0);
+
+                #endregion Shopping Cart
 
                 #region VAT/Tax Settings
 
                 lib.DAL.DALHelper.HideVATOnWebsiteAndInvoices = ConfigSettingGet("Settings.HideVATOnWebsiteAndInvoices", false);
-                VatRate = ConfigSettingGet("Settings.VatRate", 20.0);
-                PricesIncludeVAT = ConfigSettingGet("Settings.PricesIncludeVAT", false);
-                ShippingIsTaxable = ConfigSettingGet("Settings.ShippingIsTaxable", ShippingIsTaxable);
-                ShowBasketItemsWithVAT = ConfigSettingGet("Settings.ShowBasketItemsWithVAT", ShowBasketItemsWithVAT);
-                ShowBasketSubTotalWithVAT = ConfigSettingGet("Settings.ShowBasketSubTotalWithVAT", ShowBasketSubTotalWithVAT);
+                WebsiteSettings.Tax.VatRate = ConfigSettingGet("Settings.VatRate", 20.0);
+                WebsiteSettings.Tax.PricesIncludeVAT = ConfigSettingGet("Settings.PricesIncludeVAT", false);
+                WebsiteSettings.Tax.ShippingIsTaxable = ConfigSettingGet("Settings.ShippingIsTaxable", true);
+                WebsiteSettings.Tax.ShowBasketItemsWithVAT = ConfigSettingGet("Settings.ShowBasketItemsWithVAT", false);
+                WebsiteSettings.Tax.ShowBasketSubTotalWithVAT = ConfigSettingGet("Settings.ShowBasketSubTotalWithVAT", true);
 
                 #endregion VAT/Tax Settings
 
-                RootURL = ConfigSettingGet("Settings.RootURL", String.Empty);
-                UseHTTPS = ConfigSettingGet("Settings.UseHTTPS", true);
-                Path = ConfigSettingGet("Settings.Path", String.Empty);
-                ShowOffers = ConfigSettingGet("Settings.ShowOffers", true);
-                ShowVoucher = ConfigSettingGet("Settings.ShowVoucher", false);
+                #region Social Media
 
-                if (!String.IsNullOrEmpty(RootURL))
-                {
-                    Uri u = new Uri(RootURL);
-                    RootHost = u.Host;
-                }
+                WebsiteSettings.SocialMedia.Facebook.Url = ConfigSettingGet("Settings.Facebook", "http://www.facebook.com/Heavenskincare");
+                WebsiteSettings.SocialMedia.Google.GPlus = ConfigSettingGet("Settings.GPlus", "https://plus.google.com/u/0/+DeborahMitchellheaven/posts");
+                WebsiteSettings.SocialMedia.RSS.Feed = ConfigSettingGet("Settings.RSSFeed", "http://heavenbydeborahmitchell.me/feed/");
+                WebsiteSettings.SocialMedia.Twitter.Url = ConfigSettingGet("Settings.Twitter", "https://twitter.com/#!/Heavenskincare");
+                WebsiteSettings.SocialMedia.Twitter.DefaultTags = ConfigSettingGet("Settings.TwitterTags", String.Empty);
+                WebsiteSettings.SocialMedia.Blog.Url = ConfigSettingGet("BlogURL", String.Empty, true);
 
-                Website.Library.GlobalClass.WebsiteDateFormat = ConfigSettingGet("Settings.WebsiteDateFormat", String.Empty);
+                #endregion Social Media
 
-                Website.Library.GlobalClass.RootPath = Path;
-                Website.Library.GlobalClass.RootURL = RootURL;
+                #region Maintenance Options
 
+                WebsiteSettings.Maintenance.AutoMaintenanceMode = true;
+                WebsiteSettings.Maintenance.MaintenanceMode = ConfigSettingGet("Settings.MaintenanceMode", false);
 
-                lib.DAL.DALHelper.RegisterWebsite(GlobalClass.RootURL);
+                WebsiteSettings.Maintenance.AllowRoutineMaintenance = ConfigSettingGet("Settings.AllowRoutineMaintenance", true);
+                WebsiteSettings.Maintenance.CreateXMLImageFiles = ConfigSettingGet("Settings.CreateXMLImageFiles", false);
 
-                DistributorWebsite = ConfigSettingGet("Settings.DistributorWebsite", String.Empty);
+                #endregion Maintenance Options
 
-                NoReplyName = ConfigSettingGet("Settings.NoReplyName", String.Empty);
-                Website.Library.GlobalClass.NoReplyName = NoReplyName;
+                #region Languages
 
-                NoReplyEmail = ConfigSettingGet("Settings.NoReplyEmail", String.Empty);
-                Website.Library.GlobalClass.NoReplyEmail = NoReplyEmail;
+                // indicates wether the change language/currency bar is visible or not
+                WebsiteSettings.Languages.Active = ConfigSettingGet("SITE.LANGUAGES", false);
 
-                UseLeftToRight = ConfigSettingGet("Settings.UseLeftToRight", true);
-                Website.Library.GlobalClass.UseLeftToRight = UseLeftToRight;
+                WebsiteSettings.Languages.ForceInitialDefaultLanguage = ConfigSettingGet("SITE.FORCEINITIAL.LANGUAGE", false);
 
-                #region Basket
+                WebsiteSettings.Languages.UseCustomPages = ConfigSettingGet("Settings.CustomPages", true);
 
-                FreeShippingAllow = ConfigSettingGet("Settings.FreeShippingAllow", false);
+                WebsiteSettings.Languages.WebsiteCulture = new CultureInfo(ConfigSettingGet("Settings.WebsiteCulture", "en-GB"));
 
-                FreeShippingAmount = ConfigSettingGet("Settings.FreeShippingSpend", 100.00m);
+                lib.BOL.Countries.Country defCountry = lib.BOL.Countries.Countries.Get(ConfigSettingGet("Settings.DefaultCountry", "GB"));
 
-                ClearBasketOnPayment = ConfigSettingGet("Settings.ClearBasketOnPayment", false, true);
+                if (defCountry == null)
+                    WebsiteSettings.Languages.DefaultCountrySettings = "GB";
+                else
+                    WebsiteSettings.Languages.DefaultCountrySettings = defCountry.CountryCode;
 
-                #endregion Basket
+                lib.DAL.DALHelper.CultureOverride = ConfigSettingGet("Settings.CultureOverride", "en-GB");
 
-                lib.DAL.DALHelper.OverrideCostMultiplier = ConfigSettingGet("Settings.OverrideCostMultiplier", false);
-                lib.DAL.DALHelper.OverrideCostMultiplierValue = ConfigSettingGet("Settings.OverrideCostMultiplierValue", 0.0);
+                #endregion Languages
 
-                lib.DAL.DALHelper.WebsiteAddress = RootURL;
+                #region Trade Customers
 
-                #region Global Page Options
+                WebsiteSettings.TradeCustomers.ShowTradeDownloads = ConfigSettingGet("Settings.UserMenuTradeDownloads", true);
 
-                GlobalClass.ShowSalonsMenu = ConfigSettingGet("Settings.ShowSalons", true);
-                GlobalClass.ShowSalonFinder = ConfigSettingGet("Settings.ShowSalonFinder", true);
-                GlobalClass.ShowClientHeader = ConfigSettingGet("Settings.ShowSalonClientHeader", true);
-                GlobalClass.ShowSalonHeader = ConfigSettingGet("Settings.ShowSalonHeader", true);
+                #endregion Trade Customers
 
-                GlobalClass.ShowTreatmentsMenu = ConfigSettingGet("Settings.ShowTreatments", true);
-                GlobalClass.ShowDistributorsMenu = ConfigSettingGet("Settings.ShowDistributors", true);
-                GlobalClass.ShowTipsAndTricksMenu = ConfigSettingGet("Settings.ShowTipsAndTricks", true);
-                GlobalClass.ShowDownloadMenu = ConfigSettingGet("Settings.ShowDownloads", false);
+                #region Memberer Menu Items
 
-                GlobalClass.ShowTreatmentsBrochure = ConfigSettingGet("Settings.ShowTreatmentBrochure", true);
-                GlobalClass.ShowTermsAndConditions = ConfigSettingGet("Settings.ShowTermsAndConditions", true);
-                GlobalClass.ShowPrivacyPolicy = ConfigSettingGet("Settings.ShowPrivacyPolicy", true);
-                GlobalClass.ShowReturnsPolicy = ConfigSettingGet("Settings.ShowReturnsPolicy", true);
-                GlobalClass.ShowTradePage = ConfigSettingGet("Settings.ShowTradePage", true);
+                WebsiteSettings.Members.ShowSalonUpdate = ConfigSettingGet("Settings.UserMenuSalonUpdates", true);
+                WebsiteSettings.Members.ShowAppointments = ConfigSettingGet("Settings.UserMenuAppointments", true);
 
-                #endregion Global Page Options
-
-                AlterTextColorBasedOnBasketContents = ConfigSettingGet("Settings.AlterTextColorBasedOnBasketContents", false);
-                ItemDoesNotExistsInShoppingBagTextColour = ConfigSettingGet("Settings.ItemDoesNotExistsInShoppingBagTextColour", "white");
-                ItemExistsInShoppingBagTextColour = ConfigSettingGet("Settings.ItemExistsInShoppingBagTextColour", "white");
-
-                // out of stock options
-                OutOfStockAllowNotifyUser = ConfigSettingGet("Settings.OutOfStockAllowNotifyUser", false);
-                OutOfStockInPage = ConfigSettingGet("Settings.OutOfStockInPage", false);
-
-                GlobalClass.InternalCache.MaximumAge = lib.DAL.DALHelper.CacheLimit;
-
-                DefaultShowPrices = ConfigSettingGet("Settings.ShowPriceDefault", true);
-
-                GlobalClass.StyleSheet = ConfigSettingGet("SITE.STYLE_SHEET", "Style9.css");
-                GlobalClass.StyleSheetLocation = ConfigSettingGet("SITE.STYLE_SHEET_LOCATION", GlobalClass.StyleSheetLocation);
-
-                CustomScrollerStrapLine = ConfigSettingGet("Settings.CustomIndexScroller", false);
-                CustomScrollerText = ConfigSettingGet("Settings.CustomScrollerText",
-                    Languages.LanguageStrings.CheckOutLatestGreatest);
-
-                ShowHomeBanners = ConfigSettingGet("Settings.HomeBanners", true);
-
-                ShowHomeFeaturedProducts = ConfigSettingGet("SETTINGS.HOMEFEATURED", false);
-
-                #region Blog
-
-                BlogURL = ConfigSettingGet("BlogURL", String.Empty, true);
-
-                #endregion Blog
+                #endregion Member Menu Items
 
                 #region Affiliates
 
-                AffiliateMaxDays = Shared.Utilities.StrToInt(lib.LibraryHelperClass.SettingsGet(
+                WebsiteSettings.Affiliates.MaximumDays = Shared.Utilities.StrToInt(lib.LibraryHelperClass.SettingsGet(
                     StringConstants.AFFILIATE_LIVE_DAYS, StringConstants.SYMBOL_SEVEN), 7);
-
 
                 #endregion Affiliates
 
-                #region Web Farm/Garden
+                #region Carousel
 
-                WebFarm = ConfigSettingGet("WEB.FARM", false, true);
-                WebFarmMasterIP = ConfigSettingGet("WEB.FARM.MASTER", String.Empty, true);
-                WebFarmMutexName = ConfigSettingGet("WEB.FARM.MUTEX", "WEB_FARM_MUTEX", true);
+                WebsiteSettings.Carousel.CustomScrollerStrapLine = ConfigSettingGet("Settings.CustomIndexScroller", false);
+                WebsiteSettings.Carousel.CustomScrollerText = ConfigSettingGet("Settings.CustomScrollerText",
+                    Languages.LanguageStrings.CheckOutLatestGreatest);
 
-                #endregion Web Farm/Garden
+                #endregion Carousel
+
+                #region Cookies
+
+                CookiePrefix = "SD";
+
+                #endregion Cookies
+
+                #region Geo Update
+
+                WebsiteSettings.GeoIP.AllowWebsiteGeoUpdate = ConfigSettingGet("Settings.GeoIPUpdates", false);
+
+                #endregion Geo Update
+
+                lib.DAL.DALHelper.RegisterWebsite(WebsiteSettings.RootURL);
 
                 CreateInitializationThread();
 
@@ -1580,30 +1024,10 @@ namespace Website.Library.Classes
                 }
                 catch (Exception err)
                 {
-                    Shared.EventLog.Add(err);
+                    EventLog.Add(err);
                 }
 
-                if (WebFarm &&
-                    !String.IsNullOrEmpty(WebFarmMutexName) &&
-                    Shared.Utilities.LocalIPAddress(WebFarmMasterIP))
-                {
-                    // if the application is part of a web farm/garden, then only one process in the entire farm
-                    // can be the "master" process.  The master process is determined when WebFarmMasterIP ip address
-                    // matches the ip address on the computer it is loaded on.  Further, on that single computer
-                    // a global mutex is created, the first process on the computer that matches the ip address wins, all 
-                    // others will not be the master controller.
-
-                    _mutex = new MutexEx(WebFarmMutexName);
-
-                    if (!_mutex.Exists)
-                    {
-                        _mutex.CreateMutex();
-                    }
-
-                    Shared.EventLog.Add(String.Format("Process ID: {0}; Created: {1}; Name: {2}",
-                        System.Diagnostics.Process.GetCurrentProcess().Id, _mutex.MutexCreated, _mutex.Name));
-                }
-
+                WebsiteSettings.WebFarm.Initialise();
             }
 
 
@@ -1614,8 +1038,7 @@ namespace Website.Library.Classes
         {
             EventLog.Add("ApplicationEnd");
 
-            if (_mutex != null)
-                _mutex.Dispose();
+            WebsiteSettings.WebFarm.Close();
 
             // close session manager
             UserSessionManager.CancelAll();
@@ -1677,11 +1100,11 @@ namespace Website.Library.Classes
             {
                 int Result = -1;
 
-                if (Request.Cookies[String.Format("{0}{1}Session", BaseWebApplication.CookiePrefix, DistributorWebsite)] != null)
+                if (Request.Cookies[String.Format("{0}{1}Session", CookiePrefix, WebsiteSettings.DistributorWebsite)] != null)
                 {
-                    if (Request.Cookies[String.Format("{0}{1}Session", BaseWebApplication.CookiePrefix, DistributorWebsite)].Expires.Year != (DateTime.Now.Year - 1))
+                    if (Request.Cookies[String.Format("{0}{1}Session", CookiePrefix, WebsiteSettings.DistributorWebsite)].Expires.Year != (DateTime.Now.Year - 1))
                     {
-                        string s1 = Shared.Utilities.Decrypt(HttpUtility.UrlDecode(Request.Cookies[String.Format("{0}{1}Session", BaseWebApplication.CookiePrefix, DistributorWebsite)].Value));
+                        string s1 = Shared.Utilities.Decrypt(HttpUtility.UrlDecode(Request.Cookies[String.Format("{0}{1}Session", CookiePrefix, WebsiteSettings.DistributorWebsite)].Value));
 
                         if (s1 != "")
                         {
@@ -1746,7 +1169,7 @@ namespace Website.Library.Classes
 
             try
             {
-                AutoMaintenanceMode = true;
+                WebsiteSettings.Maintenance.AutoMaintenanceMode = true;
 
                 _lastLoadAttempt = DateTime.Now;
 
@@ -1856,22 +1279,11 @@ namespace Website.Library.Classes
 
         #region Internal Methods
 
-        internal static bool WebFarmMaster()
-        {
-            if (!WebFarm || _mutex == null)
-                return (true);
+        #endregion Internal Methods
 
-            if (_mutex.Exists && _mutex.MutexCreated)
-                return (true);
+        #region Public Methods
 
-            return (false);
-        }
-
-#endregion Internal Methods
-
-#region Public Methods
-
-#region Send Emails
+        #region Send Emails
 
         /// <summary>
         /// Sends an email to webadmin
@@ -1879,7 +1291,8 @@ namespace Website.Library.Classes
         /// <param name="ErrorMessage">Error Message</param>
         public static void SendEmail(string ErrorMessage)
         {
-            SendEMail(SupportName, SupportEMail, String.Format("Website Error ({0})", DistributorWebsite), ErrorMessage);
+            SendEMail(WebsiteSettings.Email.SupportName, WebsiteSettings.Email.SupportEMail, 
+                String.Format("Website Error ({0})", WebsiteSettings.DistributorWebsite), ErrorMessage);
         }
 
         /// <summary>
@@ -1889,18 +1302,19 @@ namespace Website.Library.Classes
         /// <param name="Title">Title of email</param>
         public static void SendEmail(string Title, string Message)
         {
-            SendEMail(SupportName, SupportEMail, Title, Message);
+            SendEMail(WebsiteSettings.Email.SupportName, WebsiteSettings.Email.SupportEMail, Title, Message);
         }
 
         public static void SendEMail(string ToName, string ToEMail, string Title,
             string Msg)
         {
-            SendEMail(ToName, ToEMail, Title, Msg, NoReplyName, NoReplyEmail);
+            SendEMail(ToName, ToEMail, Title, Msg, WebsiteSettings.Email.NoReplyName, WebsiteSettings.Email.NoReplyEmail);
         }
 
         public static void SendEMail(string Title, string Msg)
         {
-            SendEMail(SupportName, SupportEMail, Title, Msg, NoReplyName, NoReplyEmail);
+            SendEMail(WebsiteSettings.Email.SupportName, WebsiteSettings.Email.SupportEMail, 
+                Title, Msg, WebsiteSettings.Email.NoReplyName, WebsiteSettings.Email.NoReplyEmail);
         }
 
         public static void SendEMail(string ToName, string ToEMail, string Title,
@@ -1908,18 +1322,18 @@ namespace Website.Library.Classes
         {
             Emails.Add(ToName, ToEMail, FromName, FromEMail, Title, Msg);
 
-            if (!SendEmails)
+            if (!WebsiteSettings.Email.SendEmails)
                 return;
         }
 
-#endregion Send Emails
+        #endregion Send Emails
 
-#endregion Public Methods
+        #endregion Public Methods
 
-#region Private Methods
+        #region Private Methods
 
 
-#region Thread Manager Events
+        #region Thread Manager Events
 
         void ThreadManager_ThreadExceptionRaised(object sender, ThreadManagerExceptionEventArgs e)
         {
@@ -1952,7 +1366,7 @@ namespace Website.Library.Classes
             Shared.EventLog.Add(String.Format("Thread Abort Forced: {0}", e.Thread.ToString()));
         }
 
-#endregion Thread Manager Events
+        #endregion Thread Manager Events
 
         private void RegisterRoutes(RouteCollection routes)
         {
@@ -2031,7 +1445,7 @@ namespace Website.Library.Classes
                         }
                     }
                 }
-                
+
                 routes.MapPageRoute("groupPageRoute",
                     "All-Products/Group/{group}/Page/{page}/",
                     "~/Products.aspx");
@@ -2320,10 +1734,10 @@ namespace Website.Library.Classes
         }
 #endif
 
-            private static void ErrorHandling_InternalException(object sender, lib.BOLEvents.InternalErrorEventArgs e)
+        private static void ErrorHandling_InternalException(object sender, lib.BOLEvents.InternalErrorEventArgs e)
         {
             string msg = String.Format("Internal Exception in Website - {5}\r\n\r\nMethod: {0}\r\n\r\nMessage: {4}\r\n\r\nSource: {1}\r\n\r\nParameters:\r\n\r\n{2}\r\n\r\nCallstack:\r\n\r\n{3}",
-                e.Method, e.Source, e.Parameters, e.CallStack, e.Message, DistributorWebsite);
+                e.Method, e.Source, e.Parameters, e.CallStack, e.Message, WebsiteSettings.DistributorWebsite);
 
             try
             {
@@ -2333,12 +1747,13 @@ namespace Website.Library.Classes
                     msg))
                 {
                     //Failed to send error details to server
-                    SendEMail(SupportName, SupportEMail, String.Format("Website Error ({0})", DistributorWebsite),
+                    SendEMail(SupportName, SupportEMail, String.Format("Website Error ({0})", WebsiteSettings.DistributorWebsite),
                         msg, SupportName, SupportEMail);
                 }
 #else
-                SendEMail(SupportName, SupportEMail, String.Format("Website Error ({0})", DistributorWebsite),
-                    msg, SupportName, SupportEMail);
+                SendEMail(WebsiteSettings.Email.SupportName, WebsiteSettings.Email.SupportEMail, 
+                    String.Format("Website Error ({0})", WebsiteSettings.DistributorWebsite),
+                    msg, WebsiteSettings.Email.SupportName, WebsiteSettings.Email.SupportEMail);
 #endif
             }
             catch (Exception err)
@@ -2346,15 +1761,16 @@ namespace Website.Library.Classes
                 if (err.Message.Contains("Could not load file or assembly 'TCPMessageServer"))
                 {
                     //Failed to send error details to server
-                    SendEMail(SupportName, SupportEMail, String.Format("Website Error ({0})", DistributorWebsite),
-                        msg, SupportName, SupportEMail);
+                    SendEMail(WebsiteSettings.Email.SupportName, WebsiteSettings.Email.SupportEMail, 
+                        String.Format("Website Error ({0})", WebsiteSettings.DistributorWebsite),
+                        msg, WebsiteSettings.Email.SupportName, WebsiteSettings.Email.SupportEMail);
                 }
                 else
                     throw;
             }
         }
 
-#endregion Private Methods
+        #endregion Private Methods
     }
 
     /// <summary>
@@ -2373,11 +1789,11 @@ namespace Website.Library.Classes
 
         protected override bool Run(object parameters)
         {
-            if (!BaseWebApplication.StaticWebSite)
+            if (!WebsiteSettings.StaticWebSite)
             {
                 try
                 {
-                    if (BaseWebApplication.WebFarmMaster())
+                    if (WebsiteSettings.WebFarm.WebFarmMaster())
                     {
                         ThreadManager.ThreadStart(new UpdateAutoRulesThread(),
                             "Auto Rule Update", ThreadPriority.Lowest);
@@ -2386,7 +1802,7 @@ namespace Website.Library.Classes
                             "Update Custom Pages", ThreadPriority.Lowest);
                     }
 
-                    if (!BaseWebApplication.WebFarm && Website.Library.GlobalClass.AllowRoutineMaintenance)
+                    if (!WebsiteSettings.WebFarm.IsWebFarm && WebsiteSettings.Maintenance.AllowRoutineMaintenance)
                     {
                         // if the site is part of a web farm then routine maintenance must be handled via a task scheduler
                         ThreadManager.ThreadStart(new RoutineMaintenanceThread(),
@@ -2396,7 +1812,7 @@ namespace Website.Library.Classes
                             "Routine Maintenance Campaigns", ThreadPriority.Lowest);
                     }
 
-                    if (BaseWebApplication.WebFarmMaster())
+                    if (WebsiteSettings.WebFarm.WebFarmMaster())
                     {
 #if GeoIPUpdates
                         if (BaseWebApplication.AllowWebsiteGeoUpdate)
@@ -2404,7 +1820,7 @@ namespace Website.Library.Classes
                                 "GeoIP Update", ThreadPriority.Lowest);
 #endif
 
-                        if (BaseWebApplication.SendEmails)
+                        if (WebsiteSettings.Email.SendEmails)
                             ThreadManager.ThreadStart(new SendEmailThread(),
                                 "Email Send Thread", ThreadPriority.Lowest);
 
@@ -2428,7 +1844,7 @@ namespace Website.Library.Classes
     /// </summary>
     public sealed class GlobalGeoIPCityCache : Shared.Classes.ThreadManager
     {
-#region Private Static Members
+        #region Private Static Members
 
         private static bool _initialised = false;
 
@@ -2437,9 +1853,9 @@ namespace Website.Library.Classes
         private static int _count = 0;
 #endif
 
-#endregion Private Static Members
+        #endregion Private Static Members
 
-#region Constructors
+        #region Constructors
 
         internal GlobalGeoIPCityCache()
             : base(null, new TimeSpan(24, 0, 0), null, 0, 200, true, false)
@@ -2447,9 +1863,9 @@ namespace Website.Library.Classes
             ThreadManager.ThreadStart(this, "Load All GeoIP Data", System.Threading.ThreadPriority.Lowest);
         }
 
-#endregion Constructors
+        #endregion Constructors
 
-#region Overridden Methods
+        #region Overridden Methods
 
         protected override bool Run(object parameters)
         {
@@ -2466,9 +1882,9 @@ namespace Website.Library.Classes
 #endif
         }
 
-#endregion Overridden Methods
+        #endregion Overridden Methods
 
-#region Internal Methods
+        #region Internal Methods
 #if CACHE_IP_CITY_DATA
         internal static IPCity GetIPCity(string ipAddress, bool useMemory = true)
         {
@@ -2495,15 +1911,15 @@ namespace Website.Library.Classes
 
 #endif
 
-#endregion Internal Methods
+        #endregion Internal Methods
 
-#region Properties
+        #region Properties
 
         internal bool Initialised { get { return (_initialised); } }
 
-#endregion Properties
+        #endregion Properties
 
-#region Private Methods
+        #region Private Methods
 
 #if CACHE_IP_CITY_DATA
         private static IPCity GetMemoryCity(string ipAddress)
@@ -2539,7 +1955,7 @@ namespace Website.Library.Classes
         }
 #endif
 
-#endregion Private Methods
+        #endregion Private Methods
     }
 
     internal class UpdateSiteMapThread : Shared.Classes.ThreadManager
@@ -2553,7 +1969,7 @@ namespace Website.Library.Classes
         protected override bool Run(object parameters)
         {
             // rebuild site map
-            string siteMapData = GlobalClass.RootPath + "admin\\sitemap.dat";
+            string siteMapData = WebsiteSettings.RootPath + "admin\\sitemap.dat";
 
             if (System.IO.File.Exists(siteMapData))
             {
@@ -2583,7 +1999,7 @@ namespace Website.Library.Classes
                         prior = 0.5d;
 
                     string priority = prior.ToString();
-                    url = HTMLEncode(GlobalClass.RootURL + defaultRow[0]);
+                    url = HTMLEncode(WebsiteSettings.RootURL + defaultRow[0]);
 
                     string newXMLEntry = String.Format("  <url>\r\n    <loc>{0}</loc>\r\n    <changefreq>{1}</changefreq>\r\n" +
                         "    <priority>{2}</priority>\r\n  </url>\r\n", url, defaultRow[2], priority);
@@ -2607,10 +2023,12 @@ namespace Website.Library.Classes
                             {
                                 case "Stratosphere":
                                 case "MensHeaven":
-                                    url = String.Format("{0}/Products/Stratosphere.aspx?ID={1}", GlobalClass.RootURL, prod.ID);
+                                    url = String.Format("{0}/Products/Stratosphere.aspx?ID={1}",
+                                        WebsiteSettings.RootURL, prod.ID);
                                     break;
                                 default:
-                                    url = String.Format("{0}/Products/Product.aspx?ID={1}", GlobalClass.RootURL, prod.ID);
+                                    url = String.Format("{0}/Products/Product.aspx?ID={1}",
+                                        WebsiteSettings.RootURL, prod.ID);
                                     break;
                             }
 
@@ -2629,7 +2047,7 @@ namespace Website.Library.Classes
 
                 foreach (lib.BOL.Celebrities.Celebrity celeb in celebs)
                 {
-                    url = String.Format("{0}/Celebrities/ViewCeleb.aspx?ID={1}", GlobalClass.RootURL, celeb.ID);
+                    url = String.Format("{0}/Celebrities/ViewCeleb.aspx?ID={1}", WebsiteSettings.RootURL, celeb.ID);
                     string newXMLEntry = String.Format("  <url>\r\n    <loc>{0}</loc>\r\n    <changefreq>weekly</changefreq>\r\n" +
                         "    <priority>0.6</priority>\r\n  </url>\r\n", HTMLEncode(url));
 
@@ -2643,16 +2061,17 @@ namespace Website.Library.Classes
 
                 newSiteMapXML += "</urlset>\r\n";
 
-                Shared.Utilities.FileWrite(GlobalClass.RootPath + "sitemap_location.xml", newSiteMapXML);
+                Utilities.FileWrite(WebsiteSettings.RootPath + "sitemap_location.xml", newSiteMapXML);
 
                 // update robots.txt
-                siteMapData = GlobalClass.RootPath + "robots.txt";
-                string robots = Shared.Utilities.FileRead(siteMapData, true);
+                siteMapData = WebsiteSettings.RootPath + "robots.txt";
+                string robots = Utilities.FileRead(siteMapData, true);
 
                 // remove first line, upto first \r\n
                 robots = robots.Substring(robots.IndexOf('\r'));
-                robots = String.Format("Sitemap: {0}/sitemap_location.xml{1}", GlobalClass.RootURL, robots);
-                Shared.Utilities.FileWrite(siteMapData, robots);
+                robots = String.Format("Sitemap: {0}/sitemap_location.xml{1}",
+                    WebsiteSettings.RootURL, robots);
+                Utilities.FileWrite(siteMapData, robots);
             }
 
             return (false);
@@ -2687,9 +2106,9 @@ namespace Website.Library.Classes
         {
             HangTimeout = 0;
             RunAtStartup = false;
-            _emailSettings = EmailSettingsSingletonClass.GetInstance(BaseWebApplication.SMTPHost,
-                BaseWebApplication.SMTPPort, BaseWebApplication.SMTPUserName,
-                BaseWebApplication.SMTPPassword, BaseWebApplication.SMTPUseSSL);
+            _emailSettings = EmailSettingsSingletonClass.GetInstance(WebsiteSettings.Email.SMTPHost,
+                WebsiteSettings.Email.SMTPPort, WebsiteSettings.Email.SMTPUserName,
+                WebsiteSettings.Email.SMTPPassword, WebsiteSettings.Email.SMTPUseSSL);
         }
 
         protected override bool Run(object parameters)
@@ -2956,7 +2375,7 @@ namespace Website.Library.Classes
         }
     }
 
-#region Class WebsiteError
+    #region Class WebsiteError
 
     public class WebsiteError : System.Exception
     {
@@ -2964,6 +2383,6 @@ namespace Website.Library.Classes
     }
 
 
-#endregion Class WebsiteError
+    #endregion Class WebsiteError
 
 }

@@ -2,6 +2,8 @@
 using System.Drawing.Imaging;
 using Website.Library.Classes;
 
+using Library.BOL.Websites;
+
 namespace SieraDelta.Website.Controls
 {
     public partial class ImageResize : BaseWebForm
@@ -14,7 +16,7 @@ namespace SieraDelta.Website.Controls
 
             if (newWidth > 0 && newHeight > 0)
             {
-                string localPath = Global.Path + new Uri(imageFile).LocalPath.Replace("/", "\\");
+                string localPath = WebsiteSettings.RootPath + new Uri(imageFile).LocalPath.Replace("/", "\\");
 
                 if (!System.IO.File.Exists(localPath))
                     return;

@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
+using Library.BOL.Websites;
 
 using Website.Library.Classes;
+
+#pragma warning disable IDE1005
+#pragma warning disable IDE1006
 
 namespace SieraDelta.Website.Controls
 {
@@ -19,7 +18,7 @@ namespace SieraDelta.Website.Controls
 
         void AjaxFileUpload1_UploadComplete(object sender, AjaxControlToolkit.AjaxFileUploadEventArgs e)
         {
-            string path = String.Format("{1}Download\\Files\\Temp\\{0}", e.FileName, Global.Path);
+            string path = String.Format("{1}Download\\Files\\Temp\\{0}", e.FileName, WebsiteSettings.RootPath);
             
             if (!System.IO.Directory.Exists(System.IO.Path.GetDirectoryName(path)))
                 System.IO.Directory.CreateDirectory(System.IO.Path.GetDirectoryName(path));

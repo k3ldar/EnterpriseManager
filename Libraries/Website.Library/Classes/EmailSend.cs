@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net.Mail;
-using System.Text;
 
 using Library.BOL.Mail;
+using Library.BOL.Websites;
+
+#pragma warning disable IDE0017
 
 namespace Website.Library.Classes
 {
@@ -29,9 +30,9 @@ namespace Website.Library.Classes
 
         public EmailSend()
         {
-            _emailSettings = EmailSettingsSingletonClass.GetInstance(BaseWebApplication.SMTPHost,
-                BaseWebApplication.SMTPPort, BaseWebApplication.SMTPUserName,
-                BaseWebApplication.SMTPPassword, BaseWebApplication.SMTPUseSSL);
+            _emailSettings = EmailSettingsSingletonClass.GetInstance(WebsiteSettings.Email.SMTPHost,
+                WebsiteSettings.Email.SMTPPort, WebsiteSettings.Email.SMTPUserName,
+                WebsiteSettings.Email.SMTPPassword, WebsiteSettings.Email.SMTPUseSSL);
         }
 
         #endregion Constructors
@@ -56,7 +57,7 @@ namespace Website.Library.Classes
 
                 msg.From = new MailAddress(_emailSettings.SMTPUsername, _emailSettings.SMTPUsername);
 
-                msg.To.Add(BaseWebApplication.SupportEMail);
+                msg.To.Add(WebsiteSettings.Email.SupportEMail);
 
                 System.Net.Mail.SmtpClient Smtp = new SmtpClient();
                 try

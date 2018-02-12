@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 using Website.Library.Classes;
 
@@ -19,8 +14,8 @@ namespace SieraDelta.Website.Members.Products
             string currentVersion = GetFormValue("VERSION");
             string Result = String.Empty;
 
-            string rootPosPath = Global.Path + "Download\\Files\\POS\\";
-            string rootPosURL = Global.RootURL + "/Download/Files/Pos/";
+            string rootPosPath = Library.BOL.Websites.WebsiteSettings.RootPath + "Download\\Files\\POS\\";
+            string rootPosURL = Library.BOL.Websites.WebsiteSettings.RootURL + "/Download/Files/Pos/";
 
             foreach (string param in Request.Form.AllKeys)
             {

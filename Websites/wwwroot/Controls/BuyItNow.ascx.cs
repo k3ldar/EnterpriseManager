@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 using Website.Library.Classes;
-using Library.BOL.Basket;
 using Library.BOL.Products;
+using Library.BOL.Websites;
 using Library.Utils;
+
+#pragma warning disable IDE1006
 
 namespace SieraDelta.Website.Controls
 {
@@ -90,7 +88,7 @@ namespace SieraDelta.Website.Controls
 
                     decimal cost = _productCost.PriceGet(WebCountry);
 
-                    if (BaseWebApplication.PricesIncludeVAT)
+                    if (WebsiteSettings.Tax.PricesIncludeVAT)
                     {
                         cost += SharedUtils.VATCalculate(cost, GetBasket().VATRate);
                     }

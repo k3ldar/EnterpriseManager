@@ -22,6 +22,7 @@ using Library.BOL.Orders;
 using Library.BOL.Search;
 using Library.BOL.CustomWebPages;
 using Library.BOL.Helpdesk;
+using Library.BOL.Websites;
 
 namespace Website.Library.Classes
 {
@@ -134,7 +135,7 @@ namespace Website.Library.Classes
 
             base.OnLoad(e);
 
-            if (Website.Library.Classes.BaseWebApplication.StaticWebSite)
+            if (WebsiteSettings.StaticWebSite)
             {
                 return;
             }
@@ -168,7 +169,7 @@ namespace Website.Library.Classes
         {
             get
             {
-                string Result = NVPAPICaller.DefaultCurrency;
+                string Result = WebsiteSettings.PaymentGateways.Paypal.DefaultCurrency;
 
                 //if (CountryCode == "US" || CountryCode == "ZZ")
                 //    Result = "USD";
@@ -246,7 +247,7 @@ namespace Website.Library.Classes
 
         protected string GetMailChimpPopupIntegration()
         {
-            return (BaseWebApplication.MailChimpPopupDialog);
+            return (WebsiteSettings.Marketing.MailChimp.MailChimpPopupDialog);
         }
 
         /// <summary>
@@ -275,7 +276,7 @@ namespace Website.Library.Classes
         /// <returns>string - email address</returns>
         protected string WebsiteEmailAddress()
         {
-            return (BaseWebApplication.WebsiteEmail);
+            return (WebsiteSettings.ContactDetails.WebsiteEmail);
         }
 
         /// <summary>
@@ -380,7 +381,7 @@ namespace Website.Library.Classes
 
         protected string GetWebsiteTelephoneNumber()
         {
-            return (BaseWebApplication.WebsiteTelephoneNumber);
+            return (WebsiteSettings.ContactDetails.WebsiteTelephoneNumber);
         }
 
         protected string GetExtraBasketInformation()
@@ -391,7 +392,7 @@ namespace Website.Library.Classes
 
         protected string GetWebsiteDateFormat()
         {
-            return (GlobalClass.WebsiteDateFormat);
+            return (WebsiteSettings.WebsiteDateFormat);
         }
 
         protected string GetWebsiteAddress()
@@ -401,7 +402,7 @@ namespace Website.Library.Classes
 
         public string GetBlogURL()
         {
-            return (BaseWebApplication.BlogURL);
+            return (WebsiteSettings.SocialMedia.Blog.Url);
         }
 
         protected string DoSearch(string searchTerms, bool useAnd)
@@ -540,8 +541,8 @@ namespace Website.Library.Classes
 
             // rebuild the carousel for the country
 
-            if (BaseWebApplication.CustomScrollerStrapLine)
-                _carouselText = BaseWebApplication.CustomScrollerText;
+            if (WebsiteSettings.Carousel.CustomScrollerStrapLine)
+                _carouselText = WebsiteSettings.Carousel.CustomScrollerText;
 
             int priceColumn = ((LocalWebSessionData)GetUserSession().Tag).PriceColumn;
 
@@ -571,7 +572,7 @@ namespace Website.Library.Classes
                 {
                     decimal lowestPrice = product.LowestPrice(SharedWebBase.WebsiteCurrency(Session, Request), priceColumn, WebCountry);
 
-                    if (BaseWebApplication.PricesIncludeVAT)
+                    if (WebsiteSettings.Tax.PricesIncludeVAT)
                     {
                         lowestPrice += SharedUtils.VATCalculate(lowestPrice, WebVATRate);
                     }
@@ -613,7 +614,7 @@ namespace Website.Library.Classes
                         if (priceFrom == 1000000.0m)
                             continue;
 
-                        if (BaseWebApplication.PricesIncludeVAT)
+                        if (WebsiteSettings.Tax.PricesIncludeVAT)
                         {
                             priceFrom += SharedUtils.VATCalculate(priceFrom, WebVATRate);
                         }
@@ -679,7 +680,7 @@ namespace Website.Library.Classes
                         if (priceFrom == 1000000.0m)
                             continue;
 
-                        if (BaseWebApplication.PricesIncludeVAT)
+                        if (WebsiteSettings.Tax.PricesIncludeVAT)
                         {
                             priceFrom += SharedUtils.VATCalculate(priceFrom, WebVATRate);
                         }
@@ -740,7 +741,7 @@ namespace Website.Library.Classes
                     {
                         decimal priceFrom = product.LowestPrice(SharedWebBase.WebsiteCurrency(Session, Request), priceColumn, WebCountry);
 
-                        if (BaseWebApplication.PricesIncludeVAT)
+                        if (WebsiteSettings.Tax.PricesIncludeVAT)
                         {
                             priceFrom += SharedUtils.VATCalculate(priceFrom, WebVATRate);
                         }
@@ -796,7 +797,7 @@ namespace Website.Library.Classes
                             continue;
                         }
 
-                        if (BaseWebApplication.PricesIncludeVAT)
+                        if (WebsiteSettings.Tax.PricesIncludeVAT)
                         {
                             priceFrom += SharedUtils.VATCalculate(priceFrom, WebVATRate);
                         }
@@ -1034,14 +1035,15 @@ namespace Website.Library.Classes
             string MoreInfo = "";
 
             if (treatment.URL != "")
-                MoreInfo = String.Format("<strong><a href=\"{0}\" >{1}</a></strong><br />", treatment.URL, Languages.LanguageStrings.ClickForInfo);
+                MoreInfo = String.Format("<strong><a href=\"{0}\" >{1}</a></strong><br />", treatment.URL, LanguageStrings.ClickForInfo);
 
 
             Result += String.Format("<ul class=\"treatmentList\"><li><h3>{0}</h3>", treatment.Name);
 
             Result += String.Format("<div class=\"treatmentImg\"><img src=\"/images/Treatments/{0}\" alt=\"{1}\" width=\"130\" /></div>", treatment.Image == "" ? "blank.png" : treatment.Image, treatment.Name);
 
-            Result += String.Format("<div class=\"treatmentDetails\">{1}{2}<br />{0}<br /><br />{3}</div>", SharedUtils.PreProcessPost(GlobalClass.RootURL, treatment.Description), TreatmentPrice, TreatmentLength, MoreInfo);
+            Result += String.Format("<div class=\"treatmentDetails\">{1}{2}<br />{0}<br /><br />{3}</div>", 
+                SharedUtils.PreProcessPost(WebsiteSettings.RootURL, treatment.Description), TreatmentPrice, TreatmentLength, MoreInfo);
 
             Result += "<div class=\"clear\"></div></li></ul>";
 
@@ -1116,9 +1118,9 @@ namespace Website.Library.Classes
             string Result = "";
 
             // static home page images
-            Result += GetNivoBannerLink(BaseWebApplication.HomeBanner1Link, BaseWebApplication.HomeBanner1, auto, width, height);
+            Result += GetNivoBannerLink(WebsiteSettings.HomePage.HomeBanner1Link, WebsiteSettings.HomePage.HomeBanner1, auto, width, height);
 
-            Result += GetNivoBannerLink(BaseWebApplication.HomeBanner2Link, BaseWebApplication.HomeBanner2, auto, width, height);
+            Result += GetNivoBannerLink(WebsiteSettings.HomePage.HomeBanner2Link, WebsiteSettings.HomePage.HomeBanner2, auto, width, height);
 
             Campaigns currentCampaigns = Campaign.GetActive(Countries.Get(GetUserCountry()));
 
@@ -1145,11 +1147,11 @@ namespace Website.Library.Classes
             }
 
             // static home page images
-            Result += GetNivoBannerLink(BaseWebApplication.HomeBanner3Link, BaseWebApplication.HomeBanner3, auto, width, height);
+            Result += GetNivoBannerLink(WebsiteSettings.HomePage.HomeBanner3Link, WebsiteSettings.HomePage.HomeBanner3, auto, width, height);
 
-            Result += GetNivoBannerLink(BaseWebApplication.HomeBanner4Link, BaseWebApplication.HomeBanner4, auto, width, height);
+            Result += GetNivoBannerLink(WebsiteSettings.HomePage.HomeBanner4Link, WebsiteSettings.HomePage.HomeBanner4, auto, width, height);
 
-            Result += GetNivoBannerLink(BaseWebApplication.HomeBanner5Link, BaseWebApplication.HomeBanner5, auto, width, height);
+            Result += GetNivoBannerLink(WebsiteSettings.HomePage.HomeBanner5Link, WebsiteSettings.HomePage.HomeBanner5, auto, width, height);
 
             if (!Request.IsLocal && Request.IsSecureConnection)
                 Result = Result.ToLower().Replace("http://", "https://");
@@ -1548,7 +1550,7 @@ namespace Website.Library.Classes
                     {
                         decimal priceFrom = product.LowestPrice(SharedWebBase.WebsiteCurrency(Session, Request), priceColumn, WebCountry);
 
-                        if (BaseWebApplication.PricesIncludeVAT)
+                        if (WebsiteSettings.Tax.PricesIncludeVAT)
                         {
                             priceFrom += SharedUtils.VATCalculate(priceFrom, WebVATRate);
                         }
@@ -1748,7 +1750,7 @@ namespace Website.Library.Classes
                 if (err.Message.Contains("Cannot use a leading .. to exit above the top directory"))
                 {
                     WebsiteAdministration.AutoBanIPAddress(Request.Path, Request.UserHostAddress, true);
-                    DoRedirect(String.Format("{0}/Error/IPIsBanned.aspx", GlobalClass.RootURL), true);
+                    DoRedirect(String.Format("{0}/Error/IPIsBanned.aspx", WebsiteSettings.RootURL), true);
                 }
             }
         }
@@ -1839,7 +1841,7 @@ namespace Website.Library.Classes
 
         protected string GlobalRootURL()
         {
-            return (GlobalClass.RootURL);
+            return (WebsiteSettings.RootURL);
         }
 
 
@@ -1964,7 +1966,7 @@ namespace Website.Library.Classes
         {
             string Result = String.Empty;
 
-            if (GlobalClass.ShowTermsAndConditions)
+            if (WebsiteSettings.AllPages.ShowTermsAndConditions)
                 Result = String.Format(" - <a href=\"/Terms.aspx\">{0}</a>", Languages.LanguageStrings.Terms);
 
             return (Result);
@@ -1974,7 +1976,7 @@ namespace Website.Library.Classes
         {
             string Result = String.Empty;
 
-            if (GlobalClass.ShowPrivacyPolicy)
+            if (WebsiteSettings.AllPages.ShowPrivacyPolicy)
                 Result = String.Format(" - <a href=\"/Privacy.aspx\">{0}</a>", Languages.LanguageStrings.Privacy);
 
             return (Result);
@@ -1984,7 +1986,7 @@ namespace Website.Library.Classes
         {
             string Result = String.Empty;
 
-            if (GlobalClass.ShowReturnsPolicy)
+            if (WebsiteSettings.AllPages.ShowReturnsPolicy)
                 Result = String.Format(" - <a href=\"/Returns.aspx\">{0}</a>", Languages.LanguageStrings.Returns);
 
             return (Result);

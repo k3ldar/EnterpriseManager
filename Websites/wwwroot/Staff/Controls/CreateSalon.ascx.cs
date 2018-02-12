@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
-using Website.Library.Classes;
 using Library;
 using Library.BOL.Users;
 using Library.BOL.Trade;
 using Library.BOL.Distributors;
 using Library.BOL.Salons;
+
+#pragma warning disable IDE1005
+#pragma warning disable IDE1006
 
 namespace SieraDelta.Website.Controls
 {
@@ -123,7 +120,7 @@ namespace SieraDelta.Website.Controls
 
 
         //        string NewFile = Global.Path + fn;
-        //        Result = Global.RootURL + "/" + fn.Replace(@"\", "/");
+        //        Result = Library.BOL.Websites.WebsiteSettings.RootURL + "/" + fn.Replace(@"\", "/");
         //        _url = Result;
         //        Session["SalonUpdateImage"] = _url;
         //        idFilePicture.PostedFile.SaveAs(NewFile);

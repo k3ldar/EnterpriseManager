@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.HtmlControls;
 
 using Website.Library.Classes;
 using Library.Utils;
-using Library;
 using Library.BOL.Campaigns;
+
+#pragma warning disable IDE1006
 
 namespace SieraDelta.Website.Staff.Campaigns
 {
@@ -69,7 +64,8 @@ namespace SieraDelta.Website.Staff.Campaigns
                 Library.BOL.Campaigns.Campaign campaign = Library.BOL.Campaigns.Campaigns.Create("New Campaign");
 
                 //edit the cmpaign
-                DoRedirect(String.Format("{1}/Staff/Campaigns/EditCampaign.aspx?id={0}", campaign.ID, Global.RootURL));
+                DoRedirect(String.Format("{1}/Staff/Campaigns/EditCampaign.aspx?id={0}", campaign.ID,
+                    Library.BOL.Websites.WebsiteSettings.RootURL));
             }
             catch (Exception err)
             {

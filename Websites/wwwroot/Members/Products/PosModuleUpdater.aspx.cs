@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 using Website.Library.Classes;
 
@@ -20,8 +17,8 @@ namespace SieraDelta.Website.Members.Products
 
             string Result = String.Empty;
 
-            string rootPluginModulePath = Global.RootPath + "Download\\Files\\POS\\Modules\\";
-            string rootPluginURL = Global.RootURL + "/Download/Files/Pos/Modules/";
+            string rootPluginModulePath = Library.BOL.Websites.WebsiteSettings.RootPath + "Download\\Files\\POS\\Modules\\";
+            string rootPluginURL = Library.BOL.Websites.WebsiteSettings.RootURL + "/Download/Files/Pos/Modules/";
 
             //rootPluginModulePath = @"T:\SieraDelta\Website\wwwroot\Download\Files\POS\Modules\";
             //rootPluginURL = "http://localhost:60001/Download/Files/Pos/Modules/";

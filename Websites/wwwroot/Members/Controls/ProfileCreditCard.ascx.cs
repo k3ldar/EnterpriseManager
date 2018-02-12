@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Web.UI.WebControls;
 
+using Library.BOL.Websites;
+
 using Website.Library.Classes;
 
 using Shared;
+
+#pragma warning disable IDE1006
 
 namespace SieraDelta.Website.Members.Controls
 {
@@ -32,8 +36,8 @@ namespace SieraDelta.Website.Members.Controls
         {
             dMain.Attributes.Clear();
             btnSubmit.Visible = false;
-            cbStoreDetails.Visible = Global.AllowCreditCards;
-            lblStoreDetails.Visible = Global.AllowCreditCards;
+            cbStoreDetails.Visible = WebsiteSettings.CreditCards.AllowCreditCards;
+            lblStoreDetails.Visible = WebsiteSettings.CreditCards.AllowCreditCards;
             lblError.Attributes.Add("style", "max-width: 290px; word-wrap:normal; width: 280px;color: red;text-align: left;");
         }
 

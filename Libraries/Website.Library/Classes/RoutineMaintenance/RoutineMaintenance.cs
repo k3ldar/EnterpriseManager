@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Web;
 using System.Net;
 using System.Xml;
 
 using System.IO;
 
 using lib = Library;
-using Languages;
+using Library.BOL.Websites;
 using Website.Library;
-using Website.Library.Classes;
 
 namespace Classes.RoutineMaintenance
 {
@@ -24,7 +22,7 @@ namespace Classes.RoutineMaintenance
         {
             try
             {
-                if (Website.Library.GlobalClass.AllowRoutineMaintenance)
+                if (WebsiteSettings.Maintenance.AllowRoutineMaintenance)
                 {
                     //Library.WebsiteAdministration.RoutineMaintenance(RoutineMaintenanceType.ArchiveLogs);
                 }
@@ -43,7 +41,7 @@ namespace Classes.RoutineMaintenance
         {
             try
             {
-                if (Website.Library.GlobalClass.AllowRoutineMaintenance)
+                if (WebsiteSettings.Maintenance.AllowRoutineMaintenance)
                 {
                     Library.WebsiteAdministration.RoutineMaintenance(lib.RoutineMaintenanceType.Campaign);
                 }
@@ -62,10 +60,10 @@ namespace Classes.RoutineMaintenance
         {
             try
             {
-                if (GlobalClass.CreateXMLImageFiles)
+                if (WebsiteSettings.Maintenance.CreateXMLImageFiles)
                     CreateXMLImageFiles();
 
-                if (GlobalClass.AllowRoutineMaintenance)
+                if (WebsiteSettings.Maintenance.AllowRoutineMaintenance)
                 {
                     UpdateDistributorDetails();
                     lib.WebsiteAdministration.RoutineMaintenance(lib.RoutineMaintenanceType.General);
@@ -195,9 +193,13 @@ namespace Classes.RoutineMaintenance
         {
             try
             {
-                Library.LibraryHelperClass.SettingsSetMeta("SITE.URL", GlobalClass.RootURL);
-                Library.LibraryHelperClass.SettingsSetMeta("SITE.ADDRESS", String.Format("{0}\r\n{1}\r\n{2}", BaseWebApplication.AddressLine1, BaseWebApplication.AddressLine2, BaseWebApplication.AddressLine3));
-                Library.LibraryHelperClass.SettingsSetMeta("SITE.TELEPHONE", BaseWebApplication.WebsiteTelephoneNumber);
+                Library.LibraryHelperClass.SettingsSetMeta("SITE.URL", WebsiteSettings.RootURL);
+                Library.LibraryHelperClass.SettingsSetMeta("SITE.ADDRESS", 
+                    String.Format("{0}\r\n{1}\r\n{2}", WebsiteSettings.ContactDetails.AddressLine1,
+                    WebsiteSettings.ContactDetails.AddressLine2, 
+                    WebsiteSettings.ContactDetails.AddressLine3));
+                Library.LibraryHelperClass.SettingsSetMeta("SITE.TELEPHONE", 
+                    WebsiteSettings.ContactDetails.WebsiteTelephoneNumber);
             }
             catch (Exception err)
             {
@@ -219,7 +221,7 @@ namespace Classes.RoutineMaintenance
 
         private void ClearTempImages()
         {
-            string ImageDirectory = GlobalClass.RootPath + @"Admin\Reports\WebChartGraphs\";
+            string ImageDirectory = WebsiteSettings.RootPath + @"Admin\Reports\WebChartGraphs\";
 
             if (Directory.Exists(ImageDirectory))
             {

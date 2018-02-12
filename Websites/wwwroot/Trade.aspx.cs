@@ -1,7 +1,7 @@
 ﻿using System;
 
-using Website.Library;
 using Website.Library.Classes;
+using Library.BOL.Websites;
 
 namespace SieraDelta.Website
 {
@@ -9,7 +9,7 @@ namespace SieraDelta.Website
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!GlobalClass.ShowTradePage)
+            if (!WebsiteSettings.AllPages.ShowTradePage)
                 DoRedirect("/Home/");
 
             UpdateCustomTranslatedPageData("Trade Advantage", divTranslated, true);

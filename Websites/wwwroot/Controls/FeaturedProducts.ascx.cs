@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
-using Library;
 using lib = Library;
 using Website.Library;
 using Website.Library.Classes;
 using Library.Utils;
 using Library.BOL.Products;
+using Library.BOL.Websites;
 using Shared.Classes;
 
 namespace SieraDelta.Website.Controls
@@ -88,7 +84,7 @@ namespace SieraDelta.Website.Controls
                 {
                     decimal cost = product.LowestPrice(SharedWebBase.WebsiteCurrency(Session, Request), priceColumn, WebCountry);
 
-                    if (BaseWebApplication.PricesIncludeVAT)
+                    if (WebsiteSettings.Tax.PricesIncludeVAT)
                     {
                         cost += SharedUtils.VATCalculate(cost, WebVATRate);
                     }

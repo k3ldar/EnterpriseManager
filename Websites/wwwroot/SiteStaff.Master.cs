@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Web.UI;
 
 using Website.Library.Classes;
 using Library.BOL.Users;
-
-using webLib = Website.Library;
+using Library.BOL.Websites;
 
 namespace SieraDelta.Website
 {
@@ -14,7 +12,7 @@ namespace SieraDelta.Website
         {
             base.OnInit(e);
 
-            if (Global.UseHTTPS && !Request.IsLocal && Request.Url.ToString().ToLower().StartsWith("http://"))
+            if (WebsiteSettings.UseHTTPS && !Request.IsLocal && Request.Url.ToString().ToLower().StartsWith("http://"))
             {
                 Response.Redirect(Request.Url.ToString().Replace("http://", "https://"));
             }
@@ -27,7 +25,7 @@ namespace SieraDelta.Website
 
         protected string BaseURL()
         {
-            return (webLib.GlobalClass.RootURL);
+            return (WebsiteSettings.RootURL);
         }
 
         protected string GetMenuItems()

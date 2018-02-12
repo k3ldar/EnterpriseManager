@@ -5,6 +5,7 @@ using System.Threading;
 using Shared;
 using Shared.Classes;
 
+using Library.BOL.Websites;
 using Library.BOL.Basket;
 using Library.BOL.Countries;
 
@@ -19,11 +20,6 @@ namespace Website.Library.Classes
         #endregion Private Members
 
         #region Properties
-
-        /// <summary>
-        /// Indicates wether the Localized Languages is active or not
-        /// </summary>
-        public static bool Active { get; set; }
 
         #endregion Properties
 
@@ -50,7 +46,7 @@ namespace Website.Library.Classes
         {
             string Result = String.Empty;
 
-            if (!Active)
+            if (!WebsiteSettings.Languages.Active)
                 return (Result);
 
             if (_countries.Count == 0)
@@ -107,7 +103,7 @@ namespace Website.Library.Classes
                     Session[StringConstants.SESSION_NAME_WEBSITE_COUNTRY] != null;
 
                 extra = 7;
-                if ((!Active && languageSet) || BaseWebApplication.StaticWebSite)
+                if ((!WebsiteSettings.Languages.Active && languageSet) || WebsiteSettings.StaticWebSite)
                     return;
 
                 extra = 8;
@@ -129,10 +125,11 @@ namespace Website.Library.Classes
                 if (changedSettings)
                 {
                     extra = 10;
-                    if (BaseWebApplication.WebsiteCultureOverride)
+
+                    if (WebsiteSettings.WebsiteCultureOverride)
                     {
                         extra = 11;
-                        localData.Culture = BaseWebApplication.WebsiteCulture.Name;
+                        localData.Culture = WebsiteSettings.Languages.WebsiteCulture.Name;
                     }
                     else
                     {
@@ -173,7 +170,7 @@ namespace Website.Library.Classes
                     extra = 18;
                     localData.Basket.Country = country;
                     extra = 19;
-                    localData.Basket.FreeShipping = BaseWebApplication.FreeShippingAllow;
+                    localData.Basket.FreeShipping = WebsiteSettings.ShoppingCart.FreeShippingAllow;
                     extra = 20;
                     localData.Basket.Reset(localData.PriceColumn);
 
@@ -211,13 +208,13 @@ namespace Website.Library.Classes
             Country selectedCountry = (Country)Session[StringConstants.SESSION_NAME_WEBSITE_COUNTRY];
 
             if (selectedCountry == null)
-                selectedCountry = Countries.Get(BaseWebApplication.DefaultCountrySettings);
+                selectedCountry = Countries.Get(WebsiteSettings.Languages.DefaultCountrySettings);
 
             SetLanguage(Session, Request, Response, selectedCountry, null, true);
 
-            if (BaseWebApplication.WebsiteCultureOverride)
+            if (WebsiteSettings.WebsiteCultureOverride)
             {
-                Thread.CurrentThread.CurrentUICulture = BaseWebApplication.WebsiteCulture;
+                Thread.CurrentThread.CurrentUICulture = WebsiteSettings.Languages.WebsiteCulture;
 
             }
             else if (selectedCountry.LocalizedCulture.ToLower() != Thread.CurrentThread.CurrentUICulture.Name.ToLower())

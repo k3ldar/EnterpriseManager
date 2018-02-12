@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Web;
 using System.Web.SessionState;
 
 using lib = Library;
 using Library.BOL.Accounts;
 using Library.BOL.Orders;
+using Library.BOL.Websites;
 
 using Shared.Classes;
 
@@ -37,7 +36,7 @@ namespace Website.Library.Classes.PaymentOptions
         {
             try
             {
-                webResponse.Redirect(GlobalClass.RootURL + "/Shopping/Basket/Order-Complete/Payment-Type/dbt/", false);
+                webResponse.Redirect(WebsiteSettings.RootURL + "/Shopping/Basket/Order-Complete/Payment-Type/dbt/", false);
             }
             catch (Exception err)
             {
@@ -51,7 +50,7 @@ namespace Website.Library.Classes.PaymentOptions
 
         public override string Currencies()
         {
-            return (BaseWebApplication.DirectTransferCurrency);
+            return (WebsiteSettings.PaymentGateways.DirectTransfer.Currency);
         }
     }
 }

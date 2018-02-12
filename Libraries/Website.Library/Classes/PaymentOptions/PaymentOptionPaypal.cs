@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
 using System.Web;
 using System.Web.SessionState;
-
-using PayPal.Payments;
 
 using lib = Library;
 using Library.Utils;
@@ -13,6 +9,7 @@ using Library.BOL.Accounts;
 using Library.BOL.Basket;
 using Library.BOL.Countries;
 using Library.BOL.Orders;
+using Library.BOL.Websites;
 
 using Shared.Classes;
 
@@ -145,7 +142,7 @@ namespace Website.Library.Classes.PaymentOptions
 
         public override string Currencies()
         {
-            return (NVPAPICaller.DefaultCurrency);
+            return (WebsiteSettings.PaymentGateways.Paypal.DefaultCurrency);
         }
     }
 }

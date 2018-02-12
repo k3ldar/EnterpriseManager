@@ -1,17 +1,15 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Globalization;
 
 using Website.Library.Classes;
 
 using Library;
-using Library.Utils;
 using Library.BOL.Products;
 using Library.BOL.Campaigns;
+
+#pragma warning disable IDE1006
 
 namespace SieraDelta.Website.Staff.Campaigns
 {
@@ -158,12 +156,12 @@ namespace SieraDelta.Website.Staff.Campaigns
             {
                 string FileName = String.Format("home{0}{1}", _campaign.ID, Path.GetExtension(FileUploadHomeImage.FileName));
 
-                if (File.Exists(String.Format("{1}Images\\Campaigns\\{0}", FileName, Global.Path)))
-                    File.Delete(String.Format("{1}Images\\Campaigns\\{0}", FileName, Global.Path));
+                if (File.Exists(String.Format("{1}Images\\Campaigns\\{0}", FileName, Library.BOL.Websites.WebsiteSettings.RootPath)))
+                    File.Delete(String.Format("{1}Images\\Campaigns\\{0}", FileName, Library.BOL.Websites.WebsiteSettings.RootPath));
 
-                FileUploadHomeImage.SaveAs(String.Format("{1}Images\\Campaigns\\{0}", FileName, Global.Path));
+                FileUploadHomeImage.SaveAs(String.Format("{1}Images\\Campaigns\\{0}", FileName, Library.BOL.Websites.WebsiteSettings.RootPath));
 
-                string FileURL = Global.RootURL + "/Images/Campaigns/" + FileName;
+                string FileURL = Library.BOL.Websites.WebsiteSettings.RootURL + "/Images/Campaigns/" + FileName;
                 txtImageHomePage.Text = FileURL;
                 _campaign.ImageMainPage = FileURL;
                 imageHomePage.ImageUrl = _campaign.ImageMainPage;
@@ -177,12 +175,12 @@ namespace SieraDelta.Website.Staff.Campaigns
             {
                 string FileName = String.Format("menu{0}{1}", _campaign.ID, Path.GetExtension(FileUploadLeftMenu.FileName));
 
-                if (File.Exists(String.Format("{1}Images\\Campaigns\\{0}", FileName, Global.Path)))
-                    File.Delete(String.Format("{1}Images\\Campaigns\\{0}", FileName, Global.Path));
+                if (File.Exists(String.Format("{1}Images\\Campaigns\\{0}", FileName, Library.BOL.Websites.WebsiteSettings.RootPath)))
+                    File.Delete(String.Format("{1}Images\\Campaigns\\{0}", FileName, Library.BOL.Websites.WebsiteSettings.RootPath));
 
-                FileUploadLeftMenu.SaveAs(String.Format("{1}Images\\Campaigns\\{0}", FileName, Global.Path));
+                FileUploadLeftMenu.SaveAs(String.Format("{1}Images\\Campaigns\\{0}", FileName, Library.BOL.Websites.WebsiteSettings.RootPath));
 
-                string FileURL = Global.RootURL + "/Images/Campaigns/" + FileName;
+                string FileURL = Library.BOL.Websites.WebsiteSettings.RootURL + "/Images/Campaigns/" + FileName;
                 txtImageLeftMenu.Text = FileURL;
                 _campaign.ImageLeftMenu = FileURL;
                 imageLeftMenu.ImageUrl = _campaign.ImageLeftMenu;
@@ -196,12 +194,15 @@ namespace SieraDelta.Website.Staff.Campaigns
             {
                 string FileName = String.Format("offerspage{0}{1}", _campaign.ID, Path.GetExtension(FileUploadOffersPage.FileName));
 
-                if (File.Exists(String.Format("{1}Images\\Campaigns\\{0}", FileName, Global.Path)))
-                    File.Delete(String.Format("{1}Images\\Campaigns\\{0}", FileName, Global.Path));
+                if (File.Exists(String.Format("{1}Images\\Campaigns\\{0}", FileName, 
+                    Library.BOL.Websites.WebsiteSettings.RootPath)))
+                    File.Delete(String.Format("{1}Images\\Campaigns\\{0}", FileName, 
+                        Library.BOL.Websites.WebsiteSettings.RootPath));
 
-                FileUploadOffersPage.SaveAs(String.Format("{1}Images\\Campaigns\\{0}", FileName, Global.Path));
+                FileUploadOffersPage.SaveAs(String.Format("{1}Images\\Campaigns\\{0}", FileName, 
+                    Library.BOL.Websites.WebsiteSettings.RootPath));
 
-                string FileURL = Global.RootURL + "/Images/Campaigns/" + FileName;
+                string FileURL = Library.BOL.Websites.WebsiteSettings.RootURL + "/Images/Campaigns/" + FileName;
                 txtImageOffersPage.Text = FileURL;
                 _campaign.ImageOffersPage = FileURL;
                 imageOffersPage.ImageUrl = _campaign.ImageOffersPage;

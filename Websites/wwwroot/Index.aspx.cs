@@ -2,6 +2,7 @@
 
 using Website.Library;
 using Website.Library.Classes;
+using Library.BOL.Websites;
 using Shared.Classes;
 
 namespace SieraDelta.Website
@@ -10,9 +11,9 @@ namespace SieraDelta.Website
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            divBanners.Visible = Global.ShowHomeBanners;
+            divBanners.Visible = WebsiteSettings.HomePage.ShowHomeBanners;
             UpdateCustomTranslatedPageData(StringConstants.TRANSLATED_DATA_HOME_PAGE, divTranslated, false);
-            FeaturedProducts1.Visible = Global.ShowHomeFeaturedProducts;
+            FeaturedProducts1.Visible = WebsiteSettings.HomePage.ShowHomeFeaturedProducts;
         }
 
         protected string GetBannerLinks()

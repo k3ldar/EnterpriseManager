@@ -9,6 +9,9 @@ using Library.BOL.Trade;
 using Website.Library.Classes;
 using Shared;
 
+#pragma warning disable IDE1005
+#pragma warning disable IDE1006
+
 namespace SieraDelta.Website.Members.Controls
 {
     public partial class CreateAccount : BaseControlClass
@@ -55,7 +58,8 @@ namespace SieraDelta.Website.Members.Controls
 
                     if (Library.BOL.Users.User.UserLogUserOn(user))
                     {
-                        SharedWebBase.CookieSetValue(Request, Response, String.Format("SD{0}Session", Global.DistributorWebsite), 
+                        SharedWebBase.CookieSetValue(Request, Response, String.Format("SD{0}Session",
+                            Library.BOL.Websites.WebsiteSettings.DistributorWebsite), 
                             user.ID.ToString(), DateTime.Now.AddDays(60));
 
                         Session["CURRENT_USER"] = user;

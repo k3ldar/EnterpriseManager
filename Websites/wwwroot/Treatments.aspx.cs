@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Web.UI;
 
 using Website.Library.Classes;
-using Website.Library;
-using Library.Utils;
 using Library.BOL.Treatments;
+using Library.BOL.Websites;
 
 namespace SieraDelta.Website
 {
@@ -12,7 +10,7 @@ namespace SieraDelta.Website
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!GlobalClass.ShowTreatmentsMenu)
+            if (!WebsiteSettings.AllPages.ShowTreatmentsMenu)
                 DoRedirect("/Home/");
         }
 

@@ -1,18 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 using lib = Library;
 using Library.BOL.Products;
 using Library.BOL.Users;
-using Library.BOL.Basket;
+using Library.BOL.Websites;
 using Library.Utils;
-using Website.Library.Classes;
-using Library.BOL.Countries;
 
 namespace Website.Library.Classes
 {
@@ -120,7 +113,7 @@ namespace Website.Library.Classes
 
                 if (prodCost > 0.00m)
                 {
-                    if (BaseWebApplication.PricesIncludeVAT)
+                    if (WebsiteSettings.Tax.PricesIncludeVAT)
                     {
                         prodCost += SharedUtils.VATCalculate(prodCost, WebVATRate);
                     }

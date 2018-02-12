@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
-using SieraDelta.Website;
 using Website.Library.Classes;
 using Library.Utils;
 using Library.BOL.Users;
-using Library.BOL.Invoices;
+
+#pragma warning disable IDE1006
 
 namespace SieraDelta.Website.Members.Invoice
 {
@@ -77,7 +72,7 @@ namespace SieraDelta.Website.Members.Invoice
                 string Message = String.Format("User cancelled invoice, please issue refund:<p>Invoice number: {0}</p>" +
                     "<p>Reason: {1}</p><p>Other information: {2}</p>", _invoice.ID, cmbReason.SelectedValue, txtOtherInformation.Text);
 
-                Message = SharedUtils.PreProcessPost(Global.RootURL, Message);
+                Message = SharedUtils.PreProcessPost(Library.BOL.Websites.WebsiteSettings.RootURL, Message);
 
                 //send email to accounts
                 SieraDelta.Website.Global.SendEMail("karen@SieraDelta.com", "karen@SieraDelta.com", "User Cancelled Invoice", Message);

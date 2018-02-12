@@ -35,6 +35,9 @@ using POS.Base.Classes;
 
 using POS.WebsiteAdministration.Controls.WebSettings;
 
+#pragma warning disable IDE1006
+#pragma warning disable IDE0017
+
 namespace POS.WebsiteAdministration.Forms
 {
     public partial class AdminWebsites : Base.Controls.BaseOptionsControl
@@ -310,8 +313,14 @@ namespace POS.WebsiteAdministration.Forms
             if (tvOptions.SelectedNode == null || tvOptions.SelectedNode.Tag == null)
                 return;
 
-#warning save settings if changed
             BaseWebSetting settingPage = (BaseWebSetting)tvOptions.SelectedNode.Tag;
+
+            if (IsEditing)
+            {
+                if (ShowQuestion(LanguageStrings.AppWebsiteSettings, LanguageStrings.AppWebsiteSettingsSave))
+                    settingPage.Save();
+            }
+
             settingPage.Changed -= settingChangedEvent;
             settingPage.Visible = false;
             this.Controls.Remove(settingPage);

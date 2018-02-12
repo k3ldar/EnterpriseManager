@@ -326,6 +326,8 @@
     <Compile Include="BOL\Vouchers\Vouchers.cs" />
     <Compile Include="BOL\Websites\Website.cs" />
     <Compile Include="BOL\Websites\Websites.cs" />
+    <Compile Include="BOL\Websites\Settings.cs" />
+    <Compile Include="BOL\Websites\WebsiteSettings.cs" />
     <Compile Include="Checks.cs" />
     <Compile Include="ClassExtenders\StringExtender.cs" />
     <Compile Include="Consts.cs" />
@@ -335,6 +337,7 @@
     <Compile Include="ErrorHandling.cs" />
     <Compile Include="Events\Events.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Interfaces\WebsiteOptions.cs" />
     <Compile Include="SalonUser.cs" />
     <Compile Include="Utils\LibUtils.cs" />
     <Compile Include="Utils\StringCipher.cs" />

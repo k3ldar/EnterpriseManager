@@ -20316,6 +20316,24 @@ namespace Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Website Settings.
+        /// </summary>
+        public static string AppWebsiteSettings {
+            get {
+                return ResourceManager.GetString("AppWebsiteSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Would you like to save your changes?.
+        /// </summary>
+        public static string AppWebsiteSettingsSave {
+            get {
+                return ResourceManager.GetString("AppWebsiteSettingsSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deploy Website Wizard.
         /// </summary>
         public static string AppWebsiteWizardDeploy {

@@ -35,6 +35,7 @@ using Library.BOL.Appointments;
 using Library.BOL.Salons;
 using Library.BOL.Coupons;
 using Library.BOL.Accounts;
+using Library.BOL.Websites;
 
 #pragma warning disable IDE1005 // Delegate invocation can be simplified
 #pragma warning disable IDE0017 // object initialization can be simplified
@@ -1533,9 +1534,9 @@ namespace Library.BOL.Basket
 
         private decimal GetMultiplier()
         {
-            if (DAL.DALHelper.OverrideCostMultiplier)
+            if (WebsiteSettings.ShoppingCart.OverrideCostMultiplier)
             {
-                return ((decimal)DAL.DALHelper.OverrideCostMultiplierValue);
+                return ((decimal)WebsiteSettings.ShoppingCart.OverrideCostMultiplierValue);
             }
 
             if (_IgnoreCostMultiplier || Currency == null)

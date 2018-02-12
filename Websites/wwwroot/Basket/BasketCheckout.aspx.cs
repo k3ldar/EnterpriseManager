@@ -7,6 +7,7 @@ using Library.BOL.Basket;
 using Library.BOL.Coupons;
 using Library.BOL.DeliveryAddress;
 using Library.BOL.Accounts;
+using Library.BOL.Websites;
 
 using Website.Library.Classes;
 
@@ -22,16 +23,16 @@ namespace SieraDelta.Website.Basket
         {
             btnConfirm.Text = Languages.LanguageStrings.ConfirmOrder;
 
-            dCreditCard.Visible = Global.ShowPaymentCard;
-            pPayByCheque.Visible = Global.ShowPaymentCheque;
-            pPaypal.Visible = Global.ShowPaymentPaypal;
-            pPaypoint.Visible = Global.ShowPaymentPaypoint;
-            pTelephone.Visible = Global.ShowPaymentTelephone;
-            pPayByCashOnDelivery.Visible = Global.ShowPaymentCashOnDelivery;
-            pPayByDirectBankTransfer.Visible = Global.ShowPaymentDirectBankTransfer;
+            dCreditCard.Visible = WebsiteSettings.PaymentGateways.ShowPaymentCard;
+            pPayByCheque.Visible = WebsiteSettings.PaymentGateways.ShowPaymentCheque;
+            pPaypal.Visible = WebsiteSettings.PaymentGateways.ShowPaymentPaypal;
+            pPaypoint.Visible = WebsiteSettings.PaymentGateways.ShowPaymentPaypoint;
+            pTelephone.Visible = WebsiteSettings.PaymentGateways.ShowPaymentTelephone;
+            pPayByCashOnDelivery.Visible = WebsiteSettings.PaymentGateways.ShowPaymentCashOnDelivery;
+            pPayByDirectBankTransfer.Visible = WebsiteSettings.PaymentGateways.ShowPaymentDirectBankTransfer;
 
             // is the credit card option in test mode
-            if (Global.PayflowTestMode)
+            if (WebsiteSettings.PaymentGateways.Payflow.PayflowTestMode)
             {
                 Library.BOL.Users.User user = GetUser();
                 dCreditCard.Visible = user == null ? false : user.MemberLevel >= Library.MemberLevel.StaffMember;

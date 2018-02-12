@@ -101,6 +101,12 @@
     <Compile Include="Controls\WebSettings\PageBanners.Designer.cs">
       <DependentUpon>PageBanners.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\WebSettings\WebSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\WebSettings\WebSettings.Designer.cs">
+      <DependentUpon>WebSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\WebsiteSettings.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -285,6 +291,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\WebSettings\PageBanners.resx">
       <DependentUpon>PageBanners.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\WebSettings\WebSettings.resx">
+      <DependentUpon>WebSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\WebsiteSettings.resx">
       <DependentUpon>WebsiteSettings.cs</DependentUpon>

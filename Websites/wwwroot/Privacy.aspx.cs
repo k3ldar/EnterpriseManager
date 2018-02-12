@@ -1,7 +1,8 @@
 ﻿using System;
 
-using Website.Library;
 using Website.Library.Classes;
+
+using Library.BOL.Websites;
 
 namespace SieraDelta.Website
 {
@@ -9,7 +10,7 @@ namespace SieraDelta.Website
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!GlobalClass.ShowPrivacyPolicy)
+            if (!WebsiteSettings.AllPages.ShowPrivacyPolicy)
                 DoRedirect("/Home/");
 
             UpdateCustomTranslatedPageData("Privacy Policy", divTranslated, false);

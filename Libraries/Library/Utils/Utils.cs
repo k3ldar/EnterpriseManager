@@ -31,6 +31,7 @@ using System.Reflection;
 
 using Library.BOL.Basket;
 using Library.BOL.Users;
+using Library.BOL.Websites;
 
 using Shared;
 using Shared.Classes;
@@ -360,8 +361,7 @@ namespace Library.Utils
         /// <returns></returns>
         public static bool IsValidURL(string url)
         {
-            Uri uriResult;
-            return(Uri.TryCreate(url, UriKind.Absolute, out uriResult)
+            return (Uri.TryCreate(url, UriKind.Absolute, out Uri uriResult)
                 && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps));
         }
 
@@ -422,9 +422,9 @@ namespace Library.Utils
 
             if (!ignoreMultiplier)
             {
-                if (((DAL.DALHelper.OverrideCostMultiplier) && DAL.DALHelper.OverrideCostMultiplierValue > 0.00))
+                if (((WebsiteSettings.ShoppingCart.OverrideCostMultiplier) && WebsiteSettings.ShoppingCart.OverrideCostMultiplierValue > 0.00))
                 {
-                    amount = amount + (amount * (decimal)DAL.DALHelper.OverrideCostMultiplierValue);
+                    amount = amount + (amount * (decimal)WebsiteSettings.ShoppingCart.OverrideCostMultiplierValue);
                 }
                 else if (currency.Multiplier != 1.0m)
                 {
@@ -463,14 +463,12 @@ namespace Library.Utils
 
         public static string GetCurrencySymbol(CultureInfo culture)
         {
-            string isos;
-            return (GetCurrencySymbol(culture, out isos));
+            return (GetCurrencySymbol(culture, out string isos));
         }
 
         public static string GetCurrencySymbol(string Culture)
         {
-            string isos;
-            return (GetCurrencySymbol(Culture, out isos));
+            return (GetCurrencySymbol(Culture, out string isos));
         }
 
         public static string GetCurrencySymbol(string Culture, out string ISOSymbol)
@@ -509,9 +507,8 @@ namespace Library.Utils
         public static int RoundUp(int Total, int DivBy)
         {
             int Result = 0;
-            int rem = 0;
 
-            Result = Math.DivRem(Total, DivBy, out rem);
+            Result = Math.DivRem(Total, DivBy, out int rem);
 
             if (rem > 0)
                 Result++;

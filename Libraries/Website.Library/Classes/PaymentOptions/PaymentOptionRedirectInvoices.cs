@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Web;
 using System.Web.SessionState;
 
 using lib = Library;
 using Library.BOL.Accounts;
 using Library.BOL.Orders;
+using Library.BOL.Websites;
 
 using Shared.Classes;
 
@@ -40,7 +39,7 @@ namespace Website.Library.Classes.PaymentOptions
         {
             try
             {
-                webResponse.Redirect(GlobalClass.RootURL + "/Account/Invoices/", false);
+                webResponse.Redirect(WebsiteSettings.RootURL + "/Account/Invoices/", false);
             }
             catch (Exception err)
             {

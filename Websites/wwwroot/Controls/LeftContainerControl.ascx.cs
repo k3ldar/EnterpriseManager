@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 using Shared.Classes;
 
 using Website.Library;
 using Website.Library.Classes;
+
+using Library.BOL.Websites;
 
 namespace SieraDelta.Website.Controls
 {
@@ -58,15 +55,15 @@ namespace SieraDelta.Website.Controls
 
             string Result = String.Empty;
 
-            if (!String.IsNullOrEmpty(BaseWebApplication.PageBanner1))
+            if (!String.IsNullOrEmpty(WebsiteSettings.HomePage.PageBanner1))
             {
-                if (String.IsNullOrEmpty(BaseWebApplication.PageBanner1Link))
+                if (String.IsNullOrEmpty(WebsiteSettings.HomePage.PageBanner1Link))
                     Result = String.Format("<img src=\"/Images/PageBanners/{0}\" width=\"158\" class=\"banner\" />",
-                        BaseWebApplication.PageBanner1);
+                        WebsiteSettings.HomePage.PageBanner1);
                 else
                     Result = String.Format("<a href=\"{0}\" class=\"banner\">" +
                         "<img src=\"/Images/PageBanners/{1}\" width=\"158\" /></a>",
-                        BaseWebApplication.PageBanner1Link, BaseWebApplication.PageBanner1);
+                        WebsiteSettings.HomePage.PageBanner1Link, WebsiteSettings.HomePage.PageBanner1);
             }
 
             if (Library.DAL.DALHelper.AllowCaching)
@@ -93,26 +90,26 @@ namespace SieraDelta.Website.Controls
 
             string Result = String.Empty;
 
-            if (!String.IsNullOrEmpty(BaseWebApplication.PageBanner2))
+            if (!String.IsNullOrEmpty(WebsiteSettings.HomePage.PageBanner2))
             {
-                if (String.IsNullOrEmpty(BaseWebApplication.PageBanner2Link))
+                if (String.IsNullOrEmpty(WebsiteSettings.HomePage.PageBanner2Link))
                     Result += String.Format("<img src=\"/Images/PageBanners/{0}\" width=\"158\" />",
-                        BaseWebApplication.PageBanner2);
+                        WebsiteSettings.HomePage.PageBanner2);
                 else
                     Result += String.Format("<a href=\"{0}\" target=\"_blank\" class=\"banner\">" +
                         "<img src=\"/Images/PageBanners/{1}\" width=\"158\" /></a>",
-                        BaseWebApplication.PageBanner2Link, BaseWebApplication.PageBanner2);
+                        WebsiteSettings.HomePage.PageBanner2Link, WebsiteSettings.HomePage.PageBanner2);
             }
 
-            if (!String.IsNullOrEmpty(BaseWebApplication.PageBanner3))
+            if (!String.IsNullOrEmpty(WebsiteSettings.HomePage.PageBanner3))
             {
-                if (String.IsNullOrEmpty(BaseWebApplication.PageBanner3Link))
+                if (String.IsNullOrEmpty(WebsiteSettings.HomePage.PageBanner3Link))
                     Result += String.Format("<img src=\"/Images/PageBanners/{0}\" class=\"banner\" width=\"158\" />",
-                        BaseWebApplication.PageBanner3);
+                        WebsiteSettings.HomePage.PageBanner3);
                 else
                     Result += String.Format("<a href=\"{0}\" class=\"banner\">" +
                         "<img src=\"/Images/PageBanners/{1}\" width=\"158\" /></a>",
-                        BaseWebApplication.PageBanner3Link, BaseWebApplication.PageBanner3);
+                        WebsiteSettings.HomePage.PageBanner3Link, WebsiteSettings.HomePage.PageBanner3);
             }
 
             if (Library.DAL.DALHelper.AllowCaching)

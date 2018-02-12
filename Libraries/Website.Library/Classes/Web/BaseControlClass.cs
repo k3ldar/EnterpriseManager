@@ -7,9 +7,11 @@ using Library.BOL.Basket;
 using Library.BOL.Countries;
 using Library.BOL.Products;
 using Library.BOL.Users;
+using Library.BOL.Campaigns;
+using Library.BOL.Websites;
+
 using lib = Library;
 using Library.Utils;
-using Library.BOL.Campaigns;
 using Shared.Classes;
 
 namespace Website.Library.Classes
@@ -71,7 +73,7 @@ namespace Website.Library.Classes
         /// <returns></returns>
         protected string BaseURL()
         {
-            return (Website.Library.GlobalClass.RootURL);
+            return (WebsiteSettings.RootURL);
         }
 
         /// <summary>
@@ -187,7 +189,7 @@ namespace Website.Library.Classes
                 {
                     decimal cost = product.LowestPrice(SharedWebBase.WebsiteCurrency(Session, Request), priceColumn, WebCountry);
 
-                    if (BaseWebApplication.PricesIncludeVAT)
+                    if (WebsiteSettings.Tax.PricesIncludeVAT)
                     {
                         cost += SharedUtils.VATCalculate(cost, WebVATRate);
                     }
@@ -287,7 +289,7 @@ namespace Website.Library.Classes
         /// <returns></returns>
         protected string GetWebsiteTelephoneNumber()
         {
-            return (BaseWebApplication.WebsiteTelephoneNumber);
+            return (WebsiteSettings.ContactDetails.WebsiteTelephoneNumber);
         }
 
         /// <summary>
@@ -296,7 +298,7 @@ namespace Website.Library.Classes
         /// <returns></returns>
         protected string GetWebsiteDateFormat()
         {
-            return (GlobalClass.WebsiteDateFormat);
+            return (WebsiteSettings.WebsiteDateFormat);
         }
 
         protected string GetExtraBasketInformation()
@@ -307,7 +309,7 @@ namespace Website.Library.Classes
 
         protected string GetWebsiteAddress()
         {
-            throw new NotImplementedException();
+            return (WebsiteSettings.RootURL);
         }
 
         protected string GetUserCountry()
@@ -383,7 +385,7 @@ namespace Website.Library.Classes
                 if (country != null)
                     return (country.ShowPriceData());
                 else
-                    return (BaseWebApplication.DefaultShowPrices);
+                    return (WebsiteSettings.ShoppingCart.DefaultShowPrices);
             }
         }
 
@@ -645,7 +647,7 @@ namespace Website.Library.Classes
 
 		protected string GlobalRootURL()
 		{
-            return (GlobalClass.RootURL);
+            return (WebsiteSettings.RootURL);
 		}
 
         protected DateTime GetFormValue(string Name, DateTime Default)

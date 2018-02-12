@@ -2,9 +2,9 @@
 
 using Website.Library.Classes;
 
-using Website.Library;
 using Library.Utils;
 using Library.BOL.TipsTricks;
+using Library.BOL.Websites;
 
 namespace SieraDelta.Website.Tips
 {
@@ -14,7 +14,7 @@ namespace SieraDelta.Website.Tips
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!GlobalClass.ShowTipsAndTricksMenu)
+            if (!WebsiteSettings.AllPages.ShowTipsAndTricksMenu)
                 DoRedirect("/Home/");
 
             _tip = TipsTricks.Get(Shared.Utilities.StrToIntDef(GetTipPage(), -1));

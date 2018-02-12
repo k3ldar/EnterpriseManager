@@ -24,64 +24,11 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 using System;
-using System.Collections.Generic;
 using System.Xml;
-using System.Web;
-using System.Data;
 using System.IO;
 using System.Text;
 using System.Globalization;
-
-using Library;
-using Library.Utils;
-using Library.BOL.Therapists;
-using Library.BOL.Treatments;
-using Library.BOL.Distributors;
-using Library.BOL.Products;
-using Library.BOL.Salons;
-using Library.BOL.TipsTricks;
-using Library.BOL.Appointments;
 using Library.BOL.Users;
-using Library.BOL.Countries;
-using Library.BOL.DeliveryAddress;
-using Library.BOL.Invoices;
-using Library.BOL.Orders;
-using Library.BOL.Helpdesk;
-using Library.BOL.Mail;
-using Library.BOL.MissingLinks;
-using Library.BOL.Coupons;
-using Library.BOL.Basket;
-using Library.BOL.News;
-using Library.BOL.StockControl;
-using Library.BOL.Celebrities;
-using Library.BOL.Video;
-using Library.BOL.Statistics;
-using Library.BOL.USAStates;
-using Library.BOL.Trade;
-using Library.BOL.RSS;
-using Library.BOL.Downloads;
-using Library.BOL.DatabaseUpdates;
-using Library.BOL.Campaigns;
-using Library.BOL.Refunds;
-using Library.BOL.Vouchers;
-using Library.BOLEvents;
-using Library.BOL.HashTags;
-using Library.BOL.Locations;
-using Library.BOL.Training;
-using Library.BOL.Search;
-using Library.BOL.TagLines;
-using Library.BOL.POSInstall;
-using Library.BOL.CustomWebPages;
-using Library.BOL.Accounts;
-using Library.BOL.CashDrawer;
-using Library.BOL.Licencing;
-using Library.BOL.IPAddresses;
-using Library.BOL.SEO;
-using Library.BOL.ModuleDocumentation;
-using Library.BOL.FileBackup;
-using Library.BOL.Staff;
-using Library.BOL.Export;
-using Library.BOL.Affiliate;
 
 using Shared;
 using Shared.Classes;
@@ -3886,11 +3833,6 @@ namespace Library.DAL
         }
 
         /// <summary>
-        /// Root Website Address for website
-        /// </summary>
-        public static string WebsiteAddress { get; set; }
-
-        /// <summary>
         /// Determines wether Currency Conversion is used when formatting money
         /// </summary>
         public static bool AllowUseOfCurrencyConversion
@@ -3933,18 +3875,6 @@ namespace Library.DAL
             {
                 _cultureOverride = value;
             }
-        }
-
-        public static bool OverrideCostMultiplier
-        {
-            get;
-            set;
-        }
-
-        public static double OverrideCostMultiplierValue 
-        {
-            get; 
-            set;
         }
 
 #if INHERITED_DAL

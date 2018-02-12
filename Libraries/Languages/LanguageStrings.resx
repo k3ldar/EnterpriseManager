@@ -13221,4 +13221,12 @@ If this continues, please contact support.</comment>
     <value>Mobile</value>
     <comment>Mobile</comment>
   </data>
+  <data name="AppWebsiteSettings" xml:space="preserve">
+    <value>Website Settings</value>
+    <comment>Website Settings</comment>
+  </data>
+  <data name="AppWebsiteSettingsSave" xml:space="preserve">
+    <value>Would you like to save your changes?</value>
+    <comment>Would you like to save your changes?</comment>
+  </data>
 </root>

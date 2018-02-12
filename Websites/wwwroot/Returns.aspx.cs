@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using Website.Library;
 using Website.Library.Classes;
+
+using Library.BOL.Websites;
 
 namespace SieraDelta.Website
 {
@@ -13,7 +9,7 @@ namespace SieraDelta.Website
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!GlobalClass.ShowReturnsPolicy)
+            if (!WebsiteSettings.AllPages.ShowReturnsPolicy)
                 DoRedirect("/Home/");
 
             UpdateCustomTranslatedPageData("Returns Policy", divTranslated, false);

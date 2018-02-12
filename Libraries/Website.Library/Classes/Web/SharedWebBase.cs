@@ -7,6 +7,7 @@ using Library.BOL.Affiliate;
 using Library.BOL.Basket;
 using Library.BOL.Countries;
 using Library.BOL.Users;
+using Library.BOL.Websites;
 
 #if ERROR_MANAGER
 using ErrorManager.ErrorClient;
@@ -78,7 +79,8 @@ namespace Website.Library.Classes
             if (item != null)
                 return ((string)item.Value);
 
-            string Result = String.IsNullOrEmpty(BaseWebApplication.PageTitle) ? "Heavenskincare.com" : BaseWebApplication.PageTitle;
+            string Result = String.IsNullOrEmpty(WebsiteSettings.PageTitle) ? 
+                "Website" : WebsiteSettings.PageTitle;
             string customTitle = lib.LibraryHelperClass.SettingsGetMeta(String.Format("TITLE:{0}", page));
 
             if (!String.IsNullOrEmpty(customTitle))
@@ -99,24 +101,22 @@ namespace Website.Library.Classes
 
             if (response != null)
             {
-                if (response.Cookies[String.Format("{0}{1}Session", BaseWebApplication.CookiePrefix, BaseWebApplication.DistributorWebsite)] != null)
+                if (response.Cookies[String.Format("{0}{1}Session", BaseWebApplication.CookiePrefix, WebsiteSettings.DistributorWebsite)] != null)
                 {
-                    HttpCookie cookie = response.Cookies[String.Format("{0}{1}Session", BaseWebApplication.CookiePrefix, BaseWebApplication.DistributorWebsite)];
-
-                    //if (cookie.Expires.Year == 1)
-                    //{
-
-                    //}
+                    HttpCookie cookie = response.Cookies[String.Format("{0}{1}Session", BaseWebApplication.CookiePrefix, WebsiteSettings.DistributorWebsite)];
                 }
             }
 
-            if (request.Cookies[String.Format("{0}{1}Session", BaseWebApplication.CookiePrefix, BaseWebApplication.DistributorWebsite)] != null)
+            if (request.Cookies[String.Format("{0}{1}Session", BaseWebApplication.CookiePrefix, 
+                WebsiteSettings.DistributorWebsite)] != null)
             {
-                HttpCookie cookie = request.Cookies[String.Format("{0}{1}Session", BaseWebApplication.CookiePrefix, BaseWebApplication.DistributorWebsite)];
+                HttpCookie cookie = request.Cookies[String.Format("{0}{1}Session",
+                    BaseWebApplication.CookiePrefix, WebsiteSettings.DistributorWebsite)];
 
                 if (cookie.Expires.Year == 1 || cookie.Expires >= DateTime.Now)
                 {
-                    string s1 = GlobalClass.Decrypt(HttpUtility.UrlDecode(request.Cookies[String.Format("{0}{1}Session", BaseWebApplication.CookiePrefix, BaseWebApplication.DistributorWebsite)].Value));
+                    string s1 = GlobalClass.Decrypt(HttpUtility.UrlDecode(request.Cookies[String.Format("{0}{1}Session", 
+                        BaseWebApplication.CookiePrefix, WebsiteSettings.DistributorWebsite)].Value));
 
                     if (s1 != String.Empty)
                     {
@@ -133,9 +133,9 @@ namespace Website.Library.Classes
         /// </summary>
         /// <returns></returns>
         private static User GetUser(System.Web.SessionState.HttpSessionState Session, 
-            System.Web.HttpRequest Request,  System.Web.HttpResponse Response, UserSession session)
+            HttpRequest Request,  System.Web.HttpResponse Response, UserSession session)
         {
-            return (lib.BOL.Users.User.UserGet(GetUserID(Request, Response)));
+            return (User.UserGet(GetUserID(Request, Response)));
         }
 
         /// <summary>
@@ -218,8 +218,8 @@ namespace Website.Library.Classes
 
                 Result = Countries.Get(lib.LibraryHelperClass.IPAddressToCountry(ipAddress));
 
-                if (Result == null || Result.CountryCode == "ZZ" || BaseWebApplication.ForceInitialDefaultLanguage)
-                    Result = Countries.Get(BaseWebApplication.DefaultCountrySettings);
+                if (Result == null || Result.CountryCode == "ZZ" || WebsiteSettings.Languages.ForceInitialDefaultLanguage)
+                    Result = Countries.Get(WebsiteSettings.Languages.DefaultCountrySettings);
 
                 Session[StringConstants.SESSION_NAME_WEBSITE_COUNTRY] = Result;
             }
@@ -293,8 +293,8 @@ namespace Website.Library.Classes
 
             using (TimedLock.Lock(_basketLockObject))
             {
-                _maximumBasketIdendifer = lib.LibraryHelperClass.GetBasketID(BaseWebApplication.BasketIDIncrement);
-                _currentBasketIdentifier = _maximumBasketIdendifer - BaseWebApplication.BasketIDIncrement;
+                _maximumBasketIdendifer = lib.LibraryHelperClass.GetBasketID(WebsiteSettings.ShoppingCart.BasketIDIncrement);
+                _currentBasketIdentifier = _maximumBasketIdendifer - WebsiteSettings.ShoppingCart.BasketIDIncrement;
             }
         }
 
@@ -311,8 +311,8 @@ namespace Website.Library.Classes
                 {
                     if (_maximumBasketIdendifer == 0 || _currentBasketIdentifier == _maximumBasketIdendifer)
                     {
-                        _maximumBasketIdendifer = lib.LibraryHelperClass.GetBasketID(BaseWebApplication.BasketIDIncrement);
-                        _currentBasketIdentifier = _maximumBasketIdendifer - BaseWebApplication.BasketIDIncrement;
+                        _maximumBasketIdendifer = lib.LibraryHelperClass.GetBasketID(WebsiteSettings.ShoppingCart.BasketIDIncrement);
+                        _currentBasketIdentifier = _maximumBasketIdendifer - WebsiteSettings.ShoppingCart.BasketIDIncrement;
                     }
 
                     _currentBasketIdentifier++;
@@ -348,7 +348,7 @@ namespace Website.Library.Classes
                 UserSessionManager.Add(Result);
                 Session[StringConstants.SESSION_NAME_USER_SESSION] = Result;
 
-                if (Website.Library.Classes.BaseWebApplication.StaticWebSite)
+                if (WebsiteSettings.StaticWebSite)
                     return (Result);
 
                 Result.Tag = new LocalWebSessionData();
@@ -397,7 +397,8 @@ namespace Website.Library.Classes
                 #region Affiliate
 
                 string affiliate = SharedWebBase.CookieGetValue(Request, Response,
-                    String.Format(StringConstants.COOKIE_AFFILIATE, BaseWebApplication.DistributorWebsite), String.Empty);
+                    String.Format(StringConstants.COOKIE_AFFILIATE,
+                    WebsiteSettings.DistributorWebsite), String.Empty);
 
                 if (String.IsNullOrEmpty(affiliate))
                 {
@@ -412,15 +413,16 @@ namespace Website.Library.Classes
 
                     if (!String.IsNullOrEmpty(affiliate))
                     {
-                        AffiliatedItem affItem = lib.BOL.Affiliate.AffiliatedItems.GetAffiliate(affiliate);
+                        AffiliatedItem affItem = AffiliatedItems.GetAffiliate(affiliate);
 
                         if (affItem != null)
                         {
                             affItem.AddWebClick(Result.IPAddress);
 
                             SharedWebBase.CookieSetValue(Request, Response,
-                                String.Format(StringConstants.COOKIE_AFFILIATE, BaseWebApplication.DistributorWebsite),
-                                affiliate, DateTime.Now.AddDays(BaseWebApplication.AffiliateMaxDays));
+                                String.Format(StringConstants.COOKIE_AFFILIATE,
+                                WebsiteSettings.DistributorWebsite),
+                                affiliate, DateTime.Now.AddDays(WebsiteSettings.Affiliates.MaximumDays));
                         }
                     }
                 }
@@ -429,14 +431,16 @@ namespace Website.Library.Classes
 
                 #endregion Affiliate
 
-                lib.BOL.Countries.Country defaultCountry = SharedWebBase.WebCountry(Session, Request);
+                Country defaultCountry = SharedWebBase.WebCountry(Session, Request);
                 Currency defaultCurrency = lib.BOL.Basket.Currencies.Get(defaultCountry.DefaultCurrency);
 
                 string userLanguage = CookieGetValue(Request, Response,
-                    String.Format(StringConstants.COOKIE_USER_LANGUAGE, BaseWebApplication.DistributorWebsite),
+                    String.Format(StringConstants.COOKIE_USER_LANGUAGE,
+                    WebsiteSettings.DistributorWebsite),
                     defaultCountry.CountryCode);
                 string userCurrency = CookieGetValue(Request, Response,
-                    String.Format(StringConstants.COOKIE_USER_CURRENCY, BaseWebApplication.DistributorWebsite),
+                    String.Format(StringConstants.COOKIE_USER_CURRENCY,
+                    WebsiteSettings.DistributorWebsite),
                     defaultCurrency.CurrencyCode);
 
                 // get user lang/currency settings if they exist
@@ -460,9 +464,9 @@ namespace Website.Library.Classes
 
                 localData.DeliveryAddressID = -1;
 
-                if (BaseWebApplication.WebsiteCultureOverride)
+                if (WebsiteSettings.WebsiteCultureOverride)
                 {
-                    localData.Culture = BaseWebApplication.WebsiteCulture.Name;
+                    localData.Culture = WebsiteSettings.Languages.WebsiteCulture.Name;
                 }
                 else
                 {
@@ -546,7 +550,7 @@ namespace Website.Library.Classes
 
                 Session[StringConstants.SESSION_NAME_USER_SESSION] = session;
 
-                if (Website.Library.Classes.BaseWebApplication.StaticWebSite)
+                if (WebsiteSettings.StaticWebSite)
                     return;
 
                 session.Tag = new LocalWebSessionData();
@@ -584,7 +588,8 @@ namespace Website.Library.Classes
                 #region Affiliate
 
                 string affiliate = SharedWebBase.CookieGetValue(Request, Response,
-                    String.Format(StringConstants.COOKIE_AFFILIATE, BaseWebApplication.DistributorWebsite), String.Empty);
+                    String.Format(StringConstants.COOKIE_AFFILIATE,
+                    WebsiteSettings.DistributorWebsite), String.Empty);
 
                 if (String.IsNullOrEmpty(affiliate))
                 {
@@ -594,18 +599,19 @@ namespace Website.Library.Classes
                     }
                     else if (!String.IsNullOrEmpty(session.InitialReferrer))
                     {
-                        affiliate = lib.BOL.Affiliate.AffiliatedItems.Get(session.InitialReferrer);
+                        affiliate = AffiliatedItems.Get(session.InitialReferrer);
                     }
 
                     if (!String.IsNullOrEmpty(affiliate))
                     {
-                        AffiliatedItem affItem = lib.BOL.Affiliate.AffiliatedItems.GetAffiliate(affiliate);
+                        AffiliatedItem affItem = AffiliatedItems.GetAffiliate(affiliate);
 
                         if (affItem != null)
                         {
                             SharedWebBase.CookieSetValue(Request, Response,
-                                String.Format(StringConstants.COOKIE_AFFILIATE, BaseWebApplication.DistributorWebsite),
-                                affiliate, DateTime.Now.AddDays(BaseWebApplication.AffiliateMaxDays));
+                                String.Format(StringConstants.COOKIE_AFFILIATE,
+                                WebsiteSettings.DistributorWebsite),
+                                affiliate, DateTime.Now.AddDays(WebsiteSettings.Affiliates.MaximumDays));
                         }
                     }
                 }
@@ -614,14 +620,16 @@ namespace Website.Library.Classes
 
                 #endregion Affiliate
 
-                lib.BOL.Countries.Country defaultCountry = SharedWebBase.WebCountry(Session, Request);
-                Currency defaultCurrency = lib.BOL.Basket.Currencies.Get(defaultCountry.DefaultCurrency);
+                Country defaultCountry = SharedWebBase.WebCountry(Session, Request);
+                Currency defaultCurrency = Currencies.Get(defaultCountry.DefaultCurrency);
 
                 string userLanguage = CookieGetValue(Request, Response,
-                    String.Format(StringConstants.COOKIE_USER_LANGUAGE, BaseWebApplication.DistributorWebsite),
+                    String.Format(StringConstants.COOKIE_USER_LANGUAGE,
+                    WebsiteSettings.DistributorWebsite),
                     defaultCountry.CountryCode);
                 string userCurrency = CookieGetValue(Request, Response,
-                    String.Format(StringConstants.COOKIE_USER_CURRENCY, BaseWebApplication.DistributorWebsite),
+                    String.Format(StringConstants.COOKIE_USER_CURRENCY,
+                    WebsiteSettings.DistributorWebsite),
                     defaultCurrency.CurrencyCode);
 
                 // get user lang/currency settings if they exist
@@ -795,11 +803,11 @@ namespace Website.Library.Classes
                     {
                         Result = GetUser(Session, Request, Response, userSession).Basket;
 
-                        if (Result.FreeShipping != BaseWebApplication.FreeShippingAllow)
-                            Result.FreeShipping = BaseWebApplication.FreeShippingAllow;
+                        if (Result.FreeShipping != WebsiteSettings.ShoppingCart.FreeShippingAllow)
+                            Result.FreeShipping = WebsiteSettings.ShoppingCart.FreeShippingAllow;
 
-                        if (Result.FreeShippingAmount != BaseWebApplication.FreeShippingAmount)
-                            Result.FreeShippingAmount = BaseWebApplication.FreeShippingAmount;
+                        if (Result.FreeShippingAmount != WebsiteSettings.ShoppingCart.FreeShippingAmount)
+                            Result.FreeShippingAmount = WebsiteSettings.ShoppingCart.FreeShippingAmount;
 
                         return (Result);
                     }
@@ -812,9 +820,9 @@ namespace Website.Library.Classes
                     country = Countries.Get(GetUserCountry(Session, Request, Response, userSession));
 
                 // has the user got a cookie
-                if (Request.Cookies[GlobalClass.BasketName] != null)
+                if (Request.Cookies[WebsiteSettings.BasketName] != null)
                 {
-                    BasketID = GlobalClass.Decrypt(HttpUtility.UrlDecode(Request.Cookies[GlobalClass.BasketName].Value));
+                    BasketID = GlobalClass.Decrypt(HttpUtility.UrlDecode(Request.Cookies[WebsiteSettings.BasketName].Value));
 
                     if (BasketID == null || BasketID.Length == 0)
                     {
@@ -824,11 +832,14 @@ namespace Website.Library.Classes
 
                 if (BasketID == "new")
                 {
-                    Result = new ShoppingBasket(GetNextBasketID(), country, Currencies.Get(country.DefaultCurrency), 
-                        BaseWebApplication.FreeShippingAllow, BaseWebApplication.FreeShippingAmount, 
-                        BaseWebApplication.PricesIncludeVAT, BaseWebApplication.ShippingIsTaxable, true);
+                    Result = new ShoppingBasket(GetNextBasketID(), country, 
+                        Currencies.Get(country.DefaultCurrency),
+                        WebsiteSettings.ShoppingCart.FreeShippingAllow, 
+                        WebsiteSettings.ShoppingCart.FreeShippingAmount,
+                        WebsiteSettings.Tax.PricesIncludeVAT,
+                        WebsiteSettings.Tax.ShippingIsTaxable, true);
 
-                    CookieSetValue(Request, Response, GlobalClass.BasketName, Result.ID.ToString(), DateTime.Now.AddDays(365));
+                    CookieSetValue(Request, Response, WebsiteSettings.BasketName, Result.ID.ToString(), DateTime.Now.AddDays(365));
                 }
                 else
                 {
@@ -843,8 +854,11 @@ namespace Website.Library.Classes
                     {
 
                         Result = new ShoppingBasket(Convert.ToInt32(BasketID), userData.UserCountry, 
-                            basketCurrency, BaseWebApplication.FreeShippingAllow, BaseWebApplication.FreeShippingAmount,
-                            BaseWebApplication.PricesIncludeVAT, BaseWebApplication.ShippingIsTaxable, false);
+                            basketCurrency, 
+                            WebsiteSettings.ShoppingCart.FreeShippingAllow, 
+                            WebsiteSettings.ShoppingCart.FreeShippingAmount,
+                            WebsiteSettings.Tax.PricesIncludeVAT,
+                            WebsiteSettings.Tax.ShippingIsTaxable, false);
 
                         if (!String.IsNullOrEmpty(userData.DiscountCoupon))
                         {
@@ -857,11 +871,13 @@ namespace Website.Library.Classes
                     catch
                     {
                         //problem getting users basket, create a new one
-                        Result = new ShoppingBasket(-1, WebCountry(Session, Request), basketCurrency, 
-                            BaseWebApplication.FreeShippingAllow, BaseWebApplication.FreeShippingAmount, 
-                            BaseWebApplication.PricesIncludeVAT, BaseWebApplication.ShippingIsTaxable, true);
+                        Result = new ShoppingBasket(-1, WebCountry(Session, Request), basketCurrency,
+                            WebsiteSettings.ShoppingCart.FreeShippingAllow,
+                            WebsiteSettings.ShoppingCart.FreeShippingAmount,
+                            WebsiteSettings.Tax.PricesIncludeVAT,
+                            WebsiteSettings.Tax.ShippingIsTaxable, true);
 
-                        SharedWebBase.CookieSetValue(Request, Response, GlobalClass.BasketName, Result.ID.ToString(), 
+                        SharedWebBase.CookieSetValue(Request, Response, WebsiteSettings.BasketName, Result.ID.ToString(), 
                             DateTime.Now.AddDays(365));
                     }
 
@@ -878,12 +894,13 @@ namespace Website.Library.Classes
             {
                 Int64 basketID = (Int64)Session[StringConstants.SESSION_NAME_SHOPPING_ID];
                 Result = new ShoppingBasket(Convert.ToInt32(basketID), userData.UserCountry, 
-                    basketCurrency, BaseWebApplication.FreeShippingAllow, BaseWebApplication.FreeShippingAmount,
-                    BaseWebApplication.PricesIncludeVAT, BaseWebApplication.ShippingIsTaxable, false);
+                    basketCurrency, WebsiteSettings.ShoppingCart.FreeShippingAllow,
+                    WebsiteSettings.ShoppingCart.FreeShippingAmount,
+                    WebsiteSettings.Tax.PricesIncludeVAT, WebsiteSettings.Tax.ShippingIsTaxable, false);
             }
 
-            if (Result.MaximumItemQuantity != BaseWebApplication.MaximumItemQuantity)
-                Result.MaximumItemQuantity = BaseWebApplication.MaximumItemQuantity;
+            if (Result.MaximumItemQuantity != WebsiteSettings.ShoppingCart.MaximumItemQuantity)
+                Result.MaximumItemQuantity = WebsiteSettings.ShoppingCart.MaximumItemQuantity;
 
             if (Result.User == null)
             {
@@ -895,7 +912,7 @@ namespace Website.Library.Classes
 
             Result.WebSessionID = Session.SessionID;
 
-            Result.ClearBasketOnPayment = BaseWebApplication.ClearBasketOnPayment;
+            Result.ClearBasketOnPayment = WebsiteSettings.ShoppingCart.ClearBasketOnPayment;
 
             if (userData.CurrentUser != null && userData.DeliveryAddressID > -1)
             {
@@ -938,9 +955,9 @@ namespace Website.Library.Classes
                 string BasketID = "new";
 
                 // has the user got a cookie
-                if (Request.Cookies[GlobalClass.BasketName] != null)
+                if (Request.Cookies[WebsiteSettings.BasketName] != null)
                 {
-                    BasketID = GlobalClass.Decrypt(HttpUtility.UrlDecode(Request.Cookies[GlobalClass.BasketName].Value));
+                    BasketID = GlobalClass.Decrypt(HttpUtility.UrlDecode(Request.Cookies[WebsiteSettings.BasketName].Value));
 
                     if (BasketID == null || BasketID.Length == 0)
                     {
@@ -950,11 +967,14 @@ namespace Website.Library.Classes
 
                 if (BasketID == "new")
                 {
-                    Result = new ShoppingBasket(GetNextBasketID(), country, Currencies.Get(country.DefaultCurrency),
-                        BaseWebApplication.FreeShippingAllow, BaseWebApplication.FreeShippingAmount,
-                        BaseWebApplication.PricesIncludeVAT, BaseWebApplication.ShippingIsTaxable, true);
+                    Result = new ShoppingBasket(GetNextBasketID(), country, 
+                        Currencies.Get(country.DefaultCurrency),
+                        WebsiteSettings.ShoppingCart.FreeShippingAllow, 
+                        WebsiteSettings.ShoppingCart.FreeShippingAmount,
+                        WebsiteSettings.Tax.PricesIncludeVAT, 
+                        WebsiteSettings.Tax.ShippingIsTaxable, true);
 
-                    CookieSetValue(Request, Response, GlobalClass.BasketName, Result.ID.ToString(), DateTime.Now.AddDays(365));
+                    CookieSetValue(Request, Response, WebsiteSettings.BasketName, Result.ID.ToString(), DateTime.Now.AddDays(365));
                 }
                 else
                 {
@@ -969,17 +989,20 @@ namespace Website.Library.Classes
                     {
 
                         Result = new ShoppingBasket(Convert.ToInt32(BasketID), country,
-                            basketCurrency, BaseWebApplication.FreeShippingAllow, BaseWebApplication.FreeShippingAmount,
-                            BaseWebApplication.PricesIncludeVAT, BaseWebApplication.ShippingIsTaxable, false);
+                            basketCurrency, WebsiteSettings.ShoppingCart.FreeShippingAllow,
+                            WebsiteSettings.ShoppingCart.FreeShippingAmount,
+                            WebsiteSettings.Tax.PricesIncludeVAT, WebsiteSettings.Tax.ShippingIsTaxable, false);
                     }
                     catch
                     {
                         //problem getting users basket, create a new one
                         Result = new ShoppingBasket(-1, WebCountry(Session, Request), basketCurrency,
-                            BaseWebApplication.FreeShippingAllow, BaseWebApplication.FreeShippingAmount,
-                            BaseWebApplication.PricesIncludeVAT, BaseWebApplication.ShippingIsTaxable, true);
+                            WebsiteSettings.ShoppingCart.FreeShippingAllow, 
+                            WebsiteSettings.ShoppingCart.FreeShippingAmount,
+                            WebsiteSettings.Tax.PricesIncludeVAT,
+                            WebsiteSettings.Tax.ShippingIsTaxable, true);
 
-                        SharedWebBase.CookieSetValue(Request, Response, GlobalClass.BasketName, Result.ID.ToString(),
+                        SharedWebBase.CookieSetValue(Request, Response, WebsiteSettings.BasketName, Result.ID.ToString(),
                             DateTime.Now.AddDays(365));
                     }
 
@@ -991,16 +1014,18 @@ namespace Website.Library.Classes
             {
                 Int64 basketID = (Int64)Session[StringConstants.SESSION_NAME_SHOPPING_ID];
                 Result = new ShoppingBasket(Convert.ToInt32(basketID), country,
-                    basketCurrency, BaseWebApplication.FreeShippingAllow, BaseWebApplication.FreeShippingAmount,
-                    BaseWebApplication.PricesIncludeVAT, BaseWebApplication.ShippingIsTaxable, false);
+                    basketCurrency, WebsiteSettings.ShoppingCart.FreeShippingAllow,
+                    WebsiteSettings.ShoppingCart.FreeShippingAmount,
+                    WebsiteSettings.Tax.PricesIncludeVAT, 
+                    WebsiteSettings.Tax.ShippingIsTaxable, false);
             }
 
-            if (Result.MaximumItemQuantity != BaseWebApplication.MaximumItemQuantity)
-                Result.MaximumItemQuantity = BaseWebApplication.MaximumItemQuantity;
+            if (Result.MaximumItemQuantity != WebsiteSettings.ShoppingCart.MaximumItemQuantity)
+                Result.MaximumItemQuantity = WebsiteSettings.ShoppingCart.MaximumItemQuantity;
 
             Result.WebSessionID = Session.SessionID;
 
-            Result.ClearBasketOnPayment = BaseWebApplication.ClearBasketOnPayment;
+            Result.ClearBasketOnPayment = WebsiteSettings.ShoppingCart.ClearBasketOnPayment;
 
             return (Result);
         }
@@ -1064,7 +1089,7 @@ namespace Website.Library.Classes
                 // invalid view state?  if so ignore  or dangerous request
                 if (fullMessage.Contains("viewstate MAC failed") || Message.Contains("state information is invalid for this page"))
                 {
-                    HttpContext.Current.Response.Redirect(BaseWebApplication.RootURL + HttpContext.Current.Request.Path, true);
+                    HttpContext.Current.Response.Redirect(WebsiteSettings.RootURL + HttpContext.Current.Request.Path, true);
                     return;
                 }
 
@@ -1086,13 +1111,13 @@ namespace Website.Library.Classes
 
                     if (fullMessage.Contains("Unable to connect to database"))
                     {
-                        HttpContext.Current.Response.Redirect(BaseWebApplication.RootURL + "/Error/ServerTooBusy.aspx", true);
+                        HttpContext.Current.Response.Redirect(WebsiteSettings.RootURL + "/Error/ServerTooBusy.aspx", true);
                         return;
                     }
 
                     if (fullMessage.Contains("Connection pool is full"))
                     {
-                        HttpContext.Current.Response.Redirect(BaseWebApplication.RootURL + "/Error/ServerTooBusy.aspx", true);
+                        HttpContext.Current.Response.Redirect(WebsiteSettings.RootURL + "/Error/ServerTooBusy.aspx", true);
                         return;
                     }
                 }
@@ -1126,9 +1151,9 @@ namespace Website.Library.Classes
                        try
                        {
                            //Failed to send error details to server
-                           SendEMail(BaseWebApplication.SupportName, BaseWebApplication.SupportEMail,
-                               String.Format("Website Error ({0})", BaseWebApplication.DistributorWebsite),
-                               Msg, BaseWebApplication.SupportName, BaseWebApplication.SupportEMail);
+                           SendEMail(BaseWebApplication.SupportName, WebsiteSettings.SupportEMail,
+                               String.Format("Website Error ({0})", WebsiteSettings.DistributorWebsite),
+                               Msg, BaseWebApplication.SupportName, WebsiteSettings.SupportEMail);
                        }
                        catch
                        {
@@ -1136,9 +1161,9 @@ namespace Website.Library.Classes
                        }
                     }
 #else
-                   SendEMail(BaseWebApplication.SupportName, BaseWebApplication.SupportEMail,
-                       String.Format("Website Error ({0})", BaseWebApplication.DistributorWebsite),
-                       Msg, BaseWebApplication.SupportName, BaseWebApplication.SupportEMail);
+                    SendEMail(WebsiteSettings.Email.SupportName, WebsiteSettings.Email.SupportEMail,
+                       String.Format("Website Error ({0})", WebsiteSettings.DistributorWebsite),
+                       Msg, WebsiteSettings.Email.SupportName, WebsiteSettings.Email.SupportEMail);
 
 #endif
                 }
@@ -1191,8 +1216,8 @@ namespace Website.Library.Classes
         /// <param name="ErrorMessage">Error Message</param>
         public static void SendEmail(string ErrorMessage)
         {
-            SendEMail(BaseWebApplication.SupportName, BaseWebApplication.SupportEMail, 
-                String.Format("Website Error ({0})", BaseWebApplication.DistributorWebsite), ErrorMessage);
+            SendEMail(WebsiteSettings.Email.SupportName, WebsiteSettings.Email.SupportEMail, 
+                String.Format("Website Error ({0})", WebsiteSettings.DistributorWebsite), ErrorMessage);
         }
 
         /// <summary>
@@ -1202,19 +1227,19 @@ namespace Website.Library.Classes
         /// <param name="Title">Title of email</param>
         public static void SendEmail(string Title, string Message)
         {
-            SendEMail(BaseWebApplication.SupportName, BaseWebApplication.SupportEMail, Title, Message);
+            SendEMail(WebsiteSettings.Email.SupportName, WebsiteSettings.Email.SupportEMail, Title, Message);
         }
 
         public static void SendEMail(string ToName, string ToEMail, string Title,
             string Msg)
         {
-            SendEMail(ToName, ToEMail, Title, Msg, BaseWebApplication.NoReplyName, BaseWebApplication.NoReplyEmail);
+            SendEMail(ToName, ToEMail, Title, Msg, WebsiteSettings.Email.NoReplyName, WebsiteSettings.Email.NoReplyEmail);
         }
 
         public static void SendEMail(string Title, string Msg)
         {
-            SendEMail(BaseWebApplication.SupportName, BaseWebApplication.SupportEMail, Title, Msg, 
-                BaseWebApplication.NoReplyName, BaseWebApplication.NoReplyEmail);
+            SendEMail(WebsiteSettings.Email.SupportName, WebsiteSettings.Email.SupportEMail, Title, Msg,
+                WebsiteSettings.Email.NoReplyName, WebsiteSettings.Email.NoReplyEmail);
         }
 
         public static void SendEMail(string ToName, string ToEMail, string Title,
@@ -1222,7 +1247,7 @@ namespace Website.Library.Classes
         {
             lib.BOL.Mail.Emails.Add(ToName, ToEMail, FromName, FromEMail, Title, Msg);
 
-            if (!BaseWebApplication.SendEmails)
+            if (!WebsiteSettings.Email.SendEmails)
                 return;
         }
 

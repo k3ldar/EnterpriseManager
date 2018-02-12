@@ -36,13 +36,13 @@
                     <uc1:CountryLanguageSelect ID="CountryLanguageSelect1" runat="server" ShowFlags="false" ShowLanguageSelector="false" />
                     <div class="socialMedia">
                         <ul>
-                            <li id="socialFB" runat="server"><a href="<%=SieraDelta.Website.Global.SocialMediaFacebook %>" target="_blank">
+                            <li id="socialFB" runat="server"><a href="<%=Library.BOL.Websites.WebsiteSettings.SocialMedia.Facebook.Url %>" target="_blank">
                                 <img src="/images/fb.jpg" alt="<%=Languages.LanguageStrings.JoinUsOnFacebook %>" /></a></li>
-                            <li id="socialTwitter" runat="server"><a href="<%=SieraDelta.Website.Global.SocialMediaTwitter %>" target="_blank">
+                            <li id="socialTwitter" runat="server"><a href="<%=Library.BOL.Websites.WebsiteSettings.SocialMedia.Twitter.Url %>" target="_blank">
                                 <img src="/images/twitter.jpg" alt="<%=Languages.LanguageStrings.JoinUsOnTwitter %>" /></a></li>
-                            <li id="socialGPlus" runat="server"><a href="<%=SieraDelta.Website.Global.SocialMediaGPlus %>" target="_blank">
+                            <li id="socialGPlus" runat="server"><a href="<%=Library.BOL.Websites.WebsiteSettings.SocialMedia.Google.GPlus %>" target="_blank">
                                 <img src="/images/googleplus.jpg" alt="<%=Languages.LanguageStrings.JoinUsOnTwitter %>" /></a></li>
-                            <li id="socialRSS" runat="server"><a href="<%=SieraDelta.Website.Global.SocialMediaRSSFeed %>" target="_blank">
+                            <li id="socialRSS" runat="server"><a href="<%=Library.BOL.Websites.WebsiteSettings.SocialMedia.RSS.Feed %>" target="_blank">
                                 <img src="/images/rss-blog.jpg" alt="<%=Languages.LanguageStrings.SubscribeToOurBlog %>" /></a></li>
                         </ul>
                     </div>

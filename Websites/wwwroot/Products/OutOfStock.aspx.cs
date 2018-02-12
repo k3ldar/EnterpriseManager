@@ -1,17 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
-using Library;
 using Library.BOL.Products;
-using Library.BOL.Users;
-using Library.BOL.Basket;
+using Library.BOL.Websites;
 using Library.Utils;
 using Website.Library.Classes;
-using Library.BOL.Countries;
 
 namespace SieraDelta.Website.Products
 {
@@ -28,7 +20,7 @@ namespace SieraDelta.Website.Products
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Global.OutOfStockAllowNotifyUser)
+            if (!WebsiteSettings.Stock.OutOfStockAllowNotifyUser)
                 DoRedirect("/All-Products/");
 
             LeftContainerControl1.SubHeader = Languages.LanguageStrings.Categories;
@@ -52,7 +44,7 @@ namespace SieraDelta.Website.Products
             string Result = _product.Description;
 
             //SieraDeltaUtils u = new SieraDeltaUtils();
-            Result = SharedUtils.PreProcessPost(Global.RootURL, Result);
+            Result = SharedUtils.PreProcessPost(Library.BOL.Websites.WebsiteSettings.RootURL, Result);
 
             return (Result);
         }

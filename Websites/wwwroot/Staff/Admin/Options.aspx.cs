@@ -1,21 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
 
 using Website.Library.Classes;
 using Library;
-using Library.Utils;
-using Library.BOL.Invoices;
+using Library.Interfaces;
 
 using SieraDelta.Website.Controls;
 
+#pragma warning disable IDE1006
+#pragma warning disable IDE0017
+
 namespace SieraDelta.Website.Staff.Admin
 {
-    public partial class Options : BaseWebFormAdmin, WebsiteOptions
+    public partial class Options : BaseWebFormAdmin, IWebsiteOptions
     {
         #region Protected Methods
 
@@ -24,7 +22,7 @@ namespace SieraDelta.Website.Staff.Admin
             if (!GetUser().HasPermissionWebsite(SecurityEnums.SecurityPermissionsWebsite.AlterWebsiteOptions))
                 DoRedirect("/Site-Error/Invalid-Permission/", true);
 
-            WebsiteSettings settings = new WebsiteSettings();
+            Library.BOL.Websites.Settings settings = new Library.BOL.Websites.Settings();
             string currentOption = GetFormValue("Option", "General Settings");
 
             LeftContainerControl2.SubHeader = "Website Options";
@@ -41,7 +39,7 @@ namespace SieraDelta.Website.Staff.Admin
             settings.WebSiteOptions(currentOption, this);
         }
 
-        private string GetWebsiteSubOptions(WebsiteSettings settings, string selectedOption,
+        private string GetWebsiteSubOptions(Library.BOL.Websites.Settings settings, string selectedOption,
             string currentOption, int depth)
         {
             string Result = String.Empty;
@@ -62,7 +60,7 @@ namespace SieraDelta.Website.Staff.Admin
             return (Result);
         }
 
-        private string GetWebsiteOptions(WebsiteSettings settings, string currentOption)
+        private string GetWebsiteOptions(Library.BOL.Websites.Settings settings, string currentOption)
         {
             string Result = String.Empty;
 

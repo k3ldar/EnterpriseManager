@@ -6,6 +6,7 @@ using Library.BOL.Products;
 using Library.BOL.Users;
 using Library.Utils;
 using Library.BOL.Countries;
+using Library.BOL.Websites;
 
 using Website.Library.Classes;
 
@@ -169,9 +170,9 @@ namespace SieraDelta.Website
             _product.UpdateProductCosts(GetUser());
             ProductCost item = ProductCosts.Get(prodType, GetUser());
 
-            if (item.OutOfStock && Global.OutOfStockAllowNotifyUser)
+            if (item.OutOfStock && WebsiteSettings.Stock.OutOfStockAllowNotifyUser)
             {
-                if (!Global.OutOfStockInPage)
+                if (!WebsiteSettings.Stock.OutOfStockInPage)
                 {
                     DoRedirect(String.Format("/Products/OutOfStock.aspx?ItemID={0}", item.ID));
                 }
@@ -182,7 +183,7 @@ namespace SieraDelta.Website
                 localData.Basket.Add(item, Count, GetUser(), Library.ProductCostItemType.Product, 
                     localData.Basket.Currency.PriceColumn);
 
-                if (Global.BasketSummaryShow)
+                if (WebsiteSettings.ShoppingCart.BasketSummaryShow)
                     BasketSummary.Visible = true;
             }
         }
@@ -267,7 +268,7 @@ namespace SieraDelta.Website
 
                 if (prodCost > 0.00m)
                 {
-                    if (BaseWebApplication.PricesIncludeVAT)
+                    if (WebsiteSettings.Tax.PricesIncludeVAT)
                     {
                         prodCost += SharedUtils.VATCalculate(prodCost, WebVATRate);
                     }
@@ -302,7 +303,9 @@ namespace SieraDelta.Website
 
         private void UpdateNotificationSettings()
         {
-            if (Global.OutOfStockAllowNotifyUser && Global.OutOfStockInPage && lstProductTypes.SelectedIndex > -1)
+            if (WebsiteSettings.Stock.OutOfStockAllowNotifyUser && 
+                WebsiteSettings.Stock.OutOfStockInPage && 
+                lstProductTypes.SelectedIndex > -1)
             {
                 //SieraDeltaUtils u = new SieraDeltaUtils();
                 int prodType = SharedUtils.StrToIntDef(lstProductTypes.SelectedItem.Value, -1);

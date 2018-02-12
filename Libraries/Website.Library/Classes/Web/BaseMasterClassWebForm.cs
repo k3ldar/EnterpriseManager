@@ -15,6 +15,7 @@ using Library.BOL.Products;
 using Library.BOL.Users;
 using Library.BOL.HashTags;
 using Library.BOL.Statistics;
+using Library.BOL.Websites;
 
 namespace Website.Library.Classes
 {
@@ -104,10 +105,10 @@ namespace Website.Library.Classes
         {
             base.OnInit(e);
 
-            if (BaseWebApplication.StaticWebSite)
+            if (WebsiteSettings.StaticWebSite)
                 return;
 
-            if (BaseWebApplication.AutoMaintenanceMode &&
+            if (WebsiteSettings.Maintenance.AutoMaintenanceMode &&
                 BaseWebApplication.BaseWebAppInstance != null &&
                 !BaseWebApplication.BaseWebAppInstance.IsLoaded)
             {
@@ -121,12 +122,10 @@ namespace Website.Library.Classes
                 Country selectedCountry = Countries.Get(newCulture);
 
                 if (!selectedCountry.CanLocalize)
-                    selectedCountry = Countries.Get(BaseWebApplication.DefaultCountrySettings);
+                    selectedCountry = Countries.Get(WebsiteSettings.Languages.DefaultCountrySettings);
 
 
                 LocalizedLanguages.SetLanguage(Session, Request, Response, selectedCountry, null);
-
-                //DoRedirect(Request.Path + Request.UrlReferrer.Query.ToString(), true);
             }
             else
             {
@@ -149,7 +148,7 @@ namespace Website.Library.Classes
 
         protected string GetGoogleAnalyticsCode()
         {
-            return (BaseWebApplication.GoogleAnalytics);
+            return (WebsiteSettings.Analytics.Google.GoogleAnalytics);
         }
 
         protected DateTime GetFormValue(string Name, DateTime Default)
@@ -301,8 +300,8 @@ namespace Website.Library.Classes
         {
             string Result = String.Empty;
 
-            if (GlobalClass.ShowTermsAndConditions)
-                Result = String.Format(" - <a href=\"/Company/Terms-And-Conditions/\">{0}</a>", Languages.LanguageStrings.Terms);
+            if (WebsiteSettings.AllPages.ShowTermsAndConditions)
+                Result = String.Format(" - <a href=\"/Company/Terms-And-Conditions/\">{0}</a>", LanguageStrings.Terms);
 
             return (Result);
         }
@@ -311,8 +310,8 @@ namespace Website.Library.Classes
         {
             string Result = String.Empty;
 
-            if (GlobalClass.ShowPrivacyPolicy)
-                Result = String.Format(" - <a href=\"/Company/Privacy-Policy/\">{0}</a>", Languages.LanguageStrings.Privacy);
+            if (WebsiteSettings.AllPages.ShowPrivacyPolicy)
+                Result = String.Format(" - <a href=\"/Company/Privacy-Policy/\">{0}</a>", LanguageStrings.Privacy);
 
             return (Result);
         }
@@ -321,7 +320,7 @@ namespace Website.Library.Classes
         {
             string Result = String.Empty;
 
-            if (GlobalClass.ShowReturnsPolicy)
+            if (WebsiteSettings.AllPages.ShowReturnsPolicy)
                 Result = String.Format(" - <a href=\"/Company/Returns-Policy/\">{0}</a>", Languages.LanguageStrings.Returns);
 
             return (Result);
@@ -331,12 +330,12 @@ namespace Website.Library.Classes
         {
             string Result = String.Empty;
 
-            if (GlobalClass.UseLeftToRight) // || Request.Path.Contains("/Staff/"))
-                Result = String.Format("<link property=\"stylesheet\" rel=\"stylesheet\" href=\"/css/{0}\" type=\"text/css\" media=\"screen\" />", 
-                    GlobalClass.StyleSheet);
+            if (WebsiteSettings.UseLeftToRight) // || Request.Path.Contains("/Staff/"))
+                Result = String.Format("<link property=\"stylesheet\" rel=\"stylesheet\" href=\"/css/{0}\" type=\"text/css\" media=\"screen\" />",
+                    WebsiteSettings.StyleSheet);
             else
-                Result = String.Format("<link property=\"stylesheet\" rel=\"stylesheet\" href=\"/css/{0}\" type=\"text/css\" media=\"screen\" />", 
-                    GlobalClass.StyleSheet.Replace(".css", "rtl.css"));
+                Result = String.Format("<link property=\"stylesheet\" rel=\"stylesheet\" href=\"/css/{0}\" type=\"text/css\" media=\"screen\" />",
+                    WebsiteSettings.StyleSheet.Replace(".css", "rtl.css"));
 
             Result += "\r<link property=\"stylesheet\" rel=\"stylesheet\" href=\"/css/combined.css\" type=\"text/css\" media=\"screen\" />";
 
@@ -353,21 +352,21 @@ namespace Website.Library.Classes
         {
             if (Request.IsLocal)
             {
-                if (GlobalClass.UseLeftToRight)
-                    return (String.Format("<link property=\"stylesheet\" rel=\"stylesheet\" href=\"/css/{0}\" type=\"text/css\" media=\"screen\" />", 
-                        GlobalClass.StyleSheet));
+                if (WebsiteSettings.UseLeftToRight)
+                    return (String.Format("<link property=\"stylesheet\" rel=\"stylesheet\" href=\"/css/{0}\" type=\"text/css\" media=\"screen\" />",
+                        WebsiteSettings.StyleSheet));
                 else
-                    return (String.Format("<link property=\"stylesheet\" rel=\"stylesheet\" href=\"/css/{0}\" type=\"text/css\" media=\"screen\" />", 
-                        GlobalClass.StyleSheet.Replace(".css", "rtl.css")));
+                    return (String.Format("<link property=\"stylesheet\" rel=\"stylesheet\" href=\"/css/{0}\" type=\"text/css\" media=\"screen\" />",
+                        WebsiteSettings.StyleSheet.Replace(".css", "rtl.css")));
             }
             else
             {
-                if (GlobalClass.UseLeftToRight)
-                    return (String.Format("<link property=\"stylesheet\" rel=\"stylesheet\" href=\"{0}{1}\" type=\"text/css\" media=\"screen\" />",
-                        GlobalClass.StyleSheetLocation, GlobalClass.StyleSheet));
+                if (WebsiteSettings.UseLeftToRight)
+                    return (String.Format("<link property=\"stylesheet\" rel=\"stylesheet\" href=\"/css/{0}\" type=\"text/css\" media=\"screen\" />",
+                        WebsiteSettings.StyleSheet));
                 else
-                    return (String.Format("<link property=\"stylesheet\" rel=\"stylesheet\" href=\"{0}{1}\" type=\"text/css\" media=\"screen\" />", 
-                        GlobalClass.StyleSheetLocation, GlobalClass.StyleSheet.Replace(".css", "rtl.css")));
+                    return (String.Format("<link property=\"stylesheet\" rel=\"stylesheet\" href=\"/css/{0}\" type=\"text/css\" media=\"screen\" />", 
+                        WebsiteSettings.StyleSheet.Replace(".css", "rtl.css")));
             }
         }
 
@@ -445,7 +444,7 @@ namespace Website.Library.Classes
                     {
                         decimal lowestPrice = featured.LowestPrice(SharedWebBase.WebsiteCurrency(Session, Request), priceColumn, WebCountry);
 
-                        if (BaseWebApplication.PricesIncludeVAT)
+                        if (WebsiteSettings.Tax.PricesIncludeVAT)
                         {
                             lowestPrice += SharedUtils.VATCalculate(lowestPrice, WebVATRate);
                         }
@@ -483,7 +482,7 @@ namespace Website.Library.Classes
         /// <returns></returns>
         protected string ShowTreatments()
         {
-            if (!GlobalClass.ShowTreatmentsMenu)
+            if (!WebsiteSettings.AllPages.ShowTreatmentsMenu)
                 return (String.Empty);
 
             return (String.Format("<li><a href=\"/Treatments/\">{0}</a></li>", Languages.LanguageStrings.Treatments));
@@ -495,7 +494,7 @@ namespace Website.Library.Classes
         /// <returns></returns>
         protected string ShowSalons()
         {
-            if (!GlobalClass.ShowSalonsMenu)
+            if (!WebsiteSettings.AllPages.ShowSalonsMenu)
                 return (String.Empty);
 
             return (String.Format("<li><a href=\"/Salons/\">{0}</a></li>", Languages.LanguageStrings.Salons));
@@ -507,7 +506,7 @@ namespace Website.Library.Classes
         /// <returns></returns>
         protected string ShowTipsAndTricks()
         {
-            if (!GlobalClass.ShowTipsAndTricksMenu)
+            if (!WebsiteSettings.AllPages.ShowTipsAndTricksMenu)
                 return (String.Empty);
 
             return (String.Format("<li><a href=\"/Tips-And-Tricks/\">{0}</a></li>", Languages.LanguageStrings.TipsAndTricks));
@@ -519,7 +518,7 @@ namespace Website.Library.Classes
         /// <returns></returns>
         protected string ShowDistributors()
         {
-            if (!GlobalClass.ShowDistributorsMenu)
+            if (!WebsiteSettings.AllPages.ShowDistributorsMenu)
                 return (String.Empty);
 
             return (String.Format("<li><a href=\"/Distributors/\">{0}</a></li>", LanguageStrings.Distributors));
@@ -527,7 +526,7 @@ namespace Website.Library.Classes
 
         protected string ShowTrade()
         {
-            if (!GlobalClass.ShowTradePage)
+            if (!WebsiteSettings.AllPages.ShowTradePage)
                 return (String.Empty);
 
             return (String.Format("<li><a href=\"/Trade-Customers/\">{0}</a></li>", LanguageStrings.Trade));
@@ -535,7 +534,7 @@ namespace Website.Library.Classes
 
         protected string ShowDownloads()
         {
-            if (!GlobalClass.ShowDownloadMenu)
+            if (!WebsiteSettings.AllPages.ShowDownloadMenu)
                 return (String.Empty);
 
             return (String.Format("<li><a href=\"/Download/Index.aspx\">{0}</a></li>", Languages.LanguageStrings.Downloads));
@@ -547,7 +546,7 @@ namespace Website.Library.Classes
         /// <returns>string - email address</returns>
         protected string WebsiteEmailAddress()
         {
-            return (BaseWebApplication.WebsiteEmail);
+            return (WebsiteSettings.ContactDetails.WebsiteEmail);
         }
 
         /// <summary>
@@ -654,7 +653,7 @@ namespace Website.Library.Classes
                 if (String.IsNullOrEmpty(group.URL))
                 {
                     Result += String.Format("<li class=\"{3}\"><a href=\"{2}/All-Products/Group/{0}/\">{1}</a></li>\r\n",
-                        group.SEODescripton, description, GlobalClass.RootURL, groupColor);
+                        group.SEODescripton, description, WebsiteSettings.RootURL, groupColor);
                 }
                 else
                 {
@@ -816,7 +815,7 @@ namespace Website.Library.Classes
                 if (country != null)
                     return (country.ShowPriceData());
                 else
-                    return (BaseWebApplication.DefaultShowPrices);
+                    return (WebsiteSettings.ShoppingCart.DefaultShowPrices);
             }
         }
 

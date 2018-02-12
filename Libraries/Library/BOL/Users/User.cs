@@ -38,6 +38,7 @@ using Library.BOL.Basket;
 using Library.BOL.Licencing;
 using Library.BOL.Staff;
 using Library.BOL.Trade;
+using Library.BOL.Websites;
 
 namespace Library.BOL.Users
 {
@@ -1176,7 +1177,7 @@ namespace Library.BOL.Users
                     "<br />Username: {1}<br />Password: {2}<br />--------------------------------<br /><br />" +
                     "To login to the members area visit {3}/Account/Login/" +
                     "<br /><br />Thanks", FirstName,
-                    Email, Password, Library.DAL.DALHelper.WebsiteAddress);
+                    Email, Password, WebsiteSettings.RootURL);
 
                 DAL.FirebirdDB.AdminEmailMassAdd(UserName, Email, "No reply", "noreply@sieradelta.com",
                     "Login Details", MailMessage, DateTime.Now);

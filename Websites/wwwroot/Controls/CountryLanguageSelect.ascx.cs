@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-
-using Library.Utils;
 using Library.BOL.Basket;
 using Library.BOL.Countries;
 using Website.Library;
 using Website.Library.Classes;
 using Library;
-using Library.DAL;
 using Shared.Classes;
+
+#pragma warning disable IDE1006
 
 namespace SieraDelta.Website.Controls
 {
@@ -155,12 +150,12 @@ namespace SieraDelta.Website.Controls
 
             // create cookies to remember the users choices
             SharedWebBase.CookieSetValue(Request, Response, 
-                String.Format(StringConstants.COOKIE_USER_LANGUAGE, Global.DistributorWebsite),
+                String.Format(StringConstants.COOKIE_USER_LANGUAGE, Library.BOL.Websites.WebsiteSettings.DistributorWebsite),
                 newCountry.CountryCode, DateTime.Now.AddYears(1));
 
             // create cookies to remember the users choices
             SharedWebBase.CookieSetValue(Request, Response, 
-                String.Format(StringConstants.COOKIE_USER_CURRENCY, Global.DistributorWebsite),
+                String.Format(StringConstants.COOKIE_USER_CURRENCY, Library.BOL.Websites.WebsiteSettings.DistributorWebsite),
                 newCurrency.CurrencyCode, DateTime.Now.AddYears(1));
 
             LocalizedLanguages.SetLanguage(Session, Request, Response, newCountry, newCurrency);

@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 using Library.BOL.Salons;
 using Library.Utils;
 using Website.Library.Classes;
-using Website.Library;
+using Library.BOL.Websites;
 using Shared;
 
 namespace SieraDelta.Website
@@ -16,15 +13,15 @@ namespace SieraDelta.Website
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!GlobalClass.ShowSalonsMenu)
+            if (!WebsiteSettings.AllPages.ShowSalonsMenu)
                 DoRedirect("/Home/");
 
-            frmSalonFinder.Visible = GlobalClass.ShowSalonFinder;
-            headerSalons.Visible = GlobalClass.ShowSalonFinder;
+            frmSalonFinder.Visible = WebsiteSettings.AllPages.ShowSalonFinder;
+            headerSalons.Visible = WebsiteSettings.AllPages.ShowSalonFinder;
 
             btnFindSalon.Text = Languages.LanguageStrings.Search;
             //headerClients.Visible = GlobalClass.ShowClientHeader;
-            headerSalons.Visible = GlobalClass.ShowSalonHeader;
+            headerSalons.Visible = WebsiteSettings.AllPages.ShowSalonHeader;
         }
 
         protected int GetSalonPage()

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 using Website.Library.Classes;
 using Library.Utils;
@@ -40,7 +36,7 @@ namespace SieraDelta.Website.Press
         {
             //SieraDeltaUtils u = new SieraDeltaUtils();
 
-            string Result = SharedUtils.PreProcessPost(Global.RootURL, _news.Text);
+            string Result = SharedUtils.PreProcessPost(Library.BOL.Websites.WebsiteSettings.RootURL, _news.Text);
 
             return (Result);
         }

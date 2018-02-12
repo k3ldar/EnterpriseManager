@@ -1,23 +1,22 @@
 using System;
-using System.Collections;
 using System.Collections.Specialized;
 using System.IO;
 using System.Net;
-using System.Text;
-using System.Data;
-using System.Configuration;
 using System.Web;
 
 using PayPal.Payments.Common.Utility;
 using PayPal.Payments.Communication;
-using PayPal.Payments.DataObjects;
 
 using lib = Library;
 using Library.Utils;
 using Library.BOL.Countries;
 using Library.BOL.Orders;
+using Library.BOL.Websites;
 
 using Shared.Classes;
+
+#pragma warning disable IDE1006
+#pragma warning disable IDE0028
 
 namespace Website.Library.Classes
 {
@@ -58,17 +57,17 @@ namespace Website.Library.Classes
         {
             NVPCodec codec = new NVPCodec();
 
-            if (!IsEmpty(APIUsername))
-                codec["USER"] = APIUsername;
+            if (!IsEmpty(WebsiteSettings.PaymentGateways.Paypal.APIUsername))
+                codec["USER"] = WebsiteSettings.PaymentGateways.Paypal.APIUsername;
 
-            if (!IsEmpty(APIPassword))
-                codec[PWD] = APIPassword;
+            if (!IsEmpty(WebsiteSettings.PaymentGateways.Paypal.APIPassword))
+                codec[PWD] = WebsiteSettings.PaymentGateways.Paypal.APIPassword;
 
-            if (!IsEmpty(APISignature))
-                codec[SIGNATURE] = APISignature;
+            if (!IsEmpty(WebsiteSettings.PaymentGateways.Paypal.APISignature))
+                codec[SIGNATURE] = WebsiteSettings.PaymentGateways.Paypal.APISignature;
 
-            if (!IsEmpty(Subject))
-                codec["SUBJECT"] = Subject;
+            if (!IsEmpty(WebsiteSettings.PaymentGateways.Paypal.Subject))
+                codec["SUBJECT"] = WebsiteSettings.PaymentGateways.Paypal.Subject;
 
             codec["VERSION"] = VERSION;
 
@@ -118,8 +117,10 @@ namespace Website.Library.Classes
             string PayPalRequest = String.Format("TRXTYPE=S&TENDER=C&ACCT={0}&EXPDATE={1}&CVV2={2}&AMT={3}&COMMENT1=Order #{4}" +
                 "&USER={5}&VENDOR={6}&PARTNER={7}&PWD={8}&CURRENCY={9}",
                 cardNumber, validTo.Replace("/", ""), last3Digits, amt, orderID,
-                BaseWebApplication.PayflowUser, BaseWebApplication.PayflowVendor, BaseWebApplication.PayflowPartner,
-                BaseWebApplication.PayflowPassword, currency);
+                WebsiteSettings.PaymentGateways.Payflow.PayflowUser, 
+                WebsiteSettings.PaymentGateways.Payflow.PayflowVendor, 
+                WebsiteSettings.PaymentGateways.Payflow.PayflowPartner,
+                WebsiteSettings.PaymentGateways.Payflow.PayflowPassword, currency);
 
             // Create an instance of PayflowNETAPI.
             PayflowNETAPI PayflowNETAPI = new PayflowNETAPI();
@@ -153,9 +154,9 @@ namespace Website.Library.Classes
         /// <returns></returns>
         public void SetCredentials(string Userid, string Pwd, string Signature)
         {
-            APIUsername = Userid;
-            APIPassword = Pwd;
-            APISignature = Signature;
+            WebsiteSettings.PaymentGateways.Paypal.APIUsername = Userid;
+            WebsiteSettings.PaymentGateways.Paypal.APIPassword = Pwd;
+            WebsiteSettings.PaymentGateways.Paypal.APISignature = Signature;
         }
 
 
@@ -174,8 +175,8 @@ namespace Website.Library.Classes
             NVPCodec encoder = new NVPCodec();
             encoder["VERSION"] = VERSION;
             encoder["METHOD"] = "SetExpressCheckout";
-            encoder["RETURNURL"] = APISuccessURL;
-            encoder["CANCELURL"] = APIFailURL;
+            encoder["RETURNURL"] = WebsiteSettings.PaymentGateways.Paypal.APISuccessURL;
+            encoder["CANCELURL"] = WebsiteSettings.PaymentGateways.Paypal.APIFailURL;
             encoder["AMT"] = amt;
             encoder["PAYMENTACTION"] = "Sale";
             encoder["CURRENCYCODE"] = currency;
@@ -256,8 +257,8 @@ namespace Website.Library.Classes
 
             NVPCodec encoder = new NVPCodec();
             encoder["METHOD"] = "SetExpressCheckout";
-            encoder["RETURNURL"] = APISuccessURL;
-            encoder["CANCELURL"] = APIFailURL;
+            encoder["RETURNURL"] = WebsiteSettings.PaymentGateways.Paypal.APISuccessURL;
+            encoder["CANCELURL"] = WebsiteSettings.PaymentGateways.Paypal.APIFailURL;
             encoder["AMT"] = amt;
             encoder["PAYMENTACTION"] = "Sale";
             encoder["CURRENCYCODE"] = currency;
@@ -401,7 +402,7 @@ namespace Website.Library.Classes
 
             //To Add the credentials from the profile
             string strPost = NvpRequest + "&" + buildCredentialsNVPString();
-            strPost = strPost + "&BUTTONSOURCE=" + HttpUtility.UrlEncode(BNCode);
+            strPost = strPost + "&BUTTONSOURCE=" + HttpUtility.UrlEncode(WebsiteSettings.PaymentGateways.Paypal.BNCode);
 
             HttpWebRequest objRequest = (HttpWebRequest)WebRequest.Create(url);
             objRequest.Timeout = Timeout;
@@ -464,49 +465,5 @@ namespace Website.Library.Classes
         }
 
         #endregion Private Methods
-
-        #region Static Properties
-
-        /// <summary>
-        /// URL used if payment succeeds
-        /// </summary>
-        public static string APISuccessURL { get; set; }
-
-        /// <summary>
-        /// URL used if payment failed
-        /// </summary>
-        public static string APIFailURL { get; set; }
-
-        /// <summary>
-        /// Paypal API Username
-        /// </summary>
-        public static string APIUsername { get; set; }
-
-        /// <summary>
-        /// Paypal API Password
-        /// </summary>
-        public static string APIPassword { get; set; }
-
-        /// <summary>
-        /// Paypal API Signature
-        /// </summary>
-        public static string APISignature { get; set; }
-
-        /// <summary>
-        /// Paypal API Subject
-        /// </summary>
-        public static string Subject { get; set; }
-
-        /// <summary>
-        /// Paypal API BN Code
-        /// </summary>
-        public static string BNCode { get; set; }
-
-        /// <summary>
-        /// Paypal API Currency
-        /// </summary>
-        public static string DefaultCurrency { get; set; }
-
-        #endregion Static Properties
     }
 }

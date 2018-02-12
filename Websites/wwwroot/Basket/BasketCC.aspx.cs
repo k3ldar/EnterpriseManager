@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 using Website.Library.Classes;
 using Library.Utils;
-using Library;
 using Library.BOL.Orders;
 using Library.BOL.Accounts;
+using Library.BOL.Websites;
 
 namespace SieraDelta.Website.Basket
 {
@@ -69,7 +65,7 @@ namespace SieraDelta.Website.Basket
                 GetFormValue("OrderID"));
             Msg = Msg.Replace("\n", "\r\n");
 
-            Global.SendEMail(Global.WebsiteEmail, Global.WebsiteEmail, "Transaction Failed", Msg);
+            Global.SendEMail(WebsiteSettings.ContactDetails.WebsiteEmail, WebsiteSettings.ContactDetails.WebsiteEmail, "Transaction Failed", Msg);
             Library.ErrorHandling.LogError(System.Reflection.MethodBase.GetCurrentMethod(), Msg);
         }
 

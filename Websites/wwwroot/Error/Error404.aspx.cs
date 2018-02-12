@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using System.Threading;
 
 using Library.BOL.MissingLinks;
+using Library.BOL.Websites;
 using Website.Library.Classes;
+
+#pragma warning disable IDE1006
 
 namespace SieraDelta.Website.Error
 {
@@ -37,8 +37,8 @@ namespace SieraDelta.Website.Error
 
                     if (!session.IsBot && !BaseWebApplication.IgnoreMissingPage(page))
                     {
-                        Global.SendEMail(Global.SupportName, Global.SupportEMail,
-                            String.Format("Missing Link - {0}", Global.DistributorWebsite),
+                        Global.SendEMail(WebsiteSettings.Email.SupportName, WebsiteSettings.Email.SupportEMail,
+                            String.Format("Missing Link - {0}", Library.BOL.Websites.WebsiteSettings.DistributorWebsite),
                             String.Format("<p>The following page could not be found<p>{0}<P>Referrer: {1}<P>Query String: {3}<P>Session: {2}",
                             page, session.InitialReferrer, Session.SessionID, Request.QueryString.ToString()));
                     }

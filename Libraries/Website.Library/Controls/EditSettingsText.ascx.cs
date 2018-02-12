@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
+
+using Library.BOL.Websites;
+
+#pragma warning disable IDE1006
 
 namespace Website.Library.Controls
 {
@@ -38,8 +39,8 @@ namespace Website.Library.Controls
                     }
                     catch 
                     {
-                        settingText.Text = Classes.BaseWebApplication.ConfigSettingGet(_settingCode, 
-                            Classes.BaseWebApplication.WebsiteCulture.Name);
+                        settingText.Text = Classes.BaseWebApplication.ConfigSettingGet(_settingCode,
+                            WebsiteSettings.Languages.WebsiteCulture.Name);
                     }
                 }
 

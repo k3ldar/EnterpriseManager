@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Web;
-using System.Web.UI;
 using System.IO;
-using System.Web.UI.WebControls;
 
-using Library.BOL.Downloads;
 using Website.Library.Classes;
+
+#pragma warning disable IDE1006
 
 namespace SieraDelta.Website.Controls
 {
@@ -25,7 +22,7 @@ namespace SieraDelta.Website.Controls
             lblDescription.InnerText = file.Description;
             lblFileName.InnerHtml = String.Format("{0} <span>({1})</span>", file.ShortFileName, file.FileSize);
 
-            string rootPathDestination = String.Format("{0}/Download/files/", Global.RootURL);
+            string rootPathDestination = String.Format("{0}/Download/files/", Library.BOL.Websites.WebsiteSettings.RootURL);
 
             switch (file.FileExtension)
             {
@@ -62,7 +59,8 @@ namespace SieraDelta.Website.Controls
         protected void btnDownload_Click(object sender, EventArgs e)
         {
             //string file = String.Format("\\Downloads\\UPloads\\Final\\{0}", _download.ShortFileName);
-            string file = String.Format(Global.Path + "download\\files\\{0}", _download.ShortFileName);
+            string file = String.Format(Library.BOL.Websites.WebsiteSettings.RootPath + "download\\files\\{0}", 
+                _download.ShortFileName);
             DownloadFile(file, true);
         }
 

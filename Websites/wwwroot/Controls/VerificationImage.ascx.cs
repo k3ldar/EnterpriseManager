@@ -1,15 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.IO;
-
-using SieraDelta.Website;
 using Website.Library.Classes;
-using Shared.Classes;
 
 namespace SieraDelta.Website.Controls
 {
@@ -60,7 +50,7 @@ namespace SieraDelta.Website.Controls
 
             string url = String.Empty;
 
-            url = String.Format("{1}/Controls/JpegImage.aspx?ID={0}", GenerateRandomCode(), Global.RootURL);
+            url = String.Format("{1}/Controls/JpegImage.aspx?ID={0}", GenerateRandomCode(), Library.BOL.Websites.WebsiteSettings.RootURL);
 
             if (!Request.IsLocal && Request.IsSecureConnection)
                 url = url.ToLower().Replace("http://", "https://");

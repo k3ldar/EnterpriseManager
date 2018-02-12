@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Web.SessionState;
-using System.Web.UI.HtmlControls;
 
 using Library;
 using Library.Utils;
 using Library.BOL.Salons;
 using Website.Library.Classes;
+
+#pragma warning disable IDE1006
 
 namespace SieraDelta.Website.Members
 {
@@ -146,12 +142,12 @@ namespace SieraDelta.Website.Members
 
                 Result = fn;
 
-                string NewFile = Global.Path + fn;
+                string NewFile = Library.BOL.Websites.WebsiteSettings.RootPath + fn;
 
                 if (!System.IO.Directory.Exists(System.IO.Path.GetDirectoryName(NewFile)))
                     System.IO.Directory.CreateDirectory(System.IO.Path.GetDirectoryName(NewFile));
                 
-                Result = Global.RootURL + "/" + fn.Replace(@"\", "/");
+                Result = Library.BOL.Websites.WebsiteSettings.RootURL + "/" + fn.Replace(@"\", "/");
                 _url = Result;
                 Session["SalonUpdateImage"] = _url;
                 idFilePicture.PostedFile.SaveAs(NewFile);

@@ -3,8 +3,12 @@
 using Website.Library.Classes;
 using Library.Utils;
 using Library.BOL.Users;
+using Library.BOL.Websites;
 
 using Shared;
+
+#pragma warning disable IDE1005
+#pragma warning disable IDE1006
 
 namespace SieraDelta.Website.Members.Controls
 {
@@ -45,7 +49,7 @@ namespace SieraDelta.Website.Members.Controls
             if (Library.BOL.Users.User.UserLogUserOn(user))
             {
                 SharedWebBase.CookieSetValue(Request, Response, 
-                    String.Format("SD{0}Session", Global.DistributorWebsite),
+                    String.Format("SD{0}Session", Library.BOL.Websites.WebsiteSettings.DistributorWebsite),
                     user.ID.ToString(), DateTime.Now.AddDays(60));
 
                 Session["CURRENT_USER"] = user;
@@ -85,11 +89,12 @@ namespace SieraDelta.Website.Members.Controls
                 "To login to the members area visit {5}/Account/Login/" +
                 "<br /><br />Thanks<br /><br />Heaven Health & Beauty Ltd", user.FirstName,
                 DateTime.Now.ToString("dd/MM/yyyy"), Request.ServerVariables["REMOTE_HOST"], 
-                SharedUtils.ReplaceHTMLElements(txtUsername.Text, CaseType.Ignore), user.Password, Global.RootURL);
+                SharedUtils.ReplaceHTMLElements(txtUsername.Text, CaseType.Ignore), user.Password, 
+                Library.BOL.Websites.WebsiteSettings.RootURL);
 
             Global.SendEMail(user.UserName, user.Email,
                 Languages.LanguageStrings.MemberAccountDetails, MailMessage,
-                Global.SupportName, Global.SupportEMail);
+                WebsiteSettings.Email.SupportName, WebsiteSettings.Email.SupportEMail);
             ShowError(Languages.LanguageStrings.LoginDetailsSentByEmail);
         }
 

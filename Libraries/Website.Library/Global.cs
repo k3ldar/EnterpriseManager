@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
-using System.Xml;
-using System.IO;
 
 using lib = Library;
 using Shared.Classes;
+using Library.BOL.Websites;
 
 namespace Website.Library
 {
@@ -35,68 +31,12 @@ namespace Website.Library
         /// </summary>
         public static bool ShowTopProducts { get; set; }
 
-        public static bool ShowSalonsMenu { get; set; }
-
-        public static bool ShowSalonFinder { get; set; }
-        public static bool ShowClientHeader { get; set; }
-        public static bool ShowSalonHeader { get; set; }
 
 
-        public static bool ShowTreatmentsMenu { get; set; }
-
-        public static bool ShowTreatmentsBrochure { get; set; }
-
-        public static bool ShowDistributorsMenu { get; set; }
-
-        public static bool ShowTipsAndTricksMenu { get; set; }
-
-        public static bool ShowDownloadMenu { get; set; }
-
-        
-
-
-        /// <summary>
-        /// Determines wether terms and conditions are shown
-        /// </summary>
-        public static bool ShowTermsAndConditions { get; set; }
-
-        /// <summary>
-        /// Determines wether the returns policy is shown or not
-        /// </summary>
-        public static bool ShowReturnsPolicy { get; set; }
-
-        /// <summary>
-        /// Show Trade Page
-        /// </summary>
-        public static bool ShowTradePage { get; set; }
-
-        /// <summary>
-        /// Determines wether the Privacy Policy is shown or not
-        /// </summary>
-        public static bool ShowPrivacyPolicy { get; set; }
+      
 
         #endregion Site Template Settings
 
-
-        /// <summary>
-        /// Current Style sheet being used
-        /// </summary>
-        public static string StyleSheet = "style9.css";
-
-
-        public static string StyleSheetLocation = "/css/";
-
-        /// <summary>
-        /// Determines wether XML Image Files are created
-        /// </summary>
-        public static bool CreateXMLImageFiles { get; set; }
-
-        /// <summary>
-        /// Determines wether routine database maintenance is run
-        /// 
-        /// Used for websites that share a database
-        /// </summary>
-        public static bool AllowRoutineMaintenance { get; set; }
 
 
         public static bool AllowUseOfCurrencyConversion { get; set; }
@@ -107,27 +47,9 @@ namespace Website.Library
         public static string MappedWebsite { get; set; }
 
         /// <summary>
-        /// Email used for no reply
-        /// </summary>
-        public static string NoReplyEmail { get; set; }
-
-
-        public static string NoReplyName { get; set; }
-
-        /// <summary>
         /// Returns the address across 1 line formatted for HTML
         /// </summary>
         public static string Address { get; set; }
-
-        /// <summary>
-        /// Date format used by the website
-        /// </summary>
-        public static string WebsiteDateFormat { get; set; }
-
-        /// <summary>
-        /// Name of basket
-        /// </summary>
-        public static string BasketName { get; set; }
 
         /// <summary>
         /// Returns the Database Connection String
@@ -140,21 +62,6 @@ namespace Website.Library
                 return (Shared.XML.GetXMLValue("Settings", "RootPath", ConfigFile));
             }
         }
-
-        /// <summary>
-        /// Returns the root url for the website
-        /// </summary>
-        public static string RootURL { get; set; }
-
-        /// <summary>
-        /// Returns the root path for the website
-        /// </summary>
-        public static string RootPath { get; set; }
-
-        /// <summary>
-        /// Using left to right or right to left character set?
-        /// </summary>
-        public static bool UseLeftToRight { get; set; }
 
         /// <summary>
         /// Default static Keywords
@@ -306,7 +213,7 @@ namespace Website.Library
         //internal static void SendEmail(string ErrorMessage)
         //{
         //    SendEMail(GlobalClass.SupportName, GlobalClass.SupportEMail, 
-        //        String.Format("Website Error (3) - {0}", GlobalClass.DistributorWebsite), 
+        //        String.Format("Website Error (3) - {0}", WebsiteSettings.DistributorWebsite), 
         //        ErrorMessage);
         //}
 
@@ -325,7 +232,7 @@ namespace Website.Library
         internal static void SendEMail(string ToName, string ToEMail, string Title,
             string Msg)
         {
-            SendEMail(ToName, ToEMail, Title, Msg, GlobalClass.NoReplyName, GlobalClass.NoReplyEmail);
+            SendEMail(ToName, ToEMail, Title, Msg, WebsiteSettings.Email.NoReplyName, WebsiteSettings.Email.NoReplyEmail);
         }
 
         internal static void SendEMail(string ToName, string ToEMail, string Title,
