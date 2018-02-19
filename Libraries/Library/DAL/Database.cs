@@ -11,7 +11,7 @@
  *
  *  The Original Code was created by Simon Carter (s1cart3r@gmail.com)
  *
- *  Copyright (c) 2010 - 2017 Simon Carter.  All Rights Reserved.
+ *  Copyright (c) 2010 - 2018 Simon Carter.  All Rights Reserved.
  *
  *  Product:  Enterprise Manager
  *  
@@ -3777,7 +3777,7 @@ namespace Library.DAL
             {
                 if (_cacheLimit.TotalSeconds == 0)
                 {
-                    int limit = SettingGet("CACHE_TIMEOUT", 30);
+                    int limit = SettingGet("Setting.CacheLimit", 30);
                     _cacheLimit = new TimeSpan(0, limit, 0);
                 }
 
@@ -4066,11 +4066,7 @@ namespace Library.DAL
             FirebirdDB.CreateCustomPages();
         }
 
-        #endregion Public Static Methods
-
-        #region Private Methods
-
-        private static bool SettingGet(string name, bool defaultValue)
+        public static bool SettingGet(string name, bool defaultValue)
         {
             bool Result = defaultValue;
             try
@@ -4085,7 +4081,7 @@ namespace Library.DAL
             return (Result);
         }
 
-        private static int SettingGet(string name, int defaultValue)
+        public static int SettingGet(string name, int defaultValue)
         {
             int Result = defaultValue;
             try
@@ -4099,6 +4095,10 @@ namespace Library.DAL
 
             return (Result);
         }
+
+        #endregion Public Static Methods
+
+        #region Private Methods
 
 
         /// <summary>

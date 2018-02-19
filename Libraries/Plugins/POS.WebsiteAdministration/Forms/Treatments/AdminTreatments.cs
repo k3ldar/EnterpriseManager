@@ -11,7 +11,7 @@
  *
  *  The Original Code was created by Simon Carter (s1cart3r@gmail.com)
  *
- *  Copyright (c) 2010 - 2017 Simon Carter.  All Rights Reserved.
+ *  Copyright (c) 2010 - 2018 Simon Carter.  All Rights Reserved.
  *
  *  Product:  Enterprise Manager
  *  
@@ -33,6 +33,8 @@ using Library.BOL.Treatments;
 
 using POS.Base.Classes;
 using SharedControls.Classes;
+
+#pragma warning disable IDE1006
 
 namespace POS.WebsiteAdministration.Forms.Treatments
 {
@@ -152,7 +154,7 @@ namespace POS.WebsiteAdministration.Forms.Treatments
 
             if (result.ReturnCode == System.Windows.Forms.DialogResult.OK && result.Text != String.Empty)
             {
-                Treatment newTreat = new Treatment(-1, result.Text, StringConstants.COST_ZERO,
+                Treatment newTreat = new Treatment(-1, result.Text, POS.Base.Classes.StringConstants.COST_ZERO,
                     String.Format(LanguageStrings.AppMinutes, 15), String.Empty, String.Empty,
                     String.Empty, 100, 15, false);
                 newTreat = AppController.Administration.TreatmentCreate(newTreat);

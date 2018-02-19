@@ -5,6 +5,7 @@ using System.Threading;
 using Shared;
 using Shared.Classes;
 
+using lib = Library;
 using Library.BOL.Websites;
 using Library.BOL.Basket;
 using Library.BOL.Countries;
@@ -28,9 +29,9 @@ namespace Website.Library.Classes
         public static int GetPriceColumn(System.Web.SessionState.HttpSessionState Session,
             System.Web.HttpRequest Request)
         {
-            UserSession session = (UserSession)Session[StringConstants.SESSION_NAME_USER_SESSION];
+            UserSession session = (UserSession)Session[lib.StringConsts.SESSION_NAME_USER_SESSION];
             int Result = ((LocalWebSessionData)session.Tag).PriceColumn;
-            RaiseSelectPriceColumn(Session, Request, (UserSession)Session[StringConstants.SESSION_NAME_USER_SESSION], Result);
+            RaiseSelectPriceColumn(Session, Request, (UserSession)Session[lib.StringConsts.SESSION_NAME_USER_SESSION], Result);
             return (Result);
         }
 
@@ -81,7 +82,7 @@ namespace Website.Library.Classes
             try
             {
                 extra = 1;
-                UserSession session = (UserSession)Session[StringConstants.SESSION_NAME_USER_SESSION];
+                UserSession session = (UserSession)Session[lib.StringConsts.SESSION_NAME_USER_SESSION];
                 extra = 2;
 
                 if (session == null || session.Status == SessionStatus.Continuing)
@@ -100,7 +101,7 @@ namespace Website.Library.Classes
 
                 extra = 6;
                 bool languageSet = localData.Culture != null &&
-                    Session[StringConstants.SESSION_NAME_WEBSITE_COUNTRY] != null;
+                    Session[lib.StringConsts.SESSION_NAME_WEBSITE_COUNTRY] != null;
 
                 extra = 7;
                 if ((!WebsiteSettings.Languages.Active && languageSet) || WebsiteSettings.StaticWebSite)
@@ -109,16 +110,16 @@ namespace Website.Library.Classes
                 extra = 8;
                 bool changedSettings = !languageSet ||
                     (
-                        (Country)Session[StringConstants.SESSION_NAME_WEBSITE_COUNTRY]).ID != country.ID ||
-                        ((newCurrency != null && Session[StringConstants.SESSION_NAME_USER_BASKET_CURRENCY] != null) &&
+                        (Country)Session[lib.StringConsts.SESSION_NAME_WEBSITE_COUNTRY]).ID != country.ID ||
+                        ((newCurrency != null && Session[lib.StringConsts.SESSION_NAME_USER_BASKET_CURRENCY] != null) &&
                             (
-                                ((Currency)Session[StringConstants.SESSION_NAME_USER_BASKET_CURRENCY]).ID != newCurrency.ID)
+                                ((Currency)Session[lib.StringConsts.SESSION_NAME_USER_BASKET_CURRENCY]).ID != newCurrency.ID)
                             );
 
 #if DEBUG
             Shared.EventLog.DebugText(String.Format("Changed: {0}", changedSettings.ToString()));
             Shared.EventLog.DebugText(String.Format("Basket Currency: {0}", 
-                Session[StringConstants.SESSION_NAME_USER_BASKET_CURRENCY]));
+                Session[StringConsts.SESSION_NAME_USER_BASKET_CURRENCY]));
 #endif
                 extra = 9;
 
@@ -139,24 +140,24 @@ namespace Website.Library.Classes
 
                     extra = 13;
                     if (newCurrency != null)
-                        Session[StringConstants.SESSION_NAME_USER_BASKET_CURRENCY] = newCurrency;
+                        Session[lib.StringConsts.SESSION_NAME_USER_BASKET_CURRENCY] = newCurrency;
                     extra = 14;
 
-                    Session[StringConstants.SESSION_NAME_WEBSITE_PRICE_COLUMN] = RaiseSelectPriceColumn(Session, Request,
+                    Session[lib.StringConsts.SESSION_NAME_WEBSITE_PRICE_COLUMN] = RaiseSelectPriceColumn(Session, Request,
                         session,
                         newCurrency == null ? country.PriceColumn : newCurrency.PriceColumn);
                     extra = 15;
-                    Session[StringConstants.SESSION_NAME_WEBSITE_COUNTRY] = country;
+                    Session[lib.StringConsts.SESSION_NAME_WEBSITE_COUNTRY] = country;
                     //for each item in the basket, reset the price depending on the new price option
                     extra = 16;
-                    localData.PriceColumn = (int)Session[StringConstants.SESSION_NAME_WEBSITE_PRICE_COLUMN];
+                    localData.PriceColumn = (int)Session[lib.StringConsts.SESSION_NAME_WEBSITE_PRICE_COLUMN];
 
                     extra = 17;
 
                     if (newCurrency == null)
                         extra2 = 1;
 
-                    if (Session[StringConstants.SESSION_NAME_USER_BASKET_CURRENCY] == null)
+                    if (Session[lib.StringConsts.SESSION_NAME_USER_BASKET_CURRENCY] == null)
                     {
                         if (extra2 == 1)
                             extra2 = 20;
@@ -166,7 +167,7 @@ namespace Website.Library.Classes
 
                     
                     localData.Basket.Currency = newCurrency ?? (Currency)Session[
-                        StringConstants.SESSION_NAME_USER_BASKET_CURRENCY];
+                        lib.StringConsts.SESSION_NAME_USER_BASKET_CURRENCY];
                     extra = 18;
                     localData.Basket.Country = country;
                     extra = 19;
@@ -205,7 +206,7 @@ namespace Website.Library.Classes
         public static void SetLanguage(System.Web.SessionState.HttpSessionState Session,
             System.Web.HttpRequest Request, System.Web.HttpResponse Response)
         {
-            Country selectedCountry = (Country)Session[StringConstants.SESSION_NAME_WEBSITE_COUNTRY];
+            Country selectedCountry = (Country)Session[lib.StringConsts.SESSION_NAME_WEBSITE_COUNTRY];
 
             if (selectedCountry == null)
                 selectedCountry = Countries.Get(WebsiteSettings.Languages.DefaultCountrySettings);

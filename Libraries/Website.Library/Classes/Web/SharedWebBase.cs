@@ -176,7 +176,7 @@ namespace Website.Library.Classes
             }
             else
             {
-                User user = GetUser(Session, Request, Response, (UserSession)Session[StringConstants.SESSION_NAME_USER_SESSION]);
+                User user = GetUser(Session, Request, Response, (UserSession)Session[lib.StringConsts.SESSION_NAME_USER_SESSION]);
 
                 if (user == null)
                 {
@@ -206,8 +206,8 @@ namespace Website.Library.Classes
         {
             Country Result = null;
 
-            if (Session[StringConstants.SESSION_NAME_WEBSITE_COUNTRY] != null)
-                return ((Country)Session[StringConstants.SESSION_NAME_WEBSITE_COUNTRY]);
+            if (Session[lib.StringConsts.SESSION_NAME_WEBSITE_COUNTRY] != null)
+                return ((Country)Session[lib.StringConsts.SESSION_NAME_WEBSITE_COUNTRY]);
             else
             {
                 string ipAddress = Request.ServerVariables["REMOTE_HOST"];
@@ -221,7 +221,7 @@ namespace Website.Library.Classes
                 if (Result == null || Result.CountryCode == "ZZ" || WebsiteSettings.Languages.ForceInitialDefaultLanguage)
                     Result = Countries.Get(WebsiteSettings.Languages.DefaultCountrySettings);
 
-                Session[StringConstants.SESSION_NAME_WEBSITE_COUNTRY] = Result;
+                Session[lib.StringConsts.SESSION_NAME_WEBSITE_COUNTRY] = Result;
             }
 
             return (Result);
@@ -341,12 +341,12 @@ namespace Website.Library.Classes
                 }
 
 #if DISPLAY_DEBUG_INFO
-                Session[StringConstants.SESSION_NAME_SESSION_INITIATED] = "Start Session";
+                Session[StringConsts.SESSION_NAME_SESSION_INITIATED] = "Start Session";
 #endif
                 Result = new UserSession(Session, Request);
 
                 UserSessionManager.Add(Result);
-                Session[StringConstants.SESSION_NAME_USER_SESSION] = Result;
+                Session[lib.StringConsts.SESSION_NAME_USER_SESSION] = Result;
 
                 if (WebsiteSettings.StaticWebSite)
                     return (Result);
@@ -397,7 +397,7 @@ namespace Website.Library.Classes
                 #region Affiliate
 
                 string affiliate = SharedWebBase.CookieGetValue(Request, Response,
-                    String.Format(StringConstants.COOKIE_AFFILIATE,
+                    String.Format(lib.StringConsts.COOKIE_AFFILIATE,
                     WebsiteSettings.DistributorWebsite), String.Empty);
 
                 if (String.IsNullOrEmpty(affiliate))
@@ -420,7 +420,7 @@ namespace Website.Library.Classes
                             affItem.AddWebClick(Result.IPAddress);
 
                             SharedWebBase.CookieSetValue(Request, Response,
-                                String.Format(StringConstants.COOKIE_AFFILIATE,
+                                String.Format(lib.StringConsts.COOKIE_AFFILIATE,
                                 WebsiteSettings.DistributorWebsite),
                                 affiliate, DateTime.Now.AddDays(WebsiteSettings.Affiliates.MaximumDays));
                         }
@@ -435,11 +435,11 @@ namespace Website.Library.Classes
                 Currency defaultCurrency = lib.BOL.Basket.Currencies.Get(defaultCountry.DefaultCurrency);
 
                 string userLanguage = CookieGetValue(Request, Response,
-                    String.Format(StringConstants.COOKIE_USER_LANGUAGE,
+                    String.Format(lib.StringConsts.COOKIE_USER_LANGUAGE,
                     WebsiteSettings.DistributorWebsite),
                     defaultCountry.CountryCode);
                 string userCurrency = CookieGetValue(Request, Response,
-                    String.Format(StringConstants.COOKIE_USER_CURRENCY,
+                    String.Format(lib.StringConsts.COOKIE_USER_CURRENCY,
                     WebsiteSettings.DistributorWebsite),
                     defaultCurrency.CurrencyCode);
 
@@ -476,7 +476,7 @@ namespace Website.Library.Classes
                 localData.Basket.Country = localData.UserCountry;
 
                 localData.Basket.Currency = Currencies.Get(localData.UserCountry.DefaultCurrency);
-                Session[StringConstants.SESSION_NAME_USER_BASKET_CURRENCY] = localData.Basket.Currency;
+                Session[lib.StringConsts.SESSION_NAME_USER_BASKET_CURRENCY] = localData.Basket.Currency;
 
                 LocalizedLanguages.SetLanguage(Session, Request, Response,
                     localData.UserCountry,
@@ -493,7 +493,7 @@ namespace Website.Library.Classes
                 int priceCol = LocalizedLanguages.RaiseSelectPriceColumn(Session, Request, Result,
                     userSelectedCurrency == null ? defaultCurrency.PriceColumn : userSelectedCurrency.PriceColumn);
                 localData.PriceColumn = priceCol; 
-                Session[StringConstants.SESSION_NAME_WEBSITE_PRICE_COLUMN] = localData.PriceColumn;
+                Session[lib.StringConsts.SESSION_NAME_WEBSITE_PRICE_COLUMN] = localData.PriceColumn;
                 localData.Basket.Reset(localData.PriceColumn);
 
                 LocalizedLanguages.SetLanguage(Session, Request, Response,
@@ -537,7 +537,7 @@ namespace Website.Library.Classes
             {
 
 #if DISPLAY_DEBUG_INFO
-                Session[StringConstants.SESSION_NAME_SESSION_INITIATED] = "Resume Session";
+                Session[StringConsts.SESSION_NAME_SESSION_INITIATED] = "Resume Session";
 #endif
 
                 if (Request.UserAgent != null && Request.UserAgent.StartsWith(CLOUD_USER_AGENT))
@@ -548,7 +548,7 @@ namespace Website.Library.Classes
                     session = StartUserSession(Session, Request, Response);
                 }
 
-                Session[StringConstants.SESSION_NAME_USER_SESSION] = session;
+                Session[lib.StringConsts.SESSION_NAME_USER_SESSION] = session;
 
                 if (WebsiteSettings.StaticWebSite)
                     return;
@@ -588,7 +588,7 @@ namespace Website.Library.Classes
                 #region Affiliate
 
                 string affiliate = SharedWebBase.CookieGetValue(Request, Response,
-                    String.Format(StringConstants.COOKIE_AFFILIATE,
+                    String.Format(lib.StringConsts.COOKIE_AFFILIATE,
                     WebsiteSettings.DistributorWebsite), String.Empty);
 
                 if (String.IsNullOrEmpty(affiliate))
@@ -609,7 +609,7 @@ namespace Website.Library.Classes
                         if (affItem != null)
                         {
                             SharedWebBase.CookieSetValue(Request, Response,
-                                String.Format(StringConstants.COOKIE_AFFILIATE,
+                                String.Format(lib.StringConsts.COOKIE_AFFILIATE,
                                 WebsiteSettings.DistributorWebsite),
                                 affiliate, DateTime.Now.AddDays(WebsiteSettings.Affiliates.MaximumDays));
                         }
@@ -624,11 +624,11 @@ namespace Website.Library.Classes
                 Currency defaultCurrency = Currencies.Get(defaultCountry.DefaultCurrency);
 
                 string userLanguage = CookieGetValue(Request, Response,
-                    String.Format(StringConstants.COOKIE_USER_LANGUAGE,
+                    String.Format(lib.StringConsts.COOKIE_USER_LANGUAGE,
                     WebsiteSettings.DistributorWebsite),
                     defaultCountry.CountryCode);
                 string userCurrency = CookieGetValue(Request, Response,
-                    String.Format(StringConstants.COOKIE_USER_CURRENCY,
+                    String.Format(lib.StringConsts.COOKIE_USER_CURRENCY,
                     WebsiteSettings.DistributorWebsite),
                     defaultCurrency.CurrencyCode);
 
@@ -655,7 +655,7 @@ namespace Website.Library.Classes
                 localData.Basket.Country = localData.UserCountry;
 
                 localData.Basket.Currency = Currencies.Get(localData.UserCountry.DefaultCurrency);
-                Session[StringConstants.SESSION_NAME_USER_BASKET_CURRENCY] = localData.Basket.Currency;
+                Session[lib.StringConsts.SESSION_NAME_USER_BASKET_CURRENCY] = localData.Basket.Currency;
 
                 // default sesion data
                 Session["CurrentPage"] = 1;
@@ -665,7 +665,7 @@ namespace Website.Library.Classes
                 Session["SHOPPINGBASKET_ID"] = 0;
                 Session["PRODUCT_FILTER"] = 0;
 
-                //Session[StringConstants.SESSION_NAME_USER_BASKET_CURRENCY] = userSelectedCurrency ==
+                //Session[StringConsts.SESSION_NAME_USER_BASKET_CURRENCY] = userSelectedCurrency ==
                 //    null ? defaultCurrency : userSelectedCurrency;
 
                 int priceCol = LocalizedLanguages.RaiseSelectPriceColumn(Session, Request, session,
@@ -751,12 +751,12 @@ namespace Website.Library.Classes
                 throw new InvalidOperationException();
 
             // if, and only if there is no currency, then set it now
-            if (forceChange || Session[StringConstants.SESSION_NAME_USER_BASKET_CURRENCY] == null)
+            if (forceChange || Session[lib.StringConsts.SESSION_NAME_USER_BASKET_CURRENCY] == null)
             {
                 // default currency is users country currency, if it's accepted
                 if (currency != null && currency.IsActive)
                 {
-                    Session[StringConstants.SESSION_NAME_USER_BASKET_CURRENCY] = currency;
+                    Session[lib.StringConsts.SESSION_NAME_USER_BASKET_CURRENCY] = currency;
                 }
             }
 
@@ -785,17 +785,17 @@ namespace Website.Library.Classes
 
             Currency basketCurrency = null;
 
-            if (Session[StringConstants.SESSION_NAME_USER_BASKET_CURRENCY] == null)
+            if (Session[lib.StringConsts.SESSION_NAME_USER_BASKET_CURRENCY] == null)
             {
                 basketCurrency = Currencies.Get(System.Threading.Thread.CurrentThread.CurrentUICulture);
-                Session[StringConstants.SESSION_NAME_USER_BASKET_CURRENCY] = basketCurrency;
+                Session[lib.StringConsts.SESSION_NAME_USER_BASKET_CURRENCY] = basketCurrency;
             }
             else
             {
-                basketCurrency = (Currency)Session[StringConstants.SESSION_NAME_USER_BASKET_CURRENCY];
+                basketCurrency = (Currency)Session[lib.StringConsts.SESSION_NAME_USER_BASKET_CURRENCY];
             }
 
-            if (Session[StringConstants.SESSION_NAME_SHOPPING_ID] == null)
+            if (Session[lib.StringConsts.SESSION_NAME_SHOPPING_ID] == null)
             {
                 if (userData.CurrentUser != null)
                 {
@@ -847,7 +847,7 @@ namespace Website.Library.Classes
                     {
                         basketCurrency = lib.BOL.Basket.Currencies.Get(
                             WebCountry(Session, Request).DefaultCurrency);
-                        Session[StringConstants.SESSION_NAME_USER_BASKET_CURRENCY] = basketCurrency;
+                        Session[lib.StringConsts.SESSION_NAME_USER_BASKET_CURRENCY] = basketCurrency;
                     }
 
                     try
@@ -888,11 +888,11 @@ namespace Website.Library.Classes
                     Result.User = userData.CurrentUser;
                 }
 
-                Session[StringConstants.SESSION_NAME_SHOPPING_ID] = Result.ID;
+                Session[lib.StringConsts.SESSION_NAME_SHOPPING_ID] = Result.ID;
             }
             else
             {
-                Int64 basketID = (Int64)Session[StringConstants.SESSION_NAME_SHOPPING_ID];
+                Int64 basketID = (Int64)Session[lib.StringConsts.SESSION_NAME_SHOPPING_ID];
                 Result = new ShoppingBasket(Convert.ToInt32(basketID), userData.UserCountry, 
                     basketCurrency, WebsiteSettings.ShoppingCart.FreeShippingAllow,
                     WebsiteSettings.ShoppingCart.FreeShippingAmount,
@@ -932,14 +932,14 @@ namespace Website.Library.Classes
 
             Currency basketCurrency = null;
 
-            if (Session[StringConstants.SESSION_NAME_USER_BASKET_CURRENCY] == null)
+            if (Session[lib.StringConsts.SESSION_NAME_USER_BASKET_CURRENCY] == null)
             {
                 basketCurrency = Currencies.Get(System.Threading.Thread.CurrentThread.CurrentUICulture);
-                Session[StringConstants.SESSION_NAME_USER_BASKET_CURRENCY] = basketCurrency;
+                Session[lib.StringConsts.SESSION_NAME_USER_BASKET_CURRENCY] = basketCurrency;
             }
             else
             {
-                basketCurrency = (Currency)Session[StringConstants.SESSION_NAME_USER_BASKET_CURRENCY];
+                basketCurrency = (Currency)Session[lib.StringConsts.SESSION_NAME_USER_BASKET_CURRENCY];
             }
 
             string remoteIP = Request.ServerVariables["REMOTE_HOST"];
@@ -950,7 +950,7 @@ namespace Website.Library.Classes
 
             Country country = Countries.Get(lib.LibraryHelperClass.IPAddressToCountry(remoteIP));
 
-            if (Session[StringConstants.SESSION_NAME_SHOPPING_ID] == null)
+            if (Session[lib.StringConsts.SESSION_NAME_SHOPPING_ID] == null)
             {
                 string BasketID = "new";
 
@@ -982,7 +982,7 @@ namespace Website.Library.Classes
                     {
                         basketCurrency = lib.BOL.Basket.Currencies.Get(
                             WebCountry(Session, Request).DefaultCurrency);
-                        Session[StringConstants.SESSION_NAME_USER_BASKET_CURRENCY] = basketCurrency;
+                        Session[lib.StringConsts.SESSION_NAME_USER_BASKET_CURRENCY] = basketCurrency;
                     }
 
                     try
@@ -1008,11 +1008,11 @@ namespace Website.Library.Classes
 
                 }
 
-                Session[StringConstants.SESSION_NAME_SHOPPING_ID] = Result.ID;
+                Session[lib.StringConsts.SESSION_NAME_SHOPPING_ID] = Result.ID;
             }
             else
             {
-                Int64 basketID = (Int64)Session[StringConstants.SESSION_NAME_SHOPPING_ID];
+                Int64 basketID = (Int64)Session[lib.StringConsts.SESSION_NAME_SHOPPING_ID];
                 Result = new ShoppingBasket(Convert.ToInt32(basketID), country,
                     basketCurrency, WebsiteSettings.ShoppingCart.FreeShippingAllow,
                     WebsiteSettings.ShoppingCart.FreeShippingAmount,
@@ -1038,14 +1038,14 @@ namespace Website.Library.Classes
         {
             Currency Result = null;
 
-            if (Session[StringConstants.SESSION_NAME_USER_BASKET_CURRENCY] == null)
+            if (Session[lib.StringConsts.SESSION_NAME_USER_BASKET_CURRENCY] == null)
             {
                 Result = Currencies.Get(WebCountry(Session, Request).DefaultCurrency);
-                Session[StringConstants.SESSION_NAME_USER_BASKET_CURRENCY] = Result;
+                Session[lib.StringConsts.SESSION_NAME_USER_BASKET_CURRENCY] = Result;
             }
             else
             {
-                Result = (Currency)Session[StringConstants.SESSION_NAME_USER_BASKET_CURRENCY];
+                Result = (Currency)Session[lib.StringConsts.SESSION_NAME_USER_BASKET_CURRENCY];
             }
 
             if (!Result.IsActive)

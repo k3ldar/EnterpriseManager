@@ -203,7 +203,7 @@ namespace Classes.RoutineMaintenance
             }
             catch (Exception err)
             {
-                if (!err.Message.Contains(StringConstants.ERROR_FIREBIRD_LOCK_CONFLICT_1) && !err.Message.Contains(StringConstants.ERROR_FIREBIRD_LOCK_CONFLICT_2))
+                if (!err.Message.Contains(lib.StringConsts.ERROR_FIREBIRD_LOCK_CONFLICT_1) && !err.Message.Contains(lib.StringConsts.ERROR_FIREBIRD_LOCK_CONFLICT_2))
                     Shared.EventLog.Add(err);
             }
         }

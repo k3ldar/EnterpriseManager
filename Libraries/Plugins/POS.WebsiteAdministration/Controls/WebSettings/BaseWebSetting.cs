@@ -11,7 +11,7 @@
  *
  *  The Original Code was created by Simon Carter (s1cart3r@gmail.com)
  *
- *  Copyright (c) 2010 - 2017 Simon Carter.  All Rights Reserved.
+ *  Copyright (c) 2010 - 2018 Simon Carter.  All Rights Reserved.
  *
  *  Product:  Enterprise Manager
  *  
@@ -24,16 +24,10 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 using Library.BOL.Websites;
+
+#pragma warning disable IDE1005
 
 namespace POS.WebsiteAdministration.Controls.WebSettings
 {
@@ -87,6 +81,11 @@ namespace POS.WebsiteAdministration.Controls.WebSettings
         public virtual bool AllowDelete()
         {
             return (false);
+        }
+
+        public virtual void AfterLoad()
+        {
+
         }
 
         public Website Website { get; set; }

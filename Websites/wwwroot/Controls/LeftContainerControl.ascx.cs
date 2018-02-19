@@ -4,7 +4,7 @@ using Shared.Classes;
 
 using Website.Library;
 using Website.Library.Classes;
-
+using Library;
 using Library.BOL.Websites;
 
 namespace SieraDelta.Website.Controls
@@ -47,7 +47,7 @@ namespace SieraDelta.Website.Controls
         {
             if (Library.DAL.DALHelper.AllowCaching)
             {
-                CacheItem cacheItem = GlobalClass.InternalCache.Get(StringConstants.CACHE_NAME_PAGE_BANNERS_PREFIX);
+                CacheItem cacheItem = GlobalClass.InternalCache.Get(StringConsts.CACHE_NAME_PAGE_BANNERS_PREFIX);
 
                 if (cacheItem != null)
                     return ((string)cacheItem.Value);
@@ -68,8 +68,8 @@ namespace SieraDelta.Website.Controls
 
             if (Library.DAL.DALHelper.AllowCaching)
             {
-                GlobalClass.InternalCache.Add(StringConstants.CACHE_NAME_PAGE_BANNERS_PREFIX, 
-                    new CacheItem(StringConstants.CACHE_NAME_PAGE_BANNERS_PREFIX, Result));
+                GlobalClass.InternalCache.Add(StringConsts.CACHE_NAME_PAGE_BANNERS_PREFIX, 
+                    new CacheItem(StringConsts.CACHE_NAME_PAGE_BANNERS_PREFIX, Result));
             }
 
             return (Result);
@@ -82,7 +82,7 @@ namespace SieraDelta.Website.Controls
 
             if (Library.DAL.DALHelper.AllowCaching)
             {
-                CacheItem cacheItem = GlobalClass.InternalCache.Get(StringConstants.CACHE_NAME_PAGE_BANNERS_SUFFIX);
+                CacheItem cacheItem = GlobalClass.InternalCache.Get(StringConsts.CACHE_NAME_PAGE_BANNERS_SUFFIX);
 
                 if (cacheItem != null)
                     return ((string)cacheItem.Value);
@@ -114,8 +114,8 @@ namespace SieraDelta.Website.Controls
 
             if (Library.DAL.DALHelper.AllowCaching)
             {
-                GlobalClass.InternalCache.Add(StringConstants.CACHE_NAME_PAGE_BANNERS_SUFFIX, 
-                    new CacheItem(StringConstants.CACHE_NAME_PAGE_BANNERS_SUFFIX, Result));
+                GlobalClass.InternalCache.Add(StringConsts.CACHE_NAME_PAGE_BANNERS_SUFFIX, 
+                    new CacheItem(StringConsts.CACHE_NAME_PAGE_BANNERS_SUFFIX, Result));
             }
 
             return (Result);

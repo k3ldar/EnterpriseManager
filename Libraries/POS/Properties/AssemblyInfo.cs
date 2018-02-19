@@ -11,7 +11,7 @@
  *
  *  The Original Code was created by Simon Carter (s1cart3r@gmail.com)
  *
- *  Copyright (c) 2010 - 2017 Simon Carter.  All Rights Reserved.
+ *  Copyright (c) 2010 - 2018 Simon Carter.  All Rights Reserved.
  *
  *  Product:  Enterprise Manager
  *  
@@ -54,4 +54,4 @@ using System.Runtime.InteropServices;
 //      Revision
 //
 [assembly: AssemblyVersion("4.0.0.0")]
-[assembly: AssemblyFileVersion("4.0.29027.1238")]
+[assembly: AssemblyFileVersion("4.0.29027.1257")]

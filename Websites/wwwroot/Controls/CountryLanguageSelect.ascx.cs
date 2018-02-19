@@ -150,12 +150,12 @@ namespace SieraDelta.Website.Controls
 
             // create cookies to remember the users choices
             SharedWebBase.CookieSetValue(Request, Response, 
-                String.Format(StringConstants.COOKIE_USER_LANGUAGE, Library.BOL.Websites.WebsiteSettings.DistributorWebsite),
+                String.Format(StringConsts.COOKIE_USER_LANGUAGE, Library.BOL.Websites.WebsiteSettings.DistributorWebsite),
                 newCountry.CountryCode, DateTime.Now.AddYears(1));
 
             // create cookies to remember the users choices
             SharedWebBase.CookieSetValue(Request, Response, 
-                String.Format(StringConstants.COOKIE_USER_CURRENCY, Library.BOL.Websites.WebsiteSettings.DistributorWebsite),
+                String.Format(StringConsts.COOKIE_USER_CURRENCY, Library.BOL.Websites.WebsiteSettings.DistributorWebsite),
                 newCurrency.CurrencyCode, DateTime.Now.AddYears(1));
 
             LocalizedLanguages.SetLanguage(Session, Request, Response, newCountry, newCurrency);

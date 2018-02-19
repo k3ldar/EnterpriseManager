@@ -10,6 +10,8 @@ namespace SieraDelta.Website.Controls
 {
     public partial class EditSettingsText : System.Web.UI.UserControl
     {
+        #region Private Members
+
         private string _settingCode;
         private bool _isCulture;
         private bool _isNumber;
@@ -19,6 +21,8 @@ namespace SieraDelta.Website.Controls
         private int _defaultValue;
         private DateTime _defaultDateValue;
         private bool _isGlobal;
+
+        #endregion Private Members
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -57,7 +61,8 @@ namespace SieraDelta.Website.Controls
             settingDescription.InnerHtml = description;
             settingName.InnerText = name;
 
-            string savedValue = Global.ConfigSettingGet(settingCode, value, isGlobal);
+            string savedValue = WebsiteSettings.ConfigSettingGet(settingCode, value,
+                Library.DAL.DALHelper.WebsiteID, isGlobal);
 
             settingText.Text = value;
 
@@ -94,7 +99,8 @@ namespace SieraDelta.Website.Controls
             cbSetting.Checked = value;
             settingText.Visible = false;
 
-            bool savedValue = Global.ConfigSettingGet(settingCode, value, isGlobal);
+            bool savedValue = WebsiteSettings.ConfigSettingGet(settingCode, value,
+                Library.DAL.DALHelper.WebsiteID, isGlobal);
 
             if (value != savedValue)
             {
@@ -108,7 +114,8 @@ namespace SieraDelta.Website.Controls
         {
             if (cbSetting.Visible)
             {
-                Global.ConfigSettingSet(_settingCode, cbSetting.Checked.ToString(), _isGlobal);
+                WebsiteSettings.ConfigSettingSet(_settingCode, cbSetting.Checked.ToString(),
+                    Library.DAL.DALHelper.WebsiteID, _isGlobal);
             }
             else
             {
@@ -121,7 +128,9 @@ namespace SieraDelta.Website.Controls
                     }
                     catch
                     {
-                        settingText.Text = Global.ConfigSettingGet(_settingCode, WebsiteSettings.Languages.WebsiteCulture.Name, _isGlobal);
+                        settingText.Text = WebsiteSettings.ConfigSettingGet(
+                            _settingCode, WebsiteSettings.Languages.WebsiteCulture.Name,
+                            Library.DAL.DALHelper.WebsiteID, _isGlobal);
                     }
                 }
                 else if (_isNumber)
@@ -137,7 +146,8 @@ namespace SieraDelta.Website.Controls
 
                 }
 
-                Global.ConfigSettingSet(_settingCode, settingText.Text, _isGlobal);
+                WebsiteSettings.ConfigSettingSet(_settingCode, settingText.Text,
+                    Library.DAL.DALHelper.WebsiteID, _isGlobal);
             }
         }
     }

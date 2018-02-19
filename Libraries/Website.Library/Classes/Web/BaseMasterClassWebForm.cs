@@ -41,10 +41,10 @@ namespace Website.Library.Classes
                 session == null ? "Unknown" : session.InternalSessionID.ToString(),
                 session.Tag == null ? "Unknown" : "Present",
                 session.IPAddress,
-                Session[StringConstants.SESSION_NAME_SESSION_INITIATED],
-                Session[StringConstants.SESSION_NAME_USER_BASKET_CURRENCY],
-                Session[StringConstants.SESSION_NAME_WEBSITE_PRICE_COLUMN], 
-                Session[StringConstants.SESSION_NAME_WEBSITE_COUNTRY]);
+                Session[StringConsts.SESSION_NAME_SESSION_INITIATED],
+                Session[StringConsts.SESSION_NAME_USER_BASKET_CURRENCY],
+                Session[StringConsts.SESSION_NAME_WEBSITE_PRICE_COLUMN], 
+                Session[StringConsts.SESSION_NAME_WEBSITE_COUNTRY]);
                 
             if (localData != null)
             {
@@ -140,7 +140,7 @@ namespace Website.Library.Classes
         /// <returns>UserSession instance for current users session</returns>
         protected UserSession GetUserSession()
         {
-            return ((UserSession)Session[StringConstants.SESSION_NAME_USER_SESSION]);
+            return ((UserSession)Session[lib.StringConsts.SESSION_NAME_USER_SESSION]);
         }
 
 
@@ -288,7 +288,7 @@ namespace Website.Library.Classes
 
         protected string GetCurrentLanguageName()
         {
-            Country country = (Country)Session[StringConstants.SESSION_NAME_WEBSITE_COUNTRY];
+            Country country = (Country)Session[lib.StringConsts.SESSION_NAME_WEBSITE_COUNTRY];
 
             if (country == null)
                 return (Thread.CurrentThread.CurrentUICulture.NativeName);

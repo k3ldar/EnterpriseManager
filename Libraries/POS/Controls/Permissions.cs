@@ -11,7 +11,7 @@
  *
  *  The Original Code was created by Simon Carter (s1cart3r@gmail.com)
  *
- *  Copyright (c) 2010 - 2017 Simon Carter.  All Rights Reserved.
+ *  Copyright (c) 2010 - 2018 Simon Carter.  All Rights Reserved.
  *
  *  Product:  Enterprise Manager
  *  
@@ -24,20 +24,14 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
 using System.Windows.Forms;
 
 using Languages;
 
 using Library;
-using Library.Utils;
 using Library.BOL.Users;
 
-using POS.Base.Classes;
+#pragma warning disable IDE1006
 
 namespace POS.Base.Controls
 {
@@ -69,11 +63,11 @@ namespace POS.Base.Controls
 
         public override void LanguageChanged(System.Globalization.CultureInfo culture)
         {
-            lblPermissionType.Text = Languages.LanguageStrings.AppPermissionType;
-            lblAvailable.Text = Languages.LanguageStrings.AppAvailable;
-            lblAssigned.Text = Languages.LanguageStrings.AppAssigned;
-            btnAssign.Text = String.Format(StringConstants.BUTTON_ASSIGN, Languages.LanguageStrings.AppAssign);
-            btnRemove.Text = String.Format(StringConstants.BUTTON_UNASSIGN, Languages.LanguageStrings.AppRemove);
+            lblPermissionType.Text = LanguageStrings.AppPermissionType;
+            lblAvailable.Text = LanguageStrings.AppAvailable;
+            lblAssigned.Text = LanguageStrings.AppAssigned;
+            btnAssign.Text = String.Format(Classes.StringConstants.BUTTON_ASSIGN, LanguageStrings.AppAssign);
+            btnRemove.Text = String.Format(Classes.StringConstants.BUTTON_UNASSIGN, LanguageStrings.AppRemove);
         }
 
         #endregion Overridden Methods

@@ -11,7 +11,7 @@
  *
  *  The Original Code was created by Simon Carter (s1cart3r@gmail.com)
  *
- *  Copyright (c) 2010 - 2017 Simon Carter.  All Rights Reserved.
+ *  Copyright (c) 2010 - 2018 Simon Carter.  All Rights Reserved.
  *
  *  Product:  Enterprise Manager
  *  
@@ -24,12 +24,7 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Globalization;
-using System.Text;
 using System.Windows.Forms;
 
 using Languages;
@@ -39,6 +34,8 @@ using Library.BOL.Users;
 using Library.BOL.Countries;
 using Library.BOL.ValidationChecks;
 using POS.Base.Classes;
+
+#pragma warning disable IDE1006
 
 namespace POS.Base.Forms
 {
@@ -108,7 +105,7 @@ namespace POS.Base.Forms
 
             while (months.Year == 2012)
             {
-                cmbBirthMonth.Items.Add(months.ToString(StringConstants.DATE_FORMAT_MONTH_FULL, CultureInfo.CurrentUICulture));
+                cmbBirthMonth.Items.Add(months.ToString(POS.Base.Classes.StringConstants.DATE_FORMAT_MONTH_FULL, CultureInfo.CurrentUICulture));
                 months = months.AddMonths(1);
             }
         }
@@ -157,7 +154,7 @@ namespace POS.Base.Forms
                     }
                     else
                     {
-                        email = StringConstants.NO_EMAIL;
+                        email = POS.Base.Classes.StringConstants.NO_EMAIL;
                     }
                 }
 
@@ -182,7 +179,7 @@ namespace POS.Base.Forms
             }
             catch (Exception err)
             {
-                if (err.Message.Contains(StringConstants.ERROR_STORE_DUPLICATE))
+                if (err.Message.Contains(POS.Base.Classes.StringConstants.ERROR_STORE_DUPLICATE))
                     MessageBox.Show(LanguageStrings.AppUserAlreadyExists, LanguageStrings.AppError, MessageBoxButtons.OK);
                 else
                     MessageBox.Show(err.Message, LanguageStrings.AppError, MessageBoxButtons.OK);
@@ -192,7 +189,7 @@ namespace POS.Base.Forms
         private string CreateRandomPassword()
         {
             Random rnd = new Random(DateTime.Now.Millisecond);
-            string AcceptableChars = StringConstants.USER_PASSWORD_CHARACTERS;
+            string AcceptableChars = POS.Base.Classes.StringConstants.USER_PASSWORD_CHARACTERS;
             string Result = String.Empty;
 
             for (int i = 0; i < 9; i++)

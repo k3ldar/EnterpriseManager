@@ -984,5 +984,653 @@ namespace Library.BOL.Websites
         #endregion GeoUpdate
 
         #endregion Sub Settings
+
+        #region Static Methods
+
+
+        #region Configuration Settings
+
+        public static DateTime ConfigSettingGet(string name, DateTime defaultValue, int websiteID, bool isGlobal = false)
+        {
+            string keyName = name;
+
+            if (!isGlobal)
+                keyName = String.Format("{0}.{1}", websiteID, name);
+
+            DateTime Result = defaultValue;
+
+            try
+            {
+                if (keyName.Length > 50)
+                    keyName = keyName.Substring(0, 50);
+
+                Result = LibraryHelperClass.SettingsGetDateTime(keyName, defaultValue);
+            }
+            catch
+            {
+                //ignore, default setting already set above;
+            }
+
+            return (Result);
+        }
+
+        public static decimal ConfigSettingGet(string name, decimal defaultValue, int websiteID, bool isGlobal = false)
+        {
+            string keyName = name;
+
+            if (!isGlobal)
+                keyName = String.Format("{0}.{1}", websiteID, name);
+
+            decimal Result = defaultValue;
+
+            try
+            {
+                if (keyName.Length > 50)
+                    keyName = keyName.Substring(0, 50);
+
+                Result = LibraryHelperClass.SettingsGetDecimal(keyName, defaultValue);
+            }
+            catch
+            {
+                //ignore, default setting already set above;
+            }
+
+            return (Result);
+        }
+
+        public static double ConfigSettingGet(string name, double defaultValue, int websiteID, bool isGlobal = false)
+        {
+            string keyName = name;
+
+            if (!isGlobal)
+                keyName = String.Format("{0}.{1}", websiteID, name);
+
+            double Result = defaultValue;
+
+            try
+            {
+                if (keyName.Length > 50)
+                    keyName = keyName.Substring(0, 50);
+
+                Result = LibraryHelperClass.SettingsGetDouble(keyName, defaultValue);
+            }
+            catch
+            {
+                //ignore, default setting already set above;
+            }
+
+            return (Result);
+        }
+
+        public static int ConfigSettingGet(string name, int defaultValue, int websiteID, bool isGlobal = false)
+        {
+            string keyName = name;
+
+            if (!isGlobal)
+                keyName = String.Format("{0}.{1}", websiteID, name);
+
+            int Result = defaultValue;
+
+            try
+            {
+                if (keyName.Length > 50)
+                    keyName = keyName.Substring(0, 50);
+
+                Result = LibraryHelperClass.SettingsGetInt(keyName, defaultValue);
+            }
+            catch
+            {
+                //ignore, default setting already set above;
+            }
+
+            return (Result);
+        }
+
+        public static bool ConfigSettingGet(string name, bool defaultValue, int websiteID, bool isGlobal = false)
+        {
+            string keyName = name;
+
+            if (!isGlobal)
+                keyName = String.Format("{0}.{1}", websiteID, name);
+
+            bool Result = defaultValue;
+
+            try
+            {
+                if (keyName.Length > 50)
+                    keyName = keyName.Substring(0, 50);
+
+                if (LibraryHelperClass.SettingsExist(keyName))
+                {
+                    Result = LibraryHelperClass.SettingsGetBool(keyName, defaultValue);
+                }
+                else
+                {
+                    LibraryHelperClass.SettingsSet(keyName, defaultValue.ToString());
+                }
+            }
+            catch
+            {
+                //ignore, default setting already set above;
+            }
+
+            return (Result);
+        }
+
+        public static string ConfigSettingGet(string name, string defaultValue, int websiteID, bool isGlobal = false)
+        {
+            string keyName = name;
+
+            if (!isGlobal)
+                keyName = String.Format("{0}.{1}", websiteID, name);
+
+            string Result = defaultValue;
+
+            try
+            {
+                if (keyName.Length > 50)
+                    keyName = keyName.Substring(0, 50);
+
+                if (LibraryHelperClass.SettingsExist(keyName))
+                    Result = LibraryHelperClass.SettingsGet(keyName, defaultValue);
+                else
+                    LibraryHelperClass.SettingsSet(keyName, defaultValue);
+            }
+            catch
+            {
+                //ignore, default setting already set above;
+            }
+
+            return (Result);
+        }
+
+        public static bool ConfigSettingExists(string name, int websiteID, bool isGlobal = false)
+        {
+            string keyName = name;
+
+            if (!isGlobal)
+                keyName = String.Format("{0}.{1}", websiteID, name);
+
+            if (keyName.Length > 50)
+                keyName = keyName.Substring(0, 50);
+
+            return (LibraryHelperClass.SettingsExist(keyName));
+        }
+
+        public static void ConfigSettingSet(string name, decimal value, int websiteID, bool isGlobal = false)
+        {
+            ConfigSettingSet(name, value.ToString(), websiteID, isGlobal);
+        }
+
+        public static void ConfigSettingSet(string name, double value, int websiteID, bool isGlobal = false)
+        {
+            ConfigSettingSet(name, value.ToString(), websiteID, isGlobal);
+        }
+
+        public static void ConfigSettingSet(string name, int value, int websiteID, bool isGlobal = false)
+        {
+            ConfigSettingSet(name, value.ToString(), websiteID, isGlobal);
+        }
+
+        public static void ConfigSettingSet(string name, bool value, int websiteID, bool isGlobal = false)
+        {
+            ConfigSettingSet(name, value.ToString(), websiteID, isGlobal);
+        }
+
+        public static void ConfigSettingSet(string name, string value, int websiteID, bool isGlobal = false)
+        {
+            string keyName = name;
+
+            if (!isGlobal)
+                keyName = String.Format("{0}.{1}", websiteID, name);
+
+            if (keyName.Length > 50)
+                keyName = keyName.Substring(0, 50);
+
+            LibraryHelperClass.SettingsSet(keyName, value);
+        }
+
+
+        public static bool LoadWebsiteSettingsFromDatabase(int websiteID)
+        {
+            bool Result = false;
+
+            StaticWebSite = false;
+
+            LibraryHelperClass.ResetCache();
+
+            LibraryHelperClass.InitialiseSettings();
+
+            #region Base Website Options
+
+            PageTitle = ConfigSettingGet("Settings.DefaultTitle", String.Empty, websiteID);
+
+            RootURL = ConfigSettingGet("Settings.RootURL", String.Empty, websiteID);
+
+            RootPath = ConfigSettingGet("Settings.RootPath", String.Empty, websiteID);
+
+            WebsiteCultureOverride = ConfigSettingGet("Settings.WebCultureOverride", false, websiteID);
+
+            BasketName = ConfigSettingGet("Settings.ShoppingBasketName", String.Empty, websiteID);
+
+            DistributorWebsite = ConfigSettingGet("Settings.DistributorWebsite", String.Empty, websiteID);
+
+            WebsiteDateFormat = ConfigSettingGet("Settings.WebsiteDateFormat", String.Empty, websiteID);
+
+            UseLeftToRight = ConfigSettingGet("Settings.UseLeftToRight", true, websiteID);
+
+            UseHTTPS = ConfigSettingGet("Settings.UseHTTPS", true, websiteID);
+
+            StyleSheet = ConfigSettingGet("SITE.STYLE_SHEET", "StyleMain.css", websiteID);
+
+            #endregion Base Website Options
+
+            #region Home Page Settings
+
+            HomePage.ShowHomeBanners = ConfigSettingGet("Settings.HomeBanners", true, websiteID);
+
+            HomePage.ShowHomeFeaturedProducts = ConfigSettingGet("SETTINGS.HOMEFEATURED", false, websiteID);
+
+            #region Page Banners
+
+            HomePage.PageBanner1 = ConfigSettingGet("PAGEBANNER1", String.Empty, websiteID);
+            HomePage.PageBanner1Link = ConfigSettingGet("PAGEBANNER1LINK", String.Empty, websiteID);
+
+            HomePage.PageBanner2 = ConfigSettingGet("PAGEBANNER2", String.Empty, websiteID);
+            HomePage.PageBanner2Link = ConfigSettingGet("PAGEBANNER2LINK", String.Empty, websiteID);
+
+            HomePage.PageBanner3 = ConfigSettingGet("PAGEBANNER3", String.Empty, websiteID);
+            HomePage.PageBanner3Link = ConfigSettingGet("PAGEBANNER3LINK", String.Empty, websiteID);
+
+            #endregion Page Banners
+
+            #region Rotating Home Page Banners
+
+            HomePage.HomeBanner1 = ConfigSettingGet("HomeBanner1", String.Empty, websiteID);
+            HomePage.HomeBanner2 = ConfigSettingGet("HomeBanner2", String.Empty, websiteID);
+            HomePage.HomeBanner3 = ConfigSettingGet("HomeBanner3", String.Empty, websiteID);
+            HomePage.HomeBanner4 = ConfigSettingGet("HomeBanner4", String.Empty, websiteID);
+            HomePage.HomeBanner5 = ConfigSettingGet("HomeBanner5", String.Empty, websiteID);
+
+            HomePage.HomeBanner1Link = ConfigSettingGet("HomeBanner1Link", String.Empty, websiteID);
+            HomePage.HomeBanner2Link = ConfigSettingGet("HomeBanner2Link", String.Empty, websiteID);
+            HomePage.HomeBanner3Link = ConfigSettingGet("HomeBanner3Link", String.Empty, websiteID);
+            HomePage.HomeBanner4Link = ConfigSettingGet("HomeBanner4Link", String.Empty, websiteID);
+            HomePage.HomeBanner5Link = ConfigSettingGet("HomeBanner5Link", String.Empty, websiteID);
+
+            #endregion Rotating Home Page Banners
+
+            #endregion Home Page Settings
+
+            #region Global Page Options
+
+            AllPages.ShowTermsAndConditions = ConfigSettingGet("Settings.ShowTermsAndConditions", true, websiteID);
+            AllPages.ShowPrivacyPolicy = ConfigSettingGet("Settings.ShowPrivacyPolicy", true, websiteID);
+            AllPages.ShowReturnsPolicy = ConfigSettingGet("Settings.ShowReturnsPolicy", true, websiteID);
+
+            AllPages.ShowSalonsMenu = ConfigSettingGet("Settings.ShowSalons", true, websiteID);
+            AllPages.ShowSalonFinder = ConfigSettingGet("Settings.ShowSalonFinder", true, websiteID);
+            AllPages.ShowClientHeader = ConfigSettingGet("Settings.ShowSalonClientHeader", true, websiteID);
+            AllPages.ShowSalonHeader = ConfigSettingGet("Settings.ShowSalonHeader", true, websiteID);
+
+            AllPages.ShowTreatmentsMenu = ConfigSettingGet("Settings.ShowTreatments", true, websiteID);
+            AllPages.ShowTreatmentsBrochure = ConfigSettingGet("Settings.ShowTreatmentBrochure", true, websiteID);
+            AllPages.ShowDistributorsMenu = ConfigSettingGet("Settings.ShowDistributors", true, websiteID);
+            AllPages.ShowTipsAndTricksMenu = ConfigSettingGet("Settings.ShowTipsAndTricks", true, websiteID);
+            AllPages.ShowDownloadMenu = ConfigSettingGet("Settings.ShowDownloads", false, websiteID);
+
+            AllPages.ShowTradePage = ConfigSettingGet("Settings.ShowTradePage", true, websiteID);
+
+            #endregion Global Page Options
+
+            #region General Contact Details
+
+            ContactDetails.WebsiteTelephoneNumber = ConfigSettingGet("Settings.WebsiteTelephoneNumber", String.Empty, websiteID);
+            ContactDetails.WebsiteEmail = ConfigSettingGet("Settings.WebsiteEmail", String.Empty, websiteID);
+            ContactDetails.AddressLine1 = ConfigSettingGet("Settings.AddressLine1", String.Empty, websiteID);
+            ContactDetails.AddressLine2 = ConfigSettingGet("Settings.AddressLine2", String.Empty, websiteID);
+            ContactDetails.AddressLine3 = ConfigSettingGet("Settings.AddressLine3", String.Empty, websiteID);
+
+            #endregion General Contact Details
+
+            #region Email Settings
+
+            Email.SupportName = ConfigSettingGet("Settings.SupportName", String.Empty, websiteID);
+            Email.SupportEMail = ConfigSettingGet("Settings.SupportEMail", String.Empty, websiteID);
+            Email.SMTPHost = ConfigSettingGet("Settings.SMTPHost", String.Empty, websiteID);
+            Email.SMTPUserName = ConfigSettingGet("Settings.SMTPUserName", String.Empty, websiteID);
+            Email.SMTPPassword = ConfigSettingGet("Settings.SMTPPassword", String.Empty, websiteID);
+            Email.SMTPUseSSL = ConfigSettingGet("Settings.SMTPSSL", false, websiteID);
+            Email.SMTPPort = ConfigSettingGet("Settings.SMTPPort", 25, websiteID);
+            Email.SendEmails = ConfigSettingGet("Settings.SendEmail", false, websiteID);
+
+            Email.NoReplyName = ConfigSettingGet("Settings.NoReplyName", String.Empty, websiteID);
+
+            Email.NoReplyEmail = ConfigSettingGet("Settings.NoReplyEmail", String.Empty, websiteID);
+
+            #endregion Email Settings
+
+            #region Payment Gateways
+
+            PaymentGateways.ShowPaymentPaypal = ConfigSettingGet("Settings.ShowPaymentPaypal", true, websiteID);
+            PaymentGateways.ShowPaymentCard = ConfigSettingGet("Settings.ShowPaymentCard", false, websiteID);
+            PaymentGateways.ShowPaymentPaypoint = ConfigSettingGet("Settings.ShowPaymentPaypoint", false, websiteID);
+            PaymentGateways.ShowPaymentSunTechBuySafe = ConfigSettingGet("Settings.AllowSunTechBuySafe", false, websiteID);
+            PaymentGateways.ShowPaymentSunTech24Payment = ConfigSettingGet("Settings.AllowSunTech24Payment", false, websiteID);
+            PaymentGateways.ShowPaymentSunTechWebATM = ConfigSettingGet("Settings.AllowSunTechWebATM", false, websiteID);
+            PaymentGateways.ShowPaymentTelephone = ConfigSettingGet("Settings.ShowPaymentTelephone", true, websiteID);
+            PaymentGateways.ShowPaymentCashOnDelivery = ConfigSettingGet("Settings.ShowPaymentCOD", false, websiteID);
+            PaymentGateways.ShowPaymentDirectBankTransfer = ConfigSettingGet("Settings.ShowPaymentDBT", false, websiteID);
+            PaymentGateways.ShowPaymentTestPurchase = ConfigSettingGet("Settings.TestPurchase", false, websiteID);
+            PaymentGateways.ShowPaymentCheque = ConfigSettingGet("Settings.ShowPaymentCheque", true, websiteID);
+
+
+            #region Payflow
+
+            if (PaymentGateways.ShowPaymentCard)
+            {
+                PaymentGateways.Payflow.PayflowTestMode = ConfigSettingGet("Settings.PayflowTestMode", true, websiteID);
+                PaymentGateways.Payflow.PayflowPartner = ConfigSettingGet("Settings.PayflowPartner", String.Empty, websiteID);
+                PaymentGateways.Payflow.PayflowVendor = ConfigSettingGet("Settings.PayflowVendor", String.Empty, websiteID);
+                PaymentGateways.Payflow.PayflowUser = ConfigSettingGet("Settings.PayflowUser", String.Empty, websiteID);
+                PaymentGateways.Payflow.PayflowPassword = ConfigSettingGet("Settings.PayflowPassword", String.Empty, websiteID);
+                PaymentGateways.Payflow.Currencies = ConfigSettingGet("Settings.PayflowCurrencies", "GBP;USD", websiteID);
+            }
+
+            #endregion Payflow
+
+            #region Payment Providers Paypal
+
+            if (PaymentGateways.ShowPaymentPaypal)
+            {
+                PaymentGateways.Paypal.APIUsername = ConfigSettingGet("Settings.PaypalAPIUserName", String.Empty, websiteID);
+                PaymentGateways.Paypal.APIPassword = ConfigSettingGet("Settings.PaypalAPIPassword", String.Empty, websiteID);
+                PaymentGateways.Paypal.APISignature = ConfigSettingGet("Settings.PaypalAPISignature", String.Empty, websiteID);
+                PaymentGateways.Paypal.Subject = ConfigSettingGet("Settings.PaypalAPISubject", String.Empty, websiteID);
+                PaymentGateways.Paypal.BNCode = ConfigSettingGet("Settings.PaypalAPIBNCode", String.Empty, websiteID);
+                PaymentGateways.Paypal.DefaultCurrency = ConfigSettingGet("Settings.PaypalAPICurrency", "GBP;USD", websiteID);
+                PaymentGateways.Paypal.APISuccessURL = ConfigSettingGet("Settings.PaypalSuccessURL", String.Empty, websiteID);
+                PaymentGateways.Paypal.APIFailURL = ConfigSettingGet("Settings.PaypalFailURL", String.Empty, websiteID);
+            }
+
+            #endregion Payment Providers Paypal
+
+            #region WorldPay
+
+            PaymentGateways.WorldPay.Currencies = ConfigSettingGet("Settings.PaynetCurrency", "GBP", websiteID);
+
+            #endregion WorldPay
+
+            #region Payment Providers Cheque
+
+            PaymentGateways.Cheque.Currency = ConfigSettingGet("Settings.ChequeCurrency", "GBP", websiteID);
+
+            #endregion Payment Providers Cheque
+
+            #region Payment Providers Sun Tech
+
+            if (PaymentGateways.ShowPaymentSunTechBuySafe)
+            {
+                PaymentGateways.SunTech.BuySafe.SupportedCurrencies = ConfigSettingGet("Settings.BuySafeCurrencies", "GBP", websiteID);
+                PaymentGateways.SunTech.BuySafe.MerchantID = ConfigSettingGet("Settings.BuySafeMerchantID", "", websiteID);
+                PaymentGateways.SunTech.BuySafe.MerchantPassword = ConfigSettingGet("Settings.BuySafeMerchantPW", "", websiteID);
+                PaymentGateways.SunTech.BuySafe.TestMode = ConfigSettingGet("Settings.BuySafeTestMode", true, websiteID);
+            }
+
+            if (PaymentGateways.ShowPaymentSunTech24Payment)
+            {
+                PaymentGateways.SunTech.Payment24.SupportedCurrencies = ConfigSettingGet("Settings.24PaymentCurrencies", "GBP", websiteID);
+                PaymentGateways.SunTech.Payment24.MerchantID = ConfigSettingGet("Settings.24PaymentMerchantID", "", websiteID);
+                PaymentGateways.SunTech.Payment24.MerchantPassword = ConfigSettingGet("Settings.24PaymentMerchantPW", "", websiteID);
+                PaymentGateways.SunTech.Payment24.TestMode = ConfigSettingGet("Settings.24PaymentTestMode", true, websiteID);
+                PaymentGateways.SunTech.Payment24.DueDateDays = ConfigSettingGet("Settings.24PaymentDueDays", 30, websiteID);
+            }
+
+            if (PaymentGateways.ShowPaymentSunTechWebATM)
+            {
+                PaymentGateways.SunTech.WebATM.SupportedCurrencies = ConfigSettingGet("Settings.WebATMCurrencies", "GBP", websiteID);
+                PaymentGateways.SunTech.WebATM.MerchantID = ConfigSettingGet("Settings.WebATMMerchantID", "", websiteID);
+                PaymentGateways.SunTech.WebATM.MerchantPassword = ConfigSettingGet("Settings.WebATMMerchantPW", "", websiteID);
+                PaymentGateways.SunTech.WebATM.TestMode = ConfigSettingGet("Settings.WebATMTestMode", true, websiteID);
+                PaymentGateways.SunTech.WebATM.BillDateDays = ConfigSettingGet("Settings.WebATMBillDays", 30, websiteID);
+                PaymentGateways.SunTech.WebATM.DueDateDays = ConfigSettingGet("Settings.WebAMTDueDays", 30, websiteID);
+            }
+
+            #endregion Payment Providers Sun Tech
+
+            #region Payment Provider Telephone
+
+            PaymentGateways.Telephone.Currency = ConfigSettingGet("Settings.PhoneCurrency", "GBP", websiteID);
+
+            #endregion Payment Provider Telephone
+
+            #region Payment Provider Cash On Delivery
+
+            PaymentGateways.CashOnDelivery.Currency = ConfigSettingGet("Settings.CODCurrency", "GBP", websiteID);
+
+            #endregion Payment Provider Cash On Delivery
+
+            #region Direct Bank Transfer
+
+            //currencies for payment providers
+            PaymentGateways.DirectTransfer.Currency = ConfigSettingGet("Settings.DTCurrency", "GBP", websiteID);
+
+            #endregion Direct Bank Transfer
+
+            #region Credit Card Options
+
+            CreditCards.CreditCardAlwaysShowValidFromForUK = ConfigSettingGet("Settings.AlwaysShowCCForUK", true, websiteID);
+            CreditCards.CreditCardHideValidFrom = ConfigSettingGet("Settings.AlwaysHideValidFrom", false, websiteID);
+            CreditCards.AllowCreditCards = ConfigSettingGet("Settings.AllowCreditCards", true, websiteID);
+
+            #endregion Credit Card Options
+
+            #region Test Purchase Options
+
+            PaymentGateways.TestPurchase.Currency = ConfigSettingGet(
+                "Settings.TestPurchaseCurrencies", String.Empty, websiteID);
+
+            #endregion Test Purchase Options
+
+
+            #endregion Payment Gateways
+
+            #region Web Farm/Garden
+
+            WebFarm.IsWebFarm = ConfigSettingGet("WEB.FARM", false, websiteID, true);
+            WebFarm.WebFarmMasterIP = ConfigSettingGet("WEB.FARM.MASTER", String.Empty, websiteID, true);
+            WebFarm.WebFarmMutexName = ConfigSettingGet("WEB.FARM.MUTEX", "WEB_FARM_MUTEX", websiteID, true);
+
+            #endregion Web Farm/Garden
+
+            #region Google Analytics
+
+            Analytics.Google.GoogleAnalytics = ConfigSettingGet("SETTINGS.GOOGLE.ANALYTICS", String.Empty, websiteID);
+
+            #endregion Google Analytics
+
+            #region Caching
+
+            // caching
+            DAL.DALHelper.AllowCaching = ConfigSettingGet("Setting.AllowCaching", true, websiteID);
+            DAL.DALHelper.CacheLimit = new TimeSpan(0, ConfigSettingGet("Setting.CacheLimit", 30, websiteID), 0);
+
+            #endregion Caching
+
+            #region Stock
+
+            Stock.OutOfStockAllowNotifyUser = ConfigSettingGet("Settings.OutOfStockAllowNotifyUser", false, websiteID);
+            Stock.OutOfStockInPage = ConfigSettingGet("Settings.OutOfStockInPage", false, websiteID);
+
+            #endregion Stock
+
+            #region Licence Options
+
+            Licences.AllowLicences = ConfigSettingGet("Settings.AllowLicences", false, websiteID);
+
+            #endregion Licence Options
+
+            #region Offers
+
+            Offers.ShowOffers = ConfigSettingGet("Settings.ShowOffers", true, websiteID);
+            Offers.ShowVoucher = ConfigSettingGet("Settings.ShowVoucher", false, websiteID);
+
+            #endregion Offers
+
+            #region Mail List Subscribers
+
+            // mail list subscription
+            Marketing.AllowMailListSubscribers = ConfigSettingGet("SETTINGS.MAILLIST.ALLOW", false, websiteID);
+
+            #endregion Mail List Subscribers
+
+            #region Mail Chimp integration
+
+            Marketing.MailChimp.MailChimpAPI = ConfigSettingGet("Settings.MailChimpAPI", String.Empty, websiteID);
+            Marketing.MailChimp.MailChimpList = ConfigSettingGet("Settings.MailChimpList", String.Empty, websiteID);
+            Marketing.MailChimp.MailChimpKey = ConfigSettingGet("Settings.MailChimpKey", String.Empty, websiteID);
+            Marketing.MailChimp.MailChimpPopupDialog = ConfigSettingGet("Settings.MailChimpPopup", String.Empty, websiteID);
+
+            if (String.IsNullOrEmpty(Marketing.MailChimp.MailChimpKey))
+            {
+                Marketing.MailChimp.MailChimpKey = Shared.Utilities.RandomPassword(25);
+                ConfigSettingSet("Settings.MailChimpKey", Marketing.MailChimp.MailChimpKey, websiteID);
+            }
+
+            #endregion Mail Chimp Integration
+
+            #region Shopping Cart
+
+            ShoppingCart.MaximumItemQuantity = ConfigSettingGet("Settings.MaximumItemQuantity", 5, websiteID);
+
+            ShoppingCart.JumpToBasketAfterAddItem = ConfigSettingGet("Settings.JumpToBasketAfterAddItem", false, websiteID);
+
+            ShoppingCart.HideShoppingCart = ConfigSettingGet("Settings.HideShoppingCart", false, websiteID);
+
+            ShoppingCart.BasketSummaryShow = ConfigSettingGet("Settings.BasketSummaryShow", true, websiteID);
+
+            ShoppingCart.BasketSummaryAutoHide = ConfigSettingGet("Settings.BasketSummaryAutoHide", false, websiteID);
+
+            ShoppingCart.BasketSummaryTimeOut = Shared.Utilities.CheckMinMax(ConfigSettingGet("SettingsBasketSummaryTimeout", 10, websiteID), 5, 25);
+
+            ShoppingCart.BasketIDIncrement = Shared.Utilities.CheckMinMax(ConfigSettingGet("Settings.BasketIDCount", 500, websiteID), 100, 10000);
+
+            ShoppingCart.FreeShippingAllow = ConfigSettingGet("Settings.FreeShippingAllow", false, websiteID);
+
+            ShoppingCart.FreeShippingAmount = ConfigSettingGet("Settings.FreeShippingSpend", 100.00m, websiteID);
+
+            ShoppingCart.ClearBasketOnPayment = ConfigSettingGet("Settings.ClearBasketOnPayment", false, websiteID, true);
+
+            ShoppingCart.AlterTextColorBasedOnBasketContents = ConfigSettingGet("Settings.AlterTextColorBasedOnBasketContents", false, websiteID);
+
+            ShoppingCart.ItemDoesNotExistsInShoppingBagTextColour = ConfigSettingGet("Settings.ItemDoesNotExistsInShoppingBagTextColour", "white", websiteID);
+
+            ShoppingCart.ItemExistsInShoppingBagTextColour = ConfigSettingGet("Settings.ItemExistsInShoppingBagTextColour", "white", websiteID);
+
+            ShoppingCart.DefaultShowPrices = ConfigSettingGet("Settings.ShowPriceDefault", true, websiteID);
+
+            ShoppingCart.OverrideCostMultiplier = ConfigSettingGet("Settings.OverrideCostMultiplier", false, websiteID);
+
+            ShoppingCart.OverrideCostMultiplierValue = ConfigSettingGet("Settings.OverrideCostMultiplierValue", 0.0, websiteID);
+
+            #endregion Shopping Cart
+
+            #region VAT/Tax Settings
+
+            DAL.DALHelper.HideVATOnWebsiteAndInvoices = ConfigSettingGet("Settings.HideVATOnWebsiteAndInvoices", false, websiteID);
+            Tax.VatRate = ConfigSettingGet("Settings.VatRate", 20.0, websiteID);
+            Tax.PricesIncludeVAT = ConfigSettingGet("Settings.PricesIncludeVAT", false, websiteID);
+            Tax.ShippingIsTaxable = ConfigSettingGet("Settings.ShippingIsTaxable", true, websiteID);
+            Tax.ShowBasketItemsWithVAT = ConfigSettingGet("Settings.ShowBasketItemsWithVAT", false, websiteID);
+            Tax.ShowBasketSubTotalWithVAT = ConfigSettingGet("Settings.ShowBasketSubTotalWithVAT", true, websiteID);
+
+            #endregion VAT/Tax Settings
+
+            #region Social Media
+
+            SocialMedia.Facebook.Url = ConfigSettingGet("Settings.Facebook", "", websiteID);
+            SocialMedia.Google.GPlus = ConfigSettingGet("Settings.GPlus", "", websiteID);
+            SocialMedia.RSS.Feed = ConfigSettingGet("Settings.RSSFeed", "", websiteID);
+            SocialMedia.Twitter.Url = ConfigSettingGet("Settings.Twitter", "", websiteID);
+            SocialMedia.Twitter.DefaultTags = ConfigSettingGet("Settings.TwitterTags", String.Empty, websiteID);
+            SocialMedia.Blog.Url = ConfigSettingGet("BlogURL", String.Empty, websiteID, true);
+
+            #endregion Social Media
+
+            #region Maintenance Options
+
+            Maintenance.AutoMaintenanceMode = true;
+            Maintenance.MaintenanceMode = ConfigSettingGet("Settings.MaintenanceMode", false, websiteID);
+
+            Maintenance.AllowRoutineMaintenance = ConfigSettingGet("Settings.AllowRoutineMaintenance", true, websiteID);
+            Maintenance.CreateXMLImageFiles = ConfigSettingGet("Settings.CreateXMLImageFiles", false, websiteID);
+
+            #endregion Maintenance Options
+
+            #region Languages
+
+            // indicates wether the change language/currency bar is visible or not
+            Languages.Active = ConfigSettingGet("SITE.LANGUAGES", false, websiteID);
+
+            Languages.ForceInitialDefaultLanguage = ConfigSettingGet("SITE.FORCEINITIAL.LANGUAGE", false, websiteID);
+
+            Languages.UseCustomPages = ConfigSettingGet("Settings.CustomPages", true, websiteID);
+
+            Languages.WebsiteCulture = new CultureInfo(ConfigSettingGet("Settings.WebsiteCulture", "en-GB", websiteID));
+
+            BOL.Countries.Country defCountry = BOL.Countries.Countries.Get(ConfigSettingGet("Settings.DefaultCountry", "GB", websiteID));
+
+            if (defCountry == null)
+                Languages.DefaultCountrySettings = "GB";
+            else
+                Languages.DefaultCountrySettings = defCountry.CountryCode;
+
+            DAL.DALHelper.CultureOverride = ConfigSettingGet("Settings.CultureOverride", "en-GB", websiteID);
+
+            #endregion Languages
+
+            #region Trade Customers
+
+            TradeCustomers.ShowTradeDownloads = ConfigSettingGet("Settings.UserMenuTradeDownloads", true, websiteID);
+
+            #endregion Trade Customers
+
+            #region Memberer Menu Items
+
+            Members.ShowSalonUpdate = ConfigSettingGet("Settings.UserMenuSalonUpdates", true, websiteID);
+            Members.ShowAppointments = ConfigSettingGet("Settings.UserMenuAppointments", true, websiteID);
+
+            #endregion Member Menu Items
+
+            #region Affiliates
+
+            Affiliates.MaximumDays = WebsiteSettings.ConfigSettingGet(StringConsts.AFFILIATE_LIVE_DAYS, 7, websiteID);
+
+            #endregion Affiliates
+
+            #region Carousel
+
+            Carousel.CustomScrollerStrapLine = ConfigSettingGet("Settings.CustomIndexScroller", false, websiteID);
+            Carousel.CustomScrollerText = ConfigSettingGet("Settings.CustomScrollerText",
+                "Out latest Products", websiteID);
+
+            #endregion Carousel
+
+            #region Geo Update
+
+            GeoIP.AllowWebsiteGeoUpdate = ConfigSettingGet("Settings.GeoIPUpdates", false, websiteID);
+
+            #endregion Geo Update
+
+            DAL.DALHelper.RegisterWebsite(WebsiteSettings.RootURL);
+            Result = true;
+
+
+            return (Result);
+        }
+
+        #endregion Configuration Settings
+
+        #endregion Static Methods
     }
 }

@@ -11,7 +11,7 @@
  *
  *  The Original Code was created by Simon Carter (s1cart3r@gmail.com)
  *
- *  Copyright (c) 2010 - 2017 Simon Carter.  All Rights Reserved.
+ *  Copyright (c) 2010 - 2018 Simon Carter.  All Rights Reserved.
  *
  *  Product:  Enterprise Manager
  *  
@@ -68,32 +68,32 @@ namespace PointOfSale.Classes
         /// </summary>
         private static void ValidateAdobe()
         {
-            AppController.UpdateSplashScreen(String.Format(Languages.LanguageStrings.AppValidating, StringConstants.SETTINGS_ADOBE));
-            string adobe = GetXMLValue(StringConstants.SETTINGS_APPLICATION, StringConstants.SETTINGS_ADOBE);
+            AppController.UpdateSplashScreen(String.Format(Languages.LanguageStrings.AppValidating, POS.Base.Classes.StringConstants.SETTINGS_ADOBE));
+            string adobe = GetXMLValue(POS.Base.Classes.StringConstants.SETTINGS_APPLICATION, POS.Base.Classes.StringConstants.SETTINGS_ADOBE);
 
             if (!File.Exists(adobe))
             {
-                if (AskQuestion(StringConstants.SETTINGS_ADOBE, String.Format(Languages.LanguageStrings.AppProductMissingFindIt, StringConstants.SETTINGS_ADOBE, Application.ProductName)))
+                if (AskQuestion(POS.Base.Classes.StringConstants.SETTINGS_ADOBE, String.Format(Languages.LanguageStrings.AppProductMissingFindIt, POS.Base.Classes.StringConstants.SETTINGS_ADOBE, Application.ProductName)))
                 {
-                    string[] installs = FindFile(String.Format(StringConstants.FOLDER_ADOBE, Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86)), StringConstants.FILE_ADOBE);
+                    string[] installs = FindFile(String.Format(POS.Base.Classes.StringConstants.FOLDER_ADOBE, Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86)), POS.Base.Classes.StringConstants.FILE_ADOBE);
 
                     if (installs.Length > 0)
                     {
-                        SetXMLValue(StringConstants.SETTINGS_APPLICATION, StringConstants.SETTINGS_ADOBE, installs[0]);
-                        ShowMessage(StringConstants.SETTINGS_ADOBE, String.Format(Languages.LanguageStrings.AppProductConfigured, StringConstants.SETTINGS_ADOBE));
+                        SetXMLValue(POS.Base.Classes.StringConstants.SETTINGS_APPLICATION, POS.Base.Classes.StringConstants.SETTINGS_ADOBE, installs[0]);
+                        ShowMessage(POS.Base.Classes.StringConstants.SETTINGS_ADOBE, String.Format(Languages.LanguageStrings.AppProductConfigured, POS.Base.Classes.StringConstants.SETTINGS_ADOBE));
                     }
                     else
                     {
-                        installs = FindFile(String.Format(StringConstants.FOLDER_ADOBE, Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles)), StringConstants.FILE_ADOBE);
+                        installs = FindFile(String.Format(POS.Base.Classes.StringConstants.FOLDER_ADOBE, Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles)), POS.Base.Classes.StringConstants.FILE_ADOBE);
 
                         if (installs.Length > 0)
                         {
-                            SetXMLValue(StringConstants.SETTINGS_APPLICATION, StringConstants.SETTINGS_ADOBE, installs[0]);
-                            ShowMessage(StringConstants.SETTINGS_ADOBE, String.Format(Languages.LanguageStrings.AppProductConfigured, StringConstants.SETTINGS_ADOBE));
+                            SetXMLValue(POS.Base.Classes.StringConstants.SETTINGS_APPLICATION, POS.Base.Classes.StringConstants.SETTINGS_ADOBE, installs[0]);
+                            ShowMessage(POS.Base.Classes.StringConstants.SETTINGS_ADOBE, String.Format(Languages.LanguageStrings.AppProductConfigured, POS.Base.Classes.StringConstants.SETTINGS_ADOBE));
                         }
                         else
                         {
-                            ShowWarning(StringConstants.SETTINGS_ADOBE, String.Format(Languages.LanguageStrings.AppProductNotFoundInstall, StringConstants.SETTINGS_ADOBE));
+                            ShowWarning(POS.Base.Classes.StringConstants.SETTINGS_ADOBE, String.Format(Languages.LanguageStrings.AppProductNotFoundInstall, POS.Base.Classes.StringConstants.SETTINGS_ADOBE));
                         }
                     }
                 }
@@ -143,14 +143,14 @@ namespace PointOfSale.Classes
         internal static void SetXMLValue(string ParentName, string KeyName, string Value)
         {
             XmlDocument xmldoc = new XmlDocument();
-            string ConfigFile = CurrentPath + StringConstants.FILE_CONFIG;
+            string ConfigFile = CurrentPath + POS.Base.Classes.StringConstants.FILE_CONFIG;
             xmldoc.Load(ConfigFile);
             XmlNode Root = xmldoc.DocumentElement;
             bool FoundParent = false;
             bool Found = false;
             XmlNode xmlParentNode = null;
 
-            if (Root != null & Root.Name == StringConstants.XML_ROOT_NODE_NAME)
+            if (Root != null & Root.Name == POS.Base.Classes.StringConstants.XML_ROOT_NODE_NAME)
             {
                 for (int i = 0; i <= Root.ChildNodes.Count - 1; i++)
                 {
@@ -206,10 +206,10 @@ namespace PointOfSale.Classes
 
 
             XmlDocument xmldoc = new XmlDocument();
-            xmldoc.Load(CurrentPath + StringConstants.FILE_CONFIG);
+            xmldoc.Load(CurrentPath + POS.Base.Classes.StringConstants.FILE_CONFIG);
             XmlNode Root = xmldoc.DocumentElement;
 
-            if (Root != null & Root.Name == StringConstants.XML_ROOT_NODE_NAME)
+            if (Root != null & Root.Name == POS.Base.Classes.StringConstants.XML_ROOT_NODE_NAME)
             {
                 for (int i = 0; i <= Root.ChildNodes.Count - 1; i++)
                 {
@@ -243,7 +243,7 @@ namespace PointOfSale.Classes
             xmldoc.Load(fileName);
             XmlNode Root = xmldoc.DocumentElement;
 
-            if (Root != null & Root.Name == StringConstants.XML_ROOT_NODE_NAME)
+            if (Root != null & Root.Name == POS.Base.Classes.StringConstants.XML_ROOT_NODE_NAME)
             {
                 for (int i = 0; i <= Root.ChildNodes.Count - 1; i++)
                 {

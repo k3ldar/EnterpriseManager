@@ -11,7 +11,7 @@
  *
  *  The Original Code was created by Simon Carter (s1cart3r@gmail.com)
  *
- *  Copyright (c) 2010 - 2017 Simon Carter.  All Rights Reserved.
+ *  Copyright (c) 2010 - 2018 Simon Carter.  All Rights Reserved.
  *
  *  Product:  Enterprise Manager
  *  
@@ -24,20 +24,13 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
 using System.IO;
-using System.Text;
-using System.Windows.Forms;
-
-using Languages;
-
-using Library;
 using Library.BOL.Products;
 
 using POS.Base.Classes;
+
+#pragma warning disable IDE1006
 
 namespace POS.Base.Controls
 {
@@ -81,7 +74,7 @@ namespace POS.Base.Controls
 
         private void LoadProductDetails()
         {
-            btnAddProduct.Text = _product.Product.Name + StringConstants.SYMBOL_CRLF + _product.Size;
+            btnAddProduct.Text = _product.Product.Name + POS.Base.Classes.StringConstants.SYMBOL_CRLF + _product.Size;
 
             if (!AppController.LocalSettings.TillShowButtonImages)
                 return;
@@ -89,9 +82,9 @@ namespace POS.Base.Controls
             //load product image
             string image = String.Empty;
 
-            image = String.Format(StringConstants.FOLDER_PRODUCT_IMAGES, StringConstants.FOLDER_IMAGE_PRODUCT);
+            image = String.Format(POS.Base.Classes.StringConstants.FOLDER_PRODUCT_IMAGES, POS.Base.Classes.StringConstants.FOLDER_IMAGE_PRODUCT);
 
-            string imageFile = image + _product.Product.Image.Replace(StringConstants.IMAGE_SIZE_DEFAULT, StringConstants.IMAGE_SIZE_BASKET);
+            string imageFile = image + _product.Product.Image.Replace(POS.Base.Classes.StringConstants.IMAGE_SIZE_DEFAULT, POS.Base.Classes.StringConstants.IMAGE_SIZE_BASKET);
 
             if (File.Exists(imageFile))
             {

@@ -35,7 +35,6 @@ namespace SieraDelta.Website.Staff.Admin
             else
                 Options = settings.WebSiteSubOptions(currentOption);
 
-
             settings.WebSiteOptions(currentOption, this);
         }
 
@@ -79,7 +78,7 @@ namespace SieraDelta.Website.Staff.Admin
 
         protected void btnUpdateAll_Click(object sender, EventArgs e)
         {
-            Global.LoadWebsiteSettingsFromDatabase();
+            BaseWebApplication.ReloadSettings();
             SharedWebBase.ResetWebTitleCache();
             Shared.Classes.CacheManager.ClearAllCaches();
         }

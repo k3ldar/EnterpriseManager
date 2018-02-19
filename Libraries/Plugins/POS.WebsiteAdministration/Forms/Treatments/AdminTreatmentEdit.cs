@@ -11,7 +11,7 @@
  *
  *  The Original Code was created by Simon Carter (s1cart3r@gmail.com)
  *
- *  Copyright (c) 2010 - 2017 Simon Carter.  All Rights Reserved.
+ *  Copyright (c) 2010 - 2018 Simon Carter.  All Rights Reserved.
  *
  *  Product:  Enterprise Manager
  *  
@@ -24,23 +24,17 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Text;
-using System.Xml;
 using System.Windows.Forms;
 
 using Languages;
 
 using Library;
-using Library.Utils;
-using Library.BOL.Users;
 using Library.BOL.Treatments;
 using Library.BOL.ValidationChecks;
 using POS.Base.Classes;
+
+#pragma warning disable IDE1006
 
 namespace POS.WebsiteAdministration.Forms.Treatments
 {
@@ -133,9 +127,9 @@ namespace POS.WebsiteAdministration.Forms.Treatments
 
         private void LoadTreatment()
         {
-            if (!_Treat.Description.Contains(StringConstants.SYMBOL_CRLF))
-                txtDescription.Text = _Treat.Description.Replace(StringConstants.SYMBOL_RETURN, 
-                    StringConstants.SYMBOL_CRLF);
+            if (!_Treat.Description.Contains(POS.Base.Classes.StringConstants.SYMBOL_CRLF))
+                txtDescription.Text = _Treat.Description.Replace(POS.Base.Classes.StringConstants.SYMBOL_RETURN,
+                    POS.Base.Classes.StringConstants.SYMBOL_CRLF);
             else
                 txtDescription.Text = _Treat.Description;
 
@@ -174,7 +168,7 @@ namespace POS.WebsiteAdministration.Forms.Treatments
             }
 
             _Treat.Description = txtDescription.Text.Replace(
-                StringConstants.SYMBOL_CRLF, StringConstants.SYMBOL_RETURN);
+                POS.Base.Classes.StringConstants.SYMBOL_CRLF, POS.Base.Classes.StringConstants.SYMBOL_RETURN);
             _Treat.Name = txtName.Text;
             _Treat.Price = txtPrice.Text;
             _Treat.TreatmentLength = txtTreatmentLength.Text;

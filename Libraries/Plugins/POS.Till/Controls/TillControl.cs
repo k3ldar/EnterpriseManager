@@ -11,7 +11,7 @@
  *
  *  The Original Code was created by Simon Carter (s1cart3r@gmail.com)
  *
- *  Copyright (c) 2010 - 2017 Simon Carter.  All Rights Reserved.
+ *  Copyright (c) 2010 - 2018 Simon Carter.  All Rights Reserved.
  *
  *  Product:  Enterprise Manager
  *  
@@ -334,13 +334,13 @@ namespace POS.Till.Controls
             }
             else
             {
-                if (e.Barcode.StartsWith(StringConstants.TILL_BARCODE_PREFIX_HV))
+                if (e.Barcode.StartsWith(Base.Classes.StringConstants.TILL_BARCODE_PREFIX_HV))
                 {
                     ShowError(LanguageStrings.Error, LanguageStrings.AppTillNoScanVoucher);
                 }
                 else
                 {
-                    if (!e.Barcode.StartsWith(StringConstants.TILL_BARCODE_PREFIX_HHB))
+                    if (!e.Barcode.StartsWith(Base.Classes.StringConstants.TILL_BARCODE_PREFIX_HHB))
                     {
                         ProductCost newItem = ProductCosts.GetByBarcode(e.Barcode);
 
@@ -512,7 +512,7 @@ namespace POS.Till.Controls
             if (Shared.Utilities.DateWithin(user.BirthDate, 7))
                 ShowInformation(LanguageStrings.AppDiaryBirthday, 
                     String.Format(LanguageStrings.AppDiaryBirthdayClose, user.FirstName,
-                    user.BirthDate.ToString(StringConstants.SYMBOL_DATE_FORMAT_M)));
+                    user.BirthDate.ToString(Base.Classes.StringConstants.SYMBOL_DATE_FORMAT_M)));
         }
 
         private void btnComplete_Click(object sender, EventArgs e)
@@ -858,7 +858,7 @@ namespace POS.Till.Controls
             //{
             //    case ProductCostType.BlackLabelBottlesAndJars:
             //    case ProductCostType.BlackLabel:
-                    e.Value = String.Format(StringConstants.PRODUCT_COST_SIZE_TYPE,
+                    e.Value = String.Format(Base.Classes.StringConstants.PRODUCT_COST_SIZE_TYPE,
                         cost.ProductCostType.Description, 
                         cost.Product.Name, cost.Size);
             //        break;
@@ -993,7 +993,7 @@ namespace POS.Till.Controls
             btnClearBasket.Enabled = _basket.HasItems();
 
             POS.Base.Classes.PluginManager.RaiseEvent(
-                new Base.Plugins.NotificationEventArgs(StringConstants.PLUGIN_EVENT_UPDATE_STATUS_BAR));
+                new Base.Plugins.NotificationEventArgs(Base.Classes.StringConstants.PLUGIN_EVENT_UPDATE_STATUS_BAR));
 
             BuildBasket(true);
         }
@@ -1178,7 +1178,7 @@ namespace POS.Till.Controls
                         }
                         else
                         {
-                            if (frm.PaymentStatus.ID == PaymentStatuses.Get(StringConstants.PAYMENT_TYPE_SPLIT).ID)
+                            if (frm.PaymentStatus.ID == PaymentStatuses.Get(Base.Classes.StringConstants.PAYMENT_TYPE_SPLIT).ID)
                             {
                                 frm.ProcessSplitPayment(order);
                             }
@@ -1239,8 +1239,8 @@ namespace POS.Till.Controls
             Order Result = null;
             try
             {
-                _order = _basket.ConvertToOrder(PaymentStatuses.Get(StringConstants.PAYMENT_TYPE_SALON_NOT_PAID),
-                    AppController.ActiveUser.Email, StringConstants.ORDER_LOCATION_HOST,
+                _order = _basket.ConvertToOrder(PaymentStatuses.Get(Base.Classes.StringConstants.PAYMENT_TYPE_SALON_NOT_PAID),
+                    AppController.ActiveUser.Email, Base.Classes.StringConstants.ORDER_LOCATION_HOST,
                     AppController.LocalSettings.CustomCulture);
                 _order.Paid(AppController.ActiveUser, status, additionalInfo, String.Empty);
                 Invoice inv = Invoices.Get(_order);
@@ -1261,11 +1261,11 @@ namespace POS.Till.Controls
             }
             catch (Exception error)
             {
-                if (error.Message.Contains(StringConstants.ERROR_LOCK_CONFLICT))
+                if (error.Message.Contains(Base.Classes.StringConstants.ERROR_LOCK_CONFLICT))
                 {
                     ShowInformation(LanguageStrings.AppTillLockConflict, LanguageStrings.AppTillLockConflictMessage);
                 }
-                else if (error.Message.Contains(StringConstants.ERROR_STOCK_ZERO))
+                else if (error.Message.Contains(Base.Classes.StringConstants.ERROR_STOCK_ZERO))
                 {
                     ShowError(LanguageStrings.AppError, LanguageStrings.AppErrorStockZero);
                 }
@@ -1277,7 +1277,7 @@ namespace POS.Till.Controls
                 btnClearBasket_Click(this, EventArgs.Empty);
             }
 
-            PluginManager.RaiseEvent(StringConstants.PLUGIN_EVENT_ORDER_DISPATCHED);
+            PluginManager.RaiseEvent(Base.Classes.StringConstants.PLUGIN_EVENT_ORDER_DISPATCHED);
 
             return (Result);
         }

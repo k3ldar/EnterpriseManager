@@ -15,7 +15,7 @@ namespace Website.Library.Classes.Web
         public static void PrintDebugInfo(System.Web.SessionState.HttpSessionState Session, 
             System.Web.HttpRequest Request, System.Web.HttpResponse Response)
         {
-            UserSession session = (UserSession)Session[StringConstants.SESSION_NAME_USER_SESSION];
+            UserSession session = (UserSession)Session[lib.StringConsts.SESSION_NAME_USER_SESSION];
             LocalWebSessionData localData = (LocalWebSessionData)session.Tag;
 
             Response.Write("<h1>Session</h1>");
@@ -56,7 +56,7 @@ namespace Website.Library.Classes.Web
             Response.Write(String.Format("IP Address: {0}<br />", Request.ServerVariables["REMOTE_HOST"]));
             Response.Write(String.Format("Is Mobile Device: {0}<br .>", session.IsMobileDevice));
             Response.Write(String.Format("Country From IP: {0}<br />", lib.LibraryHelperClass.IPAddressToCountry(Request.ServerVariables["REMOTE_HOST"])));
-            Response.Write(String.Format("{1}: {0}<br />", ((Currency)Session[StringConstants.SESSION_NAME_USER_BASKET_CURRENCY]).ToString(), StringConstants.SESSION_NAME_USER_BASKET_CURRENCY));
+            Response.Write(String.Format("{1}: {0}<br />", ((Currency)Session[lib.StringConsts.SESSION_NAME_USER_BASKET_CURRENCY]).ToString(), lib.StringConsts.SESSION_NAME_USER_BASKET_CURRENCY));
 
             Response.Write("<h1>Culture</h1>");
             Response.Write(String.Format("Website Culture: {0}<br />", WebsiteSettings.Languages.WebsiteCulture));

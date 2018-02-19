@@ -329,6 +329,7 @@
     <Compile Include="BOL\Websites\Settings.cs" />
     <Compile Include="BOL\Websites\WebsiteSettings.cs" />
     <Compile Include="Checks.cs" />
+    <Compile Include="Classes\StringConsts.cs" />
     <Compile Include="ClassExtenders\StringExtender.cs" />
     <Compile Include="Consts.cs" />
     <Compile Include="DAL\XMLStatic.cs" />

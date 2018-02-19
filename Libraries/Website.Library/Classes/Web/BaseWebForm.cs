@@ -50,7 +50,7 @@ namespace Website.Library.Classes
         {
             try
             {
-                return ((UserSession)Session[StringConstants.SESSION_NAME_USER_SESSION]);
+                return ((UserSession)Session[StringConsts.SESSION_NAME_USER_SESSION]);
             }
             catch (Exception err)
             {
@@ -1089,7 +1089,7 @@ namespace Website.Library.Classes
 
         protected string GetHomePageImages(int width = 0, int height = 0, bool auto = false)
         {
-            UserSession session = (UserSession)Session[StringConstants.SESSION_NAME_USER_SESSION];
+            UserSession session = (UserSession)Session[StringConsts.SESSION_NAME_USER_SESSION];
 
             if (auto && width > 0)
             {

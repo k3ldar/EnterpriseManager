@@ -11,7 +11,7 @@
  *
  *  The Original Code was created by Simon Carter (s1cart3r@gmail.com)
  *
- *  Copyright (c) 2010 - 2017 Simon Carter.  All Rights Reserved.
+ *  Copyright (c) 2010 - 2018 Simon Carter.  All Rights Reserved.
  *
  *  Product:  Enterprise Manager
  *  
@@ -177,7 +177,7 @@ namespace PointOfSale.Forms
 
             UpdatePluginModulesTabs(PluginManager.HomeTabsGet());
 
-            toolStripStatusLabelUser.Text = String.Format(StringConstants.USER_NAME,
+            toolStripStatusLabelUser.Text = String.Format(POS.Base.Classes.StringConstants.USER_NAME,
                 LanguageStrings.AppUser, AppController.ActiveUser.UserName);
 
             statusStripMain.Visible = true;
@@ -202,7 +202,7 @@ namespace PointOfSale.Forms
 #endif
 
             Shared.Classes.ThreadManager.ThreadStart(new ThreadNotificationThread(),
-                StringConstants.THREAD_NOTIFICATIONS_UPDATE, ThreadPriority.Lowest);
+                POS.Base.Classes.StringConstants.THREAD_NOTIFICATIONS_UPDATE, ThreadPriority.Lowest);
 
             AllowProcess = true;
             HomeTabShowing = true;
@@ -330,7 +330,7 @@ namespace PointOfSale.Forms
             timerStats_Tick(this, EventArgs.Empty);
         }
 
-        internal void ShowStatusBar(bool isBackup, string text = StringConstants.SYMBOL_EMPTY_STRING)
+        internal void ShowStatusBar(bool isBackup, string text = POS.Base.Classes.StringConstants.SYMBOL_EMPTY_STRING)
         {
             toolStripStatusLabelBackup.Visible = isBackup;
             toolStripStatusLabelBackup.Text = text;
@@ -341,7 +341,7 @@ namespace PointOfSale.Forms
             if (ShowQuestion("New Version", "New version available, update now?"))
             {
                 _askPluginsOnClosing = false;
-                System.Diagnostics.Process.Start(AppController.POSFolder(FolderType.Root, true) + StringConstants.POS_NEW_VERSION_FILE);
+                System.Diagnostics.Process.Start(AppController.POSFolder(FolderType.Root, true) + POS.Base.Classes.StringConstants.POS_NEW_VERSION_FILE);
                 Application.Exit();
                 Close();
             }
@@ -385,22 +385,22 @@ namespace PointOfSale.Forms
 
         private void ThreadManager_ThreadAbortForced(object sender, Shared.ThreadManagerEventArgs e)
         {
-            Shared.EventLog.Add(String.Format(StringConstants.THREAD_FORCED_ABORT, e.Thread.Name, e.Thread.ThreadID));
+            Shared.EventLog.Add(String.Format(POS.Base.Classes.StringConstants.THREAD_FORCED_ABORT, e.Thread.Name, e.Thread.ThreadID));
         }
 
         private void ThreadManager_ThreadForcedToClose(object sender, Shared.ThreadManagerEventArgs e)
         {
-            Shared.EventLog.Add(String.Format(StringConstants.THREAD_FORCED_CLOSE, e.Thread.Name, e.Thread.ThreadID));
+            Shared.EventLog.Add(String.Format(POS.Base.Classes.StringConstants.THREAD_FORCED_CLOSE, e.Thread.Name, e.Thread.ThreadID));
         }
 
         private void ThreadManager_ThreadStopped(object sender, Shared.ThreadManagerEventArgs e)
         {
-            Shared.EventLog.Add(String.Format(StringConstants.THREAD_STOP, e.Thread.Name, e.Thread.ThreadID));
+            Shared.EventLog.Add(String.Format(POS.Base.Classes.StringConstants.THREAD_STOP, e.Thread.Name, e.Thread.ThreadID));
         }
 
         private void ThreadManager_ThreadStarted(object sender, Shared.ThreadManagerEventArgs e)
         {
-            Shared.EventLog.Add(String.Format(StringConstants.THREAD_START, e.Thread.Name, e.Thread.ThreadID));
+            Shared.EventLog.Add(String.Format(POS.Base.Classes.StringConstants.THREAD_START, e.Thread.Name, e.Thread.ThreadID));
         }
 
 #endregion Thread Manager Events
@@ -467,9 +467,9 @@ namespace PointOfSale.Forms
 
             switch (ErrorMessage)
             {
-                case StringConstants.ERROR_INVALID_TRANSACTION_HANDLE:
-                case StringConstants.ERROR_THREAD_BEING_ABORTED:
-                case StringConstants.ERROR_DISPOSED_OBJECT:
+                case POS.Base.Classes.StringConstants.ERROR_INVALID_TRANSACTION_HANDLE:
+                case POS.Base.Classes.StringConstants.ERROR_THREAD_BEING_ABORTED:
+                case POS.Base.Classes.StringConstants.ERROR_DISPOSED_OBJECT:
                     Result = true;
                     break;
             }
@@ -483,8 +483,8 @@ namespace PointOfSale.Forms
             {
                 if (!IgnoreError(e.Message))
                 {
-                    if (e.Message.Contains(StringConstants.ERROR_READING_DATA) |
-                        e.Message.Contains(StringConstants.ERROR_NO_NETWORK))
+                    if (e.Message.Contains(POS.Base.Classes.StringConstants.ERROR_READING_DATA) |
+                        e.Message.Contains(POS.Base.Classes.StringConstants.ERROR_NO_NETWORK))
                     {
                         if (_dataConnectionErrorMessageNextShow > DateTime.Now)
                         {
@@ -499,12 +499,12 @@ namespace PointOfSale.Forms
                         return;
                     }
 
-                    Shared.EventLog.Add(String.Format(StringConstants.ERROR_INTERNAL_1,
+                    Shared.EventLog.Add(String.Format(POS.Base.Classes.StringConstants.ERROR_INTERNAL_1,
                         e.Method, e.Source, e.Parameters, e.CallStack, e.Message));
 
-                    Shared.Utilities.FileWrite(String.Format(StringConstants.ERROR_FILE,
-                        DateTime.Now.ToString(StringConstants.ERROR_FILE_NAME), CurrentPath()),
-                        String.Format(StringConstants.ERROR_INTERNAL_1,
+                    Shared.Utilities.FileWrite(String.Format(POS.Base.Classes.StringConstants.ERROR_FILE,
+                        DateTime.Now.ToString(POS.Base.Classes.StringConstants.ERROR_FILE_NAME), CurrentPath()),
+                        String.Format(POS.Base.Classes.StringConstants.ERROR_INTERNAL_1,
                         e.Method, e.Source, e.Parameters, e.CallStack, e.Message));
 
 #if ERROR_MANAGER
@@ -523,9 +523,10 @@ namespace PointOfSale.Forms
                             ConfigurationSettings.Value(ConfigurationSettings.SYSTEM_CONFIG_EMAIL_ADDRESS_RECIPIENT),
                             ConfigurationSettings.Value(ConfigurationSettings.SYSTEM_CONFIG_EMAIL_NAME_SENDER),
                             ConfigurationSettings.Value(ConfigurationSettings.SYSTEM_CONFIG_EMAIL_ADDRESS_SENDER),
-                            StringConstants.ERROR_CANT_SEND,
-                        String.Format(StringConstants.ERROR_INTERNAL_2,
-                        e.Method, e.Source, e.Parameters, e.CallStack, e.Message, DateTime.Now.ToString(StringConstants.ERROR_FILE_NAME)));
+                            POS.Base.Classes.StringConstants.ERROR_CANT_SEND,
+                        String.Format(POS.Base.Classes.StringConstants.ERROR_INTERNAL_2,
+                        e.Method, e.Source, e.Parameters, e.CallStack, e.Message, 
+                        DateTime.Now.ToString(POS.Base.Classes.StringConstants.ERROR_FILE_NAME)));
 #if ERROR_MANAGER
                     }
 #endif
@@ -774,7 +775,7 @@ namespace PointOfSale.Forms
                 // sort the buttons
                 foreach (BaseHomeTabButton btn in userButtons)
                 {
-                    string settingName = String.Format(StringConstants.PREFIX_AND_SUFFIX_SPACE,
+                    string settingName = String.Format(POS.Base.Classes.StringConstants.PREFIX_AND_SUFFIX_SPACE,
                         AppController.ActiveUser.ID.ToString(), btn.Name);
                     //btn.SortOrder = Library.LibraryHelperClass.SettingsGetInt(settingName, 1000);
                 }
@@ -824,8 +825,8 @@ namespace PointOfSale.Forms
                 newReportItem.Text = item.Name;
                 newReportItem.Click += newReportItem_Click;
                 newReportItem.Tag = item;
-                newReportItem.Name = String.Format(StringConstants.REPORT_MENU_NAME,
-                    item.Name.Replace(StringConstants.SYMBOL_SPACE, String.Empty));
+                newReportItem.Name = String.Format(POS.Base.Classes.StringConstants.REPORT_MENU_NAME,
+                    item.Name.Replace(POS.Base.Classes.StringConstants.SYMBOL_SPACE, String.Empty));
                 menuReports.DropDownItems.Add(newReportItem);
             }
         }
@@ -847,19 +848,19 @@ namespace PointOfSale.Forms
                         MethodInfo method = item.ClassType.GetMethod(item.Method);
 
                         // sending vouchers???
-                        PropertyInfo property = rpt.GetType().GetProperty(StringConstants.REPORT_PROPERTY_VOUCHER_COUNTRY);
+                        PropertyInfo property = rpt.GetType().GetProperty(POS.Base.Classes.StringConstants.REPORT_PROPERTY_VOUCHER_COUNTRY);
 
                         if (property != null)
                             property.SetValue(rpt, Library.BOL.Countries.Countries.Get(
                                 AppController.LocalSettings.DefaultCountry), null);
 
                         // sending appointments???
-                        property = rpt.GetType().GetProperty(StringConstants.REPORT_PROPERTY_ALL_APPOINTMENTS);
+                        property = rpt.GetType().GetProperty(POS.Base.Classes.StringConstants.REPORT_PROPERTY_ALL_APPOINTMENTS);
 
                         if (property != null)
                             property.SetValue(rpt, AppController.ApplicationController.AllAppointments, null);
 
-                        MethodInfo showDialogMethod = item.ClassType.GetMethod(StringConstants.REPORT_METHOD_SHOW_DIALOG,
+                        MethodInfo showDialogMethod = item.ClassType.GetMethod(POS.Base.Classes.StringConstants.REPORT_METHOD_SHOW_DIALOG,
                             BindingFlags.Instance | BindingFlags.Public,
                             null,
                             new Type[] { },// Method ToString() without parameters
@@ -873,7 +874,7 @@ namespace PointOfSale.Forms
                             }
                             else
                             {
-                                if (property != null && property.Name != StringConstants.REPORT_PROPERTY_ALL_APPOINTMENTS)
+                                if (property != null && property.Name != POS.Base.Classes.StringConstants.REPORT_PROPERTY_ALL_APPOINTMENTS)
                                 {
                                     object[] parameters = new object[1] { Library.BOL.Countries.Countries.Get(
                                         AppController.LocalSettings.DefaultCountry) };
@@ -891,7 +892,7 @@ namespace PointOfSale.Forms
                     }
                     catch (Exception err)
                     {
-                        if (err.Message.Contains(StringConstants.ERROR_DEBUG_STOP))
+                        if (err.Message.Contains(POS.Base.Classes.StringConstants.ERROR_DEBUG_STOP))
                         {
 
                         }
@@ -1062,7 +1063,7 @@ namespace PointOfSale.Forms
             }
             else
             {
-                toolStripStatusLabelUser.Text = String.Format(StringConstants.USER_NAME,
+                toolStripStatusLabelUser.Text = String.Format(POS.Base.Classes.StringConstants.USER_NAME,
                     LanguageStrings.AppUser, AppController.ActiveUser.UserName);
 
                 UpdatePluginModulesTabs(PluginManager.HomeTabsGet());
@@ -1235,10 +1236,10 @@ namespace PointOfSale.Forms
                 homeTabContainer_SizeChanged(sender, e);
 
                 Shared.Classes.ThreadManager.ThreadStart(new MaintenanceThreadClass(),
-                    StringConstants.THREAD_NAME_MAINTENANCE, ThreadPriority.Lowest);
+                    POS.Base.Classes.StringConstants.THREAD_NAME_MAINTENANCE, ThreadPriority.Lowest);
 
                 //prompt to change password if default password is in use
-                if (AppController.ActiveUser.Password == StringConstants.PASSWORD_DEFAULT)
+                if (AppController.ActiveUser.Password == POS.Base.Classes.StringConstants.PASSWORD_DEFAULT)
                 {
                     ShowInformation(LanguageStrings.AppPassword, LanguageStrings.AppPasswordDefaultChange);
                     ChangePasswordForm.ChangePassword(true);
@@ -1263,7 +1264,7 @@ namespace PointOfSale.Forms
                 }
 
                 // notify all plugins that we have loaded and are showing
-                PluginManager.RaiseEvent(new NotificationEventArgs(StringConstants.PLUGIN_EVENT_MAIN_FORM_SHOWING, null));
+                PluginManager.RaiseEvent(new NotificationEventArgs(POS.Base.Classes.StringConstants.PLUGIN_EVENT_MAIN_FORM_SHOWING, null));
             }
             finally
             {
@@ -1274,7 +1275,7 @@ namespace PointOfSale.Forms
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
 
-            if (Library.Backup.DatabaseBackupThread.BackupInProgress(StringConstants.BACKUP_NAME))
+            if (Library.Backup.DatabaseBackupThread.BackupInProgress(POS.Base.Classes.StringConstants.BACKUP_NAME))
             {
                 ShowInformation(LanguageStrings.AppCanNotClose, LanguageStrings.AppCloseBackingUp);
                 e.Cancel = true;
@@ -1384,7 +1385,7 @@ namespace PointOfSale.Forms
             {
                 if (AdminSettingsWrapper.LoadAdminSettings(this))
                 {
-                    PluginManager.RaiseEvent(new NotificationEventArgs(StringConstants.PLUGIN_EVENT_SETTINGS_CHANGED_ADMIN, null));
+                    PluginManager.RaiseEvent(new NotificationEventArgs(POS.Base.Classes.StringConstants.PLUGIN_EVENT_SETTINGS_CHANGED_ADMIN, null));
                 }
 
                 timerStats_Tick(sender, e);
@@ -1399,7 +1400,7 @@ namespace PointOfSale.Forms
         {
             if (LocalSettingsWrapper.LoadLocalSettings(this))
             {
-                PluginManager.RaiseEvent(new NotificationEventArgs(StringConstants.PLUGIN_EVENT_SETTINGS_CHANGED_USER, null));
+                PluginManager.RaiseEvent(new NotificationEventArgs(POS.Base.Classes.StringConstants.PLUGIN_EVENT_SETTINGS_CHANGED_USER, null));
 
 #if LANGUAGES
                 menuLanguage.Visible = AppController.LocalSettings.ShowLanguageMenu;
@@ -1554,24 +1555,24 @@ namespace PointOfSale.Forms
 
         private void menuHelpManual_Click(object sender, EventArgs e)
         {
-            string manual = AppController.POSFolder(FolderType.Root, true) + StringConstants.FILE_POS_MANUAL;
+            string manual = AppController.POSFolder(FolderType.Root, true) + POS.Base.Classes.StringConstants.FILE_POS_MANUAL;
             System.Diagnostics.Process.Start(manual);
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string AboutText = String.Format(StringConstants.ABOUT_TEXT,
+            string AboutText = String.Format(POS.Base.Classes.StringConstants.ABOUT_TEXT,
                 Application.ProductVersion, WebsiteAdministration.DatabaseVersion,
                 WebsiteAdministration.StoreID, WebsiteAdministration.TillID,
                 String.IsNullOrEmpty(AppController.ApplicationController.ClientID) ? LanguageStrings.AppNotConnected : AppController.ApplicationController.ClientID,
                 WebsiteAdministration.LocalDatabase,
                 Library.WebsiteAdministration.DatabaseVersionCorrect ? String.Empty : LanguageStrings.AppOutOfDate,
-                ConfigurationSettings.Value(ConfigurationSettings.SYSTEM_CONFIG_TITLE).Replace(StringConstants.SYMBOL_HYPHON_SPACES,
-                StringConstants.SYMBOL_CRLF_DOUBLE),
-                System.Environment.Is64BitProcess ? StringConstants.APP_64BIT : StringConstants.APP_32BIT);
+                ConfigurationSettings.Value(ConfigurationSettings.SYSTEM_CONFIG_TITLE).Replace(POS.Base.Classes.StringConstants.SYMBOL_HYPHON_SPACES,
+                POS.Base.Classes.StringConstants.SYMBOL_CRLF_DOUBLE),
+                System.Environment.Is64BitProcess ? POS.Base.Classes.StringConstants.APP_64BIT : POS.Base.Classes.StringConstants.APP_32BIT);
             MessageBox.Show(AboutText,
-                LanguageStrings.AppMenuHelpAbout.Replace(StringConstants.SYMBOL_AMPERSAND,
-                    StringConstants.SYMBOL_EMPTY_STRING), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LanguageStrings.AppMenuHelpAbout.Replace(POS.Base.Classes.StringConstants.SYMBOL_AMPERSAND,
+                    POS.Base.Classes.StringConstants.SYMBOL_EMPTY_STRING), MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
 #endregion Help Menu
@@ -1711,7 +1712,7 @@ namespace PointOfSale.Forms
             for (int i = homeButtonPanel.Controls.Count - 1; i >= 0; i--)
             {
                 BaseHomeTabButton btn = (BaseHomeTabButton)homeButtonPanel.Controls[i];
-                string settingName = String.Format(StringConstants.PREFIX_AND_SUFFIX_SPACE,
+                string settingName = String.Format(POS.Base.Classes.StringConstants.PREFIX_AND_SUFFIX_SPACE,
                     AppController.ActiveUser.ID.ToString(), btn.Name);
                 Library.LibraryHelperClass.SettingsSet(settingName,
                     homeButtonPanel.Controls.GetChildIndex(btn).ToString());
@@ -2028,7 +2029,7 @@ namespace PointOfSale.Forms
                 homeTabContainer.SelectedTab = dragTab;
 
                 // save position
-                string settingName = String.Format(StringConstants.TRACKING_REFERENCE,
+                string settingName = String.Format(POS.Base.Classes.StringConstants.TRACKING_REFERENCE,
                     AppController.ActiveUser.ID.ToString(), homeTabContainer.SelectedTab.Text, "P");
                 Library.LibraryHelperClass.SettingsSet(settingName,
                     homeTabContainer.TabPages.IndexOf(homeTabContainer.SelectedTab).ToString());

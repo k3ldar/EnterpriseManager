@@ -11,7 +11,7 @@
  *
  *  The Original Code was created by Simon Carter (s1cart3r@gmail.com)
  *
- *  Copyright (c) 2010 - 2017 Simon Carter.  All Rights Reserved.
+ *  Copyright (c) 2010 - 2018 Simon Carter.  All Rights Reserved.
  *
  *  Product:  Enterprise Manager
  *  
@@ -32,6 +32,8 @@ using Library;
 using Library.BOL.TipsTricks;
 
 using POS.Base.Classes;
+
+#pragma warning disable IDE1006
 
 namespace POS.WebsiteAdministration.Forms.TipsAndTricks
 {

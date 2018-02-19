@@ -11,7 +11,7 @@
  *
  *  The Original Code was created by Simon Carter (s1cart3r@gmail.com)
  *
- *  Copyright (c) 2010 - 2017 Simon Carter.  All Rights Reserved.
+ *  Copyright (c) 2010 - 2018 Simon Carter.  All Rights Reserved.
  *
  *  Product:  Enterprise Manager
  *  
@@ -24,6 +24,7 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
@@ -125,7 +126,7 @@ namespace POS.WebsiteAdministration.Forms
             tvOptions.BeginUpdate();
             try
             {
-                LoadWebsites();
+                LoadWebsites(true);
                 AllowDelete = false;
                 AllowEdit = _toolStripWebsites.SelectedIndex > -1;
                 IsEditing = false;
@@ -144,7 +145,7 @@ namespace POS.WebsiteAdministration.Forms
 
         #region Private Methods
 
-        private void LoadWebsites()
+        private void LoadWebsites(bool forceRefresh)
         {
             if (_toolStripWebsites == null)
             {
@@ -171,7 +172,7 @@ namespace POS.WebsiteAdministration.Forms
             if (_toolStripWebsites.Items.Count > 0)
                 _toolStripWebsites.SelectedIndex = 0;
 
-            if (tvOptions.Nodes.Count == 0)
+            if (forceRefresh || tvOptions.Nodes.Count == 0)
                 LoadAllNodes();
         }
 
@@ -232,6 +233,23 @@ namespace POS.WebsiteAdministration.Forms
 
                 root.Expand();
 
+                // load all settings
+                Settings settings = new Settings();
+                List<string> baseSettings = settings.WebSiteOptionHeaders();
+
+                foreach (string option in baseSettings)
+                {
+                    SettingPage settingsPage = new SettingPage();
+                    settingsPage.SetPage(option);
+                    root = tvOptions.Nodes.Add(option);
+                    root.Tag = settingsPage;
+
+                    GetWebsiteSubOptions(settings, root, option);
+
+                    root.Expand();
+                }
+
+                tvOptions.Sort();
 
                 // finally select first node in the list and make sure shown
                 tvOptions.SelectedNode = tvOptions.Nodes[0];
@@ -243,6 +261,48 @@ namespace POS.WebsiteAdministration.Forms
                 this.Cursor = Cursors.Arrow;
             }
         }
+
+        private string GetWebsiteSubOptions(Settings settings, TreeNode node,
+            string currentOption)
+        {
+            string Result = String.Empty;
+
+            List<string> subOptions = settings.WebSiteSubOptions(currentOption);
+
+            if (subOptions.Count > 0)
+            {
+                foreach (string subOption in subOptions)
+                {
+                    SettingPage settingsPage = new SettingPage();
+                    settingsPage.SetPage(subOption);
+                    TreeNode settingNode = new TreeNode(subOption);
+                    settingNode.Tag = settingsPage;
+                    node.Nodes.Add(settingNode);
+
+                    Result += GetWebsiteSubOptions(settings, settingNode, subOption);
+                    settingNode.Expand();
+                }
+            }
+
+            return (Result);
+        }
+
+        //private string GetWebsiteOptions(Settings settings, string currentOption)
+        //{
+        //    string Result = String.Empty;
+
+        //    List<string> options = settings.WebSiteOptionHeaders();
+
+        //    foreach (string option in options)
+        //    {
+        //        Result += String.Format("<li><a href=\"/Staff/Admin/Options.aspx?Option={0}\">{0}</a></li>",
+        //            option, option == currentOption ? "class=\"current\"" : "");
+
+        //        Result += GetWebsiteSubOptions(settings, currentOption, option, 15);
+        //    }
+
+        //    return (Result);
+        //}
 
         private void toolStripWebsites_DrawItem(object sender, DrawItemEventArgs e)
         {
@@ -293,6 +353,7 @@ namespace POS.WebsiteAdministration.Forms
             settingPage.Visible = true;
             settingPage.Changed += settingChangedEvent;
             settingPage.Enabled = _toolStripWebsites.SelectedIndex > -1;
+            settingPage.AfterLoad();
 
             this.Controls.Add(settingPage);
 

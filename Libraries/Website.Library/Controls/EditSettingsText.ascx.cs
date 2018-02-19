@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Web.UI.WebControls;
 
+using Library.DAL;
 using Library.BOL.Websites;
 
 #pragma warning disable IDE1006
@@ -27,7 +28,10 @@ namespace Website.Library.Controls
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
             if (cbSetting.Visible)
-                Classes.BaseWebApplication.ConfigSettingSet(_settingCode, cbSetting.Checked.ToString());
+            {
+                WebsiteSettings.ConfigSettingSet(_settingCode, cbSetting.Checked.ToString(),
+                    DALHelper.WebsiteID);
+            }
             else
             {
                 if (_isCulture)
@@ -37,14 +41,16 @@ namespace Website.Library.Controls
                     {
                         CultureInfo test = new CultureInfo(settingText.Text);
                     }
-                    catch 
+                    catch
                     {
-                        settingText.Text = Classes.BaseWebApplication.ConfigSettingGet(_settingCode,
-                            WebsiteSettings.Languages.WebsiteCulture.Name);
+                        settingText.Text = WebsiteSettings.ConfigSettingGet(_settingCode,
+                            WebsiteSettings.Languages.WebsiteCulture.Name,
+                            DALHelper.WebsiteID);
                     }
                 }
 
-                Classes.BaseWebApplication.ConfigSettingSet(_settingCode, settingText.Text);
+                WebsiteSettings.ConfigSettingSet(_settingCode, settingText.Text,
+                    DALHelper.WebsiteID);
             }
         }
 

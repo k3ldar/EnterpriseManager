@@ -11,7 +11,7 @@
  *
  *  The Original Code was created by Simon Carter (s1cart3r@gmail.com)
  *
- *  Copyright (c) 2010 - 2017 Simon Carter.  All Rights Reserved.
+ *  Copyright (c) 2010 - 2018 Simon Carter.  All Rights Reserved.
  *
  *  Product:  Enterprise Manager
  *  
@@ -95,9 +95,19 @@ namespace POS.CurrencyWatch.Classes
                 Shared.Utilities.FileWrite(AppController.POSFolder(FolderType.Temp, true) + 
                     StringConstants.FILE_YAHOO_CURRENCIES, fileContents);
 
-            System.IO.File.Delete(AppController.POSFolder(FolderType.Temp, true) + 
-                StringConstants.FILE_YAHOO_CURRENCIES_TEMP);
-
+            try
+            {
+                System.IO.File.Delete(AppController.POSFolder(FolderType.Temp, true) +
+                    StringConstants.FILE_YAHOO_CURRENCIES_TEMP);
+            }
+            catch (System.IO.IOException)
+            {
+                //ignore
+            }
+            catch
+            {
+                throw;
+            }
             if (AfterUpdate != null)
                 AfterUpdate(this, EventArgs.Empty);
 

@@ -11,7 +11,7 @@
  *
  *  The Original Code was created by Simon Carter (s1cart3r@gmail.com)
  *
- *  Copyright (c) 2010 - 2017 Simon Carter.  All Rights Reserved.
+ *  Copyright (c) 2010 - 2018 Simon Carter.  All Rights Reserved.
  *
  *  Product:  Enterprise Manager
  *  
@@ -38,6 +38,8 @@ using Library.BOL.Salons;
 using Library.BOL.Statistics;
 using POS.Base.Classes;
 using POS.Base.Plugins;
+
+#pragma warning disable IDE1006
 
 namespace POS.WebsiteAdministration
 {
@@ -281,21 +283,21 @@ namespace POS.WebsiteAdministration
 
             switch (e.EventName)
             {
-                case StringConstants.PLUGIN_EVENT_EDIT_SALON:
+                case POS.Base.Classes.StringConstants.PLUGIN_EVENT_EDIT_SALON:
                     EditSalonDetails((Salon)e.EventValue);
                     break;
 
-                case StringConstants.PLUGIN_EVENT_WEBSITE_MODULE:
+                case POS.Base.Classes.StringConstants.PLUGIN_EVENT_WEBSITE_MODULE:
                     e.AllowContinue = false;
                     e.Result = true;
                     break;
 
-                case StringConstants.PLUGIN_EVENT_WEBSITE_COUNT:
+                case POS.Base.Classes.StringConstants.PLUGIN_EVENT_WEBSITE_COUNT:
                     e.AllowContinue = false;
                     e.Result = WebsiteCount;
                     break;
 
-                case StringConstants.PLUGIN_EVENT_WEBSITE_NAME:
+                case POS.Base.Classes.StringConstants.PLUGIN_EVENT_WEBSITE_NAME:
                     e.AllowContinue = false;
                     e.Result = DefaultWebsite;
                     break;
@@ -314,10 +316,10 @@ namespace POS.WebsiteAdministration
         {
             base.NotificationsGet(ref names);
 
-            names.Add(StringConstants.PLUGIN_EVENT_EDIT_SALON);
-            names.Add(StringConstants.PLUGIN_EVENT_WEBSITE_MODULE);
-            names.Add(StringConstants.PLUGIN_EVENT_WEBSITE_COUNT);
-            names.Add(StringConstants.PLUGIN_EVENT_WEBSITE_NAME);
+            names.Add(POS.Base.Classes.StringConstants.PLUGIN_EVENT_EDIT_SALON);
+            names.Add(POS.Base.Classes.StringConstants.PLUGIN_EVENT_WEBSITE_MODULE);
+            names.Add(POS.Base.Classes.StringConstants.PLUGIN_EVENT_WEBSITE_COUNT);
+            names.Add(POS.Base.Classes.StringConstants.PLUGIN_EVENT_WEBSITE_NAME);
         }
 
         #endregion Notification Events

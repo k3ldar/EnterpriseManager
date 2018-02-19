@@ -103,7 +103,6 @@
     <Compile Include="Classes\PaymentOptions\PaymentOptionSunTechBuySafe.cs" />
     <Compile Include="Classes\PaymentOptions\PaymentOptionSunTechWebATM.cs" />
     <Compile Include="Classes\PaymentOptions\PaymentOptionTestPurchase.cs" />
-    <Compile Include="Classes\StringConstants.cs" />
     <Compile Include="Classes\Translations\EnumTranslations.cs" />
     <Compile Include="Classes\WebVisitLogItem.cs" />
     <Compile Include="Classes\Web\BaseController.cs" />

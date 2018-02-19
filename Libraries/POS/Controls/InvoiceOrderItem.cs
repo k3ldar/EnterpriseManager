@@ -11,7 +11,7 @@
  *
  *  The Original Code was created by Simon Carter (s1cart3r@gmail.com)
  *
- *  Copyright (c) 2010 - 2017 Simon Carter.  All Rights Reserved.
+ *  Copyright (c) 2010 - 2018 Simon Carter.  All Rights Reserved.
  *
  *  Product:  Enterprise Manager
  *  
@@ -56,7 +56,7 @@ namespace POS.Base.Controls
                     description, item.UserDiscount);
             }
 
-            lblDescription.Text = String.Format(StringConstants.PREFIX_AND_SUFFIX_SPACE, 
+            lblDescription.Text = String.Format(POS.Base.Classes.StringConstants.PREFIX_AND_SUFFIX_SPACE, 
                 item.SKU, description);
 
             lblPrice.Text = item.PriceStr;

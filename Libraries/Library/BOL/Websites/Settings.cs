@@ -256,7 +256,7 @@ namespace Library.BOL.Websites
                         "Paypal API Currency", "Settings.PaypalAPICurrency", 100);
                     options.AddOption("API Success URL", WebsiteSettings.PaymentGateways.Paypal.APISuccessURL, 
                         "URL when payment succesfully made", "Settings.PaypalSuccessURL");
-                    options.AddOption(".API Fail URL", WebsiteSettings.PaymentGateways.Paypal.APIFailURL, 
+                    options.AddOption("API Fail URL", WebsiteSettings.PaymentGateways.Paypal.APIFailURL, 
                         "URL when payment fails", "Settings.PaypalFailURL");
 
                     break;
@@ -372,8 +372,8 @@ namespace Library.BOL.Websites
                         "Text color of \"Add to Bag\" button if an item is in the users shopping basket.<br /><br />" +
                         "AlterTextColorBasedOnBasketContents must be true for this to take effect.", 
                         "Settings.ItemExistsInShoppingBagTextColour", 150);
-                    options.AddOption("Culture Override", lib.DAL.DALHelper.CultureOverride, 
-                        "Culture to be used if overridden", "Settings.CultureOverride", 100);
+                    options.AddOption("Culture Override", lib.DAL.DALHelper.CultureOverride,  
+                        "Culture to be used if overridden", "Settings.CultureOverride", 100, false, true, 1, false);
                     options.AddOption("Show Price Data", WebsiteSettings.ShoppingCart.DefaultShowPrices, 
                         "Default action if showing price data can not be determined from the country, if checked " +
                         "then default will show prices, if not checked default is to hide prices", "Settings.ShowPriceDefault");
@@ -492,8 +492,8 @@ namespace Library.BOL.Websites
 
                 case "Custom Pages":
                     options.AddDescription("Certain pages are customisable into local languages, by default only " +
-                        "static content can be shown, you can now <a href=\"/Staff/Admin/CustomPages.aspx\">customise " +
-                        "these default pages</a> to your own layout and design.");
+                        "static content can be shown, you can now customise " +
+                        "these default pages to your own layout and design.");
                     options.AddOption("Use Custom Pages", WebsiteSettings.Languages.UseCustomPages, 
                         "Allow use of custom pages", "Settings.CustomPages");
 
@@ -549,10 +549,10 @@ namespace Library.BOL.Websites
                     options.AddDescription("Memory caching can significantly speed up the response of the website by storing " +
                         "data in memory.  The data stored is only the data that is rarely updated.");
                     options.AddOption("Allow Caching", DAL.DALHelper.AllowCaching, 
-                        "Allow caching of data in memory", "Setting.AllowCaching");
+                        "Allow caching of data in memory", "Setting.AllowCaching", true);
                     options.AddOption("Cache Timeout", DAL.DALHelper.CacheLimit.Minutes, 
                         "The value is the number of minutes that the data is held in memory and can be between 1 and 1440 minutes.", 
-                        "Setting.CacheLimit", 1440, 1, 1440);
+                        "Setting.CacheLimit", 1440, 1, 1440, true);
 
                     break;
 
@@ -573,6 +573,8 @@ namespace Library.BOL.Websites
 
                 #endregion Web Farms
 
+                #region Members Menu
+
                 case "Members Menu":
                     options.AddDescription("Member Menu Options");
                     options.AddOption("Shop/Store Update", WebsiteSettings.Members.ShowSalonUpdate,
@@ -581,6 +583,8 @@ namespace Library.BOL.Websites
                         "Settings.UserMenuAppointments", "Allow members to book view and book appointments");
     
                     break;
+
+                #endregion Members Menu
 
                 #region Trade Customers
 
@@ -592,7 +596,6 @@ namespace Library.BOL.Websites
                     break;
 
                 #endregion Trade Customers
-
 
                 #region Affiliates
 
@@ -628,7 +631,7 @@ namespace Library.BOL.Websites
 
             switch (parentName)
             {
-                case "Payment Options":
+                case "Payment Gateways":
                     Result.Add("Paypal");
                     Result.Add("Payflow");
                     Result.Add("Credit Cards");

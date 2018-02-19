@@ -2,6 +2,7 @@
 
 using Website.Library;
 using Website.Library.Classes;
+using Library;
 using Library.BOL.Websites;
 using Shared.Classes;
 
@@ -12,7 +13,7 @@ namespace SieraDelta.Website
         protected void Page_Load(object sender, EventArgs e)
         {
             divBanners.Visible = WebsiteSettings.HomePage.ShowHomeBanners;
-            UpdateCustomTranslatedPageData(StringConstants.TRANSLATED_DATA_HOME_PAGE, divTranslated, false);
+            UpdateCustomTranslatedPageData(StringConsts.TRANSLATED_DATA_HOME_PAGE, divTranslated, false);
             FeaturedProducts1.Visible = WebsiteSettings.HomePage.ShowHomeFeaturedProducts;
         }
 
@@ -22,7 +23,7 @@ namespace SieraDelta.Website
 
             if (Library.DAL.DALHelper.AllowCaching)
             {
-                CacheItem cached = GlobalClass.InternalCache.Get(StringConstants.CACHE_NAME_HOME_PAGE_FIXED_BANNERS);
+                CacheItem cached = GlobalClass.InternalCache.Get(StringConsts.CACHE_NAME_HOME_PAGE_FIXED_BANNERS);
 
                 if (cached != null)
                 {
@@ -32,19 +33,19 @@ namespace SieraDelta.Website
 
             for (int i = 0; i < 4; i++)
             {
-                string setting = String.Format(StringConstants.WEB_SETTING_HOME_FIXED_BANNER_LINK, 
+                string setting = String.Format(Library.StringConsts.WEB_SETTING_HOME_FIXED_BANNER_LINK, 
                     Library.DAL.DALHelper.WebsiteID, i);
                 string link = Library.LibraryHelperClass.SettingsGet(setting, String.Empty);
 
-                setting = String.Format(StringConstants.WEB_SETTING_HOME_FIXED_BANNER_DESCRIPTION, 
+                setting = String.Format(Library.StringConsts.WEB_SETTING_HOME_FIXED_BANNER_DESCRIPTION, 
                     Library.DAL.DALHelper.WebsiteID, i);
                 string title = Library.LibraryHelperClass.SettingsGet(setting, String.Empty);
 
-                setting = String.Format(StringConstants.WEB_SETTING_HOME_FIXED_BANNER_TITLE, 
+                setting = String.Format(Library.StringConsts.WEB_SETTING_HOME_FIXED_BANNER_TITLE, 
                     Library.DAL.DALHelper.WebsiteID, i);
                 string description = Library.LibraryHelperClass.SettingsGet(setting, String.Empty);
 
-                setting = String.Format(StringConstants.WEB_SETTING_HOME_FIXED_BANNER, 
+                setting = String.Format(StringConsts.WEB_SETTING_HOME_FIXED_BANNER, 
                     Library.DAL.DALHelper.WebsiteID, i);
                 string image = Library.LibraryHelperClass.SettingsGet(setting, String.Empty);
 
@@ -60,8 +61,8 @@ namespace SieraDelta.Website
             }
 
             if (Library.DAL.DALHelper.AllowCaching)
-                GlobalClass.InternalCache.Add(StringConstants.CACHE_NAME_HOME_PAGE_FIXED_BANNERS, 
-                    new CacheItem(StringConstants.CACHE_NAME_HOME_PAGE_FIXED_BANNERS, Result));
+                GlobalClass.InternalCache.Add(Library.StringConsts.CACHE_NAME_HOME_PAGE_FIXED_BANNERS, 
+                    new CacheItem(Library.StringConsts.CACHE_NAME_HOME_PAGE_FIXED_BANNERS, Result));
 
             return (Result);
         }

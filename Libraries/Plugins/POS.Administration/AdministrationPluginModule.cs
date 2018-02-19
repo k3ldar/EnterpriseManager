@@ -11,7 +11,7 @@
  *
  *  The Original Code was created by Simon Carter (s1cart3r@gmail.com)
  *
- *  Copyright (c) 2010 - 2017 Simon Carter.  All Rights Reserved.
+ *  Copyright (c) 2010 - 2018 Simon Carter.  All Rights Reserved.
  *
  *  Product:  Enterprise Manager
  *  
@@ -39,6 +39,8 @@ using POS.Base.Classes;
 using POS.Base.Plugins;
 
 using POS.Administration.Forms.Products;
+
+#pragma warning disable IDE1006
 
 namespace POS.Administration
 {
@@ -230,15 +232,15 @@ namespace POS.Administration
 
             switch (e.EventName)
             {
-                case StringConstants.PLUGIN_EVENT_EDIT_PRODUCT_ITEM:
+                case POS.Base.Classes.StringConstants.PLUGIN_EVENT_EDIT_PRODUCT_ITEM:
                     EditProduct((Product)e.EventValue);
                     break;
 
-                case StringConstants.PLUGIN_EVENT_EDIT_SALON_TREATMENTS:
+                case POS.Base.Classes.StringConstants.PLUGIN_EVENT_EDIT_SALON_TREATMENTS:
                     EditSalonTreatments();
                     break;
 
-                case StringConstants.PLUGIN_EVENT_SELECT_SALON:
+                case POS.Base.Classes.StringConstants.PLUGIN_EVENT_SELECT_SALON:
                     SelectSalon();
                     break;
 
@@ -255,9 +257,9 @@ namespace POS.Administration
         public override void NotificationsGet(ref List<string> names)
         {
             base.NotificationsGet(ref names);
-            names.Add(StringConstants.PLUGIN_EVENT_EDIT_PRODUCT_ITEM);
-            names.Add(StringConstants.PLUGIN_EVENT_EDIT_SALON_TREATMENTS);
-            names.Add(StringConstants.PLUGIN_EVENT_SELECT_SALON);
+            names.Add(Base.Classes.StringConstants.PLUGIN_EVENT_EDIT_PRODUCT_ITEM);
+            names.Add(Base.Classes.StringConstants.PLUGIN_EVENT_EDIT_SALON_TREATMENTS);
+            names.Add(Base.Classes.StringConstants.PLUGIN_EVENT_SELECT_SALON);
         }
 
         #endregion Notification Events

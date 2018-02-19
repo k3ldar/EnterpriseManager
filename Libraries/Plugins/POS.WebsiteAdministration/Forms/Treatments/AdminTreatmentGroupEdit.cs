@@ -11,7 +11,7 @@
  *
  *  The Original Code was created by Simon Carter (s1cart3r@gmail.com)
  *
- *  Copyright (c) 2010 - 2017 Simon Carter.  All Rights Reserved.
+ *  Copyright (c) 2010 - 2018 Simon Carter.  All Rights Reserved.
  *
  *  Product:  Enterprise Manager
  *  
@@ -24,16 +24,15 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 using System;
-using System.IO;
 using System.Windows.Forms;
 
 using Languages;
-
-using Library;
 using Library.BOL.Products;
 using Library.BOL.Treatments;
 
 using POS.Base.Classes;
+
+#pragma warning disable IDE1006
 
 namespace POS.WebsiteAdministration.Forms.Treatments
 {
@@ -113,7 +112,7 @@ namespace POS.WebsiteAdministration.Forms.Treatments
             {
                 string msg = LanguageStrings.AppErrorUnexpectedDescription;
 
-                if (error.Message.Contains(StringConstants.ERROR_LOCK_CONFLICT))
+                if (error.Message.Contains(POS.Base.Classes.StringConstants.ERROR_LOCK_CONFLICT))
                     msg = LanguageStrings.AppErrorProductGroupConflict;
 
                 ShowError(LanguageStrings.AppProductGroupSave, msg);

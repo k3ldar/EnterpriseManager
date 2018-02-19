@@ -5,6 +5,7 @@ using System.Web;
 using Website.Library.Classes;
 using Website.Library;
 
+using Library;
 using Library.BOL.Websites;
 
 #if ERROR_MANAGER
@@ -140,7 +141,7 @@ namespace SieraDelta.Website
             if (WebsiteSettings.Maintenance.MaintenanceMode)
             {
                 if (SharedWebBase.CookieGetValue(Request, Response,
-                    String.Format(StringConstants.COOKIE_BYPASS_MAINTENANCE,
+                    String.Format(StringConsts.COOKIE_BYPASS_MAINTENANCE,
                     Library.BOL.Websites.WebsiteSettings.DistributorWebsite),
                     "notfound") == "notfound")
                 {
@@ -157,7 +158,7 @@ namespace SieraDelta.Website
                     else
                     {
                         SharedWebBase.CookieSetValue(Request, Response,
-                            String.Format(StringConstants.COOKIE_BYPASS_MAINTENANCE,
+                            String.Format(StringConsts.COOKIE_BYPASS_MAINTENANCE,
                             Library.BOL.Websites.WebsiteSettings.DistributorWebsite),
                             "yes", DateTime.Now.AddDays(10));
                     }

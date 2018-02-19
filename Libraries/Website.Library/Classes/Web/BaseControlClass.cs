@@ -64,7 +64,7 @@ namespace Website.Library.Classes
         /// <returns>UserSession instance for current users session</returns>
         protected UserSession GetUserSession()
         {
-            return ((UserSession)Session[StringConstants.SESSION_NAME_USER_SESSION]);
+            return ((UserSession)Session[lib.StringConsts.SESSION_NAME_USER_SESSION]);
         }
 
         /// <summary>

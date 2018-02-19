@@ -13,15 +13,6 @@ namespace Website.Library.Classes.PaymentOptions
 {
     public sealed class PaymentOptionTestPurchase : BasePaymentOption
     {
-        #region Static Properties
-
-        /// <summary>
-        /// Currencies supported by ChinaPay
-        /// </summary>
-        public static string SupportedCurrencies { get; set; }
-
-        #endregion Static Properties
-
         /// <summary>
         /// Debug Execute Methods
         /// </summary>
@@ -58,7 +49,7 @@ namespace Website.Library.Classes.PaymentOptions
 
         public override string Currencies()
         {
-            return (SupportedCurrencies);
+            return (WebsiteSettings.PaymentGateways.TestPurchase.Currency);
         }
     }
 }
