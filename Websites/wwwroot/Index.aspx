@@ -29,7 +29,7 @@
         <div id="divTranslated" runat="server">
         </div>			
 
-        <div id="divBanners" runat="server" class="featureWrapper">
+        <div id="divFixedBanners" runat="server" class="featureWrapper">
 			<div class="banners">
 			    <%=GetBannerLinks() %>
            

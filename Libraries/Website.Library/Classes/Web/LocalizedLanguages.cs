@@ -119,7 +119,7 @@ namespace Website.Library.Classes
 #if DEBUG
             Shared.EventLog.DebugText(String.Format("Changed: {0}", changedSettings.ToString()));
             Shared.EventLog.DebugText(String.Format("Basket Currency: {0}", 
-                Session[StringConsts.SESSION_NAME_USER_BASKET_CURRENCY]));
+                Session[lib.StringConsts.SESSION_NAME_USER_BASKET_CURRENCY]));
 #endif
                 extra = 9;
 

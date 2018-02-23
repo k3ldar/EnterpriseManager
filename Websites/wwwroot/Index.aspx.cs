@@ -12,7 +12,7 @@ namespace SieraDelta.Website
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            divBanners.Visible = WebsiteSettings.HomePage.ShowHomeBanners;
+            divFixedBanners.Visible = WebsiteSettings.HomePage.ShowHomeBanners;
             UpdateCustomTranslatedPageData(StringConsts.TRANSLATED_DATA_HOME_PAGE, divTranslated, false);
             FeaturedProducts1.Visible = WebsiteSettings.HomePage.ShowHomeFeaturedProducts;
         }

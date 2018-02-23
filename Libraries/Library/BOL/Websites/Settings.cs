@@ -71,8 +71,8 @@ namespace Library.BOL.Websites
                 case "Home Page":
                     options.AddHeader("Home Page");
                     options.AddDescription("Settings that affect the home page");
-                    options.AddOption("Show Banners", WebsiteSettings.HomePage.ShowHomeBanners,
-                        "Home Banners", "Settings.HomeBanners", false);
+                    options.AddOption("Show Fixed Banners", WebsiteSettings.HomePage.ShowHomeBanners,
+                        "Fixed Home Banners", "Settings.HomeBanners", false);
                     options.AddOption("Featured Products", WebsiteSettings.HomePage.ShowHomeFeaturedProducts,
                         "Show Featured Products on Homepage", "SETTINGS.HOMEFEATURED");
 

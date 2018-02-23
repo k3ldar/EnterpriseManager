@@ -34,6 +34,9 @@ using Shared.Classes;
 using Languages;
 using POS.Base.Plugins;
 
+#pragma warning disable IDE1005
+#pragma warning disable IDE1006
+
 namespace POS.Base.Classes
 {
     public static class PluginManager

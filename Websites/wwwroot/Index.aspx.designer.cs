@@ -22,13 +22,13 @@ namespace SieraDelta.Website {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divTranslated;
         
         /// <summary>
-        /// divBanners control.
+        /// divFixedBanners control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divBanners;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divFixedBanners;
         
         /// <summary>
         /// MediaLinks1 control.

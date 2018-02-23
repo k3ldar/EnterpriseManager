@@ -40,6 +40,7 @@ using POS.Base.Classes;
 using POS.Base.Plugins;
 
 #pragma warning disable IDE1006
+#pragma warning disable IDE0028
 
 namespace POS.WebsiteAdministration
 {
