@@ -350,6 +350,7 @@ const
   StandAlone = 8000;
   Client = 8001;
   Server = 8002;
+  Cloud = 8003;
 
   crlf = #13#10;
 
@@ -382,6 +383,7 @@ var
   Email, Password, FirstName, LastName: String;
   PageLogin: TInputQueryWizardPage;
   PageInstallType: TInputOptionWizardPage;
+  PageWebsite: TInputQueryWizardPage;
   PageSelectServer: TInputOptionWizardPage;
   installType: Integer;
   serverName: String;
@@ -391,6 +393,7 @@ var
   svcXML: string;
   bCanContinue: boolean;
   siteID: integer;
+  websiteUrl: string;
 
 const
   NET_FW_SCOPE_ALL = 0;
@@ -849,6 +852,20 @@ begin
     WizardForm.ComponentsList.Checked[idxDatabase] := True;
     WizardForm.ComponentsList.ItemEnabled[idxDatabase] := False;
   end else
+  if (installType = Cloud) then
+  begin
+    WizardForm.ComponentsList.Checked[idxFirebird] := False;
+    WizardForm.ComponentsList.ItemEnabled[idxFirebird] := False;
+
+    WizardForm.ComponentsList.Checked[idxPOS] := True;
+    WizardForm.ComponentsList.ItemEnabled[idxPOS] := True;
+
+    WizardForm.ComponentsList.Checked[idxService] := False;
+    WizardForm.ComponentsList.ItemEnabled[idxService] := False;
+
+    WizardForm.ComponentsList.Checked[idxDatabase] := False;
+    WizardForm.ComponentsList.ItemEnabled[idxDatabase] := False;
+  end else
   if (installType = StandAlone) then
   begin
     WizardForm.ComponentsList.Checked[idxFirebird] := True;
@@ -886,16 +903,20 @@ begin
 	i := 0;
 	repeat
 		SetArrayLength(Dest, i+1);
-		if Pos(Separator,Text) > 0 then	begin
+		
+    if Pos(Separator,Text) > 0 then	
+    begin
 			Dest[i] := Copy(Text, 1, Pos(Separator, Text)-1);
 			Text := Copy(Text, Pos(Separator,Text) + Length(Separator), Length(Text));
 			i := i + 1;
-		end else begin
+		end else 
+    begin
 			 Dest[i] := Text;
 			 Text := '';
 		end;
 	until Length(Text)=0;
 end;
+
 
 function GetServerList(): boolean;
 var
@@ -906,8 +927,8 @@ var
   i: Integer;
 begin
   Result := false;
-  validateURL := 'http://www.sieradelta.com/Members/Installer/PosValidation.aspx' +
-    '?Action=Servers' + 
+  validateURL := 'http://localhost:60009/Members/Installer/PosValidation.aspx?' +
+    'Action=Servers' + 
     '&FirstName=' + FirstName +
     '&LastName=' + LastName +
     '&Email=' + Email + 
@@ -916,6 +937,7 @@ begin
   WinHttpReq := CreateOleObject('WinHttp.WinHttpRequest.5.1');
 
   WinHttpReq.Open('GET', validateURL, false);
+  WinHttpReq.setRequestHeader('User-Agent', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)');
   WinHttpReq.Send();
 
   if (WinHttpReq.Status <> 200) then 
@@ -961,31 +983,51 @@ function SetupLoginDetails(Action: string; ServiceXML: string;
   POSXML: string): string;
 var
   WinHttpReq: Variant;
+  validateURLJson: string;
   validateURL: string;
   index1, index2: integer;
   resultText: string;
   remoteDB: string;
   root: string;
+  jsonPost: string;
+  post: string;
 begin
-  validateURL := 'http://www.sieradelta.com/Members/Installer/PosValidation.aspx' +
-    '?Action=' + Action + 
-    '&ComputerName=' + GetComputerNameString() +
-    '&Email=' + Email + 
+  validateURLJson := 'http://localhost:60009/api/SmallBusinessManager/ValidateInstall/';
+  validateURL := 'https://localhost:44307/api/sbm/systemInstall/';
+  jsonPost := '{ "Action"  : "' + Action + '", ' +
+    '"ComputerName"  : "' + GetComputerNameString() + '", ' +
+    '"Email" : "' + Email + '", ' +
+    '"Password" : "' + Password + '", ' +
+    '"FirstName" : "' + FirstName + '", ' +
+    '"LastName" : "' + Lastname + '", ' +
+    '"InstallType" : "' + IntToStr(installType) + '", ' +
+    '"ServerName" : "' + serverName + '", ' +
+    '"Website" : "' + websiteUrl +'", ' + 
+    '"Path" : "' + ExpandConstant('{app}') + '" }';
+   post := 
+    'Action=' + Action +
+    '&ComputerName' + GetComputerNameString() +
+    '&Email=' + Email +
     '&Password=' + Password +
-    '&InstallType=' + IntToStr(installType) + 
-    '&Path=' + ExpandConstant('{app}') +
-    '&ServerName=' + serverName;
+    '&FirstName=' + FirstName +
+    '&LastName=' + Lastname +
+    '&InstallType=' + IntToStr(installType) +
+    '&ServerName=' + serverName +
+    '&Website=' + websiteUrl + 
+    '&Path=' + ExpandConstant('{app}');
+  MsgBox(validateURL, MBInformation, MB_OK);
 
   WinHttpReq := CreateOleObject('WinHttp.WinHttpRequest.5.1');
-
-  WinHttpReq.Open('GET', validateURL, false);
+  WinHttpReq.Open('GET', validateURL + '?' + post, false);
+  WinHttpReq.setRequestHeader('User-Agent', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)');
   WinHttpReq.Send();
 
   if (WinHttpReq.Status <> 200) then 
   begin
-    MsgBox('Could not Validate Installation, please ensure you have a valid internet connection.', mbError, MB_OK);
+    MsgBox('Could not Validate Installation, please ensure you have a valid internet connection. ' + IntToStr(WinHttpReq.Status), mbError, MB_OK);
   end else
   begin
+
     resultText := WinHttpReq.ResponseText;
 
     if Length(resultText) > 0 then 
@@ -1055,15 +1097,20 @@ begin
   PageInstallType := CreateInputOptionPage(wpWelcome, 'Install Type', 
     'Please select the type of install you would like to perform.', '',
     True, False);
+  PageInstallType.Add('Cloud');
   PageInstallType.Add('Stand alone');
   PageInstallType.Add('Client');
   PageInstallType.Add('Server');
   PageInstallType.Values[0] := True;
+ 
+  PageWebsite := CreateInputQueryPage(PageInstallType.ID, 
+    'Website', 'Please enter your website address (Url)',
+    'If you have a website that you want us to host, please enter the url, i.e. http://www.mywebsite.com');
   
   // Create the user page
-  PageLogin := CreateInputQueryPage(wpSelectComponents,
-    'Login Details', 'Enter yout login details',
-    'Please enter your email address and password, then click Next, if you do not have an account one will be created for you.');
+  PageLogin := CreateInputQueryPage(PageWebsite.ID,
+    'Login Details', 'Enter your login details',
+    'Please enter your name, email address and password, then click Next, if you do not have an account one will be created for you.');
 
   // Add items (False means it's not a password edit)
   PageLogin.Add('First Name:', False);
@@ -1071,11 +1118,14 @@ begin
   PageLogin.Add('Email Address:', False);
   PageLogin.Add('Password:', True);
 
-  // Set initial values (optional)
+  PageWebsite.Add('Website Url:', False);
+
+  // Set initial values (debug only)
   PageLogin.Values[0] := 'Simon';
   PageLogin.Values[1] := 'Carter';
   PageLogin.Values[2] := 'test3@shifoo.com';
   PageLogin.Values[3] := 'Passw0rd';
+  PageWebsite.Values[0] := 'http://www.mywebsite.com';
 
   // Read values into variables
   FirstName := PageLogin.Values[0];
@@ -1083,27 +1133,30 @@ begin
   Email := PageLogin.Values[2];
   Password := PageLogin.Values[3];
 
-  PageSelectServer := CreateInputOptionPage(101, 'Server',
+  PageSelectServer := CreateInputOptionPage(PageLogin.ID, 'Server',
     'Please select your server', '', True, True);
 
   WizardForm.TypesCombo.ItemIndex := 2;
 
   CreateHelpButton(WizardForm, ScaleX(20), WizardForm.CancelButton.Top,
       WizardForm.CancelButton.Width, WizardForm.CancelButton.Height);
-
 end;
 
 function NextButtonClick(CurPageID: Integer): Boolean;
 begin
   //MsgBox(IntToStr(CurPageID), mbInformation, MB_OK);
 
-  if (CurPageID = 100) then   
+  if (CurPageID = PageInstallType.ID) then   
   begin
     if (PageInstallType.Values[0]) then
+    begin 
+      installType := Cloud;
+    end else
+    if (PageInstallType.Values[1]) then
     begin
       installType := StandAlone;
     end else
-    if (PageInstallType.Values[1]) then
+    if (PageInstallType.Values[2]) then
     begin
       installType := Client;
     end else
@@ -1114,7 +1167,11 @@ begin
     SelectComponentsFromInstallType();
 
     Result := True;
-  end else if (CurPageID = 101) then // Login Details
+  end else if (CurPageID = PageWebsite.ID) then
+  begin
+    websiteUrl := PageWebsite.Values[0];
+    Result := true;
+  end else if (CurPageID = PageLogin.ID) then
   begin
     // Read values into variables
     FirstName := PageLogin.Values[0];
@@ -1122,8 +1179,12 @@ begin
     Email := PageLogin.Values[2];
     Password := PageLogin.Values[3];
 
-    Result := GetServerList();
-  end else if (CurPageID = 102) then // select server page
+
+    if (installType <> Cloud) then
+      Result := GetServerList()
+    else
+      Result := true;
+  end else if (CurPageID = PageSelectServer.ID) then
   begin
     if (PageSelectServer.SelectedValueIndex = -1) then
     begin
@@ -1139,6 +1200,10 @@ begin
     posXML := ExpandConstant('{app}') + '\HSCConfig.xml';
     svcXML := ExpandConstant('{app}') + '\Service.xml';
     
+    if (installType = Cloud) then
+    begin
+      posContents := SetupLoginDetails('Cloud', svcXML, posXML);
+    end else
     if (installType = Client) then
     begin
       serverName := GetSelectedServer();
@@ -1186,11 +1251,18 @@ end;
 
 function ShouldSkipPage(PageID: Integer): Boolean;
 begin
+  //MsgBox(IntToStr(PageID), mbInformation, MB_OK);
+
   if (PageID = wpSelectComponents) then
     Result := (PageID = wpSelectComponents);
   
-  if (PageID = 102) then
-    Result := (installType <> Client);
+  if (PageID = PageSelectServer.ID) then
+  begin
+    if (installType = Cloud) then
+      Result := true
+    else
+      Result := (installType <> Client);
+  end
 end;
 
 
