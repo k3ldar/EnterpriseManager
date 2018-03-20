@@ -139,7 +139,7 @@ namespace Website.Library
 
         #region Encryption
 
-        internal static string Encrypt(string InStr)
+        public static string Encrypt(string InStr)
         {
             if (InStr.Length == 0)
                 return "";
@@ -167,7 +167,7 @@ namespace Website.Library
             return Result;
         }
 
-        internal static string Decrypt(string InStr)
+        public static string Decrypt(string InStr)
         {
             if (String.IsNullOrEmpty(InStr))
                 return (String.Empty);

@@ -76,6 +76,9 @@ namespace POS.Images.Classes
                         {
                             foreach (string imgType in Enum.GetNames(typeof(ImageTypes)))
                             {
+                                if (AppController.IsShuttingDown)
+                                    return (false);
+
                                 string remoteFolder = String.Format(StringConstants.IMAGE_FTP_ROOT, site.RootPath, imgType, String.Empty); 
 
                                 ftpClient.CreateDirectory(remoteFolder);
@@ -154,6 +157,9 @@ namespace POS.Images.Classes
 
                     try
                     {
+                        if (AppController.IsShuttingDown)
+                            return;
+
                         client.Upload(remoteFolder, localFile);
                     }
                     catch (Exception err)
@@ -181,6 +187,9 @@ namespace POS.Images.Classes
                 foreach (string localFile in files)
                 {
                     System.Threading.Thread.Sleep(0);
+
+                    if (AppController.IsShuttingDown)
+                        return;
 
                     string file = Path.GetFileName(localFile);
 

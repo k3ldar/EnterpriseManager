@@ -1,6 +1,8 @@
 using System;
 using System.Threading;
 using System.Web;
+using System.Web.Http;
+using System.Web.Routing;
 
 using Website.Library.Classes;
 using Website.Library;
@@ -21,14 +23,21 @@ namespace SieraDelta.Website
     /// </summary>
     public class Global : BaseWebApplication
     {
+        #region Private Members
+
+        private BaseWebApplication _baseWebApplication;
+
+        #endregion Private Members
+
         #region Constructors/Destructors
 
         /// <summary>
-		/// Required designer variable.
-		/// </summary>
-		public Global()
+        /// Required designer variable.
+        /// </summary>
+        public Global()
         {
             InitializeComponent();
+            _baseWebApplication = new BaseWebApplication();
         }
 
 
@@ -56,7 +65,7 @@ namespace SieraDelta.Website
 
 #endif
 
-        public override void LoadCustomSettings()
+        public static void LoadCustomSettings()
         {
             WebsiteSettings.Languages.Active = true;
             WebsiteSettings.StaticWebSite = false;
@@ -69,7 +78,7 @@ namespace SieraDelta.Website
 
             Library.DAL.DALHelper.SetCacheLimit(new TimeSpan(24, 0, 0));
             GlobalClass.InternalCache.MaximumAge = Library.DAL.DALHelper.CacheLimit;
-            AllowMobileWebsite = true;
+            BaseWebApplication.AllowMobileWebsite = true;
 
             Shared.Classes.ThreadManager.ThreadStart(new ReloadBannedIPAddresses(), "Banned IP Addresses", ThreadPriority.Lowest);
         }
@@ -96,7 +105,7 @@ namespace SieraDelta.Website
                         msg, WebsiteSettings.Email.SupportName, WebsiteSettings.Email.SupportEMail);
                 }
 #else
-                Global.SendEMail(WebsiteSettings.Email.SupportName, WebsiteSettings.Email.SupportEMail, 
+                BaseWebApplication.SendEMail(WebsiteSettings.Email.SupportName, WebsiteSettings.Email.SupportEMail, 
                     String.Format("Website Error ({0})", 
                         WebsiteSettings.DistributorWebsite),
                     msg, WebsiteSettings.Email.SupportName, WebsiteSettings.Email.SupportEMail);
@@ -105,7 +114,7 @@ namespace SieraDelta.Website
             catch (Exception err)
             {
                 msg += String.Format("\r\n\r\n{0}", err.Message);
-                Global.SendEMail(WebsiteSettings.Email.SupportName, WebsiteSettings.Email.SupportEMail, 
+                BaseWebApplication.SendEMail(WebsiteSettings.Email.SupportName, WebsiteSettings.Email.SupportEMail, 
                     String.Format("Website Error ({0})", 
                         WebsiteSettings.DistributorWebsite),
                     msg, WebsiteSettings.Email.SupportName, WebsiteSettings.Email.SupportEMail);
@@ -119,7 +128,8 @@ namespace SieraDelta.Website
 
         protected void Application_Start(Object sender, EventArgs e)
         {
-            ApplicationStart();
+            GlobalConfiguration.Configure(WebApiConfig.Register);
+            _baseWebApplication.ApplicationStart();
 
             WebChart.ChartControl.PhysicalPath = Library.BOL.Websites.WebsiteSettings.RootPath + @"Admin\Reports\WebChartGraphs\";
             WebChart.ChartControl.VirtualPath = Library.BOL.Websites.WebsiteSettings.RootURL + @"/Admin/Reports/WebChartGraphs/";
@@ -189,14 +199,14 @@ namespace SieraDelta.Website
                 if (ex != null && ex.GetHttpCode() == 404)
                 {
                     //should we autoban some users depending what they are searching for?
-                    if (AutoBanIPAddress(Request.Path, Request.UserHostAddress))
+                    if (BaseWebApplication.AutoBanIPAddress(Request.Path, Request.UserHostAddress))
                     {
                         Response.Redirect(String.Format("{0}/Error/IPIsBanned.aspx", Library.BOL.Websites.WebsiteSettings.RootURL), true);
                         return;
                     }
 
                     string file = ex.Message;
-                    file = CanRedirect(file);
+                    file = _baseWebApplication.CanRedirect(file);
 
                     if (file != "")
                     {
@@ -216,7 +226,7 @@ namespace SieraDelta.Website
                     error.Message, error.InnerException == null ? "" : error.InnerException.ToString(),
                     error.Source, error.StackTrace, error.TargetSite.ToString());
 
-                Global.SendEMail(WebsiteSettings.Email.SupportName, WebsiteSettings.Email.SupportEMail, 
+                BaseWebApplication.SendEMail(WebsiteSettings.Email.SupportName, WebsiteSettings.Email.SupportEMail, 
                     String.Format("Website Error ({0})",
                         WebsiteSettings.DistributorWebsite),
                     Msg, WebsiteSettings.Email.SupportName, WebsiteSettings.Email.SupportEMail);
@@ -231,7 +241,7 @@ namespace SieraDelta.Website
         protected void Application_End(Object sender, EventArgs e)
         {
             //finalise web hack validation
-            ApplicationEnd();
+            _baseWebApplication.ApplicationEnd();
         }
 
         #region Web Form Designer generated code

@@ -10,17 +10,32 @@ namespace SieraDelta.Website.Staff.Installer.POS
 {
     public partial class PosValidation : BaseWebForm
     {
+        #region Constants
+
+        private const string FIREBIRD_DB_CONF_FILE = "C:\\Program Files\\Firebird\\Firebird_3_0\\databases.conf";
+
+        #endregion Constants
+
+        #region Overridden Methods
+
         protected override void OnLoad(EventArgs e)
         {
-            string action = GetFormValue("Action");
-            string computerName = GetFormValue("ComputerName");
-            string serverName = GetFormValue("ServerName");
-            string email = GetFormValue("email");
-            string password = GetFormValue("Password");
-            string installType = GetFormValue("InstallType");
-            string path = GetFormValue("Path");
-            string firstName = GetFormValue("FirstName");
-            string lastName = GetFormValue("LastName");
+
+            System.IO.StreamReader stream = new System.IO.StreamReader(Request.InputStream);
+            NVPCodec nvpCodec = new NVPCodec();
+            string values = stream.ReadToEnd();
+            nvpCodec.Decode(System.Web.HttpUtility.UrlDecode(values));
+
+            string action = nvpCodec["Action"];
+            string computerName = nvpCodec["ComputerName"];
+            string serverName = nvpCodec["ServerName"];
+            string email = nvpCodec["email"];
+            string password = nvpCodec["Password"];
+            string installType = nvpCodec["InstallType"];
+            string path = nvpCodec["Path"];
+            string firstName = nvpCodec["FirstName"];
+            string lastName = nvpCodec["LastName"];
+            string websiteUrl = nvpCodec["website"];
 
             //
             // if error return 999Error Message
@@ -64,12 +79,13 @@ namespace SieraDelta.Website.Staff.Installer.POS
                         String.Empty, String.Empty, country.ID, false, false, false, Library.Enums.UserRecordType.SBMGenerated,
                         DateTime.MinValue, String.Empty);
                     POSInstaller.AddUserLicences(user, ValidateString(user.Email) + ".fdb");
-
-#warning Create master database here for customer
                 }
 
                 switch (action)
                 {
+                    case "Cloud":
+                        install = POSInstaller.InstallCloudClient(email, password, computerName);
+                        break;
                     case "Server":
                         install = POSInstaller.InstallServer(email, password, computerName);
                         break;
@@ -92,13 +108,21 @@ namespace SieraDelta.Website.Staff.Installer.POS
                 if (!install.Allowed)
                     throw new Exception("Install not allowed");
 
-                remoteDB = install.RemoteDatabase;
+                if (action != "Cloud")
+                    remoteDB = CreateServerClientDatabase(install.RemoteDatabase, email);
+
                 server = install.Server;
                 storeID = install.StoreID.ToString();
                 tillID = install.TillID.ToString();
 
                 switch (action)
                 {
+                    case "Cloud":
+                        remoteDB = CreateCloudClientDatabase(websiteUrl, email);
+                        server = "109.228.47.69";
+                        Response.Write(CreateCloudClientXML(remoteDB, server, storeID, tillID, path));
+                        break;
+
                     case "Server":
                         Response.Write(CreateServerXML(path, remoteDB, server, storeID, tillID));
                         break;
@@ -124,6 +148,40 @@ namespace SieraDelta.Website.Staff.Installer.POS
             }
 
             Response.End();
+        }
+
+        #endregion Overridden Methods
+
+        #region Private Methods
+
+        private string CreateCloudClientXML(string remoteDB, string server, string storeID, string tillID, string path)
+        {
+            string xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n" +
+                "<SieraDelta>\r\n" +
+                "  <Connection>\r\n" +
+                "    <DatabaseClass>Library.DAL.FirebirdDB</DatabaseClass>\r\n" +
+                "    <ConnectionString>User=SHIFOO_ERM;Password={0};Database={REMOTE_DATABASE};" +
+                "DataSource={SERVER};Charset=UTF8;Port=3060;Dialect=3;Pooling=true;Connection Lifetime=0;Packet Size=8192</ConnectionString>\r\n" +
+                "    <Password>R{lt+){</Password>\r\n" +
+                "  </Connection>\r\n" +
+                "  <Options>\r\n" +
+                "    <Replicate>False</Replicate>\r\n" +
+                "    <StoreID>{STORE}</StoreID>\r\n" +
+                "    <TillID>{TILL}</TillID>\r\n" +
+                "  </Options>\r\n" +
+                "  <Application>\r\n" +
+                "    <MainApplication>{PATH}\\Shifoo.SBM.exe</MainApplication>\r\n" +
+                "    <VersionInfo>http://www.sieradelta.com/Download/SBM/SBMVersion.xml</VersionInfo>\r\n" +
+                "    <Adobe>C:\\Program Files (x86)\\Adobe\\Reader 11.0\\Reader\\AcroRd32.exe</Adobe>\r\n" +
+                "  </Application>\r\n" +
+                "</SieraDelta>\r\n";
+
+            xml = xml.Replace("{REMOTE_DATABASE}", remoteDB);
+            xml = xml.Replace("{SERVER}", server);
+            xml = xml.Replace("{PATH}", path);
+            xml = xml.Replace("{STORE}", storeID);
+            xml = xml.Replace("{TILL}", tillID);
+            return (xml);
         }
 
         private string CreateClientXML(string path, string remoteDB, string server, string storeID, string tillID)
@@ -204,5 +262,85 @@ namespace SieraDelta.Website.Staff.Installer.POS
 
             return (Result);
         }
+
+        private string CreateServerClientDatabase(string databaseName, string email)
+        {
+            string databaseNamePath = String.Empty;
+            string path = "c:\\databases\\";
+            string Result = String.Empty;
+
+            path += Shared.Utilities.AddTrailingBackSlash(email.Replace("@", "_"));
+            Result = databaseName;
+            databaseNamePath = path + Result;
+
+            databaseNamePath += ".fdb";
+
+            if (!System.IO.Directory.Exists(path))
+                System.IO.Directory.CreateDirectory(path);
+
+            if (!System.IO.File.Exists(databaseNamePath))
+                System.IO.File.Copy("c:\\databases\\SHIFOO.STORE.1.FDB", databaseNamePath);
+
+            //Append link to database.conf
+            string dbConf = Shared.Utilities.FileRead(FIREBIRD_DB_CONF_FILE, true);
+            dbConf += String.Format("\r\n\r\n{0} = {1}\r\n" +
+                "{\r\n\tDefaultDbCachePages = 50000\r\n\tDatabaseGrowthIncrement = 128M\r\n" +
+                "\tFileSystemCacheThreshold = 64K\r\n\tAuthClient = Srp\r\n" +
+                "\tUserManager = Srp\r\n\tDeadlockTimeout = 10\r\n" +
+                "\tMaxUnflushedWriteTime = 5\r\n\tLockMemSize = 9M\r\n" +
+                "\tLockHashSlots = 30011\r\n\tEventMemSize = 64K\r\n" +
+                "\tGCPolicy = combined\r\n}\r\n", Result, databaseNamePath);
+            Shared.Utilities.FileWrite(FIREBIRD_DB_CONF_FILE, dbConf);
+
+            return (Result);
+        }
+
+        private string CreateCloudClientDatabase(string website, string email)
+        {
+            string databaseNamePath = String.Empty;
+            string path = "c:\\databases\\";
+            string Result = String.Empty;
+
+            if (!String.IsNullOrEmpty(website))
+            {
+                Uri web = new Uri(website);
+                path += Shared.Utilities.AddTrailingBackSlash(web.Authority.Replace("www.", String.Empty));
+                Result = web.Authority.Replace("www.", String.Empty);
+                databaseNamePath = path + Result;
+            }
+            else
+            {
+                path += Shared.Utilities.AddTrailingBackSlash(email);
+                Result = email.Replace("@", "_");
+                databaseNamePath = path + Result;
+            }
+
+            databaseNamePath += ".fdb";
+
+            if (!System.IO.Directory.Exists(path))
+                System.IO.Directory.CreateDirectory(path);
+
+            if (!System.IO.File.Exists(databaseNamePath))
+                System.IO.File.Copy("c:\\databases\\SHIFOO.STORE.1.FDB", databaseNamePath);
+
+            //Append link to database.conf
+            string dbConf = Shared.Utilities.FileRead(FIREBIRD_DB_CONF_FILE, true);
+
+            if (!dbConf.Contains($"{Result} = {databaseNamePath}"))
+            {
+                dbConf += $"\r\n\r\n{Result} = {databaseNamePath}\r\n" +
+                    "{\r\n\tDefaultDbCachePages = 50000\r\n\tDatabaseGrowthIncrement = 128M\r\n" +
+                    "\tFileSystemCacheThreshold = 64K\r\n\tAuthClient = Srp\r\n" +
+                    "\tUserManager = Srp\r\n\tDeadlockTimeout = 10\r\n" +
+                    "\tMaxUnflushedWriteTime = 5\r\n\tLockMemSize = 9M\r\n" +
+                    "\tLockHashSlots = 30011\r\n\tEventMemSize = 64K\r\n" +
+                    "\tGCPolicy = combined\r\n}\r\n";
+                Shared.Utilities.FileWrite(FIREBIRD_DB_CONF_FILE, dbConf);
+            }
+
+            return (Result);
+        }
+
+        #endregion Private Methods
     }
 }

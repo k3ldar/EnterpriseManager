@@ -185,17 +185,18 @@ namespace SieraDelta.Website.Basket
 
             Int64 DeliveryAddress = -1;
             _basket.User = GetUser();
+            LocalWebSessionData localData = (LocalWebSessionData)GetUserSession().Tag;
 
             if (_basket.ProductsHaveShipping())
             {
                 //just in case it never picked up the delivery address #Bug reported 28/09/2011
-                if (Session["DeliveryAddressID"] == null)
+                if (localData.DeliveryAddressID == -1)
                 {
                     _basket.ShippingAddress = GetUser().DeliveryAddresses.First();
-                    Session["DeliveryAddressID"] = _basket.ShippingAddress.ID;
+                    localData.DeliveryAddressID = _basket.ShippingAddress.ID;
                 }
                 else
-                    DeliveryAddress = (Int64)Session["DeliveryAddressID"];
+                    DeliveryAddress = localData.DeliveryAddressID;
 
                 _basket.ShippingAddress = DeliveryAddresses.Get(DeliveryAddress);
             }
@@ -298,13 +299,14 @@ namespace SieraDelta.Website.Basket
         {
             Int64 delAddress = -1;
             decimal ShippingCostsDelivery = 0.00m;
+            LocalWebSessionData localData = (LocalWebSessionData)GetUserSession().Tag;
 
             if (_basket.ProductsHaveShipping())
             {
-                if (Session["DeliveryAddressID"] == null)
+                if (localData.DeliveryAddressID == -1)
                     DoRedirect("/Shopping/Basket/Delivery-Address/");
                 else
-                    delAddress = (Int64)Session["DeliveryAddressID"];
+                    delAddress = localData.DeliveryAddressID;
 
                 if (delAddress == -1)
                     DoRedirect("/Shopping/Basket/Delivery-Address/");

@@ -38,6 +38,7 @@
 
     <script type="text/javascript">
         $(window).on('load', function () {
+            if (!$('.slider')) return;
             $('.slider').nivoSlider({
                 animSpeed: 500,
                 directionNav: false,

@@ -639,7 +639,12 @@ namespace Library
         /// <summary>
         /// Campaign maintenance
         /// </summary>
-        Campaign
+        Campaign,
+
+        /// <summary>
+        /// Log Archive
+        /// </summary>
+        ArchiveLogs
     }
 
     public enum CustomPagesType

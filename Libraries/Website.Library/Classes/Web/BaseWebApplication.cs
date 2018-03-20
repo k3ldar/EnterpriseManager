@@ -345,7 +345,7 @@ namespace Website.Library.Classes
 
         #region Application Events
 
-        protected void ApplicationStart()
+        public void ApplicationStart()
         {
             // only keep logs for 7 days
             EventLog.Initialise(7);
@@ -390,7 +390,7 @@ namespace Website.Library.Classes
             RegisterRoutes(RouteTable.Routes);
         }
 
-        protected void ApplicationEnd()
+        public void ApplicationEnd()
         {
             EventLog.Add("ApplicationEnd");
 
@@ -419,7 +419,7 @@ namespace Website.Library.Classes
             return (SharedWebBase.IgnoreErrorMessage(Error));
         }
 
-        protected string CanRedirect(string File)
+        public string CanRedirect(string File)
         {
             string Result = "";
 
@@ -452,22 +452,23 @@ namespace Website.Library.Classes
 
         protected void SetUserLastVisit(int iteration)
         {
+#warning update the following code
             try
             {
                 int Result = -1;
 
-                if (Request.Cookies[String.Format("{0}{1}Session", CookiePrefix, WebsiteSettings.DistributorWebsite)] != null)
-                {
-                    if (Request.Cookies[String.Format("{0}{1}Session", CookiePrefix, WebsiteSettings.DistributorWebsite)].Expires.Year != (DateTime.Now.Year - 1))
-                    {
-                        string s1 = Shared.Utilities.Decrypt(HttpUtility.UrlDecode(Request.Cookies[String.Format("{0}{1}Session", CookiePrefix, WebsiteSettings.DistributorWebsite)].Value));
+                //if (Request.Cookies[String.Format("{0}{1}Session", CookiePrefix, WebsiteSettings.DistributorWebsite)] != null)
+                //{
+                //    if (Request.Cookies[String.Format("{0}{1}Session", CookiePrefix, WebsiteSettings.DistributorWebsite)].Expires.Year != (DateTime.Now.Year - 1))
+                //    {
+                //        string s1 = Shared.Utilities.Decrypt(HttpUtility.UrlDecode(Request.Cookies[String.Format("{0}{1}Session", CookiePrefix, WebsiteSettings.DistributorWebsite)].Value));
 
-                        if (s1 != "")
-                        {
-                            Result = SharedUtils.StrToIntDef(s1, -1);
-                        }
-                    }
-                }
+                //        if (s1 != "")
+                //        {
+                //            Result = SharedUtils.StrToIntDef(s1, -1);
+                //        }
+                //    }
+                //}
 
                 if (Result > -1)
                 {
@@ -502,7 +503,7 @@ namespace Website.Library.Classes
         /// <param name="path">path of file being sought</param>
         /// <param name="ipAddress">ip address of user</param>
         /// <returns>true if ip address should be banned, otherwise false</returns>
-        protected static bool AutoBanIPAddress(string path, string ipAddress, bool ForceBan = false)
+        public static bool AutoBanIPAddress(string path, string ipAddress, bool ForceBan = false)
         {
             if (path.ToLower().Contains("/staff/"))
                 return (false);
@@ -534,8 +535,16 @@ namespace Website.Library.Classes
 
                 DateLoaded = DateTime.Now;
 
-                configurationAppSettings = new System.Configuration.AppSettingsReader();
-                _websiteID = ((int)(configurationAppSettings.GetValue("Settings.WebsiteID", typeof(int))));
+                try
+                {
+                    configurationAppSettings = new System.Configuration.AppSettingsReader();
+                    _websiteID = ((int)(configurationAppSettings.GetValue("Settings.WebsiteID", typeof(int))));
+                }
+                catch
+                {
+                    _websiteID = 1;
+                }
+
                 lib.DAL.DALHelper.WebsiteID = _websiteID;
 
                 if (!WebsiteSettings.LoadWebsiteSettingsFromDatabase(_websiteID))
@@ -733,6 +742,10 @@ namespace Website.Library.Classes
                 routes.MapPageRoute("homeRoute",
                     "Home/",
                     "~/Index.aspx");
+
+                routes.MapPageRoute("sbmInstaller",
+                    "Services/SBM-Installer/{*queryvalues}",
+                    "~/Members/Installer/PosValidation.aspx");
 
                 routes.MapPageRoute("tipsRoute",
                     "Tips-And-Tricks/",
@@ -1259,7 +1272,7 @@ namespace Website.Library.Classes
             }
         }
 #else
-        internal static IPCity GetIPCity(string ipAddress)
+        public static IPCity GetIPCity(string ipAddress)
         {
             if (ipAddress == "::1")
                 ipAddress = "127.0.0.1";

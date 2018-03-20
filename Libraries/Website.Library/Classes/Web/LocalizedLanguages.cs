@@ -230,7 +230,7 @@ namespace Website.Library.Classes
 
         #region Internal Methods
 
-        internal static int RaiseSelectPriceColumn(System.Web.SessionState.HttpSessionState Session,
+        public static int RaiseSelectPriceColumn(System.Web.SessionState.HttpSessionState Session,
             System.Web.HttpRequest Request, UserSession session, int priceColumn)
         {
             int Result = priceColumn;

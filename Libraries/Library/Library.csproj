@@ -67,8 +67,8 @@
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>..\..\Applications\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
-    <Reference Include="SharedLib, Version=2.5.0.0, Culture=neutral, PublicKeyToken=bcec03f2c05555a7, processorArchitecture=MSIL">
-      <HintPath>..\..\Applications\packages\SC.Shared.Library.2.5.13\lib\net452\SharedLib.dll</HintPath>
+    <Reference Include="SharedLib, Version=2.5.0.0, Culture=neutral, PublicKeyToken=f2ca6ac6cfa8c8da, processorArchitecture=MSIL">
+      <HintPath>..\..\Websites\Shifoo.Website\packages\SC.Shared.Library.2.5.19\lib\net452\SharedLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -359,11 +359,10 @@
     <None Include="Library.pfx" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>..\..\..\..\..\GitProjects\Builds\NetBuildTools\Release\UpdateVersion.exe /out="$(ProjectDir)Properties\ver.txt" /$(ConfigurationName) /path="$(ProjectDir)
-..\..\..\..\..\GitProjects\Builds\NetBuildTools\Release\Build.Deploy.Util.exe  /CH="T:\ShifooMain\EnterpriseManagerLicence.txt" /chp="$(ProjectDir)\" /cht=".cs;" /chb /chi=".designer.cs"</PreBuildEvent>
+..\..\..\..\..\GitProjects\Builds\NetBuildTools\Release\Build.Deploy.Util.exe  /CH="T:\ShifooMain\EnterpriseManagerLicence.txt" /chp="$(ProjectDir)\" /cht=".cs;" /chi=".designer.cs"</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

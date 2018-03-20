@@ -63,9 +63,7 @@ namespace Shifoo.Website.Global
 
         private string GetNextID(HttpContext context)
         {
-            string sessionID = string.Format("SN{0}{1}", DateTime.Now.ToString("ddMMyyyyhhmmss"), _cookieID++);
-
-            return (sessionID);
+            return (string.Format("SN{0}{1}", DateTime.Now.ToString("ddMMyyyyhhmmss"), _cookieID++));
         }
 
         #endregion Private Methods

@@ -49,6 +49,11 @@ namespace Library.BOL.POSInstall
             return (DAL.FirebirdDB.POSInstallerAdd(email, password, computerName, serverName, "Client"));
         }
 
+        public static POSInstall InstallCloudClient(string email, string password, string computerName)
+        {
+            return (DAL.FirebirdDB.POSInstallerAdd(email, password, computerName, String.Empty, "Cloud"));
+        }
+
         public static POSInstall ServerList(string email, string password)
         {
             return (DAL.FirebirdDB.POSInstallerServers(email, password));

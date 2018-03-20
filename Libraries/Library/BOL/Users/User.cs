@@ -51,7 +51,7 @@ namespace Library.BOL.Users
         private string _Email;
         private string _FirstName;
         private string _LastName;
-        private string _Password;
+        private string _password;
         private DateTime _LastVisit;
         private string _BusinessName;
         private string _AddressLine1;
@@ -103,7 +103,7 @@ namespace Library.BOL.Users
             _Email = Email;
             _FirstName = FirstName;
             _LastName = LastName;
-            _Password = Password;
+            _password = Password;
             _LastVisit = LastVisit;
             _BusinessName = BusinessName;
             _AddressLine1 = AddressLine1;
@@ -136,7 +136,7 @@ namespace Library.BOL.Users
             _Email = Email;
             _FirstName = FirstName;
             _LastName = LastName;
-            _Password = Password;
+            _password = Password;
             _LastVisit = LastVisit;
             _BusinessName = BusinessName;
             _AddressLine1 = AddressLine1;
@@ -164,6 +164,18 @@ namespace Library.BOL.Users
         {
             ID = id;
             FirstName = userName;
+        }
+
+        public User(string email, string password)
+        {
+            if (String.IsNullOrEmpty(email))
+                throw new ArgumentNullException(nameof(email));
+
+            if (String.IsNullOrEmpty(password))
+                throw new ArgumentNullException(nameof(password));
+
+            Email = email;
+            _password = password;
         }
 
         #endregion Constructors / Destructors
@@ -380,7 +392,7 @@ namespace Library.BOL.Users
         {
             get
             {
-                return (_Password);
+                return (_password);
             }
 
             set
@@ -388,15 +400,15 @@ namespace Library.BOL.Users
                 string NewPassword = value;
 
                 //validation???
-                if (NewPassword == _Password)
+                if (NewPassword == _password)
                     throw new Exception("New password must be different to old password");
 
                 if (NewPassword.Length < 6)
                     throw new Exception("New password must be at least 6 characters long");
 
 
-                DAL.FirebirdDB.UserChangePassword(_ID, _Password, NewPassword);
-                _Password = NewPassword;
+                DAL.FirebirdDB.UserChangePassword(_ID, _password, NewPassword);
+                _password = NewPassword;
             }
         }
 

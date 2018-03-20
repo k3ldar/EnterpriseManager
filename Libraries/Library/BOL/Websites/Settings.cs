@@ -278,7 +278,7 @@ namespace Library.BOL.Websites
                     break;
 
                 case "Payment Gateways":
-                    options.AddOption("Show Payment Card", WebsiteSettings.PaymentGateways.ShowPaymentCard, 
+                    options.AddOption("Show Payment Payflow", WebsiteSettings.PaymentGateways.ShowPaymentCard, 
                         "Take payments via Payflow card processing", "Settings.ShowPaymentCard");
                     options.AddOption("Show Payment Cheque", WebsiteSettings.PaymentGateways.ShowPaymentCheque, 
                         "Take payments via cheque", "Settings.ShowPaymentCheque");

@@ -12,13 +12,17 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Shifoo.Systems.Website.Models;
 using Shifoo.Systems.Website.Models.AccountViewModels;
+
+using Library.BOL.Users;
+using Website.Library.Core.Controllers;
+using Website.Library.Core.Interfaces;
 using Shifoo.Systems.Website.Services;
 
 namespace Shifoo.Systems.Website.Controllers
 {
     [Authorize]
     [Route("[controller]/[action]")]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
@@ -59,23 +63,15 @@ namespace Shifoo.Systems.Website.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
+                Library.BOL.Users.User user = new Library.BOL.Users.User(model.Email, model.Password);
+
+                if (Library.BOL.Users.User.UserLogUserOn(user))
+                {
+
+                }
+
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
-                if (result.Succeeded)
-                {
-                    _logger.LogInformation("User logged in.");
-                    return RedirectToLocal(returnUrl);
-                }
-                if (result.RequiresTwoFactor)
-                {
-                    return RedirectToAction(nameof(LoginWith2fa), new { returnUrl, model.RememberMe });
-                }
-                if (result.IsLockedOut)
-                {
-                    _logger.LogWarning("User account locked out.");
-                    return RedirectToAction(nameof(Lockout));
-                }
                 else
                 {
                     ModelState.AddModelError(string.Empty, "Invalid login attempt.");

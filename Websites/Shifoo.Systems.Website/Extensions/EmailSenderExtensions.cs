@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+
+using Website.Library.Core.Interfaces;
 using Shifoo.Systems.Website.Services;
 
 namespace Shifoo.Systems.Website.Services

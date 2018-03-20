@@ -44,6 +44,6 @@
     <link rel="stylesheet" href="/css/nivo-slider.css" type="text/css" />
     <script type="text/javascript" src="/js/jquery.nivo.slider.pack.js"></script>
     <script type="text/javascript">
-        $(window).on('load', function () { $('.slider').nivoSlider({ animSpeed: 500, directionNav: false, effect: 'fade', pauseTime: 6000 }); });
+        $(window).on('load', function () { if (!$('.slider')) return; $('.slider').nivoSlider({ animSpeed: 500, directionNav: false, effect: 'fade', pauseTime: 6000 }); });
     </script>
 </asp:Content>

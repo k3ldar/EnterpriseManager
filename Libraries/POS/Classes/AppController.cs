@@ -83,7 +83,7 @@ namespace POS.Base.Classes
 
         private static bool _isApplicationRunning = false;
 
-        private static bool _closing = false;
+        private static bool _isShuttingDown = false;
         private static Forms.SplashScreen _splash = null;
 
         internal static AppController _appController;
@@ -202,7 +202,7 @@ namespace POS.Base.Classes
         /// <param name="progressPosition"></param>
         public static void UpdateSplashScreen(string message, int progressPosition = 0)
         {
-            if (_splash != null && !_closing)
+            if (_splash != null && !_isShuttingDown)
             {
                 _splash.Update(message, progressPosition);
             }
@@ -430,6 +430,14 @@ namespace POS.Base.Classes
 
         public static string ActiveHelpTopic { get; set; }
 
+        public static bool IsShuttingDown
+        {
+            get
+            {
+                return (_isShuttingDown);
+            }
+        }
+
         #endregion Public Static Properties
 
         #region Constructors
@@ -635,7 +643,7 @@ namespace POS.Base.Classes
         {
             if (e.Thread.Name == StringConstants.THREAD_NAME_INSTALL_VALID)
             {
-                if (!_closing && PosValidationFinished != null)
+                if (!_isShuttingDown && PosValidationFinished != null)
                     PosValidationFinished(this, EventArgs.Empty);
             }
         }
@@ -736,7 +744,7 @@ namespace POS.Base.Classes
 
         private void _client_Disconnected(object sender, EventArgs e)
         {
-            if (!_closing)
+            if (!_isShuttingDown)
                 RaiseClientConnectionChanged();
         }
 
@@ -849,7 +857,7 @@ namespace POS.Base.Classes
 
         void allAppointments_ThreadFinishing(object sender, Shared.ThreadManagerEventArgs e)
         {
-            if (_splash != null && !_closing)
+            if (_splash != null && !_isShuttingDown)
                 _splash.AppointmentsLoaded();
         }
 
@@ -1114,7 +1122,7 @@ namespace POS.Base.Classes
             }
 
             HideSplashScreen();
-            _closing = true;
+            _isShuttingDown = true;
 
             SaveSettings();
 
@@ -1127,7 +1135,7 @@ namespace POS.Base.Classes
 
         public static void SaveSettings()
         {
-            if (!_closing)
+            if (!_isShuttingDown)
                 SaveDatabaseSettings(_localSettings);
 
             UserSettings.SaveSettings(_localSettings);

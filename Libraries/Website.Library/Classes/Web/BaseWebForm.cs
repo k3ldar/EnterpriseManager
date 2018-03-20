@@ -1873,7 +1873,25 @@ namespace Website.Library.Classes
             if (Request[Name] != null && Request[Name] != String.Empty)
                 return (Request[Name]);
             else
+            {
+                if (Request.QueryString[Name] != null && Request.QueryString[Name] != String.Empty)
+                    return (Request.QueryString[Name]);
+
+                if (Request.Params[Name] != null && Request.Params[Name] != String.Empty)
+                    return (Request.Params[Name]);
+
+                string routeValue = (string)Page.RouteData.Values[Name];
+
+                if (!String.IsNullOrEmpty(routeValue))
+                    return (routeValue);
+
+                routeValue = HttpUtility.ParseQueryString(Page.ClientQueryString).Get(Name);
+
+                if (!String.IsNullOrEmpty(routeValue))
+                    return (routeValue);
+
                 return (Default);
+            }
         }
 
         protected string GetAllFormValues()

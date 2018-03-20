@@ -232,7 +232,7 @@ namespace Library.DAL
 
                     if (rdr.Read())
                     {
-                        Result = new Website(rdr.GetInt32(0), rdr.GetString(1), rdr.GetString(2), 
+                        Result = new Website(rdr.GetInt32(0), rdr.GetString(1), rdr.GetString(2),
                             rdr.GetInt32(3), rdr.GetString(4), rdr.GetString(5),
                             rdr.IsDBNull(6) ? "/" : rdr.GetString(6));
                     }
@@ -254,7 +254,7 @@ namespace Library.DAL
         /// <summary>
         /// Inserts an individual record into table WEBSITES
         /// </summary>
-        internal static Website WebsiteInsert(string description, string ftpHost, int ftpPort, 
+        internal static Website WebsiteInsert(string description, string ftpHost, int ftpPort,
             string ftpUsername, string ftpPassword, string ftpRoot)
         {
             Website Result = null;
@@ -405,7 +405,7 @@ namespace Library.DAL
 
                     while (rdr.Read())
                     {
-                        Result.Add(new Website(rdr.GetInt32(0), rdr.GetString(1), 
+                        Result.Add(new Website(rdr.GetInt32(0), rdr.GetString(1),
                             rdr.IsDBNull(2) ? String.Empty : rdr.GetString(2),
                             rdr.IsDBNull(3) ? 21 : rdr.GetInt32(3),
                             rdr.IsDBNull(4) ? String.Empty : rdr.GetString(4),
@@ -8049,7 +8049,7 @@ namespace Library.DAL
 
                     while (rdr.Read())
                     {
-                        Result.Add(new SystemEmail(rdr.GetInt64(0), rdr.GetString(1), rdr.GetString(3), 
+                        Result.Add(new SystemEmail(rdr.GetInt64(0), rdr.GetString(1), rdr.GetString(3),
                             rdr.GetString(2), rdr.GetString(4) == "Y" ? true : false));
                     }
 
@@ -8314,7 +8314,7 @@ namespace Library.DAL
         /// <param name="computerName"></param>
         /// <param name="serverName"></param>
         /// <returns></returns>
-        internal static POSInstall POSInstallerAdd(string email, string password, 
+        internal static POSInstall POSInstallerAdd(string email, string password,
             string computerName, string serverName, string installType)
         {
             POSInstall Result = null;
@@ -11504,9 +11504,9 @@ namespace Library.DAL
 
                     CloseAndDispose(ref cmd);
 
-                    Result = new Campaign(NewID, DateTime.Now.AddYears(1), DateTime.Now.AddYears(1), 
+                    Result = new Campaign(NewID, DateTime.Now.AddYears(1), DateTime.Now.AddYears(1),
                         CampaignName, false, false, "", "opt-in-marketing@heavenskincare.com",
-                        "Shifoo Systems", "", false, "", "", "", "", "", 0, 0, 0.00m, CampaignName, 
+                        "Shifoo Systems", "", false, "", "", "", "", "", 0, 0, 0.00m, CampaignName,
                         "", -1, "", 0, -1, -1, false, -1, -1, -1, -1, -1, -1);
 
                     tran.Commit();
@@ -16979,7 +16979,7 @@ namespace Library.DAL
                             }
 
                             Result.Add(new AppointmentTreatment(rdr.GetInt32(0), rdr.GetString(1) == "T", rdr.GetString(2),
-                                rdr.GetInt32(3), rdr.GetString(4) == "T", rdr.GetDecimal(6), rdr.GetInt32(7), LastDate, 
+                                rdr.GetInt32(3), rdr.GetString(4) == "T", rdr.GetDecimal(6), rdr.GetInt32(7), LastDate,
                                 LastEmployee, rdr.GetString(8)));
                         }
                         else
@@ -19140,7 +19140,7 @@ namespace Library.DAL
                         "r.ALLOW_THURSDAY, r.ALLOW_FRIDAY, r.ALLOW_SATURDAY, r.ALLOW_SUNDAY, r.START_TIME, r.END_TIME, " +
                         "r.LUNCH_START, r.LUNCH_DURATION, r.ALLOW_BOOK_CURRENT_DAY, r.PUBLIC_DIARY, r.APPOINTMENT_GROUP " +
                         "FROM WS_APPOINTMENT_OPTIONS r   INNER JOIN WS_MEMBERS m on (m.ID = r.EMPLOYEE_ID) " +
-                        "WHERE m.MEMBER_LEVEL < 11 "+
+                        "WHERE m.MEMBER_LEVEL < 11 " +
                         "ORDER BY m.USERNAME;";
                     FbCommand cmd = new FbCommand(SQL, db, tran);
 
@@ -20938,7 +20938,7 @@ namespace Library.DAL
                         {
                             Result.Add(new ProductCost(rdr.GetInt64(0), null, rdr.GetString(3), rdr.GetString(4),
                                 rdr.GetDecimal(5), rdr.GetInt32(9), false, null, rdr.GetString(10), false, false,
-                                rdr.GetDecimal(6), rdr.GetDecimal(7), rdr.GetDecimal(8), rdr.GetString(1), 
+                                rdr.GetDecimal(6), rdr.GetDecimal(7), rdr.GetDecimal(8), rdr.GetString(1),
                                 (ProductCostItemType)rdr.GetInt32(13), 0, 0,
                                 rdr.IsDBNull(11) ? Convert.ToDecimal(DALHelper.DefaultVATRate) : rdr.GetDecimal(11),
                                 rdr.IsDBNull(12) ? 0.0 : rdr.GetDouble(12)));
@@ -21899,7 +21899,7 @@ namespace Library.DAL
                                     {
                                         costs.Add(new ProductCost(rdra.GetInt32(0), prod, rdra.GetString(2),
                                             rdra.GetString(3), rdra.GetDecimal(4), rdra.GetInt32(5), rdra.GetString(6) == "T",
-                                            new ProductCostType(rdra.GetInt32(7), rdra.GetString(18), (ProductCostItemType)rdr.GetInt32(21)), 
+                                            new ProductCostType(rdra.GetInt32(7), rdra.GetString(18), (ProductCostItemType)rdr.GetInt32(21)),
                                             rdr.IsDBNull(8) ? String.Empty : rdr.GetString(8),
                                             rdra.GetString(9) == "T", rdra.GetString(10) == "T", rdr.GetDecimal(11), rdr.GetDecimal(12),
                                             rdra.GetDecimal(13), rdr.IsDBNull(14) ? String.Empty : rdr.GetString(14),
@@ -22230,7 +22230,7 @@ namespace Library.DAL
                         {
                             Result.Add(new ProductCost(rdr.GetInt32(0), product, rdr.GetString(2),
                                 rdr.GetString(3), rdr.GetDecimal(4), rdr.GetInt32(5), rdr.GetString(6) == "T",
-                                new ProductCostType(rdr.GetInt32(7), rdr.GetString(18), (ProductCostItemType)rdr.GetInt32(21)), 
+                                new ProductCostType(rdr.GetInt32(7), rdr.GetString(18), (ProductCostItemType)rdr.GetInt32(21)),
                                 rdr.IsDBNull(8) ? String.Empty : rdr.GetString(8),
                                 rdr.GetString(9) == "T", rdr.GetString(10) == "T", rdr.GetDecimal(11), rdr.GetDecimal(12),
                                 rdr.GetDecimal(13), rdr.IsDBNull(14) ? String.Empty : rdr.GetString(14),
@@ -22274,7 +22274,7 @@ namespace Library.DAL
                         "pcc.opHIDE_GLOBALLY, pcc.opIS_GIFTWRAP, pcc.opPRODUCT_COST2, pcc.opPRODUCT_COST3, " +
                         "pcc.opDISCOUNT_VALUE, pcc.opADDITIONAL_TEXT, pcc.opITEM_TYPE, pcc.opLICENCE_TYPE, pcc.opLICENCE_COUNT, " +
                         "pct.DESCRIPTION, pcc.opVAT_RATE, pcc.opSAVING, pct.ITEM_TYPE " + // 21
-                        "FROM WSP_PRODUCT_COST_COUNTRY({0}, {1}) pcc INNER JOIN WS_PRODUCT_COST_TYPE pct ON (pct.ID = pcc.OPPRODUCT_TYPE)", 
+                        "FROM WSP_PRODUCT_COST_COUNTRY({0}, {1}) pcc INNER JOIN WS_PRODUCT_COST_TYPE pct ON (pct.ID = pcc.OPPRODUCT_TYPE)",
                         country.ID, product.ID);
                     FbCommand cmd = new FbCommand(SQL, db, tran);
                     FbDataReader rdr = cmd.ExecuteReader();
@@ -24785,7 +24785,7 @@ namespace Library.DAL
                         AddParam(cmd, "@ipCURRENTPASSWORD", FbDbType.VarChar, 200, EncryptPassword(CurrentPassword));
                         AddParam(cmd, "@ipNEWPASSWORD", FbDbType.VarChar, 200, EncryptPassword(NewPassword));
                         cmd.ExecuteNonQuery();
-                   }
+                    }
                     finally
                     {
                         CloseAndDispose(ref cmd);
@@ -25160,8 +25160,6 @@ namespace Library.DAL
 
         internal static bool UserLogUserOn(User user)
         {
-            bool Result = false;
-
             FbTransaction tran = null;
             FbConnection db = ConnectToDatabase(ref tran, DatabaseType.Standard);
             try
@@ -25171,17 +25169,15 @@ namespace Library.DAL
                     string SQL = "SELECT ID FROM WS_MEMBERS WHERE " +
                         "UPPER(EMAIL) = @EMAIL AND PWORD = @PASSWORD;";
                     FbCommand cmd = new FbCommand(SQL, db, tran);
-                    cmd.Parameters.Add("@EMAIL", FbDbType.VarChar, 100, "EMAIL");
-                    cmd.Parameters[0].Value = user.Email.ToUpper();
-                    cmd.Parameters.Add("@PASSWORD", FbDbType.VarChar, 200, "PWORD");
-                    cmd.Parameters[1].Value = EncryptPassword(user.Password);
+                    AddParam(cmd, "@EMAIL", FbDbType.VarChar, 100, user.Email.ToUpper());
+                    AddParam(cmd, "@PASSWORD", FbDbType.VarChar, 200, EncryptPassword(user.Password));
 
                     FbDataReader rdr = cmd.ExecuteReader();
                     try
                     {
                         if (rdr.Read())
                         {
-                            Result = true;
+                            return (true);
                         }
                     }
                     finally
@@ -25199,7 +25195,7 @@ namespace Library.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return (false);
         }
 
 #if !ANDROID
@@ -25515,11 +25511,11 @@ namespace Library.DAL
                     if (rdr.Read())
                     {
                         Result = new User(rdr.GetInt64(0), rdr.GetString(1), rdr.GetString(3), rdr.GetString(4),
-                            DecryptPassword(rdr.GetString(5)), rdr.GetDateTime(6), rdr.GetString(7), rdr.GetString(8), 
+                            DecryptPassword(rdr.GetString(5)), rdr.GetDateTime(6), rdr.GetString(7), rdr.GetString(8),
                             rdr.GetString(9), rdr.GetString(10), rdr.GetString(11), rdr.GetString(12), rdr.GetString(13),
-                            (MemberLevel)rdr.GetInt32(14), rdr.GetInt32(15), rdr.IsDBNull(16) ? "" : rdr.GetString(16), 
-                            rdr.IsDBNull(17) ? false : rdr.GetInt32(17) == 0, rdr.GetString(18) == "T", 
-                            rdr.GetString(19) == "T", rdr.GetString(20) == "T", 
+                            (MemberLevel)rdr.GetInt32(14), rdr.GetInt32(15), rdr.IsDBNull(16) ? "" : rdr.GetString(16),
+                            rdr.IsDBNull(17) ? false : rdr.GetInt32(17) == 0, rdr.GetString(18) == "T",
+                            rdr.GetString(19) == "T", rdr.GetString(20) == "T",
                             rdr.IsDBNull(21) ? DateTime.MinValue : rdr.GetDateTime(21),
                             rdr.GetString(22), (Enums.UserRecordType)rdr.GetInt32(23), rdr.GetInt32(24));
                     }
@@ -25941,7 +25937,7 @@ namespace Library.DAL
         }
 
         internal static RecurringInvoice RecurringInvoiceAdd(string description, User user, DateTime nextRun,
-            RecurringType type, int frequency, decimal discount, RecurringInvoiceOptions options, 
+            RecurringType type, int frequency, decimal discount, RecurringInvoiceOptions options,
             RecurringInvoiceItems items)
         {
             FbTransaction tran = null;
@@ -26031,7 +26027,7 @@ namespace Library.DAL
                             UserGet(rdr.GetInt64(1), db, tran),
                             rdr.GetDateTime(6),
                             (RecurringType)rdr.GetInt32(2),
-                            rdr.GetInt32(3), 
+                            rdr.GetInt32(3),
                             rdr.GetDecimal(4),
                             rdr.IsDBNull(7) ? RecurringInvoiceOptions.None : (RecurringInvoiceOptions)rdr.GetInt64(7),
                             null));
@@ -26093,7 +26089,7 @@ namespace Library.DAL
             return (null);
         }
 
-        internal static RecurringInvoiceItem RecurringInvoiceItemAdd(RecurringInvoice invoice, 
+        internal static RecurringInvoiceItem RecurringInvoiceItemAdd(RecurringInvoice invoice,
             ProductCost productCost, decimal quantity)
         {
             FbTransaction tran = null;
@@ -26913,11 +26909,11 @@ namespace Library.DAL
                     while (rdr.Read())
                     {
                         Result.Add(new InvoiceItem(rdr.GetInt32(0), rdr.GetString(2), rdr.GetDecimal(3),
-                            rdr.GetDecimal(4), rdr.GetDecimal(5), rdr.GetInt32(6), 
+                            rdr.GetDecimal(4), rdr.GetDecimal(5), rdr.GetInt32(6),
                             (ProductCostItemType)rdr.GetInt32(7), rdr.GetString(8),
-                            rdr.IsDBNull(9) ? -1 : rdr.GetInt32(9), 
-                            new ProductCostType(rdr.GetInt32(10), rdr.GetString(13), (ProductCostItemType)rdr.GetInt32(15)), 
-                            invoice, rdr.IsDBNull(11) ? 0.00m : rdr.GetDecimal(11), 
+                            rdr.IsDBNull(9) ? -1 : rdr.GetInt32(9),
+                            new ProductCostType(rdr.GetInt32(10), rdr.GetString(13), (ProductCostItemType)rdr.GetInt32(15)),
+                            invoice, rdr.IsDBNull(11) ? 0.00m : rdr.GetDecimal(11),
                             rdr.IsDBNull(12) ? 0.00m : rdr.GetDecimal(12),
                             (ProcessItemStatus)rdr.GetInt32(14)));
                     }
@@ -27797,9 +27793,9 @@ namespace Library.DAL
             return (Result);
         }
 
-#endregion Admin Stats
+        #endregion Admin Stats
 
-#region Admin Helpdesk
+        #region Admin Helpdesk
 
         internal static SupportTicket AdminHelpdeskSupportTicketGet(string ticketKey)
         {
@@ -28155,9 +28151,9 @@ namespace Library.DAL
             return (Result);
         }
 
-#endregion Admin Helpdesk
+        #endregion Admin Helpdesk
 
-#region Admin Orders
+        #region Admin Orders
 
         internal static Orders AdminOrdersGet(int UserID, int InvoiceID, bool TodayOnly, ProcessStatuses processStatuses)
         {
@@ -28224,9 +28220,9 @@ namespace Library.DAL
             return (Result);
         }
 
-#endregion Admin Orders
+        #endregion Admin Orders
 
-#region Admin Products
+        #region Admin Products
 
         /// <summary>
         /// Returns all featured products
@@ -28824,9 +28820,9 @@ namespace Library.DAL
 
 
 
-#endregion Admin Products
+        #endregion Admin Products
 
-#region Admin Product Groups
+        #region Admin Product Groups
 
         internal static ProductGroups AdminProductGroupsGet(int PageNumber, int PageSize)
         {
@@ -29135,9 +29131,9 @@ namespace Library.DAL
             return (Result);
         }
 
-#endregion Admin Product Groups
+        #endregion Admin Product Groups
 
-#region Admin Treatment Groups
+        #region Admin Treatment Groups
 
         internal static int AdminTreatmentGroupsCount()
         {
@@ -29366,9 +29362,9 @@ namespace Library.DAL
             return (Result);
         }
 
-#endregion Admin Treatment Groups
+        #endregion Admin Treatment Groups
 
-#region admin Product Cost / Size
+        #region admin Product Cost / Size
 
         /// <summary>
         /// Removes a product cost item from all lists by changing to is_deleted true (soft delete)
@@ -29652,9 +29648,9 @@ namespace Library.DAL
             return (Result);
         }
 
-#endregion Admin Product Cost / Size
+        #endregion Admin Product Cost / Size
 
-#region Admin Tips and Tricks
+        #region Admin Tips and Tricks
 
         internal static int AdminTipsTricksCount()
         {
@@ -29888,9 +29884,9 @@ namespace Library.DAL
             return (Result);
         }
 
-#endregion Admin Tips and Tricks
+        #endregion Admin Tips and Tricks
 
-#region Admin Users
+        #region Admin Users
 
         internal static Users AdminUsersGet(MemberLevel MemberLevel)
         {
@@ -30130,9 +30126,9 @@ namespace Library.DAL
             return (Result);
         }
 
-#endregion Admin Users
+        #endregion Admin Users
 
-#region Admin Invoices
+        #region Admin Invoices
 
         internal static int AdminInvoicesGetCount(int UserID, int InvoiceID, bool TodayOnly, ProcessStatuses processStatuses)
         {
@@ -30291,7 +30287,7 @@ namespace Library.DAL
                         InClause = AddToInClause(InClause, ProcessStatus.Completed);
 
                     if (processStatuses.HasFlag(ProcessStatuses.Dispatched))
-                    { 
+                    {
                         InClause = AddToInClause(InClause, ProcessStatus.Dispatched);
 
                         if (!processStatuses.HasFlag(ProcessStatuses.Complete))
@@ -30467,7 +30463,7 @@ namespace Library.DAL
                         InClause = AddToInClause(InClause, ProcessStatus.Completed);
 
                     if (processStatuses.HasFlag(ProcessStatuses.Dispatched))
-                    { 
+                    {
                         InClause = AddToInClause(InClause, ProcessStatus.Dispatched);
 
                         if (!processStatuses.HasFlag(ProcessStatuses.Complete))
@@ -30549,7 +30545,7 @@ namespace Library.DAL
                         InClause = AddToInClause(InClause, ProcessStatus.Completed);
 
                     if (processStatuses.HasFlag(ProcessStatuses.Dispatched))
-                    { 
+                    {
                         InClause = AddToInClause(InClause, ProcessStatus.Dispatched);
 
                         if (!processStatuses.HasFlag(ProcessStatuses.Complete))
@@ -30655,9 +30651,9 @@ namespace Library.DAL
             return (Result);
         }
 
-#endregion Admin Invoices
+        #endregion Admin Invoices
 
-#region Admin Treatments
+        #region Admin Treatments
 
         internal static Treatment AdminTreatmentGet(int TreatmentID)
         {
@@ -30820,9 +30816,9 @@ namespace Library.DAL
             }
         }
 
-#endregion Admin Treatments
+        #endregion Admin Treatments
 
-#region Admin Salon Owners
+        #region Admin Salon Owners
 
         internal static int AdminSalonOwnersCount()
         {
@@ -31359,9 +31355,9 @@ namespace Library.DAL
             return (Result);
         }
 
-#endregion Admin Salon Owners
+        #endregion Admin Salon Owners
 
-#region Admin Salons
+        #region Admin Salons
 
         internal static Salons AdminSalonsGet(string SalonName)
         {
@@ -31780,9 +31776,9 @@ namespace Library.DAL
         }
 
 
-#endregion Admin Salons
+        #endregion Admin Salons
 
-#region Admin Missing Links
+        #region Admin Missing Links
 
         internal static MissingLink AdminMissingLinkAdd(string DeprecatedLink, string ReplacementLink)
         {
@@ -32013,9 +32009,9 @@ namespace Library.DAL
             return (Result);
         }
 
-#endregion Admin Missing Links
+        #endregion Admin Missing Links
 
-#region Admin Distributors
+        #region Admin Distributors
 
         internal static Distributor AdminDistributorGet(int DistributorID)
         {
@@ -32195,9 +32191,9 @@ namespace Library.DAL
             }
         }
 
-#endregion Admin Distributors
+        #endregion Admin Distributors
 
-#region Admin Coupons
+        #region Admin Coupons
 
         internal static int AdminCouponCount()
         {
@@ -32804,9 +32800,9 @@ namespace Library.DAL
             return (Result);
         }
 
-#endregion Admin Coupons
+        #endregion Admin Coupons
 
-#region Database Specific
+        #region Database Specific
 
         internal static string AdminDatabaseVersion()
         {
@@ -32867,11 +32863,11 @@ namespace Library.DAL
             return (Result);
         }
 
-#endregion Database Specific
+        #endregion Database Specific
 
-#endregion Administration Functions
+        #endregion Administration Functions
 
-#region Popup
+        #region Popup
 
         internal static string GetPopupData(int PopupID, out string Title)
         {
@@ -32914,9 +32910,9 @@ namespace Library.DAL
         }
 
 
-#endregion Popup
+        #endregion Popup
 
-#region Email
+        #region Email
 
         internal static void EmailQueueStatistics(out Int64 QueueSize)
         {
@@ -33241,9 +33237,9 @@ namespace Library.DAL
         }
 
 
-#endregion Email
+        #endregion Email
 
-#region Web Logging
+        #region Web Logging
 
 #if WEB_LOGGING
         internal static void LogWebVisits(WebVisitLogItems items)
@@ -33386,9 +33382,9 @@ namespace Library.DAL
             }
         }
 
-#endregion Web Logging
+        #endregion Web Logging
 
-#region Settings
+        #region Settings
 
         internal static Dictionary<string, string> SettingsLoad()
         {
@@ -33503,6 +33499,9 @@ namespace Library.DAL
             FbConnection db = ConnectToDatabase(ref tran, DatabaseType.Standard);
             try
             {
+                if (Value == null)
+                    Value = String.Empty;
+
                 string SQL = "WSP_SET_DATA";
 
                 FbCommand cmd = new FbCommand(SQL, db, tran);
@@ -33623,9 +33622,9 @@ namespace Library.DAL
             return (Result);
         }
 
-#endregion Settings
+        #endregion Settings
 
-#region Missing Links
+        #region Missing Links
 
         internal static MissingLink MissingLinkGet(string DeprecatedLink)
         {
@@ -33666,13 +33665,13 @@ namespace Library.DAL
             return (Result);
         }
 
-#endregion Missing Links
+        #endregion Missing Links
 
-#region Stock Control
+        #region Stock Control
 
         //individual stores will all use till id = 1
 
-#region Stock History
+        #region Stock History
 
         /// <summary>
         /// Retrieves history about a stock item
@@ -33799,9 +33798,9 @@ namespace Library.DAL
             return (Result);
         }
 
-#endregion Stock History
+        #endregion Stock History
 
-#region Build Stock
+        #region Build Stock
 
         internal static void StockCreate(StockItem stockCreated, User currentUser, int quantity)
         {
@@ -34003,7 +34002,7 @@ namespace Library.DAL
             }
         }
 
-#endregion Build Stock
+        #endregion Build Stock
 
         private static void UpdateMissingStockItems(FbConnection db, FbTransaction tran)
         {
@@ -34056,7 +34055,7 @@ namespace Library.DAL
                         {
                             Result.Add(new StockItem(rdr.GetInt32(0), rdr.GetString(1), rdr.GetString(2),
                                 rdr.GetString(3), rdr.GetInt32(4), rdr.GetInt32(5), rdr.GetInt32(6), StoreID,
-                                new ProductCostType(rdr.GetInt32(7), rdr.GetString(13), (ProductCostItemType)rdr.GetInt32(15)), 
+                                new ProductCostType(rdr.GetInt32(7), rdr.GetString(13), (ProductCostItemType)rdr.GetInt32(15)),
                                 rdr.GetDecimal(8), rdr.GetString(9) == "T" ? true : false,
                                 rdr.GetString(10) == "T" ? true : false, rdr.GetString(12) == "Y", rdr.GetString(14)));
                         }
@@ -34526,7 +34525,7 @@ namespace Library.DAL
                     {
                         Result.Add(new StockItem(rdr.GetInt32(0), rdr.GetString(1), rdr.GetString(2),
                             rdr.GetString(3), rdr.GetInt32(4), rdr.GetInt32(5), rdr.GetInt32(6), storeID,
-                            new ProductCostType(rdr.GetInt32(7), rdr.GetString(13), (ProductCostItemType)rdr.GetInt32(15)), 
+                            new ProductCostType(rdr.GetInt32(7), rdr.GetString(13), (ProductCostItemType)rdr.GetInt32(15)),
                             rdr.GetDecimal(8), rdr.GetString(9) == "T" ? true : false,
                             rdr.GetString(10) == "T" ? true : false, rdr.GetString(12) == "Y", rdr.GetString(14)));
                     }
@@ -34582,7 +34581,7 @@ namespace Library.DAL
                     {
                         Result = new StockItem(rdr.GetInt32(0), rdr.GetString(1), rdr.GetString(2),
                             rdr.GetString(3), rdr.GetInt32(4), rdr.GetInt32(5), rdr.GetInt32(6), storeID,
-                            new ProductCostType(rdr.GetInt32(7), rdr.GetString(13), (ProductCostItemType)rdr.GetInt32(15)), 
+                            new ProductCostType(rdr.GetInt32(7), rdr.GetString(13), (ProductCostItemType)rdr.GetInt32(15)),
                             rdr.GetDecimal(8), rdr.GetString(9) == "T" ? true : false,
                             rdr.GetString(10) == "T" ? true : false, rdr.GetString(12) == "Y", rdr.GetString(14));
                     }
@@ -34632,7 +34631,7 @@ namespace Library.DAL
                     {
                         Result.Add(new StockItem(rdr.GetInt32(0), rdr.GetString(1), rdr.GetString(2),
                             rdr.GetString(3), rdr.GetInt32(4), rdr.GetInt32(5), rdr.GetInt32(6), rdr.GetInt32(12),
-                            new ProductCostType(rdr.GetInt32(7), rdr.GetString(14), (ProductCostItemType)rdr.GetInt32(15)), 
+                            new ProductCostType(rdr.GetInt32(7), rdr.GetString(14), (ProductCostItemType)rdr.GetInt32(15)),
                             rdr.GetDecimal(8), rdr.GetString(9) == "T" ? true : false,
                             rdr.GetString(10) == "T" ? true : false, rdr.GetString(13) == "Y", rdr.GetString(14)));
                     }
@@ -34656,9 +34655,9 @@ namespace Library.DAL
             return (Result);
         }
 
-#endregion Stock Control
+        #endregion Stock Control
 
-#region Maintenance
+        #region Maintenance
 
         internal static void ExecuteRoutineMaintenance(RoutineMaintenanceType maintenanceType)
         {
@@ -34712,9 +34711,9 @@ namespace Library.DAL
             }
         }
 
-#endregion Maintenance
+        #endregion Maintenance
 
-#region Local Database
+        #region Local Database
 
 
         /// <summary>
@@ -34768,9 +34767,9 @@ namespace Library.DAL
             return (Result);
         }
 
-#endregion Local Database
+        #endregion Local Database
 
-#region Data Storage
+        #region Data Storage
 
 
         /// <summary>
@@ -34799,11 +34798,11 @@ namespace Library.DAL
             return (Result);
         }
 
-#endregion Data Storage
+        #endregion Data Storage
 
-#endregion Internal Methods
+        #endregion Internal Methods
 
-#region Debug Methods
+        #region Debug Methods
 
         internal static void ThrowInternalError(string one, object two, int three, double four, object five)
         {
@@ -34817,11 +34816,11 @@ namespace Library.DAL
             }
         }
 
-#endregion Debug Methods
+        #endregion Debug Methods
 
-#region private static Methods
+        #region private static Methods
 
-#region Payment Statuses
+        #region Payment Statuses
 
         /// <summary>
         /// Returns a collection of payment statuses
@@ -34858,9 +34857,9 @@ namespace Library.DAL
         }
 
 
-#endregion Payment Statuses
+        #endregion Payment Statuses
 
-#region Statistics
+        #region Statistics
 
         private static void UpdateStatistics(string url, int attempt)
         {
@@ -34906,9 +34905,9 @@ namespace Library.DAL
             }
         }
 
-#endregion Statistics
+        #endregion Statistics
 
-#region Password Encryption/Decryption
+        #region Password Encryption/Decryption
 
         private static string EncryptPassword(string password)
         {
@@ -34940,9 +34939,9 @@ namespace Library.DAL
             }
         }
 
-#endregion Password Encryption/Decryption
+        #endregion Password Encryption/Decryption
 
-#region Orders
+        #region Orders
 
         internal static ProductGroup ProductGroupGet(FbConnection db, FbTransaction tran, int ID)
         {
@@ -35053,9 +35052,9 @@ namespace Library.DAL
             order.SetOrderItems(Result);
         }
 
-#endregion Orders
+        #endregion Orders
 
-#region Users
+        #region Users
 
         private static void UserGet(Int64 UserID, Order order, FbConnection Connection, FbTransaction Transaction)
         {
@@ -35156,9 +35155,9 @@ namespace Library.DAL
             return (Result);
         }
 
-#endregion Users
+        #endregion Users
 
-#region Locations
+        #region Locations
 
 
         /// <summary>
@@ -35185,9 +35184,9 @@ namespace Library.DAL
             return (Result);
         }
 
-#endregion Locations
+        #endregion Locations
 
-#region Global Procs
+        #region Global Procs
 
         private static void ExecuteCloseAndDispose(ref FbCommand command)
         {
@@ -35416,7 +35415,7 @@ namespace Library.DAL
                 return false;
         }
 
-#region Firebird Wrapper Methods
+        #region Firebird Wrapper Methods
 
         /// <summary>
         /// Prepares an FbCommand to be used as stored procedure
@@ -35541,7 +35540,7 @@ namespace Library.DAL
             cmd.Parameters[parameterName].Value = parameterValue;
         }
 
-#endregion Firebird Wrapper Methods
+        #endregion Firebird Wrapper Methods
 
         private static string LikeParam(string s)
         {
@@ -35559,9 +35558,9 @@ namespace Library.DAL
                         "be at least {1} characters long.", Field, MinLength)));
         }
 
-#endregion Global Procs
+        #endregion Global Procs
 
-#region DB Methods
+        #region DB Methods
 
         private static string BuildInvoceWhereClause(int UserID, int InvoiceID, bool TodayOnly,
             bool hideCancelled, ProcessStatuses statuses)
@@ -35602,7 +35601,7 @@ namespace Library.DAL
                     InClause = AddToInClause(InClause, ProcessStatus.Completed);
 
                 if (statuses.HasFlag(ProcessStatuses.Dispatched))
-                { 
+                {
                     InClause = AddToInClause(InClause, ProcessStatus.Dispatched);
 
                     if (!statuses.HasFlag(ProcessStatuses.Complete))
@@ -35775,17 +35774,17 @@ namespace Library.DAL
             return (Count);
         }
 
-#endregion DB Methods
+        #endregion DB Methods
 
-#endregion private static Methods
+        #endregion private static Methods
 
-#region Protected Methods
+        #region Protected Methods
 
         internal static void Prepare()
         {
 
         }
 
-#endregion Protected Methods
+        #endregion Protected Methods
     }
 }

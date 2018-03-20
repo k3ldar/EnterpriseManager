@@ -63,12 +63,15 @@
     <Reference Include="itextsharp">
       <HintPath>..\3rdParty\itextsharp.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\Websites\Shifoo.Website\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Payflow_dotNET, Version=4.3.1.0, Culture=neutral, PublicKeyToken=14aa1e8d77f2a97c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Payflow_dotNET.dll</HintPath>
     </Reference>
-    <Reference Include="SharedLib, Version=2.5.0.0, Culture=neutral, PublicKeyToken=bcec03f2c05555a7, processorArchitecture=MSIL">
-      <HintPath>..\..\..\SieraDelta\Website\packages\SC.Shared.Library.2.5.13\lib\net452\SharedLib.dll</HintPath>
+    <Reference Include="SharedLib, Version=2.5.0.0, Culture=neutral, PublicKeyToken=f2ca6ac6cfa8c8da, processorArchitecture=MSIL">
+      <HintPath>..\..\Websites\packages\SC.Shared.Library.2.5.19\lib\net452\SharedLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -104,6 +107,7 @@
     <Compile Include="Classes\PaymentOptions\PaymentOptionSunTechWebATM.cs" />
     <Compile Include="Classes\PaymentOptions\PaymentOptionTestPurchase.cs" />
     <Compile Include="Classes\Translations\EnumTranslations.cs" />
+    <Compile Include="Classes\UserSessionAspNet.cs" />
     <Compile Include="Classes\WebVisitLogItem.cs" />
     <Compile Include="Classes\Web\BaseController.cs" />
     <Compile Include="Classes\Web\BaseMasterClassWebForm.cs">

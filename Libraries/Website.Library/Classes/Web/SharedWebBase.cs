@@ -325,8 +325,8 @@ namespace Website.Library.Classes
             }
         }
 
-        public static UserSession StartUserSession(System.Web.SessionState.HttpSessionState Session, 
-            System.Web.HttpRequest Request, System.Web.HttpResponse Response)
+        public static UserSession StartUserSession(System.Web.SessionState.HttpSessionState session, 
+            System.Web.HttpRequest request, System.Web.HttpResponse response)
         {
             UserSession Result = null;
 
@@ -335,7 +335,7 @@ namespace Website.Library.Classes
 #if TRACE
                 DateTime startSessionTimer = DateTime.Now;
 #endif
-                if (Request.UserAgent != null && Request.UserAgent.StartsWith(CLOUD_USER_AGENT))
+                if (request.UserAgent != null && request.UserAgent.StartsWith(CLOUD_USER_AGENT))
                 {
                     return (Result);
                 }
@@ -343,10 +343,10 @@ namespace Website.Library.Classes
 #if DISPLAY_DEBUG_INFO
                 Session[StringConsts.SESSION_NAME_SESSION_INITIATED] = "Start Session";
 #endif
-                Result = new UserSession(Session, Request);
+                Result = new UserSessionAspNet(session, request);
 
                 UserSessionManager.Add(Result);
-                Session[lib.StringConsts.SESSION_NAME_USER_SESSION] = Result;
+                session[lib.StringConsts.SESSION_NAME_USER_SESSION] = Result;
 
                 if (WebsiteSettings.StaticWebSite)
                     return (Result);
@@ -354,7 +354,7 @@ namespace Website.Library.Classes
                 Result.Tag = new LocalWebSessionData();
                 LocalWebSessionData localData = (LocalWebSessionData)Result.Tag;
 
-                localData.CurrentUser = GetUser(Session, Request, Response, Result);
+                localData.CurrentUser = GetUser(session, request, response, Result);
 
                 if (localData.CurrentUser != null)
                 {
@@ -371,7 +371,7 @@ namespace Website.Library.Classes
                 }
                 else
                 {
-                    string ipAddress = Request.ServerVariables["REMOTE_HOST"];
+                    string ipAddress = request.ServerVariables["REMOTE_HOST"];
 
 #if FAKE_ADDRESS
                 ipAddress = GetFormValue(Request, "FakeAddress", ipAddress);
@@ -392,19 +392,19 @@ namespace Website.Library.Classes
                     localData.LoggedIn = false;
                 }
 
-                localData.Basket = GetShoppingBasket(Session, Request, Response, Result);
+                localData.Basket = GetShoppingBasket(session, request, response, Result);
 
                 #region Affiliate
 
-                string affiliate = SharedWebBase.CookieGetValue(Request, Response,
+                string affiliate = SharedWebBase.CookieGetValue(request, response,
                     String.Format(lib.StringConsts.COOKIE_AFFILIATE,
                     WebsiteSettings.DistributorWebsite), String.Empty);
 
                 if (String.IsNullOrEmpty(affiliate))
                 {
-                    if (!String.IsNullOrEmpty(Request["aff"]))
+                    if (!String.IsNullOrEmpty(request["aff"]))
                     {
-                        affiliate = Request["aff"];
+                        affiliate = request["aff"];
                     }
                     else if (!String.IsNullOrEmpty(Result.InitialReferrer))
                     {
@@ -419,7 +419,7 @@ namespace Website.Library.Classes
                         {
                             affItem.AddWebClick(Result.IPAddress);
 
-                            SharedWebBase.CookieSetValue(Request, Response,
+                            SharedWebBase.CookieSetValue(request, response,
                                 String.Format(lib.StringConsts.COOKIE_AFFILIATE,
                                 WebsiteSettings.DistributorWebsite),
                                 affiliate, DateTime.Now.AddDays(WebsiteSettings.Affiliates.MaximumDays));
@@ -431,14 +431,14 @@ namespace Website.Library.Classes
 
                 #endregion Affiliate
 
-                Country defaultCountry = SharedWebBase.WebCountry(Session, Request);
+                Country defaultCountry = SharedWebBase.WebCountry(session, request);
                 Currency defaultCurrency = lib.BOL.Basket.Currencies.Get(defaultCountry.DefaultCurrency);
 
-                string userLanguage = CookieGetValue(Request, Response,
+                string userLanguage = CookieGetValue(request, response,
                     String.Format(lib.StringConsts.COOKIE_USER_LANGUAGE,
                     WebsiteSettings.DistributorWebsite),
                     defaultCountry.CountryCode);
-                string userCurrency = CookieGetValue(Request, Response,
+                string userCurrency = CookieGetValue(request, response,
                     String.Format(lib.StringConsts.COOKIE_USER_CURRENCY,
                     WebsiteSettings.DistributorWebsite),
                     defaultCurrency.CurrencyCode);
@@ -476,27 +476,27 @@ namespace Website.Library.Classes
                 localData.Basket.Country = localData.UserCountry;
 
                 localData.Basket.Currency = Currencies.Get(localData.UserCountry.DefaultCurrency);
-                Session[lib.StringConsts.SESSION_NAME_USER_BASKET_CURRENCY] = localData.Basket.Currency;
+                session[lib.StringConsts.SESSION_NAME_USER_BASKET_CURRENCY] = localData.Basket.Currency;
 
-                LocalizedLanguages.SetLanguage(Session, Request, Response,
+                LocalizedLanguages.SetLanguage(session, request, response,
                     localData.UserCountry,
-                    SharedWebBase.WebsiteCurrency(Session, Request), false);
+                    SharedWebBase.WebsiteCurrency(session, request), false);
 
                 // default sesion data
-                Session["CurrentPage"] = 1;
-                Session["Discount_Ammount"] = 0;
-                Session["USER_DISCOUNT"] = 0;
-                Session["INVOICE_NUMBER"] = 0;
-                Session["SHOPPINGBASKET_ID"] = 0;
-                Session["PRODUCT_FILTER"] = 0;
+                session["CurrentPage"] = 1;
+                session["Discount_Ammount"] = 0;
+                session["USER_DISCOUNT"] = 0;
+                session["INVOICE_NUMBER"] = 0;
+                session["SHOPPINGBASKET_ID"] = 0;
+                session["PRODUCT_FILTER"] = 0;
 
-                int priceCol = LocalizedLanguages.RaiseSelectPriceColumn(Session, Request, Result,
+                int priceCol = LocalizedLanguages.RaiseSelectPriceColumn(session, request, Result,
                     userSelectedCurrency == null ? defaultCurrency.PriceColumn : userSelectedCurrency.PriceColumn);
                 localData.PriceColumn = priceCol; 
-                Session[lib.StringConsts.SESSION_NAME_WEBSITE_PRICE_COLUMN] = localData.PriceColumn;
+                session[lib.StringConsts.SESSION_NAME_WEBSITE_PRICE_COLUMN] = localData.PriceColumn;
                 localData.Basket.Reset(localData.PriceColumn);
 
-                LocalizedLanguages.SetLanguage(Session, Request, Response,
+                LocalizedLanguages.SetLanguage(session, request, response,
                     userSelectedCountry ?? defaultCountry,
                     userSelectedCurrency ?? defaultCurrency, true);
 
