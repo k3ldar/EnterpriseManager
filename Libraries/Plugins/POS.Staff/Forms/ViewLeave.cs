@@ -32,9 +32,9 @@ using Languages;
 
 using Shared;
 
-using Library;
-using Library.BOL.Users;
-using Library.BOL.Staff;
+using SharedBase;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Staff;
 
 using POS.Base.Classes;
 using POS.Base;
@@ -418,7 +418,7 @@ namespace POS.Staff.Forms
         private void POSApplication_OnUserChanged(object sender, EventArgs e)
         {
             if (AppController.ActiveUser.HasPermissionStaff(
-                Library.SecurityEnums.SecurityPermissionsStaff.ApproveExpenses))
+                SharedBase.SecurityEnums.SecurityPermissionsStaff.ApproveExpenses))
             {
                 _cmbStaff.Enabled = true;
                 _cmbStaff.SelectedIndex = 0;

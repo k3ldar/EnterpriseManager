@@ -31,14 +31,14 @@ using System.Windows.Forms;
 using SharedControls.Classes;
 
 using Languages;
-using Library;
-using Library.Utils;
-using Library.BOL.Accounts;
-using Library.BOL.Users;
-using Library.BOL.Products;
-using Library.BOL.Basket;
-using Library.BOL.Orders;
-using Library.BOL.Invoices;
+using SharedBase;
+using SharedBase.Utils;
+using SharedBase.BOL.Accounts;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Products;
+using SharedBase.BOL.Basket;
+using SharedBase.BOL.Orders;
+using SharedBase.BOL.Invoices;
 
 using POS.Base.Forms;
 using POS.Base.Classes;
@@ -243,7 +243,7 @@ namespace POS.Invoices.Forms
                 _basket.UseSageDiscountLogic = true;
                 _basket.ShippingCosts = 0;
 
-                if (user != null && user.MemberLevel >= Library.MemberLevel.Distributor && user.AutoDiscount > 0)
+                if (user != null && user.MemberLevel >= SharedBase.MemberLevel.Distributor && user.AutoDiscount > 0)
                 {
                     _basket.ApplyDiscount(user.AutoDiscount, StringConstants.STORE_DISCOUNT);
                     BuildBasket(true);
@@ -442,7 +442,7 @@ namespace POS.Invoices.Forms
 
                     _order.Paid(_user, PaymentStatuses.Get(StringConstants.PAYMENT_OFFICE_PAID), String.Empty, String.Empty);
 
-                    Invoice inv = Library.BOL.Invoices.Invoices.Get(_order);
+                    Invoice inv = SharedBase.BOL.Invoices.Invoices.Get(_order);
                     ProcessStatus newStatus = ProcessStatus.Completed;
 
                     foreach (InvoiceItem item in inv.InvoiceItems)
@@ -661,7 +661,7 @@ namespace POS.Invoices.Forms
             }
 
             if (Result && AppController.LocalSettings.HideProductsWithZeroStock &&
-                (cost.GetStockLevel(Library.DAL.DALHelper.StoreID) < 1))
+                (cost.GetStockLevel(SharedBase.DAL.DALHelper.StoreID) < 1))
             {
                 Result = false;
             }

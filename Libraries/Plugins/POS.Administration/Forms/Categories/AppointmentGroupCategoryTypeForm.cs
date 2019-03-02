@@ -29,7 +29,7 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library.BOL.Appointments;
+using SharedBase.BOL.Appointments;
 
 using POS.Administration.Classes;
 

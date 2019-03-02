@@ -26,8 +26,8 @@
 using System.Drawing;
 using Languages;
 
-using Library;
-using Library.BOL.Users;
+using SharedBase;
+using SharedBase.BOL.Users;
 using POS.Base.Plugins;
 
 #pragma warning disable IDE1006 // Naming Styles

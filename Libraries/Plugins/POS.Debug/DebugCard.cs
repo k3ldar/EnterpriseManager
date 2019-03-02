@@ -26,7 +26,7 @@
 using System.Drawing;
 using Languages;
 using POS.Base.Plugins;
-using Library.BOL.Users;
+using SharedBase.BOL.Users;
 
 namespace POS.Debug
 {

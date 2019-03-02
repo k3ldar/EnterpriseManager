@@ -25,7 +25,7 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 using Languages;
-using Library.BOL.Suppliers;
+using SharedBase.BOL.Suppliers;
 using SharedControls.WizardBase;
 
 namespace POS.Suppliers.Classes

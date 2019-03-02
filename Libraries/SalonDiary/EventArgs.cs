@@ -29,8 +29,8 @@ using System.Text;
 
 using SharedControls.Interfaces;
 
-using Library.BOL.Appointments;
-using Library.BOL.Therapists;
+using SharedBase.BOL.Appointments;
+using SharedBase.BOL.Therapists;
 
 namespace SalonDiary.Controls
 {
@@ -87,16 +87,16 @@ namespace SalonDiary.Controls
 
     public class AppointmentPayNowEventArgs
     {
-        public AppointmentPayNowEventArgs(Library.BOL.Appointments.Appointment appointment) { Appointment = appointment; }
-        public Library.BOL.Appointments.Appointment Appointment { private set; get; }
+        public AppointmentPayNowEventArgs(SharedBase.BOL.Appointments.Appointment appointment) { Appointment = appointment; }
+        public SharedBase.BOL.Appointments.Appointment Appointment { private set; get; }
     }
 
     public delegate void PayNowEventHandler(object sender, AppointmentPayNowEventArgs e);
 
     public class SalonAppointmentEventArgs
     {
-        public SalonAppointmentEventArgs(Library.BOL.Appointments.Appointment appointment) { Appointment = appointment; }
-        public Library.BOL.Appointments.Appointment Appointment { private set; get; }
+        public SalonAppointmentEventArgs(SharedBase.BOL.Appointments.Appointment appointment) { Appointment = appointment; }
+        public SharedBase.BOL.Appointments.Appointment Appointment { private set; get; }
     }
 
     public delegate void SalonAppointmentEventHandler (object sender, SalonAppointmentEventArgs e);
@@ -144,9 +144,9 @@ namespace SalonDiary.Controls
 
     public class SalonUserEventArgs
     {
-        public SalonUserEventArgs(Library.BOL.Users.User User) { AppointmentUser = User; }
+        public SalonUserEventArgs(SharedBase.BOL.Users.User User) { AppointmentUser = User; }
 
-        public Library.BOL.Users.User AppointmentUser
+        public SharedBase.BOL.Users.User AppointmentUser
         {
             get;
             private set;

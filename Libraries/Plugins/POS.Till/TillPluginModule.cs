@@ -30,8 +30,8 @@ using System.Windows.Forms;
 
 using SharedControls.Forms;
 using Languages;
-using Library.BOL.Appointments;
-using Library.BOL.Basket;
+using SharedBase.BOL.Appointments;
+using SharedBase.BOL.Basket;
 
 using POS.Base.Classes;
 using POS.Base.Plugins;

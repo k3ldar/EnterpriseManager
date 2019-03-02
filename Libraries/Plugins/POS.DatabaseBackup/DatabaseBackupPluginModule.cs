@@ -219,7 +219,7 @@ namespace POS.DatabaseBackup
                 //Library.Backup.DatabaseBackupThread.OnStageChanged += DatabaseBackup_OnStageChanged;
                 //Library.Backup.DatabaseBackupThread.BackupDatabase(
                 //    AppController.POSFolder(FolderType.Backups, true),
-                //    true, true, Library.DAL.DALHelper.StoreID, 
+                //    true, true, SharedBase.DAL.DALHelper.StoreID, 
                 //    StringConstants.BACKUP_NAME, String.Empty);
             }
             catch (Exception err)
@@ -237,7 +237,7 @@ namespace POS.DatabaseBackup
                 //Library.Backup.DatabaseBackupThread.OnStageChanged += DatabaseBackup_OnStageChanged;
                 //Library.Backup.DatabaseBackupThread.BackupDatabase(
                 //    AppController.POSFolder(FolderType.Backups, true),
-                //    false, true, Library.DAL.DALHelper.StoreID,
+                //    false, true, SharedBase.DAL.DALHelper.StoreID,
                 //    StringConstants.BACKUP_NAME, String.Empty, );
             }
             catch (Exception err)
@@ -252,16 +252,16 @@ namespace POS.DatabaseBackup
         {
             if (ParentForm.InvokeRequired)
             {
-                Library.Backup.DatabaseBackupEventHandler eh = new Library.Backup.DatabaseBackupEventHandler(DatabaseBackup_OnStageChanged);
+                SharedBase.Backup.DatabaseBackupEventHandler eh = new SharedBase.Backup.DatabaseBackupEventHandler(DatabaseBackup_OnStageChanged);
                 ParentForm.Invoke(eh, new object[] { e });
 
             }
             else
             {
                 RaiseEventNotification(new NotificationEventArgs(StringConstants.PLUGIN_EVENT_DATABASE_BACKUP,
-                    e != Library.Backup.DatabaseBackupStage.BackupComplete,
+                    e != SharedBase.Backup.DatabaseBackupStage.BackupComplete,
                     Shared.Utilities.SplitCamelCase(e.ToString())));
-                menuToolsDatabase.Enabled = e != Library.Backup.DatabaseBackupStage.BackupComplete;
+                menuToolsDatabase.Enabled = e != SharedBase.Backup.DatabaseBackupStage.BackupComplete;
 
             }
         }

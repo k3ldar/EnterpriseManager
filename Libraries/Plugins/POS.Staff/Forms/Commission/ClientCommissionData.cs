@@ -32,8 +32,8 @@ using System.Text;
 using System.Windows.Forms;
 
 using Languages;
-using Library.BOL.Staff;
-using Library.Utils;
+using SharedBase.BOL.Staff;
+using SharedBase.Utils;
 using POS.Base.Controls;
 
 namespace POS.Staff.Forms
@@ -323,7 +323,7 @@ namespace POS.Staff.Forms
                 {
                     foreach (StaffCommissionItem item in commissionItems)
                     {
-                        item.Paid(POS.Base.Classes.AppController.ActiveUser, payDate, Library.CommissionPaymentType.Account);
+                        item.Paid(POS.Base.Classes.AppController.ActiveUser, payDate, SharedBase.CommissionPaymentType.Account);
                     }
 
                     gridCommission.Invalidate();

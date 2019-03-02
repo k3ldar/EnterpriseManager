@@ -33,8 +33,8 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library.Utils;
-using Library.BOL.Salons;
+using SharedBase.Utils;
+using SharedBase.BOL.Salons;
 
 namespace POS.TrainingSchedule.Forms
 {
@@ -99,7 +99,7 @@ namespace POS.TrainingSchedule.Forms
 
         private void LoadSalons()
         {
-            Library.BOL.Salons.Salons salons = Library.BOL.Salons.Salons.Get(1, 10000);
+            SharedBase.BOL.Salons.Salons salons = SharedBase.BOL.Salons.Salons.Get(1, 10000);
 
             foreach (Salon salon in salons)
             {

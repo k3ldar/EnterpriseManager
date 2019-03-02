@@ -26,7 +26,7 @@
 using System;
 
 using Languages;
-using Library.BOL.Websites;
+using SharedBase.BOL.Websites;
 using POS.Base.Classes;
 
 namespace POS.Customers.Controls
@@ -61,19 +61,19 @@ namespace POS.Customers.Controls
         {
             AppController.LocalSettings.AffiliateURL = (string)cmbWebsites.SelectedItem;
             AppController.LocalSettings.AffiliateExternalLinks = cbGenerateExternal.Checked;
-            Library.LibraryHelperClass.SettingsSet(StringConstants.AFFILIATE_LIVE_DAYS, udMaxDays.Value.ToString());
+            SharedBase.LibraryHelperClass.SettingsSet(StringConstants.AFFILIATE_LIVE_DAYS, udMaxDays.Value.ToString());
 
             if (rbContinuousPayments.Checked)
             {
-                Library.LibraryHelperClass.SettingsSet(StringConstants.COMMISSION_AFFILIATE_MONTHS, udMonthsToWait.Value.ToString());
+                SharedBase.LibraryHelperClass.SettingsSet(StringConstants.COMMISSION_AFFILIATE_MONTHS, udMonthsToWait.Value.ToString());
             }
             else
             {
                 string m = Convert.ToString(dtpYearly.Value.Month + 20);
                 string d = Convert.ToString(dtpYearly.Value.Day + 20);
 
-                Library.LibraryHelperClass.SettingsSet(StringConstants.COMMISSION_AFFILIATE_MONTHS, m + d);
-                Library.LibraryHelperClass.SettingsSet(StringConstants.COMMISSION_AFFILIATE_MIN_WAiT, udMonthsToWait.Value.ToString());
+                SharedBase.LibraryHelperClass.SettingsSet(StringConstants.COMMISSION_AFFILIATE_MONTHS, m + d);
+                SharedBase.LibraryHelperClass.SettingsSet(StringConstants.COMMISSION_AFFILIATE_MIN_WAiT, udMonthsToWait.Value.ToString());
             }
             return (base.SettingsSave());
         }

@@ -33,8 +33,8 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library.Utils;
-using Library.BOL.Appointments;
+using SharedBase.Utils;
+using SharedBase.BOL.Appointments;
 
 using POS.Base.Classes;
 
@@ -50,7 +50,7 @@ namespace POS.Diary.Forms
 
         }
 
-        public AppointmentChanges(Library.BOL.Appointments.AppointmentChanges changes)
+        public AppointmentChanges(SharedBase.BOL.Appointments.AppointmentChanges changes)
             : this()
         {
             //load changes

@@ -27,10 +27,10 @@ using System;
 
 using Languages;
 
-using Library;
-using Library.BOL.Appointments;
-using Library.BOL.Staff;
-using Library.BOL.Therapists;
+using SharedBase;
+using SharedBase.BOL.Appointments;
+using SharedBase.BOL.Staff;
+using SharedBase.BOL.Therapists;
 
 using POS.Staff.Classes;
 
@@ -91,7 +91,7 @@ namespace POS.Staff.Controls.Wizards.StaffSick.CreateSickness
             {
                 if (appt.Cancelled)
                 {
-                    appt.Appt.Status = Library.Enums.AppointmentStatus.CancelledByStaff;
+                    appt.Appt.Status = SharedBase.Enums.AppointmentStatus.CancelledByStaff;
                     appt.Appt.Notes += String.Format(LanguageStrings.AppSicknessAppointmentNotesCancel,
                         POS.Base.Classes.AppController.ActiveUser.UserName);
                 }

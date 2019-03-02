@@ -33,8 +33,8 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library;
-using Library.BOL.Users;
+using SharedBase;
+using SharedBase.BOL.Users;
 using POS.Base;
 using POS.Base.Classes;
 using POS.Base.Forms;

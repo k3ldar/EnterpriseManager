@@ -30,7 +30,7 @@ using Languages;
 using PointOfSale.Classes;
 using POS.Base.Classes;
 
-using Library.BOL.Countries;
+using SharedBase.BOL.Countries;
 
 using System.Globalization;
 

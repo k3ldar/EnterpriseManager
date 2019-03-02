@@ -32,13 +32,13 @@ using System.Text;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 
-using Library;
-using Library.Utils;
-using Library.BOL.Appointments;
-using Library.BOL.Users;
-using Library.BOL.Therapists;
-using Library.BOL.Refunds;
-using Library.BOL.Statistics;
+using SharedBase;
+using SharedBase.Utils;
+using SharedBase.BOL.Appointments;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Therapists;
+using SharedBase.BOL.Refunds;
+using SharedBase.BOL.Statistics;
 
 namespace Reports.Salons
 {
@@ -185,9 +185,9 @@ namespace Reports.Salons
                         table.AddCell(new Phrase(taking.Item, FontTextSmall));
                         table.AddCell(new Phrase(taking.ItemCount.ToString(), FontTextSmall));
                         table.AddCell(new Phrase(SharedUtils.FormatMoney(taking.ItemCost,
-                            Library.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
+                            SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
                         table.AddCell(new Phrase(SharedUtils.FormatMoney(taking.ItemCost * taking.ItemCount,
-                            Library.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
+                            SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
 
                         totalSales += Convert.ToDecimal(taking.ItemCost * taking.ItemCount);
                         totalProducts += taking.ItemCount;
@@ -200,7 +200,7 @@ namespace Reports.Salons
                     table.AddCell(new Phrase(totalProducts.ToString(), FontTextBoldSmall));
                     table.AddCell(new Phrase(String.Empty, FontTextBoldSmall));
                     table.AddCell(new Phrase(SharedUtils.FormatMoney(totalSales,
-                        Library.BOL.Basket.Currencies.Get("GBP")), FontTextBoldSmall));
+                        SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextBoldSmall));
 
                     document.Add(table);
                 }

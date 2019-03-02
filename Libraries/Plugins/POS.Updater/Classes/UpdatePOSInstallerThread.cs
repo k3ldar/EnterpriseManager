@@ -65,7 +65,7 @@ namespace POS.UpdateImages.Classes
             try
             {
                 string xml = ConfigurationSettings.Value(ConfigurationSettings.SYSTEM_CONFIG_INSTALLER_UPDATE_URL);
-                string verRemote = Library.XML.GetXMLValue(xml, "Application", "Version");
+                string verRemote = SharedBase.XML.GetXMLValue(xml, "Application", "Version");
 
                 POS.Base.Plugins.NotificationEventArgs args = new POS.Base.Plugins.NotificationEventArgs(
                     StringConstants.PLUGIN_EVENT_HOST_VERSION, null);

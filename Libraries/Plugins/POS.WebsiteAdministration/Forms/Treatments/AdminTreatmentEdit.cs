@@ -29,9 +29,9 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library;
-using Library.BOL.Treatments;
-using Library.BOL.ValidationChecks;
+using SharedBase;
+using SharedBase.BOL.Treatments;
+using SharedBase.BOL.ValidationChecks;
 using POS.Base.Classes;
 
 #pragma warning disable IDE1006

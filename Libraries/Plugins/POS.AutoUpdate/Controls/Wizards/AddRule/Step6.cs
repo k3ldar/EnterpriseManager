@@ -32,7 +32,7 @@ using System.Text;
 using System.Windows.Forms;
 
 using Languages;
-using Library.BOL.DatabaseUpdates;
+using SharedBase.BOL.DatabaseUpdates;
 using POS.AutoUpdate.Classes;
 
 namespace POS.AutoUpdate.Controls.Wizards.AddRule
@@ -86,7 +86,7 @@ namespace POS.AutoUpdate.Controls.Wizards.AddRule
                 if (String.IsNullOrEmpty(txtName.Text))
                     throw new Exception(LanguageStrings.AppErrorAutoUpdateNameRequired);
 
-                _settings.AutoUpdate = new Library.BOL.DatabaseUpdates.AutoUpdate(-1,
+                _settings.AutoUpdate = new SharedBase.BOL.DatabaseUpdates.AutoUpdate(-1,
                     txtName.Text, _settings.Rule.SQL, dtpRunTime.Value, false,
                     POS.Base.Classes.AppController.ActiveUser, DateTime.Now);
 

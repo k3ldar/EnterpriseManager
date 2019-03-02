@@ -32,10 +32,10 @@ using System.Text;
 using System.Windows.Forms;
 
 using Languages;
-using Library;
-using Library.BOL.Countries;
-using Library.BOL.Export;
-using Library.BOL.Users;
+using SharedBase;
+using SharedBase.BOL.Countries;
+using SharedBase.BOL.Export;
+using SharedBase.BOL.Users;
 using POS.Base.Classes;
 using POS.Customers.Classes;
 using SharedControls.WizardBase;
@@ -160,10 +160,10 @@ namespace POS.Customers.Controls.Wizards.Export
                 lblProgress.Visible = true;
                 MainWizardForm.UpdateUI();
 
-                Library.BOLEvents.Progress progress = new Library.BOLEvents.Progress();
+                SharedBase.BOLEvents.Progress progress = new SharedBase.BOLEvents.Progress();
                 progress.OnProgress += progress_OnProgress;
 
-                Library.BOL.Users.Users.Get(progress);
+                SharedBase.BOL.Users.Users.Get(progress);
             }
             finally
             {
@@ -173,7 +173,7 @@ namespace POS.Customers.Controls.Wizards.Export
             }
         }
 
-        void progress_OnProgress(object sender, Library.BOLEvents.ProgressEventArgs e)
+        void progress_OnProgress(object sender, SharedBase.BOLEvents.ProgressEventArgs e)
         {
             pbProgress.Value = e.Percent;
 

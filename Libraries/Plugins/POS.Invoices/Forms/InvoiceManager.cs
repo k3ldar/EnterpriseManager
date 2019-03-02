@@ -26,10 +26,10 @@
 using System;
 using System.Windows.Forms;
 
-using Library;
-using Library.BOL.Accounts;
-using Library.BOL.Invoices;
-using Library.BOL.Coupons;
+using SharedBase;
+using SharedBase.BOL.Accounts;
+using SharedBase.BOL.Invoices;
+using SharedBase.BOL.Coupons;
 using Languages;
 
 using Reports.Accounts;

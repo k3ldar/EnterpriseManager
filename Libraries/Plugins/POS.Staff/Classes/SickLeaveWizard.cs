@@ -29,7 +29,7 @@ using System.Text;
 
 using Languages;
 using POS.Base.Classes;
-using Library.BOL.Staff;
+using SharedBase.BOL.Staff;
 using SharedControls.WizardBase;
 using POS.Staff.Controls;
 

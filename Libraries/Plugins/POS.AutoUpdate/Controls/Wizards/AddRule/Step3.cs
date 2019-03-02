@@ -32,7 +32,7 @@ using System.Text;
 using System.Windows.Forms;
 
 using Languages;
-using Library.BOL.DatabaseUpdates;
+using SharedBase.BOL.DatabaseUpdates;
 using POS.AutoUpdate.Classes;
 using Shared;
 

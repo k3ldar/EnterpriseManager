@@ -33,9 +33,9 @@ using System.Windows.Forms;
 
 using SalonDiary.Classes;
 using Languages;
-using Library.BOL.Therapists;
-using Library.BOL.Appointments;
-using Library.BOL.Users;
+using SharedBase.BOL.Therapists;
+using SharedBase.BOL.Appointments;
+using SharedBase.BOL.Users;
 using SharedControls.WizardBase;
 
 namespace SalonDiary.Controls.Wizards.NewAppointmentWizard
@@ -112,10 +112,10 @@ namespace SalonDiary.Controls.Wizards.NewAppointmentWizard
             foreach (AppointmentTreatment treat in _options.Treatments)
             {
                 Appointment appt = new Appointment(-1, selTherapist.EmployeeID, Convert.ToDateTime(selItem.SubItems[1].Text), 
-                    startTime, treat.Duration, Library.Enums.AppointmentStatus.Requested,
+                    startTime, treat.Duration, SharedBase.Enums.AppointmentStatus.Requested,
                     0, treat.ID, treat.Name, selectedUser.ID, selectedUser.UserName, String.Empty, 
                     masterID, DateTime.Now, DateTime.Now, -1, DateTime.Now.AddYears(-100));
-                Library.BOL.Appointments.Appointments.Create(appt, selectedUser);
+                SharedBase.BOL.Appointments.Appointments.Create(appt, selectedUser);
 
                 //get master id for next appointment (if there is one)
                 if (masterID == -1)

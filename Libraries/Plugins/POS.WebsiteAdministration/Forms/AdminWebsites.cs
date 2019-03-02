@@ -30,7 +30,7 @@ using System.Globalization;
 using System.Windows.Forms;
 
 using Languages;
-using Library.BOL.Websites;
+using SharedBase.BOL.Websites;
 
 using POS.Base.Classes;
 
@@ -47,7 +47,7 @@ namespace POS.WebsiteAdministration.Forms
 
         private ToolStripComboBox _toolStripWebsites;
 
-        private Library.BOL.Websites.Website WebSite;
+        private SharedBase.BOL.Websites.Website WebSite;
 
         #endregion Private Members
 
@@ -85,13 +85,13 @@ namespace POS.WebsiteAdministration.Forms
 
         protected override void OnEditClicked()
         {
-            Library.BOL.Websites.Website website = (Library.BOL.Websites.Website)_toolStripWebsites.Items[_toolStripWebsites.SelectedIndex];
+            SharedBase.BOL.Websites.Website website = (SharedBase.BOL.Websites.Website)_toolStripWebsites.Items[_toolStripWebsites.SelectedIndex];
             Classes.CreateEditWebsiteWizard.EditWebsite(website);
         }
 
         protected override void OnCreateClicked()
         {
-            Library.BOL.Websites.Website website = null;
+            SharedBase.BOL.Websites.Website website = null;
 
             if (Classes.CreateEditWebsiteWizard.CreateWebsite(ref website))
             {
@@ -164,7 +164,7 @@ namespace POS.WebsiteAdministration.Forms
 
             _toolStripWebsites.Items.Clear();
 
-            foreach (Library.BOL.Websites.Website website in Websites.All())
+            foreach (SharedBase.BOL.Websites.Website website in Websites.All())
             {
                 _toolStripWebsites.Items.Add(website);
             }
@@ -316,7 +316,7 @@ namespace POS.WebsiteAdministration.Forms
             if (e.Index == -1)
                 return;
 
-            Library.BOL.Websites.Website website = (Library.BOL.Websites.Website)_toolStripWebsites.Items[e.Index];
+            SharedBase.BOL.Websites.Website website = (SharedBase.BOL.Websites.Website)_toolStripWebsites.Items[e.Index];
 
             e.Graphics.DrawString(
                 website.Domain,
@@ -359,7 +359,7 @@ namespace POS.WebsiteAdministration.Forms
 
             if (_toolStripWebsites.SelectedIndex > -1)
             {
-                WebSite = (Library.BOL.Websites.Website)_toolStripWebsites.Items[_toolStripWebsites.SelectedIndex];
+                WebSite = (SharedBase.BOL.Websites.Website)_toolStripWebsites.Items[_toolStripWebsites.SelectedIndex];
                 settingPage.WebsiteChanged(WebSite);
             }
 

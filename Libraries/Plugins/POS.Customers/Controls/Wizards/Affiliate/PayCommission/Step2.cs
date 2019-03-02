@@ -33,8 +33,8 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library.BOL.Affiliate;
-using Library.BOL.Therapists;
+using SharedBase.BOL.Affiliate;
+using SharedBase.BOL.Therapists;
 using POS.Customers.Classes;
 
 namespace POS.Customers.Controls.Wizards.Affiliate.PayCommission
@@ -148,7 +148,7 @@ namespace POS.Customers.Controls.Wizards.Affiliate.PayCommission
                 case 7:
                 case 8:
                 case 9:
-                    e.Value = Library.Utils.SharedUtils.FormatMoney((decimal)e.Value, POS.Base.Classes.AppController.LocalCurrency);
+                    e.Value = SharedBase.Utils.SharedUtils.FormatMoney((decimal)e.Value, POS.Base.Classes.AppController.LocalCurrency);
 
                     break;
             }

@@ -29,8 +29,8 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library;
-using Library.BOL.Products;
+using SharedBase;
+using SharedBase.BOL.Products;
 
 using POS.Base.Classes;
 using POS.Base.Plugins;
@@ -142,8 +142,8 @@ namespace POS.Administration.Forms.Products
 
         protected override void SetPermissions()
         {
-            btnSave.Enabled = AppController.ActiveUser.MemberLevel > Library.MemberLevel.AdminReadOnly;
-            btnDelete.Enabled = AppController.ActiveUser.MemberLevel >= Library.MemberLevel.AdminUpdateDelete;
+            btnSave.Enabled = AppController.ActiveUser.MemberLevel > SharedBase.MemberLevel.AdminReadOnly;
+            btnDelete.Enabled = AppController.ActiveUser.MemberLevel >= SharedBase.MemberLevel.AdminUpdateDelete;
         }
 
         #endregion Overridden Methods

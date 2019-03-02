@@ -27,10 +27,10 @@ using System;
 using System.Windows.Forms;
 
 using Languages;
-using Library.Utils;
-using Library.BOL.Basket;
-using Library.BOL.Appointments;
-using Library.BOL.Users;
+using SharedBase.Utils;
+using SharedBase.BOL.Basket;
+using SharedBase.BOL.Appointments;
+using SharedBase.BOL.Users;
 
 using POS.Base.Classes;
 
@@ -201,56 +201,56 @@ namespace POS.Till.Controls
         {
             if (AppController.LocalSettings.ShowPricesWithoutVAT)
             {
-                lblCost.Text = Library.Utils.SharedUtils.FormatMoney(
+                lblCost.Text = SharedBase.Utils.SharedUtils.FormatMoney(
                     _Item.PriceWithDiscount * _Item.Quantity, 
                     AppController.LocalCurrency);
-                lblPrice.Text = Library.Utils.SharedUtils.FormatMoney(_Item.Price, AppController.LocalCurrency);
-                lblVAT.Text = Library.Utils.SharedUtils.FormatMoney(
+                lblPrice.Text = SharedBase.Utils.SharedUtils.FormatMoney(_Item.Price, AppController.LocalCurrency);
+                lblVAT.Text = SharedBase.Utils.SharedUtils.FormatMoney(
                     SharedUtils.VATCalculate(_Item.PriceWithDiscount * _Item.Quantity, _Basket.VATRate),
                     AppController.LocalCurrency);
 
                 toolTip1.SetToolTip(lblCost, String.Format(LanguageStrings.AppCostIncludingVAT,
-                    Library.Utils.SharedUtils.FormatMoney(
+                    SharedBase.Utils.SharedUtils.FormatMoney(
                     (_Item.Price + SharedUtils.BankersRounding(SharedUtils.VATCalculate(_Item.Price, _Basket.VATRate), 2)) * _Item.Quantity, AppController.LocalCurrency), 
                     _Item.Description));
 
                 toolTip1.SetToolTip(lblPrice, String.Format(LanguageStrings.AppItemCostIncludingVAT,
-                    Library.Utils.SharedUtils.FormatMoney(
+                    SharedBase.Utils.SharedUtils.FormatMoney(
                     _Item.Price + SharedUtils.BankersRounding(SharedUtils.VATCalculate(_Item.Price, _Basket.VATRate), 2), AppController.LocalCurrency), _Item.Description));
 
                 toolTip1.SetToolTip(this, String.Format(LanguageStrings.AppItemCostIncludingVAT,
-                    Library.Utils.SharedUtils.FormatMoney(
+                    SharedBase.Utils.SharedUtils.FormatMoney(
                     _Item.Price + SharedUtils.BankersRounding(SharedUtils.VATCalculate(_Item.Price, _Basket.VATRate), 2), AppController.LocalCurrency), _Item.Description));
 
                 toolTip1.SetToolTip(lblDescription, String.Format(LanguageStrings.AppItemCostIncludingVAT,
-                    Library.Utils.SharedUtils.FormatMoney(
+                    SharedBase.Utils.SharedUtils.FormatMoney(
                     _Item.Price + SharedUtils.BankersRounding(SharedUtils.VATCalculate(_Item.Price, _Basket.VATRate), 2), AppController.LocalCurrency), _Item.Description));
             }
             else
             {
-                lblCost.Text = Library.Utils.SharedUtils.FormatMoney(
+                lblCost.Text = SharedBase.Utils.SharedUtils.FormatMoney(
                     (_Item.PriceWithDiscount + SharedUtils.BankersRounding(SharedUtils.VATCalculate(_Item.PriceWithDiscount, _Basket.VATRate), 2)) * _Item.Quantity,
                     AppController.LocalCurrency);
 
-                lblPrice.Text = Library.Utils.SharedUtils.FormatMoney(
+                lblPrice.Text = SharedBase.Utils.SharedUtils.FormatMoney(
                     (_Item.Price + SharedUtils.BankersRounding(SharedUtils.VATCalculate(_Item.Price, _Basket.VATRate), 2)), AppController.LocalCurrency);
 
                 lblVAT.Visible = false;
 
                 toolTip1.SetToolTip(lblCost, String.Format(LanguageStrings.AppCostExcludingVAT,
-                    Library.Utils.SharedUtils.FormatMoney(
+                    SharedBase.Utils.SharedUtils.FormatMoney(
                     _Item.Price * _Item.Quantity, AppController.LocalCurrency), _Item.Description));
 
                 toolTip1.SetToolTip(lblPrice, String.Format(LanguageStrings.AppItemCostExcludingVAT,
-                    Library.Utils.SharedUtils.FormatMoney(_Item.Price,
+                    SharedBase.Utils.SharedUtils.FormatMoney(_Item.Price,
                     AppController.LocalCurrency), _Item.Description));
 
                 toolTip1.SetToolTip(this, String.Format(LanguageStrings.AppItemCostExcludingVAT,
-                    Library.Utils.SharedUtils.FormatMoney(_Item.Price,
+                    SharedBase.Utils.SharedUtils.FormatMoney(_Item.Price,
                     AppController.LocalCurrency), _Item.Description));
 
                 toolTip1.SetToolTip(lblDescription, String.Format(LanguageStrings.AppItemCostExcludingVAT,
-                    Library.Utils.SharedUtils.FormatMoney(_Item.Price,
+                    SharedBase.Utils.SharedUtils.FormatMoney(_Item.Price,
                     AppController.LocalCurrency), _Item.Description));
             }
 

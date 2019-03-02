@@ -26,10 +26,10 @@
 using System;
 using System.Windows.Forms;
 
-using Library;
-using Library.BOL.Accounts;
-using Library.BOL.Orders;
-using Library.BOL.Invoices;
+using SharedBase;
+using SharedBase.BOL.Accounts;
+using SharedBase.BOL.Orders;
+using SharedBase.BOL.Invoices;
 
 using Languages;
 using POS.Base.Classes;
@@ -198,7 +198,7 @@ namespace POS.Invoices.Forms
         {
             pnlOrderItems.Controls.Clear();
 
-            foreach (Library.BOL.Orders.OrderItem item in _CurrentOrder.OrderItems)
+            foreach (SharedBase.BOL.Orders.OrderItem item in _CurrentOrder.OrderItems)
             {
                 InvoiceOrderItem itm = new InvoiceOrderItem(_CurrentOrder, item);
                 itm.Width = pnlOrderItems.Width - 6;
@@ -233,7 +233,7 @@ namespace POS.Invoices.Forms
             {
                 if (InvoiceCancel.InvoiceCancelShow(_CurrentOrder))
                 {
-                    _CurrentOrder = Library.BOL.Orders.Orders.Get(_CurrentOrder.ID);
+                    _CurrentOrder = SharedBase.BOL.Orders.Orders.Get(_CurrentOrder.ID);
                     LoadOrder();
                 }
             }
@@ -268,7 +268,7 @@ namespace POS.Invoices.Forms
                         (string)args.Param5, String.Empty);
                     _CurrentOrder = Orders.Get(_CurrentOrder.ID);
 
-                    Invoice inv = Library.BOL.Invoices.Invoices.Get(_CurrentOrder);
+                    Invoice inv = SharedBase.BOL.Invoices.Invoices.Get(_CurrentOrder);
                     ProcessStatus newStatus = ProcessStatus.Completed;
 
                     foreach (InvoiceItem item in inv.InvoiceItems)

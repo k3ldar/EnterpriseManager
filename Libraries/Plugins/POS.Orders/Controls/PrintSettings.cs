@@ -32,8 +32,8 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 
-using Library.Utils;
-using Library.BOL.Users;
+using SharedBase.Utils;
+using SharedBase.BOL.Users;
 using POS.Base.Classes;
 
 namespace POS.Orders.Controls

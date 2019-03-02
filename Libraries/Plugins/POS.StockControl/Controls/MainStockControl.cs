@@ -30,10 +30,10 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library;
-using Library.BOL.StockControl;
-using Library.BOL.Locations;
-using Library.BOL.Products;
+using SharedBase;
+using SharedBase.BOL.StockControl;
+using SharedBase.BOL.Locations;
+using SharedBase.BOL.Products;
 using POS.Base.Classes;
 using POS.StockControl.Forms;
 
@@ -419,7 +419,7 @@ namespace POS.StockControl.Controls
 
                 if (gridStock.Columns[e.ColumnIndex].Index.Equals(10)) // cost
                 {
-                    e.Value = Library.Utils.SharedUtils.FormatMoney(Shared.Utilities.StrToDecimal(e.Value.ToString(), 0.00m, null),
+                    e.Value = SharedBase.Utils.SharedUtils.FormatMoney(Shared.Utilities.StrToDecimal(e.Value.ToString(), 0.00m, null),
                         AppController.LocalCurrency);
                 }
             }
@@ -589,9 +589,9 @@ namespace POS.StockControl.Controls
         {
             StoreLocation currentLocation = (StoreLocation)cmbLocation.Items[cmbLocation.SelectedIndex];
 
-            if (currentLocation.ID != Library.DAL.DALHelper.StoreID)
+            if (currentLocation.ID != SharedBase.DAL.DALHelper.StoreID)
             {
-                StoreLocation ownLocation = Locations.Get(Library.DAL.DALHelper.StoreID);
+                StoreLocation ownLocation = Locations.Get(SharedBase.DAL.DALHelper.StoreID);
 
                 if (ShowHardConfirm(LanguageStrings.AppStockLocation,
                     String.Format(LanguageStrings.AppStockViewWrongLocation, currentLocation.StoreName,
@@ -601,7 +601,7 @@ namespace POS.StockControl.Controls
                     {
                         StoreLocation location = (StoreLocation)cmbLocation.Items[i];
 
-                        if (location.ID == Library.DAL.DALHelper.StoreID)
+                        if (location.ID == SharedBase.DAL.DALHelper.StoreID)
                         {
                             cmbLocation.SelectedIndex = i;
                             break;
@@ -700,8 +700,8 @@ namespace POS.StockControl.Controls
             {
                 menuContextHideGlobally.Enabled = !item.HideGlobally;
                 menuContextUnhideGlobally.Enabled = item.HideGlobally;
-                menuContextInStock.Enabled = (item.StoreID == Library.DAL.DALHelper.StoreID) && item.OutOfStock;
-                menuContextOutOfStock.Enabled = (item.StoreID == Library.DAL.DALHelper.StoreID) && !item.OutOfStock;
+                menuContextInStock.Enabled = (item.StoreID == SharedBase.DAL.DALHelper.StoreID) && item.OutOfStock;
+                menuContextOutOfStock.Enabled = (item.StoreID == SharedBase.DAL.DALHelper.StoreID) && !item.OutOfStock;
             }
         }
 

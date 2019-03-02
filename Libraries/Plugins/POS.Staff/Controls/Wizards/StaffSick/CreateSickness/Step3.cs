@@ -32,8 +32,8 @@ using System.Text;
 using System.Windows.Forms;
 
 using Languages;
-using Library.BOL.Appointments;
-using Library.BOL.Staff;
+using SharedBase.BOL.Appointments;
+using SharedBase.BOL.Staff;
 
 using POS.Staff.Classes;
 
@@ -80,13 +80,13 @@ namespace POS.Staff.Controls.Wizards.StaffSick.CreateSickness
 
                 foreach (Appointment appt in _staffAppointments)
                 {
-                    if (appt.AppointmentAsDateTime() < DateTime.Now || appt.Status != Library.Enums.AppointmentStatus.Confirmed)
+                    if (appt.AppointmentAsDateTime() < DateTime.Now || appt.Status != SharedBase.Enums.AppointmentStatus.Confirmed)
                         continue;
 
                     switch (appt.Status)
                     {
-                        case Library.Enums.AppointmentStatus.Requested:
-                        case Library.Enums.AppointmentStatus.Confirmed:
+                        case SharedBase.Enums.AppointmentStatus.Requested:
+                        case SharedBase.Enums.AppointmentStatus.Confirmed:
                             return (false);
                     }
                 }

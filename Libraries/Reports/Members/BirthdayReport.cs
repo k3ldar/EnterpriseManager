@@ -33,7 +33,7 @@ using System.Windows.Forms;
 
 using SharedControls.Forms;
 
-using Library.BOL.Users;
+using SharedBase.BOL.Users;
 
 namespace Reports.Members
 {
@@ -70,7 +70,7 @@ namespace Reports.Members
             }
             catch (Exception err)
             {
-                Library.ErrorHandling.LogError(System.Reflection.MethodBase.GetCurrentMethod(), err);
+                SharedBase.ErrorHandling.LogError(System.Reflection.MethodBase.GetCurrentMethod(), err);
                 throw;
             }
         }

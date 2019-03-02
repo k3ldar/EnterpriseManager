@@ -30,9 +30,9 @@ using System.Windows.Forms;
 
 using SharedControls.Forms;
 using Languages;
-using Library;
-using Library.BOL.Helpdesk;
-using Library.BOL.ValidationChecks;
+using SharedBase;
+using SharedBase.BOL.Helpdesk;
+using SharedBase.BOL.ValidationChecks;
 
 using POS.Base.Classes;
 using POS.Base.Plugins;

@@ -1,4 +1,3 @@
-T:\ShifooMain\Libraries\SharedBase\obj\Debug\net461\SharedBaseCore.csprojAssemblyReference.cache
 T:\ShifooMain\Libraries\SharedBase\obj\Debug\net461\SharedBaseCore.csproj.CoreCompileInputs.cache
 T:\ShifooMain\Libraries\SharedBase\obj\Debug\net461\SharedBaseCore.AssemblyInfoInputs.cache
 T:\ShifooMain\Libraries\SharedBase\obj\Debug\net461\SharedBaseCore.AssemblyInfo.cs

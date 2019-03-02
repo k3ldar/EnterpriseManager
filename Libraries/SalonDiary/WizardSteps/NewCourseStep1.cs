@@ -36,9 +36,9 @@ using SalonDiary.Classes;
 using SharedControls.WizardBase;
 
 using Languages;
-using Library.BOL.Users;
-using Library.BOL.Therapists;
-using Library.BOL.Training;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Therapists;
+using SharedBase.BOL.Training;
 
 namespace SalonDiary.WizardSteps
 {

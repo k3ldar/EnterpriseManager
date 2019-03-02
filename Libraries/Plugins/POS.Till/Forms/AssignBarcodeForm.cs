@@ -27,7 +27,7 @@ using System;
 using System.Windows.Forms;
 
 using Languages;
-using Library.BOL.Products;
+using SharedBase.BOL.Products;
 using POS.Base.Classes;
 
 namespace POS.Till.Forms

@@ -31,8 +31,8 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 
-using Library.BOL.Salons;
-using Library.BOL.Websites;
+using SharedBase.BOL.Salons;
+using SharedBase.BOL.Websites;
 
 using POS.Base.Classes;
 

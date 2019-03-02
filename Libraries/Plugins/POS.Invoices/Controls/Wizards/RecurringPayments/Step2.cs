@@ -28,8 +28,8 @@ using System.Windows.Forms;
 using SharedControls.WizardBase;
 
 using Languages;
-using Library.BOL.Products;
-using Library.BOL.Invoices;
+using SharedBase.BOL.Products;
+using SharedBase.BOL.Invoices;
 
 using POS.Base.Classes;
 using POS.Invoices.Classes;

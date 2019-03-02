@@ -31,9 +31,9 @@ using System.Windows.Forms;
 using SharedControls.Forms;
 using Languages;
 
-using Library;
-using Library.BOL.Products;
-using Library.BOL.Statistics;
+using SharedBase;
+using SharedBase.BOL.Products;
+using SharedBase.BOL.Statistics;
 
 using POS.Base.Classes;
 using POS.Base.Plugins;
@@ -385,7 +385,7 @@ namespace POS.Administration
         private void EditProduct(Product product)
         {
             AdminProductEdit productEdit = new AdminProductEdit(AppController.ActiveUser,
-                new Library.WebsiteAdministration(AppController.ActiveUser),
+                new SharedBase.WebsiteAdministration(AppController.ActiveUser),
                 product);
             try
             {

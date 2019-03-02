@@ -31,7 +31,7 @@ using System.Windows.Forms;
 using SharedControls.Forms;
 using Languages;
 
-using Library;
+using SharedBase;
 
 using POS.Base.Classes;
 using POS.Base.Plugins;

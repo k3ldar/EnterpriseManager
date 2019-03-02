@@ -29,8 +29,8 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library;
-using Library.BOL.Products;
+using SharedBase;
+using SharedBase.BOL.Products;
 
 using POS.Administration.Classes;
 

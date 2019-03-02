@@ -34,7 +34,7 @@ using System.Windows.Forms;
 
 using Languages;
 using SharedControls.Forms;
-using Library.BOL.Basket;
+using SharedBase.BOL.Basket;
 
 namespace POS.Till.Forms
 {

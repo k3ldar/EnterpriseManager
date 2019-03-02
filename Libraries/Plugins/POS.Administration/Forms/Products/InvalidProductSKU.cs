@@ -27,7 +27,7 @@ using System;
 using System.Windows.Forms;
 
 using Languages;
-using Library.BOL.Statistics;
+using SharedBase.BOL.Statistics;
 
 #pragma warning disable IDE0017
 

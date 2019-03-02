@@ -31,8 +31,8 @@ using System.IO;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 
-using Library.Utils;
-using Library.BOL.Helpdesk;
+using SharedBase.Utils;
+using SharedBase.BOL.Helpdesk;
 
 namespace Reports.Helpdesk
 {

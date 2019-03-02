@@ -27,7 +27,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-using Library.BOL.Products;
+using SharedBase.BOL.Products;
 
 namespace POS.Base.Classes
 {

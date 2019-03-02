@@ -32,7 +32,7 @@ using System.Text;
 using System.Windows.Forms;
 
 using Languages;
-using Library.BOL.Staff;
+using SharedBase.BOL.Staff;
 
 using POS.Staff.Classes;
 
@@ -109,7 +109,7 @@ namespace POS.Staff.Controls.Wizards.StaffSick.CreateSickness
             {
                 cmbStaffMember.Items.Clear();
 
-                Library.BOL.Staff.StaffMembers allStaff = Library.BOL.Staff.StaffMembers.All();
+                SharedBase.BOL.Staff.StaffMembers allStaff = SharedBase.BOL.Staff.StaffMembers.All();
 
                 foreach (StaffMember member in allStaff)
                 {

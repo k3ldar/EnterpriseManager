@@ -32,7 +32,7 @@ using System.Text;
 using System.Windows.Forms;
 
 using Languages;
-using Library;
+using SharedBase;
 using POS.Base.Classes;
 
 namespace POS.Staff.Controls.Settings
@@ -63,15 +63,15 @@ namespace POS.Staff.Controls.Settings
         {
             if (rbContinuousPayments.Checked)
             {
-                Library.LibraryHelperClass.SettingsSet(StringConstants.COMMISSION_CLIENT_MONTHS, udMonthsToWait.Value.ToString());
+                SharedBase.LibraryHelperClass.SettingsSet(StringConstants.COMMISSION_CLIENT_MONTHS, udMonthsToWait.Value.ToString());
             }
             else
             {
                 string m = Convert.ToString(dtpYearly.Value.Month + 20);
                 string d = Convert.ToString(dtpYearly.Value.Day + 20);
 
-                Library.LibraryHelperClass.SettingsSet(StringConstants.COMMISSION_CLIENT_MONTHS, m + d);
-                Library.LibraryHelperClass.SettingsSet(StringConstants.COMMISSION_CLIENT_MIN_WAiT, udMonthsToWait.Value.ToString());
+                SharedBase.LibraryHelperClass.SettingsSet(StringConstants.COMMISSION_CLIENT_MONTHS, m + d);
+                SharedBase.LibraryHelperClass.SettingsSet(StringConstants.COMMISSION_CLIENT_MIN_WAiT, udMonthsToWait.Value.ToString());
             }
 
             return (base.SettingsSave());

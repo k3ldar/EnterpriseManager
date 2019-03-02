@@ -31,11 +31,11 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-using Library.BOL.Locations;
-using Library;
-using Library.BOL.StockControl;
-using Library.BOL.Users;
-using Library.BOL.Products;
+using SharedBase.BOL.Locations;
+using SharedBase;
+using SharedBase.BOL.StockControl;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Products;
 
 using SharedControls.Forms;
 
@@ -84,7 +84,7 @@ namespace Reports.Stock
             }
             catch (Exception err)
             {
-                Library.ErrorHandling.LogError(System.Reflection.MethodBase.GetCurrentMethod(), err);
+                SharedBase.ErrorHandling.LogError(System.Reflection.MethodBase.GetCurrentMethod(), err);
                 throw;
             }
         }
@@ -171,12 +171,12 @@ namespace Reports.Stock
         {
             StoreLocation location = (StoreLocation)cmbStoreLocations.SelectedItem;
             PdfStockReport report = null;
-            Library.BOL.StockControl.Stock stock = null;
+            SharedBase.BOL.StockControl.Stock stock = null;
 
             if (cmbStockTypes.SelectedIndex == 0)
-                stock = Library.BOL.StockControl.Stock.Get(_activeUser, location.ID);
+                stock = SharedBase.BOL.StockControl.Stock.Get(_activeUser, location.ID);
             else
-                stock = Library.BOL.StockControl.Stock.Get(_activeUser, location.ID, ((ProductCostType)cmbStockTypes.SelectedItem).ID);
+                stock = SharedBase.BOL.StockControl.Stock.Get(_activeUser, location.ID, ((ProductCostType)cmbStockTypes.SelectedItem).ID);
 
 
             if (cmbStockTypes.SelectedIndex > 0)

@@ -27,7 +27,7 @@ using System;
 using System.Windows.Forms;
 
 using Languages;
-using Library.Utils;
+using SharedBase.Utils;
 
 using POS.Base.Classes;
 using POS.Base.Forms;
@@ -43,7 +43,7 @@ namespace POS.Administration.Forms.Products
         public AdminPriceCalculator()
         {
             InitializeComponent();
-            txtVATAmount.Text = Library.DAL.DALHelper.DefaultVATRate.ToString();
+            txtVATAmount.Text = SharedBase.DAL.DALHelper.DefaultVATRate.ToString();
         }
 
         #region Static Methods

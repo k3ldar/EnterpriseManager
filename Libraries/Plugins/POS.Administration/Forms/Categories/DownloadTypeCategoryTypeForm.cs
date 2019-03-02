@@ -29,7 +29,7 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library.BOL.Downloads;
+using SharedBase.BOL.Downloads;
 
 using POS.Administration.Classes;
 

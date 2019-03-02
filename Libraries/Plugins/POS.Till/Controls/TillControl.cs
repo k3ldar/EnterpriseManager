@@ -32,15 +32,15 @@ using System.Windows.Forms;
 using Languages;
 
 using Reports.Accounts;
-using Library.BOL.Accounts;
-using Library.BOL.Appointments;
-using Library.BOL.Users;
-using Library.BOL.Products;
-using Library.BOL.Basket;
-using Library.BOL.Orders;
-using Library.BOL.Invoices;
-using Library.BOL.Vouchers;
-using Library;
+using SharedBase.BOL.Accounts;
+using SharedBase.BOL.Appointments;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Products;
+using SharedBase.BOL.Basket;
+using SharedBase.BOL.Orders;
+using SharedBase.BOL.Invoices;
+using SharedBase.BOL.Vouchers;
+using SharedBase;
 
 using SharedControls.Forms;
 using SharedControls.Classes;
@@ -824,7 +824,7 @@ namespace POS.Till.Controls
             }
 
             if (Result && AppController.LocalSettings.HideProductsWithZeroStock &&
-                (cost.GetStockLevel(Library.DAL.DALHelper.StoreID) < 1))
+                (cost.GetStockLevel(SharedBase.DAL.DALHelper.StoreID) < 1))
             {
                 Result = false;
             }
@@ -1194,7 +1194,7 @@ namespace POS.Till.Controls
             catch (Exception err)
             {
                 ShowError(LanguageStrings.AppError, String.Format(LanguageStrings.AppTillErrorTakingPayment, err.Message));
-                Library.ErrorHandling.LogError(System.Reflection.MethodBase.GetCurrentMethod(), err, sender, e);
+                SharedBase.ErrorHandling.LogError(System.Reflection.MethodBase.GetCurrentMethod(), err, sender, e);
             }
             finally
             {
@@ -1253,7 +1253,7 @@ namespace POS.Till.Controls
                     PDFInvoice invPDF = new PDFInvoice(inv, AppController.LocalSettings.InvoiceHeaderRight,
                         AppController.LocalSettings.InvoiceFooter, AppController.LocalSettings.InvoiceAddress,
                         AppController.LocalSettings.InvoiceVATRegistrationNumber, AppController.LocalSettings.CustomCulture,
-                        Library.DAL.DALHelper.HideVATOnWebsiteAndInvoices,
+                        SharedBase.DAL.DALHelper.HideVATOnWebsiteAndInvoices,
                         AppController.LocalSettings.InvoiceShowProductDiscount, String.Empty, String.Empty, 1,
                         AppController.LocalSettings.InvoicePrefix);
                     invPDF.Print();

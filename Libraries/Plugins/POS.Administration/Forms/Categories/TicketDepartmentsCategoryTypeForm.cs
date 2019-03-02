@@ -29,7 +29,7 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library.BOL.Helpdesk;
+using SharedBase.BOL.Helpdesk;
 
 using POS.Administration.Classes;
 

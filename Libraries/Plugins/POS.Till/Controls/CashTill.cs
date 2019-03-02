@@ -32,8 +32,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-using Library.Utils;
-using Library.BOL.Countries;
+using SharedBase.Utils;
+using SharedBase.BOL.Countries;
 using POS.Base.Classes;
 
 namespace POS.Till.Controls
@@ -55,7 +55,7 @@ namespace POS.Till.Controls
             InitializeComponent();
 
             if (!DesignMode)
-                lblChangeDue.Text = Library.Utils.SharedUtils.FormatMoney(0.0m, AppController.LocalCurrency);
+                lblChangeDue.Text = SharedBase.Utils.SharedUtils.FormatMoney(0.0m, AppController.LocalCurrency);
         }
 
         #endregion Constructors
@@ -91,7 +91,7 @@ namespace POS.Till.Controls
             if (!String.IsNullOrEmpty(txtTendered.Text))
             {
                 decimal total = Convert.ToDecimal(txtTendered.Text) - _totalDue;
-                lblChangeDue.Text = Library.Utils.SharedUtils.FormatMoney(total < 0.00m ? 0.00m : total, AppController.LocalCurrency);
+                lblChangeDue.Text = SharedBase.Utils.SharedUtils.FormatMoney(total < 0.00m ? 0.00m : total, AppController.LocalCurrency);
             }
         }
 
@@ -226,7 +226,7 @@ namespace POS.Till.Controls
 
                 if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
                 {
-                    lblAmountDueTotal.Text = Library.Utils.SharedUtils.FormatMoney(_totalDue, AppController.LocalCurrency);
+                    lblAmountDueTotal.Text = SharedBase.Utils.SharedUtils.FormatMoney(_totalDue, AppController.LocalCurrency);
                     RefreshChangeDue(true);
                 }
             }

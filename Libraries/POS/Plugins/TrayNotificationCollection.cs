@@ -27,7 +27,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-using Library.BOL;
+using SharedBase.BOL;
 
 namespace POS.Base.Plugins
 {

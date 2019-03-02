@@ -28,7 +28,7 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library.BOL.Users;
+using SharedBase.BOL.Users;
 using POS.Base.Classes;
 
 #pragma warning disable IDE1005 // Delegate invocation can be simplified

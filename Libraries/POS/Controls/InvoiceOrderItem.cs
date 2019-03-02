@@ -32,10 +32,10 @@ using System.Text;
 using System.Windows.Forms;
 
 using Languages;
-using Library;
-using Library.Utils;
-using Library.BOL.Invoices;
-using Library.BOL.Orders;
+using SharedBase;
+using SharedBase.Utils;
+using SharedBase.BOL.Invoices;
+using SharedBase.BOL.Orders;
 using POS.Base.Classes;
 
 namespace POS.Base.Controls
@@ -63,7 +63,7 @@ namespace POS.Base.Controls
             lblQuantity.Text = item.Quantity.ToString();
         }
 
-        public InvoiceOrderItem(Order order, Library.BOL.Orders.OrderItem item)
+        public InvoiceOrderItem(Order order, SharedBase.BOL.Orders.OrderItem item)
         {
             InitializeComponent();
 

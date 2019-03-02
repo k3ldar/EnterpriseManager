@@ -28,8 +28,8 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library;
-using Library.BOL.Treatments;
+using SharedBase;
+using SharedBase.BOL.Treatments;
 
 using POS.Base.Classes;
 

@@ -29,8 +29,8 @@ using System.Globalization;
 
 using Languages;
 
-using Library;
-using Library.BOL.Suppliers;
+using SharedBase;
+using SharedBase.BOL.Suppliers;
 
 using POS.Base;
 using POS.Base.Classes;

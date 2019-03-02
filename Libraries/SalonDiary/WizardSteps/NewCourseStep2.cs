@@ -32,7 +32,7 @@ using System.Text;
 using System.Windows.Forms;
 
 using Languages;
-using Library.Utils;
+using SharedBase.Utils;
 
 using SalonDiary.Classes;
 

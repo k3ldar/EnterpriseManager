@@ -31,10 +31,10 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-using Library;
-using Library.Utils;
-using Library.BOL.Invoices;
-using Library.BOL.Users;
+using SharedBase;
+using SharedBase.Utils;
+using SharedBase.BOL.Invoices;
+using SharedBase.BOL.Users;
 
 using Languages;
 
@@ -139,7 +139,7 @@ namespace POS.Invoices.Forms
             table.Columns.Add("ID", typeof(Int64));
             table.Columns.Add("Name", typeof(string));
 
-            Library.BOL.Users.Users staff = Library.BOL.Users.User.StaffMembers(false);
+            SharedBase.BOL.Users.Users staff = SharedBase.BOL.Users.User.StaffMembers(false);
 
             foreach (User staffMember in staff)
             {

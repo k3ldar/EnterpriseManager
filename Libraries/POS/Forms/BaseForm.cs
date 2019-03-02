@@ -31,7 +31,7 @@ using System.Diagnostics;
 using System.Xml.Linq;
 
 using Languages;
-using Library.BOL.Products;
+using SharedBase.BOL.Products;
 using POS.Base.Classes;
 
 namespace POS.Base.Forms

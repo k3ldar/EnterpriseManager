@@ -28,9 +28,9 @@ using System.Drawing;
 using System.Windows.Forms;
 
 using Languages;
-using Library.BOL.Affiliate;
-using Library.BOL.Users;
-using Library.Utils;
+using SharedBase.BOL.Affiliate;
+using SharedBase.BOL.Users;
+using SharedBase.Utils;
 
 namespace POS.Customers.Forms
 {
@@ -197,7 +197,7 @@ namespace POS.Customers.Forms
                     case 7:
                     case 8:
                     case 9:
-                        e.Value = Library.Utils.SharedUtils.FormatMoney((decimal)e.Value, POS.Base.Classes.AppController.LocalCurrency);
+                        e.Value = SharedBase.Utils.SharedUtils.FormatMoney((decimal)e.Value, POS.Base.Classes.AppController.LocalCurrency);
 
                         break;
                 }

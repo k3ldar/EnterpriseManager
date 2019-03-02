@@ -32,7 +32,7 @@ using System.Windows.Forms;
 
 using SharedControls.Forms;
 using Languages;
-using Library;
+using SharedBase;
 using POS.Base.Classes;
 using POS.Base.Plugins;
 
@@ -266,7 +266,7 @@ namespace POS.Marketing
 
                 string xml = Shared.Utilities.CurrentPath(true) + StringConstants.FILE_MARKETING;
 
-                int templateCount = Library.XML.GetXMLValue(
+                int templateCount = SharedBase.XML.GetXMLValue(
                     xml, StringConstants.XML_MARKETING, StringConstants.XML_MARKETING_TEMPLATES, 1);
 
                 for (int i = 1; i <= templateCount; i++)
@@ -291,7 +291,7 @@ namespace POS.Marketing
             }
             catch (Exception err)
             {
-                Library.ErrorHandling.LogError(MethodBase.GetCurrentMethod(), err);
+                SharedBase.ErrorHandling.LogError(MethodBase.GetCurrentMethod(), err);
             }
         }
 

@@ -33,10 +33,10 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library.BOL.Users;
-using Library.BOL.Appointments;
-using Library.BOL.Therapists;
-using Library.Utils;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Appointments;
+using SharedBase.BOL.Therapists;
+using SharedBase.Utils;
 using POS.Base.Classes;
 
 namespace POS.Diary.Forms
@@ -108,7 +108,7 @@ namespace POS.Diary.Forms
 
             //clone the appointment
             Appointment cloned = new Appointment(-1, _appointment.EmployeeID, Date, Newtime,
-                _appointment.Duration, Library.Enums.AppointmentStatus.Requested, 
+                _appointment.Duration, SharedBase.Enums.AppointmentStatus.Requested, 
                 _appointment.AppointmentType, _appointment.TreatmentID, _appointment.TreatmentName, 
                 _appointment.UserID, _appointment.UserName,
                 _appointment.Notes, -1, DateTime.Now, DateTime.Now, -1, DateTime.Now.AddYears(-100));
@@ -117,7 +117,7 @@ namespace POS.Diary.Forms
             foreach (Appointment sub in _appointment.ChildAppointments)
             {
                 Appointment clonedChild = new Appointment(-1, sub.EmployeeID, Date, sub.StartTime,
-                    sub.Duration, Library.Enums.AppointmentStatus.Requested, 
+                    sub.Duration, SharedBase.Enums.AppointmentStatus.Requested, 
                     sub.AppointmentType,
                     sub.TreatmentID, sub.TreatmentName, sub.UserID, sub.UserName,
                     sub.Notes, cloned.ID, DateTime.Now, DateTime.Now, -1, DateTime.Now.AddYears(-100));

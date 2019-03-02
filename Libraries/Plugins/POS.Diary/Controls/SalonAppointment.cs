@@ -31,9 +31,9 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 
-using Library.Utils;
-using Library.BOL.Therapists;
-using Library.BOL.Appointments;
+using SharedBase.Utils;
+using SharedBase.BOL.Therapists;
+using SharedBase.BOL.Appointments;
 
 using Languages;
 using POS.Base.Classes;

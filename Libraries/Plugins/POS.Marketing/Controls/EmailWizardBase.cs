@@ -30,10 +30,10 @@ using System.Drawing;
 using Languages;
 
 using Shared.Classes;
-using Library;
-using Library.BOL.Mail;
-using Library.BOL.Campaigns;
-using Library.BOL.Websites;
+using SharedBase;
+using SharedBase.BOL.Mail;
+using SharedBase.BOL.Campaigns;
+using SharedBase.BOL.Websites;
 
 using POS.Base.Classes;
 
@@ -455,7 +455,7 @@ namespace POS.Marketing.Controls
             return (String.Format(StringConstants.SETTINGS_CAMPAIGN_ONLINE_IMAGE_LOCATION, 
                 settings.URL, 
                 settings.CampaignName,
-                Library.DAL.DALHelper.StoreID));
+                SharedBase.DAL.DALHelper.StoreID));
         }
 
         private string GetRemoteLocation(EmailWizardSettings settings)
@@ -463,7 +463,7 @@ namespace POS.Marketing.Controls
             return (String.Format(StringConstants.SETTINGS_CAMPAIGN_ONLINE_IMAGE_LOCATION,
                 settings.URL.Replace(StringConstants.BASE_WEB_HTTP, String.Empty).Replace(StringConstants.BASE_WEB_WWW, String.Empty), 
                 settings.CampaignName,
-                Library.DAL.DALHelper.StoreID));
+                SharedBase.DAL.DALHelper.StoreID));
         }
 
         private string GetRemoteImageName(EmailWizardSettings settings)

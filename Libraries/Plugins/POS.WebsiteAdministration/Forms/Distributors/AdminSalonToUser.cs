@@ -33,10 +33,10 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library;
-using Library.Utils;
-using Library.BOL.Users;
-using Library.BOL.Salons;
+using SharedBase;
+using SharedBase.Utils;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Salons;
 
 using POS.Base.Classes;
 
@@ -127,7 +127,7 @@ namespace POS.WebsiteAdministration.Forms.Salons
             //clear table and create new header row
             cmbSalons.Items.Clear();
 
-            Library.BOL.Salons.Salons salons = null;
+            SharedBase.BOL.Salons.Salons salons = null;
 
             if (cbUnassigned.Checked)
                 salons = AppController.Administration.SalonsUnassigned();
@@ -142,7 +142,7 @@ namespace POS.WebsiteAdministration.Forms.Salons
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            Library.BOL.Salons.Salon salon = (Library.BOL.Salons.Salon)cmbSalons.SelectedItem;
+            SharedBase.BOL.Salons.Salon salon = (SharedBase.BOL.Salons.Salon)cmbSalons.SelectedItem;
             User user = (User)cmbUsers.SelectedItem;
 
             if (user != null & salon != null)
@@ -156,7 +156,7 @@ namespace POS.WebsiteAdministration.Forms.Salons
 
         private void cmbSalons_Format(object sender, ListControlConvertEventArgs e)
         {
-            Library.BOL.Salons.Salon salon = (Library.BOL.Salons.Salon)e.ListItem;
+            SharedBase.BOL.Salons.Salon salon = (SharedBase.BOL.Salons.Salon)e.ListItem;
             e.Value = salon.Name;
         }
 

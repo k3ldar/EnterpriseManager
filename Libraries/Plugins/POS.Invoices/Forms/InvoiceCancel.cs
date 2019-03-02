@@ -26,9 +26,9 @@
 using System;
 using System.Windows.Forms;
 using Languages;
-using Library.BOL.Invoices;
-using Library.BOL.Orders;
-using Library.BOL.StockControl;
+using SharedBase.BOL.Invoices;
+using SharedBase.BOL.Orders;
+using SharedBase.BOL.StockControl;
 
 #pragma warning disable IDE1005 // Delegate invocation can be simplified
 #pragma warning disable IDE0017 // object initialization can be simplified
@@ -57,9 +57,9 @@ namespace POS.Invoices.Forms
         public InvoiceCancel(Order order)
             :this()
         {
-            gbMoveStockBackIn.Enabled = order.ProcessStatus == Library.ProcessStatus.Dispatched;
+            gbMoveStockBackIn.Enabled = order.ProcessStatus == SharedBase.ProcessStatus.Dispatched;
 
-            _invoice = Library.BOL.Invoices.Invoices.Get(order);
+            _invoice = SharedBase.BOL.Invoices.Invoices.Get(order);
             _order = order;
             LoadStockReturnItems();
 
@@ -72,8 +72,8 @@ namespace POS.Invoices.Forms
             _invoice = invoice;
             _order = Orders.Get(invoice.OrderID);
 
-            gbMoveStockBackIn.Enabled = invoice.ProcessStatus == Library.ProcessStatus.Dispatched ||
-                invoice.ProcessStatus == Library.ProcessStatus.PartialDispatch;
+            gbMoveStockBackIn.Enabled = invoice.ProcessStatus == SharedBase.ProcessStatus.Dispatched ||
+                invoice.ProcessStatus == SharedBase.ProcessStatus.PartialDispatch;
 
             LoadStockReturnItems();
 
@@ -171,22 +171,22 @@ namespace POS.Invoices.Forms
             if (_invoice == null)
                 return;
 
-            if (_invoice.ProcessStatus == Library.ProcessStatus.Dispatched ||
-                _invoice.ProcessStatus == Library.ProcessStatus.PartialDispatch)
+            if (_invoice.ProcessStatus == SharedBase.ProcessStatus.Dispatched ||
+                _invoice.ProcessStatus == SharedBase.ProcessStatus.PartialDispatch)
             {
                 _stock = new Stock();
 
                 foreach (InvoiceItem item in _invoice.InvoiceItems)
                 {
-                    if (item.ItemStatus == Library.ProcessItemStatus.Dispatched)
+                    if (item.ItemStatus == SharedBase.ProcessItemStatus.Dispatched)
                     {
                         _stock.Add(new StockItem(item.ItemID, item.SKU, item.Description, String.Empty, 0, 0, item.Quantity,
-                            Library.DAL.DALHelper.StoreID, item.ProductCostType, false, false, false, String.Empty));
+                            SharedBase.DAL.DALHelper.StoreID, item.ProductCostType, false, false, false, String.Empty));
                     }
                     else
                     {
                         _stock.Add(new StockItem(item.ItemID, item.SKU, item.Description, String.Empty, 0, 0, item.Quantity,
-                            Library.DAL.DALHelper.StoreID, item.ProductCostType, false, false, false, String.Empty));
+                            SharedBase.DAL.DALHelper.StoreID, item.ProductCostType, false, false, false, String.Empty));
                     }
                 }
             }

@@ -33,10 +33,10 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library;
-using Library.Utils;
-using Library.BOL.Users;
-using Library.BOL.Coupons;
+using SharedBase;
+using SharedBase.Utils;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Coupons;
 
 using POS.Base;
 using POS.Base.Classes;
@@ -138,7 +138,7 @@ namespace POS.Administration.Forms.DiscountCoupons
                                 break;
                             case Enums.InvoiceVoucherType.Value:
                                 type = String.Format(StringConstants.PREFIX_NO_SPACE,
-                                    Library.Utils.SharedUtils.FormatMoney(coupon.Discount, AppController.LocalCurrency));
+                                    SharedBase.Utils.SharedUtils.FormatMoney(coupon.Discount, AppController.LocalCurrency));
                                 break;
                         }
 

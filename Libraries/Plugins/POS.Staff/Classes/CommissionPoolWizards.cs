@@ -28,7 +28,7 @@ using System.Collections.Generic;
 using System.Text;
 
 using Languages;
-using Library.BOL.Staff;
+using SharedBase.BOL.Staff;
 using SharedControls.WizardBase;
 
 namespace POS.Staff.Classes

@@ -26,9 +26,9 @@
 using System;
 using Languages;
 
-using Library;
-using Library.BOL.Invoices;
-using Library.BOL.Statistics;
+using SharedBase;
+using SharedBase.BOL.Invoices;
+using SharedBase.BOL.Statistics;
 
 using POS.Base.Classes;
 using POS.Base.Plugins;

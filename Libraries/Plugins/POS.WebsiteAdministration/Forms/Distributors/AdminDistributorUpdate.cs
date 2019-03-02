@@ -26,7 +26,7 @@
 using System;
 
 using Languages;
-using Library.BOL.Salons;
+using SharedBase.BOL.Salons;
 
 using POS.Base.Classes;
 

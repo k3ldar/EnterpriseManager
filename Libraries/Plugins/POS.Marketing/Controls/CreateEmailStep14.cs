@@ -29,7 +29,7 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library.BOL.Campaigns;
+using SharedBase.BOL.Campaigns;
 
 using POS.Base.Classes;
 using POS.Marketing.Classes;

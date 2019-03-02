@@ -28,8 +28,8 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library;
-using Library.BOL.Countries;
+using SharedBase;
+using SharedBase.BOL.Countries;
 
 namespace POS.WebsiteAdministration.Forms.CountryAdmin
 {

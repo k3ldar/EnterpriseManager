@@ -31,9 +31,9 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 
-using Library.BOL.Salons;
-using Library.BOL.Training;
-using Library.Utils;
+using SharedBase.BOL.Salons;
+using SharedBase.BOL.Training;
+using SharedBase.Utils;
 
 using POS.Base.Classes;
 

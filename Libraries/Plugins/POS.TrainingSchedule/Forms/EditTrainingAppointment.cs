@@ -28,9 +28,9 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library.BOL.Appointments;
-using Library.BOL.Users;
-using Library.BOL.Training;
+using SharedBase.BOL.Appointments;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Training;
 using POS.Base.Classes;
 
 using POS.TrainingSchedule.Controls;

@@ -429,7 +429,7 @@ namespace POS.Base.Controls
                 {
                     string settingName = String.Format(StringConstants.TRACKING_REFERENCE,
                         AppController.ActiveUser.ID.ToString(), _homeTab.GetName(), "P");
-                    int userPosition = Library.LibraryHelperClass.SettingsGetInt(settingName, 10000);
+                    int userPosition = SharedBase.LibraryHelperClass.SettingsGetInt(settingName, 10000);
 
                     if (userPosition == 10000)
                     {

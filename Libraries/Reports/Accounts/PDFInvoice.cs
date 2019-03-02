@@ -32,8 +32,8 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 
 using Languages;
-using Library.BOL.Invoices;
-using Library.BOL.Coupons;
+using SharedBase.BOL.Invoices;
+using SharedBase.BOL.Coupons;
 
 #pragma warning disable IDE0005
 #pragma warning disable IDE0017
@@ -292,7 +292,7 @@ namespace Reports.Accounts
 
         private void PrintPromotionCode(Document document, Coupon coupon)
         {
-            if (coupon != null && coupon.VoucherType == Library.Enums.InvoiceVoucherType.Footprint)
+            if (coupon != null && coupon.VoucherType == SharedBase.Enums.InvoiceVoucherType.Footprint)
             {
                 Paragraph p = new Paragraph(String.Format("{0}: {1}", LanguageStrings.PromotionCode, coupon.Name), FontText);
                 document.Add(p);
@@ -662,7 +662,7 @@ namespace Reports.Accounts
 
             if (inv.Discount > 0 || !String.IsNullOrEmpty(inv.CouponName))
             {
-                if (inv.VoucherType == Library.Enums.InvoiceVoucherType.Percent)
+                if (inv.VoucherType == SharedBase.Enums.InvoiceVoucherType.Percent)
                 {
                     tblFooter.AddCell(NewCell(new Phrase(String.Format("{1} ({2}) @ {0}%", inv.Discount,
                         Languages.LanguageStrings.Discount, inv.CouponName), FontTextSmall), 1, 0,
@@ -713,7 +713,7 @@ namespace Reports.Accounts
 
             if (cpn != null)
 
-            if (cpn != null && cpn.VoucherType == Library.Enums.InvoiceVoucherType.Footprint)
+            if (cpn != null && cpn.VoucherType == SharedBase.Enums.InvoiceVoucherType.Footprint)
             {
                 if (String.IsNullOrEmpty(notes))
                 {
@@ -797,7 +797,7 @@ namespace Reports.Accounts
 
             if (inv.Discount > 0 || !String.IsNullOrEmpty(inv.CouponName))
             {
-                if (inv.VoucherType == Library.Enums.InvoiceVoucherType.Percent)
+                if (inv.VoucherType == SharedBase.Enums.InvoiceVoucherType.Percent)
                 {
                     tblAddr.AddCell(NewCell(new Phrase(String.Format("{1} ({2}) @ {0}%", inv.Discount, 
                         Languages.LanguageStrings.Discount, inv.CouponName), FontText), 5, false, 2));

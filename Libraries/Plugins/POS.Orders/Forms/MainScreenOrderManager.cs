@@ -27,10 +27,10 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-using Library;
-using Library.BOL.Invoices;
-using Library.BOL.Coupons;
-using Library.BOL.Statistics;
+using SharedBase;
+using SharedBase.BOL.Invoices;
+using SharedBase.BOL.Coupons;
+using SharedBase.BOL.Statistics;
 
 using Languages;
 
@@ -38,7 +38,7 @@ using Reports.Accounts;
 using POS.Base.Classes;
 using POS.Base.Controls;
 using POS.Base.Labels;
-using Library.BOL.StockControl;
+using SharedBase.BOL.StockControl;
 using SharedControls.Classes;
 
 #pragma warning disable IDE1005 // Delegate invocation can be simplified
@@ -54,7 +54,7 @@ namespace POS.Orders.Forms
         #region Private Members
 
         private WebsiteAdministration Admin;
-        private Library.BOL.Invoices.Invoices _Invoices;
+        private SharedBase.BOL.Invoices.Invoices _Invoices;
         private Invoice _currentInvoice;
         private bool _Editing = false;
         private int _Total;
@@ -74,7 +74,7 @@ namespace POS.Orders.Forms
 
             cbIgnoreChecks.Checked = false;
             cbIgnoreChecks.Visible = AppController.ActiveUser.MemberLevel == MemberLevel.Admin || AppController.ActiveUser.MemberLevel == MemberLevel.AdminUpdateDelete;
-            Admin = new Library.WebsiteAdministration(AppController.ActiveUser);
+            Admin = new SharedBase.WebsiteAdministration(AppController.ActiveUser);
         }
 
         #endregion Constructors
@@ -332,7 +332,7 @@ namespace POS.Orders.Forms
                 AppController.LocalSettings.InvoiceFooter, AppController.LocalSettings.InvoiceAddress,
                 AppController.LocalSettings.InvoiceVATRegistrationNumber,
                 AppController.LocalSettings.CustomCulture,
-                Library.DAL.DALHelper.HideVATOnWebsiteAndInvoices,
+                SharedBase.DAL.DALHelper.HideVATOnWebsiteAndInvoices,
                 AppController.LocalSettings.InvoiceShowProductDiscount, 
                 AppController.LocalSettings.InvoiceFooterPaid, 
                 AppController.LocalSettings.OrderManagerOrderPreparedBy, 

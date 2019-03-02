@@ -87,7 +87,7 @@ namespace POS.Staff.Controls.Wizards.Commission.ClientGenerate
                 MainWizardForm.UpdateUI();
 
                 // rebuild data 
-                Library.BOL.Staff.StaffCommission.RebuildClientData(mcDateFrom.SelectionStart, mcDateTo.SelectionEnd, cbReplaceData.Checked);
+                SharedBase.BOL.Staff.StaffCommission.RebuildClientData(mcDateFrom.SelectionStart, mcDateTo.SelectionEnd, cbReplaceData.Checked);
 
                 return (true);
             }

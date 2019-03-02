@@ -32,9 +32,9 @@ using System.Windows.Forms;
 using SharedControls.Forms;
 using Languages;
 
-using Library;
-using Library.BOL.Invoices;
-using Library.BOL.Orders;
+using SharedBase;
+using SharedBase.BOL.Invoices;
+using SharedBase.BOL.Orders;
 
 using POS.Base.Classes;
 using POS.Base.Plugins;

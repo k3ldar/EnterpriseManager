@@ -33,8 +33,8 @@ using System.Text;
 using System.Windows.Forms;
 
 using Languages;
-using Library.Utils;
-using Library.BOL.StockControl;
+using SharedBase.Utils;
+using SharedBase.BOL.StockControl;
 using POS.Base.Classes;
 
 namespace POS.StockControl.Forms

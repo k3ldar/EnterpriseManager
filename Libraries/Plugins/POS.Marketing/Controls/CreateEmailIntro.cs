@@ -28,8 +28,8 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library;
-using Library.BOL.Websites;
+using SharedBase;
+using SharedBase.BOL.Websites;
 using POS.Base.Classes;
 
 namespace POS.Marketing.Controls

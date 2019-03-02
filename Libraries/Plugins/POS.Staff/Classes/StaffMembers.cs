@@ -29,9 +29,9 @@ using System.Text;
 
 using Languages;
 
-using Library.BOL.Appointments;
-using Library.BOL.Staff;
-using Library.BOL.Users;
+using SharedBase.BOL.Appointments;
+using SharedBase.BOL.Staff;
+using SharedBase.BOL.Users;
 
 using SharedControls.WizardBase;
 

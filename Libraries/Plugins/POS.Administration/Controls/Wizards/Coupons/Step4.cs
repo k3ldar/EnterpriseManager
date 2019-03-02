@@ -32,9 +32,9 @@ using System.Text;
 using System.Windows.Forms;
 
 using Languages;
-using Library;
-using Library.BOL.Coupons;
-using Library.BOL.Products;
+using SharedBase;
+using SharedBase.BOL.Coupons;
+using SharedBase.BOL.Products;
 using POS.Base.Classes;
 using POS.Administration.Classes;
 using SharedControls.WizardBase;
@@ -138,7 +138,7 @@ namespace POS.Administration.Controls.Wizards.Coupons
                     MainWizardForm.Cursor = Cursors.WaitCursor;
                     try
                     {
-                        Library.BOL.Products.Products _products = Library.BOL.Products.Products.Get(primaryType, 1, 1000);
+                        SharedBase.BOL.Products.Products _products = SharedBase.BOL.Products.Products.Get(primaryType, 1, 1000);
 
                         foreach (Product product in _products)
                         {

@@ -32,13 +32,13 @@ using System.Text;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 
-using Library;
-using Library.Utils;
-using Library.BOL.Appointments;
-using Library.BOL.Users;
-using Library.BOL.Therapists;
-using Library.BOL.Refunds;
-using Library.BOL.Statistics;
+using SharedBase;
+using SharedBase.Utils;
+using SharedBase.BOL.Appointments;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Therapists;
+using SharedBase.BOL.Refunds;
+using SharedBase.BOL.Statistics;
 
 
 namespace Reports.Salons
@@ -336,7 +336,7 @@ namespace Reports.Salons
                     table.AddCell(new Phrase(User.UserGet((int)refund.Employee).UserName, FontTextSmall));
                     table.AddCell(new Phrase(refund.InvoiceID.ToString(), FontTextSmall));
                     table.AddCell(new Phrase(SharedUtils.FormatMoney(refund.Amount,
-                        Library.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
+                        SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
                     table.AddCell(new Phrase(refund.Date.ToString("g"), FontTextSmall));
                     table.AddCell(new Phrase(User.UserGet((int)refund.User).UserName, FontTextSmall));
                     table.AddCell(new Phrase(refund.Reason, FontTextSmall));
@@ -354,7 +354,7 @@ namespace Reports.Salons
 
         private void LoadTreatments(Document document, Therapists therapists, DateTime From, DateTime To)
         {
-            Library.BOL.Statistics.Statistics stats = new Library.BOL.Statistics.Statistics();
+            SharedBase.BOL.Statistics.Statistics stats = new SharedBase.BOL.Statistics.Statistics();
 
             Takings takings = stats.SalonTreatmentSummary(From, To);
 
@@ -390,7 +390,7 @@ namespace Reports.Salons
 
         private void LoadSales(Document document, Therapists therapists, DateTime From, DateTime To)
         {
-            Library.BOL.Statistics.Statistics stats = new Library.BOL.Statistics.Statistics();
+            SharedBase.BOL.Statistics.Statistics stats = new SharedBase.BOL.Statistics.Statistics();
 
             Takings takings = stats.SalonProductSummary(From, To);
 
@@ -425,7 +425,7 @@ namespace Reports.Salons
 
         private void LoadInvoiceSummary(Document document, DateTime From, DateTime To)
         {
-            Library.BOL.Statistics.Statistics stats = new Library.BOL.Statistics.Statistics();
+            SharedBase.BOL.Statistics.Statistics stats = new SharedBase.BOL.Statistics.Statistics();
 
             Takings takings = stats.SalonSalesSummary(From, To);
 
@@ -458,7 +458,7 @@ namespace Reports.Salons
                     table.AddCell(new Phrase(sale.TherapistName, FontTextSmall));
                     table.AddCell(new Phrase(sale.CustomerName, FontTextSmall));
                     table.AddCell(new Phrase(SharedUtils.FormatMoney(sale.InvoiceTotal,
-                        Library.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
+                        SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
                     table.AddCell(new Phrase(sale.SaleType, FontTextSmall));
                 }
 
@@ -499,16 +499,16 @@ namespace Reports.Salons
                     {
                         table.AddCell(new Phrase(sale.InvoiceID.ToString(), FontTextSmall));
                         table.AddCell(new Phrase(SharedUtils.FormatMoney(sale.InvoiceTotal,
-                            Library.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
+                            SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
                         table.AddCell(new Phrase(sale.SaleType, FontTextSmall));
                         table.AddCell(new Phrase(SharedUtils.FormatMoney(sale.DiscountTotal,
-                            Library.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
+                            SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
                         table.AddCell(new Phrase(SharedUtils.FormatMoney(sale.VoucherTotal,
-                            Library.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
+                            SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
                         table.AddCell(new Phrase(sale.Item.Replace("()", ""), FontTextSmall));
                         table.AddCell(new Phrase(sale.ItemCount.ToString(), FontTextSmall));
                         table.AddCell(new Phrase(SharedUtils.FormatMoney(sale.ItemCost,
-                            Library.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
+                            SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
                     }
 
                     document.Add(table);
@@ -573,10 +573,10 @@ namespace Reports.Salons
                 table.AddCell(new Phrase(NoShow.ToString(), FontTextSmall));
                 table.AddCell(new Phrase(Arrived.ToString(), FontTextSmall));
                 table.AddCell(new Phrase(SharedUtils.FormatMoney(Refunds, 
-                    Library.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
+                    SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
                 table.AddCell(new Phrase(SharedUtils.FormatMoney((takings.Card + takings.Cash + takings.Cheque) 
                     /*- (takings.VoucherTotal + takings.DiscountTotal)*/,
-                    Library.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
+                    SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
             }
 
             //totals
@@ -587,9 +587,9 @@ namespace Reports.Salons
             table.AddCell(new Phrase(TotalNoShow.ToString(), FontTextBoldSmall));
             table.AddCell(new Phrase(TotalArrived.ToString(), FontTextBoldSmall));
             table.AddCell(new Phrase(SharedUtils.FormatMoney(TotalRefunds,
-                Library.BOL.Basket.Currencies.Get("GBP")), FontTextBoldSmall));
+                SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextBoldSmall));
             table.AddCell(new Phrase(SharedUtils.FormatMoney(TotalTakings,
-                Library.BOL.Basket.Currencies.Get("GBP")), FontTextBoldSmall));
+                SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextBoldSmall));
             document.Add(table);
             ParagraphAdd(document);
         }
@@ -642,38 +642,38 @@ namespace Reports.Salons
                 table.AddCell(new Phrase(therapist.EmployeeName, FontTextSmall));
                 table.AddCell(new Phrase(takings.InvoiceCount.ToString(), FontTextSmall));
                 table.AddCell(new Phrase(SharedUtils.FormatMoney(takings.Cash,
-                    Library.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
+                    SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
                 table.AddCell(new Phrase(SharedUtils.FormatMoney(takings.Cheque,
-                    Library.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
+                    SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
                 table.AddCell(new Phrase(SharedUtils.FormatMoney(takings.Card,
-                    Library.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
+                    SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
                 table.AddCell(new Phrase(SharedUtils.FormatMoney(takings.DiscountTotal,
-                    Library.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
+                    SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
                 table.AddCell(new Phrase(SharedUtils.FormatMoney(takings.VoucherTotal,
-                    Library.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
+                    SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
                 table.AddCell(new Phrase(SharedUtils.FormatMoney(takings.Products,
-                    Library.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
+                    SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
                 table.AddCell(new Phrase(SharedUtils.FormatMoney(takings.Treatments,
-                    Library.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
+                    SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
             }
 
             //totals
             table.AddCell(new Phrase("Total", FontTextBoldSmall));
             table.AddCell(new Phrase(TotalInvoices.ToString(), FontTextBoldSmall));
             table.AddCell(new Phrase(SharedUtils.FormatMoney(TotalCash,
-                Library.BOL.Basket.Currencies.Get("GBP")), FontTextBoldSmall));
+                SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextBoldSmall));
             table.AddCell(new Phrase(SharedUtils.FormatMoney(TotalCheque,
-                Library.BOL.Basket.Currencies.Get("GBP")), FontTextBoldSmall));
+                SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextBoldSmall));
             table.AddCell(new Phrase(SharedUtils.FormatMoney(TotalCard,
-                Library.BOL.Basket.Currencies.Get("GBP")), FontTextBoldSmall));
+                SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextBoldSmall));
             table.AddCell(new Phrase(SharedUtils.FormatMoney(TotalDiscounts,
-                Library.BOL.Basket.Currencies.Get("GBP")), FontTextBoldSmall));
+                SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextBoldSmall));
             table.AddCell(new Phrase(SharedUtils.FormatMoney(TotalVouchers,
-                Library.BOL.Basket.Currencies.Get("GBP")), FontTextBoldSmall));
+                SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextBoldSmall));
             table.AddCell(new Phrase(SharedUtils.FormatMoney(TotalProducts,
-                Library.BOL.Basket.Currencies.Get("GBP")), FontTextBoldSmall));
+                SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextBoldSmall));
             table.AddCell(new Phrase(SharedUtils.FormatMoney(TotalTreatments,
-                Library.BOL.Basket.Currencies.Get("GBP")), FontTextBoldSmall));
+                SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextBoldSmall));
 
             document.Add(table);
             ParagraphAdd(document);
@@ -690,27 +690,27 @@ namespace Reports.Salons
 
             table.AddCell(new Phrase("Total Cash", FontTextBoldSmall));
             table.AddCell(new Phrase(SharedUtils.FormatMoney(TotalCash,
-                Library.BOL.Basket.Currencies.Get("GBP")), FontTextBoldSmall));
+                SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextBoldSmall));
 
             table.AddCell(new Phrase("Total Card", FontTextBoldSmall));
             table.AddCell(new Phrase(SharedUtils.FormatMoney(TotalCard,
-                Library.BOL.Basket.Currencies.Get("GBP")), FontTextBoldSmall));
+                SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextBoldSmall));
 
             table.AddCell(new Phrase("Total Cheque", FontTextBoldSmall));
             table.AddCell(new Phrase(SharedUtils.FormatMoney(TotalCheque,
-                Library.BOL.Basket.Currencies.Get("GBP")), FontTextBoldSmall));
+                SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextBoldSmall));
 
             table.AddCell(new Phrase("Total Discounts", FontTextBoldSmall));
             table.AddCell(new Phrase(SharedUtils.FormatMoney(TotalDiscounts,
-                Library.BOL.Basket.Currencies.Get("GBP")), FontTextBoldSmall));
+                SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextBoldSmall));
 
             table.AddCell(new Phrase("Total Vouchers", FontTextBoldSmall));
             table.AddCell(new Phrase(SharedUtils.FormatMoney(TotalVouchers,
-                Library.BOL.Basket.Currencies.Get("GBP")), FontTextBoldSmall));
+                SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextBoldSmall));
 
             table.AddCell(new Phrase("Total Takings", FontTextBoldSmall));
             table.AddCell(new Phrase(SharedUtils.FormatMoney((TotalCard + TotalCash + TotalCheque),
-                Library.BOL.Basket.Currencies.Get("GBP")), FontTextBoldSmall));
+                SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextBoldSmall));
 
             document.Add(table);
         }

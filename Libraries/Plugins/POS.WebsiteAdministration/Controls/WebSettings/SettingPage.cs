@@ -33,7 +33,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using Library.Interfaces;
+using SharedBase.Interfaces;
 
 #pragma warning disable IDE0017
 
@@ -44,7 +44,7 @@ namespace POS.WebsiteAdministration.Controls.WebSettings
         #region Private Members
 
         private string _pageName;
-        private Library.BOL.Websites.Settings _settings;
+        private SharedBase.BOL.Websites.Settings _settings;
 
         private bool _isLoaded;
         private int _totalDescriptions = 0;
@@ -56,7 +56,7 @@ namespace POS.WebsiteAdministration.Controls.WebSettings
         public SettingPage()
         {
             InitializeComponent();
-            _settings = new Library.BOL.Websites.Settings();
+            _settings = new SharedBase.BOL.Websites.Settings();
             _isLoaded = false;
         }
 

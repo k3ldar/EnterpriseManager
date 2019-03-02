@@ -34,11 +34,11 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library.BOL.Appointments;
-using Library.BOL.Users;
-using Library.BOL.Therapists;
-using Library.Utils;
-using Library;
+using SharedBase.BOL.Appointments;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Therapists;
+using SharedBase.Utils;
+using SharedBase;
 
 using POS.Base.Classes;
 using POS.Base.Forms;
@@ -799,7 +799,7 @@ namespace POS.Diary.Forms
                 }
                 else
                 {
-                    Library.ErrorHandling.LogError(MethodBase.GetCurrentMethod(), error, sender, e);
+                    SharedBase.ErrorHandling.LogError(MethodBase.GetCurrentMethod(), error, sender, e);
                     throw;
                 }
             }

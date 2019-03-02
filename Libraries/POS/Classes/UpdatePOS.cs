@@ -119,12 +119,12 @@ namespace POS.Base.Classes
         private NVPCodec BuildUpdateList()
         {
             NVPCodec Result = new NVPCodec();
-            Result.Add(StringConstants.PLUGIN_STORE, Library.DAL.DALHelper.StoreID.ToString());
-            Result.Add(StringConstants.PLUGIN_TILL, Library.DAL.DALHelper.TillID.ToString());
+            Result.Add(StringConstants.PLUGIN_STORE, SharedBase.DAL.DALHelper.StoreID.ToString());
+            Result.Add(StringConstants.PLUGIN_TILL, SharedBase.DAL.DALHelper.TillID.ToString());
             Result.Add(StringConstants.PLUGIN_UPDATE_ADD_NEW_MODULES, AppController.LocalSettings.PluginsLoadNewModules.ToString());
             Result.Add(StringConstants.PLUGIN_HASH, Shared.Utilities.HashStringMD5(
                 String.Format(StringConstants.PREFIX_AND_SUFFIX_HYPHEN,
-                Library.DAL.DALHelper.StoreID, Library.DAL.DALHelper.TillID)));
+                SharedBase.DAL.DALHelper.StoreID, SharedBase.DAL.DALHelper.TillID)));
 
             //string[] pluginFiles = System.IO.Directory.GetFiles(
             //    AppController.POSFolder(FolderType.Plugins, true),

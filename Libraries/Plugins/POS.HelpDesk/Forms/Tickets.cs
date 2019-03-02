@@ -28,8 +28,8 @@ using System.Windows.Forms;
 
 using POS.Base.Classes;
 using Languages;
-using Library.BOL.Users;
-using Library.BOL.Helpdesk;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Helpdesk;
 
 namespace POS.HelpDesk.Forms
 {
@@ -95,7 +95,7 @@ namespace POS.HelpDesk.Forms
             this.Cursor = Cursors.WaitCursor;
             try
             {
-                Library.BOL.Helpdesk.SupportTickets tickets = null;
+                SharedBase.BOL.Helpdesk.SupportTickets tickets = null;
 
                 if (txtKey.Text == String.Empty)
                     tickets = AppController.Administration.HelpdeskSupportTicketsGet(rbOnHold.Checked, rbClosed.Checked, rbOpen.Checked);

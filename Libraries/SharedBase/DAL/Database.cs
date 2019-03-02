@@ -24,6 +24,7 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 using System;
+using System.Collections.Generic;
 using System.Xml;
 using System.IO;
 using System.Text;
@@ -4094,6 +4095,30 @@ namespace SharedBase.DAL
             }
 
             return (Result);
+        }
+
+        public static bool InitialiseDAL(in int storeId, in int tillId, Dictionary<string, string> connectionStrings)
+        {
+            if (_initialised)
+                return (true);
+
+            string standard = connectionStrings["Standard"];
+
+            if (String.IsNullOrEmpty(standard))
+                return false;
+
+            foreach (string connectionName in Enum.GetNames(typeof(DatabaseType)))
+            {
+                string value = standard;
+
+                if (connectionStrings.ContainsKey(connectionName))
+                    value = connectionStrings[connectionName];
+
+                FirebirdDB.ConnectionStringSet((DatabaseType)Enum.Parse(typeof(DatabaseType), connectionName), value);
+            }
+
+            _initialised = true;
+            return true;
         }
 
         #endregion Public Static Methods

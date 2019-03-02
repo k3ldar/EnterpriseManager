@@ -33,8 +33,8 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library.BOL.Users;
-using Library.BOL.Invoices;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Invoices;
 
 namespace POS.Base.Forms
 {

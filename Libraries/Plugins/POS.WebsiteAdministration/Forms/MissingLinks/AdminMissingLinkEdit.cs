@@ -33,10 +33,10 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library;
-using Library.Utils;
-using Library.BOL.Users;
-using Library.BOL.MissingLinks;
+using SharedBase;
+using SharedBase.Utils;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.MissingLinks;
 
 using POS.Base.Classes;
 
@@ -86,8 +86,8 @@ namespace POS.WebsiteAdministration.Forms.MissingLinks
 
         protected override void SetPermissions()
         {
-            btnSave.Enabled = AppController.ActiveUser.MemberLevel > Library.MemberLevel.AdminReadOnly;
-            btnDelete.Enabled = AppController.ActiveUser.MemberLevel == Library.MemberLevel.Admin;
+            btnSave.Enabled = AppController.ActiveUser.MemberLevel > SharedBase.MemberLevel.AdminReadOnly;
+            btnDelete.Enabled = AppController.ActiveUser.MemberLevel == SharedBase.MemberLevel.Admin;
         }
 
         #endregion Overridden Methods

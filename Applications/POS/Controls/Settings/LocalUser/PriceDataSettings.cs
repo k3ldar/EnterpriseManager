@@ -53,18 +53,18 @@ namespace PointOfSale.Controls.Settings.LocalUser
         public override bool SettingsSave()
         {
             // price settings
-            Library.LibraryHelperClass.SettingsSet(StringConstants.PRICE_DESCRIPTION_1, txtPrice1Description.Text);
-            Library.LibraryHelperClass.SettingsSet(StringConstants.PRICE_DESCRIPTION_2, txtPrice2Description.Text);
-            Library.LibraryHelperClass.SettingsSet(StringConstants.PRICE_DESCRIPTION_3, txtPrice3Description.Text);
+            SharedBase.LibraryHelperClass.SettingsSet(StringConstants.PRICE_DESCRIPTION_1, txtPrice1Description.Text);
+            SharedBase.LibraryHelperClass.SettingsSet(StringConstants.PRICE_DESCRIPTION_2, txtPrice2Description.Text);
+            SharedBase.LibraryHelperClass.SettingsSet(StringConstants.PRICE_DESCRIPTION_3, txtPrice3Description.Text);
 
             return base.SettingsSave();
         }
 
         public override void SettingsLoaded()
         {
-            txtPrice1Description.Text = Library.LibraryHelperClass.SettingsGet(StringConstants.PRICE_DESCRIPTION_1, StringConstants.PRICE_1);
-            txtPrice2Description.Text = Library.LibraryHelperClass.SettingsGet(StringConstants.PRICE_DESCRIPTION_2, StringConstants.PRICE_2);
-            txtPrice3Description.Text = Library.LibraryHelperClass.SettingsGet(StringConstants.PRICE_DESCRIPTION_3, StringConstants.PRICE_3);
+            txtPrice1Description.Text = SharedBase.LibraryHelperClass.SettingsGet(StringConstants.PRICE_DESCRIPTION_1, StringConstants.PRICE_1);
+            txtPrice2Description.Text = SharedBase.LibraryHelperClass.SettingsGet(StringConstants.PRICE_DESCRIPTION_2, StringConstants.PRICE_2);
+            txtPrice3Description.Text = SharedBase.LibraryHelperClass.SettingsGet(StringConstants.PRICE_DESCRIPTION_3, StringConstants.PRICE_3);
         }
 
         #endregion Overridden Methods

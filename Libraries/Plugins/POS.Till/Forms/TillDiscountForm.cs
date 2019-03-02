@@ -27,8 +27,8 @@ using System;
 
 using Languages;
 
-using Library;
-using Library.BOL.Basket;
+using SharedBase;
+using SharedBase.BOL.Basket;
 
 using POS.Base.Classes;
 

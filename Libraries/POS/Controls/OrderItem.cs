@@ -26,11 +26,11 @@
 using System;
 using System.Drawing;
 
-using Library.BOL.Invoices;
+using SharedBase.BOL.Invoices;
 using POS.Base.Classes;
 
 using Languages;
-using Library;
+using SharedBase;
 
 #pragma warning disable IDE1005 // Delegate invocation can be simplified
 #pragma warning disable IDE0017 // object initialization can be simplified

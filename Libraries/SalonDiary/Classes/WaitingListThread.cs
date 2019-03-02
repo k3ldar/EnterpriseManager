@@ -29,8 +29,8 @@ using System.Text;
 
 using Shared.Classes;
 using Languages;
-using Library.BOL.Appointments;
-using Library.BOL.Therapists;
+using SharedBase.BOL.Appointments;
+using SharedBase.BOL.Therapists;
 
 namespace SalonDiary.Classes
 {

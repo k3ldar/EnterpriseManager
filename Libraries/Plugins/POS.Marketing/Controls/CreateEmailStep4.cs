@@ -26,7 +26,7 @@
 using System;
 using System.IO;
 
-using Library;
+using SharedBase;
 
 using Languages;
 using POS.Base.Classes;

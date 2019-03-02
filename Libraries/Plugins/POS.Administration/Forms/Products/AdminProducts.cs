@@ -28,9 +28,9 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library;
-using Library.BOL.Users;
-using Library.BOL.Products;
+using SharedBase;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Products;
 
 #pragma warning disable IDE1006
 
@@ -139,7 +139,7 @@ namespace POS.Administration.Forms.Products
                 bool setRightToLeft = false;
 
                 lstProducts.Items.Clear();
-                Library.BOL.Products.Products products;
+                SharedBase.BOL.Products.Products products;
 
                 ProductGroup group = null;
 
@@ -206,7 +206,7 @@ namespace POS.Administration.Forms.Products
         {
             foreach (ListViewItem itm in lstProducts.SelectedItems)
             {
-                Library.BOL.Products.Product product = _Admin.ProductGet(Convert.ToInt32(itm.SubItems[5].Text));
+                SharedBase.BOL.Products.Product product = _Admin.ProductGet(Convert.ToInt32(itm.SubItems[5].Text));
 
                 if (product != null)
                 {

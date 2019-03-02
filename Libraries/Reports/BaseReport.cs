@@ -30,8 +30,8 @@ using System.Threading;
 using System.Xml;
 
 using Languages;
-using Library.BOL.Invoices;
-using Library.BOL.Orders;
+using SharedBase.BOL.Invoices;
+using SharedBase.BOL.Orders;
 
 using iTextSharp.text;
 using iTextSharp.text.pdf;

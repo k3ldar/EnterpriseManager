@@ -32,11 +32,11 @@ using System.Text;
 using System.Windows.Forms;
 
 using Languages;
-using Library.BOL.Locations;
-using Library;
-using Library.BOL.Statistics;
-using Library.BOL.Users;
-using Library.BOL.Products;
+using SharedBase.BOL.Locations;
+using SharedBase;
+using SharedBase.BOL.Statistics;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Products;
 
 using SharedControls.Forms;
 
@@ -71,7 +71,7 @@ namespace Reports.Products
             }
             catch (Exception err)
             {
-                Library.ErrorHandling.LogError(System.Reflection.MethodBase.GetCurrentMethod(), err);
+                SharedBase.ErrorHandling.LogError(System.Reflection.MethodBase.GetCurrentMethod(), err);
                 throw;
             }
         }

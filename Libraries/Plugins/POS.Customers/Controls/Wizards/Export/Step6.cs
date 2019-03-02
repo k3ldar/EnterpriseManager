@@ -32,10 +32,10 @@ using System.Text;
 using System.Windows.Forms;
 
 using Languages;
-using Library;
-using Library.BOL.Countries;
-using Library.BOL.Export;
-using Library.BOL.Users;
+using SharedBase;
+using SharedBase.BOL.Countries;
+using SharedBase.BOL.Export;
+using SharedBase.BOL.Users;
 using POS.Base.Classes;
 using POS.Customers.Classes;
 using SharedControls.WizardBase;

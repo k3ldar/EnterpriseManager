@@ -30,10 +30,10 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Drawing.Imaging;
 
-using Library;
-using Library.BOL.Users;
-using Library.BOL.Therapists;
-using Library.BOL.Appointments;
+using SharedBase;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Therapists;
+using SharedBase.BOL.Appointments;
 
 using Languages;
 
@@ -108,7 +108,7 @@ namespace SalonDiary.Controls
             lstNewAppointments.Items.Clear();
             _newAppts = Appointments.GetRequested();
 
-            foreach (Library.BOL.Appointments.Appointment appt in _newAppts)
+            foreach (SharedBase.BOL.Appointments.Appointment appt in _newAppts)
             {
                 ListViewItem item = new ListViewItem();
                 item.Text = appt.EmployeeName;
@@ -123,7 +123,7 @@ namespace SalonDiary.Controls
             foreach (ListViewItem item in lstNewAppointments.SelectedItems)
             {
                 string id = item.SubItems[2].Text;
-                Library.BOL.Appointments.Appointment appt = _newAppts.Find(Convert.ToInt64(id));
+                SharedBase.BOL.Appointments.Appointment appt = _newAppts.Find(Convert.ToInt64(id));
                 LoadAppointment(appt);
                 dayView2.Focus();
 
@@ -163,7 +163,7 @@ namespace SalonDiary.Controls
 
             Appointments appointments = Appointments.Get(dayView2.StartDate, _therapist, false);
 
-            foreach (Library.BOL.Appointments.Appointment appointment in appointments)
+            foreach (SharedBase.BOL.Appointments.Appointment appointment in appointments)
             {
                 Calendar.Appointment calAppt = new Calendar.Appointment();
                 calAppt.ID = appointment.ID;
@@ -178,7 +178,7 @@ namespace SalonDiary.Controls
 
         #endregion New Appointments
 
-        private void UpdateCalendarAppointment(Library.BOL.Appointments.Appointment appt, Calendar.Appointment calAppt)
+        private void UpdateCalendarAppointment(SharedBase.BOL.Appointments.Appointment appt, Calendar.Appointment calAppt)
         {
             //can't change past appointments
             if (appt.AppointmentAsDateTime() <= DateTime.Now.AddHours(-DateTime.Now.Hour))
@@ -231,7 +231,7 @@ namespace SalonDiary.Controls
 
         private void dayView2_AfterDrawAppointment(object sender, Calendar.AfterDrawAppointmentEventArgs e)
         {
-            Library.BOL.Appointments.Appointment appt = _appointments.Find(e.Appointment.ID);
+            SharedBase.BOL.Appointments.Appointment appt = _appointments.Find(e.Appointment.ID);
 
             if (appt != null)
             {
@@ -292,7 +292,7 @@ namespace SalonDiary.Controls
 
         private void dayView2_AppointmentMoved(object sender, Calendar.AppointmentEventArgs e)
         {
-            Library.BOL.Appointments.Appointment appt = Appointments.Get((int)e.Appointment.ID);
+            SharedBase.BOL.Appointments.Appointment appt = Appointments.Get((int)e.Appointment.ID);
             bool AllowTreatments = true;
             if (!e.Appointment.Locked && appt != null && e.Appointment.StartDate >= DateTime.Now)
             {
@@ -321,7 +321,7 @@ namespace SalonDiary.Controls
 
                 double NewStart = appt.StartTime + ((appt.Duration / 15) * .25);
 
-                foreach (Library.BOL.Appointments.Appointment childAppt in appt.ChildAppointments)
+                foreach (SharedBase.BOL.Appointments.Appointment childAppt in appt.ChildAppointments)
                 {
                     childAppt.StartTime = NewStart;
                     childAppt.AppointmentDate = appt.AppointmentDate;
@@ -355,7 +355,7 @@ namespace SalonDiary.Controls
 
             if (appt != null)
             {
-                Library.BOL.Appointments.Appointment treat = _appointments.Find(appt.ID);
+                SharedBase.BOL.Appointments.Appointment treat = _appointments.Find(appt.ID);
 
                 if (treat != null)
                 {
@@ -373,7 +373,7 @@ namespace SalonDiary.Controls
 
             if (appt != null)
             {
-                Library.BOL.Appointments.Appointment treat = _appointments.Find(appt.ID);
+                SharedBase.BOL.Appointments.Appointment treat = _appointments.Find(appt.ID);
 
                 confirmAppointmentToolStripMenuItem.Enabled = treat.Status == Enums.AppointmentStatus.Requested;
                 cancelAppointmentToolStripMenuItem.Enabled = treat.Status == Enums.AppointmentStatus.Requested;
@@ -385,7 +385,7 @@ namespace SalonDiary.Controls
         private void cancelAppointmentToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Calendar.Appointment appt = dayView2.SelectedAppointment;
-            Library.BOL.Appointments.Appointment treat = _appointments.Find(appt.ID);
+            SharedBase.BOL.Appointments.Appointment treat = _appointments.Find(appt.ID);
 
             if (treat != null)
             {
@@ -399,7 +399,7 @@ namespace SalonDiary.Controls
         private void editAppointmentToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Calendar.Appointment appt = dayView2.SelectedAppointment;
-            Library.BOL.Appointments.Appointment treat = _appointments.Find(appt.ID);
+            SharedBase.BOL.Appointments.Appointment treat = _appointments.Find(appt.ID);
 
             if (treat != null)
             {
@@ -410,7 +410,7 @@ namespace SalonDiary.Controls
         private void viewClientToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Calendar.Appointment appt = dayView2.SelectedAppointment;
-            Library.BOL.Appointments.Appointment treat = _appointments.Find(appt.ID);
+            SharedBase.BOL.Appointments.Appointment treat = _appointments.Find(appt.ID);
 
             if (treat != null)
             {
@@ -418,13 +418,13 @@ namespace SalonDiary.Controls
             }
         }
 
-        internal void DoRaiseEditUser(Library.BOL.Users.User User)
+        internal void DoRaiseEditUser(SharedBase.BOL.Users.User User)
         {
             if (EditUser != null)
                 EditUser(this, new SalonUserEventArgs(User));
         }
 
-        internal void DoRaiseEditAppointment(Library.BOL.Appointments.Appointment Appointment)
+        internal void DoRaiseEditAppointment(SharedBase.BOL.Appointments.Appointment Appointment)
         {
             if (EditAppointment != null)
                 EditAppointment(this, new EditAppointmentEventArgs(Appointment, false));

@@ -498,7 +498,7 @@
             this.salonDiary1.AppointmentAfterSelect += new SalonDiary.Controls.SalonAppointmentEventHandler(this.salonDiary1_AppointmentAfterSelect);
             this.salonDiary1.MinimumDateChanged += new System.EventHandler(this.salonDiary1_MinimumDateChanged);
             this.salonDiary1.CachedAppointmentsChanged += new System.EventHandler(this.salonDiary1_CachedAppointmentsChanged);
-            this.salonDiary1.OnSelectUser += new Library.BOLEvents.SelectUserEventDelegate(this.salonDiary1_OnSelectUser);
+            this.salonDiary1.OnSelectUser += new SharedBase.BOLEvents.SelectUserEventDelegate(this.salonDiary1_OnSelectUser);
             this.salonDiary1.OnRequestSMSInterface += new SalonDiary.Controls.SMSSenderDelegate(this.salonDiary1_OnRequestSMSInterface);
             this.salonDiary1.CursorChanged += new System.EventHandler(this.salonDiary1_CursorChanged);
             // 

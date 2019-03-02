@@ -27,7 +27,7 @@ using System;
 using System.Windows.Forms;
 
 using Languages;
-using Library.BOL.Helpdesk;
+using SharedBase.BOL.Helpdesk;
 
 using POS.Base.Classes;
 
@@ -105,7 +105,7 @@ namespace POS.WebsiteAdministration.Forms.CustomerComments
 
         private void BtnViewUser_Click(object sender, EventArgs e)
         {
-            Library.BOL.Users.User user = Library.BOL.Users.User.UserGet(_selectedComment.UserID);
+            SharedBase.BOL.Users.User user = SharedBase.BOL.Users.User.UserGet(_selectedComment.UserID);
 
             if (user != null)
             {
@@ -120,7 +120,7 @@ namespace POS.WebsiteAdministration.Forms.CustomerComments
         private void LoadComments()
         {
             lvComments.Items.Clear();
-            Library.BOL.Helpdesk.CustomerComments comments = Library.BOL.Helpdesk.CustomerComments.GetAll();
+            SharedBase.BOL.Helpdesk.CustomerComments comments = SharedBase.BOL.Helpdesk.CustomerComments.GetAll();
 
             foreach (CustomerComment comment in comments)
             {
@@ -140,7 +140,7 @@ namespace POS.WebsiteAdministration.Forms.CustomerComments
 
             if (e.IsSelected)
             {
-                _selectedComment = Library.BOL.Helpdesk.CustomerComments.Get(Shared.Utilities.StrToIntDef(lv.SubItems[2].Text, -1));
+                _selectedComment = SharedBase.BOL.Helpdesk.CustomerComments.Get(Shared.Utilities.StrToIntDef(lv.SubItems[2].Text, -1));
                 txtName.Text = _selectedComment.UserName;
                 txtComments.Text = _selectedComment.Comments;
                 cbShowOnWebsite.Checked = _selectedComment.ShowOnWeb;

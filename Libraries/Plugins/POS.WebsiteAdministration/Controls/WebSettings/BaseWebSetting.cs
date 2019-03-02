@@ -25,7 +25,7 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 using System;
 
-using Library.BOL.Websites;
+using SharedBase.BOL.Websites;
 
 #pragma warning disable IDE1005
 

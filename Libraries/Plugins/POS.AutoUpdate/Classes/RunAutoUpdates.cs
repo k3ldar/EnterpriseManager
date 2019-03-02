@@ -39,7 +39,7 @@ namespace POS.AutoUpdate.Classes
 
         protected override bool Run(object parameters)
         {
-            Library.BOL.DatabaseUpdates.AutoUpdateRules.ExecuteSQL();
+            SharedBase.BOL.DatabaseUpdates.AutoUpdateRules.ExecuteSQL();
 
             return (base.Run(parameters));
         }

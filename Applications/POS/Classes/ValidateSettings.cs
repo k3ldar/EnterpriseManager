@@ -29,7 +29,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using System.Xml;
 
-using Library;
+using SharedBase;
 using POS.Base.Classes;
 
 namespace PointOfSale.Classes

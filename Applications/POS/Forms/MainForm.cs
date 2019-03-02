@@ -42,8 +42,8 @@ using Languages;
 using SharedControls.Classes;
 using SharedControls.Interfaces;
 
-using Library;
-using Library.BOL.Users;
+using SharedBase;
+using SharedBase.BOL.Users;
 
 using POS.Base.Classes;
 using POS.Base.Controls;
@@ -477,7 +477,7 @@ namespace PointOfSale.Forms
             return (Result);
         }
 
-        private void ErrorHandling_InternalException(object sender, Library.BOLEvents.InternalErrorEventArgs e)
+        private void ErrorHandling_InternalException(object sender, SharedBase.BOLEvents.InternalErrorEventArgs e)
         {
             try
             {
@@ -494,7 +494,7 @@ namespace PointOfSale.Forms
 
                         ShowError(LanguageStrings.AppError, LanguageStrings.AppErrorConnectionLost);
                         _dataConnectionErrorMessageNextShow = DateTime.Now.AddMinutes(2);
-                        Library.DAL.DALHelper.ResetDatabasePool(false);
+                        SharedBase.DAL.DALHelper.ResetDatabasePool(false);
 
                         return;
                     }
@@ -518,7 +518,7 @@ namespace PointOfSale.Forms
                     {
 #endif
 
-                    Library.BOL.Mail.Emails.Add(
+                    SharedBase.BOL.Mail.Emails.Add(
                             ConfigurationSettings.Value(ConfigurationSettings.SYSTEM_CONFIG_EMAIL_NAME_RECIPIENT),
                             ConfigurationSettings.Value(ConfigurationSettings.SYSTEM_CONFIG_EMAIL_ADDRESS_RECIPIENT),
                             ConfigurationSettings.Value(ConfigurationSettings.SYSTEM_CONFIG_EMAIL_NAME_SENDER),
@@ -534,7 +534,7 @@ namespace PointOfSale.Forms
             }
             catch (Exception err)
             {
-                Library.ErrorHandling.LogError(System.Reflection.MethodBase.GetCurrentMethod(), err, sender, e);
+                SharedBase.ErrorHandling.LogError(System.Reflection.MethodBase.GetCurrentMethod(), err, sender, e);
             }
         }
 
@@ -592,7 +592,7 @@ namespace PointOfSale.Forms
 
             if (!e.Continue)
             {
-                Library.ErrorHandling.LogError(MethodBase.GetCurrentMethod(), e.Error, sender, e);
+                SharedBase.ErrorHandling.LogError(MethodBase.GetCurrentMethod(), e.Error, sender, e);
                 ShowError(LanguageStrings.AppErrorUnexpected, LanguageStrings.AppErrorUnexpectedDescription);
             }
         }
@@ -777,7 +777,7 @@ namespace PointOfSale.Forms
                 {
                     string settingName = String.Format(POS.Base.Classes.StringConstants.PREFIX_AND_SUFFIX_SPACE,
                         AppController.ActiveUser.ID.ToString(), btn.Name);
-                    //btn.SortOrder = Library.LibraryHelperClass.SettingsGetInt(settingName, 1000);
+                    //btn.SortOrder = SharedBase.LibraryHelperClass.SettingsGetInt(settingName, 1000);
                 }
 
                 userButtons.Sort();
@@ -851,7 +851,7 @@ namespace PointOfSale.Forms
                         PropertyInfo property = rpt.GetType().GetProperty(POS.Base.Classes.StringConstants.REPORT_PROPERTY_VOUCHER_COUNTRY);
 
                         if (property != null)
-                            property.SetValue(rpt, Library.BOL.Countries.Countries.Get(
+                            property.SetValue(rpt, SharedBase.BOL.Countries.Countries.Get(
                                 AppController.LocalSettings.DefaultCountry), null);
 
                         // sending appointments???
@@ -876,7 +876,7 @@ namespace PointOfSale.Forms
                             {
                                 if (property != null && property.Name != POS.Base.Classes.StringConstants.REPORT_PROPERTY_ALL_APPOINTMENTS)
                                 {
-                                    object[] parameters = new object[1] { Library.BOL.Countries.Countries.Get(
+                                    object[] parameters = new object[1] { SharedBase.BOL.Countries.Countries.Get(
                                         AppController.LocalSettings.DefaultCountry) };
                                     method.Invoke(rpt, parameters);
                                 }
@@ -1566,7 +1566,7 @@ namespace PointOfSale.Forms
                 WebsiteAdministration.StoreID, WebsiteAdministration.TillID,
                 String.IsNullOrEmpty(AppController.ApplicationController.ClientID) ? LanguageStrings.AppNotConnected : AppController.ApplicationController.ClientID,
                 WebsiteAdministration.LocalDatabase,
-                Library.WebsiteAdministration.DatabaseVersionCorrect ? String.Empty : LanguageStrings.AppOutOfDate,
+                SharedBase.WebsiteAdministration.DatabaseVersionCorrect ? String.Empty : LanguageStrings.AppOutOfDate,
                 ConfigurationSettings.Value(ConfigurationSettings.SYSTEM_CONFIG_TITLE).Replace(POS.Base.Classes.StringConstants.SYMBOL_HYPHON_SPACES,
                 POS.Base.Classes.StringConstants.SYMBOL_CRLF_DOUBLE),
                 System.Environment.Is64BitProcess ? POS.Base.Classes.StringConstants.APP_64BIT : POS.Base.Classes.StringConstants.APP_32BIT);
@@ -1714,7 +1714,7 @@ namespace PointOfSale.Forms
                 BaseHomeTabButton btn = (BaseHomeTabButton)homeButtonPanel.Controls[i];
                 string settingName = String.Format(POS.Base.Classes.StringConstants.PREFIX_AND_SUFFIX_SPACE,
                     AppController.ActiveUser.ID.ToString(), btn.Name);
-                Library.LibraryHelperClass.SettingsSet(settingName,
+                SharedBase.LibraryHelperClass.SettingsSet(settingName,
                     homeButtonPanel.Controls.GetChildIndex(btn).ToString());
             }
 
@@ -2031,7 +2031,7 @@ namespace PointOfSale.Forms
                 // save position
                 string settingName = String.Format(POS.Base.Classes.StringConstants.TRACKING_REFERENCE,
                     AppController.ActiveUser.ID.ToString(), homeTabContainer.SelectedTab.Text, "P");
-                Library.LibraryHelperClass.SettingsSet(settingName,
+                SharedBase.LibraryHelperClass.SettingsSet(settingName,
                     homeTabContainer.TabPages.IndexOf(homeTabContainer.SelectedTab).ToString());
             }
         }

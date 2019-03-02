@@ -32,10 +32,10 @@ using Languages;
 
 using Shared;
 
-using Library;
-using Library.Utils;
-using Library.BOL.Users;
-using Library.BOL.Staff;
+using SharedBase;
+using SharedBase.Utils;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Staff;
 
 using POS.Base;
 using POS.Base.Classes;
@@ -177,16 +177,16 @@ namespace POS.Staff.Forms
 
                     switch (expense.Status)
                     {
-                        case Library.EmployeeExpenseStatus.Approved:
+                        case SharedBase.EmployeeExpenseStatus.Approved:
                             item.ForeColor = Color.DarkGreen;
                             break;
-                        case Library.EmployeeExpenseStatus.Declined:
+                        case SharedBase.EmployeeExpenseStatus.Declined:
                             item.ForeColor = Color.Red;
                             break;
-                        case Library.EmployeeExpenseStatus.Paid:
+                        case SharedBase.EmployeeExpenseStatus.Paid:
                             item.ForeColor = Color.Blue;
                             break;
-                        case Library.EmployeeExpenseStatus.Submitted:
+                        case SharedBase.EmployeeExpenseStatus.Submitted:
                             item.ForeColor = Color.Black;
                             break;
                     }
@@ -215,7 +215,7 @@ namespace POS.Staff.Forms
         private void POSApplication_OnUserChanged(object sender, EventArgs e)
         {
             if (AppController.ActiveUser.HasPermissionStaff(
-                Library.SecurityEnums.SecurityPermissionsStaff.ApproveExpenses))
+                SharedBase.SecurityEnums.SecurityPermissionsStaff.ApproveExpenses))
             {
                 _cmbStaff.Enabled = true;
                 _cmbStaff.SelectedIndex = 0;
@@ -357,19 +357,19 @@ namespace POS.Staff.Forms
                 expense = (StaffExpense)lvExpenses.SelectedItems[0].Tag;
 
             bool canManage = AppController.ActiveUser.HasPermissionStaff(
-                Library.SecurityEnums.SecurityPermissionsStaff.ApproveExpenses);
+                SharedBase.SecurityEnums.SecurityPermissionsStaff.ApproveExpenses);
 
             pumExpensesApprove.Enabled = canManage && 
                 expense != null && 
-                expense.Status == Library.EmployeeExpenseStatus.Submitted;
+                expense.Status == SharedBase.EmployeeExpenseStatus.Submitted;
             pumExpensesDecline.Enabled = canManage && 
                 expense != null && 
-                expense.Status == Library.EmployeeExpenseStatus.Submitted;
+                expense.Status == SharedBase.EmployeeExpenseStatus.Submitted;
 
             pumExpensesViewReceipt.Enabled = expense != null && !String.IsNullOrWhiteSpace(expense.ReceiptImage);
 
             pumExpensesEdit.Enabled = expense != null && 
-                (expense.Status == Library.EmployeeExpenseStatus.Declined ||
+                (expense.Status == SharedBase.EmployeeExpenseStatus.Declined ||
                 AppController.ActiveUser.HasPermissionStaff(SecurityEnums.SecurityPermissionsStaff.EditExpenses));
         }
 

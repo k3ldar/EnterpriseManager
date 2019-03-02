@@ -31,8 +31,8 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 
-using Library.Utils;
-using Library.BOL.CashDrawer;
+using SharedBase.Utils;
+using SharedBase.BOL.CashDrawer;
 using POS.Base.Classes;
 
 namespace POS.CashManager.Classes
@@ -44,7 +44,7 @@ namespace POS.CashManager.Classes
             InitializeComponent();
             Denomination = denomination;
 
-            lblValue.Text = Library.Utils.SharedUtils.FormatMoney(denomination.Value, AppController.LocalCurrency, false);
+            lblValue.Text = SharedBase.Utils.SharedUtils.FormatMoney(denomination.Value, AppController.LocalCurrency, false);
             txtValue.Text = StringConstants.SYMBOL_ZERO;
         }
 

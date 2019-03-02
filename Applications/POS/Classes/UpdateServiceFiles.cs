@@ -60,7 +60,7 @@ namespace PointOfSale.Classes
 
                     if (!File.Exists(_path + serviceFile))
                     {
-                        Library.FileDownload.Download(ConfigurationSettings.Value(ConfigurationSettings.SYSTEM_CONFIG_BASE_WEB_SERVICE_UPDATE) + serviceFile, _path + serviceFile);
+                        SharedBase.FileDownload.Download(ConfigurationSettings.Value(ConfigurationSettings.SYSTEM_CONFIG_BASE_WEB_SERVICE_UPDATE) + serviceFile, _path + serviceFile);
                     }
 
                     // stop service guard
@@ -69,7 +69,7 @@ namespace PointOfSale.Classes
                     // stop replication service 
 
                     //update the files
-                    Library.ZipFiles.Unpack(_path + serviceFile, _path);
+                    SharedBase.ZipFiles.Unpack(_path + serviceFile, _path);
                     File.Delete(_path + serviceFile);
 
                     //start replication service
@@ -85,7 +85,7 @@ namespace PointOfSale.Classes
                 if (File.Exists(_path + serviceFile))
                     File.Delete(_path + serviceFile);
 
-                Library.ErrorHandling.LogError(MethodBase.GetCurrentMethod(), err, serviceFile);
+                SharedBase.ErrorHandling.LogError(MethodBase.GetCurrentMethod(), err, serviceFile);
             }
         }
 

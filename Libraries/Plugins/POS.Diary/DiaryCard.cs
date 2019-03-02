@@ -27,12 +27,12 @@ using System.Drawing;
 
 using SharedControls.Forms;
 using Languages;
-using Library;
-using Library.BOL.Appointments;
+using SharedBase;
+using SharedBase.BOL.Appointments;
 
 using POS.Base.Classes;
 using POS.Base.Plugins;
-using Library.BOL.Users;
+using SharedBase.BOL.Users;
 
 namespace POS.Diary
 {
@@ -117,7 +117,7 @@ namespace POS.Diary
                 ((BaseForm)Parent.ParentForm).ShowError(LanguageStrings.AppTillTakePayments, LanguageStrings.AppPermissionTakePayment);
         }
 
-        internal void RaisePayNow(Library.BOL.Appointments.Appointment appointment)
+        internal void RaisePayNow(SharedBase.BOL.Appointments.Appointment appointment)
         {
             if (appointment.MasterAppointment > -1)
                 appointment = Appointments.Get(appointment.MasterAppointment);

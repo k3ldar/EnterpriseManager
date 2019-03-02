@@ -29,7 +29,7 @@ using System.Windows.Forms;
 
 using SharedControls.Classes;
 using Languages;
-using Library.BOL.Vouchers;
+using SharedBase.BOL.Vouchers;
 using POS.Base.Classes;
 
 namespace POS.VoucherManagement.Forms
@@ -92,7 +92,7 @@ namespace POS.VoucherManagement.Forms
                             Vouchers.CreateVoucher(e.Barcode, Convert.ToDecimal(result.Text));
 
                             lstVouchers.SelectedIndex = lstVouchers.Items.Add(String.Format(LanguageStrings.AppVoucherBarcodeCreated, e.Barcode,
-                                Library.Utils.SharedUtils.FormatMoney(Convert.ToDecimal(result.Text), AppController.LocalCurrency)));
+                                SharedBase.Utils.SharedUtils.FormatMoney(Convert.ToDecimal(result.Text), AppController.LocalCurrency)));
                         }
                     }
                 }

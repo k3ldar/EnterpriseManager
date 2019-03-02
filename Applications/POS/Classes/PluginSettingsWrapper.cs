@@ -27,7 +27,7 @@ using System;
 using System.Windows.Forms;
 
 using Languages;
-using Library;
+using SharedBase;
 using SharedControls.Forms;
 using POS.Base.Classes;
 

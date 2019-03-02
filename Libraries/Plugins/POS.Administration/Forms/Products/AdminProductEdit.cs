@@ -30,12 +30,12 @@ using System.Reflection;
 
 using Languages;
 
-using Library.BOL.Products;
-using Library.BOL.Users;
-using Library.BOL.ValidationChecks;
+using SharedBase.BOL.Products;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.ValidationChecks;
 
-using Library;
-using Library.Utils;
+using SharedBase;
+using SharedBase.Utils;
 using POS.Base.Classes;
 using POS.Base.Plugins;
 
@@ -521,7 +521,7 @@ namespace POS.Administration.Forms.Products
                 }
                 else
                 {
-                    Library.ErrorHandling.LogError(MethodBase.GetCurrentMethod(), err, sender, e);
+                    SharedBase.ErrorHandling.LogError(MethodBase.GetCurrentMethod(), err, sender, e);
                     ShowError(LanguageStrings.AppError, err.Message);
                 }
 

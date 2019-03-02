@@ -88,7 +88,7 @@ namespace PointOfSale.Classes
 
         private static bool SetupInitialUser()
         {
-            if (Library.DAL.DALHelper.ConfigureDAL(
+            if (SharedBase.DAL.DALHelper.ConfigureDAL(
                 new string[]
                     {
                         "setupSuperUser",
@@ -138,7 +138,7 @@ namespace PointOfSale.Classes
 
                     Shared.Utilities.FileWrite(fileName, configFileContents);
 
-                    Library.BOL.POSInstall.POSInstaller.PosInstallSetSite(Convert.ToInt32(siteID));
+                    SharedBase.BOL.POSInstall.POSInstaller.PosInstallSetSite(Convert.ToInt32(siteID));
                 }
             }
             catch (Exception err)

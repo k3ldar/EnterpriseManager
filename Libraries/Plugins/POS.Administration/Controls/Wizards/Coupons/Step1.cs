@@ -156,7 +156,7 @@ namespace POS.Administration.Controls.Wizards.Coupons
                 return (Result);
             }
 
-            Result = Library.BOL.Coupons.Coupons.Get(couponCode) == null;
+            Result = SharedBase.BOL.Coupons.Coupons.Get(couponCode) == null;
 
             if (!Result)
                 ShowError(LanguageStrings.AppDiscountCouponNewCoupon, String.Format(LanguageStrings.AppDiscountCouponNewExists, couponCode));

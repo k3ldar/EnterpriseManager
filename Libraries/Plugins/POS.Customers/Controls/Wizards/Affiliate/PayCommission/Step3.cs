@@ -33,8 +33,8 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library.BOL.Affiliate;
-using Library.BOL.Therapists;
+using SharedBase.BOL.Affiliate;
+using SharedBase.BOL.Therapists;
 using POS.Customers.Classes;
 
 namespace POS.Customers.Controls.Wizards.Affiliate.PayCommission
@@ -78,7 +78,7 @@ namespace POS.Customers.Controls.Wizards.Affiliate.PayCommission
             MainWizardForm.Cursor = Cursors.WaitCursor;
             try
             {
-                _settings.Save(POS.Base.Classes.AppController.ActiveUser, Library.CommissionPaymentType.Affiliate);
+                _settings.Save(POS.Base.Classes.AppController.ActiveUser, SharedBase.CommissionPaymentType.Affiliate);
             }
             finally
             {

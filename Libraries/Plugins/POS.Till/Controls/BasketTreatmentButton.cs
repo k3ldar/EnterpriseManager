@@ -26,7 +26,7 @@
 using System;
 using System.Drawing;
 using System.IO;
-using Library.BOL.Appointments;
+using SharedBase.BOL.Appointments;
 
 using POS.Base.Classes;
 

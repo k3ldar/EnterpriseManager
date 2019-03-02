@@ -27,7 +27,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-using Library;
+using SharedBase;
 using POS.Marketing.Controls;
 using SharedControls.WizardBase;
 

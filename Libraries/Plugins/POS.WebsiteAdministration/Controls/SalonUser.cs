@@ -32,10 +32,10 @@ using System.Text;
 using System.Windows.Forms;
 
 using POS.Base.Classes;
-using Library;
-using Library.Utils;
-using Library.BOL.Salons;
-using Library.BOL.Users;
+using SharedBase;
+using SharedBase.Utils;
+using SharedBase.BOL.Salons;
+using SharedBase.BOL.Users;
 
 namespace POS.WebsiteAdministration.Controls
 {

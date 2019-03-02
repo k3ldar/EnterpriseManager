@@ -28,8 +28,8 @@ using System.Collections.Generic;
 using System.Text;
 
 using Languages;
-using Library;
-using Library.BOL.Appointments;
+using SharedBase;
+using SharedBase.BOL.Appointments;
 using POS.Base.Classes;
 using POS.Base.Plugins;
 

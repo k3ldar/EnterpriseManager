@@ -34,8 +34,8 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library;
-using Library.Utils;
+using SharedBase;
+using SharedBase.Utils;
 
 using POS.Base.Classes;
 

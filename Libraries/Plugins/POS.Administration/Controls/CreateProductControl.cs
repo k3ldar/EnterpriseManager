@@ -27,8 +27,8 @@ using System;
 using System.Reflection;
 using System.Windows.Forms;
 
-using Library;
-using Library.BOL.Products;
+using SharedBase;
+using SharedBase.BOL.Products;
 
 using Languages;
 using POS.Base.Classes;

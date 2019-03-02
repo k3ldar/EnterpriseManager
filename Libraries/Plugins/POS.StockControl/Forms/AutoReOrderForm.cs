@@ -31,7 +31,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-using Library.BOL.StockControl;
+using SharedBase.BOL.StockControl;
 
 using Languages;
 using POS.Base.Classes;

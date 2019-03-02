@@ -30,8 +30,8 @@ using System.Text;
 
 using Languages;
 
-using Library.BOL.Therapists;
-using Library.BOL.Appointments;
+using SharedBase.BOL.Therapists;
+using SharedBase.BOL.Appointments;
 
 namespace SalonDiary.Classes
 {
@@ -147,7 +147,7 @@ namespace SalonDiary.Classes
                 if (err.Message.Contains(StringConstants.ERROR_THREAD_ABORT))
                     return;
 
-                Library.ErrorHandling.LogError(System.Reflection.MethodBase.GetCurrentMethod(), err,
+                SharedBase.ErrorHandling.LogError(System.Reflection.MethodBase.GetCurrentMethod(), err,
                     totalHours, totalLunch, totalTreatments, totalOtherHours, canTreat, therapist, therapistAppointments);
 
                 if (err.Message.Contains(StringConstants.ERROR_READING_DATA_FROM_CONNECTION) ||

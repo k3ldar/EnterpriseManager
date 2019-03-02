@@ -33,10 +33,10 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library.BOL.Treatments;
-using Library.BOL.Therapists;
-using Library.BOL.Users;
-using Library.BOL.Appointments;
+using SharedBase.BOL.Treatments;
+using SharedBase.BOL.Therapists;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Appointments;
 
 namespace POS.Diary.Forms
 {

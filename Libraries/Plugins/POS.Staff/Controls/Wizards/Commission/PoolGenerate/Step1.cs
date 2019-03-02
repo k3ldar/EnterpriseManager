@@ -81,7 +81,7 @@ namespace POS.Staff.Controls.Wizards.Commission.PoolGenerate
                 MainWizardForm.UpdateUI();
 
                 // rebuild data 
-                Library.BOL.Staff.StaffCommission.RebuildPoolData(mcDateFrom.SelectionStart, mcDateTo.SelectionEnd, cbReplaceData.Checked);
+                SharedBase.BOL.Staff.StaffCommission.RebuildPoolData(mcDateFrom.SelectionStart, mcDateTo.SelectionEnd, cbReplaceData.Checked);
 
                 return (true);
             }

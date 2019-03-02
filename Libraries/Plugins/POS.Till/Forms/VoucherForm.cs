@@ -32,9 +32,9 @@ using System.Text;
 using System.Windows.Forms;
 
 using Languages;
-using Library.Utils;
-using Library.BOL.Vouchers;
-using Library.BOL.Users;
+using SharedBase.Utils;
+using SharedBase.BOL.Vouchers;
+using SharedBase.BOL.Users;
 
 using POS.Base.Classes;
 
@@ -116,7 +116,7 @@ namespace POS.Till.Forms
                 decimal vatAmount = 0;
 
                 if (!_sale)
-                    vatAmount = Library.Utils.SharedUtils.VATCalculate(value, POS.Base.Classes.AppController.LocalCountry);
+                    vatAmount = SharedBase.Utils.SharedUtils.VATCalculate(value, POS.Base.Classes.AppController.LocalCountry);
 
                 _value = Math.Round(value + vatAmount, 2, MidpointRounding.AwayFromZero);
             }
@@ -182,9 +182,9 @@ namespace POS.Till.Forms
                 }
                 else if (err.Message.Contains(StringConstants.ERROR_INVALID_VOUCHER_AMOUNT))
                 {
-                    decimal vatValue = Library.Utils.SharedUtils.VATCalculate(_value, POS.Base.Classes.AppController.LocalCountry);
+                    decimal vatValue = SharedBase.Utils.SharedUtils.VATCalculate(_value, POS.Base.Classes.AppController.LocalCountry);
                     ShowError(LanguageStrings.AppError, String.Format(LanguageStrings.AppVoucherInvalidAmount,
-                        Library.Utils.SharedUtils.FormatMoney(Math.Round(_value + vatValue, 2), AppController.LocalCurrency)));
+                        SharedBase.Utils.SharedUtils.FormatMoney(Math.Round(_value + vatValue, 2), AppController.LocalCurrency)));
                     return;
                 }
                 else if (err.Message.Contains("Voucher has expired"))

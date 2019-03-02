@@ -35,9 +35,9 @@ using SharedControls.Interfaces;
 
 using SalonDiary.Classes;
 using Languages;
-using Library.BOL.Therapists;
-using Library.BOL.Appointments;
-using Library.BOL.Users;
+using SharedBase.BOL.Therapists;
+using SharedBase.BOL.Appointments;
+using SharedBase.BOL.Users;
 using SharedControls.WizardBase;
 
 namespace SalonDiary.Controls.Wizards.SendReminders

@@ -29,10 +29,10 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library;
-using Library.BOL.Users;
-using Library.BOL.Countries;
-using Library.BOL.ValidationChecks;
+using SharedBase;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Countries;
+using SharedBase.BOL.ValidationChecks;
 using POS.Base.Classes;
 
 #pragma warning disable IDE1006

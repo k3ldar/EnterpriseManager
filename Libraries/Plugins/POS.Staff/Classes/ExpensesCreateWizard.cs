@@ -27,8 +27,8 @@ using System;
 
 using Languages;
 using POS.Base.Classes;
-using Library.BOL.Users;
-using Library.BOL.Staff;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Staff;
 using SharedControls.WizardBase;
 using POS.Staff.Controls;
 

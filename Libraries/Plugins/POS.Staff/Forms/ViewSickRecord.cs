@@ -32,8 +32,8 @@ using System.Text;
 using System.Windows.Forms;
 
 using Languages;
-using Library;
-using Library.BOL.Staff;
+using SharedBase;
+using SharedBase.BOL.Staff;
 
 using POS.Base;
 using POS.Base.Classes;

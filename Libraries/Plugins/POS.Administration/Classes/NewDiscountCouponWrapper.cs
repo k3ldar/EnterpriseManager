@@ -28,7 +28,7 @@ using System.Collections.Generic;
 using System.Text;
 
 using Languages;
-using Library.BOL.Coupons;
+using SharedBase.BOL.Coupons;
 using SharedControls.WizardBase;
 
 namespace POS.Administration.Classes

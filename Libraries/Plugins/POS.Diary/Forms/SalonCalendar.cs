@@ -28,9 +28,9 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library;
-using Library.BOL.Users;
-using Library.BOL.Appointments;
+using SharedBase;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Appointments;
 
 using POS.Base.Classes;
 using POS.Base.Forms;
@@ -102,7 +102,7 @@ namespace POS.Diary.Forms
 
         #region Events
 
-        internal void RaisePayNow(Library.BOL.Appointments.Appointment appointment)
+        internal void RaisePayNow(SharedBase.BOL.Appointments.Appointment appointment)
         {
             if (appointment.MasterAppointment > -1)
                 appointment = Appointments.Get(appointment.MasterAppointment);

@@ -33,10 +33,10 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library;
-using Library.Utils;
-using Library.BOL.Users;
-using Library.BOL.TipsTricks;
+using SharedBase;
+using SharedBase.Utils;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.TipsTricks;
 
 using POS.Base.Classes;
 

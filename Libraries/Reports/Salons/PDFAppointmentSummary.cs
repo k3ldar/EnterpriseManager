@@ -31,8 +31,8 @@ using System.Text;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 
-using Library.BOL.Appointments;
-using Library.BOL.Statistics;
+using SharedBase.BOL.Appointments;
+using SharedBase.BOL.Statistics;
 
 namespace Reports.Salons
 {

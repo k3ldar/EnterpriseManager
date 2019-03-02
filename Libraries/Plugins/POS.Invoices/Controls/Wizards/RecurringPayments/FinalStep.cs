@@ -29,7 +29,7 @@ using SharedControls.WizardBase;
 
 using Languages;
 
-using Library.BOL.Invoices;
+using SharedBase.BOL.Invoices;
 
 using POS.Base.Classes;
 using POS.Invoices.Classes;

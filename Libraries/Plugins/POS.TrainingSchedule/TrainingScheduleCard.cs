@@ -29,9 +29,9 @@ using System.Windows.Forms;
 using Languages;
 
 
-using Library;
-using Library.BOL.Users;
-using Library.BOL.Appointments;
+using SharedBase;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Appointments;
 
 using POS.Base.Classes;
 using POS.Base.Plugins;

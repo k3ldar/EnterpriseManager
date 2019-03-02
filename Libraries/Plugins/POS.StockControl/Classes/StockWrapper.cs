@@ -30,7 +30,7 @@ using System.IO;
 using System.Net;
 using System.Text;
 
-using Library.BOL.StockControl;
+using SharedBase.BOL.StockControl;
 using POS.Base.Classes;
 
 using Shared.Classes;

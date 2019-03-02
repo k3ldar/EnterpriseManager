@@ -34,7 +34,7 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library.BOL.Users;
+using SharedBase.BOL.Users;
 
 namespace POS.Diary.Forms
 {

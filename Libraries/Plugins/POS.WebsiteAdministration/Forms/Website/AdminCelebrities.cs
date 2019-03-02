@@ -28,7 +28,7 @@ using System.IO;
 using System.Windows.Forms;
 
 using Languages;
-using Library.BOL.Celebrities;
+using SharedBase.BOL.Celebrities;
 
 using Shared;
 using POS.Base.Classes;

@@ -29,8 +29,8 @@ using System.Text;
 
 using Languages;
 
-using Library.BOL.Appointments;
-using Library.BOL.Users;
+using SharedBase.BOL.Appointments;
+using SharedBase.BOL.Users;
 
 namespace POS.Administration.Classes
 {

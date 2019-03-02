@@ -57,7 +57,7 @@ namespace POS.Staff
 
         public override string StatusText()
         {
-            int leaveRequests = Library.BOL.Staff.Staff.TotalLeaveApprovalRequests(AppController.ActiveUser);
+            int leaveRequests = SharedBase.BOL.Staff.Staff.TotalLeaveApprovalRequests(AppController.ActiveUser);
             this.Blinking = leaveRequests > 0;
 
             string Result = String.Format(LanguageStrings.AppPluginTrayLeaveApprovalRequestTotal, leaveRequests);

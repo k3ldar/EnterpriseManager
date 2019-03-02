@@ -33,9 +33,9 @@ using Languages;
 
 using POS.Staff.Forms;
 
-using Library;
-using Library.BOL.Therapists;
-using Library.BOL.Users;
+using SharedBase;
+using SharedBase.BOL.Therapists;
+using SharedBase.BOL.Users;
 
 using POS.Base.Classes;
 using POS.Base.Plugins;

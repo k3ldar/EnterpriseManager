@@ -28,10 +28,10 @@ using System.Windows.Forms;
 
 using POS.Base.Plugins;
 using Languages;
-using Library;
-using Library.BOL.Staff;
-using Library.BOL.Therapists;
-using Library.BOL.Users;
+using SharedBase;
+using SharedBase.BOL.Staff;
+using SharedBase.BOL.Therapists;
+using SharedBase.BOL.Users;
 using POS.Base.Classes;
 
 namespace POS.Staff.Forms

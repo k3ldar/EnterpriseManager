@@ -60,7 +60,7 @@ namespace PointOfSale.Controls.Settings.LocalUser
             AppController.LocalSettings.CustomCulture = (
                 (CultureInfo)cmbCurrency.Items[cmbCurrency.SelectedIndex]).Name;
             AppController.LocalSettings.ShowLanguageMenu = cbShowLanguageMenu.Checked;
-            Library.DAL.DALHelper.CultureOverride = AppController.LocalSettings.CustomCulture;
+            SharedBase.DAL.DALHelper.CultureOverride = AppController.LocalSettings.CustomCulture;
             return base.SettingsSave();
         }
 
@@ -94,7 +94,7 @@ namespace PointOfSale.Controls.Settings.LocalUser
         {
             CultureInfo culture = (CultureInfo)cmbCurrency.Items[cmbCurrency.SelectedIndex];
             lblCurrency.Text = String.Format(StringConstants.PREFIX_AND_SUFFIX_HYPHEN, culture.Name,
-                Library.Utils.SharedUtils.FormatMoney(0.00m, AppController.LocalCurrency));
+                SharedBase.Utils.SharedUtils.FormatMoney(0.00m, AppController.LocalCurrency));
         }
 
         private void cmbCurrency_Format(object sender, ListControlConvertEventArgs e)

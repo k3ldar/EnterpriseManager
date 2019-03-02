@@ -28,7 +28,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 
-using Library;
+using SharedBase;
 
 using Languages;
 using POS.Base.Classes;
@@ -72,7 +72,7 @@ namespace POS.Marketing.Controls
 
             string xml = Shared.Utilities.AddTrailingBackSlash(CurrentPath()) + StringConstants.FILE_MARKETING;
 
-            int templateCount = Library.XML.GetXMLValue(xml, StringConstants.SETTINGS_MARKETING, 
+            int templateCount = SharedBase.XML.GetXMLValue(xml, StringConstants.SETTINGS_MARKETING, 
                 StringConstants.SETTINGS_TEMPLATES, 1);
 
             for (int i = 1; i <= templateCount; i++)
@@ -80,7 +80,7 @@ namespace POS.Marketing.Controls
                 string template = String.Format(StringConstants.PREFIX_AND_SUFFIX, StringConstants.SETTINGS_TEMPLATE, i);
                 string file = path + System.IO.Path.GetFileName(Library.XML.GetXMLValue(xml, 
                     template, StringConstants.SETTINGS_FILENAME));
-                string name = Library.XML.GetXMLValue(xml, template, StringConstants.SETTINGS_NAME);
+                string name = SharedBase.XML.GetXMLValue(xml, template, StringConstants.SETTINGS_NAME);
                 _templates.Add(file, new EmailTemplateClass(file, name, i));
                 cmbTemplate.Items.Add(file);
             }

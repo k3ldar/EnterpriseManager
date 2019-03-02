@@ -29,8 +29,8 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library.BOL.Basket;
-using Library.BOL.Countries;
+using SharedBase.BOL.Basket;
+using SharedBase.BOL.Countries;
 
 using POS.Base.Classes;
 
@@ -60,13 +60,13 @@ namespace POS.WebsiteAdministration.Forms.CountryAdmin
             LoadCountries();
             LoadCurrencies();
 
-            udDefaultTax.Value = Convert.ToDecimal(Library.DAL.DALHelper.DefaultVATRate);
+            udDefaultTax.Value = Convert.ToDecimal(SharedBase.DAL.DALHelper.DefaultVATRate);
             lstCountries.SelectedIndex = 0;
             HintControl = lblDescription;
 
-            rbPrice1.Text = Library.LibraryHelperClass.SettingsGet(StringConstants.PRICE_DESCRIPTION_1, StringConstants.PRICE_1);
-            rbPrice2.Text = Library.LibraryHelperClass.SettingsGet(StringConstants.PRICE_DESCRIPTION_2, StringConstants.PRICE_2);
-            rbPrice3.Text = Library.LibraryHelperClass.SettingsGet(StringConstants.PRICE_DESCRIPTION_3, StringConstants.PRICE_3);
+            rbPrice1.Text = SharedBase.LibraryHelperClass.SettingsGet(StringConstants.PRICE_DESCRIPTION_1, StringConstants.PRICE_1);
+            rbPrice2.Text = SharedBase.LibraryHelperClass.SettingsGet(StringConstants.PRICE_DESCRIPTION_2, StringConstants.PRICE_2);
+            rbPrice3.Text = SharedBase.LibraryHelperClass.SettingsGet(StringConstants.PRICE_DESCRIPTION_3, StringConstants.PRICE_3);
 
         }
 
@@ -149,7 +149,7 @@ namespace POS.WebsiteAdministration.Forms.CountryAdmin
         {
             lstCountries.Items.Clear();
 
-            Library.BOL.Countries.Countries countries = Library.BOL.Countries.Countries.Get();
+            SharedBase.BOL.Countries.Countries countries = SharedBase.BOL.Countries.Countries.Get();
 
             foreach (Country country in countries)
             {

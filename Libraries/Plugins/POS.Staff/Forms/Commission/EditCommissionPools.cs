@@ -33,11 +33,11 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library.Utils;
+using SharedBase.Utils;
 
-using Library.BOL.Accounts;
-using Library.BOL.Locations;
-using Library.BOL.Staff;
+using SharedBase.BOL.Accounts;
+using SharedBase.BOL.Locations;
+using SharedBase.BOL.Staff;
 
 using POS.Base.Classes;
 
@@ -125,7 +125,7 @@ namespace POS.Staff.Forms
 
         protected override void OnCreateClicked()
         {
-            _currentPool = new CommissionPool(-1, LanguageStrings.AppNewCommissionPool, 0.000m, new Library.BOL.Accounts.PaymentStatuses(), null);
+            _currentPool = new CommissionPool(-1, LanguageStrings.AppNewCommissionPool, 0.000m, new SharedBase.BOL.Accounts.PaymentStatuses(), null);
 
             int idx = lstItems.Items.Add(_currentPool);
             lstItems.SelectedIndex = idx;

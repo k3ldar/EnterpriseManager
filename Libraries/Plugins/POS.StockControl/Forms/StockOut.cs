@@ -28,9 +28,9 @@ using System.Drawing;
 using System.Windows.Forms;
 
 using Languages;
-using Library.BOL.StockControl;
-using Library.BOL.Users;
-using Library.BOL.Products;
+using SharedBase.BOL.StockControl;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Products;
 using SharedControls.Classes;
 using POS.Base.Classes;
 
@@ -63,7 +63,7 @@ namespace POS.StockControl.Forms
             _CurrentStock = CurrentStock;
             _CurrentUser = CurrentUser;
 
-            _NewStock = Library.BOL.StockControl.Stock.Get(_CurrentUser, true);
+            _NewStock = SharedBase.BOL.StockControl.Stock.Get(_CurrentUser, true);
 
             foreach (StockItem item in _NewStock)
             {
@@ -189,7 +189,7 @@ namespace POS.StockControl.Forms
 
             if (gridStock.Columns[e.ColumnIndex].Index.Equals(10)) // cost
             {
-                e.Value = Library.Utils.SharedUtils.FormatMoney(
+                e.Value = SharedBase.Utils.SharedUtils.FormatMoney(
                     Shared.Utilities.StrToDecimal(e.Value.ToString(), 0.00m), 
                     AppController.LocalCurrency);
             }

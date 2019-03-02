@@ -66,29 +66,29 @@ namespace POS.WebsiteAdministration.Controls.WebSettings
             LoadImages();
 
             string setting = String.Format(StringConstants.WEB_SETTING_HOME_FIXED_BANNER_LINK, Website.ID, SettingIndex);
-            txtLink.Text = Library.LibraryHelperClass.SettingsGet(setting, String.Empty);
+            txtLink.Text = SharedBase.LibraryHelperClass.SettingsGet(setting, String.Empty);
 
             setting = String.Format(StringConstants.WEB_SETTING_HOME_FIXED_BANNER_DESCRIPTION, Website.ID, SettingIndex);
-            txtDescription.Text = Library.LibraryHelperClass.SettingsGet(setting, String.Empty);
+            txtDescription.Text = SharedBase.LibraryHelperClass.SettingsGet(setting, String.Empty);
 
             setting = String.Format(StringConstants.WEB_SETTING_HOME_FIXED_BANNER_TITLE, Website.ID, SettingIndex);
-            txtTitle.Text = Library.LibraryHelperClass.SettingsGet(setting, String.Empty);
+            txtTitle.Text = SharedBase.LibraryHelperClass.SettingsGet(setting, String.Empty);
         }
 
         public override void Save()
         {
             string setting = String.Format(StringConstants.WEB_SETTING_HOME_FIXED_BANNER_LINK, Website.ID, SettingIndex);
-            Library.LibraryHelperClass.SettingsSet(setting, txtLink.Text);
+            SharedBase.LibraryHelperClass.SettingsSet(setting, txtLink.Text);
 
             setting = String.Format(StringConstants.WEB_SETTING_HOME_FIXED_BANNER, Website.ID, SettingIndex);
-            Library.LibraryHelperClass.SettingsSet(setting,
+            SharedBase.LibraryHelperClass.SettingsSet(setting,
                 cmbImage.SelectedIndex == -1 ? String.Empty : Path.GetFileName((string)cmbImage.Items[cmbImage.SelectedIndex]));
 
             setting = String.Format(StringConstants.WEB_SETTING_HOME_FIXED_BANNER_DESCRIPTION, Website.ID, SettingIndex);
-            Library.LibraryHelperClass.SettingsSet(setting, txtDescription.Text);
+            SharedBase.LibraryHelperClass.SettingsSet(setting, txtDescription.Text);
 
             setting = String.Format(StringConstants.WEB_SETTING_HOME_FIXED_BANNER_TITLE, Website.ID, SettingIndex);
-            Library.LibraryHelperClass.SettingsSet(setting, txtTitle.Text);
+            SharedBase.LibraryHelperClass.SettingsSet(setting, txtTitle.Text);
         }
 
         public override void Clear()
@@ -118,7 +118,7 @@ namespace POS.WebsiteAdministration.Controls.WebSettings
             if (!Directory.Exists(imageRoot))
                 Directory.CreateDirectory(imageRoot);
 
-            string setting = Library.LibraryHelperClass.SettingsGet(
+            string setting = SharedBase.LibraryHelperClass.SettingsGet(
                 String.Format(base.SettingName, Website.ID, SettingIndex));
             cmbImage.Items.Clear();
             string[] files = Directory.GetFiles(imageRoot, StringConstants.IMAGE_SEARCH_FIXED_HOME_BANNERS);

@@ -31,7 +31,7 @@ using POS.Suppliers.Classes;
 
 using Languages;
 
-using Library.BOL.Countries;
+using SharedBase.BOL.Countries;
 using System.Globalization;
 
 namespace POS.Suppliers.Controls.Wizards.Supplier
@@ -133,7 +133,7 @@ namespace POS.Suppliers.Controls.Wizards.Supplier
 
             if (_supplier.IsNew)
             {
-                _supplier.Supplier = new Library.BOL.Suppliers.Supplier(-1,
+                _supplier.Supplier = new SharedBase.BOL.Suppliers.Supplier(-1,
                     txtBusinessName.Text,
                     txtAddressLine1.Text,
                     txtAddressLine2.Text,
@@ -143,7 +143,7 @@ namespace POS.Suppliers.Controls.Wizards.Supplier
                     txtPostcode.Text,
                     country,
                     String.Empty,
-                    Library.SupplierStatus.Active,
+                    SharedBase.SupplierStatus.Active,
                     0,
                     0);
             }

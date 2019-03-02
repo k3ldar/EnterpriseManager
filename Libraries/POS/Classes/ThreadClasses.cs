@@ -28,8 +28,8 @@ using System.Threading;
 using System.IO;
 using Shared.Classes;
 
-using Library;
-using Library.BOL.Products;
+using SharedBase;
+using SharedBase.BOL.Products;
 
 #pragma warning disable IDE1005
 
@@ -49,7 +49,7 @@ namespace POS.Base.Classes
             AppController._validInstall = true;
             return (true);
 #else
-            AppController._validInstall = Library.Utils.LibUtils.GetInstallValid(Library.DAL.DALHelper.StoreID);
+            AppController._validInstall = SharedBase.Utils.LibUtils.GetInstallValid(SharedBase.DAL.DALHelper.StoreID);
 
             return (false);
 #endif
@@ -91,7 +91,7 @@ namespace POS.Base.Classes
                 {
                     Random rnd = new Random(DateTime.Now.Second);
 
-                    if (Library.BOL.CashDrawer.CashDrawers.CheckedInLast10Minutes())
+                    if (SharedBase.BOL.CashDrawer.CashDrawers.CheckedInLast10Minutes())
                     {
                         _bypassedChecks = 0;
                         _nextSpotCheck = DateTime.Now.AddHours(rnd.Next(4) + 1);
@@ -175,7 +175,7 @@ namespace POS.Base.Classes
             // if the last check was previous day then force a check
             if (AppController.LocalSettings.CashDrawerForceChecks &&
                 !AppController.LocalSettings.CashDrawerBypassStartOfDay &&
-                !Library.BOL.CashDrawer.CashDrawers.StartOfDayComplete(CashDrawerType.Till))
+                !SharedBase.BOL.CashDrawer.CashDrawers.StartOfDayComplete(CashDrawerType.Till))
             {
                 if (ForceStartOfDay != null)
                     ForceStartOfDay(this, EventArgs.Empty);
@@ -486,7 +486,7 @@ namespace POS.Base.Classes
 
         protected override bool Run(object parameters)
         {
-            AppController.ApplicationController.AllAppointments = Library.BOL.Appointments.Appointments.Get((DateTime)parameters, null);
+            AppController.ApplicationController.AllAppointments = SharedBase.BOL.Appointments.Appointments.Get((DateTime)parameters, null);
             return (false);
         }
     }

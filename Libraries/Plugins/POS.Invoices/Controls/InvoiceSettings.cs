@@ -59,7 +59,7 @@ namespace POS.Invoices.Controls
 
         public override bool SettingsSave()
         {
-            Library.DAL.DALHelper.HideVATOnWebsiteAndInvoices = cbHideVAT.Checked;
+            SharedBase.DAL.DALHelper.HideVATOnWebsiteAndInvoices = cbHideVAT.Checked;
 
             AppController.LocalSettings.AllowCurrencyToBeConverted = cbAllowCurrencyToBeConverted.Checked;
             AppController.LocalSettings.HideVATOnOrdersAndInvoices = cbHideVAT.Checked;
@@ -74,7 +74,7 @@ namespace POS.Invoices.Controls
 
         public override void SettingsLoaded()
         {
-            cbHideVAT.Checked = Library.DAL.DALHelper.HideVATOnWebsiteAndInvoices;
+            cbHideVAT.Checked = SharedBase.DAL.DALHelper.HideVATOnWebsiteAndInvoices;
             cbAllowCurrencyToBeConverted.Checked = AppController.LocalSettings.AllowCurrencyToBeConverted;
             cbShowProductDiscountOnInvoice.Checked = AppController.LocalSettings.InvoiceShowProductDiscount;
             txtMinTrackReference.Text = AppController.LocalSettings.InvoiceMinimumValueTrackingReference.ToString();

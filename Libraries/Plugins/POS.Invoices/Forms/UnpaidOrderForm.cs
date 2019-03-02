@@ -25,7 +25,7 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 using System;
 using System.Windows.Forms;
-using Library.BOL.Orders;
+using SharedBase.BOL.Orders;
 
 using POS.Base.Classes;
 
@@ -121,7 +121,7 @@ namespace POS.Invoices.Forms
         {
             foreach (ListViewItem itm in lvUnpaidOrders.SelectedItems)
             {
-                Order order = Library.BOL.Orders.Orders.Get(Convert.ToInt32(itm.Text.Substring(1)));
+                Order order = SharedBase.BOL.Orders.Orders.Get(Convert.ToInt32(itm.Text.Substring(1)));
 
                 if (order != null)
                 {

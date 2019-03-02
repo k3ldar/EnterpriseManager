@@ -27,7 +27,7 @@ using System;
 using System.Windows.Forms;
 
 using Languages;
-using Library.BOL.DatabaseUpdates;
+using SharedBase.BOL.DatabaseUpdates;
 using POS.Base.Classes;
 
 namespace POS.AutoUpdate.Forms
@@ -67,7 +67,7 @@ namespace POS.AutoUpdate.Forms
             if (lvAutoUpdateItems.SelectedItems.Count == 0)
                 return;
 
-            Library.BOL.DatabaseUpdates.AutoUpdate existingRule = (Library.BOL.DatabaseUpdates.AutoUpdate)lvAutoUpdateItems.SelectedItems[0].Tag;
+            SharedBase.BOL.DatabaseUpdates.AutoUpdate existingRule = (SharedBase.BOL.DatabaseUpdates.AutoUpdate)lvAutoUpdateItems.SelectedItems[0].Tag;
 
             Classes.ExecuteNewAutoUpdateWizard.CreateNewAutoUpdate(existingRule);
 
@@ -87,7 +87,7 @@ namespace POS.AutoUpdate.Forms
 
         protected override void OnCreateClicked()
         {
-            Library.BOL.DatabaseUpdates.AutoUpdate newUpdate = Classes.ExecuteNewAutoUpdateWizard.CreateNewAutoUpdate(null);
+            SharedBase.BOL.DatabaseUpdates.AutoUpdate newUpdate = Classes.ExecuteNewAutoUpdateWizard.CreateNewAutoUpdate(null);
 
             if (newUpdate != null)
                 AddAutoUpdate(newUpdate);
@@ -97,7 +97,7 @@ namespace POS.AutoUpdate.Forms
         {
             if (ShowQuestion(LanguageStrings.AppAutoRuleDelete, LanguageStrings.AppAutoRuleDeletePrompt))
             {
-                AutoUpdates.Delete((Library.BOL.DatabaseUpdates.AutoUpdate)lvAutoUpdateItems.SelectedItems[0].Tag);
+                AutoUpdates.Delete((SharedBase.BOL.DatabaseUpdates.AutoUpdate)lvAutoUpdateItems.SelectedItems[0].Tag);
                 AddAllAutoUpdates();
             }
 
@@ -118,11 +118,11 @@ namespace POS.AutoUpdate.Forms
             lvAutoUpdateItems.Items.Clear();
             AutoUpdates updates = AutoUpdates.Get();
 
-            foreach (Library.BOL.DatabaseUpdates.AutoUpdate update in updates)
+            foreach (SharedBase.BOL.DatabaseUpdates.AutoUpdate update in updates)
                 AddAutoUpdate(update);
         }
 
-        private void AddAutoUpdate(Library.BOL.DatabaseUpdates.AutoUpdate autoUpdate)
+        private void AddAutoUpdate(SharedBase.BOL.DatabaseUpdates.AutoUpdate autoUpdate)
         {
             ListViewItem item = new ListViewItem();
             item.Text = autoUpdate.Name;

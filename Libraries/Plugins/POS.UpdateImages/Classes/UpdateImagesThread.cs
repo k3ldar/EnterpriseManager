@@ -27,7 +27,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-using Library.BOL.Websites;
+using SharedBase.BOL.Websites;
 using POS.Base.Classes;
 using Shared.Classes;
 
@@ -107,7 +107,7 @@ namespace POS.Images.Classes
             }
             catch (Exception err)
             {
-                Library.ErrorHandling.LogError(System.Reflection.MethodBase.GetCurrentMethod(), err);
+                SharedBase.ErrorHandling.LogError(System.Reflection.MethodBase.GetCurrentMethod(), err);
             }
 
             return (false);

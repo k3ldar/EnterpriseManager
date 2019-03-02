@@ -33,7 +33,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using Library.Interfaces;
+using SharedBase.Interfaces;
 
 namespace POS.WebsiteAdministration.Controls.WebSettings
 {

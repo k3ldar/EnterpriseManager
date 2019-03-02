@@ -31,7 +31,7 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 
-using Library.BOL.Countries;
+using SharedBase.BOL.Countries;
 using POS.Base.Classes;
 
 namespace POS.Diary.Controls

@@ -623,7 +623,7 @@
             this.productEditTextDescription.Margin = new System.Windows.Forms.Padding(2);
             this.productEditTextDescription.MaximumLength = 4000;
             this.productEditTextDescription.Name = "productEditTextDescription";
-            this.productEditTextDescription.PageType = Library.CustomPagesType.WebPage;
+            this.productEditTextDescription.PageType = SharedBase.CustomPagesType.WebPage;
             this.productEditTextDescription.Size = new System.Drawing.Size(569, 196);
             this.productEditTextDescription.TabIndex = 0;
             // 
@@ -637,7 +637,7 @@
             this.productEditTextHowToUse.Margin = new System.Windows.Forms.Padding(2);
             this.productEditTextHowToUse.MaximumLength = 4000;
             this.productEditTextHowToUse.Name = "productEditTextHowToUse";
-            this.productEditTextHowToUse.PageType = Library.CustomPagesType.WebPage;
+            this.productEditTextHowToUse.PageType = SharedBase.CustomPagesType.WebPage;
             this.productEditTextHowToUse.Size = new System.Drawing.Size(569, 196);
             this.productEditTextHowToUse.TabIndex = 0;
             // 
@@ -651,7 +651,7 @@
             this.productEditTextIngredients.Margin = new System.Windows.Forms.Padding(2);
             this.productEditTextIngredients.MaximumLength = 4000;
             this.productEditTextIngredients.Name = "productEditTextIngredients";
-            this.productEditTextIngredients.PageType = Library.CustomPagesType.WebPage;
+            this.productEditTextIngredients.PageType = SharedBase.CustomPagesType.WebPage;
             this.productEditTextIngredients.Size = new System.Drawing.Size(569, 196);
             this.productEditTextIngredients.TabIndex = 0;
             // 
@@ -665,7 +665,7 @@
             this.productEditTextFeatures.Margin = new System.Windows.Forms.Padding(2);
             this.productEditTextFeatures.MaximumLength = 4000;
             this.productEditTextFeatures.Name = "productEditTextFeatures";
-            this.productEditTextFeatures.PageType = Library.CustomPagesType.WebPage;
+            this.productEditTextFeatures.PageType = SharedBase.CustomPagesType.WebPage;
             this.productEditTextFeatures.Size = new System.Drawing.Size(569, 196);
             this.productEditTextFeatures.TabIndex = 0;
             // 

@@ -28,8 +28,8 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library;
-using Library.BOL.Treatments;
+using SharedBase;
+using SharedBase.BOL.Treatments;
 
 using POS.Base.Classes;
 using SharedControls.Classes;
@@ -100,7 +100,7 @@ namespace POS.WebsiteAdministration.Forms.Treatments
             try
             {
                 lstTreatments.Items.Clear();
-                Library.BOL.Treatments.Treatments treatments = Library.BOL.Treatments.Treatments.Get(1, 1000);
+                SharedBase.BOL.Treatments.Treatments treatments = SharedBase.BOL.Treatments.Treatments.Get(1, 1000);
 
                 foreach (Treatment treat in treatments)
                 {

@@ -28,8 +28,8 @@ using System.Drawing;
 
 using Languages;
 
-using Library;
-using Library.BOL.Users;
+using SharedBase;
+using SharedBase.BOL.Users;
 
 using POS.Base.Classes;
 using POS.Base.Plugins;

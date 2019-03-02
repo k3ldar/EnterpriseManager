@@ -26,7 +26,7 @@
 using System;
 using System.Windows.Forms;
 
-using Library.BOL.Users;
+using SharedBase.BOL.Users;
 using POS.Base.Classes;
 
 namespace PointOfSale.Controls.Settings.Admin

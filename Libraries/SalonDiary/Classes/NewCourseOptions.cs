@@ -27,10 +27,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-using Library.BOL.Appointments;
-using Library.BOL.Users;
-using Library.BOL.Training;
-using Library.BOL.Therapists;
+using SharedBase.BOL.Appointments;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Training;
+using SharedBase.BOL.Therapists;
 
 namespace SalonDiary.Classes
 {
@@ -110,12 +110,12 @@ namespace SalonDiary.Classes
             string day1Desc = Course.CourseLength == 1 ? "{0} - 1 Day Course" : "{0} - Day 1";
 
             Appointment day1 = new Appointment(-1, Trainer.EmployeeID, start.Date, 9.0, 540,
-                Library.Enums.AppointmentStatus.Confirmed, 14, -1,
+                SharedBase.Enums.AppointmentStatus.Confirmed, 14, -1,
                 Course.Name, Trainer.EmployeeID, Trainer.EmployeeName, String.Format(day1Desc, Course.Name),
                 -1, DateTime.Now, DateTime.Now, -1, DateTime.Now.AddYears(-100));
 
             day1.ID = Appointments.Create(day1, _currentUser);
-            Library.BOL.Training.Course.Create(day1, Course, Trainer);
+            SharedBase.BOL.Training.Course.Create(day1, Course, Trainer);
 
             if (ChangeWorkingHours)
                 SetWorkingHours(Trainer, start);
@@ -143,7 +143,7 @@ namespace SalonDiary.Classes
                     SetWorkingHours(Trainer, start);
 
                 Appointment newDay = new Appointment(-1, Trainer.EmployeeID, start.Date, 9.0, 540,
-                    Library.Enums.AppointmentStatus.Confirmed, 14, -1,
+                    SharedBase.Enums.AppointmentStatus.Confirmed, 14, -1,
                     Course.Name, Trainer.EmployeeID, Trainer.EmployeeName, String.Format("{0} - Day {1}", Course.Name, i),
                     day1.ID, DateTime.Now, DateTime.Now, -1, DateTime.Now.AddYears(-100));
 
@@ -214,7 +214,7 @@ namespace SalonDiary.Classes
             workingDay.Date = date.Date;
             workingDay.FinishTime = 18.0;
             workingDay.StartTime = 9.0;
-            workingDay.RepeatOption = Library.Enums.AppointmentRepeatType.NoRepeat;
+            workingDay.RepeatOption = SharedBase.Enums.AppointmentRepeatType.NoRepeat;
             workingDay.RepeatDuration = 0;
             workingDay.Save();
         }

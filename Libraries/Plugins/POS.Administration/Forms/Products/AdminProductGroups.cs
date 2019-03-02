@@ -28,8 +28,8 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library;
-using Library.BOL.Products;
+using SharedBase;
+using SharedBase.BOL.Products;
 
 using POS.Base.Classes;
 
@@ -135,7 +135,7 @@ namespace POS.Administration.Forms.Products
         {
             foreach (ListViewItem itm in lstProductGroups.SelectedItems)
             {
-                Library.BOL.Products.ProductGroup group = _Admin.ProductGroupGet(
+                SharedBase.BOL.Products.ProductGroup group = _Admin.ProductGroupGet(
                     Convert.ToInt32(itm.SubItems[3].Text));
 
                 if (group != null)

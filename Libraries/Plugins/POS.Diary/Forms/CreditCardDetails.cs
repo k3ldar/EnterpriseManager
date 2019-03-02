@@ -33,9 +33,9 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library;
-using Library.BOL.Users;
-using Library.BOL.ValidationChecks;
+using SharedBase;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.ValidationChecks;
 
 using SharedControls;
 using SharedControls.Classes;
@@ -204,7 +204,7 @@ namespace POS.Diary.Forms
             DateTime dateFrom = GetDateFrom();
             DateTime dateTo = GetDateTo();
             Shared.AcceptedCreditCardTypes cardTypeEnum = (Shared.AcceptedCreditCardTypes)Enum.Parse(typeof(Shared.AcceptedCreditCardTypes), cardType);
-            Result = new CreditCard(-1, _userDetails, Library.Utils.StringCipher.Encrypt(txtCardNumber.Text,
+            Result = new CreditCard(-1, _userDetails, SharedBase.Utils.StringCipher.Encrypt(txtCardNumber.Text,
                 StringConstants.CREDIT_CARD_PASSPHRASE), last4, dateFrom.ToString(StringConstants.CREDIT_CARD_DATE_FORMAT),
                 dateTo.ToString(StringConstants.CREDIT_CARD_DATE_FORMAT), _userDetails.UserName, txtLast3Digits.Text, cardTypeEnum);
 

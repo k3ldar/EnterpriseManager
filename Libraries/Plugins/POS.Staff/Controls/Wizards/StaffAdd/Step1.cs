@@ -26,8 +26,8 @@
 using System;
 
 using Languages;
-using Library.BOL.Staff;
-using Library.BOL.Users;
+using SharedBase.BOL.Staff;
+using SharedBase.BOL.Users;
 using POS.Base.Forms;
 
 namespace POS.Staff.Controls.Wizards.StaffAdd
@@ -74,7 +74,7 @@ namespace POS.Staff.Controls.Wizards.StaffAdd
                 return (false);
             }
 
-            if (_newStaffMember.MemberLevel >= Library.MemberLevel.StaffMember)
+            if (_newStaffMember.MemberLevel >= SharedBase.MemberLevel.StaffMember)
             {
                 ShowError(LanguageStrings.AppStaffCreateNew, LanguageStrings.AppStaffCreateNewAlreadyStaff);
                 return (false);

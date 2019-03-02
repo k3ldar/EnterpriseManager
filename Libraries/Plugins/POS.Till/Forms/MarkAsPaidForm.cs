@@ -29,8 +29,8 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library.BOL.Accounts;
-using Library.BOL.Orders;
+using SharedBase.BOL.Accounts;
+using SharedBase.BOL.Orders;
 
 using POS.Base.Classes;
 

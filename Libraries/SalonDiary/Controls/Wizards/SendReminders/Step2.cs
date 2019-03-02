@@ -33,9 +33,9 @@ using System.Windows.Forms;
 
 using SalonDiary.Classes;
 using Languages;
-using Library.BOL.Therapists;
-using Library.BOL.Appointments;
-using Library.BOL.Users;
+using SharedBase.BOL.Therapists;
+using SharedBase.BOL.Appointments;
+using SharedBase.BOL.Users;
 using SharedControls.WizardBase;
 
 namespace SalonDiary.Controls.Wizards.SendReminders
@@ -124,8 +124,8 @@ namespace SalonDiary.Controls.Wizards.SendReminders
             {
                 switch (appt.Status)
                 {
-                    case Library.Enums.AppointmentStatus.Confirmed:
-                    case Library.Enums.AppointmentStatus.Requested:
+                    case SharedBase.Enums.AppointmentStatus.Confirmed:
+                    case SharedBase.Enums.AppointmentStatus.Requested:
                         if (appt.AllowSendReminder() && appt.Therapist != null)
                             _options.SendList.Add(new AppointmentReminder(appt, _options.Message));
 

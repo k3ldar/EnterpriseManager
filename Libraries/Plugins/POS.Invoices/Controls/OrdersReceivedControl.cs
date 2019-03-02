@@ -29,10 +29,10 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library;
-using Library.BOL.Accounts;
-using Library.BOL.Invoices;
-using Library.BOL.StockControl;
+using SharedBase;
+using SharedBase.BOL.Accounts;
+using SharedBase.BOL.Invoices;
+using SharedBase.BOL.StockControl;
 using Reports.Accounts;
 using POS.Base.Classes;
 
@@ -148,7 +148,7 @@ namespace POS.Invoices.Controls
                     break;
             }
 
-            Library.BOL.Invoices.Invoices invoices;
+            SharedBase.BOL.Invoices.Invoices invoices;
             _currentstock = Stock.Get(AppController.ActiveUser, true);
 
             this.Cursor = Cursors.WaitCursor;
@@ -161,11 +161,11 @@ namespace POS.Invoices.Controls
 
                     if (status.ID == -1)
                     {
-                        invoices = Library.BOL.Invoices.Invoices.InvoicesGet(AppController.ActiveUser, statuses, true, false);
+                        invoices = SharedBase.BOL.Invoices.Invoices.InvoicesGet(AppController.ActiveUser, statuses, true, false);
                     }
                     else
                     {
-                        invoices = Library.BOL.Invoices.Invoices.InvoicesGet(AppController.ActiveUser, statuses, status);
+                        invoices = SharedBase.BOL.Invoices.Invoices.InvoicesGet(AppController.ActiveUser, statuses, status);
                     }
 
                     lstInvoices.Items.Clear();
@@ -263,13 +263,13 @@ namespace POS.Invoices.Controls
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            Library.BOL.Invoices.Invoices invoices = new Library.BOL.Invoices.Invoices();
+            SharedBase.BOL.Invoices.Invoices invoices = new SharedBase.BOL.Invoices.Invoices();
 
             foreach (ListViewItem item in lstInvoices.SelectedItems)
             {
                 int invoiceID = Convert.ToInt32(item.SubItems[6].Text);
 
-                Invoice invoice = Library.BOL.Invoices.Invoices.Get(invoiceID);
+                Invoice invoice = SharedBase.BOL.Invoices.Invoices.Get(invoiceID);
                 invoices.Add(invoice);
             }
 
@@ -279,7 +279,7 @@ namespace POS.Invoices.Controls
                         AppController.LocalSettings.InvoiceFooter, AppController.LocalSettings.InvoiceAddress,
                         AppController.LocalSettings.InvoiceVATRegistrationNumber,
                         AppController.LocalSettings.CustomCulture,
-                    Library.DAL.DALHelper.HideVATOnWebsiteAndInvoices,
+                    SharedBase.DAL.DALHelper.HideVATOnWebsiteAndInvoices,
                     AppController.LocalSettings.InvoiceShowProductDiscount, String.Empty, String.Empty, 1,
                     AppController.LocalSettings.InvoicePrefix);
                 report.Print();
@@ -292,7 +292,7 @@ namespace POS.Invoices.Controls
                 }
                 else
                 {
-                    Library.ErrorHandling.LogError(System.Reflection.MethodBase.GetCurrentMethod(), err, sender, e);
+                    SharedBase.ErrorHandling.LogError(System.Reflection.MethodBase.GetCurrentMethod(), err, sender, e);
                     throw;
                 }
             }
@@ -309,7 +309,7 @@ namespace POS.Invoices.Controls
                     {
                         int invoiceID = Convert.ToInt32(item.SubItems[6].Text);
 
-                        Invoice invoice = Library.BOL.Invoices.Invoices.Get(invoiceID);
+                        Invoice invoice = SharedBase.BOL.Invoices.Invoices.Get(invoiceID);
 
                         if (invoice != null)
                             invoice.SetProcessStatus(AppController.ActiveUser, ProcessStatus.Processing);
@@ -340,7 +340,7 @@ namespace POS.Invoices.Controls
                     StringConstants.FOLDER_INVOICES,
                     String.Format(StringConstants.FILE_INVOICE_PART,
                     DateTime.Now.ToString(StringConstants.FILE_NAME_DATE)));
-                Invoice inv = Library.BOL.Invoices.Invoices.Get(
+                Invoice inv = SharedBase.BOL.Invoices.Invoices.Get(
                     Convert.ToInt32(itm.SubItems[6].Text));
 
                 if (inv != null)
@@ -379,7 +379,7 @@ namespace POS.Invoices.Controls
                     {
                         int invoiceID = Convert.ToInt32(item.SubItems[6].Text);
 
-                        Invoice invoice = Library.BOL.Invoices.Invoices.Get(invoiceID);
+                        Invoice invoice = SharedBase.BOL.Invoices.Invoices.Get(invoiceID);
 
                         if (invoice != null)
                             invoice.SetProcessStatus(AppController.ActiveUser, ProcessStatus.OnHold);

@@ -28,8 +28,8 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library;
-using Library.BOL.Appointments;
+using SharedBase;
+using SharedBase.BOL.Appointments;
 
 using POS.Base.Classes;
 using SharedControls.Classes;
@@ -129,7 +129,7 @@ namespace POS.Administration.Forms.Treatments
                     {
                         ListViewItem item = lstTreatments.Items.Add(treat.Name);
 
-                        decimal vat = Library.Utils.SharedUtils.VATCalculate(treat.Cost, POS.Base.Classes.AppController.LocalCountry.VATRate);
+                        decimal vat = SharedBase.Utils.SharedUtils.VATCalculate(treat.Cost, POS.Base.Classes.AppController.LocalCountry.VATRate);
                         item.SubItems.Add(Library.Utils.SharedUtils.FormatMoney(treat.Cost + vat, AppController.LocalCurrency));
                         item.SubItems.Add(Library.Utils.SharedUtils.FormatMoney(treat.Cost, AppController.LocalCurrency));
                         item.SubItems.Add(Shared.Utilities.TimeToString(treat.Duration));
@@ -175,9 +175,9 @@ namespace POS.Administration.Forms.Treatments
                         //Refresh the view for the treatment
                         itm.Text = treat.Name;
                         itm.SubItems[0].Text = treat.Name;
-                        decimal vat = Library.Utils.SharedUtils.VATCalculate(treat.Cost, AppController.LocalCountry.VATRate);
-                        itm.SubItems[1].Text = Library.Utils.SharedUtils.FormatMoney(treat.Cost + vat, AppController.LocalCurrency);
-                        itm.SubItems[2].Text = Library.Utils.SharedUtils.FormatMoney(treat.Cost, AppController.LocalCurrency);
+                        decimal vat = SharedBase.Utils.SharedUtils.VATCalculate(treat.Cost, AppController.LocalCountry.VATRate);
+                        itm.SubItems[1].Text = SharedBase.Utils.SharedUtils.FormatMoney(treat.Cost + vat, AppController.LocalCurrency);
+                        itm.SubItems[2].Text = SharedBase.Utils.SharedUtils.FormatMoney(treat.Cost, AppController.LocalCurrency);
                         itm.SubItems[3].Text = Shared.Utilities.TimeToString(treat.Duration);
                         itm.SubItems[4].Text = treat.IsActive ? LanguageStrings.AppYes : LanguageStrings.AppNo;
                         itm.SubItems[5].Text = treat.ID.ToString();

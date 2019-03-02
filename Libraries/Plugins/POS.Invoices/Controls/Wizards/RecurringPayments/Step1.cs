@@ -28,7 +28,7 @@ using System;
 using SharedControls.WizardBase;
 
 using Languages;
-using Library;
+using SharedBase;
 using POS.Base.Classes;
 using POS.Base.Forms;
 using POS.Invoices.Classes;

@@ -31,8 +31,8 @@ using System.Drawing;
 using System.Drawing.Printing;
 using System.Windows.Forms;
 
-using Library.BOL.Users;
-using Library.BOL.DeliveryAddress;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.DeliveryAddress;
 using POS.Base.Classes;
 
 namespace POS.Base.Labels

@@ -29,7 +29,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Library.BOL.Websites;
+using SharedBase.BOL.Websites;
 
 namespace POS.WebsiteAdministration.Classes
 {

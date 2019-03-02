@@ -30,7 +30,7 @@ using System.Windows.Forms;
 
 using POS.Base.Controls;
 
-using Library.BOL.Users;
+using SharedBase.BOL.Users;
 
 namespace POS.Base.Plugins
 {

@@ -32,8 +32,8 @@ using System.Text;
 using System.Windows.Forms;
 
 using Languages;
-using Library;
-using Library.BOL.Coupons;
+using SharedBase;
+using SharedBase.BOL.Coupons;
 using POS.Base.Classes;
 using POS.Administration.Classes;
 

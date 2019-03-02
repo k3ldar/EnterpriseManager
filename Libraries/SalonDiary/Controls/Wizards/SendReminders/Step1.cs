@@ -33,8 +33,8 @@ using System.Windows.Forms;
 
 using SalonDiary.Classes;
 using Languages;
-using Library.BOL.Therapists;
-using Library.BOL.Appointments;
+using SharedBase.BOL.Therapists;
+using SharedBase.BOL.Appointments;
 using SharedControls.WizardBase;
 
 namespace SalonDiary.Controls.Wizards.SendReminders

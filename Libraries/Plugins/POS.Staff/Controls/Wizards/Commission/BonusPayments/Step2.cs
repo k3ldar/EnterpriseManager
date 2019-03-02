@@ -32,8 +32,8 @@ using System.Text;
 using System.Windows.Forms;
 
 using Languages;
-using Library.BOL.Staff;
-using Library.BOL.Therapists;
+using SharedBase.BOL.Staff;
+using SharedBase.BOL.Therapists;
 using POS.Staff.Classes;
 
 namespace POS.Staff.Controls.Wizards.Commission.BonusPayments
@@ -77,7 +77,7 @@ namespace POS.Staff.Controls.Wizards.Commission.BonusPayments
 
         public override bool NextClicked()
         {
-            Library.BOL.Staff.StaffMembers staffList = new Library.BOL.Staff.StaffMembers();
+            SharedBase.BOL.Staff.StaffMembers staffList = new SharedBase.BOL.Staff.StaffMembers();
 
             for (int i = 0; i < clbStaff.Items.Count; i++)
             {
@@ -106,7 +106,7 @@ namespace POS.Staff.Controls.Wizards.Commission.BonusPayments
         {
             clbStaff.Items.Clear();
 
-            foreach (StaffMember staff in Library.BOL.Staff.StaffMembers.All())
+            foreach (StaffMember staff in SharedBase.BOL.Staff.StaffMembers.All())
             {
                 int idx = clbStaff.Items.Add(staff);
 

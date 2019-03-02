@@ -65,9 +65,9 @@ namespace POS.WebsiteAdministration.Controls.WebSettings
         public override void Save()
         {
             string setting = String.Format(StringConstants.WEB_SETTING_HOME_BANNER_LINK, Website.ID, SettingIndex);
-            Library.LibraryHelperClass.SettingsSet(setting, txtLink.Text);
+            SharedBase.LibraryHelperClass.SettingsSet(setting, txtLink.Text);
             setting = String.Format(StringConstants.WEB_SETTING_HOME_BANNER, Website.ID, SettingIndex);
-            Library.LibraryHelperClass.SettingsSet(setting,
+            SharedBase.LibraryHelperClass.SettingsSet(setting,
                 cmbImage.SelectedIndex == -1 ? String.Empty : Path.GetFileName((string)cmbImage.Items[cmbImage.SelectedIndex]));
         }
 
@@ -99,9 +99,9 @@ namespace POS.WebsiteAdministration.Controls.WebSettings
                 Directory.CreateDirectory(imageRoot);
 
             string setting = String.Format(StringConstants.WEB_SETTING_HOME_BANNER_LINK, Website.ID, SettingIndex);
-            txtLink.Text = Library.LibraryHelperClass.SettingsGet(setting, String.Empty);
+            txtLink.Text = SharedBase.LibraryHelperClass.SettingsGet(setting, String.Empty);
 
-            setting = Library.LibraryHelperClass.SettingsGet(
+            setting = SharedBase.LibraryHelperClass.SettingsGet(
                 String.Format(base.SettingName, Website.ID, SettingIndex));
             cmbImage.Items.Clear();
             string[] files = Directory.GetFiles(imageRoot, StringConstants.IMAGE_SEARCH_HOME_IMAGES);

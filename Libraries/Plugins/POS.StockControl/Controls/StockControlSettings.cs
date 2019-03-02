@@ -34,7 +34,7 @@ using System.Windows.Forms;
 using Languages;
 
 using POS.StockControl.Classes;
-using Library.BOL.StockControl;
+using SharedBase.BOL.StockControl;
 using POS.Base.Classes;
 
 namespace POS.StockControl.Controls

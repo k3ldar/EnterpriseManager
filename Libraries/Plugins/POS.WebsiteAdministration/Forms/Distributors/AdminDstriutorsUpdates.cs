@@ -27,8 +27,8 @@ using System;
 using System.Windows.Forms;
 
 using POS.Base.Classes;
-using Library.BOL.Salons;
-using Library.BOL.Users;
+using SharedBase.BOL.Salons;
+using SharedBase.BOL.Users;
 
 namespace POS.WebsiteAdministration.Forms.Distributors
 {
@@ -52,7 +52,7 @@ namespace POS.WebsiteAdministration.Forms.Distributors
         public void LoadSalonUpdates()
         {
             lstSalons.Items.Clear();
-            Library.BOL.Salons.Salons salons = AppController.Administration.SalonUpdatesGet(1, 1000);
+            SharedBase.BOL.Salons.Salons salons = AppController.Administration.SalonUpdatesGet(1, 1000);
 
             foreach (Salon salon in salons)
             {
@@ -65,7 +65,7 @@ namespace POS.WebsiteAdministration.Forms.Distributors
         {
             foreach (ListViewItem itm in lstSalons.SelectedItems)
             {
-                Library.BOL.Salons.Salon salon = AppController.Administration.SalonGet(Convert.ToInt32(itm.SubItems[1].Text));
+                SharedBase.BOL.Salons.Salon salon = AppController.Administration.SalonGet(Convert.ToInt32(itm.SubItems[1].Text));
 
                 //is it a distributor
                 if (salon == null)

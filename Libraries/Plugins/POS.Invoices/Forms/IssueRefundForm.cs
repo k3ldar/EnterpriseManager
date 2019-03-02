@@ -33,11 +33,11 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library.BOL.Users;
-using Library.BOL.Invoices;
-using Library.BOL.Countries;
-using Library.BOL.Refunds;
-using Library.Utils;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Invoices;
+using SharedBase.BOL.Countries;
+using SharedBase.BOL.Refunds;
+using SharedBase.Utils;
 
 using POS.Base.Classes;
 using POS.Base.Forms;

@@ -29,10 +29,10 @@ using System.IO;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 
-using Library.Utils;
-using Library.BOL.Users;
-using Library.BOL.Therapists;
-using Library.BOL.Refunds;
+using SharedBase.Utils;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Therapists;
+using SharedBase.BOL.Refunds;
 
 #pragma warning disable IDE1005 // Delegate invocation can be simplified
 #pragma warning disable IDE0017 // object initialization can be simplified
@@ -141,7 +141,7 @@ namespace Reports.Salons
                     table.AddCell(new Phrase(User.UserGet((int)refund.Employee).UserName, FontText));
                     table.AddCell(new Phrase(refund.InvoiceID.ToString(), FontText));
                     table.AddCell(new Phrase(SharedUtils.FormatMoney(refund.Amount,
-                        Library.BOL.Basket.Currencies.Get("GBP")), FontText));
+                        SharedBase.BOL.Basket.Currencies.Get("GBP")), FontText));
                     table.AddCell(new Phrase(refund.Date.ToString("g"), FontText));
                     table.AddCell(new Phrase(User.UserGet((int)refund.User).UserName, FontText));
                     table.AddCell(new Phrase(refund.Reason, FontText));
@@ -189,13 +189,13 @@ namespace Reports.Salons
 
             foreach (Therapist therapist in therapists)
             {
-                int Confirmed = therapist.TotalAppoinments(From, To, Library.Enums.AppointmentStatus.Confirmed);
-                int Cancelled = therapist.TotalAppoinments(From, To, Library.Enums.AppointmentStatus.CancelledByStaff) +
-                    therapist.TotalAppoinments(From, To, Library.Enums.AppointmentStatus.CancelledByUser);
-                int Completed = therapist.TotalAppoinments(From, To, Library.Enums.AppointmentStatus.Completed);
-                int NoShow = therapist.TotalAppoinments(From, To, Library.Enums.AppointmentStatus.NoShow);
-                decimal Appointments = therapist.TotalSales(From, To, Library.ProductCostItemType.Treatment);
-                decimal Sales = therapist.TotalSales(From, To, Library.ProductCostItemType.Product);
+                int Confirmed = therapist.TotalAppoinments(From, To, SharedBase.Enums.AppointmentStatus.Confirmed);
+                int Cancelled = therapist.TotalAppoinments(From, To, SharedBase.Enums.AppointmentStatus.CancelledByStaff) +
+                    therapist.TotalAppoinments(From, To, SharedBase.Enums.AppointmentStatus.CancelledByUser);
+                int Completed = therapist.TotalAppoinments(From, To, SharedBase.Enums.AppointmentStatus.Completed);
+                int NoShow = therapist.TotalAppoinments(From, To, SharedBase.Enums.AppointmentStatus.NoShow);
+                decimal Appointments = therapist.TotalSales(From, To, SharedBase.ProductCostItemType.Treatment);
+                decimal Sales = therapist.TotalSales(From, To, SharedBase.ProductCostItemType.Product);
                 decimal Refunds = therapist.TotalRefunds(From, To);
 
                 TotalConfirmed += Confirmed;
@@ -212,11 +212,11 @@ namespace Reports.Salons
                 table.AddCell(new Phrase(Completed.ToString(), FontTextSmall));
                 table.AddCell(new Phrase(NoShow.ToString(), FontTextSmall));
                 table.AddCell(new Phrase(SharedUtils.FormatMoney(Appointments,
-                    Library.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
+                    SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
                 table.AddCell(new Phrase(SharedUtils.FormatMoney(Sales,
-                    Library.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
+                    SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
                 table.AddCell(new Phrase(SharedUtils.FormatMoney(Refunds,
-                    Library.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
+                    SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
             }
 
             //totals
@@ -226,11 +226,11 @@ namespace Reports.Salons
             table.AddCell(new Phrase(TotalCompleted.ToString(), FontTextBold));
             table.AddCell(new Phrase(TotalNoShow.ToString(), FontTextBold));
             table.AddCell(new Phrase(SharedUtils.FormatMoney(TotalAppointments,
-                Library.BOL.Basket.Currencies.Get("GBP")), FontTextBold));
+                SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextBold));
             table.AddCell(new Phrase(SharedUtils.FormatMoney(TotalSales,
-                Library.BOL.Basket.Currencies.Get("GBP")), FontTextBold));
+                SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextBold));
             table.AddCell(new Phrase(SharedUtils.FormatMoney(TotalRefunds,
-                Library.BOL.Basket.Currencies.Get("GBP")), FontTextBold));
+                SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextBold));
             document.Add(table);
             ParagraphAdd(document);
         }

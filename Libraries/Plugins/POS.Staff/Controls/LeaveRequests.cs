@@ -33,9 +33,9 @@ using System.Windows.Forms;
 
 using SharedControls.Classes;
 using Languages;
-using Library;
-using Library.BOL.Staff;
-using Library.BOL.Users;
+using SharedBase;
+using SharedBase.BOL.Staff;
+using SharedBase.BOL.Users;
 using POS.Base.Classes;
 using Shared;
 

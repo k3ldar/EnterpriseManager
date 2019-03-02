@@ -32,10 +32,10 @@ using System.Text;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 
-using Library;
-using Library.Utils;
-using Library.BOL.Products;
-using Library.BOL.StockControl;
+using SharedBase;
+using SharedBase.Utils;
+using SharedBase.BOL.Products;
+using SharedBase.BOL.StockControl;
 
 
 namespace Reports.Stock
@@ -44,7 +44,7 @@ namespace Reports.Stock
     {
         private DateTime _reportDate;
 
-        public PdfStockReport(string location, Library.BOL.StockControl.Stock stock, 
+        public PdfStockReport(string location, SharedBase.BOL.StockControl.Stock stock, 
             int stockOptions, DateTime reportDate, string size = "")
             : base(UniqueFileName("StockControl", true))
         {
@@ -52,7 +52,7 @@ namespace Reports.Stock
             CreateDocument(location, stock, stockOptions, size);
         }
 
-        private void CreateDocument(string location, Library.BOL.StockControl.Stock stock, 
+        private void CreateDocument(string location, SharedBase.BOL.StockControl.Stock stock, 
             int stockOptions, string size)
         {
             Document myDocument = new Document(PageSize.A4);
@@ -113,14 +113,14 @@ namespace Reports.Stock
 
             table.AddCell(new Phrase("Retail Price", FontTextBoldSmall));
             table.AddCell(new Phrase(SharedUtils.FormatMoney(totalCost,
-                Library.BOL.Basket.Currencies.Get("GBP")), FontTextBoldSmall));
+                SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextBoldSmall));
 
             document.Add(table);
 
             ParagraphAdd(document);
         }
 
-        private decimal LoadStockDetails(Document document, Library.BOL.StockControl.Stock stock, int stockOptions)
+        private decimal LoadStockDetails(Document document, SharedBase.BOL.StockControl.Stock stock, int stockOptions)
         {
             decimal Result = 0.00m;
 
@@ -141,7 +141,7 @@ namespace Reports.Stock
                 table.AddCell(new Phrase("Type", FontTextBoldSmall));
                 table.AddCell(new Phrase("Price", FontTextBoldSmall));
 
-                foreach (Library.BOL.StockControl.StockItem stockItem in stock)
+                foreach (SharedBase.BOL.StockControl.StockItem stockItem in stock)
                 {
                     if ((stockOptions == 1 && stockItem.Available > 0) || (stockOptions == 0) || 
                         (stockOptions == 2 && (stockItem.Available <= (stockItem.MinLevel + 15))) ||
@@ -167,7 +167,7 @@ namespace Reports.Stock
                         table.AddCell(new Phrase(stockItem.ProductType.Description, FontTextSmall));
 
                         table.AddCell(new Phrase(SharedUtils.FormatMoney(stockItem.Cost,
-                            Library.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
+                            SharedBase.BOL.Basket.Currencies.Get("GBP")), FontTextSmall));
                         Result += (stockItem.Cost * (stockItem.Available < 0 ? 0 : stockItem.Available));
                     }
                 }

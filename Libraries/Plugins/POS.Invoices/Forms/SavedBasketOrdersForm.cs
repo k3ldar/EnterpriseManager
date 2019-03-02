@@ -28,7 +28,7 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library.BOL.Basket;
+using SharedBase.BOL.Basket;
 
 #pragma warning disable IDE1005 // Delegate invocation can be simplified
 #pragma warning disable IDE0017 // object initialization can be simplified

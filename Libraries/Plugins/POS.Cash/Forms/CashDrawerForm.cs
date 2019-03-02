@@ -33,10 +33,10 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library;
-using Library.Utils;
-using Library.BOL.CashDrawer;
-using Library.BOL.ValidationChecks;
+using SharedBase;
+using SharedBase.Utils;
+using SharedBase.BOL.CashDrawer;
+using SharedBase.BOL.ValidationChecks;
 using POS.Base.Classes;
 
 using POS.CashManager.Classes;
@@ -222,7 +222,7 @@ namespace POS.CashManager.Forms
                 _total += GetDenominationValue(denom.Value);
             }
 
-            lblTotal.Text = Library.Utils.SharedUtils.FormatMoney(_total, AppController.LocalCurrency);
+            lblTotal.Text = SharedBase.Utils.SharedUtils.FormatMoney(_total, AppController.LocalCurrency);
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)

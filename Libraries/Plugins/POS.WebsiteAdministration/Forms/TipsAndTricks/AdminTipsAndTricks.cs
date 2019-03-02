@@ -28,8 +28,8 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library;
-using Library.BOL.TipsTricks;
+using SharedBase;
+using SharedBase.BOL.TipsTricks;
 
 using POS.Base.Classes;
 

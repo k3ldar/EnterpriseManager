@@ -27,10 +27,10 @@ using System;
 using System.Drawing;
 using Languages;
 
-using Library;
-using Library.BOL.Invoices;
-using Library.BOL.Users;
-using Library.BOL.Statistics;
+using SharedBase;
+using SharedBase.BOL.Invoices;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Statistics;
 
 using POS.Base.Classes;
 using POS.Base.Plugins;

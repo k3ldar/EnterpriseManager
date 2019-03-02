@@ -28,8 +28,8 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library;
-using Library.BOL.Salons;
+using SharedBase;
+using SharedBase.BOL.Salons;
 
 using POS.Base.Classes;
 
@@ -118,7 +118,7 @@ namespace POS.WebsiteAdministration.Forms.Distributors
                 this.Cursor = Cursors.WaitCursor;
                 lstDistributors.Items.Clear();
 
-                Library.BOL.Salons.Salons dists = AppController.Administration.SalonsGet(1, 10000);
+                SharedBase.BOL.Salons.Salons dists = AppController.Administration.SalonsGet(1, 10000);
 
                 foreach (Salon dist in dists)
                 {

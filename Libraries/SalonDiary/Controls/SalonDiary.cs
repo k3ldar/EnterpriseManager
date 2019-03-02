@@ -37,11 +37,11 @@ using SharedControls.Interfaces;
 using Shared;
 using Shared.Classes;
 
-using Library;
-using Library.BOLEvents;
-using Library.BOL.Users;
-using Library.BOL.Appointments;
-using Library.BOL.Therapists;
+using SharedBase;
+using SharedBase.BOLEvents;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Appointments;
+using SharedBase.BOL.Therapists;
 
 using Languages;
 
@@ -86,7 +86,7 @@ namespace SalonDiary.Controls
         private bool _weekStartsMonday;
         private bool _ignoreWorkingHours;
         private bool _showCancelledAppointments;
-        private Library.BOL.Appointments.Appointment _copyAppointment;
+        private SharedBase.BOL.Appointments.Appointment _copyAppointment;
         private bool _isCopyAppointment;
         private int _appointmentLockTime = 30;
         private int _birthdayNotification = 14;
@@ -376,7 +376,7 @@ namespace SalonDiary.Controls
                     {
                         if (m_App.Object != null)
                         {
-                            Library.BOL.Appointments.Appointment ap = (Library.BOL.Appointments.Appointment)m_App.Object;
+                            SharedBase.BOL.Appointments.Appointment ap = (SharedBase.BOL.Appointments.Appointment)m_App.Object;
 
                             if ((ap.Status == Enums.AppointmentStatus.Deleted) || 
                                 (ap.Status == Enums.AppointmentStatus.CancelledByStaff || 
@@ -497,7 +497,7 @@ namespace SalonDiary.Controls
                 appointments.Count, dateFrom.ToString("g"), dateTo.ToString("g")));
 #endif
 
-            foreach (Library.BOL.Appointments.Appointment appt in appointments)
+            foreach (SharedBase.BOL.Appointments.Appointment appt in appointments)
             {
                 Calendar.Appointment calAppt = new Calendar.Appointment();
                 calAppt.ID = appt.ID;
@@ -547,7 +547,7 @@ namespace SalonDiary.Controls
             _allAppointments = allAppointments;
 
 
-            foreach (Library.BOL.Appointments.Appointment appt in _allAppointments)
+            foreach (SharedBase.BOL.Appointments.Appointment appt in _allAppointments)
             {
                 Calendar.Appointment calAppt = new Calendar.Appointment();
                 calAppt.ID = appt.ID;
@@ -594,14 +594,14 @@ namespace SalonDiary.Controls
 
                 if (CacheAppointments)
                 {
-                    Library.BOL.Appointments.Appointment h_ap = null;
+                    SharedBase.BOL.Appointments.Appointment h_ap = null;
 
                     //remove appointments that need to be replicated
                     foreach (Calendar.Appointment ap in m_Appointments)
                     {
                         if (ap.ID < 0)
                         {
-                            h_ap = (Library.BOL.Appointments.Appointment)ap.Object;
+                            h_ap = (SharedBase.BOL.Appointments.Appointment)ap.Object;
                             _allAppointments.Remove(h_ap.ID);
 
 #if DEBUG
@@ -629,10 +629,10 @@ namespace SalonDiary.Controls
                         }
                     }
 
-                    Library.BOL.Appointments.Appointments appts = Library.BOL.Appointments.Appointments.GetNew(_topID, _lastUpdateChecked);
+                    SharedBase.BOL.Appointments.Appointments appts = SharedBase.BOL.Appointments.Appointments.GetNew(_topID, _lastUpdateChecked);
                     _lastUpdateChecked = DateTime.Now.AddMinutes(-40);
 
-                    foreach (Library.BOL.Appointments.Appointment appt in appts)
+                    foreach (SharedBase.BOL.Appointments.Appointment appt in appts)
                     {
                         //remove this appointment if it already exists
                         if (_allAppointments.Remove(appt.ID))
@@ -640,7 +640,7 @@ namespace SalonDiary.Controls
                             //remove from diaryview list
                             foreach (Calendar.Appointment m_ap in m_Appointments)
                             {
-                                h_ap = (Library.BOL.Appointments.Appointment)m_ap.Object;
+                                h_ap = (SharedBase.BOL.Appointments.Appointment)m_ap.Object;
 
                                 if (h_ap != null && h_ap.ID == appt.ID)
                                 {
@@ -659,7 +659,7 @@ namespace SalonDiary.Controls
 
                             foreach (Calendar.Appointment m_ap in m_Appointments)
                             {
-                                h_ap = (Library.BOL.Appointments.Appointment)m_ap.Object;
+                                h_ap = (SharedBase.BOL.Appointments.Appointment)m_ap.Object;
 
                                 if (h_ap != null && h_ap.ID == appt.ID)
                                 {
@@ -747,9 +747,9 @@ namespace SalonDiary.Controls
             }
         }
 
-        private Library.BOL.Appointments.Appointment AddDinnerTime(Appointments appointments, Therapist therapist, DateTime date)
+        private SharedBase.BOL.Appointments.Appointment AddDinnerTime(Appointments appointments, Therapist therapist, DateTime date)
         {
-            Library.BOL.Appointments.Appointment Result = null;
+            SharedBase.BOL.Appointments.Appointment Result = null;
 #if DEBUG
             LoadDebugString("AddDinnerTime");
 #endif
@@ -761,7 +761,7 @@ namespace SalonDiary.Controls
             if (therapist.AllowCreateAppointment(date))
             {
                 // special case for lunch break
-                foreach (Library.BOL.Appointments.Appointment appt in appointments)
+                foreach (SharedBase.BOL.Appointments.Appointment appt in appointments)
                 {
                     if (appt.AppointmentType == 1 && appt.AppointmentDate == date)
                         return (appt);
@@ -770,7 +770,7 @@ namespace SalonDiary.Controls
                 double lunchStart = therapist.LunchStart;
                 if (therapist.AppointmentNextTimeSlot(date, ref lunchStart))
                 {
-                    Result = new Library.BOL.Appointments.Appointment(-1, therapist.EmployeeID, date, lunchStart, therapist.LunchDuration,
+                    Result = new SharedBase.BOL.Appointments.Appointment(-1, therapist.EmployeeID, date, lunchStart, therapist.LunchDuration,
                         Enums.AppointmentStatus.Completed, 1, 0, LanguageStrings.AppDiaryLunchBreak, therapist.EmployeeID, therapist.EmployeeName, String.Empty, -1, DateTime.Now, DateTime.Now, -1, DateTime.Now.AddYears(-100));
                     Result.Status = Enums.AppointmentStatus.Confirmed;
                     Result.Save(_user);
@@ -781,7 +781,7 @@ namespace SalonDiary.Controls
             return (Result);
         }
 
-        private void UpdateCalendarAppointment(Library.BOL.Appointments.Appointment appt, Calendar.Appointment calAppt)
+        private void UpdateCalendarAppointment(SharedBase.BOL.Appointments.Appointment appt, Calendar.Appointment calAppt)
         {
 #if DEBUG
             LoadDebugString(String.Format("UpdatecalendarAppointment: {0}", appt.ToString()));
@@ -1011,7 +1011,7 @@ namespace SalonDiary.Controls
             LoadDebugString(String.Format("dayview1_AppointmentMoved - {0}", e.Appointment.Object.ToString()));
 #endif
 
-            Library.BOL.Appointments.Appointment appt = (Library.BOL.Appointments.Appointment)e.Appointment.Object;
+            SharedBase.BOL.Appointments.Appointment appt = (SharedBase.BOL.Appointments.Appointment)e.Appointment.Object;
 
             bool AllowTreatments = true;
             
@@ -1026,7 +1026,7 @@ namespace SalonDiary.Controls
 
                 if (!CanWorkOnDay(e.Appointment.StartDate, e.Appointment.EndDate, newtherapist, true, out AllowTreatments) && !_ignoreWorkingHours)
                 {
-                    VerifyAppointmentLength(e.Appointment, (Library.BOL.Appointments.Appointment)e.Appointment.Object);
+                    VerifyAppointmentLength(e.Appointment, (SharedBase.BOL.Appointments.Appointment)e.Appointment.Object);
                     ForceRefresh(false);
                     return;
                 }
@@ -1081,7 +1081,7 @@ namespace SalonDiary.Controls
                 if (appt.Duration == 0)
                     appt.Duration = 15;
 
-                foreach (Library.BOL.Appointments.Appointment childAppt in appt.ChildAppointments)
+                foreach (SharedBase.BOL.Appointments.Appointment childAppt in appt.ChildAppointments)
                 {
                     if (childAppt.EmployeeID == appt.EmployeeID)
                     {
@@ -1170,7 +1170,7 @@ namespace SalonDiary.Controls
             }
             else
             {
-                Library.BOL.Appointments.Appointment ap = (Library.BOL.Appointments.Appointment)appt.Object;
+                SharedBase.BOL.Appointments.Appointment ap = (SharedBase.BOL.Appointments.Appointment)appt.Object;
 
                 if (ap.MasterAppointment != -1)
                 {
@@ -1194,7 +1194,7 @@ namespace SalonDiary.Controls
             ResetSalonUtilisation();
         }
 
-        private void VerifyAppointmentLength(Calendar.Appointment appointment, Library.BOL.Appointments.Appointment appt)
+        private void VerifyAppointmentLength(Calendar.Appointment appointment, SharedBase.BOL.Appointments.Appointment appt)
         {
             double NewStart = appt.StartTime + ((appt.Duration / 15) * .25);
             TimeSpan ts = appointment.EndDate - appointment.StartDate;
@@ -1218,7 +1218,7 @@ namespace SalonDiary.Controls
 #endif
             try
             {
-                Library.BOL.Appointments.Appointment diaryAppt = null;
+                SharedBase.BOL.Appointments.Appointment diaryAppt = null;
 
                 if (e.Appointment != null && e.Appointment.AllDayEvent)
                 {
@@ -1227,7 +1227,7 @@ namespace SalonDiary.Controls
                 }
 
                 if (e.Appointment != null)
-                    diaryAppt = (Library.BOL.Appointments.Appointment)e.Appointment.Object;
+                    diaryAppt = (SharedBase.BOL.Appointments.Appointment)e.Appointment.Object;
 
                 if (diaryAppt == null)
                 {
@@ -1332,7 +1332,7 @@ namespace SalonDiary.Controls
 
         private void dayView1_AfterDrawAppointment(object sender, AfterDrawAppointmentEventArgs e)
         {
-            Library.BOL.Appointments.Appointment appt = (Library.BOL.Appointments.Appointment)e.Appointment.Object;
+            SharedBase.BOL.Appointments.Appointment appt = (SharedBase.BOL.Appointments.Appointment)e.Appointment.Object;
             if (e.Appointment.AllDayEvent || appt.Duration < 30 || e.Rectangle.Width < 60 || _printing)
                 return;
 
@@ -1395,10 +1395,10 @@ namespace SalonDiary.Controls
             }
             else
             {
-                UpdateCalendarAppointment((Library.BOL.Appointments.Appointment)e.Appointment.Object, e.Appointment);
+                UpdateCalendarAppointment((SharedBase.BOL.Appointments.Appointment)e.Appointment.Object, e.Appointment);
             }
 
-            RaiseAppointmentAfterSelect((Library.BOL.Appointments.Appointment)e.Appointment.Object);
+            RaiseAppointmentAfterSelect((SharedBase.BOL.Appointments.Appointment)e.Appointment.Object);
         }
 
         private void dayView1_AfterDrawHeader(object sender, AfterDrawHeaderEventArgs e)
@@ -1584,7 +1584,7 @@ namespace SalonDiary.Controls
 
             if (appt != null)
             {
-                Library.BOL.Appointments.Appointment treat = (Library.BOL.Appointments.Appointment)appt.Object;
+                SharedBase.BOL.Appointments.Appointment treat = (SharedBase.BOL.Appointments.Appointment)appt.Object;
 
                 if (treat != null)
                 {
@@ -1665,8 +1665,8 @@ namespace SalonDiary.Controls
             else
             {
                 appt.Locked = true;
-                Library.BOL.Appointments.Appointment salonAppt =
-                    (Library.BOL.Appointments.Appointment)appt.Object;
+                SharedBase.BOL.Appointments.Appointment salonAppt =
+                    (SharedBase.BOL.Appointments.Appointment)appt.Object;
                 salonAppt.LockedBy = _user.ID;
                 salonAppt.Save(_user);
                 ForceRefresh(false);
@@ -1678,8 +1678,8 @@ namespace SalonDiary.Controls
             Calendar.Appointment appt = dayView1.SelectedAppointment;
 
             appt.Locked = false;
-            Library.BOL.Appointments.Appointment salonAppt =
-                (Library.BOL.Appointments.Appointment)appt.Object;
+            SharedBase.BOL.Appointments.Appointment salonAppt =
+                (SharedBase.BOL.Appointments.Appointment)appt.Object;
             salonAppt.LockedBy = -1;
             salonAppt.Save(_user);
             ForceRefresh(false);
@@ -1723,10 +1723,10 @@ namespace SalonDiary.Controls
         private void calendarMenuClient_Click(object sender, EventArgs e)
         {
             Calendar.Appointment appt = dayView1.SelectedAppointment;
-            Library.BOL.Appointments.Appointment treat = null;
+            SharedBase.BOL.Appointments.Appointment treat = null;
 
             if (appt != null)
-                treat = (Library.BOL.Appointments.Appointment)appt.Object;
+                treat = (SharedBase.BOL.Appointments.Appointment)appt.Object;
 
             if (treat != null)
             {
@@ -1737,7 +1737,7 @@ namespace SalonDiary.Controls
         private void calendarMenuClientNotes_Click(object sender, EventArgs e)
         {
             Calendar.Appointment appt = dayView1.SelectedAppointment;
-            Library.BOL.Appointments.Appointment treat = (Library.BOL.Appointments.Appointment)appt.Object;
+            SharedBase.BOL.Appointments.Appointment treat = (SharedBase.BOL.Appointments.Appointment)appt.Object;
 
             if (treat != null)
             {
@@ -1748,7 +1748,7 @@ namespace SalonDiary.Controls
         private void calendarMenuCloneAppointment_Click(object sender, EventArgs e)
         {
             Calendar.Appointment appt = dayView1.SelectedAppointment;
-            Library.BOL.Appointments.Appointment treat = (Library.BOL.Appointments.Appointment)appt.Object;
+            SharedBase.BOL.Appointments.Appointment treat = (SharedBase.BOL.Appointments.Appointment)appt.Object;
 
             if (treat != null)
             {
@@ -1777,7 +1777,7 @@ namespace SalonDiary.Controls
         {
             if (dayView1.SelectedAppointment != null && dayView1.SelectedAppointment.Object != null)
             {
-                Library.BOL.Appointments.Appointment appt = (Library.BOL.Appointments.Appointment)dayView1.SelectedAppointment.Object;
+                SharedBase.BOL.Appointments.Appointment appt = (SharedBase.BOL.Appointments.Appointment)dayView1.SelectedAppointment.Object;
                 RaiseShowAppointmentHistory(appt);
             }
         }
@@ -1792,7 +1792,7 @@ namespace SalonDiary.Controls
                 return;
             }
 
-            _copyAppointment = (Library.BOL.Appointments.Appointment)dayView1.SelectedAppointment.Object;
+            _copyAppointment = (SharedBase.BOL.Appointments.Appointment)dayView1.SelectedAppointment.Object;
 
             if (_copyAppointment.MasterAppointment != -1)
             {
@@ -1812,7 +1812,7 @@ namespace SalonDiary.Controls
             }
 
             _isCopyAppointment = true;
-            _copyAppointment = (Library.BOL.Appointments.Appointment)dayView1.SelectedAppointment.Object;
+            _copyAppointment = (SharedBase.BOL.Appointments.Appointment)dayView1.SelectedAppointment.Object;
 
             if (_copyAppointment.MasterAppointment != -1)
             {
@@ -1840,8 +1840,8 @@ namespace SalonDiary.Controls
                 {
 
                     //clone the appointment
-                    Library.BOL.Appointments.Appointment cloned = new Library.BOL.Appointments.Appointment(-1, therapist.EmployeeID, newDate, newTime,
-                        _copyAppointment.Duration, Library.Enums.AppointmentStatus.Confirmed, _copyAppointment.AppointmentType,
+                    SharedBase.BOL.Appointments.Appointment cloned = new SharedBase.BOL.Appointments.Appointment(-1, therapist.EmployeeID, newDate, newTime,
+                        _copyAppointment.Duration, SharedBase.Enums.AppointmentStatus.Confirmed, _copyAppointment.AppointmentType,
                         _copyAppointment.TreatmentID, _copyAppointment.TreatmentName, _copyAppointment.UserID, _copyAppointment.UserName,
                         _copyAppointment.Notes, -1, DateTime.Now, DateTime.Now, -1, DateTime.Now.AddYears(-100));
                     Appointments.Create(cloned, _user);
@@ -1849,10 +1849,10 @@ namespace SalonDiary.Controls
                     double NewStart = cloned.StartTime + ((cloned.Duration / 15) * .25);
 
 
-                    foreach (Library.BOL.Appointments.Appointment sub in _copyAppointment.ChildAppointments)
+                    foreach (SharedBase.BOL.Appointments.Appointment sub in _copyAppointment.ChildAppointments)
                     {
-                        Library.BOL.Appointments.Appointment clonedChild = new Library.BOL.Appointments.Appointment(-1, therapist.EmployeeID, newDate, NewStart,
-                            sub.Duration, Library.Enums.AppointmentStatus.Confirmed, sub.AppointmentType,
+                        SharedBase.BOL.Appointments.Appointment clonedChild = new SharedBase.BOL.Appointments.Appointment(-1, therapist.EmployeeID, newDate, NewStart,
+                            sub.Duration, SharedBase.Enums.AppointmentStatus.Confirmed, sub.AppointmentType,
                             sub.TreatmentID, sub.TreatmentName, sub.UserID, sub.UserName,
                             sub.Notes, cloned.ID, DateTime.Now, DateTime.Now, -1, DateTime.Now.AddYears(-100));
                         Appointments.Create(clonedChild, _user);
@@ -1872,7 +1872,7 @@ namespace SalonDiary.Controls
                     double NewStart = _copyAppointment.StartTime + ((_copyAppointment.Duration / 15) * .25);
 
 
-                    foreach (Library.BOL.Appointments.Appointment sub in _copyAppointment.ChildAppointments)
+                    foreach (SharedBase.BOL.Appointments.Appointment sub in _copyAppointment.ChildAppointments)
                     {
                         sub.StartTime = NewStart;
                         sub.AppointmentDate = newDate;
@@ -1902,7 +1902,7 @@ namespace SalonDiary.Controls
 
         #endregion Context Menu
 
-        private void UpdateCalendarAppointment(Library.BOL.Appointments.Appointment appointment)
+        private void UpdateCalendarAppointment(SharedBase.BOL.Appointments.Appointment appointment)
         {
 #if DEBUG
             LoadDebugString(String.Format("UpdateCalendarAppointment - Appointment: ", appointment == null ? "No Appointment Selected" : appointment.ToString()));
@@ -1933,7 +1933,7 @@ namespace SalonDiary.Controls
             if (appt == null || appt.Object == null)
                 return;
 
-            Library.BOL.Appointments.Appointment treat = (Library.BOL.Appointments.Appointment)appt.Object;
+            SharedBase.BOL.Appointments.Appointment treat = (SharedBase.BOL.Appointments.Appointment)appt.Object;
 
             if (treat.MasterAppointment > -1 && treat.Status != Enums.AppointmentStatus.CancelledByStaff)
             {
@@ -1942,7 +1942,7 @@ namespace SalonDiary.Controls
 
                 if (treat == null)
                 {
-                    treat = (Library.BOL.Appointments.Appointment)appt.Object;
+                    treat = (SharedBase.BOL.Appointments.Appointment)appt.Object;
                 }
             }
 
@@ -2084,7 +2084,7 @@ namespace SalonDiary.Controls
             {
                 int Result = 0;
 
-                foreach (Library.BOL.Appointments.Appointment appt in _allAppointments)
+                foreach (SharedBase.BOL.Appointments.Appointment appt in _allAppointments)
                 {
                     if (appt.AppointmentDate == DateTime.Now.Date)
                     {
@@ -2472,7 +2472,7 @@ namespace SalonDiary.Controls
         public bool ShowNameFirst { get; set; }
 
 
-        public Library.BOL.Appointments.Appointment SelectedAppointment
+        public SharedBase.BOL.Appointments.Appointment SelectedAppointment
         {
             get
             {
@@ -2481,7 +2481,7 @@ namespace SalonDiary.Controls
                 if (calAppt == null)
                     return (null);
 
-                Library.BOL.Appointments.Appointment appt = _allAppointments.Find(calAppt.ID);
+                SharedBase.BOL.Appointments.Appointment appt = _allAppointments.Find(calAppt.ID);
 
                 return (appt);
             }
@@ -2938,7 +2938,7 @@ namespace SalonDiary.Controls
                     if (ap.ID == oldID)
                     {
                         ap.ID = newID;
-                        Library.BOL.Appointments.Appointment h_ap = (Library.BOL.Appointments.Appointment)ap.Object;
+                        SharedBase.BOL.Appointments.Appointment h_ap = (SharedBase.BOL.Appointments.Appointment)ap.Object;
                         h_ap.ID = newID;
                         UpdateCalendarAppointment(h_ap, ap);
 
@@ -2987,7 +2987,7 @@ namespace SalonDiary.Controls
             return (Result);
         }
 
-        private void RaisePayNow(Library.BOL.Appointments.Appointment appointment)
+        private void RaisePayNow(SharedBase.BOL.Appointments.Appointment appointment)
         {
             if (appointment.MasterAppointment > -1)
                 appointment = Appointments.Get(appointment.MasterAppointment);
@@ -2996,7 +2996,7 @@ namespace SalonDiary.Controls
                 PayNow(this, new AppointmentPayNowEventArgs(appointment));
         }
 
-        private DateTime RaiseCloneAppointment(Library.BOL.Appointments.Appointment Appointment)
+        private DateTime RaiseCloneAppointment(SharedBase.BOL.Appointments.Appointment Appointment)
         {
 #if DEBUG
             LoadDebugString(String.Format("DoCloneAppointment: {0}", Appointment.ToString()));
@@ -3012,7 +3012,7 @@ namespace SalonDiary.Controls
             return (args.ClonedDate);
         }
 
-        private void RaiseEditAppointment(Library.BOL.Appointments.Appointment Appointment, 
+        private void RaiseEditAppointment(SharedBase.BOL.Appointments.Appointment Appointment, 
             bool IsLocked)
         {
 #if DEBUG
@@ -3049,7 +3049,7 @@ namespace SalonDiary.Controls
             return (args.AppointmentDateTime);
         }
 
-        private void RaiseShowAppointmentUser(Library.BOL.Appointments.Appointment Appointment)
+        private void RaiseShowAppointmentUser(SharedBase.BOL.Appointments.Appointment Appointment)
         {
 #if DEBUG
             LoadDebugString(String.Format("DoShowAppointmentUser - {0}", Appointment.ToString()));
@@ -3063,7 +3063,7 @@ namespace SalonDiary.Controls
         /// Raises appointment selected event
         /// </summary>
         /// <param name="appointment"></param>
-        private void RaiseAppointmentAfterSelect(Library.BOL.Appointments.Appointment appointment)
+        private void RaiseAppointmentAfterSelect(SharedBase.BOL.Appointments.Appointment appointment)
         {
 #if DEBUG
             LoadDebugString(String.Format("RaiseAppointmentAfterSelect - {0}", appointment == null ? "No Appointment Selected" : appointment.ToString()));
@@ -3073,7 +3073,7 @@ namespace SalonDiary.Controls
                 AppointmentAfterSelect(this, new SalonAppointmentEventArgs(appointment));
         }
 
-        private void RaiseShowAppointmentHistory(Library.BOL.Appointments.Appointment Appointment)
+        private void RaiseShowAppointmentHistory(SharedBase.BOL.Appointments.Appointment Appointment)
         {
 #if DEBUG
             LoadDebugString(String.Format("RaiseShowAppointmentHistory - {0}", Appointment.ToString()));
@@ -3083,7 +3083,7 @@ namespace SalonDiary.Controls
                 AppointmentShowHistory(this, new SalonAppointmentEventArgs(Appointment));
         }
 
-        private void RaiseShowAppointmentUserNotes(Library.BOL.Appointments.Appointment Appointment)
+        private void RaiseShowAppointmentUserNotes(SharedBase.BOL.Appointments.Appointment Appointment)
         {
 #if DEBUG
             LoadDebugString(String.Format("RaiseShowAppointmentUserNotes - {0}", Appointment.ToString()));
@@ -3102,7 +3102,7 @@ namespace SalonDiary.Controls
                 CachedAppointmentsChanged(this, EventArgs.Empty);
         }
 
-        private void RaiseAppointmentStatusChanged(Library.BOL.Appointments.Appointment Appointment)
+        private void RaiseAppointmentStatusChanged(SharedBase.BOL.Appointments.Appointment Appointment)
         {
 #if DEBUG
             LoadDebugString(String.Format("RaiseAppointmentStatusChanged - {0}", Appointment.ToString()));
@@ -3432,11 +3432,11 @@ namespace SalonDiary.Controls
 
                 if (addLunch)
                 {
-                    Library.BOL.Appointments.Appointment lunch = AddDinnerTime(Appointments.Get(_mouseDate, therapist.EmployeeID), therapist, _mouseDate);
+                    SharedBase.BOL.Appointments.Appointment lunch = AddDinnerTime(Appointments.Get(_mouseDate, therapist.EmployeeID), therapist, _mouseDate);
 
                     double Start = start;
                     int Duration = (int)((lunch.StartTime - start) * 60);
-                    Library.BOL.Appointments.Appointment appt = new Library.BOL.Appointments.Appointment(
+                    SharedBase.BOL.Appointments.Appointment appt = new SharedBase.BOL.Appointments.Appointment(
                        -1, therapist.EmployeeID, _mouseDate, start, Duration, Enums.AppointmentStatus.Confirmed, AppointmentType, 0, Message,
                        therapist.EmployeeID, therapist.EmployeeName, String.Empty, -1, DateTime.Now, DateTime.Now, -1, DateTime.Now.AddYears(-100));
                     appt.Notes = String.Format(LanguageStrings.AppDiaryBookedByOn, 
@@ -3445,7 +3445,7 @@ namespace SalonDiary.Controls
 
                     Start = lunch.StartTime + (lunch.Duration / 60);
                     Duration = (int)((finish - Start) * 60);
-                    appt = new Library.BOL.Appointments.Appointment(
+                    appt = new SharedBase.BOL.Appointments.Appointment(
                        -1, therapist.EmployeeID, _mouseDate, Start, Duration, Enums.AppointmentStatus.Confirmed, AppointmentType, 0, Message,
                         therapist.EmployeeID, therapist.EmployeeName, String.Empty, -1, DateTime.Now, DateTime.Now, -1, DateTime.Now.AddYears(-100));
                     appt.Notes = String.Format(LanguageStrings.AppDiaryBookedByOn, 
@@ -3455,7 +3455,7 @@ namespace SalonDiary.Controls
                 }
                 else
                 {
-                    Library.BOL.Appointments.Appointment appt = new Library.BOL.Appointments.Appointment(
+                    SharedBase.BOL.Appointments.Appointment appt = new SharedBase.BOL.Appointments.Appointment(
                        -1, therapist.EmployeeID, _mouseDate, start, duration, Enums.AppointmentStatus.Confirmed, AppointmentType, 0, Message,
                        therapist.EmployeeID, therapist.EmployeeName, String.Empty, -1, DateTime.Now, DateTime.Now, -1, DateTime.Now.AddYears(-100));
                     appt.Notes = String.Format(LanguageStrings.AppDiaryBookedByOn, 
@@ -3517,7 +3517,7 @@ namespace SalonDiary.Controls
 
         private void dayView1_BeforeAppointmentMove(object sender, AppointmentMoveEventArgs args)
         {
-            Library.BOL.Appointments.Appointment appt = (Library.BOL.Appointments.Appointment)args.Appointment.Object;
+            SharedBase.BOL.Appointments.Appointment appt = (SharedBase.BOL.Appointments.Appointment)args.Appointment.Object;
 
             if (appt.AppointmentDate < DateTime.Now.Date)
                 args.AllowMove = false;
@@ -3528,7 +3528,7 @@ namespace SalonDiary.Controls
             if (dayView1.SelectedAppointment == null)
                 return;
 
-            Library.BOL.Appointments.Appointment appt = (Library.BOL.Appointments.Appointment)dayView1.SelectedAppointment.Object;
+            SharedBase.BOL.Appointments.Appointment appt = (SharedBase.BOL.Appointments.Appointment)dayView1.SelectedAppointment.Object;
 
             if (appt.MasterAppointment > -1)
                 appt = Appointments.Get(appt.MasterAppointment);
@@ -3780,7 +3780,7 @@ namespace SalonDiary.Controls
             }
             catch (Exception error)
             {
-                Library.ErrorHandling.LogError(System.Reflection.MethodBase.GetCurrentMethod(), error, sender, e);
+                SharedBase.ErrorHandling.LogError(System.Reflection.MethodBase.GetCurrentMethod(), error, sender, e);
                 ShowError("Error Copying Data", error.Message);
             }
 #endif

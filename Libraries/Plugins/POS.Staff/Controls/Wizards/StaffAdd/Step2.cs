@@ -32,9 +32,9 @@ using System.Text;
 using System.Windows.Forms;
 
 using Languages;
-using Library;
-using Library.BOL.Countries;
-using Library.BOL.Staff;
+using SharedBase;
+using SharedBase.BOL.Countries;
+using SharedBase.BOL.Staff;
 
 namespace POS.Staff.Controls.Wizards.StaffAdd
 {

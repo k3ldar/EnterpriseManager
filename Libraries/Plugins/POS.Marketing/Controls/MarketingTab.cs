@@ -29,9 +29,9 @@ using System.IO;
 using System.Windows.Forms;
 
 using Languages;
-using Library;
-using Library.BOL.Campaigns;
-using Library.BOL.SEO;
+using SharedBase;
+using SharedBase.BOL.Campaigns;
+using SharedBase.BOL.SEO;
 
 using POS.Base.Classes;
 using POS.Marketing.Classes;

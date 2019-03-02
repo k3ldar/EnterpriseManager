@@ -27,11 +27,11 @@ using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-using Library.BOL.Products;
-using Library.BOL.Countries;
-using Library.BOL.CustomWebPages;
+using SharedBase.BOL.Products;
+using SharedBase.BOL.Countries;
+using SharedBase.BOL.CustomWebPages;
 
-using Library;
+using SharedBase;
 using POS.Base.Classes;
 
 using SharedControls;

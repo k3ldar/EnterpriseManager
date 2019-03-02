@@ -32,9 +32,9 @@ using System.Text;
 using System.Windows.Forms;
 
 using Languages;
-using Library;
-using Library.BOL.Staff;
-using Library.BOL.Users;
+using SharedBase;
+using SharedBase.BOL.Staff;
+using SharedBase.BOL.Users;
 
 namespace POS.Staff.Controls.Wizards.StaffAdd
 {
@@ -77,7 +77,7 @@ namespace POS.Staff.Controls.Wizards.StaffAdd
             newStaff.Save();
             _staffMember.Save();
 
-            Library.BOL.Staff.Staff.ManagerSet(newStaff, (User)cmbManager.SelectedItem);
+            SharedBase.BOL.Staff.Staff.ManagerSet(newStaff, (User)cmbManager.SelectedItem);
 
             if (cmbPermissions.SelectedIndex > -1)
             {

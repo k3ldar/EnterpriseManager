@@ -26,7 +26,7 @@
 using System.Windows.Forms;
 
 using Languages;
-using Library.BOL.Users;
+using SharedBase.BOL.Users;
 using POS.Base.Classes;
 
 using POS.Staff.Classes;
@@ -59,7 +59,7 @@ namespace POS.Staff.Controls.Wizards.Expenses
             _settings = settings;
 
             bool allStaff = AppController.ActiveUser.HasPermissionStaff(
-                Library.SecurityEnums.SecurityPermissionsStaff.ApproveExpenses);
+                SharedBase.SecurityEnums.SecurityPermissionsStaff.ApproveExpenses);
                 
             foreach (User user in User.StaffMembers(false))
             {
@@ -106,7 +106,7 @@ namespace POS.Staff.Controls.Wizards.Expenses
             AppController.ActiveHelpTopic = HelpTopics.StaffCreateExpensesStep1;
 
             if (!AppController.ActiveUser.HasPermissionStaff(
-                Library.SecurityEnums.SecurityPermissionsStaff.ApproveExpenses) ||
+                SharedBase.SecurityEnums.SecurityPermissionsStaff.ApproveExpenses) ||
                 _settings.Edit)
             {
                 MainWizardForm.SelectNextPage();

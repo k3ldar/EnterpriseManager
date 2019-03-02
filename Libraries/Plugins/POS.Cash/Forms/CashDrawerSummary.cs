@@ -32,8 +32,8 @@ using System.Text;
 using System.Windows.Forms;
 
 using Languages;
-using Library;
-using Library.BOL.Appointments;
+using SharedBase;
+using SharedBase.BOL.Appointments;
 using POS.Base.Classes;
 
 namespace POS.CashManager.Forms
@@ -125,7 +125,7 @@ namespace POS.CashManager.Forms
                 {
                     int idx = cmbStoreLocation.Items.Add(group);
 
-                    if (group.ID == Library.DAL.DALHelper.StoreID)
+                    if (group.ID == SharedBase.DAL.DALHelper.StoreID)
                         cmbStoreLocation.SelectedIndex = idx;
                 }
             }
@@ -140,7 +140,7 @@ namespace POS.CashManager.Forms
         {
             AppointmentGroup grp = (AppointmentGroup)cmbStoreLocation.SelectedItem;
             lvCashDrawSummary.Items.Clear();
-            string[] lines = Library.BOL.CashDrawer.CashDrawers.CurrentStatus(grp.ID,
+            string[] lines = SharedBase.BOL.CashDrawer.CashDrawers.CurrentStatus(grp.ID,
                 AppController.LocalCountry, AppController.LocalCurrency,  
                 dtpDate.Value, _cashDrawerType).Split(StringConstants.SYMBOL_HASH_CHAR);
 

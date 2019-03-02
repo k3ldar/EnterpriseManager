@@ -28,7 +28,7 @@ using System.Windows.Forms;
 
 using Languages;
 using POS.Base.Classes;
-using Library.BOL.Products;
+using SharedBase.BOL.Products;
 
 #pragma warning disable IDE1006
 

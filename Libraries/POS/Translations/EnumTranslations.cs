@@ -28,8 +28,8 @@ using System.Collections.Generic;
 using System.Text;
 
 using Languages;
-using Library;
-using Library.BOL.Accounts;
+using SharedBase;
+using SharedBase.BOL.Accounts;
 
 using POS.Base.Classes;
 

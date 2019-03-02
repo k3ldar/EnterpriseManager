@@ -33,8 +33,8 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library.BOL.Users;
-using Library.BOL.Appointments;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Appointments;
 
 using POS.Base.Classes;
 

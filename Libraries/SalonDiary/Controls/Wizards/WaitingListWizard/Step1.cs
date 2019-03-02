@@ -33,7 +33,7 @@ using System.Windows.Forms;
 
 using SalonDiary.Classes;
 using Languages;
-using Library.BOL.Appointments;
+using SharedBase.BOL.Appointments;
 using SharedControls.WizardBase;
 
 namespace SalonDiary.Controls.Wizards.WaitingListWizard

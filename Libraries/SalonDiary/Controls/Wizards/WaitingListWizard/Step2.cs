@@ -33,9 +33,9 @@ using System.Windows.Forms;
 
 using SalonDiary.Classes;
 using Languages;
-using Library.BOL.Appointments;
-using Library.BOL.Treatments;
-using Library.BOL.Users;
+using SharedBase.BOL.Appointments;
+using SharedBase.BOL.Treatments;
+using SharedBase.BOL.Users;
 using SharedControls.WizardBase;
 
 namespace SalonDiary.Controls.Wizards.WaitingListWizard

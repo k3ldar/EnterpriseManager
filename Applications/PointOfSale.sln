@@ -49,8 +49,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POS.DatabaseBackup", "..\Li
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POS", "..\Libraries\POS\POS.csproj", "{C5EA121E-69B3-499D-ACDE-C6DFD9779B73}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedBase", "..\Libraries\Library\SharedBase.csproj", "{3444F493-5CBE-4D67-8BC9-1184E486C7E7}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reports", "..\Libraries\Reports\Reports.csproj", "{74DCE6C6-8044-438D-B16A-B01ADD05ADD0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalonDiary", "..\Libraries\SalonDiary\SalonDiary.csproj", "{FB4558AA-3653-4281-999B-D78D99F23437}"
@@ -821,38 +819,6 @@ Global
 		{C5EA121E-69B3-499D-ACDE-C6DFD9779B73}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{C5EA121E-69B3-499D-ACDE-C6DFD9779B73}.Release|x86.ActiveCfg = Release|Any CPU
 		{C5EA121E-69B3-499D-ACDE-C6DFD9779B73}.Release|x86.Build.0 = Release|Any CPU
-		{3444F493-5CBE-4D67-8BC9-1184E486C7E7}.Debug Release|Any CPU.ActiveCfg = Debug Release|Any CPU
-		{3444F493-5CBE-4D67-8BC9-1184E486C7E7}.Debug Release|Any CPU.Build.0 = Debug Release|Any CPU
-		{3444F493-5CBE-4D67-8BC9-1184E486C7E7}.Debug Release|Mixed Platforms.ActiveCfg = Debug Release|Any CPU
-		{3444F493-5CBE-4D67-8BC9-1184E486C7E7}.Debug Release|Mixed Platforms.Build.0 = Debug Release|Any CPU
-		{3444F493-5CBE-4D67-8BC9-1184E486C7E7}.Debug Release|x86.ActiveCfg = Debug Release|Any CPU
-		{3444F493-5CBE-4D67-8BC9-1184E486C7E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3444F493-5CBE-4D67-8BC9-1184E486C7E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3444F493-5CBE-4D67-8BC9-1184E486C7E7}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{3444F493-5CBE-4D67-8BC9-1184E486C7E7}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{3444F493-5CBE-4D67-8BC9-1184E486C7E7}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{3444F493-5CBE-4D67-8BC9-1184E486C7E7}.Debug|x86.Build.0 = Debug|Any CPU
-		{3444F493-5CBE-4D67-8BC9-1184E486C7E7}.Release_40|Any CPU.ActiveCfg = Release|Any CPU
-		{3444F493-5CBE-4D67-8BC9-1184E486C7E7}.Release_40|Any CPU.Build.0 = Release|Any CPU
-		{3444F493-5CBE-4D67-8BC9-1184E486C7E7}.Release_40|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{3444F493-5CBE-4D67-8BC9-1184E486C7E7}.Release_40|Mixed Platforms.Build.0 = Release|Any CPU
-		{3444F493-5CBE-4D67-8BC9-1184E486C7E7}.Release_40|x86.ActiveCfg = Release|Any CPU
-		{3444F493-5CBE-4D67-8BC9-1184E486C7E7}.Release_45|Any CPU.ActiveCfg = Release|Any CPU
-		{3444F493-5CBE-4D67-8BC9-1184E486C7E7}.Release_45|Any CPU.Build.0 = Release|Any CPU
-		{3444F493-5CBE-4D67-8BC9-1184E486C7E7}.Release_45|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{3444F493-5CBE-4D67-8BC9-1184E486C7E7}.Release_45|Mixed Platforms.Build.0 = Release|Any CPU
-		{3444F493-5CBE-4D67-8BC9-1184E486C7E7}.Release_45|x86.ActiveCfg = Release|Any CPU
-		{3444F493-5CBE-4D67-8BC9-1184E486C7E7}.Release_Mono_w_Linux|Any CPU.ActiveCfg = Release|Any CPU
-		{3444F493-5CBE-4D67-8BC9-1184E486C7E7}.Release_Mono_w_Linux|Any CPU.Build.0 = Release|Any CPU
-		{3444F493-5CBE-4D67-8BC9-1184E486C7E7}.Release_Mono_w_Linux|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{3444F493-5CBE-4D67-8BC9-1184E486C7E7}.Release_Mono_w_Linux|Mixed Platforms.Build.0 = Release|Any CPU
-		{3444F493-5CBE-4D67-8BC9-1184E486C7E7}.Release_Mono_w_Linux|x86.ActiveCfg = Release|Any CPU
-		{3444F493-5CBE-4D67-8BC9-1184E486C7E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3444F493-5CBE-4D67-8BC9-1184E486C7E7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3444F493-5CBE-4D67-8BC9-1184E486C7E7}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{3444F493-5CBE-4D67-8BC9-1184E486C7E7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{3444F493-5CBE-4D67-8BC9-1184E486C7E7}.Release|x86.ActiveCfg = Release|Any CPU
-		{3444F493-5CBE-4D67-8BC9-1184E486C7E7}.Release|x86.Build.0 = Release|Any CPU
 		{74DCE6C6-8044-438D-B16A-B01ADD05ADD0}.Debug Release|Any CPU.ActiveCfg = Debug Release|Any CPU
 		{74DCE6C6-8044-438D-B16A-B01ADD05ADD0}.Debug Release|Any CPU.Build.0 = Debug Release|Any CPU
 		{74DCE6C6-8044-438D-B16A-B01ADD05ADD0}.Debug Release|Mixed Platforms.ActiveCfg = Debug Release|Any CPU

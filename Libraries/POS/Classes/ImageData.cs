@@ -28,7 +28,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
 
-using Library.Utils;
+using SharedBase.Utils;
 
 namespace POS.Base.Classes
 {

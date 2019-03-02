@@ -32,8 +32,8 @@ using System.Text;
 using System.Windows.Forms;
 
 using Languages;
-using Library.BOL.Staff;
-using Library.BOL.Therapists;
+using SharedBase.BOL.Staff;
+using SharedBase.BOL.Therapists;
 using POS.Staff.Classes;
 
 namespace POS.Staff.Controls.Wizards.Commission.BonusPayments
@@ -83,7 +83,7 @@ namespace POS.Staff.Controls.Wizards.Commission.BonusPayments
                 splitType = LanguageStrings.AppCommissionSplitTypeJoined;
 
             lblDescription.Text = String.Format(LanguageStrings.AppCommissionSplitDescription,
-                Library.Utils.SharedUtils.FormatMoney(_settings.TotalPoolValue, POS.Base.Classes.AppController.LocalCurrency),
+                SharedBase.Utils.SharedUtils.FormatMoney(_settings.TotalPoolValue, POS.Base.Classes.AppController.LocalCurrency),
                 splitType, _settings.StaffMembers.Count);
         }
 

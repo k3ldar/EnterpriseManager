@@ -29,7 +29,7 @@ using System.Reflection;
 using System.Text;
 
 using POS.Base.Classes;
-using Library.BOL.Users;
+using SharedBase.BOL.Users;
 using Shared;
 
 namespace POS.Base.Plugins

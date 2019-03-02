@@ -74,7 +74,7 @@ namespace POS.WebsiteAdministration.Controls.WebSettings
         {
             if (cbSetting.Visible)
             {
-                Library.BOL.Websites.WebsiteSettings.ConfigSettingSet(_settingCode, 
+                SharedBase.BOL.Websites.WebsiteSettings.ConfigSettingSet(_settingCode, 
                     cbSetting.Checked.ToString(), _websiteID, _isGlobal);
             }
             else
@@ -89,9 +89,9 @@ namespace POS.WebsiteAdministration.Controls.WebSettings
                     }
                     catch
                     {
-                        txtValue.Text = Library.BOL.Websites.WebsiteSettings.ConfigSettingGet(
+                        txtValue.Text = SharedBase.BOL.Websites.WebsiteSettings.ConfigSettingGet(
                             _settingCode, 
-                            Library.BOL.Websites.WebsiteSettings.Languages.WebsiteCulture.Name,
+                            SharedBase.BOL.Websites.WebsiteSettings.Languages.WebsiteCulture.Name,
                             _websiteID, _isGlobal);
                     }
                 }
@@ -130,7 +130,7 @@ namespace POS.WebsiteAdministration.Controls.WebSettings
 
                 }
 
-                Library.BOL.Websites.WebsiteSettings.ConfigSettingSet(_settingCode, 
+                SharedBase.BOL.Websites.WebsiteSettings.ConfigSettingSet(_settingCode, 
                     txtValue.Text, _websiteID, _isGlobal);
             }
         }
@@ -210,7 +210,7 @@ namespace POS.WebsiteAdministration.Controls.WebSettings
             lblName.Text = name;
             SettingValueType = SettingType.String;
 
-            string savedValue = Library.BOL.Websites.WebsiteSettings.ConfigSettingGet(settingCode, value, websiteID, isGlobal);
+            string savedValue = SharedBase.BOL.Websites.WebsiteSettings.ConfigSettingGet(settingCode, value, websiteID, isGlobal);
 
             txtValue.Text = value;
 
@@ -266,7 +266,7 @@ namespace POS.WebsiteAdministration.Controls.WebSettings
             cbSetting.Top = 28;
             lblDescription.Left = 20;
 
-            bool savedValue = Library.BOL.Websites.WebsiteSettings.ConfigSettingGet(settingCode, value, _websiteID, isGlobal);
+            bool savedValue = SharedBase.BOL.Websites.WebsiteSettings.ConfigSettingGet(settingCode, value, _websiteID, isGlobal);
 
             if (value != savedValue)
             {
@@ -280,7 +280,7 @@ namespace POS.WebsiteAdministration.Controls.WebSettings
         {
             if (cbSetting.Visible)
             {
-                Library.BOL.Websites.WebsiteSettings.ConfigSettingSet(_settingCode, 
+                SharedBase.BOL.Websites.WebsiteSettings.ConfigSettingSet(_settingCode, 
                     cbSetting.Checked.ToString(), _websiteID, _isGlobal);
             }
             else
@@ -294,8 +294,8 @@ namespace POS.WebsiteAdministration.Controls.WebSettings
                     }
                     catch
                     {
-                        txtValue.Text = Library.BOL.Websites.WebsiteSettings.ConfigSettingGet(_settingCode,
-                            Library.BOL.Websites.WebsiteSettings.Languages.WebsiteCulture.Name, _websiteID, _isGlobal);
+                        txtValue.Text = SharedBase.BOL.Websites.WebsiteSettings.ConfigSettingGet(_settingCode,
+                            SharedBase.BOL.Websites.WebsiteSettings.Languages.WebsiteCulture.Name, _websiteID, _isGlobal);
                     }
                 }
                 else if (_isNumber)
@@ -336,7 +336,7 @@ namespace POS.WebsiteAdministration.Controls.WebSettings
 
                 }
 
-                Library.BOL.Websites.WebsiteSettings.ConfigSettingSet(_settingCode, txtValue.Text, _websiteID, _isGlobal);
+                SharedBase.BOL.Websites.WebsiteSettings.ConfigSettingSet(_settingCode, txtValue.Text, _websiteID, _isGlobal);
             }
         }
 

@@ -26,9 +26,9 @@
 using System;
 
 using Languages;
-using Library;
-using Library.BOL.Coupons;
-using Library.Utils;
+using SharedBase;
+using SharedBase.BOL.Coupons;
+using SharedBase.Utils;
 using POS.Base.Classes;
 using POS.Administration.Classes;
 using SharedControls.WizardBase;

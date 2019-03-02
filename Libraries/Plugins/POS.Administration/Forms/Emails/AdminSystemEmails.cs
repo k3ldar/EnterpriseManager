@@ -29,7 +29,7 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library.BOL.Mail;
+using SharedBase.BOL.Mail;
 
 using POS.Base.Classes;
 

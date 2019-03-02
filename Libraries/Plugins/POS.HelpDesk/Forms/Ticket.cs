@@ -33,11 +33,11 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library;
-using Library.Utils;
-using Library.BOL.Users;
-using Library.BOL.Helpdesk;
-using Library.BOL.ValidationChecks;
+using SharedBase;
+using SharedBase.Utils;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Helpdesk;
+using SharedBase.BOL.ValidationChecks;
 using Reports.Helpdesk;
 using POS.Base.Classes;
 using POS.HelpDesk.Controls;

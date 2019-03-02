@@ -31,9 +31,9 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 
-using Library;
-using Library.Utils;
-using Library.BOL.Appointments;
+using SharedBase;
+using SharedBase.Utils;
+using SharedBase.BOL.Appointments;
 using Languages;
 
 namespace SalonDiary.Controls

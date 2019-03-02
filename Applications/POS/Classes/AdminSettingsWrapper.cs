@@ -29,7 +29,7 @@ using System.Windows.Forms;
 using PointOfSale.Controls.Settings.Admin;
 
 using Languages;
-using Library;
+using SharedBase;
 using SharedControls.Forms;
 using POS.Base.Classes;
 

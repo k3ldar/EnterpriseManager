@@ -33,10 +33,10 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library;
-using Library.Utils;
-using Library.BOL.Users;
-using Library.BOL.MissingLinks;
+using SharedBase;
+using SharedBase.Utils;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.MissingLinks;
 
 using POS.Base.Classes;
 
@@ -77,7 +77,7 @@ namespace POS.WebsiteAdministration.Forms.MissingLinks
 
         protected override void SetPermissions()
         {
-            toolStripMainAdd.Enabled = AppController.ActiveUser.MemberLevel > Library.MemberLevel.AdminReadOnly;
+            toolStripMainAdd.Enabled = AppController.ActiveUser.MemberLevel > SharedBase.MemberLevel.AdminReadOnly;
             toolStripMainDelete.Enabled = false;
         }
 
@@ -107,7 +107,7 @@ namespace POS.WebsiteAdministration.Forms.MissingLinks
             try
             {
                 lstHints.Items.Clear();
-                Library.BOL.MissingLinks.MissingLinks links = AppController.Administration.MissingLinksGet(1, 1000);
+                SharedBase.BOL.MissingLinks.MissingLinks links = AppController.Administration.MissingLinksGet(1, 1000);
 
                 foreach (MissingLink link in links)
                 {

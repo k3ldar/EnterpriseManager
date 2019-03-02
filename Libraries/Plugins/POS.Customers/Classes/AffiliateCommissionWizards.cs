@@ -28,7 +28,7 @@ using System.Collections.Generic;
 using System.Text;
 
 using Languages;
-using Library.BOL.Affiliate;
+using SharedBase.BOL.Affiliate;
 using SharedControls.WizardBase;
 
 namespace POS.Customers.Classes

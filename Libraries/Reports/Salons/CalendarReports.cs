@@ -33,8 +33,8 @@ using System.Windows.Forms;
 
 using SharedControls.Forms;
 
-using Library.BOL.Appointments;
-using Library.BOL.Therapists;
+using SharedBase.BOL.Appointments;
+using SharedBase.BOL.Therapists;
 using Reports.Salons;
 
 namespace Reports.Salons
@@ -78,7 +78,7 @@ namespace Reports.Salons
             }
             catch (Exception err)
             {
-                Library.ErrorHandling.LogError(System.Reflection.MethodBase.GetCurrentMethod(), err);
+                SharedBase.ErrorHandling.LogError(System.Reflection.MethodBase.GetCurrentMethod(), err);
                 throw;
             }
         }
@@ -100,7 +100,7 @@ namespace Reports.Salons
             }
             catch (Exception err)
             {
-                Library.ErrorHandling.LogError(System.Reflection.MethodBase.GetCurrentMethod(), err);
+                SharedBase.ErrorHandling.LogError(System.Reflection.MethodBase.GetCurrentMethod(), err);
                 throw;
             }
         }
@@ -209,7 +209,7 @@ namespace Reports.Salons
             catch (Exception err)
             {
                 ShowError("View Report", err.Message);
-                Library.ErrorHandling.LogError(System.Reflection.MethodBase.GetCurrentMethod(), err, sender, e);
+                SharedBase.ErrorHandling.LogError(System.Reflection.MethodBase.GetCurrentMethod(), err, sender, e);
             }
 
             //DialogResult = System.Windows.Forms.DialogResult.OK;
@@ -224,8 +224,8 @@ namespace Reports.Salons
             {
                 if (appt.AppointmentType == 0 && Shared.Utilities.DateWithin(dtpFrom.Value, dtpTo.Value, appt.LastAltered))
                 {
-                    if (appt.Status == Library.Enums.AppointmentStatus.CancelledByStaff ||
-                        appt.Status == Library.Enums.AppointmentStatus.CancelledByUser)
+                    if (appt.Status == SharedBase.Enums.AppointmentStatus.CancelledByStaff ||
+                        appt.Status == SharedBase.Enums.AppointmentStatus.CancelledByUser)
                     {
                         Result.Add(appt);
                     }

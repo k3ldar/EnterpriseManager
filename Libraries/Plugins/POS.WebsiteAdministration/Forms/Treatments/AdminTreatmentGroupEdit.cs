@@ -27,8 +27,8 @@ using System;
 using System.Windows.Forms;
 
 using Languages;
-using Library.BOL.Products;
-using Library.BOL.Treatments;
+using SharedBase.BOL.Products;
+using SharedBase.BOL.Treatments;
 
 using POS.Base.Classes;
 
@@ -87,8 +87,8 @@ namespace POS.WebsiteAdministration.Forms.Treatments
 
         protected override void SetPermissions()
         {
-            btnSave.Enabled = AppController.ActiveUser.MemberLevel > Library.MemberLevel.AdminReadOnly;
-            btnDelete.Enabled = AppController.ActiveUser.MemberLevel >= Library.MemberLevel.AdminUpdateDelete;
+            btnSave.Enabled = AppController.ActiveUser.MemberLevel > SharedBase.MemberLevel.AdminReadOnly;
+            btnDelete.Enabled = AppController.ActiveUser.MemberLevel >= SharedBase.MemberLevel.AdminUpdateDelete;
         }
 
         #endregion Overridden Methods

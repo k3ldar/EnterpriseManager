@@ -102,7 +102,7 @@ namespace POS.WebsiteAdministration.Controls.Wizards.Website
 
                 if (_settings.Website == null)
                 {
-                    _settings.Website = Library.BOL.Websites.Websites.Create(txtWebsite.Text, txtFTPHost.Text,
+                    _settings.Website = SharedBase.BOL.Websites.Websites.Create(txtWebsite.Text, txtFTPHost.Text,
                         (int)udFTPPort.Value, txtFTPUsername.Text, txtFTPPassword.Text, txtRootPath.Text);
                 }
                 else
@@ -135,12 +135,12 @@ namespace POS.WebsiteAdministration.Controls.Wizards.Website
 
         private void btnTestFTP_Click(object sender, EventArgs e)
         {
-            Library.BOL.Websites.Website website = new Library.BOL.Websites.Website(-1, 
+            SharedBase.BOL.Websites.Website website = new SharedBase.BOL.Websites.Website(-1, 
                 txtWebsite.Text,
                 txtFTPHost.Text, 
                 (int)udFTPPort.Value, 
                 txtFTPUsername.Text, 
-                Library.BOL.Websites.Website.EncryptPassword(txtFTPPassword.Text),
+                SharedBase.BOL.Websites.Website.EncryptPassword(txtFTPPassword.Text),
                 Base.Classes.StringConstants.SYMBOL_FORWARD_SLASH);
 
             try

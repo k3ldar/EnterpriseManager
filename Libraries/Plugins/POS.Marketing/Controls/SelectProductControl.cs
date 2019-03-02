@@ -31,10 +31,10 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 
-using Library;
-using Library.Utils;
-using Library.BOL.Products;
-using Library.BOL.Users;
+using SharedBase;
+using SharedBase.Utils;
+using SharedBase.BOL.Products;
+using SharedBase.BOL.Users;
 using POS.Base.Classes;
 
 namespace POS.Marketing.Controls

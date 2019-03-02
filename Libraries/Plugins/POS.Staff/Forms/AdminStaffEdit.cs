@@ -32,14 +32,14 @@ using Languages;
 
 using Shared;
 
-using Library;
-using Library.Utils;
-using Library.BOL.Trade;
-using Library.BOL.Users;
-using Library.BOL.Countries;
-using Library.BOL.Appointments;
-using Library.BOL.Therapists;
-using Library.BOL.Staff;
+using SharedBase;
+using SharedBase.Utils;
+using SharedBase.BOL.Trade;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Countries;
+using SharedBase.BOL.Appointments;
+using SharedBase.BOL.Therapists;
+using SharedBase.BOL.Staff;
 
 using POS.Base.Classes;
 
@@ -1069,7 +1069,7 @@ namespace POS.Staff.Forms
             }
         }
 
-        void day_OnDelete(object sender, Library.BOLEvents.WorkingDayEventArgs e)
+        void day_OnDelete(object sender, SharedBase.BOLEvents.WorkingDayEventArgs e)
         {
             ListViewItem item = (ListViewItem)e.Day.Tag;
 
@@ -1079,7 +1079,7 @@ namespace POS.Staff.Forms
             lvWorkingHours.Items.Remove(item);
         }
 
-        void day_OnSave(object sender, Library.BOLEvents.WorkingDayEventArgs e)
+        void day_OnSave(object sender, SharedBase.BOLEvents.WorkingDayEventArgs e)
         {
             ListViewItem item = (ListViewItem)e.Day.Tag;
 
@@ -1272,7 +1272,7 @@ namespace POS.Staff.Forms
                         draggedNode.Remove();
                         targetNode.Nodes.Add(draggedNode);
                         tvStaffMembers.SelectedNode = draggedNode;
-                        Library.BOL.Staff.Staff.ManagerSet((User)draggedNode.Tag, (User)targetNode.Tag);
+                        SharedBase.BOL.Staff.Staff.ManagerSet((User)draggedNode.Tag, (User)targetNode.Tag);
                         targetNode.Expand();
                     }
                 }

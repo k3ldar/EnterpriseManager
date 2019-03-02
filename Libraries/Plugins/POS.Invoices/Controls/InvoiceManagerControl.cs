@@ -26,10 +26,10 @@
 using System;
 using System.Windows.Forms;
 
-using Library;
-using Library.BOL.Accounts;
-using Library.BOL.Invoices;
-using Library.BOL.Coupons;
+using SharedBase;
+using SharedBase.BOL.Accounts;
+using SharedBase.BOL.Invoices;
+using SharedBase.BOL.Coupons;
 using Languages;
 
 using Reports.Accounts;
@@ -236,9 +236,9 @@ namespace POS.Invoices.Controls
 
         #endregion Search Settings
 
-        private Library.BOL.Invoices.Invoices SearchInvoices()
+        private SharedBase.BOL.Invoices.Invoices SearchInvoices()
         {
-            Library.BOL.Invoices.Invoices Result = null;
+            SharedBase.BOL.Invoices.Invoices Result = null;
 
             int PaymentType = -1;
 
@@ -260,7 +260,7 @@ namespace POS.Invoices.Controls
 
             if (txtInvoiceNumber.Text != String.Empty)
             {
-                Result = Library.BOL.Invoices.Invoices.InvoicesGet(AppController.ActiveUser, 1, 10, -1,
+                Result = SharedBase.BOL.Invoices.Invoices.InvoicesGet(AppController.ActiveUser, 1, 10, -1,
                     Shared.Utilities.StrToIntDef(txtInvoiceNumber.Text, -1), false, statuses);
             }
             else
@@ -271,19 +271,19 @@ namespace POS.Invoices.Controls
                     cpn = null;
 
                 if (rbAnyDate.Checked)
-                    Result = Library.BOL.Invoices.Invoices.InvoicesGet(AppController.ActiveUser,
+                    Result = SharedBase.BOL.Invoices.Invoices.InvoicesGet(AppController.ActiveUser,
                         statuses, true, cbOrderCancelled.Checked);
 
                 if (rbTodayOnly.Checked)
-                    Result = Library.BOL.Invoices.Invoices.InvoicesGet(AppController.ActiveUser,
+                    Result = SharedBase.BOL.Invoices.Invoices.InvoicesGet(AppController.ActiveUser,
                         DateTime.Now, DateTime.MinValue, statuses, PaymentType, cpn, cbOrderCancelled.Checked);
 
                 if (rbSpecifyDate.Checked)
-                    Result = Library.BOL.Invoices.Invoices.InvoicesGet(AppController.ActiveUser,
+                    Result = SharedBase.BOL.Invoices.Invoices.InvoicesGet(AppController.ActiveUser,
                         dtpStart.Value, DateTime.MinValue, statuses, PaymentType, cpn, cbOrderCancelled.Checked);
 
                 if (rbDateRange.Checked)
-                    Result = Library.BOL.Invoices.Invoices.InvoicesGet(AppController.ActiveUser,
+                    Result = SharedBase.BOL.Invoices.Invoices.InvoicesGet(AppController.ActiveUser,
                         dtpStart.Value, dtpFinish.Value, statuses, PaymentType, cpn, cbOrderCancelled.Checked);
             }
 
@@ -292,7 +292,7 @@ namespace POS.Invoices.Controls
 
         private void DisplayInvoices()
         {
-            Library.BOL.Invoices.Invoices invoices = SearchInvoices();
+            SharedBase.BOL.Invoices.Invoices invoices = SearchInvoices();
 
             lstInvoices.BeginUpdate();
             try
@@ -408,7 +408,7 @@ namespace POS.Invoices.Controls
         {
             foreach (ListViewItem itm in lstInvoices.SelectedItems)
             {
-                Invoice inv = Library.BOL.Invoices.Invoices.Get(Convert.ToInt32(itm.Text.Substring(10)));
+                Invoice inv = SharedBase.BOL.Invoices.Invoices.Get(Convert.ToInt32(itm.Text.Substring(10)));
 
                 if (inv != null)
                 {
@@ -441,14 +441,14 @@ namespace POS.Invoices.Controls
 
         private void btnPrintAll_Click(object sender, EventArgs e)
         {
-            Library.BOL.Invoices.Invoices invoices = SearchInvoices();
+            SharedBase.BOL.Invoices.Invoices invoices = SearchInvoices();
 
             if (invoices != null)
             {
                 PDFInvoice inv = new PDFInvoice(invoices, AppController.LocalSettings.InvoiceHeaderRight,
                         AppController.LocalSettings.InvoiceFooter, AppController.LocalSettings.InvoiceAddress,
                         AppController.LocalSettings.InvoiceVATRegistrationNumber, AppController.LocalSettings.CustomCulture,
-                    Library.DAL.DALHelper.HideVATOnWebsiteAndInvoices,
+                    SharedBase.DAL.DALHelper.HideVATOnWebsiteAndInvoices,
                     AppController.LocalSettings.InvoiceShowProductDiscount, String.Empty, String.Empty, 1,
                     AppController.LocalSettings.InvoicePrefix);
                 inv.Print();

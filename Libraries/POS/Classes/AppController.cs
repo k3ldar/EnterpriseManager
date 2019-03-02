@@ -28,12 +28,12 @@ using System.Globalization;
 using System.Threading;
 using System.Windows.Forms;
 
-using Library.BOL.Users;
-using Library.BOL.Appointments;
-using Library.BOL.Basket;
-using Library.BOL.Countries;
-using Library.BOLEvents;
-using Library;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Appointments;
+using SharedBase.BOL.Basket;
+using SharedBase.BOL.Countries;
+using SharedBase.BOLEvents;
+using SharedBase;
 
 using Shared;
 using Shared.Communication;
@@ -473,10 +473,10 @@ namespace POS.Base.Classes
 
             InterceptBarcodes = true;
 
-            Library.DAL.DALHelper.HideVATOnWebsiteAndInvoices = LocalSettings.HideVATOnOrdersAndInvoices;
-            Library.BOL.Appointments.Appointments.OnNewAppointment += Appointments_OnNewAppointment;
+            SharedBase.DAL.DALHelper.HideVATOnWebsiteAndInvoices = LocalSettings.HideVATOnOrdersAndInvoices;
+            SharedBase.BOL.Appointments.Appointments.OnNewAppointment += Appointments_OnNewAppointment;
 
-            _defaultSystemUser = Library.BOL.Users.User.SystemUser();
+            _defaultSystemUser = SharedBase.BOL.Users.User.SystemUser();
         }
 
         ~AppController()
@@ -534,7 +534,7 @@ namespace POS.Base.Classes
 
                 if (_user == null)
                 {
-                    Library.DAL.DALHelper.RoleName = String.Empty;
+                    SharedBase.DAL.DALHelper.RoleName = String.Empty;
                     Administration = null;
                     User sysUser = User.UserGet("System_User");
                     Administration = new WebsiteAdministration(sysUser);
@@ -545,12 +545,12 @@ namespace POS.Base.Classes
 
                     if (!Parameters.OptionExists(StringConstants.PARAM_IGNORE_ROLE))
                     { 
-                        Library.DAL.DALHelper.RoleName = String.Format("{0}",
+                        SharedBase.DAL.DALHelper.RoleName = String.Format("{0}",
                             _user.Email, _user.LastName).Replace("@", "$").Replace(".", "_").Replace("-", "_").ToUpper();
                     }
                 }
 
-                Library.DAL.DALHelper.SetCurrentUser(_user);
+                SharedBase.DAL.DALHelper.SetCurrentUser(_user);
                 _lastActivity = DateTime.Now;
                 RaiseOnUserChanged();
 
@@ -1238,7 +1238,7 @@ namespace POS.Base.Classes
 
                 if (barcode.StartsWith(StringConstants.TILL_BARCODE_PREFIX_HHB))
                 {
-                    staffMember = Library.BOL.Users.User.UserFindByBarcode(barcode);
+                    staffMember = SharedBase.BOL.Users.User.UserFindByBarcode(barcode);
 
                     if (staffMember != null)
                     {

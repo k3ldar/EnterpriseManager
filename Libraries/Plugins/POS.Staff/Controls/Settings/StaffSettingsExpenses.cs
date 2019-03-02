@@ -35,7 +35,7 @@ using System.Windows.Forms;
 using System.Globalization;
 
 using Languages;
-using Library.Utils;
+using SharedBase.Utils;
 using POS.Base.Classes;
 
 namespace POS.Staff.Controls.Settings

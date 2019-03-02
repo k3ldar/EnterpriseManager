@@ -51,7 +51,7 @@ namespace POS.WebsiteAdministration.Controls.WebSettings
         public override void Reload()
         {
             string setting = String.Format(StringConstants.WEB_SETTING_HOME_FIXED_BANNER_SHOW, Website.ID);
-            cbShowHomeFixedBanners.Checked = Library.LibraryHelperClass.SettingsGetBool(setting, false);
+            cbShowHomeFixedBanners.Checked = SharedBase.LibraryHelperClass.SettingsGetBool(setting, false);
         }
         public override string HelpString()
         {
@@ -61,7 +61,7 @@ namespace POS.WebsiteAdministration.Controls.WebSettings
         private void cbShowHomeFixedBanners_CheckedChanged(object sender, System.EventArgs e)
         {
             string setting = String.Format(StringConstants.WEB_SETTING_HOME_FIXED_BANNER_SHOW, Website.ID);
-            Library.LibraryHelperClass.SettingsSet(setting, cbShowHomeFixedBanners.Checked.ToString());
+            SharedBase.LibraryHelperClass.SettingsSet(setting, cbShowHomeFixedBanners.Checked.ToString());
         }
     }
 }

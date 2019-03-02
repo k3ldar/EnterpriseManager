@@ -651,6 +651,23 @@ namespace SharedBase.BOL.Products
             return (Result);
         }
 
+        public decimal LowestPrice()
+        {
+            decimal Result = 1000000.0m;
+
+            foreach (ProductCost cost in ProductCosts)
+            {
+                if (cost.Cost1 < Result)
+                    Result = cost.Cost1;
+            }
+
+            //if the result is still a million then no product cost info so hide.
+            if (Result == 1000000.0m)
+                ShowOnWebsite = false;
+
+            return (Result);
+        }
+
         #endregion Public Methods
 
         #region Overridden Methods

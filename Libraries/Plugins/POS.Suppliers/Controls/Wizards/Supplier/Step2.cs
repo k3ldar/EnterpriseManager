@@ -30,7 +30,7 @@ using POS.Suppliers.Classes;
 
 using Languages;
 
-using Library.BOL.ContactDetails;
+using SharedBase.BOL.ContactDetails;
 using System.Globalization;
 
 namespace POS.Suppliers.Controls.Wizards.Supplier
@@ -115,7 +115,7 @@ namespace POS.Suppliers.Controls.Wizards.Supplier
 
             if (_supplier.IsNew)
             {
-                _supplier.Supplier = Library.BOL.Suppliers.Suppliers.Create(
+                _supplier.Supplier = SharedBase.BOL.Suppliers.Suppliers.Create(
                     _supplier.Supplier.BusinessName,
                     _supplier.Supplier.Addressline1,
                     _supplier.Supplier.Addressline2,

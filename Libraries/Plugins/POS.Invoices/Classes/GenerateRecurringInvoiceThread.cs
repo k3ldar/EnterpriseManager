@@ -26,12 +26,12 @@
 using System;
 using System.IO;
 
-using Library;
-using Library.BOL.Accounts;
-using Library.BOL.Basket;
-using Library.BOL.Mail;
-using Library.BOL.Invoices;
-using Library.BOL.Orders;
+using SharedBase;
+using SharedBase.BOL.Accounts;
+using SharedBase.BOL.Basket;
+using SharedBase.BOL.Mail;
+using SharedBase.BOL.Invoices;
+using SharedBase.BOL.Orders;
 
 using POS.Base.Classes;
 using Reports.Accounts;
@@ -92,7 +92,7 @@ namespace POS.Invoices.Classes
                 AppController.LocalSettings.InvoiceAddress,
                 AppController.LocalSettings.InvoiceVATRegistrationNumber,
                 AppController.LocalSettings.CustomCulture,
-                Library.DAL.DALHelper.HideVATOnWebsiteAndInvoices,
+                SharedBase.DAL.DALHelper.HideVATOnWebsiteAndInvoices,
                 AppController.LocalSettings.InvoiceShowProductDiscount,
                 AppController.LocalSettings.InvoiceFooterInvoiceDue,
                 AppController.LocalSettings.InvoicePrefix);

@@ -32,7 +32,7 @@ using System.Text;
 using System.Windows.Forms;
 
 using Languages;
-using Library.BOL.Orders;
+using SharedBase.BOL.Orders;
 using POS.Base.Classes;
 
 namespace POS.Invoices.Forms
@@ -74,7 +74,7 @@ namespace POS.Invoices.Forms
             try
             {
                 int orderID = Convert.ToInt32(textBox1.Text);
-                Order order = Library.BOL.Orders.Orders.Get(orderID);
+                Order order = SharedBase.BOL.Orders.Orders.Get(orderID);
 
                 if (order == null)
                     throw new Exception(LanguageStrings.AppOrderNotFound);

@@ -28,8 +28,8 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library;
-using Library.BOL.Users;
+using SharedBase;
+using SharedBase.BOL.Users;
 
 #pragma warning disable IDE1006
 

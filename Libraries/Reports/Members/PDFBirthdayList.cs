@@ -31,8 +31,8 @@ using System.IO;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 
-using Library.Utils;
-using Library.BOL.Users;
+using SharedBase.Utils;
+using SharedBase.BOL.Users;
 
 using ThoughtWorks.QRCode.Codec;
 using ThoughtWorks.QRCode.Codec.Data;
@@ -113,7 +113,7 @@ namespace Reports.Members
                 }
                 else
                 {
-                    Library.ErrorHandling.LogError(System.Reflection.MethodBase.GetCurrentMethod(), err);
+                    SharedBase.ErrorHandling.LogError(System.Reflection.MethodBase.GetCurrentMethod(), err);
                     throw;
                 }
             }
@@ -140,7 +140,7 @@ namespace Reports.Members
         {
             DateTime now = DateTime.Now.AddMonths(1);
             DateTime expires = new DateTime(now.Year, now.Month, DateTime.DaysInMonth(now.Year, now.Month), 23, 59, 59);
-            string voucherCode = Library.BOL.Coupons.Coupons.GenerateCoupon(10, user, expires, expires.AddDays(-80));
+            string voucherCode = SharedBase.BOL.Coupons.Coupons.GenerateCoupon(10, user, expires, expires.AddDays(-80));
 
             Paragraph p = new Paragraph(user.Address(false), FontVerdana);
             p.SpacingBefore = 55f;

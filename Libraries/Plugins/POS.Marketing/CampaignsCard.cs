@@ -27,10 +27,10 @@ using System;
 using System.Drawing;
 using Languages;
 
-using Library;
+using SharedBase;
 
-using Library.BOL.Users;
-using Library.BOL.Campaigns;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Campaigns;
 
 using POS.Base.Classes;
 using POS.Base.Plugins;

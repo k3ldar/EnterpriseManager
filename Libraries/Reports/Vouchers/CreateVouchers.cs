@@ -33,10 +33,10 @@ using System.Xml;
 using System.Xml.Serialization;
 
 using Reports.Labels;
-using Library.Utils;
-using Library.BOL.Products;
-using Library.BOL.Countries;
-using Library.BOLEvents;
+using SharedBase.Utils;
+using SharedBase.BOL.Products;
+using SharedBase.BOL.Countries;
+using SharedBase.BOLEvents;
 
 using SharedControls.Forms;
 
@@ -105,7 +105,7 @@ namespace Reports.Vouchers
 
         private void LoadExistingVoucherAmounts()
         {
-            Product product = Library.BOL.Products.Products.Get(224);
+            Product product = SharedBase.BOL.Products.Products.Get(224);
             ProductCosts costs = null;
 
             if (product == null)
@@ -113,8 +113,8 @@ namespace Reports.Vouchers
                 costs = new ProductCosts();
                 
                 costs.Add(new ProductCost(-1, new Product(), String.Empty, "50", 50.00m, 5, false, ProductCostTypes.Get("Vouchers"), 
-                    String.Empty, false, false, 0.00m, 0.00m, 0.00m, String.Empty, Library.ProductCostItemType.Voucher, -1, 0,
-                    Convert.ToDecimal(Library.DAL.DALHelper.DefaultVATRate), 0.0));
+                    String.Empty, false, false, 0.00m, 0.00m, 0.00m, String.Empty, SharedBase.ProductCostItemType.Voucher, -1, 0,
+                    Convert.ToDecimal(SharedBase.DAL.DALHelper.DefaultVATRate), 0.0));
             }
             else
             {
@@ -195,13 +195,13 @@ namespace Reports.Vouchers
                     switch (cmbBarcodeType.SelectedIndex)
                     {
                         case 0: // 2D
-                            e.Text = Library.Utils.LibUtils.GenerateRandomVoucherCode();
+                            e.Text = SharedBase.Utils.LibUtils.GenerateRandomVoucherCode();
                             break;
                         case 1: // 2 of 5
-                            e.Text = Library.Utils.LibUtils.GenerateRandomVoucherCode("", "NNNNNNNNNNNNNNNN");
+                            e.Text = SharedBase.Utils.LibUtils.GenerateRandomVoucherCode("", "NNNNNNNNNNNNNNNN");
                             break;
                         case 2: // 3 of 9
-                            e.Text = Library.Utils.LibUtils.GenerateRandomVoucherCode("HV", "LLL");
+                            e.Text = SharedBase.Utils.LibUtils.GenerateRandomVoucherCode("HV", "LLL");
                             break;
                     }
                 }
@@ -210,13 +210,13 @@ namespace Reports.Vouchers
                     switch (cmbBarcodeType.SelectedIndex)
                     {
                         case 0: // 2D
-                            e.Text = Library.BOL.Vouchers.Vouchers.CreateVoucher(progress, cost.PriceGet(_country));
+                            e.Text = SharedBase.BOL.Vouchers.Vouchers.CreateVoucher(progress, cost.PriceGet(_country));
                             break;
                         case 1: // 2 of 5
-                            e.Text = Library.BOL.Vouchers.Vouchers.CreateVoucher(progress, cost.PriceGet(_country), "", "NNNNNNNNNNNNNNNN");
+                            e.Text = SharedBase.BOL.Vouchers.Vouchers.CreateVoucher(progress, cost.PriceGet(_country), "", "NNNNNNNNNNNNNNNN");
                             break;
                         case 2: // 3 of 9
-                            e.Text = Library.BOL.Vouchers.Vouchers.CreateVoucher(progress, cost.PriceGet(_country), "HV", "LL");
+                            e.Text = SharedBase.BOL.Vouchers.Vouchers.CreateVoucher(progress, cost.PriceGet(_country), "HV", "LL");
                             break;
                     }
                 }
@@ -275,7 +275,7 @@ namespace Reports.Vouchers
                 itemCost += SharedUtils.VATCalculate(itemCost, _country.VATRate);
 
                 string amount = String.Format(" - {0}", SharedUtils.FormatMoney(itemCost, 
-                    Library.BOL.Basket.Currencies.Get(_culture.Name), false));
+                    SharedBase.BOL.Basket.Currencies.Get(_culture.Name), false));
                 e.Text += amount;
                 e.ImageOffsetX = 0;
                 e.ImageOffSetY = -102;
@@ -288,7 +288,7 @@ namespace Reports.Vouchers
                             e.Footer = "";
                         else
                             e.Footer = String.Format("{0} - {1}", cost.Size, 
-                                SharedUtils.FormatMoney(itemCost, Library.BOL.Basket.Currencies.Get(
+                                SharedUtils.FormatMoney(itemCost, SharedBase.BOL.Basket.Currencies.Get(
                                 _culture.Name), false));
                     }
                     else
@@ -408,7 +408,7 @@ namespace Reports.Vouchers
             }
             catch (Exception err)
             {
-                Library.ErrorHandling.LogError(System.Reflection.MethodBase.GetCurrentMethod(), err);
+                SharedBase.ErrorHandling.LogError(System.Reflection.MethodBase.GetCurrentMethod(), err);
                 throw;
             } 
         }
@@ -499,7 +499,7 @@ namespace Reports.Vouchers
             itemCost += SharedUtils.VATCalculate(itemCost, _country.VATRate);
 
             e.Value = String.Format("{0} - {1}", cost.Size, SharedUtils.FormatMoney(itemCost,
-                Library.BOL.Basket.Currencies.Get(_culture.Name), false));
+                SharedBase.BOL.Basket.Currencies.Get(_culture.Name), false));
         }
     }
 }

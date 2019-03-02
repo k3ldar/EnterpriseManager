@@ -29,18 +29,18 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library;
-using Library.BOL.Accounts;
-using Library.BOL.Affiliate;
-using Library.BOL.Appointments;
-using Library.BOL.Countries;
-using Library.BOL.DeliveryAddress;
-using Library.BOL.Helpdesk;
-using Library.BOL.Invoices;
-using Library.BOL.Orders;
-using Library.BOL.Salons;
-using Library.BOL.Users;
-using Library.BOL.ValidationChecks;
+using SharedBase;
+using SharedBase.BOL.Accounts;
+using SharedBase.BOL.Affiliate;
+using SharedBase.BOL.Appointments;
+using SharedBase.BOL.Countries;
+using SharedBase.BOL.DeliveryAddress;
+using SharedBase.BOL.Helpdesk;
+using SharedBase.BOL.Invoices;
+using SharedBase.BOL.Orders;
+using SharedBase.BOL.Salons;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.ValidationChecks;
 
 using POS.Base.Classes;
 
@@ -445,7 +445,7 @@ namespace POS.Customers.Forms
         {
             foreach (ListViewItem itm in lstInvoices.SelectedItems)
             {
-                Invoice inv = Library.BOL.Invoices.Invoices.Get(Convert.ToInt32(itm.SubItems[5].Text));
+                Invoice inv = SharedBase.BOL.Invoices.Invoices.Get(Convert.ToInt32(itm.SubItems[5].Text));
 
                 PluginManager.RaiseEvent(new POS.Base.Plugins.NotificationEventArgs(StringConstants.PLUGIN_EVENT_VIEW_INVOICE, inv));
             }
@@ -569,7 +569,7 @@ namespace POS.Customers.Forms
         {
             foreach (ListViewItem itm in lstOrders.SelectedItems)
             {
-                Order order = Library.BOL.Orders.Orders.Get(Convert.ToInt32(itm.SubItems[4].Text));
+                Order order = SharedBase.BOL.Orders.Orders.Get(Convert.ToInt32(itm.SubItems[4].Text));
                 PluginManager.RaiseEvent(new POS.Base.Plugins.NotificationEventArgs(StringConstants.PLUGIN_EVENT_VIEW_ORDER, order));
             }
         }
@@ -596,7 +596,7 @@ namespace POS.Customers.Forms
         {
             foreach (ListViewItem itm in lstTickets.SelectedItems)
             {
-                SupportTicket ticket = Library.BOL.Helpdesk.SupportTickets.Get(Convert.ToInt32(itm.SubItems[6].Text));
+                SupportTicket ticket = SharedBase.BOL.Helpdesk.SupportTickets.Get(Convert.ToInt32(itm.SubItems[6].Text));
 
                 if (ticket != null)
                 {
@@ -675,7 +675,7 @@ namespace POS.Customers.Forms
                 {
                     // verify details
                     //if (verificationCountry.AddressSettings.HasFlag(AddressOptions.AddressLine1Mandatory))
-                    //    Library.
+                    //    SharedBase.
 
                 }
 
@@ -749,7 +749,7 @@ namespace POS.Customers.Forms
         {
             foreach (ListViewItem itm in lstSalons.SelectedItems)
             {
-                Library.BOL.Salons.Salon salon = AppController.Administration.SalonGet(Convert.ToInt32(itm.SubItems[5].Text));
+                SharedBase.BOL.Salons.Salon salon = AppController.Administration.SalonGet(Convert.ToInt32(itm.SubItems[5].Text));
                 PluginManager.RaiseEvent(new POS.Base.Plugins.NotificationEventArgs(StringConstants.PLUGIN_EVENT_EDIT_SALON, salon));
             }
         }

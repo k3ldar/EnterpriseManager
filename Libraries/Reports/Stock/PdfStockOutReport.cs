@@ -31,19 +31,19 @@ using System.Text;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 
-using Library.Utils;
+using SharedBase.Utils;
 
 namespace Reports.Stock
 {
     public class PdfStockOutReport : BaseReport
     {
-        public PdfStockOutReport(string location, Library.BOL.StockControl.StockOut stock, DateTime date, bool fromDate)
+        public PdfStockOutReport(string location, SharedBase.BOL.StockControl.StockOut stock, DateTime date, bool fromDate)
             : base(UniqueFileName("StockIn", true))
         {
             CreateDocument(location, stock, date, fromDate);
         }
 
-        private void CreateDocument(string location, Library.BOL.StockControl.StockOut stock, DateTime date, bool fromDate)
+        private void CreateDocument(string location, SharedBase.BOL.StockControl.StockOut stock, DateTime date, bool fromDate)
         {
             Document myDocument = new Document(PageSize.A4);
 
@@ -82,7 +82,7 @@ namespace Reports.Stock
             ParagraphAdd(document);
         }
 
-        private void LoadStockDetails(Document document, Library.BOL.StockControl.StockOut stock, DateTime date, bool fromDate)
+        private void LoadStockDetails(Document document, SharedBase.BOL.StockControl.StockOut stock, DateTime date, bool fromDate)
         {
             if (stock.Count > 0)
             {
@@ -101,7 +101,7 @@ namespace Reports.Stock
                 table.AddCell(new Phrase("Reason", FontTextBoldSmall));
                 table.AddCell(new Phrase("User", FontTextBoldSmall));
 
-                foreach (Library.BOL.StockControl.StockOutItem stockItem in stock)
+                foreach (SharedBase.BOL.StockControl.StockOutItem stockItem in stock)
                 {
                     if ((fromDate && stockItem.Date.Date >= date.Date) || (stockItem.Date.Date == date.Date) || (date.Year == 1900))
                     {

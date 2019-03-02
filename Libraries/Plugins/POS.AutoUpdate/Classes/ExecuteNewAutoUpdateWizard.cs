@@ -26,17 +26,17 @@
 using System;
 
 using Languages;
-using Library.BOL.DatabaseUpdates;
+using SharedBase.BOL.DatabaseUpdates;
 using SharedControls.WizardBase;
 
 namespace POS.AutoUpdate.Classes
 {
     internal static class ExecuteNewAutoUpdateWizard
     {
-        internal static Library.BOL.DatabaseUpdates.AutoUpdate CreateNewAutoUpdate(
-            Library.BOL.DatabaseUpdates.AutoUpdate updateRule)
+        internal static SharedBase.BOL.DatabaseUpdates.AutoUpdate CreateNewAutoUpdate(
+            SharedBase.BOL.DatabaseUpdates.AutoUpdate updateRule)
         {
-            Library.BOL.DatabaseUpdates.AutoUpdate Result = null;
+            SharedBase.BOL.DatabaseUpdates.AutoUpdate Result = null;
             CreateAutoRuleSettings settings = new CreateAutoRuleSettings(updateRule);
 
             if (WizardForm.ShowWizard(LanguageStrings.AppAutoRuleCreateWizard,
@@ -57,7 +57,7 @@ namespace POS.AutoUpdate.Classes
     {
         private AutoUpdateRule _rule;
 
-        public CreateAutoRuleSettings(Library.BOL.DatabaseUpdates.AutoUpdate updateRule)
+        public CreateAutoRuleSettings(SharedBase.BOL.DatabaseUpdates.AutoUpdate updateRule)
         {
             _rule = null;
             AutoUpdate = updateRule;
@@ -82,7 +82,7 @@ namespace POS.AutoUpdate.Classes
             }
         }
 
-        public Library.BOL.DatabaseUpdates.AutoUpdate AutoUpdate { get; set; }
+        public SharedBase.BOL.DatabaseUpdates.AutoUpdate AutoUpdate { get; set; }
 
         public event EventHandler OnRuleChanged;
     }

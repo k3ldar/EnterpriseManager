@@ -32,14 +32,14 @@ using System.Windows.Forms;
 
 using SharedControls.Forms;
 using Languages;
-using Library;
-using Library.BOL.Products;
-using Library.BOL.Salons;
-using Library.BOL.Statistics;
+using SharedBase;
+using SharedBase.BOL.Products;
+using SharedBase.BOL.Salons;
+using SharedBase.BOL.Statistics;
 using POS.Base.Classes;
 using POS.Base.Plugins;
 using POS.CurrencyWatch.Classes;
-using Library.BOL.Users;
+using SharedBase.BOL.Users;
 
 namespace POS.CurrencyWatch
 {

@@ -26,7 +26,7 @@
 using System;
 using System.Windows.Forms;
 
-using Library.BOL.Countries;
+using SharedBase.BOL.Countries;
 
 using POS.Base.Classes;
 

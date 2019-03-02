@@ -31,9 +31,9 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 
-using Library.BOL.Vouchers;
-using Library.BOL.Orders;
-using Library.Utils;
+using SharedBase.BOL.Vouchers;
+using SharedBase.BOL.Orders;
+using SharedBase.Utils;
 using POS.Base.Classes;
 
 namespace POS.Till.Controls
@@ -55,7 +55,7 @@ namespace POS.Till.Controls
             InitializeComponent();
 
             if (!DesignMode)
-                lblChangeDue.Text = Library.Utils.SharedUtils.FormatMoney(0.0m, AppController.LocalCurrency);
+                lblChangeDue.Text = SharedBase.Utils.SharedUtils.FormatMoney(0.0m, AppController.LocalCurrency);
         }
 
         #endregion Constructors
@@ -90,7 +90,7 @@ namespace POS.Till.Controls
             set
             {
                 _totalDue = Math.Round(value, 2);
-                lblAmountDueTotal.Text = Library.Utils.SharedUtils.FormatMoney(_totalDue, AppController.LocalCurrency);
+                lblAmountDueTotal.Text = SharedBase.Utils.SharedUtils.FormatMoney(_totalDue, AppController.LocalCurrency);
             }
         }
 
@@ -129,7 +129,7 @@ namespace POS.Till.Controls
         {
             RedeemVouchers();
 
-            Library.BOL.SplitPayments.SplitPayments.SplitPaymentAdd(order,
+            SharedBase.BOL.SplitPayments.SplitPayments.SplitPaymentAdd(order,
                 Shared.Utilities.StrToDecimal(txtTotalCash.Text, 0.00m, null),
                 Shared.Utilities.StrToDecimal(txtTotalCheque.Text, 0.00m, null),
                 Shared.Utilities.StrToDecimal(txtTotalCard.Text, 0.00m, null), 
@@ -172,11 +172,11 @@ namespace POS.Till.Controls
                 else
                 {
                     lstVouchers.Items.Add(voucherCode);
-                    decimal vatAmount = Library.Utils.SharedUtils.VATCalculate(voucherAmount, AppController.LocalCountry);
+                    decimal vatAmount = SharedBase.Utils.SharedUtils.VATCalculate(voucherAmount, AppController.LocalCountry);
                     voucherAmount = Math.Round(voucherAmount + vatAmount, 2, MidpointRounding.AwayFromZero);
                     _totalVouchers += Convert.ToDecimal(voucherAmount);
 
-                    txtTotalVoucher.Text = Library.Utils.SharedUtils.FormatMoney(_totalVouchers, AppController.LocalCurrency);
+                    txtTotalVoucher.Text = SharedBase.Utils.SharedUtils.FormatMoney(_totalVouchers, AppController.LocalCurrency);
                 }
             }
             catch (Exception err)
@@ -234,9 +234,9 @@ namespace POS.Till.Controls
             _tendered += Shared.Utilities.StrToDecimal(txtTotalCard.Text, 0.00m, null);
             _tendered += _totalVouchers;
 
-            lblTotalTendered.Text = Library.Utils.SharedUtils.FormatMoney(_tendered, AppController.LocalCurrency);
+            lblTotalTendered.Text = SharedBase.Utils.SharedUtils.FormatMoney(_tendered, AppController.LocalCurrency);
 
-            lblChangeDue.Text = Library.Utils.SharedUtils.FormatMoney(_totalDue - _tendered, AppController.LocalCurrency);
+            lblChangeDue.Text = SharedBase.Utils.SharedUtils.FormatMoney(_totalDue - _tendered, AppController.LocalCurrency);
 
             if (_totalDue - _tendered >= 0.00m)
                 lblChangeDue.ForeColor = Color.Black;
@@ -253,11 +253,11 @@ namespace POS.Till.Controls
                     try
                     {
                         decimal voucherAmount = Vouchers.RedeemVoucher((string)lstVouchers.Items[lstVouchers.SelectedIndex], AppController.ActiveUser, true);
-                        decimal voucherVAT = Library.Utils.SharedUtils.VATCalculate(voucherAmount, AppController.LocalCountry);
+                        decimal voucherVAT = SharedBase.Utils.SharedUtils.VATCalculate(voucherAmount, AppController.LocalCountry);
                         voucherAmount = Math.Round(voucherAmount + voucherVAT, 2, MidpointRounding.AwayFromZero);
                         _totalVouchers -= voucherAmount;
                         lstVouchers.Items.RemoveAt(lstVouchers.SelectedIndex);
-                        txtTotalVoucher.Text = Library.Utils.SharedUtils.FormatMoney(_totalVouchers, AppController.LocalCurrency);
+                        txtTotalVoucher.Text = SharedBase.Utils.SharedUtils.FormatMoney(_totalVouchers, AppController.LocalCurrency);
                         UpdateTotals();
                     }
                     catch
@@ -293,7 +293,7 @@ namespace POS.Till.Controls
                         {
                             _totalVouchers += frm.Discount;
                             lstVouchers.Items.Add(frm.Code);
-                            txtTotalVoucher.Text = Library.Utils.SharedUtils.FormatMoney(_totalVouchers, AppController.LocalCurrency);
+                            txtTotalVoucher.Text = SharedBase.Utils.SharedUtils.FormatMoney(_totalVouchers, AppController.LocalCurrency);
                             UpdateTotals();
                         }
                     }
@@ -316,11 +316,11 @@ namespace POS.Till.Controls
             try
             {
                 decimal voucherAmount = Vouchers.RedeemVoucher((string)lstVouchers.Items[lstVouchers.SelectedIndex], AppController.ActiveUser, true);
-                decimal voucherVAT = Library.Utils.SharedUtils.VATCalculate(voucherAmount, AppController.LocalCountry);
+                decimal voucherVAT = SharedBase.Utils.SharedUtils.VATCalculate(voucherAmount, AppController.LocalCountry);
                 voucherAmount = Math.Round(voucherAmount + voucherVAT, 2, MidpointRounding.AwayFromZero);
                 _totalVouchers -= voucherAmount;
                 lstVouchers.Items.RemoveAt(lstVouchers.SelectedIndex);
-                txtTotalVoucher.Text = Library.Utils.SharedUtils.FormatMoney(_totalVouchers, AppController.LocalCurrency);
+                txtTotalVoucher.Text = SharedBase.Utils.SharedUtils.FormatMoney(_totalVouchers, AppController.LocalCurrency);
                 UpdateTotals();
             }
             catch

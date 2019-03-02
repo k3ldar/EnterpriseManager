@@ -33,8 +33,8 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library.BOL.Affiliate;
-using Library.BOL.Users;
+using SharedBase.BOL.Affiliate;
+using SharedBase.BOL.Users;
 using POS.Customers.Classes;
 
 namespace POS.Customers.Controls.Wizards.Affiliate.PayCommission

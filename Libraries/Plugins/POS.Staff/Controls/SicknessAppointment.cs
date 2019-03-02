@@ -33,9 +33,9 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library.BOL.Appointments;
-using Library.BOL.Staff;
-using Library.BOL.Therapists;
+using SharedBase.BOL.Appointments;
+using SharedBase.BOL.Staff;
+using SharedBase.BOL.Therapists;
 
 namespace POS.Staff.Controls
 {

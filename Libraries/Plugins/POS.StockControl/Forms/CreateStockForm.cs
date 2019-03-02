@@ -36,9 +36,9 @@ using Languages;
 using POS.StockControl.Classes;
 using POS.StockControl.Controls;
 
-using Library;
-using Library.BOL.Products;
-using Library.BOL.StockControl;
+using SharedBase;
+using SharedBase.BOL.Products;
+using SharedBase.BOL.StockControl;
 using POS.Base.Classes;
 
 namespace POS.StockControl.Forms
@@ -164,7 +164,7 @@ namespace POS.StockControl.Forms
                             ctl.Width = layoutDependencies.Width - 20;
 
                             if (stockAvailable < maxAvailable)
-                                maxAvailable = Library.Utils.SharedUtils.MinimumValue(0, stockAvailable);
+                                maxAvailable = SharedBase.Utils.SharedUtils.MinimumValue(0, stockAvailable);
                         }
                     }
                 }

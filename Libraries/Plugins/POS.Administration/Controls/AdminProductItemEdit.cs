@@ -27,9 +27,9 @@ using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-using Library;
-using Library.Utils;
-using Library.BOL.Products;
+using SharedBase;
+using SharedBase.Utils;
+using SharedBase.BOL.Products;
 using POS.Base.Classes;
 
 #pragma warning disable IDE1006
@@ -59,9 +59,9 @@ namespace POS.Administration.Controls
                 AppController.ApplicationController.TableIDChanged += User_TableIDChanged;
                 AppController.ApplicationController.ActiveControlChanged += User_ActiveControlChanged;
 
-                lblPrice1.Text = Library.LibraryHelperClass.SettingsGet(StringConstants.PRICE_DESCRIPTION_1, StringConstants.PRICE_1);
-                lblPrice2.Text = Library.LibraryHelperClass.SettingsGet(StringConstants.PRICE_DESCRIPTION_2, StringConstants.PRICE_2);
-                lblPrice3.Text = Library.LibraryHelperClass.SettingsGet(StringConstants.PRICE_DESCRIPTION_3, StringConstants.PRICE_3);
+                lblPrice1.Text = SharedBase.LibraryHelperClass.SettingsGet(StringConstants.PRICE_DESCRIPTION_1, StringConstants.PRICE_1);
+                lblPrice2.Text = SharedBase.LibraryHelperClass.SettingsGet(StringConstants.PRICE_DESCRIPTION_2, StringConstants.PRICE_2);
+                lblPrice3.Text = SharedBase.LibraryHelperClass.SettingsGet(StringConstants.PRICE_DESCRIPTION_3, StringConstants.PRICE_3);
             }
 
             HintControl = lblDescription;

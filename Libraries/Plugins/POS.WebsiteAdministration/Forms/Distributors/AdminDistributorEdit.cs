@@ -26,8 +26,8 @@
 using System;
 
 using Languages;
-using Library.BOL.Salons;
-using Library;
+using SharedBase.BOL.Salons;
+using SharedBase;
 using POS.Base.Classes;
 
 namespace POS.WebsiteAdministration.Forms.Salons

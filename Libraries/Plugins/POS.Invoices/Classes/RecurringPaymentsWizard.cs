@@ -26,8 +26,8 @@
 using System;
 
 using SharedControls.WizardBase;
-using Library.BOL.Invoices;
-using Library;
+using SharedBase.BOL.Invoices;
+using SharedBase;
 using Languages;
 
 #pragma warning disable IDE1005 // Delegate invocation can be simplified

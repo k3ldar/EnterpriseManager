@@ -26,8 +26,8 @@
 using System;
 using System.Windows.Forms;
 
-using Library;
-using Library.BOL.Invoices;
+using SharedBase;
+using SharedBase.BOL.Invoices;
 
 using Languages;
 
@@ -308,7 +308,7 @@ namespace POS.Invoices.Forms
             {
                 if (InvoiceCancel.InvoiceCancelShow(_CurrentInvoice))
                 {
-                    _CurrentInvoice = Library.BOL.Invoices.Invoices.Get(_CurrentInvoice.ID);
+                    _CurrentInvoice = SharedBase.BOL.Invoices.Invoices.Get(_CurrentInvoice.ID);
                     LoadInvoice();
                 }
             }
@@ -384,7 +384,7 @@ namespace POS.Invoices.Forms
                         AppController.LocalSettings.InvoiceFooter, AppController.LocalSettings.InvoiceAddress,
                         AppController.LocalSettings.InvoiceVATRegistrationNumber,
                         AppController.LocalSettings.CustomCulture,
-                Library.DAL.DALHelper.HideVATOnWebsiteAndInvoices,
+                SharedBase.DAL.DALHelper.HideVATOnWebsiteAndInvoices,
                 AppController.LocalSettings.InvoiceShowProductDiscount, String.Empty, String.Empty, 1,
                 AppController.LocalSettings.InvoicePrefix);
             inv.Print();

@@ -32,8 +32,8 @@ using System.Text;
 using System.Windows.Forms;
 
 using Languages;
-using Library.BOL.Staff;
-using Library.BOL.Therapists;
+using SharedBase.BOL.Staff;
+using SharedBase.BOL.Therapists;
 using POS.Staff.Classes;
 
 namespace POS.Staff.Controls.Wizards.Commission.BonusPayments
@@ -83,7 +83,7 @@ namespace POS.Staff.Controls.Wizards.Commission.BonusPayments
                     item.SetDateDue(dtpDateDue.Value);
                 }
 
-                _settings.Save(POS.Base.Classes.AppController.ActiveUser, Library.CommissionPaymentType.Bonus);
+                _settings.Save(POS.Base.Classes.AppController.ActiveUser, SharedBase.CommissionPaymentType.Bonus);
             }
             finally
             {

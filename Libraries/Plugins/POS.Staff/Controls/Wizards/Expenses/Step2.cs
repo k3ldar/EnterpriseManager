@@ -28,8 +28,8 @@ using System.Drawing;
 using System.Windows.Forms;
 
 using Languages;
-using Library;
-using Library.BOL.Staff;
+using SharedBase;
+using SharedBase.BOL.Staff;
 using POS.Base.Classes;
 
 using POS.Staff.Classes;

@@ -30,11 +30,11 @@ using System.Windows.Forms;
 
 using SharedControls.Forms;
 using Languages;
-using Library;
-using Library.BOL.Appointments;
-using Library.BOL.Users;
-using Library.BOL.Therapists;
-using Library.BOL.ValidationChecks;
+using SharedBase;
+using SharedBase.BOL.Appointments;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Therapists;
+using SharedBase.BOL.ValidationChecks;
 
 using POS.Base.Classes;
 using POS.Base.Plugins;
@@ -290,13 +290,13 @@ namespace POS.Diary
 
         private void salonDiary1_AppointmentEdit(object sender, SalonDiary.Controls.EditAppointmentEventArgs e)
         {
-            Library.BOL.Appointments.Appointment appt = e.Appointment;
+            SharedBase.BOL.Appointments.Appointment appt = e.Appointment;
 
             switch (appt.AppointmentType)
             {
                 case 14:  // training appointment
                     if (appt.MasterAppointment > -1)
-                        appt = Library.BOL.Appointments.Appointments.Get(appt.MasterAppointment);
+                        appt = SharedBase.BOL.Appointments.Appointments.Get(appt.MasterAppointment);
 
                     bool isLocked = appt.IsLocked || appt.AppointmentDate < DateTime.Now;
 

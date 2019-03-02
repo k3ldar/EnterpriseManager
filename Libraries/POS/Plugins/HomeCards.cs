@@ -25,7 +25,7 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 using System;
 
-using Library.BOL;
+using SharedBase.BOL;
 
 namespace POS.Base.Plugins
 {

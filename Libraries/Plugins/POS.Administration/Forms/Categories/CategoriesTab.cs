@@ -29,10 +29,10 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library.BOL.Appointments;
-using Library.BOL.Downloads;
-using Library.BOL.Helpdesk;
-using Library.BOL.Products;
+using SharedBase.BOL.Appointments;
+using SharedBase.BOL.Downloads;
+using SharedBase.BOL.Helpdesk;
+using SharedBase.BOL.Products;
 
 using POS.Base.Classes;
 

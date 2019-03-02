@@ -27,7 +27,7 @@ using System.Windows.Forms;
 
 using POS.Base.Classes;
 
-using Library.BOL.Products;
+using SharedBase.BOL.Products;
 
 namespace POS.Base.Controls
 {

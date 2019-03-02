@@ -30,12 +30,12 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library;
-using Library.BOL.Users;
-using Library.BOL.Appointments;
-using Library.BOL.Therapists;
-using Library.BOLEvents;
-using Library.BOL.ValidationChecks;
+using SharedBase;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Appointments;
+using SharedBase.BOL.Therapists;
+using SharedBase.BOLEvents;
+using SharedBase.BOL.ValidationChecks;
 
 using SharedControls.Interfaces;
 
@@ -272,7 +272,7 @@ namespace POS.Diary.Controls
 
         private void salonDiary1_AppointmentShowHistory(object sender, SalonDiary.Controls.SalonAppointmentEventArgs e)
         {
-            Library.BOL.Appointments.AppointmentChanges changes = e.Appointment.History();
+            SharedBase.BOL.Appointments.AppointmentChanges changes = e.Appointment.History();
 
             if (changes.Count == 0)
             {
@@ -347,7 +347,7 @@ namespace POS.Diary.Controls
 
         private void salonDiary1_AppointmentEdit(object sender, SalonDiary.Controls.EditAppointmentEventArgs e)
         {
-            Library.BOL.Appointments.Appointment appt = e.Appointment;
+            SharedBase.BOL.Appointments.Appointment appt = e.Appointment;
 
             switch (appt.AppointmentType)
             {
@@ -595,7 +595,7 @@ namespace POS.Diary.Controls
 
         #region Events
 
-        internal void RaisePayNow(Library.BOL.Appointments.Appointment appointment)
+        internal void RaisePayNow(SharedBase.BOL.Appointments.Appointment appointment)
         {
             if (appointment.MasterAppointment > -1)
                 appointment = Appointments.Get(appointment.MasterAppointment);

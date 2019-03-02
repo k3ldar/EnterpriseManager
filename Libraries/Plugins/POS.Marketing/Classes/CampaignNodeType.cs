@@ -25,7 +25,7 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 using System;
 
-using Library.BOL.Campaigns;
+using SharedBase.BOL.Campaigns;
 
 namespace POS.Marketing.Classes
 {

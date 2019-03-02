@@ -27,9 +27,9 @@ using System;
 using System.Windows.Forms;
 
 using Languages;
-using Library.BOL.Products;
-using Library.BOL.Users;
-using Library.BOL.StockControl;
+using SharedBase.BOL.Products;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.StockControl;
 
 using POS.Base.Classes;
 
@@ -58,7 +58,7 @@ namespace POS.Administration.Controls
             txtSKU.Text = _productCost.SKU;
             lblType.Text = String.Format(StringConstants.PREFIX_AND_SUFFIX_HYPHEN, 
                 _productCost.ProductCostType.Description,
-                Library.Utils.SharedUtils.FormatMoney(_productCost.Cost1, AppController.LocalCurrency));
+                SharedBase.Utils.SharedUtils.FormatMoney(_productCost.Cost1, AppController.LocalCurrency));
 
             AppController.ApplicationController.TableIDChanged += User_TableIDChanged;
         }

@@ -32,10 +32,10 @@ using System.Text;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 
-using Library;
-using Library.Utils;
-using Library.BOL.Products;
-using Library.BOL.Statistics;
+using SharedBase;
+using SharedBase.Utils;
+using SharedBase.BOL.Products;
+using SharedBase.BOL.Statistics;
 
 namespace Reports.Products
 {
@@ -48,7 +48,7 @@ namespace Reports.Products
             CreateDocument(results, reportType);
         }
 
-        private void CreateDocument(SimpleStatistics results, Library.ProductReportType reportType)
+        private void CreateDocument(SimpleStatistics results, SharedBase.ProductReportType reportType)
         {
             Document myDocument = new Document(PageSize.A4);
 

@@ -68,15 +68,15 @@ namespace POS.WebsiteAdministration.Controls.WebSettings
             LoadImages();
 
             string setting = String.Format(StringConstants.WEB_SETTING_PAGE_BANNER_LINK, Website.ID, SettingIndex);
-            txtLink.Text = Library.LibraryHelperClass.SettingsGet(setting, txtLink.Text);
+            txtLink.Text = SharedBase.LibraryHelperClass.SettingsGet(setting, txtLink.Text);
         }
 
         public override void Save()
         {
             string setting = String.Format(StringConstants.WEB_SETTING_PAGE_BANNER_LINK, Website.ID, SettingIndex);
-            Library.LibraryHelperClass.SettingsSet(setting, txtLink.Text);
+            SharedBase.LibraryHelperClass.SettingsSet(setting, txtLink.Text);
             setting = String.Format(StringConstants.WEB_SETTING_PAGE_BANNER, Website.ID, SettingIndex);
-            Library.LibraryHelperClass.SettingsSet(setting,
+            SharedBase.LibraryHelperClass.SettingsSet(setting,
                 cmbImage.SelectedIndex == -1 ? String.Empty : Path.GetFileName((string)cmbImage.Items[cmbImage.SelectedIndex]));
         }
 
@@ -107,7 +107,7 @@ namespace POS.WebsiteAdministration.Controls.WebSettings
             if (!Directory.Exists(imageRoot))
                 Directory.CreateDirectory(imageRoot);
 
-            string setting = Library.LibraryHelperClass.SettingsGet(
+            string setting = SharedBase.LibraryHelperClass.SettingsGet(
                 String.Format(StringConstants.WEB_SETTING_PAGE_BANNER, Website.ID, SettingIndex));
             cmbImage.Items.Clear();
             string[] files = Directory.GetFiles(imageRoot, StringConstants.IMAGE_SEARCH_PAGE_IMAGES);

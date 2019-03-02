@@ -29,7 +29,7 @@ using System.Globalization;
 
 using Languages;
 
-using Library.BOL.HashTags;
+using SharedBase.BOL.HashTags;
 
 #pragma warning disable IDE1006
 
@@ -108,8 +108,8 @@ namespace POS.Base.Controls
                 page = page.Substring(page.Length - 38);
             }
 
-            Library.LibraryHelperClass.SettingsSetMeta(String.Format("DESCRIPTION:{0}", page), txtMetaDescription.Text);
-            Library.LibraryHelperClass.SettingsSetMeta(String.Format("TITLE:{0}", page), txtTitle.Text);
+            SharedBase.LibraryHelperClass.SettingsSetMeta(String.Format("DESCRIPTION:{0}", page), txtMetaDescription.Text);
+            SharedBase.LibraryHelperClass.SettingsSetMeta(String.Format("TITLE:{0}", page), txtTitle.Text);
         }
 
         public void LoadSeoData()
@@ -136,8 +136,8 @@ namespace POS.Base.Controls
                 page = page.Substring(page.Length - 38);
             }
 
-            txtMetaDescription.Text = Library.LibraryHelperClass.SettingsGetMeta(String.Format("DESCRIPTION:{0}", page)).Trim();
-            txtTitle.Text = Library.LibraryHelperClass.SettingsGetMeta(String.Format("TITLE:{0}", page)).Trim();
+            txtMetaDescription.Text = SharedBase.LibraryHelperClass.SettingsGetMeta(String.Format("DESCRIPTION:{0}", page)).Trim();
+            txtTitle.Text = SharedBase.LibraryHelperClass.SettingsGetMeta(String.Format("TITLE:{0}", page)).Trim();
         }
 
         #endregion Public Methods

@@ -37,7 +37,7 @@ using SalonDiary.WizardSteps;
 using SharedControls.WizardBase;
 
 using Languages;
-using Library.BOL.Appointments;
+using SharedBase.BOL.Appointments;
 
 using POS.Base.Classes;
 

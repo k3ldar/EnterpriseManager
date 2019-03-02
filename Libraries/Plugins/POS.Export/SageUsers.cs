@@ -28,9 +28,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 
-using Library;
-using Library.BOL.Users;
-using Library.BOL.Invoices;
+using SharedBase;
+using SharedBase.BOL.Users;
+using SharedBase.BOL.Invoices;
 
 using POS.Base.Classes;
 

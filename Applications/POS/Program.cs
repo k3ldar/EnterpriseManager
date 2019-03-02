@@ -38,7 +38,7 @@ using PointOfSale.Forms;
 using PointOfSale.Classes;
 using PointOfSale.Forms.Other;
 
-using Library.BOL.Users;
+using SharedBase.BOL.Users;
 using POS.Base.Classes;
 
 #if ERROR_MANAGER
@@ -85,7 +85,7 @@ namespace PointOfSale
                         return;
 
                     // The next line ensures that the dal is loaded 
-                    Library.DAL.DALHelper.AllowCaching = true;
+                    SharedBase.DAL.DALHelper.AllowCaching = true;
 
                     using (Mutex mutex = new Mutex(true, Application.ProductName, out createdNew))
                     {
@@ -118,7 +118,7 @@ namespace PointOfSale
 
                             AppController.UpdateSplashScreen(Languages.LanguageStrings.AppLoadingSettings);
 
-                            Library.LibraryHelperClass.InitialiseSettings();
+                            SharedBase.LibraryHelperClass.InitialiseSettings();
 
                             //load all users
                             try
@@ -249,7 +249,7 @@ namespace PointOfSale
                     string newFile = AppController.POSFolder(FolderType.Root, true) +
                         StringConstants.POS_NEW_VERSION_FILE;
                     string crcLocal = Shared.Utilities.FileCRC(newFile, false);
-                    string crcRemote = Library.XML.GetXMLValue(xml, StringConstants.SETTINGS_APPLICATION, StringConstants.SETTINGS_CRC);
+                    string crcRemote = SharedBase.XML.GetXMLValue(xml, StringConstants.SETTINGS_APPLICATION, StringConstants.SETTINGS_CRC);
 
                     if (crcLocal == crcRemote)
                     {

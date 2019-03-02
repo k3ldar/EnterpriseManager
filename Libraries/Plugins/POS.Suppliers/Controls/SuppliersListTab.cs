@@ -29,8 +29,8 @@ using System.Windows.Forms;
 
 using Languages;
 
-using Library.BOL.ContactDetails;
-using Library.BOL.Suppliers;
+using SharedBase.BOL.ContactDetails;
+using SharedBase.BOL.Suppliers;
 
 using POS.Base.Classes;
 
@@ -105,7 +105,7 @@ namespace POS.Suppliers
             {
                 SupplierProduct product = (SupplierProduct)item.Tag;
 
-                item.SubItems[3].Text = Library.Utils.SharedUtils.FormatMoney(product.NetCost, AppController.LocalCurrency, true);
+                item.SubItems[3].Text = SharedBase.Utils.SharedUtils.FormatMoney(product.NetCost, AppController.LocalCurrency, true);
                 item.SubItems[5].Text = Base.EnumTranslations.Translate(product.AssetType);
             }
         }
@@ -118,7 +118,7 @@ namespace POS.Suppliers
             {
                 lvSuppliers.Items.Clear();
 
-                foreach (Supplier sup in Library.BOL.Suppliers.Suppliers.All())
+                foreach (Supplier sup in SharedBase.BOL.Suppliers.Suppliers.All())
                 {
                     ListViewItem item = new ListViewItem(sup.BusinessName);
                     item.SubItems.Add(Base.EnumTranslations.Translate(sup.Status));
@@ -250,7 +250,7 @@ namespace POS.Suppliers
                 item.SubItems[0].Text = product.Name;
                 item.SubItems[1].Text = product.Make;
                 item.SubItems[2].Text = product.Model;
-                item.SubItems[3].Text = Library.Utils.SharedUtils.FormatMoney(product.NetCost, AppController.LocalCurrency, true);
+                item.SubItems[3].Text = SharedBase.Utils.SharedUtils.FormatMoney(product.NetCost, AppController.LocalCurrency, true);
                 item.SubItems[4].Text = product.SKU;
                 item.SubItems[5].Text = Base.EnumTranslations.Translate(product.AssetType);
                 item.SubItems[6].Text = product.Notes.Replace(StringConstants.SYMBOL_CRLF, StringConstants.SYMBOL_SPACE);
@@ -277,7 +277,7 @@ namespace POS.Suppliers
         private void productAdd_Click(object sender, EventArgs e)
         {
             if (!AppController.ActiveUser.HasPermissionAccounts(
-                Library.SecurityEnums.SecurityPermissionsAccounts.AddUpdateSuppliers))
+                SharedBase.SecurityEnums.SecurityPermissionsAccounts.AddUpdateSuppliers))
             {
                 ShowError(LanguageStrings.AppError, LanguageStrings.AppErrorManageSuppliers);
                 return;
@@ -321,7 +321,7 @@ namespace POS.Suppliers
                     supplier.Website.StartsWith(StringConstants.BASE_WEB_HTTPS));
                 _visitHomePage.Enabled = contextMenuSuppliersWebsite.Enabled;
                 _productAdd.Enabled = AppController.ActiveUser.HasPermissionAccounts(
-                    Library.SecurityEnums.SecurityPermissionsAccounts.AddUpdateSuppliers);
+                    SharedBase.SecurityEnums.SecurityPermissionsAccounts.AddUpdateSuppliers);
 
                 LoadSupplierProducts(supplier);
             }

@@ -32,8 +32,8 @@ using System.Text;
 using System.Windows.Forms;
 
 using Languages;
-using Library.BOL.Staff;
-using Library.BOL.Therapists;
+using SharedBase.BOL.Staff;
+using SharedBase.BOL.Therapists;
 using POS.Staff.Classes;
 
 namespace POS.Staff.Controls.Wizards.Commission.PoolPayCommission
@@ -77,7 +77,7 @@ namespace POS.Staff.Controls.Wizards.Commission.PoolPayCommission
             MainWizardForm.Cursor = Cursors.WaitCursor;
             try
             {
-                _settings.Save(POS.Base.Classes.AppController.ActiveUser, Library.CommissionPaymentType.Pool);
+                _settings.Save(POS.Base.Classes.AppController.ActiveUser, SharedBase.CommissionPaymentType.Pool);
             }
             finally
             {
