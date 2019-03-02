@@ -456,3 +456,9 @@ ASALocalRun/
 /Libraries/SharedBase/.vs/
 /Libraries/SharedBase/.vs/SharedBaseCore/v15/.suo
 /Libraries/SharedBase/.vs/SharedBaseCore/v15/Server/sqlite3/storage.ide
+/Libraries/SharedBase/.vs/*
+/Libraries/SharedBase/.vs/SharedBaseCore/v15/Server/sqlite3/storage.ide-wal
+/Libraries/SharedBase/.vs/SharedBaseCore/v15/.suo
+/Libraries/SharedBase/.vs/SharedBaseCore/v15/Server/sqlite3/storage.ide
+/Libraries/SharedBase/.vs/SharedBaseCore/v15/Server/sqlite3/storage.ide-shm
+/Libraries/SharedBase/.vs/SharedBaseCore/v15/Server/sqlite3/storage.ide-wal
