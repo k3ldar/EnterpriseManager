@@ -179,7 +179,7 @@ namespace SharedBase.BOL.Hooks
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Hooks.Hook";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Hooks.Hook";
         private const string OBJECT_TYPE_ERROR = "Must be of type Hook";
 
 

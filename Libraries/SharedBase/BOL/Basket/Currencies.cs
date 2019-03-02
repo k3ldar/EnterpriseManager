@@ -188,7 +188,7 @@ namespace SharedBase.BOL.Basket
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Basket.Currency";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Basket.Currency";
         private const string OBJECT_TYPE_ERROR = "Must be of type Currency";
 
 

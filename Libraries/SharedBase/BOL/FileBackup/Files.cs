@@ -140,7 +140,7 @@ namespace SharedBase.BOL.FileBackup
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.FileBackup.BackupFile";
+        private const string OBJECT_TYPE = "SharedBase.BOL.FileBackup.BackupFile";
         private const string OBJECT_TYPE_ERROR = "Must be of type BackupFile";
 
 

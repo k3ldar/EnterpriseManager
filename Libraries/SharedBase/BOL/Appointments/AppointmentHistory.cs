@@ -123,7 +123,7 @@ namespace SharedBase.BOL.Appointments
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Appointments.AppointmentChangeItem";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Appointments.AppointmentChangeItem";
         private const string OBJECT_TYPE_ERROR = "Must be of type AppointmentChangeItem";
 
 

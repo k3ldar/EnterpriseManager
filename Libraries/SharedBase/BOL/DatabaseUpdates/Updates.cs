@@ -138,7 +138,7 @@ namespace SharedBase.BOL.DatabaseUpdates
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.DatabaseUpdates.Update";
+        private const string OBJECT_TYPE = "SharedBase.BOL.DatabaseUpdates.Update";
         private const string OBJECT_TYPE_ERROR = "Must be of type Update";
 
 

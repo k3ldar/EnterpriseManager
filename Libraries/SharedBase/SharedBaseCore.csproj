@@ -11,7 +11,7 @@
     <PackageTags>Shared Bol/DAL</PackageTags>
     <PackageReleaseNotes>Supports 2.1, 2.2 &amp; net461</PackageReleaseNotes>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <Version>3.7.4</Version>
+    <Version>3.7.5</Version>
     <Authors>Simon Carter</Authors>
     <Company>Simon Carter</Company>
   </PropertyGroup>

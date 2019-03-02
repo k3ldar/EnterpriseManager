@@ -125,7 +125,7 @@ namespace SharedBase.BOL.CashDrawer
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.CashDrawer.CashDenomination";
+        private const string OBJECT_TYPE = "SharedBase.BOL.CashDrawer.CashDenomination";
         private const string OBJECT_TYPE_ERROR = "Must be of type CashDenomination";
 
 

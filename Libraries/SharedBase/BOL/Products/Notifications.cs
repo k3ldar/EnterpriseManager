@@ -144,7 +144,7 @@ namespace SharedBase.BOL.Products
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Products.Notification";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Products.Notification";
         private const string OBJECT_TYPE_ERROR = "Must be of type Notification";
 
 

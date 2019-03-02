@@ -109,7 +109,7 @@ namespace SharedBase.BOL.ModuleDocumentation
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.ModuleDocumentation.ModuleParameter";
+        private const string OBJECT_TYPE = "SharedBase.BOL.ModuleDocumentation.ModuleParameter";
         private const string OBJECT_TYPE_ERROR = "Must be of type ModuleParameter";
 
 

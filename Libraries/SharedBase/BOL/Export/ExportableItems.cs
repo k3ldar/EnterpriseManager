@@ -128,7 +128,7 @@ namespace SharedBase.BOL.Export
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Export.ExportItem";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Export.ExportItem";
         private const string OBJECT_TYPE_ERROR = "Must be of type ExportItem";
 
 

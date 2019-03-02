@@ -183,7 +183,7 @@ namespace SharedBase.BOL.Licencing
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Licencing.Licence";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Licencing.Licence";
         private const string OBJECT_TYPE_ERROR = "Must be of type Licence";
 
 

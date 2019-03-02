@@ -140,7 +140,7 @@ namespace SharedBase.BOL.Celebrities
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Celebrities.Celebrity";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Celebrities.Celebrity";
         private const string OBJECT_TYPE_ERROR = "Must be of type Celebrity";
 
 

@@ -134,7 +134,7 @@ namespace SharedBase.BOL.ContactDetails
 
 		#region Private Members
 
-		private const string OBJECT_TYPE = "Library.BOL.ContactDetails.Contact";
+		private const string OBJECT_TYPE = "SharedBase.BOL.ContactDetails.Contact";
 		private const string OBJECT_TYPE_ERROR = "Must be of type Contact";
 
 

@@ -228,7 +228,7 @@ namespace SharedBase.BOL.TagLines
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.TagLines.TagLine";
+        private const string OBJECT_TYPE = "SharedBase.BOL.TagLines.TagLine";
         private const string OBJECT_TYPE_ERROR = "Must be of type TagLine";
 
 

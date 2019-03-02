@@ -118,7 +118,7 @@ namespace SharedBase.BOL.Coupons
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Coupons.Coupon";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Coupons.Coupon";
         private const string OBJECT_TYPE_ERROR = "Must be of type Coupon";
 
 

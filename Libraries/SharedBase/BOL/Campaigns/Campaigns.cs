@@ -191,7 +191,7 @@ namespace SharedBase.BOL.Campaigns
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Campaigns.Campaign";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Campaigns.Campaign";
         private const string OBJECT_TYPE_ERROR = "Must be of type Campaign";
 
 

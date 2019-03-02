@@ -169,7 +169,7 @@ namespace SharedBase.BOL.Products
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Products.ProductType";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Products.ProductType";
         private const string OBJECT_TYPE_ERROR = "Must be of type ProductType";
 
 

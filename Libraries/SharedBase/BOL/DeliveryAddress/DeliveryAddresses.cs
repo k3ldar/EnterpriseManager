@@ -134,7 +134,7 @@ namespace SharedBase.BOL.DeliveryAddress
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.DeliveryAddress.DeliveryAddress";
+        private const string OBJECT_TYPE = "SharedBase.BOL.DeliveryAddress.DeliveryAddress";
         private const string OBJECT_TYPE_ERROR = "Must be of type DeliveryAddress";
 
 

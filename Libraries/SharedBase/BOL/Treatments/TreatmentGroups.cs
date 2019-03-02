@@ -158,7 +158,7 @@ namespace SharedBase.BOL.Treatments
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Treatments.TreatmentGroup";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Treatments.TreatmentGroup";
         private const string OBJECT_TYPE_ERROR = "Must be of type TreatmentGroup";
 
 

@@ -205,7 +205,7 @@ namespace SharedBase.BOL.Downloads
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Downloads.Download";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Downloads.Download";
         private const string OBJECT_TYPE_ERROR = "Must be of type Download";
 
 

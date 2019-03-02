@@ -109,7 +109,7 @@ namespace SharedBase.BOL.Appointments
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Appointments.SpecialDate";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Appointments.SpecialDate";
         private const string OBJECT_TYPE_ERROR = "Must be of type SpecialDate";
 
 

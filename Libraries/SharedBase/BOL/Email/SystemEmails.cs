@@ -125,7 +125,7 @@ namespace SharedBase.BOL.Mail
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Mail.SystemEmail";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Mail.SystemEmail";
         private const string OBJECT_TYPE_ERROR = "Must be of type SystemEmail";
 
 

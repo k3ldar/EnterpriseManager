@@ -139,7 +139,7 @@ namespace SharedBase.BOL.StockControl
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.StockControl.StockHistoryItem";
+        private const string OBJECT_TYPE = "SharedBase.BOL.StockControl.StockHistoryItem";
         private const string OBJECT_TYPE_ERROR = "Must be of type StockHistoryItem";
 
 

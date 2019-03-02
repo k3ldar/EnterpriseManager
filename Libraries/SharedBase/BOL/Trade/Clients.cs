@@ -184,7 +184,7 @@ namespace SharedBase.BOL.Trade
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Trade.Client";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Trade.Client";
         private const string OBJECT_TYPE_ERROR = "Must be of type Client";
 
 

@@ -153,7 +153,7 @@ namespace SharedBase.BOL.Helpdesk
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Helpdesk.TicketStatus";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Helpdesk.TicketStatus";
         private const string OBJECT_TYPE_ERROR = "Must be of type TicketStatus";
 
 

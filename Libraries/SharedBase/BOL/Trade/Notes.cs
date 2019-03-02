@@ -110,7 +110,7 @@ namespace SharedBase.BOL.Trade
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Trade.ClientNote";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Trade.ClientNote";
         private const string OBJECT_TYPE_ERROR = "Must be of type ClientNote";
 
 

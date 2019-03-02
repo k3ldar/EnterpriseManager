@@ -192,7 +192,7 @@ namespace SharedBase.BOL.Websites
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Websites.Website";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Websites.Website";
         private const string OBJECT_TYPE_ERROR = "Must be of type Website";
 
 

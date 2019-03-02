@@ -171,7 +171,7 @@ namespace SharedBase.BOL.Distributors
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Distributors.Distributor";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Distributors.Distributor";
         private const string OBJECT_TYPE_ERROR = "Must be of type Distributor";
 
 

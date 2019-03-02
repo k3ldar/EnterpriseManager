@@ -285,7 +285,7 @@ namespace SharedBase.BOL.HashTags
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.HashTags.HashTag";
+        private const string OBJECT_TYPE = "SharedBase.BOL.HashTags.HashTag";
         private const string OBJECT_TYPE_ERROR = "Must be of type HashTag";
 
 

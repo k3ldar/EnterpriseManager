@@ -129,7 +129,7 @@ namespace SharedBase.BOL.Invoices
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Invoices.RecurringInvoice";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Invoices.RecurringInvoice";
         private const string OBJECT_TYPE_ERROR = "Must be of type RecurringInvoice";
 
 

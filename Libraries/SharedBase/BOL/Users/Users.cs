@@ -196,7 +196,7 @@ namespace SharedBase.BOL.Users
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Users.User";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Users.User";
         private const string OBJECT_TYPE_ERROR = "Must be of type User";
 
 

@@ -113,7 +113,7 @@ namespace SharedBase.BOL.Statistics
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Statistics.SimpleStatistic";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Statistics.SimpleStatistic";
         private const string OBJECT_TYPE_ERROR = "Must be of type SimpleStatistic";
 
 

@@ -128,7 +128,7 @@ namespace SharedBase.BOL.Search
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Search.SearchItem";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Search.SearchItem";
         private const string OBJECT_TYPE_ERROR = "Must be of type SearchItem";
 
 

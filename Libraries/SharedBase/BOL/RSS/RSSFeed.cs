@@ -120,7 +120,7 @@ namespace SharedBase.BOL.RSS
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.RSS.RSSItem";
+        private const string OBJECT_TYPE = "SharedBase.BOL.RSS.RSSItem";
         private const string OBJECT_TYPE_ERROR = "Must be of type RSSItem";
 
 

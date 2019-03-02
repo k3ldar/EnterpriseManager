@@ -111,7 +111,7 @@ namespace SharedBase.BOL.SEO
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.SEO.WebVisitLogItem";
+        private const string OBJECT_TYPE = "SharedBase.BOL.SEO.WebVisitLogItem";
         private const string OBJECT_TYPE_ERROR = "Must be of type WebVisitLogItem";
 
 

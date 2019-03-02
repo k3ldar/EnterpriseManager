@@ -141,7 +141,7 @@ namespace SharedBase.BOL.News
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.News.NewsItem";
+        private const string OBJECT_TYPE = "SharedBase.BOL.News.NewsItem";
         private const string OBJECT_TYPE_ERROR = "Must be of type NewsItem";
 
 

@@ -138,7 +138,7 @@ namespace SharedBase.BOL.Locations
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Locations.StoreLocation";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Locations.StoreLocation";
         private const string OBJECT_TYPE_ERROR = "Must be of type StoreLocation";
 
 

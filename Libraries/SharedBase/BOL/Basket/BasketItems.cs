@@ -340,7 +340,7 @@ namespace SharedBase.BOL.Basket
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Basket.BasketItem";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Basket.BasketItem";
         private const string OBJECT_TYPE_ERROR = "Must be of type BasketItem";
 
 

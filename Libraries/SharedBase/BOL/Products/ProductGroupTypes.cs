@@ -184,7 +184,7 @@ namespace SharedBase.BOL.Products
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Products.ProductGroupType";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Products.ProductGroupType";
         private const string OBJECT_TYPE_ERROR = "Must be of type ProductGroupType";
 
 

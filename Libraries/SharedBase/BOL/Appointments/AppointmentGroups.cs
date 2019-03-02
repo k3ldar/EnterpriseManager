@@ -127,7 +127,7 @@ namespace SharedBase.BOL.Appointments
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Appointments.AppointmentGroup";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Appointments.AppointmentGroup";
         private const string OBJECT_TYPE_ERROR = "Must be of type AppointmentGroup";
 
 

@@ -167,7 +167,7 @@ namespace SharedBase.BOL.TipsTricks
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.TipsTricks.TipsTrick";
+        private const string OBJECT_TYPE = "SharedBase.BOL.TipsTricks.TipsTrick";
         private const string OBJECT_TYPE_ERROR = "Must be of type TipsTrick";
 
 

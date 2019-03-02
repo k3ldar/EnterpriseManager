@@ -202,7 +202,7 @@ namespace SharedBase.BOL.Salons
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Salons.Salon";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Salons.Salon";
         private const string OBJECT_TYPE_ERROR = "Must be of type Salon";
 
 

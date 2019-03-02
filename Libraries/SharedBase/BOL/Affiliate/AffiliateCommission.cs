@@ -171,7 +171,7 @@ namespace SharedBase.BOL.Affiliate
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Affiliate.AffiliateCommissionItem";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Affiliate.AffiliateCommissionItem";
         private const string OBJECT_TYPE_ERROR = "Must be of type AffiliateCommissionItem";
 
 

@@ -137,7 +137,7 @@ namespace SharedBase.BOL.Helpdesk
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Helpdesk.FAQItem";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Helpdesk.FAQItem";
         private const string OBJECT_TYPE_ERROR = "Must be of type FAQItem";
 
 

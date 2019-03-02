@@ -117,7 +117,7 @@ namespace SharedBase.BOL.Training
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Training.Course";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Training.Course";
         private const string OBJECT_TYPE_ERROR = "Must be of type Course";
 
 

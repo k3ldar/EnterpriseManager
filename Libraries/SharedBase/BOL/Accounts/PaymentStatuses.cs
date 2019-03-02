@@ -246,7 +246,7 @@ namespace SharedBase.BOL.Accounts
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Accounts.PaymentStatus";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Accounts.PaymentStatus";
         private const string OBJECT_TYPE_ERROR = "Must be of type PaymentStatus";
 
 

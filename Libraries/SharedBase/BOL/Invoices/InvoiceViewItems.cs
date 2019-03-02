@@ -149,7 +149,7 @@ namespace SharedBase.BOL.Invoices
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Invoices.InvoiceViewItem";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Invoices.InvoiceViewItem";
         private const string OBJECT_TYPE_ERROR = "Must be of type InvoiceViewItem";
 
 

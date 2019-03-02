@@ -286,7 +286,7 @@ namespace SharedBase.BOL.Vouchers
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Vouchers.Voucher";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Vouchers.Voucher";
         private const string OBJECT_TYPE_ERROR = "Must be of type Voucher";
 
 

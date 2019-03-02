@@ -15078,7 +15078,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "3.7.4",
+    "version": "3.7.5",
     "restore": {
       "projectUniqueName": "T:\\ShifooMain\\Libraries\\SharedBase\\SharedBaseCore.csproj",
       "projectName": "SharedBaseCore",

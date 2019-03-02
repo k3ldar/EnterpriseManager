@@ -645,7 +645,7 @@ namespace SharedBase.BOL.IPAddresses
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.IPAddresses.IPAddress";
+        private const string OBJECT_TYPE = "SharedBase.BOL.IPAddresses.IPAddress";
         private const string OBJECT_TYPE_ERROR = "Must be of type IPAddress";
 
 

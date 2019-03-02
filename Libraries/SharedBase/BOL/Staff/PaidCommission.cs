@@ -125,7 +125,7 @@ namespace SharedBase.BOL.Staff
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Staff.PaidCommissionItem";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Staff.PaidCommissionItem";
         private const string OBJECT_TYPE_ERROR = "Must be of type PaidCommissionItem";
 
 

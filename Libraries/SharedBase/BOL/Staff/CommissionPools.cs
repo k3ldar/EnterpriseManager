@@ -135,7 +135,7 @@ namespace SharedBase.BOL.Staff
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Staff.CommissionPool";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Staff.CommissionPool";
         private const string OBJECT_TYPE_ERROR = "Must be of type CommissionPool";
 
 

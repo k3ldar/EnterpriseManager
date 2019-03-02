@@ -129,7 +129,7 @@ namespace SharedBase.BOL.USAStates
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.USAStates.USState";
+        private const string OBJECT_TYPE = "SharedBase.BOL.USAStates.USState";
         private const string OBJECT_TYPE_ERROR = "Must be of type USState";
 
 

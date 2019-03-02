@@ -149,7 +149,7 @@ namespace SharedBase.BOL.Suppliers
 
 		#region Private Members
 
-		private const string OBJECT_TYPE = "Library.BOL.Suppliers.SupplierProduct";
+		private const string OBJECT_TYPE = "SharedBase.BOL.Suppliers.SupplierProduct";
 		private const string OBJECT_TYPE_ERROR = "Must be of type SupplierProduct";
 
 

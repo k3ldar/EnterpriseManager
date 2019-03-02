@@ -123,7 +123,7 @@ namespace SharedBase.BOL.Affiliate
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Affiliate.AffiliateProduct";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Affiliate.AffiliateProduct";
         private const string OBJECT_TYPE_ERROR = "Must be of type AffiliateProduct";
 
 

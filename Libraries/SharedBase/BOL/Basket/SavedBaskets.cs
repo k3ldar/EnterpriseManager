@@ -128,7 +128,7 @@ namespace SharedBase.BOL.Basket
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.Basket.SavedBasket";
+        private const string OBJECT_TYPE = "SharedBase.BOL.Basket.SavedBasket";
         private const string OBJECT_TYPE_ERROR = "Must be of type SavedBasket";
 
 

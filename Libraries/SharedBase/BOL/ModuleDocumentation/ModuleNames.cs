@@ -158,7 +158,7 @@ namespace SharedBase.BOL.ModuleDocumentation
 
         #region Private Members
 
-        private const string OBJECT_TYPE = "Library.BOL.ModuleDocumentation.ModuleName";
+        private const string OBJECT_TYPE = "SharedBase.BOL.ModuleDocumentation.ModuleName";
         private const string OBJECT_TYPE_ERROR = "Must be of type ModuleName";
 
 
