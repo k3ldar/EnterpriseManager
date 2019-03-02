@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PointOfSale</RootNamespace>
     <AssemblyName>Shifoo.System</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -93,10 +93,14 @@
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
+    <Reference Include="Languages, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AspNetCore.PluginManager.Languages.1.6.0\lib\net461\Languages.dll</HintPath>
+    </Reference>
     <Reference Include="MailChimp.Net.V3, Version=2.1.0.0, Culture=neutral, PublicKeyToken=37d26d538413c581, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Libraries\3rdParty\MailChimp.Net.V3.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="MonthCalendar, Version=1.8.2.0, Culture=neutral, PublicKeyToken=9d22151b1b463438, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Release\MonthCalendar.dll</HintPath>
@@ -111,20 +115,28 @@
     <Reference Include="SharedControls, Version=2.8.0.0, Culture=neutral, PublicKeyToken=5e7029cf0b93cfbe, processorArchitecture=MSIL">
       <HintPath>..\packages\SC.SharedControls.2.8.15\lib\net452\SharedControls.dll</HintPath>
     </Reference>
-    <Reference Include="SharedLib, Version=2.5.0.0, Culture=neutral, PublicKeyToken=bcec03f2c05555a7, processorArchitecture=MSIL">
-      <HintPath>..\packages\SC.Shared.Library.2.5.13\lib\net452\SharedLib.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Libraries\3rdParty\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security.AccessControl, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.4.5.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.4.5.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -419,14 +431,6 @@
     <Folder Include="bin\Debug\Plugins\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Libraries\Languages\Languages.csproj">
-      <Project>{2a685cd0-df5b-4ce3-bd18-5e6bf927ec7f}</Project>
-      <Name>Languages</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Libraries\Library\Library.csproj">
-      <Project>{3444f493-5cbe-4d67-8bc9-1184e486c7e7}</Project>
-      <Name>Library</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Libraries\POS\POS.csproj">
       <Project>{c5ea121e-69b3-499d-acde-c6dfd9779b73}</Project>
       <Name>POS</Name>

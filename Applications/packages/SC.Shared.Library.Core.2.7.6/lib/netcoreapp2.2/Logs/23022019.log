@@ -1,0 +1,140 @@
+23/02/2019 16:53:23 11424 - PluginLoadSuccess	AspNetCore.PluginManager.dll
+23/02/2019 16:53:23 11424 - PluginLoadSuccess	AspNetCore.PluginManager.DemoWebsite.dll
+23/02/2019 16:53:24 11424 - PluginLoadSuccess	ErrorManager.Plugin.dll
+23/02/2019 16:53:24 11424 - PluginLoadSuccess	BadEgg.Plugin.dll
+23/02/2019 16:53:24 11424 - PluginLoadSuccess	RestrictIp.Plugin.dll
+23/02/2019 16:53:24 11424 - PluginLoadSuccess	UserSessionMiddleware.Plugin.dll
+23/02/2019 16:53:24 11424 - PluginLoadSuccess	CacheControl.Plugin.dll
+23/02/2019 16:53:24 11424 - PluginLoadSuccess	MemoryCache.Plugin.dll
+23/02/2019 16:53:24 11424 - PluginLoadSuccess	Localization.Plugin.dll
+23/02/2019 16:53:25 11424 - PluginLoadSuccess	Breadcrumb.Plugin.dll
+23/02/2019 16:53:25 11424 - PluginLoadSuccess	Spider.Plugin.dll
+23/02/2019 16:53:25 11424 - PluginLoadSuccess	DemoApiPlugin.dll
+23/02/2019 16:53:25 11424 - PluginLoadSuccess	DemoWebsitePlugin.dll
+23/02/2019 16:53:25 11424 - PluginLoadSuccess	SystemAdmin.Plugin.dll
+23/02/2019 16:53:25 11424 - PluginLoadSuccess	LoginPlugin.dll
+23/02/2019 16:53:26 11424 - PluginLoadSuccess	UserAccount.Plugin.dll
+23/02/2019 16:53:26 11424 - PluginLoadSuccess	DownloadPlugin.dll
+23/02/2019 16:53:26 11424 - PluginLoadSuccess	ProductPlugin.dll
+23/02/2019 16:53:28 11424 - ThreadManager	Thread started: UserSessionManager, Unresponsive: False, Marked For Removal: False, Start Time: 23/02/2019 16:53, End Time: 01/01/0001 00:00
+23/02/2019 16:53:31 11424 - ThreadManager	Thread started: Thread Manager - Management Thread, Unresponsive: False, Marked For Removal: False, Start Time: 23/02/2019 16:53, End Time: 01/01/0001 00:00
+23/02/2019 16:53:31 11424 - ThreadManager	Thread started: Cache Management Thread, Unresponsive: False, Marked For Removal: False, Start Time: 23/02/2019 16:53, End Time: 01/01/0001 00:00
+23/02/2019 16:53:31 11424 - Information	Profile 'RestrictedRouteRemote' is restricting route '/api/Restricted' to Ip Address 10.30.*
+23/02/2019 16:53:31 11424 - Information	Profile 'RestrictedRouteRemote' is restricting route '/api/Restricted' to Ip Address 192.168.*
+23/02/2019 16:53:31 11424 - Information	Profile 'SystemAdminRoute' is restricting route '/SystemAdmin' to Ip Address 127.0.0.1
+23/02/2019 16:53:31 11424 - Information	Profile 'SystemAdminRoute' is restricting route '/SystemAdmin' to Ip Address 72.15.*
+23/02/2019 16:53:31 11424 - ThreadManager	Thread started: Error Manager, Unresponsive: False, Marked For Removal: False, Start Time: 23/02/2019 16:53, End Time: 01/01/0001 00:00
+23/02/2019 16:53:32 11424 - ThreadManager	Thread started: Bad Egg Validation, Unresponsive: False, Marked For Removal: False, Start Time: 23/02/2019 16:53, End Time: 01/01/0001 00:00
+23/02/2019 16:53:33 11424 - ThreadManager	Thread started: Thread Abort - Management Thread, Unresponsive: False, Marked For Removal: False, Start Time: 23/02/2019 16:53, End Time: 01/01/0001 00:00
+23/02/2019 16:53:51 19084 - PluginLoadSuccess	AspNetCore.PluginManager.dll
+23/02/2019 16:53:51 19084 - PluginLoadSuccess	AspNetCore.PluginManager.DemoWebsite.dll
+23/02/2019 16:53:51 19084 - PluginLoadSuccess	ErrorManager.Plugin.dll
+23/02/2019 16:53:51 19084 - PluginLoadSuccess	BadEgg.Plugin.dll
+23/02/2019 16:53:51 19084 - PluginLoadSuccess	RestrictIp.Plugin.dll
+23/02/2019 16:53:51 19084 - PluginLoadSuccess	UserSessionMiddleware.Plugin.dll
+23/02/2019 16:53:51 19084 - PluginLoadSuccess	CacheControl.Plugin.dll
+23/02/2019 16:53:51 19084 - PluginLoadSuccess	MemoryCache.Plugin.dll
+23/02/2019 16:53:51 19084 - PluginLoadSuccess	Localization.Plugin.dll
+23/02/2019 16:53:51 19084 - PluginLoadSuccess	Breadcrumb.Plugin.dll
+23/02/2019 16:53:51 19084 - PluginLoadSuccess	Spider.Plugin.dll
+23/02/2019 16:53:51 19084 - PluginLoadSuccess	DemoApiPlugin.dll
+23/02/2019 16:53:51 19084 - PluginLoadSuccess	DemoWebsitePlugin.dll
+23/02/2019 16:53:51 19084 - PluginLoadSuccess	SystemAdmin.Plugin.dll
+23/02/2019 16:53:51 19084 - PluginLoadSuccess	LoginPlugin.dll
+23/02/2019 16:53:51 19084 - PluginLoadSuccess	UserAccount.Plugin.dll
+23/02/2019 16:53:51 19084 - PluginLoadSuccess	DownloadPlugin.dll
+23/02/2019 16:53:51 19084 - PluginLoadSuccess	ProductPlugin.dll
+23/02/2019 16:53:52 19084 - ThreadManager	Thread started: UserSessionManager, Unresponsive: False, Marked For Removal: False, Start Time: 23/02/2019 16:53, End Time: 01/01/0001 00:00
+23/02/2019 16:53:53 19084 - ThreadManager	Thread started: Thread Manager - Management Thread, Unresponsive: False, Marked For Removal: False, Start Time: 23/02/2019 16:53, End Time: 01/01/0001 00:00
+23/02/2019 16:53:53 19084 - ThreadManager	Thread started: Cache Management Thread, Unresponsive: False, Marked For Removal: False, Start Time: 23/02/2019 16:53, End Time: 01/01/0001 00:00
+23/02/2019 16:53:53 19084 - Information	Profile 'RestrictedRouteRemote' is restricting route '/api/Restricted' to Ip Address 10.30.*
+23/02/2019 16:53:53 19084 - Information	Profile 'RestrictedRouteRemote' is restricting route '/api/Restricted' to Ip Address 192.168.*
+23/02/2019 16:53:53 19084 - Information	Profile 'SystemAdminRoute' is restricting route '/SystemAdmin' to Ip Address 127.0.0.1
+23/02/2019 16:53:53 19084 - Information	Profile 'SystemAdminRoute' is restricting route '/SystemAdmin' to Ip Address 72.15.*
+23/02/2019 16:53:53 19084 - ThreadManager	Thread started: Error Manager, Unresponsive: False, Marked For Removal: False, Start Time: 23/02/2019 16:53, End Time: 01/01/0001 00:00
+23/02/2019 16:53:54 19084 - ThreadManager	Thread started: Bad Egg Validation, Unresponsive: False, Marked For Removal: False, Start Time: 23/02/2019 16:53, End Time: 01/01/0001 00:00
+23/02/2019 16:53:55 19084 - ThreadManager	Thread started: Thread Abort - Management Thread, Unresponsive: False, Marked For Removal: False, Start Time: 23/02/2019 16:53, End Time: 01/01/0001 00:00
+23/02/2019 19:29:21 14916 - PluginLoadSuccess	AspNetCore.PluginManager.dll
+23/02/2019 19:29:21 14916 - PluginLoadSuccess	AspNetCore.PluginManager.DemoWebsite.dll
+23/02/2019 19:29:22 14916 - PluginLoadSuccess	ErrorManager.Plugin.dll
+23/02/2019 19:29:23 14916 - PluginLoadSuccess	BadEgg.Plugin.dll
+23/02/2019 19:29:23 14916 - PluginLoadSuccess	RestrictIp.Plugin.dll
+23/02/2019 19:29:24 14916 - PluginLoadSuccess	UserSessionMiddleware.Plugin.dll
+23/02/2019 19:29:25 14916 - PluginLoadSuccess	CacheControl.Plugin.dll
+23/02/2019 19:29:25 14916 - PluginLoadSuccess	MemoryCache.Plugin.dll
+23/02/2019 19:29:27 14916 - PluginLoadSuccess	Localization.Plugin.dll
+23/02/2019 19:29:28 14916 - PluginLoadSuccess	Breadcrumb.Plugin.dll
+23/02/2019 19:29:29 14916 - PluginLoadSuccess	Spider.Plugin.dll
+23/02/2019 19:29:30 14916 - PluginLoadSuccess	DemoApiPlugin.dll
+23/02/2019 19:29:33 14916 - PluginLoadSuccess	DemoWebsitePlugin.dll
+23/02/2019 19:29:34 14916 - PluginLoadSuccess	SystemAdmin.Plugin.dll
+23/02/2019 19:29:35 14916 - PluginLoadSuccess	LoginPlugin.dll
+23/02/2019 19:29:39 14916 - PluginLoadSuccess	UserAccount.Plugin.dll
+23/02/2019 19:29:39 14916 - PluginLoadSuccess	DownloadPlugin.dll
+23/02/2019 19:29:40 14916 - PluginLoadSuccess	ProductPlugin.dll
+23/02/2019 19:29:49 14916 - ThreadManager	Thread started: UserSessionManager, Unresponsive: False, Marked For Removal: False, Start Time: 23/02/2019 19:29, End Time: 01/01/0001 00:00
+23/02/2019 19:29:54 14916 - ThreadManager	Thread started: Thread Manager - Management Thread, Unresponsive: False, Marked For Removal: False, Start Time: 23/02/2019 19:29, End Time: 01/01/0001 00:00
+23/02/2019 19:29:55 14916 - ThreadManager	Thread started: Cache Management Thread, Unresponsive: False, Marked For Removal: False, Start Time: 23/02/2019 19:29, End Time: 01/01/0001 00:00
+23/02/2019 19:29:55 14916 - Information	Profile 'RestrictedRouteRemote' is restricting route '/api/Restricted' to Ip Address 10.30.*
+23/02/2019 19:29:55 14916 - Information	Profile 'RestrictedRouteRemote' is restricting route '/api/Restricted' to Ip Address 192.168.*
+23/02/2019 19:29:55 14916 - Information	Profile 'SystemAdminRoute' is restricting route '/SystemAdmin' to Ip Address 127.0.0.1
+23/02/2019 19:29:55 14916 - Information	Profile 'SystemAdminRoute' is restricting route '/SystemAdmin' to Ip Address 72.15.*
+23/02/2019 19:29:55 14916 - ThreadManager	Thread started: Error Manager, Unresponsive: False, Marked For Removal: False, Start Time: 23/02/2019 19:29, End Time: 01/01/0001 00:00
+23/02/2019 19:29:56 14916 - ThreadManager	Thread started: Bad Egg Validation, Unresponsive: False, Marked For Removal: False, Start Time: 23/02/2019 19:29, End Time: 01/01/0001 00:00
+23/02/2019 19:29:57 14916 - ThreadManager	Thread started: Thread Abort - Management Thread, Unresponsive: False, Marked For Removal: False, Start Time: 23/02/2019 19:29, End Time: 01/01/0001 00:00
+23/02/2019 19:32:03 17036 - PluginLoadSuccess	AspNetCore.PluginManager.dll
+23/02/2019 19:32:03 17036 - PluginLoadSuccess	AspNetCore.PluginManager.DemoWebsite.dll
+23/02/2019 19:32:03 17036 - PluginLoadSuccess	ErrorManager.Plugin.dll
+23/02/2019 19:32:03 17036 - PluginLoadSuccess	BadEgg.Plugin.dll
+23/02/2019 19:32:03 17036 - PluginLoadSuccess	RestrictIp.Plugin.dll
+23/02/2019 19:32:03 17036 - PluginLoadSuccess	UserSessionMiddleware.Plugin.dll
+23/02/2019 19:32:03 17036 - PluginLoadSuccess	CacheControl.Plugin.dll
+23/02/2019 19:32:03 17036 - PluginLoadSuccess	MemoryCache.Plugin.dll
+23/02/2019 19:32:03 17036 - PluginLoadSuccess	Localization.Plugin.dll
+23/02/2019 19:32:03 17036 - PluginLoadSuccess	Breadcrumb.Plugin.dll
+23/02/2019 19:32:03 17036 - PluginLoadSuccess	Spider.Plugin.dll
+23/02/2019 19:32:03 17036 - PluginLoadSuccess	DemoApiPlugin.dll
+23/02/2019 19:32:03 17036 - PluginLoadSuccess	DemoWebsitePlugin.dll
+23/02/2019 19:32:03 17036 - PluginLoadSuccess	SystemAdmin.Plugin.dll
+23/02/2019 19:32:03 17036 - PluginLoadSuccess	LoginPlugin.dll
+23/02/2019 19:32:03 17036 - PluginLoadSuccess	UserAccount.Plugin.dll
+23/02/2019 19:32:03 17036 - PluginLoadSuccess	DownloadPlugin.dll
+23/02/2019 19:32:04 17036 - PluginLoadSuccess	ProductPlugin.dll
+23/02/2019 19:32:05 17036 - ThreadManager	Thread started: UserSessionManager, Unresponsive: False, Marked For Removal: False, Start Time: 23/02/2019 19:32, End Time: 01/01/0001 00:00
+23/02/2019 19:32:05 17036 - ThreadManager	Thread started: Thread Manager - Management Thread, Unresponsive: False, Marked For Removal: False, Start Time: 23/02/2019 19:32, End Time: 01/01/0001 00:00
+23/02/2019 19:32:05 17036 - ThreadManager	Thread started: Cache Management Thread, Unresponsive: False, Marked For Removal: False, Start Time: 23/02/2019 19:32, End Time: 01/01/0001 00:00
+23/02/2019 19:32:06 17036 - Information	Profile 'RestrictedRouteRemote' is restricting route '/api/Restricted' to Ip Address 10.30.*
+23/02/2019 19:32:06 17036 - Information	Profile 'RestrictedRouteRemote' is restricting route '/api/Restricted' to Ip Address 192.168.*
+23/02/2019 19:32:06 17036 - Information	Profile 'SystemAdminRoute' is restricting route '/SystemAdmin' to Ip Address 127.0.0.1
+23/02/2019 19:32:06 17036 - Information	Profile 'SystemAdminRoute' is restricting route '/SystemAdmin' to Ip Address 72.15.*
+23/02/2019 19:32:06 17036 - ThreadManager	Thread started: Error Manager, Unresponsive: False, Marked For Removal: False, Start Time: 23/02/2019 19:32, End Time: 01/01/0001 00:00
+23/02/2019 19:32:07 17036 - ThreadManager	Thread started: Bad Egg Validation, Unresponsive: False, Marked For Removal: False, Start Time: 23/02/2019 19:32, End Time: 01/01/0001 00:00
+23/02/2019 19:32:07 17036 - ThreadManager	Thread started: Thread Abort - Management Thread, Unresponsive: False, Marked For Removal: False, Start Time: 23/02/2019 19:32, End Time: 01/01/0001 00:00
+23/02/2019 19:39:23 16960 - PluginLoadSuccess	AspNetCore.PluginManager.dll
+23/02/2019 19:39:23 16960 - PluginLoadSuccess	AspNetCore.PluginManager.DemoWebsite.dll
+23/02/2019 19:39:24 16960 - PluginLoadSuccess	ErrorManager.Plugin.dll
+23/02/2019 19:39:24 16960 - PluginLoadSuccess	BadEgg.Plugin.dll
+23/02/2019 19:39:24 16960 - PluginLoadSuccess	RestrictIp.Plugin.dll
+23/02/2019 19:39:24 16960 - PluginLoadSuccess	UserSessionMiddleware.Plugin.dll
+23/02/2019 19:39:24 16960 - PluginLoadSuccess	CacheControl.Plugin.dll
+23/02/2019 19:39:24 16960 - PluginLoadSuccess	MemoryCache.Plugin.dll
+23/02/2019 19:39:24 16960 - PluginLoadSuccess	Localization.Plugin.dll
+23/02/2019 19:39:25 16960 - PluginLoadSuccess	Breadcrumb.Plugin.dll
+23/02/2019 19:39:25 16960 - PluginLoadSuccess	Spider.Plugin.dll
+23/02/2019 19:39:25 16960 - PluginLoadSuccess	DemoApiPlugin.dll
+23/02/2019 19:39:25 16960 - PluginLoadSuccess	DemoWebsitePlugin.dll
+23/02/2019 19:39:25 16960 - PluginLoadSuccess	SystemAdmin.Plugin.dll
+23/02/2019 19:39:25 16960 - PluginLoadSuccess	LoginPlugin.dll
+23/02/2019 19:39:25 16960 - PluginLoadSuccess	UserAccount.Plugin.dll
+23/02/2019 19:39:25 16960 - PluginLoadSuccess	DownloadPlugin.dll
+23/02/2019 19:39:25 16960 - PluginLoadSuccess	ProductPlugin.dll
+23/02/2019 19:39:30 16960 - ThreadManager	Thread started: UserSessionManager, Unresponsive: False, Marked For Removal: False, Start Time: 23/02/2019 19:39, End Time: 01/01/0001 00:00
+23/02/2019 19:39:33 16960 - ThreadManager	Thread started: Thread Manager - Management Thread, Unresponsive: False, Marked For Removal: False, Start Time: 23/02/2019 19:39, End Time: 01/01/0001 00:00
+23/02/2019 19:39:33 16960 - ThreadManager	Thread started: Cache Management Thread, Unresponsive: False, Marked For Removal: False, Start Time: 23/02/2019 19:39, End Time: 01/01/0001 00:00
+23/02/2019 19:39:34 16960 - Information	Profile 'RestrictedRouteRemote' is restricting route '/api/Restricted' to Ip Address 10.30.*
+23/02/2019 19:39:34 16960 - Information	Profile 'RestrictedRouteRemote' is restricting route '/api/Restricted' to Ip Address 192.168.*
+23/02/2019 19:39:34 16960 - Information	Profile 'SystemAdminRoute' is restricting route '/SystemAdmin' to Ip Address 127.0.0.1
+23/02/2019 19:39:34 16960 - Information	Profile 'SystemAdminRoute' is restricting route '/SystemAdmin' to Ip Address 72.15.*
+23/02/2019 19:39:34 16960 - ThreadManager	Thread started: Error Manager, Unresponsive: False, Marked For Removal: False, Start Time: 23/02/2019 19:39, End Time: 01/01/0001 00:00
+23/02/2019 19:39:35 16960 - ThreadManager	Thread started: Bad Egg Validation, Unresponsive: False, Marked For Removal: False, Start Time: 23/02/2019 19:39, End Time: 01/01/0001 00:00
+23/02/2019 19:39:35 16960 - ThreadManager	Thread started: Thread Abort - Management Thread, Unresponsive: False, Marked For Removal: False, Start Time: 23/02/2019 19:39, End Time: 01/01/0001 00:00

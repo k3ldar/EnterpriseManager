@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Reports</RootNamespace>
     <AssemblyName>Reports</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -53,25 +53,38 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
-      <HintPath>..\..\Applications\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.1.0.145, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\..\Applications\packages\SharpZipLib.1.1.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp">
       <HintPath>bin\Debug\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Languages, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\Applications\packages\AspNetCore.PluginManager.Languages.1.6.0\lib\net461\Languages.dll</HintPath>
     </Reference>
     <Reference Include="QRCode, Version=1.0.6064.24870, Culture=neutral, PublicKeyToken=bbad4d2e9739b0c8, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\QRCode.dll</HintPath>
     </Reference>
     <Reference Include="SharedControls, Version=2.8.0.0, Culture=neutral, PublicKeyToken=eb57f133a9520019, processorArchitecture=MSIL">
-      <HintPath>..\..\Websites\packages\SC.SharedControls.2.8.20\lib\net452\SharedControls.dll</HintPath>
+      <HintPath>..\..\Applications\packages\SC.SharedControls.2.8.23\lib\net452\SharedControls.dll</HintPath>
     </Reference>
-    <Reference Include="SharedLib, Version=2.5.0.0, Culture=neutral, PublicKeyToken=f2ca6ac6cfa8c8da, processorArchitecture=MSIL">
-      <HintPath>..\..\Websites\packages\SC.Shared.Library.2.5.19\lib\net452\SharedLib.dll</HintPath>
+    <Reference Include="SharedLib, Version=2.6.0.0, Culture=neutral, PublicKeyToken=f2ca6ac6cfa8c8da, processorArchitecture=MSIL">
+      <HintPath>..\..\Applications\packages\SC.Shared.Library.Core.2.7.6\lib\net461\SharedLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Security.AccessControl, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\Applications\packages\System.Security.AccessControl.4.5.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\Applications\packages\System.Security.Principal.Windows.4.5.1\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -168,16 +181,6 @@
     <None Include="HeavenKey.pfx" />
     <None Include="packages.config" />
     <None Include="Reports.pfx" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Languages\Languages.csproj">
-      <Project>{2a685cd0-df5b-4ce3-bd18-5e6bf927ec7f}</Project>
-      <Name>Languages</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Library\Library.csproj">
-      <Project>{3444f493-5cbe-4d67-8bc9-1184e486c7e7}</Project>
-      <Name>Library</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
