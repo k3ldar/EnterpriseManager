@@ -1,0 +1,17 @@
+Date: 16:23:27 22/09/2018
+
+Error Message: The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters.
+
+Inner Exception: InnerException is null
+
+Source: System.Private.CoreLib
+
+StackTrace:    at System.Convert.FromBase64CharPtr(Char* inputPtr, Int32 inputLength)
+   at System.Convert.FromBase64String(String s)
+   at Shared.StringCipher.Decrypt(String cipherText, String passPhrase)
+   at Website.Library.Core.Services.BaseServices.Decrypt(String valueToDecrypt) in T:\ShifooMain\Libraries\Website.Library.Core\Services\BaseServices.cs:line 1573
+   at Website.Library.Core.Services.BaseServices.CookieGetValue(HttpContext context, String cookieName, String defaultValue) in T:\ShifooMain\Libraries\Website.Library.Core\Services\BaseServices.cs:line 229
+   at Website.Library.Core.Services.BaseServices.GetShoppingBasket(HttpContext context) in T:\ShifooMain\Libraries\Website.Library.Core\Services\BaseServices.cs:line 1152
+   at Website.Library.Core.Services.BaseServices.GetUserSession(HttpContext context) in T:\ShifooMain\Libraries\Website.Library.Core\Services\BaseServices.cs:line 368
+
+Target Site: Byte[] FromBase64CharPtr(Char*, Int32)

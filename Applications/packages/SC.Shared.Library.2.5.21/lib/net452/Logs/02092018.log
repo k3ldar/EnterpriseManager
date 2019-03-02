@@ -1,0 +1,24 @@
+02/09/2018 15:18:01 11596 - ApplicationStart
+02/09/2018 15:18:01 11596 - Initialise Thread Manager
+02/09/2018 15:18:01 11596 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 16; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+02/09/2018 15:18:01 11596 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 18; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+02/09/2018 15:18:03 11596 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 17; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+02/09/2018 15:59:54 11596 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Load All GeoIP Data; ThreadID: 36; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+02/09/2018 15:59:54 11596 - Thread Stopped: Usage Process/System: 0.0%/0.0%; Name: Load All GeoIP Data; ThreadID: 36; IsCancelled: True; IsUnResponsive: False; IsMarkedForRemoval: True
+02/09/2018 17:44:13 22708 - ApplicationStart
+02/09/2018 17:44:13 22708 - Initialise Thread Manager
+02/09/2018 17:44:13 22708 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 16; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+02/09/2018 17:44:13 22708 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 18; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+02/09/2018 17:44:16 22708 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 17; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+02/09/2018 17:50:52 4228 - ApplicationStart
+02/09/2018 17:50:52 4228 - Initialise Thread Manager
+02/09/2018 17:50:52 4228 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 16; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+02/09/2018 17:50:52 4228 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 18; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+02/09/2018 17:50:54 4228 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 17; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+02/09/2018 17:53:53 7928 - ApplicationStart
+02/09/2018 17:53:53 7928 - Initialise Thread Manager
+02/09/2018 17:53:53 7928 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: EventLog Thread Manager; ThreadID: 14; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+02/09/2018 17:53:53 7928 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 16; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+02/09/2018 17:53:53 7928 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: UserSessionManager; ThreadID: 15; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+02/09/2018 17:53:53 7928 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 18; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+02/09/2018 17:53:55 7928 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 17; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False

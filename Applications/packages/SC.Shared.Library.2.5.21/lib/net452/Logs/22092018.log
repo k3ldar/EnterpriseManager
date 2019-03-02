@@ -1,0 +1,204 @@
+22/09/2018 09:21:15 9756 - ApplicationStart
+22/09/2018 09:21:15 9756 - Initialise Thread Manager
+22/09/2018 09:21:15 9756 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 17; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 09:21:15 9756 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 15; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 09:21:17 9756 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 16; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 09:26:28 14508 - ApplicationStart
+22/09/2018 09:26:28 14508 - Initialise Thread Manager
+22/09/2018 09:26:28 14508 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 15; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 09:26:28 14508 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 17; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 09:27:16 13772 - ApplicationStart
+22/09/2018 09:27:16 13772 - Initialise Thread Manager
+22/09/2018 09:27:16 13772 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 11; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 09:27:16 13772 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 13; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 09:27:18 13772 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 12; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 13:51:21 13772 - Thread Stopped: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 13; IsCancelled: True; IsUnResponsive: True; IsMarkedForRemoval: True
+22/09/2018 13:51:24 13772 - Thread Stopped: Usage Process/System: 0.0%/0.0%; Name: EventLog Thread Manager; ThreadID: 10; IsCancelled: True; IsUnResponsive: True; IsMarkedForRemoval: True
+22/09/2018 14:30:28 17888 - ApplicationStart
+22/09/2018 14:30:28 17888 - Initialise Thread Manager
+22/09/2018 14:30:28 17888 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 11; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 14:30:28 17888 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 13; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 14:30:30 17888 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 12; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 14:32:35 6564 - ApplicationStart
+22/09/2018 14:32:35 6564 - Initialise Thread Manager
+22/09/2018 14:32:35 6564 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 11; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 14:32:35 6564 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 13; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 14:32:37 6564 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 12; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 14:34:07 17568 - ApplicationStart
+22/09/2018 14:34:07 17568 - Initialise Thread Manager
+22/09/2018 14:34:07 17568 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 11; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 14:34:07 17568 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 13; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 14:34:09 17568 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 12; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 14:43:06 18788 - ApplicationStart
+22/09/2018 14:43:06 18788 - Initialise Thread Manager
+22/09/2018 14:43:06 18788 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 13; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 14:43:06 18788 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 11; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 14:43:08 18788 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 12; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 14:44:50 6664 - ApplicationStart
+22/09/2018 14:44:50 6664 - Initialise Thread Manager
+22/09/2018 14:44:50 6664 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 11; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 14:44:50 6664 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 13; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 14:44:52 6664 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 12; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 14:45:34 5176 - ApplicationStart
+22/09/2018 14:45:34 5176 - Initialise Thread Manager
+22/09/2018 14:45:34 5176 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 16; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 14:45:34 5176 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 14; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 14:45:39 5176 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 15; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 14:47:31 14152 - ApplicationStart
+22/09/2018 14:47:31 14152 - Initialise Thread Manager
+22/09/2018 14:47:31 14152 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 15; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 14:47:31 14152 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 17; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 14:47:31 14152 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: EventLog Thread Manager; ThreadID: 14; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 14:47:49 14152 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 16; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 14:53:07 9244 - ApplicationStart
+22/09/2018 14:53:07 9244 - Initialise Thread Manager
+22/09/2018 14:53:07 9244 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 15; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 14:53:07 9244 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 17; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 14:53:09 9244 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 16; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 14:54:43 19912 - ApplicationStart
+22/09/2018 14:54:43 19912 - Initialise Thread Manager
+22/09/2018 14:54:43 19912 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 11; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 14:54:43 19912 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 13; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 14:54:45 19912 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 12; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 15:56:29 1304 - ApplicationStart
+22/09/2018 15:56:29 1304 - Initialise Thread Manager
+22/09/2018 15:56:29 1304 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 16; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 15:56:29 1304 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 14; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 15:56:51 1304 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 15; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 15:57:32 15600 - ApplicationStart
+22/09/2018 15:57:32 15600 - Initialise Thread Manager
+22/09/2018 15:57:32 15600 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 15; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 15:57:32 15600 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 17; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 15:57:34 15600 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 16; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 15:58:21 18012 - ApplicationStart
+22/09/2018 15:58:21 18012 - Initialise Thread Manager
+22/09/2018 15:58:21 18012 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 15; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 15:58:21 18012 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 17; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 15:58:38 18012 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 16; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:00:38 18056 - ApplicationStart
+22/09/2018 16:00:38 18056 - Initialise Thread Manager
+22/09/2018 16:00:38 18056 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 15; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:00:38 18056 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 17; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:00:53 18056 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 16; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:01:40 19600 - ApplicationStart
+22/09/2018 16:01:40 19600 - Initialise Thread Manager
+22/09/2018 16:01:40 19600 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 15; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:01:40 19600 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 17; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:01:46 19600 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 16; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:02:53 6160 - ApplicationStart
+22/09/2018 16:02:53 6160 - Initialise Thread Manager
+22/09/2018 16:02:53 6160 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 15; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:02:53 6160 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 17; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:03:02 6160 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 16; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:03:30 14356 - ApplicationStart
+22/09/2018 16:03:30 14356 - Initialise Thread Manager
+22/09/2018 16:03:30 14356 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 11; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:03:30 14356 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: UserSessionManager; ThreadID: 9; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:03:30 14356 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 13; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:03:33 14356 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 12; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:04:36 19200 - ApplicationStart
+22/09/2018 16:04:36 19200 - Initialise Thread Manager
+22/09/2018 16:04:37 19200 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 15; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:04:37 19200 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 17; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:04:45 19200 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 16; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:05:43 8580 - ApplicationStart
+22/09/2018 16:05:43 8580 - Initialise Thread Manager
+22/09/2018 16:05:43 8580 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 11; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:05:43 8580 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 13; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:05:45 8580 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 12; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:06:02 14480 - ApplicationStart
+22/09/2018 16:06:02 14480 - Initialise Thread Manager
+22/09/2018 16:06:02 14480 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 15; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:06:02 14480 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 17; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:06:04 14480 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 16; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:08:10 17108 - ApplicationStart
+22/09/2018 16:08:10 17108 - Initialise Thread Manager
+22/09/2018 16:08:10 17108 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 15; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:08:10 17108 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 17; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:08:12 17108 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 16; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:09:40 13252 - ApplicationStart
+22/09/2018 16:09:40 13252 - Initialise Thread Manager
+22/09/2018 16:09:40 13252 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 15; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:09:40 13252 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 17; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:09:42 13252 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 16; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:12:53 18440 - ApplicationStart
+22/09/2018 16:12:53 18440 - Initialise Thread Manager
+22/09/2018 16:12:53 18440 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 15; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:12:53 18440 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 17; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:12:55 18440 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 16; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:14:35 20336 - ApplicationStart
+22/09/2018 16:14:35 20336 - Initialise Thread Manager
+22/09/2018 16:14:35 20336 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 11; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:14:35 20336 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 13; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:14:37 20336 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 12; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:16:27 1048 - ApplicationStart
+22/09/2018 16:16:27 1048 - Initialise Thread Manager
+22/09/2018 16:16:27 1048 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 15; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:16:27 1048 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 17; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:16:29 1048 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 16; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:20:22 21132 - ApplicationStart
+22/09/2018 16:20:22 21132 - Initialise Thread Manager
+22/09/2018 16:20:22 21132 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: UserSessionManager; ThreadID: 13; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:20:22 21132 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: EventLog Thread Manager; ThreadID: 14; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:20:22 21132 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 15; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:20:22 21132 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 17; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:20:24 21132 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 16; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:23:06 9800 - ApplicationStart
+22/09/2018 16:23:06 9800 - Initialise Thread Manager
+22/09/2018 16:23:06 9800 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 10; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:23:06 9800 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 12; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:23:08 9800 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 11; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:24:13 9232 - ApplicationStart
+22/09/2018 16:24:13 9232 - Initialise Thread Manager
+22/09/2018 16:24:13 9232 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 12; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:24:13 9232 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 10; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:24:15 9232 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 11; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:28:52 12356 - ApplicationStart
+22/09/2018 16:28:52 12356 - Initialise Thread Manager
+22/09/2018 16:28:52 12356 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 15; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:28:52 12356 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 17; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:29:03 3628 - ApplicationStart
+22/09/2018 16:29:03 3628 - Initialise Thread Manager
+22/09/2018 16:29:03 3628 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 15; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:29:03 3628 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 17; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:29:05 3628 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 16; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:29:32 16744 - ApplicationStart
+22/09/2018 16:29:32 16744 - Initialise Thread Manager
+22/09/2018 16:29:32 16744 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 15; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:29:32 16744 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 17; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 16:29:34 16744 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 16; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 18:07:57 18720 - ApplicationStart
+22/09/2018 18:07:57 18720 - Initialise Thread Manager
+22/09/2018 18:07:57 18720 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 13; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 18:07:57 18720 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 15; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 18:07:59 18720 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 14; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 18:10:40 2188 - ApplicationStart
+22/09/2018 18:10:40 2188 - Initialise Thread Manager
+22/09/2018 18:10:40 2188 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 13; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 18:10:40 2188 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 15; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 18:10:42 2188 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 14; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 18:11:30 17076 - ApplicationStart
+22/09/2018 18:11:30 17076 - Initialise Thread Manager
+22/09/2018 18:11:30 17076 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 13; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 18:11:30 17076 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 15; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 18:11:32 17076 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 14; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 18:19:32 18040 - ApplicationStart
+22/09/2018 18:19:32 18040 - Initialise Thread Manager
+22/09/2018 18:19:32 18040 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 13; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 18:19:32 18040 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 15; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 18:19:34 18040 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 14; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 18:30:41 4956 - ApplicationStart
+22/09/2018 18:30:41 4956 - Initialise Thread Manager
+22/09/2018 18:30:41 4956 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 15; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 18:30:41 4956 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 13; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 18:30:43 4956 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 14; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 19:32:14 5632 - ApplicationStart
+22/09/2018 19:32:14 5632 - Initialise Thread Manager
+22/09/2018 19:32:14 5632 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 13; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 19:32:14 5632 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 15; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 19:32:16 5632 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 14; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 19:37:16 8636 - ApplicationStart
+22/09/2018 19:37:16 8636 - Initialise Thread Manager
+22/09/2018 19:37:16 8636 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 15; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 19:37:16 8636 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 17; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+22/09/2018 19:37:18 8636 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 16; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False

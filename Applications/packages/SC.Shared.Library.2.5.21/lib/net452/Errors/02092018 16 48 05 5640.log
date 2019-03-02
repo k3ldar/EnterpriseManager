@@ -1,0 +1,19 @@
+Date: 16:48:05 02/09/2018
+
+Error Message: Object reference not set to an instance of an object.
+
+Inner Exception: InnerException is null
+
+Source: Library
+
+StackTrace:    at Library.DAL.FirebirdDB.GetConnectionString(DatabaseType databaseType) in T:\ShifooMain\Libraries\Library\DAL\FirebirdDB.cs:line 35327
+   at Library.DAL.FirebirdDB.ConnectToDatabase(FbTransaction& tran, DatabaseType databaseType, IsolationLevel isolationLevel, Int32 attempt) in T:\ShifooMain\Libraries\Library\DAL\FirebirdDB.cs:line 35320
+   at Library.DAL.FirebirdDB.IPCitySelect(String ipAddress) in T:\ShifooMain\Libraries\Library\DAL\FirebirdDB.cs:line 6954
+   at Library.BOL.IPAddresses.IPCity.Get(String userIP, String ipAddress) in T:\ShifooMain\Libraries\Library\BOL\IPAddress\IPCity.cs:line 135
+   at Website.Library.Core.Threads.GlobalGeoIPCityCache.GetIPCity(String ipAddress) in T:\ShifooMain\Libraries\Website.Library.Core\Threads\GlobalGeoIPCityCache.cs:line 106
+   at Website.Library.Core.Services.GeoIPLocation.GetIPCity(String ipAddress) in T:\ShifooMain\Libraries\Website.Library.Core\Services\GeoIPLocation.cs:line 63
+   at Website.Library.Core.Services.BaseServices.GetUserSession(HttpContext context) in T:\ShifooMain\Libraries\Website.Library.Core\Services\BaseServices.cs:line 349
+
+Target Site: System.String GetConnectionString(Library.DatabaseType)
+
+Further Occurance: 02/09/2018 17:40:26

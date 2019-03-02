@@ -1,0 +1,16 @@
+Date: 16:49:10 27/08/2018
+
+Error Message: Could not load file or assembly 'FirebirdSql.Data.FirebirdClient, Version=6.2.0.0, Culture=neutral, PublicKeyToken=3750abcc3150b00c'. The located assembly's manifest definition does not match the assembly reference. (Exception from HRESULT: 0x80131040)
+
+Inner Exception: InnerException is null
+
+Source: Library
+
+StackTrace:    at Library.DAL.FirebirdDB.TestConnection()
+   at Library.DAL.DALHelper.TestConnection() in T:\ShifooMain\Libraries\Library\DAL\Database.cs:line 4046
+   at Website.Library.Core.Services.BaseWebApplication.InitialiseWebsite() in T:\ShifooMain\Libraries\Website.Library.Core\Services\BaseWebApplication.cs:line 596
+
+Target Site: Boolean TestConnection()
+
+Further Occurance: 27/08/2018 16:49:10
+Further Occurance: 27/08/2018 16:49:13

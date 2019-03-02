@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>SharedBaseCore</id>
+    <version>1.6.0</version>
+    <authors>Simon Carter</authors>
+    <owners>Simon Carter</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/k3ldar/.NetCorePluginManager/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/k3ldar/.NetCorePluginManager</projectUrl>
+    <description>Contains generic interfaces and abstract classes for sharing between ASPNetCore.PluginManager module and generic plugins</description>
+    <releaseNotes>Shared Modules for asp net core plugin manager.  Supports 2.1, 2.2 &amp; net461</releaseNotes>
+    <copyright>Copyright (c) 2018 - 2019.  Simon Carter.  All rights reserved.</copyright>
+    <tags>asp net core plugin manager shared classes interfaces</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.6.1">
+        <dependency id="ApplicationSettings" version="1.1.0" exclude="Build,Analyzers" />
+        <dependency id="FirebirdSql.Data.FirebirdClient" version="6.5.0" exclude="Build,Analyzers" />
+        <dependency id="ICSharpCode.SharpZipLib.dll" version="0.85.4.369" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.Mvc" version="2.1.2" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Configuration" version="2.1.2" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Configuration.Binder" version="2.1.2" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Configuration.Json" version="2.1.2" exclude="Build,Analyzers" />
+        <dependency id="SC.Shared.Library.Core" version="2.7.6" exclude="Build,Analyzers" />
+        <dependency id="System.Drawing.Common" version="4.5.1" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETCoreApp2.1">
+        <dependency id="ApplicationSettings" version="1.1.0" exclude="Build,Analyzers" />
+        <dependency id="FirebirdSql.Data.FirebirdClient" version="6.5.0" exclude="Build,Analyzers" />
+        <dependency id="ICSharpCode.SharpZipLib.dll" version="0.85.4.369" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.Mvc" version="2.1.2" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Configuration" version="2.1.2" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Configuration.Binder" version="2.1.2" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Configuration.Json" version="2.1.2" exclude="Build,Analyzers" />
+        <dependency id="SC.Shared.Library.Core" version="2.7.6" exclude="Build,Analyzers" />
+        <dependency id="System.Drawing.Common" version="4.5.1" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETCoreApp2.2">
+        <dependency id="ApplicationSettings" version="1.1.0" exclude="Build,Analyzers" />
+        <dependency id="FirebirdSql.Data.FirebirdClient" version="6.5.0" exclude="Build,Analyzers" />
+        <dependency id="ICSharpCode.SharpZipLib.dll" version="0.85.4.369" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.Mvc" version="2.2.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Configuration" version="2.2.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Configuration.Binder" version="2.2.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Configuration.Json" version="2.2.0" exclude="Build,Analyzers" />
+        <dependency id="SC.Shared.Library.Core" version="2.7.6" exclude="Build,Analyzers" />
+        <dependency id="System.Drawing.Common" version="4.5.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="T:\ShifooMain\Libraries\SharedBase\bin\Debug\net461\SharedBaseCore.dll" target="lib\net461\SharedBaseCore.dll" />
+    <file src="T:\ShifooMain\Libraries\SharedBase\bin\Debug\netcoreapp2.1\SharedBaseCore.dll" target="lib\netcoreapp2.1\SharedBaseCore.dll" />
+    <file src="T:\ShifooMain\Libraries\SharedBase\bin\Debug\netcoreapp2.2\SharedBaseCore.dll" target="lib\netcoreapp2.2\SharedBaseCore.dll" />
+  </files>
+</package>

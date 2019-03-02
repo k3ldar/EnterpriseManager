@@ -1,0 +1,5 @@
+23/09/2018 06:58:04 16228 - ApplicationStart
+23/09/2018 06:58:04 16228 - Initialise Thread Manager
+23/09/2018 06:58:04 16228 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 14; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+23/09/2018 06:58:04 16228 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 16; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+23/09/2018 06:58:06 16228 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 15; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False

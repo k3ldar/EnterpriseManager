@@ -1,0 +1,12 @@
+27/08/2018 16:49:10 16684 - ApplicationStart
+27/08/2018 16:49:10 16684 - Initialise Thread Manager
+27/08/2018 16:49:10 16684 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 10; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+27/08/2018 16:49:10 16684 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 12; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+27/08/2018 16:49:12 16684 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 11; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+27/08/2018 16:50:12 16684 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Load All GeoIP Data; ThreadID: 23; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+27/08/2018 16:50:12 16684 - Thread Stopped: Usage Process/System: 0.0%/0.0%; Name: Load All GeoIP Data; ThreadID: 23; IsCancelled: True; IsUnResponsive: False; IsMarkedForRemoval: True
+27/08/2018 18:33:16 20048 - ApplicationStart
+27/08/2018 18:33:16 20048 - Initialise Thread Manager
+27/08/2018 18:33:17 20048 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Manager - Management Thread; ThreadID: 16; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+27/08/2018 18:33:17 20048 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Cache Management Thread; ThreadID: 18; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False
+27/08/2018 18:33:19 20048 - Thread Started: Usage Process/System: 0.0%/0.0%; Name: Thread Abort - Management Thread; ThreadID: 17; IsCancelled: False; IsUnResponsive: False; IsMarkedForRemoval: False

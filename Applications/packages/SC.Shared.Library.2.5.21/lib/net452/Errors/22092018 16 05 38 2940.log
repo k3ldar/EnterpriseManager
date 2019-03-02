@@ -1,0 +1,15 @@
+Date: 16:05:38 22/09/2018
+
+Error Message: Session has not been configured for this application or request.
+
+Inner Exception: InnerException is null
+
+Source: Microsoft.AspNetCore.Http
+
+StackTrace:    at Microsoft.AspNetCore.Http.DefaultHttpContext.get_Session()
+   at Website.Library.Core.Services.SessionMiddleware.Invoke(HttpContext context)
+
+Target Site: Microsoft.AspNetCore.Http.ISession get_Session()
+
+
+Void MoveNext()

@@ -182,6 +182,12 @@
     <None Include="packages.config" />
     <None Include="Reports.pfx" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Library\SharedBase.csproj">
+      <Project>{3444f493-5cbe-4d67-8bc9-1184e486c7e7}</Project>
+      <Name>SharedBase</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>..\..\..\..\..\GitProjects\Builds\NetBuildTools\Release\UpdateVersion.exe /out="$(ProjectDir)Properties\ver.txt" /$(ConfigurationName) /path="$(ProjectDir)
