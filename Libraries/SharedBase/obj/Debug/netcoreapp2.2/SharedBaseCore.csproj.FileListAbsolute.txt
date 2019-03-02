@@ -1,10 +1,10 @@
 T:\ShifooMain\Libraries\SharedBase\bin\Debug\netcoreapp2.2\SharedBaseCore.dll.config
 T:\ShifooMain\Libraries\SharedBase\bin\Debug\netcoreapp2.2\SharedBaseCore.deps.json
 T:\ShifooMain\Libraries\SharedBase\bin\Debug\netcoreapp2.2\SharedBaseCore.dll
+T:\ShifooMain\Libraries\SharedBase\bin\Debug\netcoreapp2.2\SharedBaseCore.pdb
+T:\ShifooMain\Libraries\SharedBase\obj\Debug\netcoreapp2.2\SharedBaseCore.csprojAssemblyReference.cache
 T:\ShifooMain\Libraries\SharedBase\obj\Debug\netcoreapp2.2\SharedBaseCore.csproj.CoreCompileInputs.cache
 T:\ShifooMain\Libraries\SharedBase\obj\Debug\netcoreapp2.2\SharedBaseCore.AssemblyInfoInputs.cache
 T:\ShifooMain\Libraries\SharedBase\obj\Debug\netcoreapp2.2\SharedBaseCore.AssemblyInfo.cs
-T:\ShifooMain\Libraries\SharedBase\bin\Debug\netcoreapp2.2\SharedBaseCore.pdb
 T:\ShifooMain\Libraries\SharedBase\obj\Debug\netcoreapp2.2\SharedBaseCore.dll
 T:\ShifooMain\Libraries\SharedBase\obj\Debug\netcoreapp2.2\SharedBaseCore.pdb
-T:\ShifooMain\Libraries\SharedBase\obj\Debug\netcoreapp2.2\SharedBaseCore.csprojAssemblyReference.cache

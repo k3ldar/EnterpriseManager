@@ -248,7 +248,7 @@ namespace POS.DatabaseBackup
             }
         }
 
-        private void DatabaseBackup_OnStageChanged(Library.Backup.DatabaseBackupStage e)
+        private void DatabaseBackup_OnStageChanged(SharedBase.Backup.DatabaseBackupStage e)
         {
             if (ParentForm.InvokeRequired)
             {

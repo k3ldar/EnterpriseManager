@@ -348,7 +348,7 @@ namespace POS.Invoices.Forms
             }
             catch (Exception error)
             {
-                if (String.IsNullOrEmpty(Library.XML.GetXMLValue(
+                if (String.IsNullOrEmpty(SharedBase.XML.GetXMLValue(
                     Shared.Utilities.CurrentPath(true) + StringConstants.XML_CONFIG_FILE,
                     StringConstants.XML_LABEL_PRINTER, StringConstants.XML_LABEL_NAME)))
                 {

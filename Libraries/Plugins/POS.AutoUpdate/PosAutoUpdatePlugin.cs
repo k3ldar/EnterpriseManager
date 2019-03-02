@@ -182,7 +182,7 @@ namespace POS.AutoUpdate
 
         private void autoUpdatesMenu_Click(object sender, EventArgs e)
         {
-            if (AppController.ActiveUser.HasPermissionPOS(Library.SecurityEnums.SecurityPermissionsPOS.ManageAutoUpdates))
+            if (AppController.ActiveUser.HasPermissionPOS(SharedBase.SecurityEnums.SecurityPermissionsPOS.ManageAutoUpdates))
             {
                 _automaticUpdatesTab.HomeTabButton.ForceClick();
             }

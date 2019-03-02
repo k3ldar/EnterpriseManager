@@ -1007,42 +1007,46 @@ namespace POS.Diary.Controls
 
         bool ISMSSend.SendSMS(string telephone, string message)
         {
-            Shared.Communication.SendSMSTextMagic tmSender = new Shared.Communication.SendSMSTextMagic(
-                AppController.LocalSettings.TextMagicUsername, AppController.LocalSettings.TextMagicAPI);
-            try
-            {
-                tmSender.SMSSend(AppController.LocalSettings.TextMagicSender, telephone, message);
-                return (true);
-            }
-            catch (Exception err)
-            {
-                Shared.EventLog.Add(err);
-                return (false);
-            }
-            finally
-            {
-                tmSender = null;
-            }
+#warning urgent finish
+            return false;
+            //Shared.Communication.SendSMSTextMagic tmSender = new Shared.Communication.SendSMSTextMagic(
+            //    AppController.LocalSettings.TextMagicUsername, AppController.LocalSettings.TextMagicAPI);
+            //try
+            //{
+            //    tmSender.SMSSend(AppController.LocalSettings.TextMagicSender, telephone, message);
+            //    return (true);
+            //}
+            //catch (Exception err)
+            //{
+            //    Shared.EventLog.Add(err);
+            //    return (false);
+            //}
+            //finally
+            //{
+            //    tmSender = null;
+            //}
         }
 
         bool ISMSSend.SendSMS(string from, string telephone, string message)
         {
-            Shared.Communication.SendSMSTextMagic tmSender = new Shared.Communication.SendSMSTextMagic(
-                AppController.LocalSettings.TextMagicUsername, AppController.LocalSettings.TextMagicAPI);
-            try
-            {
-                tmSender.SMSSend(from, telephone, message);
-                return (true);
-            }
-            catch (Exception err)
-            {
-                Shared.EventLog.Add(err);
-                return (false);
-            }
-            finally
-            {
-                tmSender = null;
-            }
+#warning urgent finish
+            return false;
+            //Shared.Communication.SendSMSTextMagic tmSender = new Shared.Communication.SendSMSTextMagic(
+            //    AppController.LocalSettings.TextMagicUsername, AppController.LocalSettings.TextMagicAPI);
+            //try
+            //{
+            //    tmSender.SMSSend(from, telephone, message);
+            //    return (true);
+            //}
+            //catch (Exception err)
+            //{
+            //    Shared.EventLog.Add(err);
+            //    return (false);
+            //}
+            //finally
+            //{
+            //    tmSender = null;
+            //}
         }
 
         #endregion SMS Sending

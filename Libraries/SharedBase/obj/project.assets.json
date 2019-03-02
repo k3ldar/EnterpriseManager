@@ -1749,7 +1749,7 @@
           }
         }
       },
-      "SC.Shared.Library.Core/2.7.6": {
+      "SC.Shared.Library.Core/2.7.7": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore": "2.1.3",
@@ -4766,7 +4766,7 @@
           }
         }
       },
-      "SC.Shared.Library.Core/2.7.6": {
+      "SC.Shared.Library.Core/2.7.7": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore": "2.2.0",
@@ -7049,7 +7049,7 @@
           "lib/net45/Newtonsoft.Json.Bson.dll": {}
         }
       },
-      "SC.Shared.Library.Core/2.7.6": {
+      "SC.Shared.Library.Core/2.7.7": {
         "type": "package",
         "dependencies": {
           "System.Security.AccessControl": "4.5.0"
@@ -11314,19 +11314,17 @@
         "runtimes/ubuntu.16.10-x64/native/System.Security.Cryptography.Native.OpenSsl.so"
       ]
     },
-    "SC.Shared.Library.Core/2.7.6": {
-      "sha512": "ny5WA3VTIazagFMVILRPt4MM/sJatTSCcOae2yi3HMXnA4WJLFchYCgB+SPzuLFXWKrhrC89DeurdSXPUqx/6g==",
+    "SC.Shared.Library.Core/2.7.7": {
+      "sha512": "fR8fvi/SY3LhUysBbbCwP1+dcXSqCt9Pf7zZX5aBVeeEeXl3Nu0tXzlnHkMvShF1i87xqTc07ltjLXko/Y40Dg==",
       "type": "package",
-      "path": "sc.shared.library.core/2.7.6",
+      "path": "sc.shared.library.core/2.7.7",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/net461/SharedLib.dll",
         "lib/netcoreapp2.1/SharedLib.dll",
-        "lib/netcoreapp2.2/Logs/17022019.log",
-        "lib/netcoreapp2.2/Logs/23022019.log",
         "lib/netcoreapp2.2/SharedLib.dll",
-        "sc.shared.library.core.2.7.6.nupkg.sha512",
+        "sc.shared.library.core.2.7.7.nupkg.sha512",
         "sc.shared.library.core.nuspec"
       ]
     },
@@ -15048,7 +15046,7 @@
       "Microsoft.Extensions.Configuration.Binder >= 2.1.2",
       "Microsoft.Extensions.Configuration.Json >= 2.1.2",
       "Microsoft.NETCore.App >= 2.1.0",
-      "SC.Shared.Library.Core >= 2.7.6",
+      "SC.Shared.Library.Core >= 2.7.7",
       "System.Drawing.Common >= 4.5.1"
     ],
     ".NETCoreApp,Version=v2.2": [
@@ -15060,7 +15058,7 @@
       "Microsoft.Extensions.Configuration.Binder >= 2.2.0",
       "Microsoft.Extensions.Configuration.Json >= 2.2.0",
       "Microsoft.NETCore.App >= 2.2.0",
-      "SC.Shared.Library.Core >= 2.7.6",
+      "SC.Shared.Library.Core >= 2.7.7",
       "System.Drawing.Common >= 4.5.1"
     ],
     ".NETFramework,Version=v4.6.1": [
@@ -15071,7 +15069,7 @@
       "Microsoft.Extensions.Configuration >= 2.1.2",
       "Microsoft.Extensions.Configuration.Binder >= 2.1.2",
       "Microsoft.Extensions.Configuration.Json >= 2.1.2",
-      "SC.Shared.Library.Core >= 2.7.6",
+      "SC.Shared.Library.Core >= 2.7.7",
       "System.Drawing.Common >= 4.5.1"
     ]
   },
@@ -15164,7 +15162,7 @@
           },
           "SC.Shared.Library.Core": {
             "target": "Package",
-            "version": "[2.7.6, )"
+            "version": "[2.7.7, )"
           },
           "System.Drawing.Common": {
             "target": "Package",
@@ -15215,7 +15213,7 @@
           },
           "SC.Shared.Library.Core": {
             "target": "Package",
-            "version": "[2.7.6, )"
+            "version": "[2.7.7, )"
           },
           "System.Drawing.Common": {
             "target": "Package",
@@ -15260,7 +15258,7 @@
           },
           "SC.Shared.Library.Core": {
             "target": "Package",
-            "version": "[2.7.6, )"
+            "version": "[2.7.7, )"
           },
           "System.Drawing.Common": {
             "target": "Package",

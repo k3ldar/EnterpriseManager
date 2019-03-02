@@ -79,8 +79,8 @@ namespace POS.Staff.Controls.Settings
 
         public override void SettingsLoaded()
         {
-            int months = Shared.Utilities.StrToIntDef(Library.LibraryHelperClass.SettingsGet(StringConstants.COMMISSION_POOL_MONTHS, StringConstants.SYMBOL_THREE), 3);
-            int minMonths = Shared.Utilities.StrToIntDef(Library.LibraryHelperClass.SettingsGet(StringConstants.COMMISSION_POOL_MIN_WAiT, StringConstants.SYMBOL_TWO), 2);
+            int months = Shared.Utilities.StrToIntDef(SharedBase.LibraryHelperClass.SettingsGet(StringConstants.COMMISSION_POOL_MONTHS, StringConstants.SYMBOL_THREE), 3);
+            int minMonths = Shared.Utilities.StrToIntDef(SharedBase.LibraryHelperClass.SettingsGet(StringConstants.COMMISSION_POOL_MIN_WAiT, StringConstants.SYMBOL_TWO), 2);
 
             if (months > 12)
             {

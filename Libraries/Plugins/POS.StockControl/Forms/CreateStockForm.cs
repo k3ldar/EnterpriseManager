@@ -170,7 +170,7 @@ namespace POS.StockControl.Forms
                 }
             }
 
-            spinNumberCreated.Maximum = Convert.ToDecimal(Library.Utils.SharedUtils.MinimumValue(0, maxAvailable));
+            spinNumberCreated.Maximum = Convert.ToDecimal(SharedBase.Utils.SharedUtils.MinimumValue(0, maxAvailable));
 
             btnCreateStock.Enabled = spinNumberCreated.Maximum > 0;
         }

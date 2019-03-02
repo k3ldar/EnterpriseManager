@@ -1,6 +1,3 @@
-T:\ShifooMain\Libraries\SharedBase\obj\Debug\net461\SharedBaseCore.csproj.CoreCompileInputs.cache
-T:\ShifooMain\Libraries\SharedBase\obj\Debug\net461\SharedBaseCore.AssemblyInfoInputs.cache
-T:\ShifooMain\Libraries\SharedBase\obj\Debug\net461\SharedBaseCore.AssemblyInfo.cs
 T:\ShifooMain\Libraries\SharedBase\bin\Debug\net461\SharedBaseCore.dll.config
 T:\ShifooMain\Libraries\SharedBase\bin\Debug\net461\SharedBaseCore.dll
 T:\ShifooMain\Libraries\SharedBase\bin\Debug\net461\SharedBaseCore.pdb
@@ -189,6 +186,10 @@ T:\ShifooMain\Libraries\SharedBase\bin\Debug\net461\System.Xml.XmlDocument.dll
 T:\ShifooMain\Libraries\SharedBase\bin\Debug\net461\System.Xml.XmlSerializer.dll
 T:\ShifooMain\Libraries\SharedBase\bin\Debug\net461\System.Xml.XPath.dll
 T:\ShifooMain\Libraries\SharedBase\bin\Debug\net461\System.Xml.XPath.XDocument.dll
+T:\ShifooMain\Libraries\SharedBase\obj\Debug\net461\SharedBaseCore.csprojAssemblyReference.cache
+T:\ShifooMain\Libraries\SharedBase\obj\Debug\net461\SharedBaseCore.csproj.CoreCompileInputs.cache
+T:\ShifooMain\Libraries\SharedBase\obj\Debug\net461\SharedBaseCore.AssemblyInfoInputs.cache
+T:\ShifooMain\Libraries\SharedBase\obj\Debug\net461\SharedBaseCore.AssemblyInfo.cs
 T:\ShifooMain\Libraries\SharedBase\obj\Debug\net461\SharedBaseCore.csproj.CopyComplete
 T:\ShifooMain\Libraries\SharedBase\obj\Debug\net461\SharedBaseCore.dll
 T:\ShifooMain\Libraries\SharedBase\obj\Debug\net461\SharedBaseCore.pdb

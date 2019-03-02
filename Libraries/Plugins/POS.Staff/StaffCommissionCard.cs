@@ -46,7 +46,7 @@ namespace POS.Staff
 
         public override bool ValidateSecurity(User user)
         {
-            return (user.HasPermissionStaff(Library.SecurityEnums.SecurityPermissionsStaff.ViewCommissionDetails));
+            return (user.HasPermissionStaff(SharedBase.SecurityEnums.SecurityPermissionsStaff.ViewCommissionDetails));
         }
 
         public override Image ButtonImage()

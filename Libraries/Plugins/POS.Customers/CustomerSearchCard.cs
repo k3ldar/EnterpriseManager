@@ -49,7 +49,7 @@ namespace POS.Customers
 
         public override bool ValidateSecurity(User user)
         {
-            return (user.HasPermissionPOS(Library.SecurityEnums.SecurityPermissionsPOS.SearchUsers));
+            return (user.HasPermissionPOS(SharedBase.SecurityEnums.SecurityPermissionsPOS.SearchUsers));
         }
 
         public override Image ButtonImage()

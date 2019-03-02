@@ -3824,9 +3824,10 @@ namespace SalonDiary.Controls
                     notify.FadeOut = true;
                     notify.AutomaticallyClose = 45;
 
-                    notify.NotifyPosition = Shared.NotificationPosition.BottomRight;
+#warning update this one asap
+                    //notify.NotifyPosition = Shared.NotificationPosition.BottomRight;
 
-                    notify.NotifyEffect = Shared.NotificationEffect.Slide;
+                    //notify.NotifyEffect = Shared.NotificationEffect.Slide;
                     notify.Show();
                 }
             }

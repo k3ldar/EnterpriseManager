@@ -41,7 +41,7 @@ namespace Reports.Products
 {
     public class PdfTopProductReports : BaseReport
     {
-        public PdfTopProductReports(Library.ProductReportType reportType,
+        public PdfTopProductReports(ProductReportType reportType,
             SimpleStatistics results)
             : base(UniqueFileName("TopProducts", true))
         {

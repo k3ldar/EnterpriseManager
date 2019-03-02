@@ -203,7 +203,7 @@ namespace POS.Diary.Forms
             string last4 = txtCardNumber.Text.Substring(txtCardNumber.Text.Length -4);
             DateTime dateFrom = GetDateFrom();
             DateTime dateTo = GetDateTo();
-            Shared.AcceptedCreditCardTypes cardTypeEnum = (Shared.AcceptedCreditCardTypes)Enum.Parse(typeof(Shared.AcceptedCreditCardTypes), cardType);
+            AcceptedCreditCardTypes cardTypeEnum = (AcceptedCreditCardTypes)Enum.Parse(typeof(AcceptedCreditCardTypes), cardType);
             Result = new CreditCard(-1, _userDetails, SharedBase.Utils.StringCipher.Encrypt(txtCardNumber.Text,
                 StringConstants.CREDIT_CARD_PASSPHRASE), last4, dateFrom.ToString(StringConstants.CREDIT_CARD_DATE_FORMAT),
                 dateTo.ToString(StringConstants.CREDIT_CARD_DATE_FORMAT), _userDetails.UserName, txtLast3Digits.Text, cardTypeEnum);

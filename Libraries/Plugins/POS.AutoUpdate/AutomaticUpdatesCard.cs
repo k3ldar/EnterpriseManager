@@ -49,7 +49,7 @@ namespace POS.AutoUpdate
 
         public override bool ValidateSecurity(User user)
         {
-            return (user.HasPermissionPOS(Library.SecurityEnums.SecurityPermissionsPOS.ManageAutoUpdates));
+            return (user.HasPermissionPOS(SharedBase.SecurityEnums.SecurityPermissionsPOS.ManageAutoUpdates));
         }
         public override Image ButtonImage()
         {

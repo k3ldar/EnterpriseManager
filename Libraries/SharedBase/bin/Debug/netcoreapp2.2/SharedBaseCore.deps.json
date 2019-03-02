@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2",
-    "signature": "dfead532069352e734ebafd60759214e9cd15b80"
+    "signature": "6112b278cef1f05051212f25807dfa82f6bd2ae6"
   },
   "compilationOptions": {},
   "targets": {
@@ -15,7 +15,7 @@
           "Microsoft.Extensions.Configuration": "2.2.0",
           "Microsoft.Extensions.Configuration.Binder": "2.2.0",
           "Microsoft.Extensions.Configuration.Json": "2.2.0",
-          "SC.Shared.Library.Core": "2.7.6",
+          "SC.Shared.Library.Core": "2.7.7",
           "System.Drawing.Common": "4.5.1"
         },
         "runtime": {
@@ -1422,7 +1422,7 @@
           }
         }
       },
-      "SC.Shared.Library.Core/2.7.6": {
+      "SC.Shared.Library.Core/2.7.7": {
         "dependencies": {
           "Microsoft.AspNetCore": "2.2.0",
           "Microsoft.AspNetCore.Http": "2.2.0",
@@ -1433,7 +1433,7 @@
         "runtime": {
           "lib/netcoreapp2.2/SharedLib.dll": {
             "assemblyVersion": "2.6.0.0",
-            "fileVersion": "2.5.67.193"
+            "fileVersion": "2.5.68.194"
           }
         }
       },
@@ -3024,12 +3024,12 @@
       "path": "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "hashPath": "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512"
     },
-    "SC.Shared.Library.Core/2.7.6": {
+    "SC.Shared.Library.Core/2.7.7": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ny5WA3VTIazagFMVILRPt4MM/sJatTSCcOae2yi3HMXnA4WJLFchYCgB+SPzuLFXWKrhrC89DeurdSXPUqx/6g==",
-      "path": "sc.shared.library.core/2.7.6",
-      "hashPath": "sc.shared.library.core.2.7.6.nupkg.sha512"
+      "sha512": "sha512-fR8fvi/SY3LhUysBbbCwP1+dcXSqCt9Pf7zZX5aBVeeEeXl3Nu0tXzlnHkMvShF1i87xqTc07ltjLXko/Y40Dg==",
+      "path": "sc.shared.library.core/2.7.7",
+      "hashPath": "sc.shared.library.core.2.7.7.nupkg.sha512"
     },
     "System.AppContext/4.3.0": {
       "type": "package",

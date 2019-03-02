@@ -3658,7 +3658,7 @@ namespace SharedBase.DAL
         #region Private Members
 
 #if !INHERITED_DAL
-        private static bool _initialised = InitialiseDAL();
+        private static bool _initialised = false;// InitialiseDAL();
 #endif
         private static double _defaultVATRate = -1;
 

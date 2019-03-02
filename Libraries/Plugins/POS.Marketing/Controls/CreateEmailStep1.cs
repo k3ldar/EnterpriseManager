@@ -78,7 +78,7 @@ namespace POS.Marketing.Controls
             for (int i = 1; i <= templateCount; i++)
             {
                 string template = String.Format(StringConstants.PREFIX_AND_SUFFIX, StringConstants.SETTINGS_TEMPLATE, i);
-                string file = path + System.IO.Path.GetFileName(Library.XML.GetXMLValue(xml, 
+                string file = path + System.IO.Path.GetFileName(SharedBase.XML.GetXMLValue(xml, 
                     template, StringConstants.SETTINGS_FILENAME));
                 string name = SharedBase.XML.GetXMLValue(xml, template, StringConstants.SETTINGS_NAME);
                 _templates.Add(file, new EmailTemplateClass(file, name, i));

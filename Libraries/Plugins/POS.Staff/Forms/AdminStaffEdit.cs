@@ -1475,7 +1475,7 @@ namespace POS.Staff.Forms
                     System.Threading.Thread.CurrentThread.CurrentUICulture.Name,
                     System.Threading.Thread.CurrentThread.CurrentUICulture.DateTimeFormat.ShortDatePattern));
                 item.Tag = commission;
-                item.SubItems.Add(Library.Utils.SharedUtils.FormatMoney(commission.Amount,
+                item.SubItems.Add(SharedBase.Utils.SharedUtils.FormatMoney(commission.Amount,
                     POS.Base.Classes.AppController.LocalCurrency));
                 item.SubItems.Add(commission.PayingName);
                 item.SubItems.Add(commission.PaymentType.ToString());

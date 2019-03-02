@@ -1264,7 +1264,7 @@ namespace PointOfSale.Forms
                 }
 
                 // notify all plugins that we have loaded and are showing
-                PluginManager.RaiseEvent(new NotificationEventArgs(POS.Base.Classes.StringConstants.PLUGIN_EVENT_MAIN_FORM_SHOWING, null));
+                PluginManager.RaiseEvent(new NotificationEventArgs(StringConstants.PLUGIN_EVENT_MAIN_FORM_SHOWING, null));
             }
             finally
             {
@@ -1275,7 +1275,7 @@ namespace PointOfSale.Forms
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
 
-            if (Library.Backup.DatabaseBackupThread.BackupInProgress(POS.Base.Classes.StringConstants.BACKUP_NAME))
+            if (SharedBase.Backup.DatabaseBackupThread.BackupInProgress(StringConstants.BACKUP_NAME))
             {
                 ShowInformation(LanguageStrings.AppCanNotClose, LanguageStrings.AppCloseBackingUp);
                 e.Cancel = true;

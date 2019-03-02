@@ -393,7 +393,7 @@ namespace POS.Staff.Forms
             {
                 StaffExpense expense = (StaffExpense)lvExpenses.SelectedItems[0].Tag;
                 expense.Approve(AppController.ActiveUser);
-                lvExpenses.SelectedItems[0].SubItems[6].Text = EnumTranslations.Translate(Library.EmployeeExpenseStatus.Approved);
+                lvExpenses.SelectedItems[0].SubItems[6].Text = EnumTranslations.Translate(SharedBase.EmployeeExpenseStatus.Approved);
                 lvExpenses.SelectedItems[0].SubItems[7].Text = AppController.ActiveUser.UserName;
                 lvExpenses.SelectedItems[0].SubItems[8].Text = Utilities.FormatDate(DateTime.Now, AppController.LocalCulture.Name);
                 lvExpenses.SelectedItems[0].ForeColor = Color.DarkGreen;
@@ -406,7 +406,7 @@ namespace POS.Staff.Forms
             {
                 StaffExpense expense = (StaffExpense)lvExpenses.SelectedItems[0].Tag;
                 expense.Decline(AppController.ActiveUser);
-                lvExpenses.SelectedItems[0].SubItems[6].Text = EnumTranslations.Translate(Library.EmployeeExpenseStatus.Declined);
+                lvExpenses.SelectedItems[0].SubItems[6].Text = EnumTranslations.Translate(SharedBase.EmployeeExpenseStatus.Declined);
                 lvExpenses.SelectedItems[0].SubItems[7].Text = AppController.ActiveUser.UserName;
                 lvExpenses.SelectedItems[0].SubItems[8].Text = Utilities.FormatDate(DateTime.Now, AppController.LocalCulture.Name);
                 lvExpenses.SelectedItems[0].ForeColor = Color.Red;
@@ -421,7 +421,7 @@ namespace POS.Staff.Forms
 
                 if (Classes.ExpensesWizard.ExpensesCreateWizard(ref expense))
                 {
-                    lvExpenses.SelectedItems[0].SubItems[6].Text = EnumTranslations.Translate(Library.EmployeeExpenseStatus.Submitted);
+                    lvExpenses.SelectedItems[0].SubItems[6].Text = EnumTranslations.Translate(SharedBase.EmployeeExpenseStatus.Submitted);
                     lvExpenses.SelectedItems[0].SubItems[7].Text = String.Empty;
                     lvExpenses.SelectedItems[0].SubItems[8].Text = String.Empty;
                     lvExpenses.SelectedItems[0].ForeColor = Color.Black;

@@ -29,6 +29,7 @@ using System.Windows.Forms;
 
 using Languages;
 
+using SharedBase;
 using SharedBase.BOL.ContactDetails;
 using SharedBase.BOL.Suppliers;
 
@@ -146,7 +147,7 @@ namespace POS.Suppliers
 
         protected override void OnCreateClicked()
         {
-            if (!AppController.ActiveUser.HasPermissionAccounts(Library.SecurityEnums.SecurityPermissionsAccounts.AddUpdateSuppliers))
+            if (!AppController.ActiveUser.HasPermissionAccounts(SecurityEnums.SecurityPermissionsAccounts.AddUpdateSuppliers))
             {
                 ShowError(LanguageStrings.Error, LanguageStrings.AppSuppliersInvalidPermissionAddEdit);
                 return;
@@ -173,7 +174,7 @@ namespace POS.Suppliers
 
         protected override void OnEditClicked()
         {
-            if (!AppController.ActiveUser.HasPermissionAccounts(Library.SecurityEnums.SecurityPermissionsAccounts.AddUpdateSuppliers))
+            if (!AppController.ActiveUser.HasPermissionAccounts(SecurityEnums.SecurityPermissionsAccounts.AddUpdateSuppliers))
             {
                 ShowError(LanguageStrings.Error, LanguageStrings.AppSuppliersInvalidPermissionAddEdit);
                 return;
@@ -295,7 +296,7 @@ namespace POS.Suppliers
                 ListViewItem item = new ListViewItem(product.Name);
                 item.SubItems.Add(product.Make);
                 item.SubItems.Add(product.Model);
-                item.SubItems.Add(Library.Utils.SharedUtils.FormatMoney(product.NetCost, AppController.LocalCurrency, true));
+                item.SubItems.Add(SharedBase.Utils.SharedUtils.FormatMoney(product.NetCost, AppController.LocalCurrency, true));
                 item.SubItems.Add(product.SKU);
                 item.SubItems.Add(Base.EnumTranslations.Translate(product.AssetType));
                 item.SubItems.Add(product.Notes.Replace(StringConstants.SYMBOL_CRLF, StringConstants.SYMBOL_SPACE));
@@ -356,7 +357,7 @@ namespace POS.Suppliers
                     ListViewItem item = new ListViewItem(product.Name);
                     item.SubItems.Add(product.Make);
                     item.SubItems.Add(product.Model);
-                    item.SubItems.Add(Library.Utils.SharedUtils.FormatMoney(product.NetCost, AppController.LocalCurrency, true));
+                    item.SubItems.Add(SharedBase.Utils.SharedUtils.FormatMoney(product.NetCost, AppController.LocalCurrency, true));
                     item.SubItems.Add(product.SKU);
                     item.SubItems.Add(Base.EnumTranslations.Translate(product.AssetType));
                     item.SubItems.Add(product.Notes.Replace(StringConstants.SYMBOL_CRLF, StringConstants.SYMBOL_SPACE));

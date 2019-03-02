@@ -51,7 +51,7 @@ namespace POS.Suppliers
 
         public override bool ValidateSecurity(User user)
         {
-            return (user.HasPermissionAccounts(Library.SecurityEnums.SecurityPermissionsAccounts.ViewSuppliers));
+            return (user.HasPermissionAccounts(SharedBase.SecurityEnums.SecurityPermissionsAccounts.ViewSuppliers));
         }
 
         public override Image ButtonImage()

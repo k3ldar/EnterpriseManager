@@ -130,8 +130,8 @@ namespace POS.Administration.Forms.Treatments
                         ListViewItem item = lstTreatments.Items.Add(treat.Name);
 
                         decimal vat = SharedBase.Utils.SharedUtils.VATCalculate(treat.Cost, POS.Base.Classes.AppController.LocalCountry.VATRate);
-                        item.SubItems.Add(Library.Utils.SharedUtils.FormatMoney(treat.Cost + vat, AppController.LocalCurrency));
-                        item.SubItems.Add(Library.Utils.SharedUtils.FormatMoney(treat.Cost, AppController.LocalCurrency));
+                        item.SubItems.Add(SharedBase.Utils.SharedUtils.FormatMoney(treat.Cost + vat, AppController.LocalCurrency));
+                        item.SubItems.Add(SharedBase.Utils.SharedUtils.FormatMoney(treat.Cost, AppController.LocalCurrency));
                         item.SubItems.Add(Shared.Utilities.TimeToString(treat.Duration));
                         item.SubItems.Add(treat.IsActive ? LanguageStrings.AppYes : LanguageStrings.AppNo);
                         item.SubItems.Add(treat.ID.ToString());

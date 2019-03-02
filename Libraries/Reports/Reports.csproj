@@ -287,11 +287,11 @@
     <Reference Include="SharedBaseCore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\Applications\packages\SharedBaseCore.3.7.4\lib\net461\SharedBaseCore.dll</HintPath>
     </Reference>
-    <Reference Include="SharedControls, Version=2.8.0.0, Culture=neutral, PublicKeyToken=eb57f133a9520019, processorArchitecture=MSIL">
-      <HintPath>..\..\Applications\packages\SC.SharedControls.2.8.23\lib\net452\SharedControls.dll</HintPath>
+    <Reference Include="SharedControls, Version=2.9.0.0, Culture=neutral, PublicKeyToken=eb57f133a9520019, processorArchitecture=MSIL">
+      <HintPath>..\..\Applications\packages\SC.SharedControls.2.9.0\lib\net461\SharedControls.dll</HintPath>
     </Reference>
     <Reference Include="SharedLib, Version=2.6.0.0, Culture=neutral, PublicKeyToken=f2ca6ac6cfa8c8da, processorArchitecture=MSIL">
-      <HintPath>..\..\Applications\packages\SC.Shared.Library.Core.2.7.6\lib\net461\SharedLib.dll</HintPath>
+      <HintPath>..\..\Applications\packages\SC.Shared.Library.Core.2.7.7\lib\net461\SharedLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.AppContext, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">

@@ -79,7 +79,7 @@ namespace POS.UpdateImages.Classes
 
                     if (VerRemote.CompareTo(VerLocal) > 0)
                     {
-                        Shared.FileDownload.Download(Library.XML.GetXMLValue(xml, "Application", "Location"),
+                        Shared.FileDownload.Download(SharedBase.XML.GetXMLValue(xml, "Application", "Location"),
                             AppController.POSFolder(FolderType.Root, true) + StringConstants.POS_NEW_VERSION_FILE,
                             500, 500);
 

@@ -72,11 +72,11 @@ namespace POS.Till.Controls
             {
                 try
                 {
-                    btn10.Text = LibUtils.RemovePence(Library.Utils.SharedUtils.FormatMoney(10.0m, AppController.LocalCurrency), culture);
-                    btn20.Text = LibUtils.RemovePence(Library.Utils.SharedUtils.FormatMoney(20.0m, AppController.LocalCurrency), culture);
-                    btn40.Text = LibUtils.RemovePence(Library.Utils.SharedUtils.FormatMoney(40.0m, AppController.LocalCurrency), culture);
-                    btn50.Text = LibUtils.RemovePence(Library.Utils.SharedUtils.FormatMoney(50.0m, AppController.LocalCurrency), culture);
-                    btn100.Text = LibUtils.RemovePence(Library.Utils.SharedUtils.FormatMoney(100.0m, AppController.LocalCurrency), culture);
+                    btn10.Text = LibUtils.RemovePence(SharedUtils.FormatMoney(10.0m, AppController.LocalCurrency), culture);
+                    btn20.Text = LibUtils.RemovePence(SharedUtils.FormatMoney(20.0m, AppController.LocalCurrency), culture);
+                    btn40.Text = LibUtils.RemovePence(SharedUtils.FormatMoney(40.0m, AppController.LocalCurrency), culture);
+                    btn50.Text = LibUtils.RemovePence(SharedUtils.FormatMoney(50.0m, AppController.LocalCurrency), culture);
+                    btn100.Text = LibUtils.RemovePence(SharedUtils.FormatMoney(100.0m, AppController.LocalCurrency), culture);
                 }
                 catch {}
             }

@@ -80,9 +80,9 @@ namespace POS.Customers.Controls
 
         public override void SettingsLoaded()
         {
-            int months = Shared.Utilities.StrToIntDef(Library.LibraryHelperClass.SettingsGet(
+            int months = Shared.Utilities.StrToIntDef(SharedBase.LibraryHelperClass.SettingsGet(
                 StringConstants.COMMISSION_AFFILIATE_MONTHS, StringConstants.SYMBOL_THREE), 3);
-            int minMonths = Shared.Utilities.StrToIntDef(Library.LibraryHelperClass.SettingsGet(
+            int minMonths = Shared.Utilities.StrToIntDef(SharedBase.LibraryHelperClass.SettingsGet(
                 StringConstants.COMMISSION_AFFILIATE_MIN_WAiT, StringConstants.SYMBOL_TWO), 2);
 
             if (months > 12)
@@ -102,7 +102,7 @@ namespace POS.Customers.Controls
             }
 
             cbGenerateExternal.Checked = AppController.LocalSettings.AffiliateExternalLinks;
-            udMaxDays.Value = Shared.Utilities.StrToDecimal(Library.LibraryHelperClass.SettingsGet(
+            udMaxDays.Value = Shared.Utilities.StrToDecimal(SharedBase.LibraryHelperClass.SettingsGet(
                 StringConstants.AFFILIATE_LIVE_DAYS, StringConstants.SYMBOL_SEVEN), 7);
         }
 
