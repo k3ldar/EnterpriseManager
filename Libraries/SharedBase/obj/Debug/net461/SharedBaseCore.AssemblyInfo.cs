@@ -13,10 +13,10 @@ using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("Simon Carter")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
-[assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright (c) 2018 - 2019.  Simon Carter.  All rights reserved.")]
+[assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright (c) 2010 - 2019.  Simon Carter.  All rights reserved.")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Bol/DAL Middleware")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("3.7.4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("3.8.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("SharedBaseCore")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SharedBaseCore")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

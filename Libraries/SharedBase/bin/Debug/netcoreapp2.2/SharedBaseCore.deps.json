@@ -1,21 +1,21 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2",
-    "signature": "6112b278cef1f05051212f25807dfa82f6bd2ae6"
+    "signature": "1e90177d1aa5af4a4d6b4f3203b1348b73ed2daf"
   },
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v2.2": {
-      "SharedBaseCore/3.7.4": {
+      "SharedBaseCore/3.7.5": {
         "dependencies": {
           "ApplicationSettings": "1.1.0",
           "FirebirdSql.Data.FirebirdClient": "6.5.0",
-          "ICSharpCode.SharpZipLib.dll": "0.85.4.369",
           "Microsoft.AspNetCore.Mvc": "2.2.0",
           "Microsoft.Extensions.Configuration": "2.2.0",
           "Microsoft.Extensions.Configuration.Binder": "2.2.0",
           "Microsoft.Extensions.Configuration.Json": "2.2.0",
           "SC.Shared.Library.Core": "2.7.7",
+          "SharpZipLib": "1.1.0",
           "System.Drawing.Common": "4.5.1"
         },
         "runtime": {
@@ -41,14 +41,6 @@
           "lib/netstandard2.0/FirebirdSql.Data.FirebirdClient.dll": {
             "assemblyVersion": "6.5.0.0",
             "fileVersion": "6.5.0.0"
-          }
-        }
-      },
-      "ICSharpCode.SharpZipLib.dll/0.85.4.369": {
-        "runtime": {
-          "lib/net20/ICSharpCode.SharpZipLib.dll": {
-            "assemblyVersion": "0.85.4.369",
-            "fileVersion": "0.85.4.369"
           }
         }
       },
@@ -1437,6 +1429,14 @@
           }
         }
       },
+      "SharpZipLib/1.1.0": {
+        "runtime": {
+          "lib/netstandard2.0/ICSharpCode.SharpZipLib.dll": {
+            "assemblyVersion": "1.1.0.145",
+            "fileVersion": "1.1.0.145"
+          }
+        }
+      },
       "System.AppContext/4.3.0": {
         "dependencies": {
           "System.Runtime": "4.3.0"
@@ -2214,7 +2214,7 @@
     }
   },
   "libraries": {
-    "SharedBaseCore/3.7.4": {
+    "SharedBaseCore/3.7.5": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -2232,13 +2232,6 @@
       "sha512": "sha512-olm4R0GluSc7ejIymXtUYrpYz1IKN8r22LiYqy2hxIPe7zpUA7+w5Yk/ReiHA3Rr2XkKS2zLssXrpzLpiTSg8A==",
       "path": "firebirdsql.data.firebirdclient/6.5.0",
       "hashPath": "firebirdsql.data.firebirdclient.6.5.0.nupkg.sha512"
-    },
-    "ICSharpCode.SharpZipLib.dll/0.85.4.369": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-cA5tl5ex6S67sp/Pz6FW2Ei2FFGEyxD6av9go3CEPZTRfmv2nzLeNEJd2KBlNuKUjika4I2RMlPYNDJZz/7CHg==",
-      "path": "icsharpcode.sharpziplib.dll/0.85.4.369",
-      "hashPath": "icsharpcode.sharpziplib.dll.0.85.4.369.nupkg.sha512"
     },
     "Microsoft.AspNetCore/2.2.0": {
       "type": "package",
@@ -3030,6 +3023,13 @@
       "sha512": "sha512-fR8fvi/SY3LhUysBbbCwP1+dcXSqCt9Pf7zZX5aBVeeEeXl3Nu0tXzlnHkMvShF1i87xqTc07ltjLXko/Y40Dg==",
       "path": "sc.shared.library.core/2.7.7",
       "hashPath": "sc.shared.library.core.2.7.7.nupkg.sha512"
+    },
+    "SharpZipLib/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6cwSz51tzupsfb8q5AVRDqvD4vSeDDJuv3CYWCvQ+T3wrAjQtniICiczb+++j93z3NNuCZN+TiRjZ5lnfWtleQ==",
+      "path": "sharpziplib/1.1.0",
+      "hashPath": "sharpziplib.1.1.0.nupkg.sha512"
     },
     "System.AppContext/4.3.0": {
       "type": "package",

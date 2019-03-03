@@ -26,15 +26,6 @@
           "lib/netstandard2.0/FirebirdSql.Data.FirebirdClient.dll": {}
         }
       },
-      "ICSharpCode.SharpZipLib.dll/0.85.4.369": {
-        "type": "package",
-        "compile": {
-          "lib/net20/ICSharpCode.SharpZipLib.dll": {}
-        },
-        "runtime": {
-          "lib/net20/ICSharpCode.SharpZipLib.dll": {}
-        }
-      },
       "Microsoft.AspNetCore/2.1.3": {
         "type": "package",
         "dependencies": {
@@ -1765,6 +1756,15 @@
           "lib/netcoreapp2.1/SharedLib.dll": {}
         }
       },
+      "SharpZipLib/1.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/ICSharpCode.SharpZipLib.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/ICSharpCode.SharpZipLib.dll": {}
+        }
+      },
       "System.AppContext/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -2987,15 +2987,6 @@
         },
         "runtime": {
           "lib/netstandard2.0/FirebirdSql.Data.FirebirdClient.dll": {}
-        }
-      },
-      "ICSharpCode.SharpZipLib.dll/0.85.4.369": {
-        "type": "package",
-        "compile": {
-          "lib/net20/ICSharpCode.SharpZipLib.dll": {}
-        },
-        "runtime": {
-          "lib/net20/ICSharpCode.SharpZipLib.dll": {}
         }
       },
       "Microsoft.AspNetCore/2.2.0": {
@@ -4782,6 +4773,15 @@
           "lib/netcoreapp2.2/SharedLib.dll": {}
         }
       },
+      "SharpZipLib/1.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/ICSharpCode.SharpZipLib.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/ICSharpCode.SharpZipLib.dll": {}
+        }
+      },
       "System.AppContext/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -6003,15 +6003,6 @@
           "lib/net452/FirebirdSql.Data.FirebirdClient.dll": {}
         }
       },
-      "ICSharpCode.SharpZipLib.dll/0.85.4.369": {
-        "type": "package",
-        "compile": {
-          "lib/net20/ICSharpCode.SharpZipLib.dll": {}
-        },
-        "runtime": {
-          "lib/net20/ICSharpCode.SharpZipLib.dll": {}
-        }
-      },
       "Microsoft.AspNetCore.Antiforgery/2.1.1": {
         "type": "package",
         "dependencies": {
@@ -7075,6 +7066,15 @@
           "lib/net461/SharedLib.dll": {}
         }
       },
+      "SharpZipLib/1.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net45/ICSharpCode.SharpZipLib.dll": {}
+        },
+        "runtime": {
+          "lib/net45/ICSharpCode.SharpZipLib.dll": {}
+        }
+      },
       "System.AppContext/4.3.0": {
         "type": "package",
         "frameworkAssemblies": [
@@ -7862,22 +7862,6 @@
         "lib/netstandard2.0/FirebirdSql.Data.FirebirdClient.pdb",
         "license.txt",
         "readme.txt"
-      ]
-    },
-    "ICSharpCode.SharpZipLib.dll/0.85.4.369": {
-      "sha512": "cA5tl5ex6S67sp/Pz6FW2Ei2FFGEyxD6av9go3CEPZTRfmv2nzLeNEJd2KBlNuKUjika4I2RMlPYNDJZz/7CHg==",
-      "type": "package",
-      "path": "icsharpcode.sharpziplib.dll/0.85.4.369",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "NuGet.Config",
-        "NuGet.exe",
-        "NuGet.targets",
-        "icsharpcode.sharpziplib.dll.0.85.4.369.nupkg.sha512",
-        "icsharpcode.sharpziplib.dll.nuspec",
-        "lib/net20/ICSharpCode.SharpZipLib.dll",
-        "packages.config"
       ]
     },
     "Microsoft.AspNetCore/2.1.3": {
@@ -11326,6 +11310,23 @@
         "lib/netcoreapp2.2/SharedLib.dll",
         "sc.shared.library.core.2.7.7.nupkg.sha512",
         "sc.shared.library.core.nuspec"
+      ]
+    },
+    "SharpZipLib/1.1.0": {
+      "sha512": "6cwSz51tzupsfb8q5AVRDqvD4vSeDDJuv3CYWCvQ+T3wrAjQtniICiczb+++j93z3NNuCZN+TiRjZ5lnfWtleQ==",
+      "type": "package",
+      "path": "sharpziplib/1.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/ICSharpCode.SharpZipLib.dll",
+        "lib/net45/ICSharpCode.SharpZipLib.pdb",
+        "lib/net45/ICSharpCode.SharpZipLib.xml",
+        "lib/netstandard2.0/ICSharpCode.SharpZipLib.dll",
+        "lib/netstandard2.0/ICSharpCode.SharpZipLib.pdb",
+        "lib/netstandard2.0/ICSharpCode.SharpZipLib.xml",
+        "sharpziplib.1.1.0.nupkg.sha512",
+        "sharpziplib.nuspec"
       ]
     },
     "System.AppContext/4.3.0": {
@@ -15040,36 +15041,36 @@
     ".NETCoreApp,Version=v2.1": [
       "ApplicationSettings >= 1.1.0",
       "FirebirdSql.Data.FirebirdClient >= 6.5.0",
-      "ICSharpCode.SharpZipLib.dll >= 0.85.4.369",
       "Microsoft.AspNetCore.Mvc >= 2.1.2",
       "Microsoft.Extensions.Configuration >= 2.1.2",
       "Microsoft.Extensions.Configuration.Binder >= 2.1.2",
       "Microsoft.Extensions.Configuration.Json >= 2.1.2",
       "Microsoft.NETCore.App >= 2.1.0",
       "SC.Shared.Library.Core >= 2.7.7",
+      "SharpZipLib >= 1.1.0",
       "System.Drawing.Common >= 4.5.1"
     ],
     ".NETCoreApp,Version=v2.2": [
       "ApplicationSettings >= 1.1.0",
       "FirebirdSql.Data.FirebirdClient >= 6.5.0",
-      "ICSharpCode.SharpZipLib.dll >= 0.85.4.369",
       "Microsoft.AspNetCore.Mvc >= 2.2.0",
       "Microsoft.Extensions.Configuration >= 2.2.0",
       "Microsoft.Extensions.Configuration.Binder >= 2.2.0",
       "Microsoft.Extensions.Configuration.Json >= 2.2.0",
       "Microsoft.NETCore.App >= 2.2.0",
       "SC.Shared.Library.Core >= 2.7.7",
+      "SharpZipLib >= 1.1.0",
       "System.Drawing.Common >= 4.5.1"
     ],
     ".NETFramework,Version=v4.6.1": [
       "ApplicationSettings >= 1.1.0",
       "FirebirdSql.Data.FirebirdClient >= 6.5.0",
-      "ICSharpCode.SharpZipLib.dll >= 0.85.4.369",
       "Microsoft.AspNetCore.Mvc >= 2.1.2",
       "Microsoft.Extensions.Configuration >= 2.1.2",
       "Microsoft.Extensions.Configuration.Binder >= 2.1.2",
       "Microsoft.Extensions.Configuration.Json >= 2.1.2",
       "SC.Shared.Library.Core >= 2.7.7",
+      "SharpZipLib >= 1.1.0",
       "System.Drawing.Common >= 4.5.1"
     ]
   },
@@ -15078,7 +15079,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "3.7.5",
+    "version": "3.8.0",
     "restore": {
       "projectUniqueName": "T:\\ShifooMain\\Libraries\\SharedBase\\SharedBaseCore.csproj",
       "projectName": "SharedBaseCore",
@@ -15134,10 +15135,6 @@
             "target": "Package",
             "version": "[6.5.0, )"
           },
-          "ICSharpCode.SharpZipLib.dll": {
-            "target": "Package",
-            "version": "[0.85.4.369, )"
-          },
           "Microsoft.AspNetCore.Mvc": {
             "target": "Package",
             "version": "[2.1.2, )"
@@ -15164,6 +15161,10 @@
             "target": "Package",
             "version": "[2.7.7, )"
           },
+          "SharpZipLib": {
+            "target": "Package",
+            "version": "[1.1.0, )"
+          },
           "System.Drawing.Common": {
             "target": "Package",
             "version": "[4.5.1, )"
@@ -15184,10 +15185,6 @@
           "FirebirdSql.Data.FirebirdClient": {
             "target": "Package",
             "version": "[6.5.0, )"
-          },
-          "ICSharpCode.SharpZipLib.dll": {
-            "target": "Package",
-            "version": "[0.85.4.369, )"
           },
           "Microsoft.AspNetCore.Mvc": {
             "target": "Package",
@@ -15215,6 +15212,10 @@
             "target": "Package",
             "version": "[2.7.7, )"
           },
+          "SharpZipLib": {
+            "target": "Package",
+            "version": "[1.1.0, )"
+          },
           "System.Drawing.Common": {
             "target": "Package",
             "version": "[4.5.1, )"
@@ -15236,10 +15237,6 @@
             "target": "Package",
             "version": "[6.5.0, )"
           },
-          "ICSharpCode.SharpZipLib.dll": {
-            "target": "Package",
-            "version": "[0.85.4.369, )"
-          },
           "Microsoft.AspNetCore.Mvc": {
             "target": "Package",
             "version": "[2.1.2, )"
@@ -15260,6 +15257,10 @@
             "target": "Package",
             "version": "[2.7.7, )"
           },
+          "SharpZipLib": {
+            "target": "Package",
+            "version": "[1.1.0, )"
+          },
           "System.Drawing.Common": {
             "target": "Package",
             "version": "[4.5.1, )"
@@ -15267,17 +15268,5 @@
         }
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'ICSharpCode.SharpZipLib.dll 0.85.4.369' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.1'. This package may not be fully compatible with your project.",
-      "libraryId": "ICSharpCode.SharpZipLib.dll",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v2.1"
-      ]
-    }
-  ]
+  }
 }

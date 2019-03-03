@@ -5,13 +5,13 @@
     <LangVersion>latest</LangVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>Bol/DAL Middleware</Description>
-    <Copyright>Copyright (c) 2018 - 2019.  Simon Carter.  All rights reserved.</Copyright>
+    <Copyright>Copyright (c) 2010 - 2019.  Simon Carter.  All rights reserved.</Copyright>
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageProjectUrl></PackageProjectUrl>
     <PackageTags>Shared Bol/DAL</PackageTags>
     <PackageReleaseNotes>Supports 2.1, 2.2 &amp; net461</PackageReleaseNotes>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <Version>3.7.5</Version>
+    <Version>3.8.0</Version>
     <Authors>Simon Carter</Authors>
     <Company>Simon Carter</Company>
   </PropertyGroup>
@@ -82,8 +82,8 @@
   <ItemGroup>
     <PackageReference Include="ApplicationSettings" Version="1.1.0" />
     <PackageReference Include="FirebirdSql.Data.FirebirdClient" Version="6.5.0" />
-    <PackageReference Include="ICSharpCode.SharpZipLib.dll" Version="0.85.4.369" />
     <PackageReference Include="SC.Shared.Library.Core" Version="2.7.7" />
+    <PackageReference Include="SharpZipLib" Version="1.1.0" />
     <PackageReference Include="System.Drawing.Common" Version="4.5.1" />
   </ItemGroup>
 
