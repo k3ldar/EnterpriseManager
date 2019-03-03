@@ -11,7 +11,7 @@
  *
  *  The Original Code was created by Simon Carter (s1cart3r@gmail.com)
  *
- *  Copyright (c) 2010 - 2018 Simon Carter.  All Rights Reserved.
+ *  Copyright (c) 2010 - 2019 Simon Carter.  All Rights Reserved.
  *
  *  Product:  Enterprise Manager
  *  
@@ -117,6 +117,7 @@ namespace POS.Base.Classes
         public const string ERROR_STOCK_CREATE_NOT_FOUND = "Can not create stock, product not found";
         public const string ERROR_INVALID_SKU = "Invalid SKU Code";
         public const string ERROR_USED_BY_OTHER_PROCESSS = "used by another process";
+        public const string ERROR_DAL_INITIALISATION_FAILED = "Failed to initialise Data Access";
 
 
         public const string ERROR_LOG_ENTRY = "\r\nLog Entry : ";

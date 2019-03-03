@@ -4117,7 +4117,57 @@ namespace SharedBase.DAL
                 FirebirdDB.ConnectionStringSet((DatabaseType)Enum.Parse(typeof(DatabaseType), connectionName), value);
             }
 
+
+            FirebirdDB.Prepare();
+
+            ThreadManager.ThreadStopped += ThreadManager_ThreadStopped;
+
             _initialised = true;
+            return true;
+        }
+
+        /// <summary>
+        /// Returns an instance of a database class using config values
+        /// </summary>
+        /// <returns>An instance of a database class using config values</returns>
+        public static bool InitialiseDAL()
+        {
+            if (_initialised)
+                return true;
+
+            // get current assembly path
+            string XMLFile = System.Reflection.Assembly.GetExecutingAssembly().CodeBase;
+            _Path = System.IO.Path.GetDirectoryName(XMLFile);
+            XMLFile = System.IO.Path.GetDirectoryName(XMLFile) + @"\HSCConfig.xml";
+            XMLFile = XMLFile.Length == 0 ? "" :  XMLFile.Replace("file:\\", "");
+            string xmlFile2 = Shared.Utilities.CurrentPath(true);
+
+            if (!File.Exists(XMLFile))
+                return (false);
+
+            // Set Connection String
+            string password = Utilities.Decrypt(GetXMLValue(XMLFile, "Connection", "Password"), PASSWORD_ENCRYPTION_KEY);
+            string standardConnectionString = GetXMLValue(XMLFile, "Connection", "ConnectionString");
+            standardConnectionString = String.Format(standardConnectionString, password);
+            FirebirdDB.ConnectionStringSet(DatabaseType.Standard, standardConnectionString);
+
+            foreach (string connectionName in Enum.GetNames(typeof(DatabaseType)))
+            {
+                if (connectionName == "Standard")
+                    continue;
+
+                string altConnection = GetXMLValue(XMLFile, "Connection", connectionName, standardConnectionString);
+                altConnection = String.Format(altConnection, password);
+                FirebirdDB.ConnectionStringSet((DatabaseType)Enum.Parse(typeof(DatabaseType), connectionName), altConnection);
+            }
+
+            _StoreID = Utilities.StrToIntDef(GetXMLValue(XMLFile, "Options", "StoreID"), 0);
+            _TillID = Utilities.StrToIntDef(GetXMLValue(XMLFile, "Options", "TillID"), 0);
+
+            FirebirdDB.Prepare();
+
+            ThreadManager.ThreadStopped += ThreadManager_ThreadStopped;
+
             return true;
         }
 
@@ -4161,51 +4211,6 @@ namespace SharedBase.DAL
             }
 
             return (DefaultValue);
-        }
-
-        /// <summary>
-        /// Returns an instance of a database class using config values
-        /// </summary>
-        /// <returns>An instance of a database class using config values</returns>
-        private static bool InitialiseDAL()
-        {
-            if (_initialised)
-                return (true);
-
-            // get current assembly path
-            string XMLFile = System.Reflection.Assembly.GetExecutingAssembly().CodeBase;
-            _Path = System.IO.Path.GetDirectoryName(XMLFile);
-            XMLFile = System.IO.Path.GetDirectoryName(XMLFile) + @"\HSCConfig.xml";
-            XMLFile = XMLFile.Length == 0 ? "" :  XMLFile.Replace("file:\\", "");
-            string xmlFile2 = Shared.Utilities.CurrentPath(true);
-
-            if (!File.Exists(XMLFile))
-                return (false);
-
-            // Set Connection String
-            string password = Utilities.Decrypt(GetXMLValue(XMLFile, "Connection", "Password"), PASSWORD_ENCRYPTION_KEY);
-            string standardConnectionString = GetXMLValue(XMLFile, "Connection", "ConnectionString");
-            standardConnectionString = String.Format(standardConnectionString, password);
-            FirebirdDB.ConnectionStringSet(DatabaseType.Standard, standardConnectionString);
-
-            foreach (string connectionName in Enum.GetNames(typeof(DatabaseType)))
-            {
-                if (connectionName == "Standard")
-                    continue;
-
-                string altConnection = GetXMLValue(XMLFile, "Connection", connectionName, standardConnectionString);
-                altConnection = String.Format(altConnection, password);
-                FirebirdDB.ConnectionStringSet((DatabaseType)Enum.Parse(typeof(DatabaseType), connectionName), altConnection);
-            }
-
-            _StoreID = Utilities.StrToIntDef(GetXMLValue(XMLFile, "Options", "StoreID"), 0);
-            _TillID = Utilities.StrToIntDef(GetXMLValue(XMLFile, "Options", "TillID"), 0);
-
-            FirebirdDB.Prepare();
-
-            ThreadManager.ThreadStopped += ThreadManager_ThreadStopped;
-
-            return (true);
         }
 
         static void ThreadManager_ThreadStopped(object sender, ThreadManagerEventArgs e)

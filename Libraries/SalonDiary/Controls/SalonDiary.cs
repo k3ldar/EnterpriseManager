@@ -11,7 +11,7 @@
  *
  *  The Original Code was created by Simon Carter (s1cart3r@gmail.com)
  *
- *  Copyright (c) 2010 - 2018 Simon Carter.  All Rights Reserved.
+ *  Copyright (c) 2010 - 2019 Simon Carter.  All Rights Reserved.
  *
  *  Product:  Enterprise Manager
  *  
@@ -23,29 +23,23 @@
  *  
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+using Calendar;
+using Languages;
+using SalonDiary.Classes;
+using Shared;
+using Shared.Classes;
+using SharedBase;
+using SharedBase.BOL.Appointments;
+using SharedBase.BOL.Therapists;
+using SharedBase.BOL.Users;
+using SharedBase.BOLEvents;
+using SharedControls.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Windows.Forms;
 using System.Threading;
-
-using Calendar;
-
-using SharedControls.Interfaces;
-
-using Shared;
-using Shared.Classes;
-
-using SharedBase;
-using SharedBase.BOLEvents;
-using SharedBase.BOL.Users;
-using SharedBase.BOL.Appointments;
-using SharedBase.BOL.Therapists;
-
-using Languages;
-
-using SalonDiary.Classes;
+using System.Windows.Forms;
 
 #pragma warning disable IDE0018 // Variable declaration can be inlined
 #pragma warning disable IDE0017 // Object initialization can be simplified
@@ -147,7 +141,7 @@ namespace SalonDiary.Controls
         {
 #if DEBUG
             DebugData = new List<DebugInfo>();
-            
+
             LoadDebugString("SalonDiary Loading");
 #endif
             _lastMinuteCheck = DateTime.Now.Minute;
@@ -211,7 +205,7 @@ namespace SalonDiary.Controls
         private void Appointments_OnNewAppointment(object sender, NewAppointmentArgs e)
         {
 #if DEBUG
-            LoadDebugString(String.Format("Appointments_OnNewAppointment - Appointment: {0}", 
+            LoadDebugString(String.Format("Appointments_OnNewAppointment - Appointment: {0}",
                 e.Appointment.ToString()));
 #endif
             RefreshCalendarAppointmentList();
@@ -378,8 +372,8 @@ namespace SalonDiary.Controls
                         {
                             SharedBase.BOL.Appointments.Appointment ap = (SharedBase.BOL.Appointments.Appointment)m_App.Object;
 
-                            if ((ap.Status == Enums.AppointmentStatus.Deleted) || 
-                                (ap.Status == Enums.AppointmentStatus.CancelledByStaff || 
+                            if ((ap.Status == Enums.AppointmentStatus.Deleted) ||
+                                (ap.Status == Enums.AppointmentStatus.CancelledByStaff ||
                                 ap.Status == Enums.AppointmentStatus.CancelledByUser) && !ShowCancelled)
                             {
 #if DEBUG
@@ -416,7 +410,7 @@ namespace SalonDiary.Controls
 
                 args.Appointments = m_Apps;
 #if DEBUG
-            LoadDebugString("dayView1_resolveAppointments END");
+                LoadDebugString("dayView1_resolveAppointments END");
 #endif
             }
             finally
@@ -493,7 +487,7 @@ namespace SalonDiary.Controls
             Appointments appointments = Appointments.Get(dateFrom, dateTo, _showCancelledAppointments);
 
 #if DEBUG
-            LoadDebugString(String.Format("BuildCalendarAppointmentList - {0} appointments retrieved between {1} and {2}", 
+            LoadDebugString(String.Format("BuildCalendarAppointmentList - {0} appointments retrieved between {1} and {2}",
                 appointments.Count, dateFrom.ToString("g"), dateTo.ToString("g")));
 #endif
 
@@ -605,8 +599,8 @@ namespace SalonDiary.Controls
                             _allAppointments.Remove(h_ap.ID);
 
 #if DEBUG
-            LoadDebugString(String.Format("BuildCalendarAppointmentList - Appointment Removed for Replication: {0}", 
-                ap.Object.ToString()));
+                            LoadDebugString(String.Format("BuildCalendarAppointmentList - Appointment Removed for Replication: {0}",
+                                ap.Object.ToString()));
 #endif
 
                             if (_allAppointments.Contains(h_ap))
@@ -742,7 +736,7 @@ namespace SalonDiary.Controls
                 }
             }
             catch (InvalidAsynchronousStateException)
-            { 
+            {
                 // do nothing...
             }
         }
@@ -797,7 +791,7 @@ namespace SalonDiary.Controls
                 calAppt.Locked = true;
 
             if (_user.HasPermissionCalendar(SecurityEnums.SecurityPermissionsCalendar.ShowDebugInformation))
-                calAppt.Title = appt.GetAppointmentText(ShowNameFirst) + StringConstants.LINE_FEED + 
+                calAppt.Title = appt.GetAppointmentText(ShowNameFirst) + StringConstants.LINE_FEED +
                     String.Format(StringConstants.APPOINTMENT_ID, appt.ID.ToString()) + StringConstants.LINE_FEED;
             else
                 calAppt.Title = appt.GetAppointmentText(ShowNameFirst);
@@ -1000,7 +994,7 @@ namespace SalonDiary.Controls
         private void dayView1_NewAppointment(object sender, NewAppointmentEventArgs e)
         {
 #if DEBUG
-            LoadDebugString(String.Format("dayView1_NewAppointment - Column: {0}; Title: {1}; Start: {2}; End: {3}", 
+            LoadDebugString(String.Format("dayView1_NewAppointment - Column: {0}; Title: {1}; Start: {2}; End: {3}",
                e.Column, e.Title, e.StartDate.ToString("g"), e.EndDate.ToString("g")));
 #endif
         }
@@ -1014,7 +1008,7 @@ namespace SalonDiary.Controls
             SharedBase.BOL.Appointments.Appointment appt = (SharedBase.BOL.Appointments.Appointment)e.Appointment.Object;
 
             bool AllowTreatments = true;
-            
+
             if (!e.Appointment.Locked && appt != null && e.Appointment.StartDate >= DateTime.Now)
             {
                 Therapist newtherapist;
@@ -1042,7 +1036,7 @@ namespace SalonDiary.Controls
                 }
 
                 if (appt.AppointmentType == 0 && !Appointments.IsMaximumAllowed(AppointmentTreatments.Get(appt.TreatmentID),
-                    e.Appointment.StartDate, Shared.Utilities.TimeToDouble(e.Appointment.StartDate.ToString(StringConstants.DIARY_TIME_FORMAT)), 
+                    e.Appointment.StartDate, Shared.Utilities.TimeToDouble(e.Appointment.StartDate.ToString(StringConstants.DIARY_TIME_FORMAT)),
                     (int)appt.ID))
                 {
                     ShowError(LanguageStrings.AppDiaryMaxAllowed, LanguageStrings.AppDiaryMaxTreatments);
@@ -1052,7 +1046,7 @@ namespace SalonDiary.Controls
 
                 if (appt.AppointmentType == 0 && !AllowTreatments)
                 {
-                    ShowError(LanguageStrings.AppDiaryTreatments, 
+                    ShowError(LanguageStrings.AppDiaryTreatments,
                         String.Format(LanguageStrings.AppDiaryNoTreatmentsOnDay, newtherapist.EmployeeName));
                     ForceRefresh(false);
                     return;
@@ -1242,7 +1236,7 @@ namespace SalonDiary.Controls
                     {
                         e.Icon = ToolTipIcon.None;
                         e.ShowBalloon = false;
-                        e.Text = String.Format(LanguageStrings.AppDiaryEditWrokingHours, therapist.EmployeeName, 
+                        e.Text = String.Format(LanguageStrings.AppDiaryEditWrokingHours, therapist.EmployeeName,
                             e.CurrentCellDateTime.ToShortDateString());
                         return;
                     }
@@ -1289,8 +1283,8 @@ namespace SalonDiary.Controls
                     {
                         e.Title = String.Format(LanguageStrings.AppDiaryApptUser, diaryAppt.UserName);
                         e.Text += String.Format(LanguageStrings.AppDiaryApptHintTreatment, diaryAppt.TreatmentName,
-                            diaryAppt.EmployeeName, diaryAppt.UserName, diaryAppt.StatusText, 
-                            Shared.Utilities.DoubleToTime(diaryAppt.StartTime), 
+                            diaryAppt.EmployeeName, diaryAppt.UserName, diaryAppt.StatusText,
+                            Shared.Utilities.DoubleToTime(diaryAppt.StartTime),
                             Shared.Utilities.FormatPhoneNumber(diaryAppt.User.Telephone));
                     }
                     else
@@ -1304,7 +1298,7 @@ namespace SalonDiary.Controls
                     }
 
                     if (diaryAppt.Notes != String.Empty)
-                        e.Text += String.Format(StringConstants.CARRIAGE_RETURN + StringConstants.CARRIAGE_RETURN + 
+                        e.Text += String.Format(StringConstants.CARRIAGE_RETURN + StringConstants.CARRIAGE_RETURN +
                             LanguageStrings.AppDiaryNotes, diaryAppt.Notes);
 
                     if (diaryAppt.User.VIPCustomer)
@@ -1378,7 +1372,7 @@ namespace SalonDiary.Controls
         private void dayView1_AppointmentSelected(object sender, AppointmentSelectedEventArgs e)
         {
 #if DEBUG
-            LoadDebugString(String.Format("dayView1_AppointmentSelected - Selected: {1}; Appointment: {0}", 
+            LoadDebugString(String.Format("dayView1_AppointmentSelected - Selected: {1}; Appointment: {0}",
                 e.Appointment == null ? "No Appointment" : e.Appointment.Object.ToString(), e.Selected));
 #endif
             if (e.Appointment == null)
@@ -1417,7 +1411,7 @@ namespace SalonDiary.Controls
                         e.Graphics.DrawImage(imageHeaderOverlays.Images[1], new Point(e.Rectangle.Right - 18, e.Rectangle.Height - 18));
                     else
                         if (_imageOverlaysOverridden)
-                            e.Graphics.DrawImage(imageHeaderOverlays.Images[0], new Point(e.Rectangle.Right - 18, e.Rectangle.Height - 18));
+                        e.Graphics.DrawImage(imageHeaderOverlays.Images[0], new Point(e.Rectangle.Right - 18, e.Rectangle.Height - 18));
 
                 }
             }
@@ -1426,7 +1420,7 @@ namespace SalonDiary.Controls
         private void dayView1_WorkingHours(object sender, WorkingHoursEventArgs e)
         {
 #if DEBUG
-            LoadDebugString(String.Format("dayview1_WorkingHours START- Column: {0}; Date: {1}; CanWork: {2}; Start: {3}:{4}; Finish: {5}:{6}", 
+            LoadDebugString(String.Format("dayview1_WorkingHours START- Column: {0}; Date: {1}; CanWork: {2}; Start: {3}:{4}; Finish: {5}:{6}",
                 e.Column, e.Date.ToString("g"), e.CanWork, e.WorkingHourStart, e.WorkingMinuteStart, e.WorkingHourFinish, e.WorkingMinuteFinish));
 #endif
 
@@ -1487,11 +1481,11 @@ namespace SalonDiary.Controls
 
         }
 
-        private bool CanWorkOnDay(DateTime startDateTime, DateTime finishDateTime, Therapist therapist, 
+        private bool CanWorkOnDay(DateTime startDateTime, DateTime finishDateTime, Therapist therapist,
             bool IncludeTime, out bool AllowTreatments)
         {
 #if DEBUG
-            LoadDebugString(String.Format("CanWorkOnDay - Therapist: {0}; IncludeTime: {1}; Start: {2}; Finish: {3}", 
+            LoadDebugString(String.Format("CanWorkOnDay - Therapist: {0}; IncludeTime: {1}; Start: {2}; Finish: {3}",
                 therapist.ToString(), IncludeTime, startDateTime.ToString("g"), finishDateTime.ToString("g")));
 #endif
 
@@ -1588,9 +1582,9 @@ namespace SalonDiary.Controls
 
                 if (treat != null)
                 {
-                    lockAppointmentToolStripMenuItem.Enabled = !treat.IsLocked && 
+                    lockAppointmentToolStripMenuItem.Enabled = !treat.IsLocked &&
                         _user.HasPermissionCalendar(SecurityEnums.SecurityPermissionsCalendar.LockAppointments);
-                    unlockAppointmentToolStripMenuItem.Enabled = treat.IsLocked && 
+                    unlockAppointmentToolStripMenuItem.Enabled = treat.IsLocked &&
                         (treat.LockedBy == _user.ID || _user.HasPermissionCalendar(SecurityEnums.SecurityPermissionsCalendar.UnlockAnyAppointment));
                     calendarMenuTakePayment.Enabled = treat.AppointmentType == 0 && treat.Status == Enums.AppointmentStatus.Arrived;
 
@@ -1926,7 +1920,7 @@ namespace SalonDiary.Controls
             Calendar.Appointment appt = dayView1.SelectedAppointment;
 
 #if DEBUG
-            LoadDebugString(String.Format("UpdateStatus - Status: {0}; Appointment: {1}", 
+            LoadDebugString(String.Format("UpdateStatus - Status: {0}; Appointment: {1}",
                 status.ToString(), appt.Object.ToString()));
 #endif
 
@@ -1962,7 +1956,7 @@ namespace SalonDiary.Controls
                     // start a waiting list thread
                     WaitingListThread checkWaitingList = new WaitingListThread(treat);
                     checkWaitingList.ThreadFinishing += checkWaitingList_ThreadFinishing;
-                    Shared.Classes.ThreadManager.ThreadStart(checkWaitingList, 
+                    Shared.Classes.ThreadManager.ThreadStart(checkWaitingList,
                         StringConstants.THREAD_NAME_CHECK_WAIT_LIST, ThreadPriority.Lowest);
 
                     break;
@@ -1983,7 +1977,7 @@ namespace SalonDiary.Controls
         #endregion Calendar
 
         #region Properties
-        
+
 #if DEBUG
         /// <summary>
         /// Contains Debug Data
@@ -1994,7 +1988,7 @@ namespace SalonDiary.Controls
         /// <summary>
         /// Determines wether appointments are cached or read directly from the database
         /// </summary>
-        public bool CacheAppointments 
+        public bool CacheAppointments
         {
             get
             {
@@ -2790,7 +2784,7 @@ namespace SalonDiary.Controls
             }
         }
 
-        public Color AppointmentDeleted 
+        public Color AppointmentDeleted
         {
             get
             {
@@ -2853,7 +2847,7 @@ namespace SalonDiary.Controls
                 if (_isLoading)
                     return;
 #if DEBUG
-            LoadDebugString(String.Format("ForceRefresh - Reload: {0}", ReloadFromDatabase.ToString()));
+                LoadDebugString(String.Format("ForceRefresh - Reload: {0}", ReloadFromDatabase.ToString()));
 #endif
 
                 if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
@@ -2913,7 +2907,7 @@ namespace SalonDiary.Controls
         /// <returns></returns>
         public string EmployeeName(int Index)
         {
-            if (Index > cmbTherapists.Items.Count -1)
+            if (Index > cmbTherapists.Items.Count - 1)
                 return (String.Empty);
             Therapist employee = (Therapist)cmbTherapists.Items[Index];
             return (employee.EmployeeName.Trim());
@@ -2925,7 +2919,7 @@ namespace SalonDiary.Controls
         /// <param name="oldID">ID of appointment</param>
         /// <param name="newID">New ID for appointment</param>
         public void AppointmentIDChanged(Int64 oldID, Int64 newID)
-        {            
+        {
             this.Cursor = Cursors.WaitCursor;
             try
             {
@@ -3012,7 +3006,7 @@ namespace SalonDiary.Controls
             return (args.ClonedDate);
         }
 
-        private void RaiseEditAppointment(SharedBase.BOL.Appointments.Appointment Appointment, 
+        private void RaiseEditAppointment(SharedBase.BOL.Appointments.Appointment Appointment,
             bool IsLocked)
         {
 #if DEBUG
@@ -3036,7 +3030,7 @@ namespace SalonDiary.Controls
         private DateTime RaiseCreateAppointment(DateTime DateTime, Therapist Therapist)
         {
 #if DEBUG
-            LoadDebugString(String.Format("RaiseCreateAppointment: DateTime: {0}; Therapist: {1}", 
+            LoadDebugString(String.Format("RaiseCreateAppointment: DateTime: {0}; Therapist: {1}",
                 DateTime.ToString("g"), Therapist.ToString()));
 #endif
             CreateAppointmentEventArgs args = new CreateAppointmentEventArgs(DateTime, Therapist);
@@ -3130,7 +3124,7 @@ namespace SalonDiary.Controls
         private void RaiseEditWorkingHours(Therapist Therapist, DateTime Date)
         {
 #if DEBUG
-            LoadDebugString(String.Format("RaiseEditWorkingHours - Date: {0}; Therapist: {1}", 
+            LoadDebugString(String.Format("RaiseEditWorkingHours - Date: {0}; Therapist: {1}",
                 Date.ToString("g"), Therapist.ToString()));
 #endif
 
@@ -3439,7 +3433,7 @@ namespace SalonDiary.Controls
                     SharedBase.BOL.Appointments.Appointment appt = new SharedBase.BOL.Appointments.Appointment(
                        -1, therapist.EmployeeID, _mouseDate, start, Duration, Enums.AppointmentStatus.Confirmed, AppointmentType, 0, Message,
                        therapist.EmployeeID, therapist.EmployeeName, String.Empty, -1, DateTime.Now, DateTime.Now, -1, DateTime.Now.AddYears(-100));
-                    appt.Notes = String.Format(LanguageStrings.AppDiaryBookedByOn, 
+                    appt.Notes = String.Format(LanguageStrings.AppDiaryBookedByOn,
                         _user.UserName, DateTime.Now.ToShortDateString(), notes);
                     appt.Save(_user);
 
@@ -3448,7 +3442,7 @@ namespace SalonDiary.Controls
                     appt = new SharedBase.BOL.Appointments.Appointment(
                        -1, therapist.EmployeeID, _mouseDate, Start, Duration, Enums.AppointmentStatus.Confirmed, AppointmentType, 0, Message,
                         therapist.EmployeeID, therapist.EmployeeName, String.Empty, -1, DateTime.Now, DateTime.Now, -1, DateTime.Now.AddYears(-100));
-                    appt.Notes = String.Format(LanguageStrings.AppDiaryBookedByOn, 
+                    appt.Notes = String.Format(LanguageStrings.AppDiaryBookedByOn,
                         _user.UserName, DateTime.Now.ToShortDateString(), notes);
                     appt.Save(_user);
 
@@ -3458,7 +3452,7 @@ namespace SalonDiary.Controls
                     SharedBase.BOL.Appointments.Appointment appt = new SharedBase.BOL.Appointments.Appointment(
                        -1, therapist.EmployeeID, _mouseDate, start, duration, Enums.AppointmentStatus.Confirmed, AppointmentType, 0, Message,
                        therapist.EmployeeID, therapist.EmployeeName, String.Empty, -1, DateTime.Now, DateTime.Now, -1, DateTime.Now.AddYears(-100));
-                    appt.Notes = String.Format(LanguageStrings.AppDiaryBookedByOn, 
+                    appt.Notes = String.Format(LanguageStrings.AppDiaryBookedByOn,
                         _user.UserName, DateTime.Now.ToShortDateString(), notes);
 
                     appt.Save(_user);
@@ -3824,10 +3818,9 @@ namespace SalonDiary.Controls
                     notify.FadeOut = true;
                     notify.AutomaticallyClose = 45;
 
-#warning update this one asap
-                    //notify.NotifyPosition = Shared.NotificationPosition.BottomRight;
+                    notify.NotifyPosition = NotificationPosition.BottomRight;
 
-                    //notify.NotifyEffect = Shared.NotificationEffect.Slide;
+                    notify.NotifyEffect = NotificationEffect.Slide;
                     notify.Show();
                 }
             }
@@ -3835,7 +3828,7 @@ namespace SalonDiary.Controls
 
         public void NotifyCancelled(object sender, EventArgs e)
         {
-            
+
         }
 
         public void NotifyClicked(object sender, EventArgs e)
@@ -3852,7 +3845,7 @@ namespace SalonDiary.Controls
 
         public void NotifyTimeOut(object sender, EventArgs e)
         {
-            
+
         }
 
         #endregion Notifications
@@ -3880,7 +3873,7 @@ namespace SalonDiary.Controls
             RemoveTime = DateTime.Now.AddMinutes(10);
         }
 
-    #region Properties
+        #region Properties
 
         /// <summary>
         /// Debug Information

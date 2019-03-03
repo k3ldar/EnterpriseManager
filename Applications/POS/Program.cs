@@ -11,7 +11,7 @@
  *
  *  The Original Code was created by Simon Carter (s1cart3r@gmail.com)
  *
- *  Copyright (c) 2010 - 2018 Simon Carter.  All Rights Reserved.
+ *  Copyright (c) 2010 - 2019 Simon Carter.  All Rights Reserved.
  *
  *  Product:  Enterprise Manager
  *  
@@ -71,10 +71,13 @@ namespace PointOfSale
             {
                 return;
             }
-
+           
             Shared.Classes.ThreadManager.Initialise();
             try
             {
+                if (!SharedBase.DAL.DALHelper.InitialiseDAL())
+                    throw new InvalidProgramException(StringConstants.ERROR_DAL_INITIALISATION_FAILED);
+
                 bool createdNew = true;
                 try
                 {

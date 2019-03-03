@@ -262,7 +262,7 @@
       <HintPath>..\..\..\Applications\packages\Newtonsoft.Json.Bson.1.0.2\lib\net45\Newtonsoft.Json.Bson.dll</HintPath>
     </Reference>
     <Reference Include="SharedBaseCore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Applications\packages\SharedBaseCore.3.8.0\lib\net461\SharedBaseCore.dll</HintPath>
+      <HintPath>..\..\..\Applications\packages\SharedBaseCore.3.8.1\lib\net461\SharedBaseCore.dll</HintPath>
     </Reference>
     <Reference Include="SharedControls, Version=2.9.0.0, Culture=neutral, PublicKeyToken=eb57f133a9520019, processorArchitecture=MSIL">
       <HintPath>..\..\..\Applications\packages\SC.SharedControls.2.9.0\lib\net461\SharedControls.dll</HintPath>
