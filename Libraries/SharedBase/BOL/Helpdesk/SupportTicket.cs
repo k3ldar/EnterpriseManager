@@ -103,7 +103,7 @@ namespace SharedBase.BOL.Helpdesk
         {
             get
             {
-                return (_ID);
+                return _ID;
             }
         }
 
@@ -118,7 +118,7 @@ namespace SharedBase.BOL.Helpdesk
                     Result = DAL.FirebirdDB.HelpdeskSupportTicketMessagesGet(this);
                 }
 
-                return (Result);
+                return Result;
             }
         }
 
@@ -126,7 +126,7 @@ namespace SharedBase.BOL.Helpdesk
         {
             get
             {
-                return (_TicketKey);
+                return _TicketKey;
             }
         }
 
@@ -134,7 +134,7 @@ namespace SharedBase.BOL.Helpdesk
         {
             get
             {
-                return (_LastUpdated);
+                return _LastUpdated;
             }
         }
 
@@ -142,7 +142,7 @@ namespace SharedBase.BOL.Helpdesk
         {
             get
             {
-                return (_LastUpdatedBy);
+                return _LastUpdatedBy;
             }
         }
 
@@ -150,7 +150,7 @@ namespace SharedBase.BOL.Helpdesk
         {
             get
             {
-                return (_Subject);
+                return _Subject;
             }
         }
 
@@ -158,7 +158,7 @@ namespace SharedBase.BOL.Helpdesk
         {
             get
             {
-                return (_Department);
+                return _Department;
             }
         }
 
@@ -166,7 +166,7 @@ namespace SharedBase.BOL.Helpdesk
         {
             get
             {
-                return (_Status);
+                return _Status;
             }
 
             set
@@ -189,7 +189,7 @@ namespace SharedBase.BOL.Helpdesk
         {
             get
             {
-                return (_Priority);
+                return _Priority;
             }
         }
 
@@ -197,7 +197,7 @@ namespace SharedBase.BOL.Helpdesk
         {
             get
             {
-                return (_Created);
+                return _Created;
             }
         }
 
@@ -205,7 +205,7 @@ namespace SharedBase.BOL.Helpdesk
         {
             get
             {
-                return (_CreatedBy);
+                return _CreatedBy;
             }
         }
 
@@ -213,7 +213,7 @@ namespace SharedBase.BOL.Helpdesk
         {
             get
             {
-                return (_CreatedByEmail);
+                return _CreatedByEmail;
             }
         }
 

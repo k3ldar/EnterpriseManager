@@ -109,7 +109,7 @@ namespace SharedBase.BOL.DatabaseUpdates
         { 
             get
             {
-                return (_upDateColumnNames);
+                return _upDateColumnNames;
             }
 
             private set
@@ -139,7 +139,7 @@ namespace SharedBase.BOL.DatabaseUpdates
         {
             get
             {
-                return (_updateColumns);
+                return _updateColumns;
             }
         }
 
@@ -196,12 +196,12 @@ namespace SharedBase.BOL.DatabaseUpdates
 
         public int TestSQL()
         {
-            return (DAL.FirebirdDB.AutoUpdateExecute(this, true));
+            return DAL.FirebirdDB.AutoUpdateExecute(this, true);
         }
 
         public AutoUpdateItems GetItems()
         {
-            return (DAL.FirebirdDB.AutoUpdateItemsGet(this));
+            return DAL.FirebirdDB.AutoUpdateItemsGet(this);
         }
 
         #endregion Public Methods

@@ -108,7 +108,7 @@ namespace SharedBase.Backup
                     Result = _backups.Count > 0;
                 }
 
-                return (Result);
+                return Result;
             }
         }
 
@@ -124,7 +124,7 @@ namespace SharedBase.Backup
                 Result = _backups.ContainsKey(name);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Public Properties
@@ -163,7 +163,7 @@ namespace SharedBase.Backup
                     ErrorHandling.LogError(MethodBase.GetCurrentMethod(), err, options);
 
                     if (!System.IO.File.Exists(backupFile))
-                        return (false);
+                        return false;
                 }
 
                 DoOnStageChanged(DatabaseBackupStage.DatabaseBackupComplete);
@@ -176,7 +176,7 @@ namespace SharedBase.Backup
                 if (!System.IO.File.Exists(backupFile.Replace(".fbk", ".zip")))
                 {
                     Shared.EventLog.Add("Zip File Not Found");
-                    return (false);
+                    return false;
                 }
 
                 if (options.Upload)
@@ -204,7 +204,7 @@ namespace SharedBase.Backup
                 DoOnStageChanged(DatabaseBackupStage.BackupComplete);
             }
 
-            return (false);
+            return false;
         }
 
         #endregion Overridden Methods
@@ -298,7 +298,7 @@ namespace SharedBase.Backup
 
         public override string ToString()
         {
-            return (String.Format("{0} - {1}", Name, Path));
+            return String.Format("{0} - {1}", Name, Path);
         }
 
         #endregion Public Overridden Methods

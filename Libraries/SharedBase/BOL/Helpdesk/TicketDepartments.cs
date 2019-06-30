@@ -39,12 +39,12 @@ namespace SharedBase.BOL.Helpdesk
 
         public static TicketDepartment Create(string description)
         {
-            return (DAL.FirebirdDB.HelpdeskTicketDepartmentInsert(description));
+            return DAL.FirebirdDB.HelpdeskTicketDepartmentInsert(description);
         }
 
         public static TicketDepartments Get()
         {
-            return (DAL.FirebirdDB.HelpdeskTicketDepartmentsGet());
+            return DAL.FirebirdDB.HelpdeskTicketDepartmentsGet();
         }
 
         #endregion Static Methods
@@ -57,7 +57,7 @@ namespace SharedBase.BOL.Helpdesk
         {
             get
             {
-                return ((TicketDepartment)this.InnerList[Index]);
+                return (TicketDepartment)this.InnerList[Index];
             }
 
             set
@@ -77,7 +77,7 @@ namespace SharedBase.BOL.Helpdesk
         /// <returns></returns>
         public int Add(TicketDepartment value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace SharedBase.BOL.Helpdesk
         /// <returns></returns>
         public int IndexOf(TicketDepartment value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace SharedBase.BOL.Helpdesk
         public bool Contains(TicketDepartment value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

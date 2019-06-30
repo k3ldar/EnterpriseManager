@@ -41,7 +41,7 @@ namespace SharedBase.BOL.Locations
         /// <returns>Locations Collection</returns>
         public static Locations Get()
         {
-            return (DAL.FirebirdDB.StoreLocationsGet());
+            return DAL.FirebirdDB.StoreLocationsGet();
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace SharedBase.BOL.Locations
         /// <returns>StoreLocation object</returns>
         public static StoreLocation Get(int id)
         {
-            return (DAL.FirebirdDB.StoreLocationGet(id));
+            return DAL.FirebirdDB.StoreLocationGet(id);
         }
 
         #endregion Static Methods
@@ -69,7 +69,7 @@ namespace SharedBase.BOL.Locations
         {
             get
             {
-                return ((StoreLocation)this.InnerList[Index]);
+                return (StoreLocation)this.InnerList[Index];
             }
 
             set
@@ -89,7 +89,7 @@ namespace SharedBase.BOL.Locations
         /// <returns></returns>
         public int Add(StoreLocation value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace SharedBase.BOL.Locations
         /// <returns></returns>
         public int IndexOf(StoreLocation value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace SharedBase.BOL.Locations
         public bool Contains(StoreLocation value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

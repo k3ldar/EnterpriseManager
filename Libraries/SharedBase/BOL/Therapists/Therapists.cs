@@ -63,7 +63,7 @@ namespace SharedBase.BOL.Therapists
                 CachedItemAdd("All Therapists", therapists);
             }
 
-            return ((Therapists)therapists.Value);
+            return (Therapists)therapists.Value;
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace SharedBase.BOL.Therapists
         /// <returns>Therapists collection containing the Therapist</returns>
         public static Therapist Get(Int64 TherapistID)
         {
-            return (DAL.FirebirdDB.TherapistsGet(TherapistID));
+            return DAL.FirebirdDB.TherapistsGet(TherapistID);
         }
 
         public static Therapist GetTherapist(Int64 therapistID)
@@ -84,7 +84,7 @@ namespace SharedBase.BOL.Therapists
 
             if (therapist != null)
             {
-                return ((Therapist)therapist.Value);
+                return (Therapist)therapist.Value;
             }
 
             foreach (Therapist ther in Get())
@@ -94,16 +94,16 @@ namespace SharedBase.BOL.Therapists
                     therapist = new CacheItem(name, ther);
                     CachedItemAdd(name, therapist);
 
-                    return (ther);
+                    return ther;
                 }
             }
 
-            return (null);
+            return null;
         }
 
         public static Therapists Get(bool PublicOnly)
         {
-            return (DAL.FirebirdDB.TherapistsGet(PublicOnly));
+            return DAL.FirebirdDB.TherapistsGet(PublicOnly);
         }
 
         #endregion Static Methods
@@ -126,7 +126,7 @@ namespace SharedBase.BOL.Therapists
                 i++;
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Public Methods
@@ -139,7 +139,7 @@ namespace SharedBase.BOL.Therapists
         {
             get
             {
-                return ((Therapist)this.InnerList[Index]);
+                return (Therapist)this.InnerList[Index];
             }
 
             set
@@ -159,7 +159,7 @@ namespace SharedBase.BOL.Therapists
         /// <returns></returns>
         public int Add(Therapist value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -169,7 +169,7 @@ namespace SharedBase.BOL.Therapists
         /// <returns></returns>
         public int IndexOf(Therapist value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -201,7 +201,7 @@ namespace SharedBase.BOL.Therapists
         public bool Contains(Therapist value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

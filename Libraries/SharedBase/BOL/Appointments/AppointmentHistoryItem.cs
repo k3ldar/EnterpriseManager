@@ -67,7 +67,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_id);
+                return _id;
             }
         }
 
@@ -75,7 +75,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_date);
+                return _date;
             }
         }
 
@@ -83,7 +83,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_startTime);
+                return _startTime;
             }
         }
 
@@ -91,7 +91,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_duration);
+                return _duration;
             }
         }
 
@@ -99,7 +99,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_status);
+                return _status;
             }
         }
 
@@ -107,7 +107,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_type);
+                return _type;
             }
         }
 
@@ -115,7 +115,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_employee);
+                return _employee;
             }
         }
 
@@ -123,7 +123,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_treatment);
+                return _treatment;
             }
         }
 
@@ -131,7 +131,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_notes);
+                return _notes;
             }
         }
 
@@ -139,7 +139,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_lastAltered);
+                return _lastAltered;
             }
         }
 
@@ -147,7 +147,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_alteredBy);
+                return _alteredBy;
             }
         }
 
@@ -159,32 +159,32 @@ namespace SharedBase.BOL.Appointments
         public bool StatusArrivedCompleteConfirmed(Appointment appointment)
         {
             if (_date.Date != appointment.AppointmentDate.Date)
-                return (true);
+                return true;
 
             if (_startTime != appointment.StartTime)
-                return (true);
+                return true;
 
             if (_duration != appointment.Duration)
-                return (true);
+                return true;
 
             if (_type != appointment.AppointmentType)
-                return (true);
+                return true;
 
             if (_employee != appointment.EmployeeName)
-                return (true);
+                return true;
 
             if (_treatment != appointment.TreatmentName)
-                return (true);
+                return true;
 
             if (_notes != appointment.Notes)
-                return (true);
+                return true;
 
             if (_status == Enums.AppointmentStatus.Completed | 
                 _status == Enums.AppointmentStatus.Arrived | 
                 _status == Enums.AppointmentStatus.Confirmed)
-                return (false);
+                return false;
             else
-                return (true);
+                return true;
         }
 
         /// <summary>
@@ -222,7 +222,7 @@ namespace SharedBase.BOL.Appointments
 
             Result = Result.Trim();
 
-            return (Result);
+            return Result;
         }
 
         #endregion Public Methods

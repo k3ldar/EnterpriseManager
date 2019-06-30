@@ -127,7 +127,7 @@ namespace SharedBase.BOL.Mail
 		{
 			get  
 			{ 
-				return((StatusReportEntry) List[index]);
+				return(StatusReportEntry) List[index];
 			}
 			set
 			{ 
@@ -190,7 +190,7 @@ namespace SharedBase.BOL.Mail
 			StatusReportEntry msg = value;
 			msg.ID = index + 1;
 			index++;
-			return(List.Add(msg));
+			return List.Add(msg);
 		}
 	
 		/// <summary>
@@ -200,7 +200,7 @@ namespace SharedBase.BOL.Mail
 		/// <returns></returns>
 		public int IndexOf(StatusReportEntry value) 
 		{
-			return(List.IndexOf(value));
+			return List.IndexOf(value);
 		}
 		
 		/// <summary>
@@ -233,7 +233,7 @@ namespace SharedBase.BOL.Mail
 		public bool Contains(StatusReportEntry value) 
 		{
 			// If value is not of type OBJECT_TYPE, this will return false.
-			return(List.Contains(value));
+			return List.Contains(value);
 		}
 		
 		#endregion

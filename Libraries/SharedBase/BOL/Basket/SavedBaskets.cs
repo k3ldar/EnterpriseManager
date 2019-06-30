@@ -36,12 +36,12 @@ namespace SharedBase.BOL.Basket
 
         public static bool Delete(SavedBasket basket)
         {
-            return (DAL.FirebirdDB.BasketSavedDelete(basket));
+            return DAL.FirebirdDB.BasketSavedDelete(basket);
         }
 
         public static SavedBaskets Get()
         {
-            return (DAL.FirebirdDB.BasketSavedGet());
+            return DAL.FirebirdDB.BasketSavedGet();
         }
 
         #endregion Static Methods
@@ -79,7 +79,7 @@ namespace SharedBase.BOL.Basket
         /// <returns></returns>
         public int Add(SavedBasket value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace SharedBase.BOL.Basket
         /// <returns></returns>
         public int IndexOf(SavedBasket value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace SharedBase.BOL.Basket
         public bool Contains(SavedBasket value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

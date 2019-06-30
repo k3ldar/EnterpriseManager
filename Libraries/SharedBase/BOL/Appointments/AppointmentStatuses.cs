@@ -37,17 +37,17 @@ namespace SharedBase.BOL.Appointments
 
         public static string Get(int AppointmentStatus)
         {
-            return (DAL.FirebirdDB.AppointmentStatusGet(AppointmentStatus));
+            return DAL.FirebirdDB.AppointmentStatusGet(AppointmentStatus);
         }
 
         public static AppointmentStatuses Get()
         {
-            return (DAL.FirebirdDB.AppointmentStatusGet());
+            return DAL.FirebirdDB.AppointmentStatusGet();
         }
 
         public static AppointmentStatus Get(string name)
         {
-            return (DAL.FirebirdDB.AppointmentStatusGet(name));
+            return DAL.FirebirdDB.AppointmentStatusGet(name);
         }
 
         #endregion Static Methods
@@ -60,7 +60,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return ((AppointmentStatus)this.InnerList[Index]);
+                return (AppointmentStatus)this.InnerList[Index];
             }
 
             set
@@ -80,7 +80,7 @@ namespace SharedBase.BOL.Appointments
         /// <returns></returns>
         public int Add(AppointmentStatus value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace SharedBase.BOL.Appointments
         /// <returns></returns>
         public int IndexOf(AppointmentStatus value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace SharedBase.BOL.Appointments
         public bool Contains(AppointmentStatus value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

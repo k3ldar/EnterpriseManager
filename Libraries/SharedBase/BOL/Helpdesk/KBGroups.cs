@@ -40,17 +40,17 @@ namespace SharedBase.BOL.Helpdesk
 
         public static KBGroups Get(User user)
         {
-            return (DAL.FirebirdDB.FAQGet(user));
+            return DAL.FirebirdDB.FAQGet(user);
         }
 
         public static KBGroups Get(User user, KBGroup Parent)
         {
-            return (DAL.FirebirdDB.FAQGet(user, Parent));
+            return DAL.FirebirdDB.FAQGet(user, Parent);
         }
 
         public static KBGroup Get(User user, int ID)
         {
-            return (DAL.FirebirdDB.FAQGet(user, ID));
+            return DAL.FirebirdDB.FAQGet(user, ID);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace SharedBase.BOL.Helpdesk
         /// <returns></returns>
         public static KBGroups Get()
         {
-            return (DAL.FirebirdDB.FAQGet());
+            return DAL.FirebirdDB.FAQGet();
         }
 
         #endregion Static Methods
@@ -72,7 +72,7 @@ namespace SharedBase.BOL.Helpdesk
         {
             get
             {
-                return ((KBGroup)this.InnerList[Index]);
+                return (KBGroup)this.InnerList[Index];
             }
 
             set
@@ -92,7 +92,7 @@ namespace SharedBase.BOL.Helpdesk
         /// <returns></returns>
         public int Add(KBGroup value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace SharedBase.BOL.Helpdesk
         /// <returns></returns>
         public int IndexOf(KBGroup value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace SharedBase.BOL.Helpdesk
         public bool Contains(KBGroup value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

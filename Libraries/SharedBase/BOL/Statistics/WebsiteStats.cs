@@ -43,7 +43,7 @@ namespace SharedBase.BOL.Statistics
         {
             get
             {
-                return ((WebsiteStat)List[index]);
+                return (WebsiteStat)List[index];
             }
 
 
@@ -64,7 +64,7 @@ namespace SharedBase.BOL.Statistics
         /// <returns></returns>
         public int Add(WebsiteStat value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace SharedBase.BOL.Statistics
         /// <returns></returns>
         public int IndexOf(WebsiteStat value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace SharedBase.BOL.Statistics
         public bool Contains(WebsiteStat value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

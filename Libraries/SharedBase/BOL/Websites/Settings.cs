@@ -652,7 +652,7 @@ namespace SharedBase.BOL.Websites
                     break;
             }
 
-            return (Result);
+            return Result;
         }
 
         public virtual List<string> WebSiteOptionHeaders()
@@ -691,7 +691,7 @@ namespace SharedBase.BOL.Websites
             Result.Add("Affiliates");
             Result.Add("Carousel");
 
-            return (Result);
+            return Result;
         }
 
         #endregion Virtual Methods

@@ -53,7 +53,7 @@ namespace SharedBase.BOL.Affiliate
         /// <returns></returns>
         public static AffiliateCommission Get(User user, DateTime from, DateTime to, bool isPaid, bool isNotPaid)
         {
-            return (DAL.FirebirdDB.AffiliatedCommissionGet(user, from, to, isPaid, isNotPaid));
+            return DAL.FirebirdDB.AffiliatedCommissionGet(user, from, to, isPaid, isNotPaid);
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace SharedBase.BOL.Affiliate
         {
             get
             {
-                return ((AffiliateCommissionItem)this.InnerList[Index]);
+                return (AffiliateCommissionItem)this.InnerList[Index];
             }
 
             set
@@ -122,7 +122,7 @@ namespace SharedBase.BOL.Affiliate
         /// <returns></returns>
         public int Add(AffiliateCommissionItem value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace SharedBase.BOL.Affiliate
         /// <returns></returns>
         public int IndexOf(AffiliateCommissionItem value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -164,7 +164,7 @@ namespace SharedBase.BOL.Affiliate
         public bool Contains(AffiliateCommissionItem value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

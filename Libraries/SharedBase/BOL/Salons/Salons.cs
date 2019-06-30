@@ -45,7 +45,7 @@ namespace SharedBase.BOL.Salons
         /// <returns>Salons collection</returns>
         public static Salons Get(int PageNumber, int PageSize)
         {
-            return (DAL.FirebirdDB.SalonsGet(PageNumber, PageSize));
+            return DAL.FirebirdDB.SalonsGet(PageNumber, PageSize);
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace SharedBase.BOL.Salons
         /// <returns>Salons collection</returns>
         public static Salons Find(string SalonName)
         {
-            return (DAL.FirebirdDB.SalonsFind(SalonName));
+            return DAL.FirebirdDB.SalonsFind(SalonName);
         }
 
         /// <summary>
@@ -65,12 +65,12 @@ namespace SharedBase.BOL.Salons
         /// <returns>Salon if found, otherwise null</returns>
         public static Salon Get(string SalonName)
         {
-            return (DAL.FirebirdDB.SalonFind(SalonName));
+            return DAL.FirebirdDB.SalonFind(SalonName);
         }
 
         public static Salon Get(int SalonId)
         {
-            return (DAL.FirebirdDB.SalonGet(SalonId));
+            return DAL.FirebirdDB.SalonGet(SalonId);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace SharedBase.BOL.Salons
         /// <returns>int Number of publicly available salons</returns>
         public static int GetCount()
         {
-            return (DAL.FirebirdDB.SalonsCount());
+            return DAL.FirebirdDB.SalonsCount();
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace SharedBase.BOL.Salons
         /// <returns></returns>
         public static Salons FindNearest(string Postcode)
         {
-            return (DAL.FirebirdDB.SalonsFindNearest(Postcode));
+            return DAL.FirebirdDB.SalonsFindNearest(Postcode);
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace SharedBase.BOL.Salons
         /// <returns></returns>
         public static Salon Create(string SalonName, Enums.SalonType SalonType)
         {
-            return (DAL.FirebirdDB.AdminSalonCreate(SalonName, SalonType));
+            return DAL.FirebirdDB.AdminSalonCreate(SalonName, SalonType);
         }
 
         #endregion Static Methods
@@ -120,7 +120,7 @@ namespace SharedBase.BOL.Salons
             }
 
 
-            return (Result);
+            return Result;
         }
 
         #endregion Public Methods
@@ -133,7 +133,7 @@ namespace SharedBase.BOL.Salons
         {
             get
             {
-                return ((Salon)this.InnerList[Index]);
+                return (Salon)this.InnerList[Index];
             }
 
             set
@@ -153,7 +153,7 @@ namespace SharedBase.BOL.Salons
         /// <returns></returns>
         public int Add(Salon value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace SharedBase.BOL.Salons
         /// <returns></returns>
         public int IndexOf(Salon value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -195,7 +195,7 @@ namespace SharedBase.BOL.Salons
         public bool Contains(Salon value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

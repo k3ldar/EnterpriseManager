@@ -42,7 +42,7 @@ namespace SharedBase
         {
             get
             {
-                return (_downloading);
+                return _downloading;
             }
         }
 

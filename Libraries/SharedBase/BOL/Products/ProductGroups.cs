@@ -53,7 +53,7 @@ namespace SharedBase.BOL.Products
                 break;
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Public Methods
@@ -77,9 +77,9 @@ namespace SharedBase.BOL.Products
 
 
             if (cachedResult != null)
-                return ((ProductGroups)cachedResult.Value);
+                return (ProductGroups)cachedResult.Value;
             else
-                return (DAL.FirebirdDB.ProductGroupsGet(MemberLevel, visibleOnWebsite));
+                return DAL.FirebirdDB.ProductGroupsGet(MemberLevel, visibleOnWebsite);
         }
 
         /// <summary>
@@ -104,10 +104,10 @@ namespace SharedBase.BOL.Products
                     CachedItemAdd(cacheName, Result);
                 }
                     
-                return ((ProductGroups)Result.Value);
+                return (ProductGroups)Result.Value;
             }
             else
-                return (DAL.FirebirdDB.ProductGroupsGet(groupType, MemberLevel));
+                return DAL.FirebirdDB.ProductGroupsGet(groupType, MemberLevel);
         }
 
 
@@ -119,7 +119,7 @@ namespace SharedBase.BOL.Products
         public static ProductGroup Get(Int64 ProductGroupID)
         {
             if (ProductGroupID == -1)
-                return (null);
+                return null;
 
             if (CacheAvailable)
             {
@@ -134,11 +134,11 @@ namespace SharedBase.BOL.Products
                     CachedItemAdd(cacheName, Result);
                 }
 
-                return ((ProductGroup)Result.Value);
+                return (ProductGroup)Result.Value;
             }
             else
             {
-                return (DAL.FirebirdDB.ProductGroupGet(ProductGroupID));
+                return DAL.FirebirdDB.ProductGroupGet(ProductGroupID);
             }
         }
 
@@ -153,7 +153,7 @@ namespace SharedBase.BOL.Products
         {
             get
             {
-                return ((ProductGroup)this.InnerList[Index]);
+                return (ProductGroup)this.InnerList[Index];
             }
 
             set
@@ -173,7 +173,7 @@ namespace SharedBase.BOL.Products
         /// <returns></returns>
         public int Add(ProductGroup value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -183,7 +183,7 @@ namespace SharedBase.BOL.Products
         /// <returns></returns>
         public int IndexOf(ProductGroup value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -215,7 +215,7 @@ namespace SharedBase.BOL.Products
         public bool Contains(ProductGroup value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

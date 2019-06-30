@@ -145,11 +145,11 @@ namespace SharedBase.BOL.Staff
         private DateTime GetSplitDate(CommissionSplit split)
         {
             if (UsePermanentDate)
-                return (split.Staff.DatePermanent);
+                return split.Staff.DatePermanent;
             else if (UseStartDate)
-                return (split.Staff.DateJoined);
+                return split.Staff.DateJoined;
             else
-                return (DateTime.MinValue);
+                return DateTime.MinValue;
         }
 
         #endregion Private Methods

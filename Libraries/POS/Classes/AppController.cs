@@ -295,7 +295,7 @@ namespace POS.Base.Classes
                         Application.AddMessageFilter(_appController);
                         _appController.UserTimeOut = LocalSettings.AutoLogoutTimeOut;
 
-                        System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(LocalSettings.CustomUICulture);
+                        Thread.CurrentThread.CurrentUICulture = new CultureInfo(LocalSettings.CustomUICulture);
                     }
                 }
 

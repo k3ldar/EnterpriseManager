@@ -73,7 +73,7 @@ namespace SharedBase.BOL.Orders
         {
             get
             {
-                return (_id);
+                return _id;
             }
         }
 
@@ -81,7 +81,7 @@ namespace SharedBase.BOL.Orders
         {
             get
             {
-                return (SharedUtils.FormatMoney(Cost, Order.Currency));
+                return SharedUtils.FormatMoney(Cost, Order.Currency);
             }
         }
 
@@ -89,7 +89,7 @@ namespace SharedBase.BOL.Orders
         {
             get
             {
-                return (SharedUtils.FormatMoney(Price, Order.Currency));
+                return SharedUtils.FormatMoney(Price, Order.Currency);
             }
         }
 
@@ -98,7 +98,7 @@ namespace SharedBase.BOL.Orders
         {
             get
             {
-                return (_order);
+                return _order;
             }
         }
 
@@ -106,7 +106,7 @@ namespace SharedBase.BOL.Orders
         {
             get
             {
-                return (_description);
+                return _description;
             }
         }
 
@@ -118,15 +118,15 @@ namespace SharedBase.BOL.Orders
 
                 if (ProductDiscount > 0.00m)
                 {
-                    Result = Result - ((Result / 100) * ProductDiscount);
+                    Result = Result - (Result / 100 * ProductDiscount);
                 }
 
                 if (UserDiscount > 0.00m)
                 {
-                    Result = Result - ((Result / 100) * UserDiscount);
+                    Result = Result - (Result / 100 * UserDiscount);
                 }
 
-                return (Result);
+                return Result;
             }
         }
 
@@ -134,7 +134,7 @@ namespace SharedBase.BOL.Orders
         {
             get
             {
-                return (_quantity);
+                return _quantity;
             }
         }
 
@@ -146,15 +146,15 @@ namespace SharedBase.BOL.Orders
 
                 if (ProductDiscount > 0.00m)
                 {
-                    Result = Result - ((Result / 100) * ProductDiscount);
+                    Result = Result - (Result / 100 * ProductDiscount);
                 }
 
                 if (UserDiscount > 0.00m)
                 {
-                    Result = Result - ((Result / 100) * UserDiscount);
+                    Result = Result - (Result / 100 * UserDiscount);
                 }
 
-                return (Result);
+                return Result;
             }
         }
 
@@ -162,7 +162,7 @@ namespace SharedBase.BOL.Orders
         {
             get
             {
-                return (_itemID);
+                return _itemID;
             }
         }
 
@@ -170,7 +170,7 @@ namespace SharedBase.BOL.Orders
         {
             get
             {
-                return (_productCostType);
+                return _productCostType;
             }
         }
 
@@ -197,19 +197,19 @@ namespace SharedBase.BOL.Orders
 
                 if (ProductDiscount > 0.0m)
                 {
-                    Result = (Result - ((Result / 100) * ProductDiscount));
+                    Result = Result - (Result / 100 * ProductDiscount);
                 }
 
                 if (_order.Options.HasFlag(InvoiceOptions.SageDiscountType))
                 {
                     if (_order.Discount > 0 && _order.VoucherType == Enums.InvoiceVoucherType.Percent)
                     {
-                        Result = Result - ((Result / 100) * (decimal)_order.Discount);
+                        Result = Result - (Result / 100 * (decimal)_order.Discount);
                     }
 
                     if (UserDiscount > 0)
                     {
-                        Result = Result - ((Result / 100) * UserDiscount);
+                        Result = Result - (Result / 100 * UserDiscount);
                     }
                 }
                 else
@@ -223,11 +223,11 @@ namespace SharedBase.BOL.Orders
 
                     if (totalDiscount > 0.00m)
                     {
-                        Result = Result - ((Result / 100) * totalDiscount);
+                        Result = Result - (Result / 100 * totalDiscount);
                     }
                 }
 
-                return (Result);
+                return Result;
             }
         }
 
@@ -235,8 +235,8 @@ namespace SharedBase.BOL.Orders
         {
             get
             {
-                return (SharedUtils.FormatMoney(SharedUtils.VATCalculate(Price, _order.VATRate),
-                    _order.Currency, false, true));
+                return SharedUtils.FormatMoney(SharedUtils.VATCalculate(Price, _order.VATRate),
+                    _order.Currency, false, true);
             }
         }
 
@@ -245,36 +245,36 @@ namespace SharedBase.BOL.Orders
             get
             {
                 if (UserDiscount == 0)
-                    return (0);
+                    return 0;
 
                 decimal Result = _cost * (decimal)Quantity;
 
                 if (ProductDiscount > 0.0m)
                 {
-                    Result = (Result - ((Result / 100) * ProductDiscount));
+                    Result = Result - (Result / 100 * ProductDiscount);
                 }
 
                 if (_order.Options.HasFlag(InvoiceOptions.SageDiscountType))
                 {
                     if (_order.Discount > 0 && _order.VoucherType == Enums.InvoiceVoucherType.Percent)
                     {
-                        Result = Result - ((Result / 100) * (decimal)_order.Discount);
+                        Result = Result - (Result / 100 * (decimal)_order.Discount);
                     }
 
                     if (UserDiscount > 0)
                     {
-                        Result = ((Result / 100) * UserDiscount);
+                        Result = Result / 100 * UserDiscount;
                     }
                 }
                 else
                 {
                     if (UserDiscount > 0.00m)
                     {
-                        Result = ((Result / 100) * UserDiscount);
+                        Result = Result / 100 * UserDiscount;
                     }
                 }
 
-                return (Result);
+                return Result;
             }
         }
 
@@ -283,9 +283,9 @@ namespace SharedBase.BOL.Orders
             get
             {
                 if (ProductDiscount > 0)
-                    return ((((_cost * (decimal)_order.CostMultiplier) * (decimal)Quantity) / 100) * ProductDiscount);
+                    return _cost * (decimal)_order.CostMultiplier * (decimal)Quantity / 100 * ProductDiscount;
                 else
-                    return (0);
+                    return 0;
             }
         }
 
@@ -295,7 +295,7 @@ namespace SharedBase.BOL.Orders
 
         public override string ToString()
         {
-            return (String.Format("OrderItem: {0}; Description: {1}", ID, _description));
+            return String.Format("OrderItem: {0}; Description: {1}", ID, _description);
         }
 
         #endregion Overridden Methods

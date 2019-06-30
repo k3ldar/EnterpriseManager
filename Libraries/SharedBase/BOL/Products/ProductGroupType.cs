@@ -67,7 +67,7 @@ namespace SharedBase.BOL.Products
         
         public Products GetProducts()
         {
-            return (DAL.FirebirdDB.ProductGroupTypesGetProducts(this));
+            return DAL.FirebirdDB.ProductGroupTypesGetProducts(this);
         }
 
 

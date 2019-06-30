@@ -39,7 +39,7 @@ namespace SharedBase.BOL.Helpdesk
 
         public static TicketPriorities Get()
         {
-            return (DAL.FirebirdDB.HelpdeskTicketPrioritiesGet());
+            return DAL.FirebirdDB.HelpdeskTicketPrioritiesGet();
         }
 
         #endregion Static Methods
@@ -52,7 +52,7 @@ namespace SharedBase.BOL.Helpdesk
         {
             get
             {
-                return ((TicketPriority)this.InnerList[Index]);
+                return (TicketPriority)this.InnerList[Index];
             }
 
             set
@@ -72,7 +72,7 @@ namespace SharedBase.BOL.Helpdesk
         /// <returns></returns>
         public int Add(TicketPriority value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace SharedBase.BOL.Helpdesk
         /// <returns></returns>
         public int IndexOf(TicketPriority value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace SharedBase.BOL.Helpdesk
         public bool Contains(TicketPriority value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

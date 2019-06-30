@@ -43,7 +43,7 @@ namespace SharedBase.BOL.Helpdesk
         /// <returns></returns>
         public static Int64 Add(User user, string Username, string Comments)
         {
-            return (DAL.FirebirdDB.HelpdeskCustomerCommentsAdd(user, Username, Comments));
+            return DAL.FirebirdDB.HelpdeskCustomerCommentsAdd(user, Username, Comments);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace SharedBase.BOL.Helpdesk
         /// <returns>CustomerComments collection</returns>
         public static CustomerComments Get(int PageNumber, int PageSize)
         {
-            return (DAL.FirebirdDB.HelpdeskCustomerCommentsGet(PageNumber, PageSize));
+            return DAL.FirebirdDB.HelpdeskCustomerCommentsGet(PageNumber, PageSize);
         }
 
         /// <summary>
@@ -63,22 +63,22 @@ namespace SharedBase.BOL.Helpdesk
         /// <returns>CustomerComments collection</returns>
         public static CustomerComments Get()
         {
-            return (DAL.FirebirdDB.HelpdeskCustomerCommentsGet());
+            return DAL.FirebirdDB.HelpdeskCustomerCommentsGet();
         }
 
         public static CustomerComments GetAll()
         {
-            return (DAL.FirebirdDB.AdminHelpdeskCustomerCommentsGet(1, 10000));
+            return DAL.FirebirdDB.AdminHelpdeskCustomerCommentsGet(1, 10000);
         }
 
         public static CustomerComment Get(int id)
         {
-            return (DAL.FirebirdDB.HelpdeskCustomerCommentGet(id));
+            return DAL.FirebirdDB.HelpdeskCustomerCommentGet(id);
         }
 
         public static int GetCount()
         {
-            return (DAL.FirebirdDB.AdminHelpdeskCustomerCommentsCount());
+            return DAL.FirebirdDB.AdminHelpdeskCustomerCommentsCount();
         }
 
         #endregion Static Methods
@@ -91,7 +91,7 @@ namespace SharedBase.BOL.Helpdesk
         {
             get
             {
-                return ((CustomerComment)this.InnerList[Index]);
+                return (CustomerComment)this.InnerList[Index];
             }
 
             set
@@ -111,7 +111,7 @@ namespace SharedBase.BOL.Helpdesk
         /// <returns></returns>
         public int Add(CustomerComment value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace SharedBase.BOL.Helpdesk
         /// <returns></returns>
         public int IndexOf(CustomerComment value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -153,7 +153,7 @@ namespace SharedBase.BOL.Helpdesk
         public bool Contains(CustomerComment value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

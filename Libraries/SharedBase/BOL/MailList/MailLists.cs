@@ -43,7 +43,7 @@ namespace SharedBase.BOL.MailList
         /// <returns></returns>
         public static Dictionary<string, string> Subscribers()
         {
-            return (DAL.FirebirdDB.MailListSubscribers());
+            return DAL.FirebirdDB.MailListSubscribers();
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace SharedBase.BOL.MailList
         /// <param name="reason"></param>
         public static bool UnSubscribe(string email, string reason)
         {
-            return (DAL.FirebirdDB.MailListUnsubscribe(email, reason));
+            return DAL.FirebirdDB.MailListUnsubscribe(email, reason);
         }
 
         #endregion Static Methods

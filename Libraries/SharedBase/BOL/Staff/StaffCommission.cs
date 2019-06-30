@@ -38,7 +38,7 @@ namespace SharedBase.BOL.Staff
 
         public static StaffCommission GetPool(Invoice invoice)
         {
-            return (DAL.FirebirdDB.StaffCommissionPoolGet(invoice));
+            return DAL.FirebirdDB.StaffCommissionPoolGet(invoice);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace SharedBase.BOL.Staff
         /// <returns></returns>
         public static StaffCommission Get(CommissionPool pool, DateTime from, DateTime to, bool isPaid, bool isNotPaid)
         {
-            return (DAL.FirebirdDB.StaffCommissionPoolGet(pool, from, to, isPaid, isNotPaid));
+            return DAL.FirebirdDB.StaffCommissionPoolGet(pool, from, to, isPaid, isNotPaid);
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace SharedBase.BOL.Staff
         /// <returns></returns>
         public static StaffCommission Get(StaffMember staff, DateTime from, DateTime to, bool isPaid, bool isNotPaid)
         {
-            return (DAL.FirebirdDB.StaffCommissionClientGet(staff, from, to, isPaid, isNotPaid));
+            return DAL.FirebirdDB.StaffCommissionClientGet(staff, from, to, isPaid, isNotPaid);
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace SharedBase.BOL.Staff
         {
             get
             {
-                return ((StaffCommissionItem)this.InnerList[Index]);
+                return (StaffCommissionItem)this.InnerList[Index];
             }
 
             set
@@ -121,7 +121,7 @@ namespace SharedBase.BOL.Staff
         /// <returns></returns>
         public int Add(StaffCommissionItem value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace SharedBase.BOL.Staff
         /// <returns></returns>
         public int IndexOf(StaffCommissionItem value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace SharedBase.BOL.Staff
         public bool Contains(StaffCommissionItem value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

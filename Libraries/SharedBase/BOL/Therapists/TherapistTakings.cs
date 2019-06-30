@@ -190,7 +190,7 @@ namespace SharedBase.BOL.Therapists
         {
             get
             {
-                return (_paymentType);
+                return _paymentType;
             }
         }
 

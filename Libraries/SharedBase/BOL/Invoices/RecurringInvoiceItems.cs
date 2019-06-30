@@ -44,7 +44,7 @@ namespace SharedBase.BOL.Invoices
         {
             get
             {
-                return ((RecurringInvoiceItem)this.InnerList[Index]);
+                return (RecurringInvoiceItem)this.InnerList[Index];
             }
 
             set
@@ -62,10 +62,10 @@ namespace SharedBase.BOL.Invoices
             foreach (RecurringInvoiceItem item in this)
             {
                 if (item.ProductItem.ID == productCost.ID)
-                    return (item);
+                    return item;
             }
 
-            return (null);
+            return null;
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace SharedBase.BOL.Invoices
         /// <returns></returns>
         public int Add(RecurringInvoiceItem value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace SharedBase.BOL.Invoices
         /// <returns></returns>
         public int IndexOf(RecurringInvoiceItem value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -117,7 +117,7 @@ namespace SharedBase.BOL.Invoices
         public bool Contains(RecurringInvoiceItem value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         public bool Contains(ProductCost productCost)
@@ -125,10 +125,10 @@ namespace SharedBase.BOL.Invoices
             foreach (RecurringInvoiceItem item in this)
             {
                 if (item.ProductItem.ID == productCost.ID)
-                    return (true);
+                    return true;
             }
 
-            return (false);
+            return false;
         }
 
         #endregion Public Methods

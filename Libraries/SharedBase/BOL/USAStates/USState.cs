@@ -61,7 +61,7 @@ namespace SharedBase.BOL.USAStates
         {
             get
             {
-                return (_ID);
+                return _ID;
             }
         }
 
@@ -69,7 +69,7 @@ namespace SharedBase.BOL.USAStates
         {
             get
             {
-                return (_Name);
+                return _Name;
             }
         }
 
@@ -77,7 +77,7 @@ namespace SharedBase.BOL.USAStates
         {
             get
             {
-                return (_RedirectURL);
+                return _RedirectURL;
             }
         }
 
@@ -85,7 +85,7 @@ namespace SharedBase.BOL.USAStates
         {
             get
             {
-                return (_ShowPrices);
+                return _ShowPrices;
             }
         }
 
@@ -93,7 +93,7 @@ namespace SharedBase.BOL.USAStates
         {
             get
             {
-                return (_StateCode);
+                return _StateCode;
             }
         }
 

@@ -53,7 +53,7 @@ namespace SharedBase.BOL.FileBackup
                     CachedItemAdd(cacheName, Result);
             }
 
-            return ((BackupFile)Result.Value);
+            return (BackupFile)Result.Value;
         }
 
         #endregion Static Methods
@@ -71,7 +71,7 @@ namespace SharedBase.BOL.FileBackup
         {
             get
             {
-                return ((BackupFile)this.InnerList[Index]);
+                return (BackupFile)this.InnerList[Index];
             }
 
             set
@@ -91,7 +91,7 @@ namespace SharedBase.BOL.FileBackup
         /// <returns></returns>
         public int Add(BackupFile value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace SharedBase.BOL.FileBackup
         /// <returns></returns>
         public int IndexOf(BackupFile value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -133,7 +133,7 @@ namespace SharedBase.BOL.FileBackup
         public bool Contains(BackupFile value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

@@ -53,7 +53,7 @@ namespace SharedBase.BOL.Staff
             get
             {
                 SharedBase.BOL.Users.User user = SharedBase.BOL.Users.User.UserGet(Staff.UserID);
-                return (user.UserName);
+                return user.UserName;
             }
         }
 
@@ -61,7 +61,7 @@ namespace SharedBase.BOL.Staff
         {
             get
             {
-                return (SharedBase.Utils.SharedUtils.FormatMoney(CurrentAllocation, LocalCurrency));
+                return SharedBase.Utils.SharedUtils.FormatMoney(CurrentAllocation, LocalCurrency);
             }
         }
 
@@ -69,7 +69,7 @@ namespace SharedBase.BOL.Staff
         {
             get
             {
-                return (SharedBase.Utils.SharedUtils.FormatMoney(PreviousAllocation, LocalCurrency));
+                return SharedBase.Utils.SharedUtils.FormatMoney(PreviousAllocation, LocalCurrency);
             }
         }
         

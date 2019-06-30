@@ -38,27 +38,27 @@ namespace SharedBase.BOL.StockControl
     {
         #region Static Methods
 
-        public static Stock Get(User user)
+        public static Stock Get()
         {
-            return (DAL.FirebirdDB.StockItemsGet(user));
+            return DAL.FirebirdDB.StockItemsGet();
         }
 
         public static Stock Get(User user, bool CurrentStoreTill)
         {
             if (CurrentStoreTill)
-                return (DAL.FirebirdDB.StockItemsGet(user, DAL.DALHelper.StoreID, DAL.DALHelper.TillID));
+                return DAL.FirebirdDB.StockItemsGet(user, DAL.DALHelper.StoreID, DAL.DALHelper.TillID);
             else
-                return (DAL.FirebirdDB.StockItemsGet(user));
+                return DAL.FirebirdDB.StockItemsGet();
         }
 
         public static Stock Get(User user, int StoreID)
         {
-            return (DAL.FirebirdDB.StockItemsGet(user, StoreID, 1));
+            return DAL.FirebirdDB.StockItemsGet(user, StoreID, 1);
         }
 
         public static Stock Get(User user, int storeID, int stockType)
         {
-            return (DAL.FirebirdDB.StockItemsGetFiltered(user, storeID, stockType));
+            return DAL.FirebirdDB.StockItemsGetFiltered(user, storeID, stockType);
         }
 
         public static string GetStockLocations(ProductCost productCost)
@@ -77,7 +77,7 @@ namespace SharedBase.BOL.StockControl
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
 
@@ -117,7 +117,7 @@ namespace SharedBase.BOL.StockControl
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         public void StockInAudit(User CurrentUser)
@@ -140,7 +140,7 @@ namespace SharedBase.BOL.StockControl
         {
             get
             {
-                return ((StockItem)this.InnerList[Index]);
+                return (StockItem)this.InnerList[Index];
             }
 
             set
@@ -160,7 +160,7 @@ namespace SharedBase.BOL.StockControl
         /// <returns></returns>
         public int Add(StockItem value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -170,7 +170,7 @@ namespace SharedBase.BOL.StockControl
         /// <returns></returns>
         public int IndexOf(StockItem value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -202,7 +202,7 @@ namespace SharedBase.BOL.StockControl
         public bool Contains(StockItem value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

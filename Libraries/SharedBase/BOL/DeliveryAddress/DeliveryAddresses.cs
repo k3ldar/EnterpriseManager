@@ -41,12 +41,12 @@ namespace SharedBase.BOL.DeliveryAddress
 
         public static DeliveryAddress Get(Int64 DeliveryAddressID)
         {
-            return (DAL.FirebirdDB.MembersAddressGet(DeliveryAddressID));
+            return DAL.FirebirdDB.MembersAddressGet(DeliveryAddressID);
         }
 
         public static DeliveryAddress Get(int DeliveryAddressID)
         {
-            return (DAL.FirebirdDB.MembersAddressGet(DeliveryAddressID));
+            return DAL.FirebirdDB.MembersAddressGet(DeliveryAddressID);
         }
 
         #endregion Static Methods
@@ -64,7 +64,7 @@ namespace SharedBase.BOL.DeliveryAddress
         {
             get
             {
-                return ((DeliveryAddress)this.InnerList[Index]);
+                return (DeliveryAddress)this.InnerList[Index];
             }
 
             set
@@ -85,7 +85,7 @@ namespace SharedBase.BOL.DeliveryAddress
         /// <returns></returns>
         public int Add(DeliveryAddress value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace SharedBase.BOL.DeliveryAddress
         /// <returns></returns>
         public int IndexOf(DeliveryAddress value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace SharedBase.BOL.DeliveryAddress
         public bool Contains(DeliveryAddress value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods
@@ -209,7 +209,7 @@ namespace SharedBase.BOL.DeliveryAddress
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         public void Delete(DeliveryAddress Address)
@@ -227,8 +227,8 @@ namespace SharedBase.BOL.DeliveryAddress
         /// <param name="user">User who's address should be used</param>
         public DeliveryAddress Create(User user)
         {
-            return (Create(user.ID, user.UserName, user.AddressLine1, user.AddressLine2, user.AddressLine3, user.City,
-                user.County, user.PostCode, user.Country.ID));
+            return Create(user.ID, user.UserName, user.AddressLine1, user.AddressLine2, user.AddressLine3, user.City,
+                user.County, user.PostCode, user.Country.ID);
         }
 
         /// <summary>
@@ -252,7 +252,7 @@ namespace SharedBase.BOL.DeliveryAddress
 
             Add(Result);
 
-            return (Result);
+            return Result;
         }
 
         public DeliveryAddress First()
@@ -265,7 +265,7 @@ namespace SharedBase.BOL.DeliveryAddress
                 break;
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Public Methods

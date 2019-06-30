@@ -40,22 +40,22 @@ namespace SharedBase.BOL.Helpdesk
 
         public static TicketPriorities PrioritiesGet()
         {
-            return (DAL.FirebirdDB.HelpdeskTicketPrioritiesGet());
+            return DAL.FirebirdDB.HelpdeskTicketPrioritiesGet();
         }
 
         public static TicketDepartments DepartmentsGet()
         {
-            return (DAL.FirebirdDB.HelpdeskTicketDepartmentsGet());
+            return DAL.FirebirdDB.HelpdeskTicketDepartmentsGet();
         }
 
         public static TicketStatuses StatusesGet()
         {
-            return (DAL.FirebirdDB.HelpdeskTicketStatusesGet());
+            return DAL.FirebirdDB.HelpdeskTicketStatusesGet();
         }
 
         public static SupportTicket Get(string TicketKey, string EMail)
         {
-            return (DAL.FirebirdDB.HelpdeskSupportTicketGet(TicketKey, EMail));
+            return DAL.FirebirdDB.HelpdeskSupportTicketGet(TicketKey, EMail);
         }
 
         public static SupportTicket Create(string TicketKey, string Subject, string Content,
@@ -65,17 +65,17 @@ namespace SharedBase.BOL.Helpdesk
                 String.Format("Ticket: {0}; Subject: {1}; UserName: {2}", 
                 TicketKey, Subject, UserName));
 
-            return (DAL.FirebirdDB.HelpdeskSupportTicketCreate(TicketKey, Subject, Content, UserName, Department, Status, Priority, Email));
+            return DAL.FirebirdDB.HelpdeskSupportTicketCreate(TicketKey, Subject, Content, UserName, Department, Status, Priority, Email);
         }
 
         public static SupportTicketMessages Get(SupportTicket Ticket)
         {
-            return (DAL.FirebirdDB.HelpdeskSupportTicketMessagesGet(Ticket));
+            return DAL.FirebirdDB.HelpdeskSupportTicketMessagesGet(Ticket);
         }
 
         public static SupportTicket Get(int TicketID)
         {
-            return (DAL.FirebirdDB.HelpdeskSupportTicketGet(TicketID));
+            return DAL.FirebirdDB.HelpdeskSupportTicketGet(TicketID);
         }
 
         public static void Maintenance()
@@ -86,12 +86,12 @@ namespace SharedBase.BOL.Helpdesk
         public static SupportTickets Get(User user, string TicketKey)
         {
             LibUtils.IsStaffMember(user);
-            return (DAL.FirebirdDB.HelpdeskSupportTicketsGet(user, TicketKey));
+            return DAL.FirebirdDB.HelpdeskSupportTicketsGet(user, TicketKey);
         }
 
         public static SupportTickets Get(User user)
         {
-            return (DAL.FirebirdDB.HelpdeskSupportTicketsGet(user));
+            return DAL.FirebirdDB.HelpdeskSupportTicketsGet(user);
         }
 
         #endregion Static Methods
@@ -104,7 +104,7 @@ namespace SharedBase.BOL.Helpdesk
         {
             get
             {
-                return ((SupportTicket)this.InnerList[Index]);
+                return (SupportTicket)this.InnerList[Index];
             }
 
             set
@@ -124,7 +124,7 @@ namespace SharedBase.BOL.Helpdesk
         /// <returns></returns>
         public int Add(SupportTicket value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace SharedBase.BOL.Helpdesk
         /// <returns></returns>
         public int IndexOf(SupportTicket value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -166,7 +166,7 @@ namespace SharedBase.BOL.Helpdesk
         public bool Contains(SupportTicket value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

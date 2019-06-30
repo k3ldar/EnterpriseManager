@@ -62,7 +62,7 @@ namespace SharedBase.BOL.HashTags
 
         public override string ToString()
         {
-            return (String.Format("Index: {0}; Tag: {1}", ID, Tag));
+            return String.Format("Index: {0}; Tag: {1}", ID, Tag);
         }
     }
 }

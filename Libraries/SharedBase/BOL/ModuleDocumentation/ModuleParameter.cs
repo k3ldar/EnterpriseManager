@@ -75,7 +75,7 @@ namespace SharedBase.BOL.ModuleDocumentation
                     Result = Result.Substring(Result.LastIndexOf('.') + 1);
                 }
 
-                return (Result);
+                return Result;
             }
         }
 
@@ -94,40 +94,40 @@ namespace SharedBase.BOL.ModuleDocumentation
                 switch (Result)
                 {
                     case "System.Boolean":
-                        return ("bool");
+                        return "bool";
                     case "System.Byte":
-                        return ("byte");
+                        return "byte";
                     case "System.Double":
-                        return ("double");
+                        return "double";
                     case "System.Decimal":
-                        return ("decimal");
+                        return "decimal";
                     case "System.Char":
-                        return ("char");
+                        return "char";
                     case "System.SByte":
-                        return ("sbyte");
+                        return "sbyte";
                     case "System.Object":
-                        return ("object");
+                        return "object";
                     case "System.UInt64":
-                        return ("ulong");
+                        return "ulong";
                     case "System.Int64":
-                        return ("long");
+                        return "long";
                     case "System.UInt32":
-                        return ("uint");
+                        return "uint";
                     case "System.Int32":
-                        return ("int");
+                        return "int";
                     case "System.Single":
-                        return ("float");
+                        return "float";
                     case "System.Int16":
-                        return ("short");
+                        return "short";
                     case "System.UInt16":
-                        return ("ushort");
+                        return "ushort";
                     case "System.String":
-                        return ("string");
+                        return "string";
                     default:
                         if (Result.Contains("."))
-                            return (Result.Substring(Result.LastIndexOf(".") + 1));
+                            return Result.Substring(Result.LastIndexOf(".") + 1);
                         else
-                            return (Result);
+                            return Result;
                 }
             }
         }
@@ -154,17 +154,17 @@ namespace SharedBase.BOL.ModuleDocumentation
 
                 if (ParamTypeShort == "string")
                 {
-                    return(String.Format(" = \"\"", DefaultValue.ToLower()));
+                    return String.Format(" = \"\"", DefaultValue.ToLower());
                 }
                 else if (ParamTypeShort == "bool")
                 {
-                    return(String.Format(" = {0}", DefaultValue.ToLower()));
+                    return String.Format(" = {0}", DefaultValue.ToLower());
                 }
                 else
-                    return(String.Format(" = {0}", String.IsNullOrEmpty(DefaultValue) ? dv : DefaultValue));
+                    return String.Format(" = {0}", String.IsNullOrEmpty(DefaultValue) ? dv : DefaultValue);
             }
             else
-                return(String.IsNullOrEmpty(DefaultValue) ? String.Empty : String.Format(" = {0}", DefaultValue));
+                return String.IsNullOrEmpty(DefaultValue) ? String.Empty : String.Format(" = {0}", DefaultValue);
 
         }
 

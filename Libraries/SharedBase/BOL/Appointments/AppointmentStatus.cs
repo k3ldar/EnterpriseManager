@@ -57,7 +57,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_ID);
+                return _ID;
             }
         }
 
@@ -65,7 +65,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_Description);
+                return _Description;
             }
         }
 
@@ -73,7 +73,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_SortOrder);
+                return _SortOrder;
             }
         }
 
@@ -83,7 +83,7 @@ namespace SharedBase.BOL.Appointments
 
         public override string ToString()
         {
-            return (String.Format("Status: {0}; ID: {1}", _Description, ID));
+            return String.Format("Status: {0}; ID: {1}", _Description, ID);
         }
 
         #endregion Overridden Methods

@@ -88,7 +88,7 @@ namespace SharedBase.BOL.Products
         {
             get
             {
-                return (_id);
+                return _id;
             }
 
             set
@@ -106,7 +106,7 @@ namespace SharedBase.BOL.Products
         {
             get
             {
-                return (_hideGlobally);
+                return _hideGlobally;
             }
 
             set
@@ -125,7 +125,7 @@ namespace SharedBase.BOL.Products
                 if (_product == null)
                     _product = DAL.FirebirdDB.ProductGet(this);
 
-                return (_product);
+                return _product;
             }
         }
 
@@ -133,7 +133,7 @@ namespace SharedBase.BOL.Products
         {
             get
             {
-                return (_product.ID);
+                return _product.ID;
             }
         }
 
@@ -141,7 +141,7 @@ namespace SharedBase.BOL.Products
         {
             get
             {
-                return (_sku);
+                return _sku;
             }
 
             set
@@ -157,7 +157,7 @@ namespace SharedBase.BOL.Products
         {
             get
             {
-                return (_size);
+                return _size;
             }
 
             set
@@ -178,7 +178,7 @@ namespace SharedBase.BOL.Products
                 //if (Discount > 0.0m)
                 //    Result = (Result / 100) * Discount;
 
-                return (Result);
+                return Result;
             }
 
             set
@@ -199,7 +199,7 @@ namespace SharedBase.BOL.Products
                 //if (Discount > 0.0m)
                 //    Result = (Result / 100) * Discount;
 
-                return (Result);
+                return Result;
             }
 
             set
@@ -220,7 +220,7 @@ namespace SharedBase.BOL.Products
                 //if (Discount > 0.0m)
                 //    Result = (Result / 100) * Discount;
 
-                return (Result);
+                return Result;
             }
 
             set
@@ -233,7 +233,7 @@ namespace SharedBase.BOL.Products
         {
             get
             {
-                return (_memberLevel);
+                return _memberLevel;
             }
 
             set
@@ -249,7 +249,7 @@ namespace SharedBase.BOL.Products
         {
             get
             {
-                return (_outOfStock);
+                return _outOfStock;
             }
 
             set
@@ -265,7 +265,7 @@ namespace SharedBase.BOL.Products
         {
             get
             {
-                return (_type);
+                return _type;
             }
 
             set
@@ -283,7 +283,7 @@ namespace SharedBase.BOL.Products
         {
             get
             {
-                return (_barcode);
+                return _barcode;
             }
 
             set
@@ -299,7 +299,7 @@ namespace SharedBase.BOL.Products
         {
             get
             {
-                return (DAL.FirebirdDB.StockCreateItemsGet(this));
+                return DAL.FirebirdDB.StockCreateItemsGet(this);
             }
         }
 
@@ -366,7 +366,7 @@ namespace SharedBase.BOL.Products
             if (item != null)
                 Result = item.Available;
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -403,7 +403,7 @@ namespace SharedBase.BOL.Products
             if (country == null)
                 throw new ArgumentNullException(nameof(country));
 
-            return (PriceGet(country.PriceColumn, country));
+            return PriceGet(country.PriceColumn, country);
         }
 
         public decimal PriceGet(int priceColumn, Countries.Country country)
@@ -413,11 +413,11 @@ namespace SharedBase.BOL.Products
             switch (priceColumn)
             {
                 case 0:
-                    return (Cost1 * multiplier);
+                    return Cost1 * multiplier;
                 case 1:
-                    return (Cost2 * multiplier);
+                    return Cost2 * multiplier;
                 case 2:
-                    return (Cost3 * multiplier);
+                    return Cost3 * multiplier;
                 default:
                     throw new Exception("Invalid Cost Requested");
             }
@@ -440,17 +440,17 @@ namespace SharedBase.BOL.Products
 
         public ProductCosts FreeProducts()
         {
-            return (DAL.FirebirdDB.ProductCostsGetFree(this));
+            return DAL.FirebirdDB.ProductCostsGetFree(this);
         }
 
         public decimal PriceGetDecimal(int priceColumn, Countries.Country country)
         {
-            return (PriceGet(priceColumn, country));
+            return PriceGet(priceColumn, country);
         }
 
         public decimal PriceGetDecimal(Countries.Country country)
         {
-            return (PriceGet(country));
+            return PriceGet(country);
         }
 
         #endregion Public Methods
@@ -459,7 +459,7 @@ namespace SharedBase.BOL.Products
 
         public override string ToString()
         {
-            return (String.Format("ProductCost: {0}; Product ID: {1}", ID, _product.ID));
+            return String.Format("ProductCost: {0}; Product ID: {1}", ID, _product.ID);
         }
 
         #endregion Overridden Methods

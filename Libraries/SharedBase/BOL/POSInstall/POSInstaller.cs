@@ -40,28 +40,28 @@ namespace SharedBase.BOL.POSInstall
 
         public static POSInstall InstallServer(string email, string password, string computerName)
         {
-            return (DAL.FirebirdDB.POSInstallerAdd(email, password, computerName, computerName, "Server"));
+            return DAL.FirebirdDB.POSInstallerAdd(email, password, computerName, computerName, "Server");
         }
 
 
         public static POSInstall InstallClient(string email, string password, string computerName, string serverName)
         {
-            return (DAL.FirebirdDB.POSInstallerAdd(email, password, computerName, serverName, "Client"));
+            return DAL.FirebirdDB.POSInstallerAdd(email, password, computerName, serverName, "Client");
         }
 
         public static POSInstall InstallCloudClient(string email, string password, string computerName)
         {
-            return (DAL.FirebirdDB.POSInstallerAdd(email, password, computerName, String.Empty, "Cloud"));
+            return DAL.FirebirdDB.POSInstallerAdd(email, password, computerName, String.Empty, "Cloud");
         }
 
         public static POSInstall ServerList(string email, string password)
         {
-            return (DAL.FirebirdDB.POSInstallerServers(email, password));
+            return DAL.FirebirdDB.POSInstallerServers(email, password);
         }
 
         public static bool InstallValid(string storeID)
         {
-            return (DAL.FirebirdDB.POSInstallValid(storeID));
+            return DAL.FirebirdDB.POSInstallValid(storeID);
         }
 
         public static void PosInstallSetSite(int siteID)

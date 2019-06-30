@@ -66,7 +66,7 @@ namespace SharedBase.BOL.Trade
         {
             get
             {
-                return (_ID);
+                return _ID;
             }
         }
 
@@ -74,7 +74,7 @@ namespace SharedBase.BOL.Trade
         {
             get
             {
-                return (_user);
+                return _user;
             }
         }
 
@@ -82,7 +82,7 @@ namespace SharedBase.BOL.Trade
         {
             get
             {
-                return (_client);
+                return _client;
             }
         }
 
@@ -90,7 +90,7 @@ namespace SharedBase.BOL.Trade
         {
             get
             {
-                return (_Notes);
+                return _Notes;
             }
         }
 
@@ -98,7 +98,7 @@ namespace SharedBase.BOL.Trade
         {
             get
             {
-                return (_NoteDateTime);
+                return _NoteDateTime;
             }
         }
 
@@ -106,7 +106,7 @@ namespace SharedBase.BOL.Trade
         {
             get
             {
-                return (_Action);
+                return _Action;
             }
         }
 

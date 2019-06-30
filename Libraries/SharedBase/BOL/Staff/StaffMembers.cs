@@ -41,7 +41,7 @@ namespace SharedBase.BOL.Staff
 		/// <returns>StaffMember instance</returns>
 		public static StaffMember InsertUpdate(StaffMember item)
 		{
-            return (DAL.FirebirdDB.StaffMemberInsertUpdate(item));
+            return DAL.FirebirdDB.StaffMemberInsertUpdate(item);
 		}
 
 		/// <summary>
@@ -50,7 +50,7 @@ namespace SharedBase.BOL.Staff
 		/// <returns>StaffMembers collection of StaffMember items</returns>
 		public static StaffMembers All()
 		{
-            return (DAL.FirebirdDB.StaffMemberSelectAll());
+            return DAL.FirebirdDB.StaffMemberSelectAll();
 		}
 
 
@@ -61,7 +61,7 @@ namespace SharedBase.BOL.Staff
 		/// <returns>StaffMember item if found, otherwise null</returns>
 		public static StaffMember Get(Users.User staffMember)
 		{
-            return (DAL.FirebirdDB.StaffMemberSelect(staffMember));
+            return DAL.FirebirdDB.StaffMemberSelect(staffMember);
 		}
 
 		/// <summary>
@@ -70,7 +70,7 @@ namespace SharedBase.BOL.Staff
 		/// <returns>int, number of records within table</returns>
 		public static int CountAll()
 		{
-            return (DAL.FirebirdDB.StaffMemberCount());
+            return DAL.FirebirdDB.StaffMemberCount();
 		}
 
 		#endregion Static Methods
@@ -88,7 +88,7 @@ namespace SharedBase.BOL.Staff
 		{
 			get
 			{
-                return ((StaffMember)this.InnerList[Index]);
+                return (StaffMember)this.InnerList[Index];
 			}
 
 			set
@@ -108,7 +108,7 @@ namespace SharedBase.BOL.Staff
 		/// <returns></returns>
 		public int Add(StaffMember value)
 		{
-			return (List.Add(value));
+			return List.Add(value);
 		}
 
 		/// <summary>
@@ -118,7 +118,7 @@ namespace SharedBase.BOL.Staff
 		/// <returns></returns>
 		public int IndexOf(StaffMember value)
 		{
-			return (List.IndexOf(value));
+			return List.IndexOf(value);
 		}
 
 		/// <summary>
@@ -150,7 +150,7 @@ namespace SharedBase.BOL.Staff
 		public bool Contains(StaffMember value)
 		{
 			// If value is not of type OBJECT_TYPE, this will return false.
-			return (List.Contains(value));
+			return List.Contains(value);
 		}
 
 		#endregion Public Methods

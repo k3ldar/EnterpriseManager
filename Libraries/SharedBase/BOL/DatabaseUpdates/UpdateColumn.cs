@@ -88,7 +88,7 @@ namespace SharedBase.BOL.DatabaseUpdates
 
             minimum = Shared.Utilities.StrToDecimal(MinValue, minimum);
             maximum = Shared.Utilities.StrToDecimal(MaxValue, maximum);
-            return (true);
+            return true;
         }
 
 
@@ -99,7 +99,7 @@ namespace SharedBase.BOL.DatabaseUpdates
 
             minimum = Shared.Utilities.StrToInt(MinValue, minimum);
             maximum = Shared.Utilities.StrToInt(MaxValue, maximum);
-            return (true);
+            return true;
         }
 
         public bool GetMinMax(ref Int64 minimum, ref Int64 maximum)
@@ -109,7 +109,7 @@ namespace SharedBase.BOL.DatabaseUpdates
 
             minimum = Shared.Utilities.StrToInt64(MinValue, minimum);
             maximum = Shared.Utilities.StrToInt64(MaxValue, maximum);
-            return (true);
+            return true;
         }
 
         public int MaxLength(int defaultValue)
@@ -117,7 +117,7 @@ namespace SharedBase.BOL.DatabaseUpdates
             if (ColumnType != ColumnType.String)
                 throw new Exception("Invalid Column Type");
 
-            return (Shared.Utilities.StrToInt(MaxValue, defaultValue));
+            return Shared.Utilities.StrToInt(MaxValue, defaultValue);
         }
 
         public decimal GetValue()
@@ -125,7 +125,7 @@ namespace SharedBase.BOL.DatabaseUpdates
             if (ColumnType != Shared.ColumnType.Decimal)
                 throw new Exception("Invalid Column Type");
 
-            return ((decimal)Value);
+            return (decimal)Value;
         }
 
         #endregion Public Methods

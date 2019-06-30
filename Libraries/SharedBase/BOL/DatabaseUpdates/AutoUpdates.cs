@@ -37,7 +37,7 @@ namespace SharedBase.BOL.DatabaseUpdates
 
         public static AutoUpdates Get()
         {
-            return (DAL.FirebirdDB.AutoUpdateGet());
+            return DAL.FirebirdDB.AutoUpdateGet();
         }
 
         public static void Create(AutoUpdate autoUpdate)
@@ -65,7 +65,7 @@ namespace SharedBase.BOL.DatabaseUpdates
         {
             get
             {
-                return ((AutoUpdate)this.InnerList[Index]);
+                return (AutoUpdate)this.InnerList[Index];
             }
 
             set
@@ -85,7 +85,7 @@ namespace SharedBase.BOL.DatabaseUpdates
         /// <returns></returns>
         public int Add(AutoUpdate value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace SharedBase.BOL.DatabaseUpdates
         /// <returns></returns>
         public int IndexOf(AutoUpdate value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace SharedBase.BOL.DatabaseUpdates
         public bool Contains(AutoUpdate value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

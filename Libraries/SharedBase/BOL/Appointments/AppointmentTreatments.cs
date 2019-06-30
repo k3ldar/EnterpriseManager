@@ -44,7 +44,7 @@ namespace SharedBase.BOL.Appointments
         /// <returns></returns>
         public static AppointmentTreatments Get(Therapist therapist)
         {
-            return (DAL.FirebirdDB.AppointmentTreatmentsGet(therapist, true));
+            return DAL.FirebirdDB.AppointmentTreatmentsGet(therapist, true);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace SharedBase.BOL.Appointments
         /// <returns>AppointmentTreatments collection</returns>
         public static AppointmentTreatments Get(WaitingList waitingList)
         {
-            return (DAL.FirebirdDB.AppointmentTreatmentsGet(waitingList));
+            return DAL.FirebirdDB.AppointmentTreatmentsGet(waitingList);
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace SharedBase.BOL.Appointments
         /// <returns>AppointmentTreatments collection</returns>
         public static AppointmentTreatments Get(User user, bool LastUserInfo = false)
         {
-            return (DAL.FirebirdDB.AppointmentTreatmentsGet(user, LastUserInfo));
+            return DAL.FirebirdDB.AppointmentTreatmentsGet(user, LastUserInfo);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace SharedBase.BOL.Appointments
         /// <returns>Treatment</returns>
         public static AppointmentTreatment Get(int TreatmentID)
         {
-            return (DAL.FirebirdDB.AppointmentTreatmentGet(TreatmentID));
+            return DAL.FirebirdDB.AppointmentTreatmentGet(TreatmentID);
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace SharedBase.BOL.Appointments
         /// <returns></returns>
         public static AppointmentTreatments Get()
         {
-            return (DAL.FirebirdDB.AppointmentTreatmentsGet());
+            return DAL.FirebirdDB.AppointmentTreatmentsGet();
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace SharedBase.BOL.Appointments
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         public AppointmentTreatment Find(AppointmentTreatment Treatment)
@@ -129,7 +129,7 @@ namespace SharedBase.BOL.Appointments
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         public bool Available(AppointmentTreatment Treatment)
@@ -145,7 +145,7 @@ namespace SharedBase.BOL.Appointments
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         public void Save()
@@ -166,7 +166,7 @@ namespace SharedBase.BOL.Appointments
                 Result += treat.Duration;
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Public Methods
@@ -179,7 +179,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return ((AppointmentTreatment)this.InnerList[Index]);
+                return (AppointmentTreatment)this.InnerList[Index];
             }
 
             set
@@ -199,7 +199,7 @@ namespace SharedBase.BOL.Appointments
         /// <returns></returns>
         public int Add(AppointmentTreatment value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -209,7 +209,7 @@ namespace SharedBase.BOL.Appointments
         /// <returns></returns>
         public int IndexOf(AppointmentTreatment value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -243,11 +243,11 @@ namespace SharedBase.BOL.Appointments
             foreach (AppointmentTreatment item in this)
             {
                 if (item.ID == value.ID)
-                    return (true);
+                    return true;
             }
 
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

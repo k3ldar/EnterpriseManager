@@ -81,7 +81,7 @@ namespace SharedBase.BOL.DeliveryAddress
         {
             get
             {
-                return (_MemberID);
+                return _MemberID;
             }
         }
 
@@ -89,7 +89,7 @@ namespace SharedBase.BOL.DeliveryAddress
         {
             get
             {
-                return (_ID);
+                return _ID;
             }
         }
                    
@@ -97,7 +97,7 @@ namespace SharedBase.BOL.DeliveryAddress
         {
             get
             {
-                return (_Name);
+                return _Name;
             }
 
             set
@@ -110,7 +110,7 @@ namespace SharedBase.BOL.DeliveryAddress
         {
             get
             {
-                return (_AddressLine1);
+                return _AddressLine1;
             }
 
             set
@@ -123,7 +123,7 @@ namespace SharedBase.BOL.DeliveryAddress
         {
             get
             {
-                return (_AddressLine2);
+                return _AddressLine2;
             }
 
             set
@@ -136,7 +136,7 @@ namespace SharedBase.BOL.DeliveryAddress
         {
             get
             {
-                return (_AddressLine3);
+                return _AddressLine3;
             }
 
             set
@@ -149,7 +149,7 @@ namespace SharedBase.BOL.DeliveryAddress
         {
             get
             {
-                return (_City);
+                return _City;
             }
 
             set
@@ -162,7 +162,7 @@ namespace SharedBase.BOL.DeliveryAddress
         {
             get
             {
-                return (_County);
+                return _County;
             }
 
             set
@@ -175,7 +175,7 @@ namespace SharedBase.BOL.DeliveryAddress
         {
             get
             {
-                 return (_PostCode);
+                 return _PostCode;
             }
 
             set
@@ -188,7 +188,7 @@ namespace SharedBase.BOL.DeliveryAddress
         {
             get
             {
-                return (_Country);
+                return _Country;
             }
 
             set
@@ -235,7 +235,7 @@ namespace SharedBase.BOL.DeliveryAddress
             if (PostCode != "")
                 Result += PostCode + Seperator;
 
-            return (Result);
+            return Result;
         }
 
         public bool InUse
@@ -255,7 +255,7 @@ namespace SharedBase.BOL.DeliveryAddress
                     }
                 }
 
-                return (Result);
+                return Result;
             }
         }
 
@@ -304,7 +304,7 @@ namespace SharedBase.BOL.DeliveryAddress
 
         public override string ToString()
         {
-            return (String.Format("DeliverAddress: {0}; Member ID: {1}; Name: {2}", ID, _MemberID, _Name));
+            return String.Format("DeliverAddress: {0}; Member ID: {1}; Name: {2}", ID, _MemberID, _Name);
         }
 
         #endregion Overridden Methods

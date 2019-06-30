@@ -42,7 +42,7 @@ namespace SharedBase.BOL.SEO
         {
             get
             {
-                return ((WebVisitLogItem)this.InnerList[Index]);
+                return (WebVisitLogItem)this.InnerList[Index];
             }
 
             set
@@ -62,7 +62,7 @@ namespace SharedBase.BOL.SEO
         /// <returns></returns>
         public int Add(WebVisitLogItem value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace SharedBase.BOL.SEO
         /// <returns></returns>
         public int IndexOf(WebVisitLogItem value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace SharedBase.BOL.SEO
         public bool Contains(WebVisitLogItem value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

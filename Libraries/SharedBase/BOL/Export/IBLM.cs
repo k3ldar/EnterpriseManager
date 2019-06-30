@@ -46,14 +46,14 @@ namespace SharedBase.BOL.Export
         {
             string Result = DAL.FirebirdDB.ExportIBLMData(StartFrom);
             CompressFile(Result + ".zip", Result);
-            return (Path.GetFileName(Result + ".zip"));
+            return Path.GetFileName(Result + ".zip");
         }
 
         public static Int64 GetLatestIBLMUpdate()
         {
             Int64 Result = (Int64)DAL.FirebirdDB.IBLMMaxOperationID();
 
-            return (Result);
+            return Result;
         }
 
         private static void CompressFile(string ZipFile, string BackupFile)

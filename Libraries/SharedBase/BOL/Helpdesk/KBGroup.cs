@@ -65,7 +65,7 @@ namespace SharedBase.BOL.Helpdesk
         {
             get
             {
-                return (_id);
+                return _id;
             }
         }
 
@@ -73,7 +73,7 @@ namespace SharedBase.BOL.Helpdesk
         {
             get
             {
-                return (_groupName);
+                return _groupName;
             }
         }
 
@@ -84,7 +84,7 @@ namespace SharedBase.BOL.Helpdesk
                 if (_parent == null)
                     _parent = DAL.FirebirdDB.FAQGetParent(this);
 
-                return (_parent);
+                return _parent;
             }
         }
 
@@ -92,7 +92,7 @@ namespace SharedBase.BOL.Helpdesk
         {
             get
             {
-                return (_groupDescription);
+                return _groupDescription;
             }
         }
 
@@ -100,7 +100,7 @@ namespace SharedBase.BOL.Helpdesk
         {
             get
             {
-                return (DAL.FirebirdDB.FAQItemsGet(this));
+                return DAL.FirebirdDB.FAQItemsGet(this);
             }
         }
 
@@ -110,7 +110,7 @@ namespace SharedBase.BOL.Helpdesk
 
         public KBGroups SubGroups(Users.User user)
         {
-            return (DAL.FirebirdDB.FAQGet(user, this));
+            return DAL.FirebirdDB.FAQGet(user, this);
         }
 
         #endregion Public Methods

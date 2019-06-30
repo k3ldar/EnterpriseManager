@@ -62,7 +62,7 @@ namespace SharedBase.BOL.Invoices
                     item.ProductDiscount, item.ProductDiscountValue));
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Static Methods
@@ -80,7 +80,7 @@ namespace SharedBase.BOL.Invoices
         {
             get
             {
-                return ((InvoiceViewItem)this.InnerList[Index]);
+                return (InvoiceViewItem)this.InnerList[Index];
             }
 
             set
@@ -100,7 +100,7 @@ namespace SharedBase.BOL.Invoices
         /// <returns></returns>
         public int Add(InvoiceViewItem value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace SharedBase.BOL.Invoices
         /// <returns></returns>
         public int IndexOf(InvoiceViewItem value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -142,7 +142,7 @@ namespace SharedBase.BOL.Invoices
         public bool Contains(InvoiceViewItem value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

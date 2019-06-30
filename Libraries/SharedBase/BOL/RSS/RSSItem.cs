@@ -57,22 +57,22 @@ namespace SharedBase.BOL.RSS
 
         public string Title
         {
-            get { return (_title); }
+            get { return _title; }
         }
 
         public string Description
         {
-            get { return (_description); }
+            get { return _description; }
         }
 
         public string Link
         {
-            get { return (_link); }
+            get { return _link; }
         }
 
         public DateTime PublishedDate
         {
-            get { return (_published); }
+            get { return _published; }
         }
 
         #endregion Properties

@@ -38,7 +38,7 @@ namespace SharedBase.BOL.Products
 
         public static ProductType Create(string description, bool primary)
         {
-            return (DAL.FirebirdDB.ProductTypeInsert(description, primary));
+            return DAL.FirebirdDB.ProductTypeInsert(description, primary);
         }
 
         /// <summary>
@@ -64,9 +64,9 @@ namespace SharedBase.BOL.Products
 
 
             if (cachedResult != null)
-                return ((ProductTypes)cachedResult.Value);
+                return (ProductTypes)cachedResult.Value;
             else
-                return (DAL.FirebirdDB.ProductTypesGet());
+                return DAL.FirebirdDB.ProductTypesGet();
         }
 
         /// <summary>
@@ -79,10 +79,10 @@ namespace SharedBase.BOL.Products
             foreach (ProductType prodType in Get())
             {
                 if (prodType.Description == name)
-                    return (prodType);
+                    return prodType;
             }
 
-            return (DAL.FirebirdDB.ProductTypeGet(name));
+            return DAL.FirebirdDB.ProductTypeGet(name);
         }
 
         #endregion Static Methods
@@ -100,7 +100,7 @@ namespace SharedBase.BOL.Products
         {
             get
             {
-                return ((ProductType)this.InnerList[Index]);
+                return (ProductType)this.InnerList[Index];
             }
 
             set
@@ -120,7 +120,7 @@ namespace SharedBase.BOL.Products
         /// <returns></returns>
         public int Add(ProductType value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -130,7 +130,7 @@ namespace SharedBase.BOL.Products
         /// <returns></returns>
         public int IndexOf(ProductType value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -162,7 +162,7 @@ namespace SharedBase.BOL.Products
         public bool Contains(ProductType value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

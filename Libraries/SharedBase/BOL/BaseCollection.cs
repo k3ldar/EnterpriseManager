@@ -57,7 +57,7 @@ namespace SharedBase.BOL
         /// <returns></returns>
         protected static CacheItem CachedItemGet(string name)
         {
-            return (DAL.DALHelper.InternalCache.Get(name));
+            return DAL.DALHelper.InternalCache.Get(name);
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace SharedBase.BOL
         {
             get
             {
-                return (DAL.DALHelper.AllowCaching);
+                return DAL.DALHelper.AllowCaching;
             }
         }
 

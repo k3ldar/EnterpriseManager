@@ -101,7 +101,7 @@ namespace SharedBase.BOL.FileBackup
         { 
             get
             {
-                return (DAL.FirebirdDB.BackupFileGetContents(this));
+                return DAL.FirebirdDB.BackupFileGetContents(this);
             }
         }
 
@@ -132,7 +132,7 @@ namespace SharedBase.BOL.FileBackup
         {
             get
             {
-                return (DAL.FirebirdDB.BackupFileGetVersions(this));
+                return DAL.FirebirdDB.BackupFileGetVersions(this);
             }
         }
 

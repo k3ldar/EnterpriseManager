@@ -43,7 +43,7 @@ namespace SharedBase.BOL.Suppliers
 		/// <returns>SupplierProduct instance</returns>
 		public static SupplierProduct InsertUpdate(SupplierProduct item)
 		{
-			return (DAL.FirebirdDB.SupplierProductInsertUpdate(item));
+			return DAL.FirebirdDB.SupplierProductInsertUpdate(item);
 		}
 
 		/// <summary>
@@ -52,7 +52,7 @@ namespace SharedBase.BOL.Suppliers
 		/// <returns>SupplierProducts collection of SupplierProduct items</returns>
 		public static SupplierProducts All(Supplier supplier)
 		{
-			return (DAL.FirebirdDB.SupplierProductSelectAll(supplier));
+			return DAL.FirebirdDB.SupplierProductSelectAll(supplier);
 		}
 
 		/// <summary>
@@ -62,7 +62,7 @@ namespace SharedBase.BOL.Suppliers
 		/// <returns>SupplierProduct item if found, otherwise null</returns>
 		public static SupplierProduct Get(Int64 item)
 		{
-			return (DAL.FirebirdDB.SupplierProductSelect(item));
+			return DAL.FirebirdDB.SupplierProductSelect(item);
 		}
 
 		#endregion Static Methods
@@ -80,7 +80,7 @@ namespace SharedBase.BOL.Suppliers
 		{
 			get
 			{
-				return ((SupplierProduct)this[Index]);
+				return (SupplierProduct)this[Index];
 			}
 
 			set
@@ -100,7 +100,7 @@ namespace SharedBase.BOL.Suppliers
 		/// <returns></returns>
 		public int Add(SupplierProduct value)
 		{
-			return (List.Add(value));
+			return List.Add(value);
 		}
 
 		/// <summary>
@@ -110,7 +110,7 @@ namespace SharedBase.BOL.Suppliers
 		/// <returns></returns>
 		public int IndexOf(SupplierProduct value)
 		{
-			return (List.IndexOf(value));
+			return List.IndexOf(value);
 		}
 
 		/// <summary>
@@ -142,7 +142,7 @@ namespace SharedBase.BOL.Suppliers
 		public bool Contains(SupplierProduct value)
 		{
 			// If value is not of type OBJECT_TYPE, this will return false.
-			return (List.Contains(value));
+			return List.Contains(value);
 		}
 
 		#endregion Public Methods

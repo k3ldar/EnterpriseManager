@@ -43,7 +43,7 @@ namespace SharedBase.BOL.CashDrawer
         /// <returns></returns>
         public static CashDenominations Get(Country country)
         {
-            return (DAL.FirebirdDB.CashDenominationsGet(country));
+            return DAL.FirebirdDB.CashDenominationsGet(country);
         }
 
         #endregion Static Methods
@@ -56,7 +56,7 @@ namespace SharedBase.BOL.CashDrawer
         {
             get
             {
-                return ((CashDenomination)this.InnerList[Index]);
+                return (CashDenomination)this.InnerList[Index];
             }
 
             set
@@ -76,7 +76,7 @@ namespace SharedBase.BOL.CashDrawer
         /// <returns></returns>
         public int Add(CashDenomination value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace SharedBase.BOL.CashDrawer
         /// <returns></returns>
         public int IndexOf(CashDenomination value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace SharedBase.BOL.CashDrawer
         public bool Contains(CashDenomination value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

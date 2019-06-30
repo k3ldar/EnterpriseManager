@@ -96,7 +96,7 @@ namespace SharedBase.BOL.ModuleDocumentation
         {
             get
             {
-                return (ModuleNames.Get(ModuleID));
+                return ModuleNames.Get(ModuleID);
             }
         }
 
@@ -123,7 +123,7 @@ namespace SharedBase.BOL.ModuleDocumentation
                     DAL.DALHelper.InternalCache.Add(cacheName, cachedResult);
                 }
 
-                return ((ModuleMembers)cachedResult.Value);
+                return (ModuleMembers)cachedResult.Value;
             }
         }
 
@@ -156,7 +156,7 @@ namespace SharedBase.BOL.ModuleDocumentation
             if (returnValue.Contains("`"))
                 returnValue = returnValue.Substring(0, returnValue.IndexOf("`"));
 
-            return (DAL.FirebirdDB.ModuleClassMemberInsert(this.ID, memberProperties, name, description, exceptions, exampleUsage, returnValue, returnValueDesc));
+            return DAL.FirebirdDB.ModuleClassMemberInsert(this.ID, memberProperties, name, description, exceptions, exampleUsage, returnValue, returnValueDesc);
         }
 
         #endregion Public Methods

@@ -80,10 +80,10 @@ namespace SharedBase.BOL.CustomWebPages
                     CachedItemAdd(cacheName, Result);
                 }
 
-                return ((CustomPage)Result.Value);
+                return (CustomPage)Result.Value;
             }
             else
-                return (DAL.FirebirdDB.CustomPageGet(title, country, CustomPagesType.WebPage, webSiteID));
+                return DAL.FirebirdDB.CustomPageGet(title, country, CustomPagesType.WebPage, webSiteID);
         }
 
         public static CustomPage Get(string title)
@@ -97,14 +97,14 @@ namespace SharedBase.BOL.CustomWebPages
 
                 if (Result == null)
                 {
-                    return (Get(title, Countries.Countries.Get(0), 0));
+                    return Get(title, Countries.Countries.Get(0), 0);
                 }
 
-                return (Result);
+                return Result;
             }
             else
             {
-                return (Get(title, Countries.Countries.Get(0), 0));
+                return Get(title, Countries.Countries.Get(0), 0);
             }
         }
 
@@ -131,10 +131,10 @@ namespace SharedBase.BOL.CustomWebPages
                     CachedItemAdd(cacheName, Result);
                 }
 
-                return ((CustomPage)Result.Value);
+                return (CustomPage)Result.Value;
             }
             else
-                return (DAL.FirebirdDB.CustomPageGet(country, product, pageType));
+                return DAL.FirebirdDB.CustomPageGet(country, product, pageType);
         }
 
         /// <summary>
@@ -157,10 +157,10 @@ namespace SharedBase.BOL.CustomWebPages
                     CachedItemAdd(cacheName, Result);
                 }
 
-                return ((CustomPages)Result.Value);
+                return (CustomPages)Result.Value;
             }
             else
-                return (DAL.FirebirdDB.CustomPagesGet(websiteID));
+                return DAL.FirebirdDB.CustomPagesGet(websiteID);
         }
 
         #endregion Static Methods
@@ -173,11 +173,11 @@ namespace SharedBase.BOL.CustomWebPages
             {
                 if (page.Title == title)
                 {
-                    return (page);
+                    return page;
                 }
             }
 
-            return (null);
+            return null;
         }
 
         #endregion Public Methods
@@ -190,7 +190,7 @@ namespace SharedBase.BOL.CustomWebPages
         {
             get
             {
-                return ((CustomPage)this.InnerList[Index]);
+                return (CustomPage)this.InnerList[Index];
             }
 
             set
@@ -210,7 +210,7 @@ namespace SharedBase.BOL.CustomWebPages
         /// <returns></returns>
         public int Add(CustomPage value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -220,7 +220,7 @@ namespace SharedBase.BOL.CustomWebPages
         /// <returns></returns>
         public int IndexOf(CustomPage value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -252,7 +252,7 @@ namespace SharedBase.BOL.CustomWebPages
         public bool Contains(CustomPage value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

@@ -59,7 +59,7 @@ namespace SharedBase.BOL.Users
                 Result += String.Format("{0} {1} {2}\r", Shared.Utilities.BufferText(item.TimeFrame, 25), Shared.Utilities.BufferText(item.Status, 25), item.Count);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace SharedBase.BOL.Users
         /// <returns></returns>
         public bool HasHistory()
         {
-            return (this.Count > 0);
+            return this.Count > 0;
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace SharedBase.BOL.Users
                         if (item.TimeFrame == "Last 6 Months")
                             if (item.Status == "Cancelled by User" || item.Status == "No Show")
                             {
-                                return (true);
+                                return true;
                             }
                     }
                     Result = false;
@@ -100,7 +100,7 @@ namespace SharedBase.BOL.Users
                     break;
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Public Methods
@@ -113,7 +113,7 @@ namespace SharedBase.BOL.Users
         {
             get
             {
-                return ((AppointmentHistoryItem)this.InnerList[Index]);
+                return (AppointmentHistoryItem)this.InnerList[Index];
             }
 
             set
@@ -133,7 +133,7 @@ namespace SharedBase.BOL.Users
         /// <returns></returns>
         public int Add(AppointmentHistoryItem value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace SharedBase.BOL.Users
         /// <returns></returns>
         public int IndexOf(AppointmentHistoryItem value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -175,7 +175,7 @@ namespace SharedBase.BOL.Users
         public bool Contains(AppointmentHistoryItem value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

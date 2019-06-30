@@ -88,7 +88,7 @@ namespace SharedBase.BOL.Products
         {
             get
             {
-                return (_id);
+                return _id;
             }
         }
 
@@ -99,14 +99,7 @@ namespace SharedBase.BOL.Products
         {
             get
             {
-                if (String.IsNullOrEmpty(_url))
-                {
-                    return (String.Format("/All-Products/Group/{0}/", SEODescripton));
-                }
-                else
-                {
-                    return (_url);
-                }
+                return _url;
             }
 
             set
@@ -129,7 +122,7 @@ namespace SharedBase.BOL.Products
                     _seoDescription = Utils.SharedUtils.SEOName(description);
                 }
 
-                return (_seoDescription);
+                return _seoDescription;
             }
         }
 
@@ -140,7 +133,7 @@ namespace SharedBase.BOL.Products
         {
             get
             {
-                return (_description);
+                return _description;
             }
 
             set
@@ -156,7 +149,7 @@ namespace SharedBase.BOL.Products
         {
             get
             {
-                return (_sortOrder);
+                return _sortOrder;
             }
 
             set
@@ -172,7 +165,7 @@ namespace SharedBase.BOL.Products
         {
             get
             {
-                return (_showOnWebsite);
+                return _showOnWebsite;
             }
 
             set
@@ -183,7 +176,7 @@ namespace SharedBase.BOL.Products
 
         public Products Products(ProductType primaryProductType)
         {
-            return (DAL.FirebirdDB.ProductsGet(primaryProductType, 1, 10000, this));
+            return DAL.FirebirdDB.ProductsGet(primaryProductType, 1, 10000, this);
         }
 
         /// <summary>
@@ -193,7 +186,7 @@ namespace SharedBase.BOL.Products
         {
             get
             {
-                return (_tagLine);
+                return _tagLine;
             }
 
             set
@@ -209,7 +202,7 @@ namespace SharedBase.BOL.Products
         {
             get
             {
-                return (_memberLevel);
+                return _memberLevel;
             }
 
             set
@@ -265,7 +258,7 @@ namespace SharedBase.BOL.Products
 
         public override string ToString()
         {
-            return (String.Format("ProductGroup: {0}; Description: {1}", ID, _description));
+            return String.Format("ProductGroup: {0}; Description: {1}", ID, _description);
         }
 
         #endregion Overridden Methods

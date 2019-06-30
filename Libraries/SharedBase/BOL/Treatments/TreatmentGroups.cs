@@ -45,7 +45,7 @@ namespace SharedBase.BOL.Treatments
         /// <returns>ProductGroups collection</returns>
         public static TreatmentGroups Get()
         {
-            return (DAL.FirebirdDB.TreatmentGroupsGet());
+            return DAL.FirebirdDB.TreatmentGroupsGet();
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace SharedBase.BOL.Treatments
         /// <returns>ProductGroup if found, otherwise null</returns>
         public static TreatmentGroup Get(int TreatmentGroupID)
         {
-            return (DAL.FirebirdDB.TreatmentGroupGet(TreatmentGroupID));
+            return DAL.FirebirdDB.TreatmentGroupGet(TreatmentGroupID);
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace SharedBase.BOL.Treatments
         public static TreatmentGroup Create(User user, string Description)
         {
             Utils.LibUtils.CanCreate(user);
-            return (DAL.FirebirdDB.AdminTreatmentGroupCreate(Description));
+            return DAL.FirebirdDB.AdminTreatmentGroupCreate(Description);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace SharedBase.BOL.Treatments
         {
             get
             {
-                return ((TreatmentGroup)this.InnerList[Index]);
+                return (TreatmentGroup)this.InnerList[Index];
             }
 
             set
@@ -109,7 +109,7 @@ namespace SharedBase.BOL.Treatments
         /// <returns></returns>
         public int Add(TreatmentGroup value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace SharedBase.BOL.Treatments
         /// <returns></returns>
         public int IndexOf(TreatmentGroup value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -151,7 +151,7 @@ namespace SharedBase.BOL.Treatments
         public bool Contains(TreatmentGroup value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

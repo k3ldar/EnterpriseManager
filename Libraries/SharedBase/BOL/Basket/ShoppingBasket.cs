@@ -211,7 +211,7 @@ namespace SharedBase.BOL.Basket
         /// <summary>
         /// Type of discount within the basket
         /// </summary>
-        public BasketDiscountType DiscountType { get { return (_discountType); } }
+        public BasketDiscountType DiscountType { get { return _discountType; } }
 
         /// <summary>
         /// Represents the total user discount on an individual product item (all items)
@@ -254,7 +254,7 @@ namespace SharedBase.BOL.Basket
         { 
             get
             {
-                return (_currencyAccepted);
+                return _currencyAccepted;
             }
             
             set
@@ -277,7 +277,7 @@ namespace SharedBase.BOL.Basket
         {
             get
             {
-                return (_currency);
+                return _currency;
             }
 
             set
@@ -300,7 +300,7 @@ namespace SharedBase.BOL.Basket
         {
             get
             {
-                return (_maximumItemQuantity);
+                return _maximumItemQuantity;
             }
 
             set
@@ -316,7 +316,7 @@ namespace SharedBase.BOL.Basket
         {
             get
             {
-                return (_deliveryInstructions == null ? "" : _deliveryInstructions);
+                return _deliveryInstructions == null ? "" : _deliveryInstructions;
             }
 
             set
@@ -332,7 +332,7 @@ namespace SharedBase.BOL.Basket
         {
             get
             {
-                return (_ID);
+                return _ID;
             }
         }
 
@@ -343,7 +343,7 @@ namespace SharedBase.BOL.Basket
         {
             get
             {
-                return (_VoucherType);
+                return _VoucherType;
             }
 
             set
@@ -362,7 +362,7 @@ namespace SharedBase.BOL.Basket
                 if (_basketItems == null)
                     _basketItems = DAL.FirebirdDB.BasketItemsGet(this);
 
-                return (_basketItems);
+                return _basketItems;
             }
         }
 
@@ -373,7 +373,7 @@ namespace SharedBase.BOL.Basket
         {
             get
             {
-                return (_DiscountCouponName);
+                return _DiscountCouponName;
             }
         }
 
@@ -385,10 +385,10 @@ namespace SharedBase.BOL.Basket
 
                 foreach (BasketItem item in Items)
                 {
-                    Result += item.PriceWithDiscount + (item.Price * (decimal)GetMultiplier()) * item.Quantity;
+                    Result += item.PriceWithDiscount + item.Price * (decimal)GetMultiplier() * item.Quantity;
                 }
 
-                return (Result);
+                return Result;
             }
         }
 
@@ -400,7 +400,7 @@ namespace SharedBase.BOL.Basket
 
                 foreach (BasketItem item in Items)
                 {
-                    decimal Price = (item.PriceWithDiscount * (decimal)GetMultiplier()) * item.Quantity;
+                    decimal Price = item.PriceWithDiscount * (decimal)GetMultiplier() * item.Quantity;
                     Result += Price;
                 }
 
@@ -418,12 +418,12 @@ namespace SharedBase.BOL.Basket
                         decimal shopVAT = SharedUtils.VATCalculate(Result, _vatRate);
                         shopVAT = Math.Round(shopVAT, 2, MidpointRounding.AwayFromZero);
 
-                        decimal total = (Result + shopVAT + ShippingCosts) - _discount;
+                        decimal total = Result + shopVAT + ShippingCosts - _discount;
                         Result = SharedUtils.VATRemove(total, _vatRate);
                     }
                 }
 
-                return (Result);
+                return Result;
             }
         }
 
@@ -434,7 +434,7 @@ namespace SharedBase.BOL.Basket
         {
             get
             {
-                return (_IgnoreCostMultiplier);
+                return _IgnoreCostMultiplier;
             }
 
             set 
@@ -450,7 +450,7 @@ namespace SharedBase.BOL.Basket
         {
             get
             {
-                return (_discount);
+                return _discount;
             }
         }
 
@@ -458,7 +458,7 @@ namespace SharedBase.BOL.Basket
         {
             get
             {
-                return (_ShippingAddress);
+                return _ShippingAddress;
             }
 
             set
@@ -475,7 +475,7 @@ namespace SharedBase.BOL.Basket
         {
             get
             {
-                return (_user);
+                return _user;
             }
 
             set
@@ -502,7 +502,7 @@ namespace SharedBase.BOL.Basket
                 }
                 else
                 {
-                    if ((!IgnoreAutoDiscount && _user != null && _user.MemberLevel >= MemberLevel.Distributor && _user.AutoDiscount > 0))
+                    if (!IgnoreAutoDiscount && _user != null && _user.MemberLevel >= MemberLevel.Distributor && _user.AutoDiscount > 0)
                     {
                         ApplyDiscount(_user.AutoDiscount, "Salon Discount");
                         _VoucherType = Enums.InvoiceVoucherType.Percent;
@@ -520,9 +520,9 @@ namespace SharedBase.BOL.Basket
             get
             {
                 if (!SaleIsFromShopFront && _user != null)
-                    return (_user.Country);
+                    return _user.Country;
                 else
-                    return (_Country);
+                    return _Country;
             }
 
             set
@@ -560,7 +560,7 @@ namespace SharedBase.BOL.Basket
                         UserDiscountValue + BasketDiscountValue, 2);
                 }
                     
-                return (Result);
+                return Result;
             }
 
             //private set
@@ -573,7 +573,7 @@ namespace SharedBase.BOL.Basket
         {
             get
             {
-                return (_Subtotal);
+                return _Subtotal;
             }
         }
 
@@ -581,7 +581,7 @@ namespace SharedBase.BOL.Basket
         {
             get
             {
-                return (_vat);
+                return _vat;
             }
         }
 
@@ -589,7 +589,7 @@ namespace SharedBase.BOL.Basket
         {
             get
             {
-                return (_vatRate);
+                return _vatRate;
             }
         }
 
@@ -599,11 +599,11 @@ namespace SharedBase.BOL.Basket
             {
                 if (_Total < 0.00m)
                 {
-                    return (0.00m);
+                    return 0.00m;
                 }
                 else
                 {
-                    return (_Total);
+                    return _Total;
                 }
             }
         }
@@ -626,7 +626,7 @@ namespace SharedBase.BOL.Basket
 
             get
             {
-                return (_shipping);
+                return _shipping;
             }
         }
 
@@ -637,7 +637,7 @@ namespace SharedBase.BOL.Basket
         {
             get
             {
-                return (SharedUtils.FormatMoney(DiscountAmount, Currency));
+                return SharedUtils.FormatMoney(DiscountAmount, Currency);
             }
         }
 
@@ -648,7 +648,7 @@ namespace SharedBase.BOL.Basket
         {
             get
             {
-                return (SharedUtils.FormatMoney(SubTotalAmount, Currency));
+                return SharedUtils.FormatMoney(SubTotalAmount, Currency);
             }
         }
 
@@ -661,7 +661,7 @@ namespace SharedBase.BOL.Basket
             {
                 decimal value = VATAmount;
 
-                return (SharedUtils.FormatMoney(value, Currency));
+                return SharedUtils.FormatMoney(value, Currency);
             }
         }
 
@@ -672,7 +672,7 @@ namespace SharedBase.BOL.Basket
         {
             get
             {
-                return (SharedUtils.FormatMoney(TotalAmount, Currency));
+                return SharedUtils.FormatMoney(TotalAmount, Currency);
             }
         }
 
@@ -685,7 +685,7 @@ namespace SharedBase.BOL.Basket
             {
                 decimal value = ShippingCosts;
 
-                return (SharedUtils.FormatMoney(value, Currency));
+                return SharedUtils.FormatMoney(value, Currency);
             }
         }
 
@@ -693,7 +693,7 @@ namespace SharedBase.BOL.Basket
         {
             get
             {
-                return (SharedUtils.FormatMoney(SharedUtils.BankersRounding(SubTotalMinusVAT, 2), Currency));
+                return SharedUtils.FormatMoney(SharedUtils.BankersRounding(SubTotalMinusVAT, 2), Currency);
             }
         }
 
@@ -720,10 +720,10 @@ namespace SharedBase.BOL.Basket
             {
                 if (SaleIsFromShopFront)
                 {
-                    return (true);
+                    return true;
                 }
 
-                return (_freeShipping);
+                return _freeShipping;
             }
 
             set
@@ -747,7 +747,7 @@ namespace SharedBase.BOL.Basket
         {
             get
             {
-                return (_freeShippingAmount);
+                return _freeShippingAmount;
             }
 
             set
@@ -776,7 +776,7 @@ namespace SharedBase.BOL.Basket
         {
             get
             {
-                return (_IgnoreBasketQuantityRestrictions);
+                return _IgnoreBasketQuantityRestrictions;
             }
 
             set
@@ -792,7 +792,7 @@ namespace SharedBase.BOL.Basket
         {
             get
             {
-                return (_overrideVAT);
+                return _overrideVAT;
             }
 
             set
@@ -810,7 +810,7 @@ namespace SharedBase.BOL.Basket
         {
             get
             {
-                return (_overriddenVATRate);
+                return _overriddenVATRate;
             }
 
             set
@@ -844,7 +844,7 @@ namespace SharedBase.BOL.Basket
                 if ((int)Result > 1)
                     Result &= ~InvoiceOptions.Unused;
 
-                return (Result);
+                return Result;
             }
         }
 
@@ -862,8 +862,8 @@ namespace SharedBase.BOL.Basket
 
         public override string ToString()
         {
-            return (String.Format("ShoppingBasket: {0}; Discount: {1}; Coupon Name: {2}; Discount Ammount: {3}; Subtotal: {4}; VAT: {5}, Vat Rate: {6}; Total: {7}; Shipping: {8}; Voucher Type: {9}; Currency: {10}",
-                ID, _discount, _DiscountCouponName, DiscountAmount, _Subtotal, _vat, _vatRate, _Total, ShippingCosts, _VoucherType, Currency.CurrencyCode));
+            return String.Format("ShoppingBasket: {0}; Discount: {1}; Coupon Name: {2}; Discount Ammount: {3}; Subtotal: {4}; VAT: {5}, Vat Rate: {6}; Total: {7}; Shipping: {8}; Voucher Type: {9}; Currency: {10}",
+                ID, _discount, _DiscountCouponName, DiscountAmount, _Subtotal, _vat, _vatRate, _Total, ShippingCosts, _VoucherType, Currency.CurrencyCode);
         }
 
         #endregion Overridden Methods
@@ -894,7 +894,7 @@ namespace SharedBase.BOL.Basket
                 Result = HasItems() && !GiftWrappingIncluded();
             }
 
-            return (Result);
+            return Result;
         }
 
         public bool GiftWrappingIncluded()
@@ -906,7 +906,7 @@ namespace SharedBase.BOL.Basket
                 Result = ContainsProduct(_giftWrapProduct);
             }
 
-            return (Result);
+            return Result;
         }
 
         public void GiftWrappingAdd(int priceColumn)
@@ -939,12 +939,12 @@ namespace SharedBase.BOL.Basket
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         public bool IsEmpty()
         {
-            return (DAL.FirebirdDB.BasketGetTotalItems(this.ID) == 0);
+            return DAL.FirebirdDB.BasketGetTotalItems(this.ID) == 0;
         }
 
         /// <summary>
@@ -1037,8 +1037,8 @@ namespace SharedBase.BOL.Basket
             resultText = String.Empty;
             VoucherType = Enums.InvoiceVoucherType.Percent;
 
-            if ((!IgnoreAutoDiscount && _user != null && _user.MemberLevel >= MemberLevel.Distributor && _user.AutoDiscount > 0))
-                return (true);
+            if (!IgnoreAutoDiscount && _user != null && _user.MemberLevel >= MemberLevel.Distributor && _user.AutoDiscount > 0)
+                return true;
 
             if (CouponCode.Length > 30)
                 CouponCode = CouponCode.Substring(0, 29);
@@ -1061,21 +1061,21 @@ namespace SharedBase.BOL.Basket
                     if (_user.Invoices.VoucherUsed(CouponCode))
                     {
                         resultText = "Voucher already used by client";
-                        return (false);
+                        return false;
                     }
                 }
 
                 if (cpn.UserID > -1 && _user != null && cpn.UserID != _user.ID)
                 {
                     resultText = "Coupon is for a specific user";
-                    return (false);
+                    return false;
                 }
 
                 if (cpn.MinimumSpend != 0.00m && TotalWithoutShipping() < cpn.MinimumSpend)
                 {
                     resultText = String.Format("Minimim spend of {0} not met.", 
                         SharedUtils.FormatMoney(cpn.MinimumSpend, Currency));
-                    return (false);
+                    return false;
                 }
 
                 //if the code is linked to a product make sure the product is in the basket
@@ -1083,7 +1083,7 @@ namespace SharedBase.BOL.Basket
                 {
                     resultText = "This coupon requires specific products in the basket";
 
-                    return (false);
+                    return false;
                 }
 
                 //is there a free product with the code
@@ -1117,7 +1117,7 @@ namespace SharedBase.BOL.Basket
                         else
                         {
                             _discount = 0;
-                            return (false);
+                            return false;
                         }
                     }
                 }
@@ -1175,13 +1175,13 @@ namespace SharedBase.BOL.Basket
             {
                 case Enums.InvoiceVoucherType.Percent:
                 case Enums.InvoiceVoucherType.Value:
-                    return (_discount > 0);
+                    return _discount > 0;
                 case Enums.InvoiceVoucherType.Footprint:
-                    return (true);
+                    return true;
                 case Enums.InvoiceVoucherType.SpecialOffer:
-                    return (true);
+                    return true;
                 case Enums.InvoiceVoucherType.FreeProduct:
-                    return (true);
+                    return true;
                 default:
                     throw new Exception("Discount Voucher Type not known");
             }
@@ -1212,7 +1212,7 @@ namespace SharedBase.BOL.Basket
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         public void RemoveFreeProducts(bool validate)
@@ -1234,7 +1234,7 @@ namespace SharedBase.BOL.Basket
         /// <param name="reason"></param>
         public void ApplyDiscount(decimal discount, string reason)
         {
-            if ((!IgnoreAutoDiscount && _user != null && _user.MemberLevel >= MemberLevel.Distributor && _user.AutoDiscount > 0))
+            if (!IgnoreAutoDiscount && _user != null && _user.MemberLevel >= MemberLevel.Distributor && _user.AutoDiscount > 0)
                 return;
             _discountType = BasketDiscountType.Value;
 
@@ -1262,7 +1262,7 @@ namespace SharedBase.BOL.Basket
             }
             else
             {
-                if ((!IgnoreAutoDiscount && _user != null && _user.MemberLevel >= MemberLevel.Distributor && _user.AutoDiscount > 0))
+                if (!IgnoreAutoDiscount && _user != null && _user.MemberLevel >= MemberLevel.Distributor && _user.AutoDiscount > 0)
                     return;
 
                 _discountType = BasketDiscountType.Percentage;
@@ -1304,7 +1304,7 @@ namespace SharedBase.BOL.Basket
 
         public BasketItem Add(ProductCost Item, decimal Quantity, User user, int priceColumn)
         {
-            return (Add(Item, Quantity, user, Item.ItemType, RaiseSelectPriceColumn(priceColumn)));
+            return Add(Item, Quantity, user, Item.ItemType, RaiseSelectPriceColumn(priceColumn));
         }
 
         public BasketItem Add(ProductCost Item, decimal Quantity, User user, ProductCostItemType productType,
@@ -1340,7 +1340,7 @@ namespace SharedBase.BOL.Basket
 
             Reset(priceColumn);
 
-            return (newItem);
+            return newItem;
         }
 
         public BasketItem Add(AppointmentTreatment Item, int Quantity, User user, int priceColumn)
@@ -1374,7 +1374,7 @@ namespace SharedBase.BOL.Basket
 
             Reset(priceColumn);
 
-            return (newItem);
+            return newItem;
         }
 
         /// <summary>
@@ -1468,7 +1468,7 @@ namespace SharedBase.BOL.Basket
 
         public bool HasItems()
         {
-            return (Items.Count > 0);
+            return Items.Count > 0;
         }
 
         public Order ConvertToOrder(PaymentStatus PayMethod, string UserSession, string RemoteHost, string culture)
@@ -1506,7 +1506,7 @@ namespace SharedBase.BOL.Basket
                 String.Format("Order: {0}; Payment Type: {1}", 
                     Result.ID, PayMethod.Description));
 
-            return (Result);
+            return Result;
         }
 
         #endregion Public Methods
@@ -1521,28 +1521,28 @@ namespace SharedBase.BOL.Basket
                 CacheItem item = DAL.DALHelper.InternalCache.Get(cacheName);
 
                 if (item != null)
-                    return ((ProductCost)item.Value);
+                    return (ProductCost)item.Value;
 
                 ProductCost Result = DAL.FirebirdDB.ProductCostGetGiftWrap();
                 DAL.DALHelper.InternalCache.Add(cacheName, new CacheItem(cacheName, Result));
 
-                return (Result);
+                return Result;
             }
 
-            return (DAL.FirebirdDB.ProductCostGetGiftWrap());
+            return DAL.FirebirdDB.ProductCostGetGiftWrap();
         }
 
         private decimal GetMultiplier()
         {
             if (WebsiteSettings.ShoppingCart.OverrideCostMultiplier)
             {
-                return ((decimal)WebsiteSettings.ShoppingCart.OverrideCostMultiplierValue);
+                return (decimal)WebsiteSettings.ShoppingCart.OverrideCostMultiplierValue;
             }
 
             if (_IgnoreCostMultiplier || Currency == null)
-                return (1.00m);
+                return 1.00m;
 
-            return (Currency.Multiplier);
+            return Currency.Multiplier;
         }
 
         private bool ContainsProduct(Coupon coupon)
@@ -1550,7 +1550,7 @@ namespace SharedBase.BOL.Basket
             bool Result = false;
 
             if (coupon.RequiredProducts.Count == 0)
-                return (true);
+                return true;
 
             foreach (ProductCost couponItem in coupon.RequiredProducts)
             {
@@ -1558,12 +1558,12 @@ namespace SharedBase.BOL.Basket
                 {
                     if (basketItem.ItemID == couponItem.ID)
                     {
-                        return (true);
+                        return true;
                     }
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         private bool ContainsProduct(ProductCost cost)
@@ -1572,11 +1572,11 @@ namespace SharedBase.BOL.Basket
             {
                 if (basketItem.ItemID == cost.ID)
                 {
-                    return (true);
+                    return true;
                 }
             }
 
-            return (false);
+            return false;
         }
 
         /// <summary>
@@ -1614,14 +1614,14 @@ namespace SharedBase.BOL.Basket
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         private void ResetBasketValues()
         {
             _Subtotal = Items.SubTotal();
 
-            _Subtotal = (_Subtotal * (decimal)GetMultiplier());
+            _Subtotal = _Subtotal * (decimal)GetMultiplier();
 
             //is there a monetary discount?
             if ((_discountType == BasketDiscountType.Value && _discount > 0) ||
@@ -1637,7 +1637,7 @@ namespace SharedBase.BOL.Basket
                     decimal shopVAT = SharedUtils.VATCalculate(_Subtotal, _vatRate);
                     shopVAT = Math.Round(shopVAT, 2, MidpointRounding.AwayFromZero);
 
-                    decimal total = (_Subtotal + shopVAT + ShippingCosts) - _discount;
+                    decimal total = _Subtotal + shopVAT + ShippingCosts - _discount;
                     _Subtotal = SharedUtils.VATRemove(total, _vatRate);
                 }
                 else
@@ -1702,7 +1702,7 @@ namespace SharedBase.BOL.Basket
 
                 // if option to allow free shipping on spend above xx amount then allow 
                 // it if there is enough goods in the basket
-                if (!SaleIsFromShopFront && (_freeShipping && _freeShippingAmount > 0.0m) && (TotalWithoutShipping() >= _freeShippingAmount))
+                if (!SaleIsFromShopFront && _freeShipping && _freeShippingAmount > 0.0m && (TotalWithoutShipping() >= _freeShippingAmount))
                 {
                     _shipping = 0.00m;
                     return;
@@ -1747,7 +1747,7 @@ namespace SharedBase.BOL.Basket
             // final check for postage
             //
             // if a websale then the only free shipping for a user is via a coupon or if _freeShipping is false
-            if (!SaleIsFromShopFront && _shipping == 0.00m && (_freeShipping && _freeShippingAmount > 0.0m) && (TotalWithoutShipping() < _freeShippingAmount))
+            if (!SaleIsFromShopFront && _shipping == 0.00m && _freeShipping && _freeShippingAmount > 0.0m && (TotalWithoutShipping() < _freeShippingAmount))
                 //!SaleIsFromShopFront && (String.IsNullOrEmpty(_CouponCode) && ShippingAmount == 0.00m && !_freeShipping))
             {
                 // is it free shipping through the coupon code?
@@ -1782,12 +1782,12 @@ namespace SharedBase.BOL.Basket
         private bool CanApplyDiscount()
         {
             if (_user == null)
-                return (true);
+                return true;
 
             if (_user.MemberLevel >= MemberLevel.Reseller)
-                return (false);
+                return false;
             else
-                return (true);
+                return true;
         }
 
         /// <summary>
@@ -1796,7 +1796,7 @@ namespace SharedBase.BOL.Basket
         /// <returns>double - Subtotal + VAT</returns>
         private decimal TotalWithoutShipping()
         {
-            return (_Subtotal + _vat + DiscountAmount);
+            return _Subtotal + _vat + DiscountAmount;
         }
 
         private void UpdateVATRate()
@@ -1854,7 +1854,7 @@ namespace SharedBase.BOL.Basket
             //        Result = args.PriceColumn;
             //}
 
-            return (Result);
+            return Result;
         }
 
         private void RaiseBasketUpdated()

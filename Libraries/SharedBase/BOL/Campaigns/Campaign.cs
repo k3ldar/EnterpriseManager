@@ -130,7 +130,7 @@ namespace SharedBase.BOL.Campaigns
         {
             get
             {
-                return (_id);
+                return _id;
             }
 
             set
@@ -146,7 +146,7 @@ namespace SharedBase.BOL.Campaigns
         {
             get
             {
-                return (_startDateTime);
+                return _startDateTime;
             }
 
             set
@@ -162,7 +162,7 @@ namespace SharedBase.BOL.Campaigns
         {
             get
             {
-                return (_title);
+                return _title;
             }
 
             set
@@ -178,7 +178,7 @@ namespace SharedBase.BOL.Campaigns
         {
             get
             {
-                return (_finishDateTime);
+                return _finishDateTime;
             }
 
             set
@@ -194,7 +194,7 @@ namespace SharedBase.BOL.Campaigns
         {
             get
             {
-                return (_campaignName);
+                return _campaignName;
             }
 
             set
@@ -210,7 +210,7 @@ namespace SharedBase.BOL.Campaigns
         {
             get
             {
-                return (_sendEmail);
+                return _sendEmail;
             }
 
             set
@@ -226,7 +226,7 @@ namespace SharedBase.BOL.Campaigns
         {
             get
             {
-                return (_emailSent);
+                return _emailSent;
             }
 
             set
@@ -242,7 +242,7 @@ namespace SharedBase.BOL.Campaigns
         {
             get
             {
-                return (_emailSubject);
+                return _emailSubject;
             }
 
             set
@@ -258,7 +258,7 @@ namespace SharedBase.BOL.Campaigns
         {
             get
             {
-                return (_email);
+                return _email;
             }
 
             set
@@ -274,7 +274,7 @@ namespace SharedBase.BOL.Campaigns
         {
             get
             {
-                return (_sender);
+                return _sender;
             }
 
             set
@@ -290,7 +290,7 @@ namespace SharedBase.BOL.Campaigns
         {
             get
             {
-                return (_message);
+                return _message;
             }
 
             set
@@ -306,7 +306,7 @@ namespace SharedBase.BOL.Campaigns
         {
             get
             {
-                return (_sendLetter);
+                return _sendLetter;
             }
 
             set
@@ -322,7 +322,7 @@ namespace SharedBase.BOL.Campaigns
         {
             get
             {
-                return (_letter);
+                return _letter;
             }
 
             set
@@ -338,7 +338,7 @@ namespace SharedBase.BOL.Campaigns
         {
             get
             {
-                return (_imageMainPage);
+                return _imageMainPage;
             }
 
             set
@@ -354,7 +354,7 @@ namespace SharedBase.BOL.Campaigns
         {
             get
             {
-                return (_imageLeftMenu);
+                return _imageLeftMenu;
             }
 
             set
@@ -370,7 +370,7 @@ namespace SharedBase.BOL.Campaigns
         {
             get
             {
-                return (_imageOffersPage);
+                return _imageOffersPage;
             }
 
             set
@@ -386,7 +386,7 @@ namespace SharedBase.BOL.Campaigns
         {
             get
             {
-                return (_offersPageText);
+                return _offersPageText;
             }
 
             set
@@ -399,7 +399,7 @@ namespace SharedBase.BOL.Campaigns
         {
             get
             {
-                return (_visits);
+                return _visits;
             }
         }
 
@@ -410,7 +410,7 @@ namespace SharedBase.BOL.Campaigns
         {
             get
             {
-                return (_invoices);
+                return _invoices;
             }
         }
 
@@ -421,7 +421,7 @@ namespace SharedBase.BOL.Campaigns
         {
             get
             {
-                return (_sales);
+                return _sales;
             }
         }
 
@@ -432,7 +432,7 @@ namespace SharedBase.BOL.Campaigns
         {
             get
             {
-                return (_activateProductGroup);
+                return _activateProductGroup;
             }
 
             set
@@ -449,9 +449,9 @@ namespace SharedBase.BOL.Campaigns
             get
             {
                 if (String.IsNullOrEmpty(_linkOverride))
-                    return ("/Special-Offers/");
+                    return "/Special-Offers/";
                 else
-                    return (_linkOverride);
+                    return _linkOverride;
             }
         }
 
@@ -462,7 +462,7 @@ namespace SharedBase.BOL.Campaigns
         {
             get
             {
-                return (_linkOverride);
+                return _linkOverride;
             }
 
             set
@@ -478,7 +478,7 @@ namespace SharedBase.BOL.Campaigns
         {
             get
             {
-                return (_couponName);
+                return _couponName;
             }
 
             set
@@ -494,7 +494,7 @@ namespace SharedBase.BOL.Campaigns
         {
             get
             {
-                return (_coupanPercent);
+                return _coupanPercent;
             }
 
             set
@@ -510,7 +510,7 @@ namespace SharedBase.BOL.Campaigns
         {
             get
             {
-                return (_freeProductCode);
+                return _freeProductCode;
             }
 
             set
@@ -526,7 +526,7 @@ namespace SharedBase.BOL.Campaigns
         {
             get
             {
-                return (_mainProductCode);
+                return _mainProductCode;
             }
 
             set
@@ -607,7 +607,7 @@ namespace SharedBase.BOL.Campaigns
 
         public override string ToString()
         {
-            return (String.Format("Campaign: {0}; Description: {1}", ID, CampaignName));
+            return String.Format("Campaign: {0}; Description: {1}", ID, CampaignName);
         }
 
         #endregion Overridden Methods
@@ -628,7 +628,7 @@ namespace SharedBase.BOL.Campaigns
                 CacheItem item = DAL.DALHelper.InternalCache.Get(name);
 
                 if (item != null)
-                    return ((Campaigns)item.Value);
+                    return (Campaigns)item.Value;
             }
 
             Campaigns Result = DAL.FirebirdDB.CampaignGet(currentCountry);
@@ -636,13 +636,13 @@ namespace SharedBase.BOL.Campaigns
             if (DAL.DALHelper.AllowCaching)
                 DAL.DALHelper.InternalCache.Add(name, new CacheItem(name, Result));
 
-            return (Result);
+            return Result;
         }
 
 
         public static Campaign Get(int ID)
         {
-            return (DAL.FirebirdDB.CampaignGet(ID));
+            return DAL.FirebirdDB.CampaignGet(ID);
         }
 
         public static Campaign Get(string Campaign)
@@ -650,7 +650,7 @@ namespace SharedBase.BOL.Campaigns
             if (Campaign.Length > 40)
                 Campaign = Campaign.Substring(0, 39);
 
-            return (DAL.FirebirdDB.CampaignGet(Campaign));
+            return DAL.FirebirdDB.CampaignGet(Campaign);
         }
 
         #endregion Static Methods

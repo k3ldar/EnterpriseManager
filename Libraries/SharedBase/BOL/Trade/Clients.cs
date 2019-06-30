@@ -48,7 +48,7 @@ namespace SharedBase.BOL.Trade
         /// <returns></returns>
         public static Users.Users TradeClientManagers()
         {
-            return (DAL.FirebirdDB.TradeClientManagersGet());
+            return DAL.FirebirdDB.TradeClientManagersGet();
         }
 
         public static void AutoLinkAccounts()
@@ -61,7 +61,7 @@ namespace SharedBase.BOL.Trade
             Hooks.Hooks.HookNotification(HookEvent.TradeClientCreated,
                 String.Format("Name: {0}", Name));
 
-            return (DAL.FirebirdDB.TradeClientCreate(Name, CompanyName, Telephone, Email, Address, Postcode, Notes));
+            return DAL.FirebirdDB.TradeClientCreate(Name, CompanyName, Telephone, Email, Address, Postcode, Notes);
         }
 
         public static Clients Get(Users.User manager)
@@ -75,7 +75,7 @@ namespace SharedBase.BOL.Trade
                 CachedItemAdd(cacheName, cachedItem);
             }
 
-            return ((Clients)cachedItem.Value);
+            return (Clients)cachedItem.Value;
         }
 
         public static Clients Get(Enums.ClientState State)
@@ -88,7 +88,7 @@ namespace SharedBase.BOL.Trade
                 CachedItemAdd(State.ToString(), cachedItem);
             }
 
-            return ((Clients)cachedItem.Value);
+            return (Clients)cachedItem.Value;
         }
 
         public static Client Get(Int64 ID)
@@ -102,7 +102,7 @@ namespace SharedBase.BOL.Trade
                 CachedItemAdd(cacheName, cachedItem);
             }
 
-            return ((Client)cachedItem.Value);
+            return (Client)cachedItem.Value;
         }
 
         #endregion Public Static Methods
@@ -115,7 +115,7 @@ namespace SharedBase.BOL.Trade
         {
             get
             {
-                return ((Client)this.InnerList[Index]);
+                return (Client)this.InnerList[Index];
             }
 
             set
@@ -135,7 +135,7 @@ namespace SharedBase.BOL.Trade
         /// <returns></returns>
         public int Add(Client value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace SharedBase.BOL.Trade
         /// <returns></returns>
         public int IndexOf(Client value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -177,7 +177,7 @@ namespace SharedBase.BOL.Trade
         public bool Contains(Client value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

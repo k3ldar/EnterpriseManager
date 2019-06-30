@@ -74,7 +74,7 @@ namespace SharedBase.BOL.IPAddresses
                 }
             }
 
-            return (_list);
+            return _list;
         }
 
         /// <summary>
@@ -367,7 +367,7 @@ namespace SharedBase.BOL.IPAddresses
             if (addr != null)
                 this.Remove(address);
 
-            return (true);
+            return true;
         }
 
         /// <summary>
@@ -385,7 +385,7 @@ namespace SharedBase.BOL.IPAddresses
                     Result.Add(address);
             }
 
-            return (Result);
+            return Result;
         }
 
         public IPAddress AddressGet(Int64 id)
@@ -393,10 +393,10 @@ namespace SharedBase.BOL.IPAddresses
             foreach (IPAddress address in this)
             {
                 if (address.ID == id)
-                    return (address);
+                    return address;
             }
 
-            return (null);
+            return null;
         }
 
         /// <summary>
@@ -419,7 +419,7 @@ namespace SharedBase.BOL.IPAddresses
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
 
@@ -444,7 +444,7 @@ namespace SharedBase.BOL.IPAddresses
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -466,7 +466,7 @@ namespace SharedBase.BOL.IPAddresses
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -484,11 +484,11 @@ namespace SharedBase.BOL.IPAddresses
 
                 if (address.ID == id)
                 {
-                    return (address);
+                    return address;
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         public int AddressNumberOfBans(IPAddress ipAddress)
@@ -501,7 +501,7 @@ namespace SharedBase.BOL.IPAddresses
                     Result++; ;
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -519,7 +519,7 @@ namespace SharedBase.BOL.IPAddresses
                     Result.Add(address);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -543,7 +543,7 @@ namespace SharedBase.BOL.IPAddresses
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         ///// <summary>
@@ -576,7 +576,7 @@ namespace SharedBase.BOL.IPAddresses
         {
             get
             {
-                return ((IPAddress)this.InnerList[Index]);
+                return (IPAddress)this.InnerList[Index];
             }
 
             set
@@ -596,7 +596,7 @@ namespace SharedBase.BOL.IPAddresses
         /// <returns></returns>
         public int Add(IPAddress value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -606,7 +606,7 @@ namespace SharedBase.BOL.IPAddresses
         /// <returns></returns>
         public int IndexOf(IPAddress value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -638,7 +638,7 @@ namespace SharedBase.BOL.IPAddresses
         public bool Contains(IPAddress value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

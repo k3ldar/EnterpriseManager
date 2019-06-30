@@ -56,7 +56,7 @@ namespace SharedBase.BOL.TagLines
 
             int idx = rnd.Next(_tagLines.Count -1);
 
-            return (_tagLines[idx]);
+            return _tagLines[idx];
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace SharedBase.BOL.TagLines
                 _tagLines = DAL.FirebirdDB.TagLinesGet();
             }
 
-            return (_tagLines);
+            return _tagLines;
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace SharedBase.BOL.TagLines
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace SharedBase.BOL.TagLines
 
             _tagLines = null;
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace SharedBase.BOL.TagLines
         {
             get
             {
-                return ((TagLine)this.InnerList[Index]);
+                return (TagLine)this.InnerList[Index];
             }
 
 
@@ -158,7 +158,7 @@ namespace SharedBase.BOL.TagLines
         /// <returns></returns>
         public int Add(TagLine value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -168,7 +168,7 @@ namespace SharedBase.BOL.TagLines
         /// <returns></returns>
         public int IndexOf(TagLine value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -189,7 +189,7 @@ namespace SharedBase.BOL.TagLines
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -221,7 +221,7 @@ namespace SharedBase.BOL.TagLines
         public bool Contains(TagLine value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

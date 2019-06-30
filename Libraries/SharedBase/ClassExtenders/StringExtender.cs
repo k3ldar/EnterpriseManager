@@ -44,7 +44,7 @@ namespace SharedBase.ClassExtenders
                 if (results[currIndex] == null)
                     results[currIndex] = String.Empty;
 
-                if ((results[currIndex].Length + (word.Length + 1)) > maxLength)
+                if ((results[currIndex].Length + word.Length + 1) > maxLength)
                 {
                     results[currIndex] = results[currIndex].Trim();
                     currIndex++;
@@ -68,7 +68,7 @@ namespace SharedBase.ClassExtenders
                 Result[j] = results[j].Trim();
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>Returns a string array that contains the substrings in this string that are seperated a given fixed length.</summary>
@@ -98,10 +98,10 @@ namespace SharedBase.ClassExtenders
 
             if (length > 0)
                 for (int iStr = 0, iArray = 0; iStr < str.LengthInTextElements && iArray < array.Length; iStr += lengthAbs, iArray++)
-                    array[iArray] = str.SubstringByTextElements(iStr, (str.LengthInTextElements - iStr < lengthAbs ? str.LengthInTextElements - iStr : lengthAbs));
+                    array[iArray] = str.SubstringByTextElements(iStr, str.LengthInTextElements - iStr < lengthAbs ? str.LengthInTextElements - iStr : lengthAbs);
             else // if (length < 0)
                 for (int iStr = str.LengthInTextElements - 1, iArray = array.Length - 1; iStr >= 0 && iArray >= 0; iStr -= lengthAbs, iArray--)
-                    array[iArray] = str.SubstringByTextElements((iStr - lengthAbs < 0 ? 0 : iStr - lengthAbs + 1), (iStr - lengthAbs < 0 ? iStr + 1 : lengthAbs));
+                    array[iArray] = str.SubstringByTextElements(iStr - lengthAbs < 0 ? 0 : iStr - lengthAbs + 1, iStr - lengthAbs < 0 ? iStr + 1 : lengthAbs);
 
             return array;
         }

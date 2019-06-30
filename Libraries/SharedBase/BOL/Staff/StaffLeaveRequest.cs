@@ -87,7 +87,7 @@ namespace SharedBase.BOL.Staff
 		/// </summary>
 		public new bool Delete()
 		{
-            return (SharedBase.DAL.FirebirdDB.StaffLeaveRequestDelete(this));
+            return SharedBase.DAL.FirebirdDB.StaffLeaveRequestDelete(this);
 		}
 
         /// <summary>
@@ -150,7 +150,7 @@ namespace SharedBase.BOL.Staff
                 (authorisingUser.HasPermissionStaff(SecurityEnums.SecurityPermissionsStaff.AuthoriseLeave) ||
                 authorisingUser.HasPermissionStaff(SecurityEnums.SecurityPermissionsStaff.AuthoriseAllLeave));
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -180,7 +180,7 @@ namespace SharedBase.BOL.Staff
                 (approvingUser.HasPermissionStaff(SecurityEnums.SecurityPermissionsStaff.ApproveLeave) ||
                 approvingUser.HasPermissionStaff(SecurityEnums.SecurityPermissionsStaff.ApproveAllLeave));
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -209,11 +209,11 @@ namespace SharedBase.BOL.Staff
         /// <returns></returns>
         public bool CanCancel(User activeUser)
         {
-            bool Result = (this.Status != LeaveOptions.Cancelled && this.Status != LeaveOptions.Denied) && 
-                ((activeUser.ID == UserID && (!IsApproved && !IsAuthorised)) ||
+            bool Result = this.Status != LeaveOptions.Cancelled && this.Status != LeaveOptions.Denied && 
+                ((activeUser.ID == UserID && !IsApproved && !IsAuthorised) ||
                 activeUser.HasPermissionStaff(SecurityEnums.SecurityPermissionsStaff.CancelAllLeave));
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -256,7 +256,7 @@ namespace SharedBase.BOL.Staff
                     )
                 );
 
-            return (Result);
+            return Result;
         }
 
 		/// <summary>
@@ -276,7 +276,7 @@ namespace SharedBase.BOL.Staff
 		/// </summary>
 		public override string ToString()
 		{
-			return (String.Format("STAFF_LEAVE Record {0}", ID));
+			return String.Format("STAFF_LEAVE Record {0}", ID);
 		}
 
 		#endregion Overridden Methods
@@ -335,7 +335,7 @@ namespace SharedBase.BOL.Staff
         { 
             get
             {
-                return (ApprovedBy > -1);
+                return ApprovedBy > -1;
             }
         }
 
@@ -346,7 +346,7 @@ namespace SharedBase.BOL.Staff
         {
             get
             {
-                return (AuthorisedBy > -1);
+                return AuthorisedBy > -1;
             }
         }
 

@@ -37,7 +37,7 @@ namespace SharedBase
     {
         public Salon SalonGet(int SalonID)
         {
-            return (DAL.FirebirdDB.AdminSalonGet(SalonID));
+            return DAL.FirebirdDB.AdminSalonGet(SalonID);
         }
 
         #region Salon Owners
@@ -93,7 +93,7 @@ namespace SharedBase
 
         public Salon SalonOwnerUpdateGet(User user, Salon salon)
         {
-            return (FirebirdDB.AdminSalonOwnerUpdateGet(user, salon));
+            return FirebirdDB.AdminSalonOwnerUpdateGet(user, salon);
         }
 
 

@@ -105,7 +105,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (DAL.FirebirdDB.AppointmentLastChangedBy(this));
+                return DAL.FirebirdDB.AppointmentLastChangedBy(this);
             }
         }
 
@@ -116,7 +116,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_created);
+                return _created;
             }
         }
 
@@ -127,7 +127,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_lastAltered);
+                return _lastAltered;
             }
         }
 
@@ -141,7 +141,7 @@ namespace SharedBase.BOL.Appointments
                 if (_user == null)
                     _user = DAL.FirebirdDB.UserGet(_userID);
 
-                return (_user);
+                return _user;
             }
         }
 
@@ -149,7 +149,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_column);
+                return _column;
             }
 
             set
@@ -165,7 +165,7 @@ namespace SharedBase.BOL.Appointments
                 if (_children == null)
                     _children = DAL.FirebirdDB.AppointmentsGet(this);
 
-                return (_children);
+                return _children;
             }
         }
 
@@ -176,7 +176,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_masterAppointment);
+                return _masterAppointment;
             }
 
             set
@@ -196,7 +196,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_notes);
+                return _notes;
             }
 
             set
@@ -213,7 +213,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_duration);
+                return _duration;
             }
 
             set
@@ -234,7 +234,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_userName);
+                return _userName;
             }
 
             set
@@ -251,7 +251,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_userID);
+                return _userID;
             }
 
             set
@@ -273,7 +273,7 @@ namespace SharedBase.BOL.Appointments
                 if (Result == String.Empty)
                     Result = "Unknown";
 
-                return (Result);
+                return Result;
             }
 
             set
@@ -290,7 +290,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_treatmentID);
+                return _treatmentID;
             }
 
             set
@@ -307,7 +307,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_startTime);
+                return _startTime;
             }
 
             set
@@ -324,7 +324,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_appointmentType);
+                return _appointmentType;
             }
 
             set
@@ -341,7 +341,7 @@ namespace SharedBase.BOL.Appointments
         {
             get 
             {
-                return (_id);
+                return _id;
             }
 
             set 
@@ -354,7 +354,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_appointmentDate);
+                return _appointmentDate;
             }
 
             set
@@ -376,7 +376,7 @@ namespace SharedBase.BOL.Appointments
             {
                 string Result = Shared.Utilities.SplitCamelCase(_status.ToString());
 
-                return (Result);
+                return Result;
             }
         }
 
@@ -384,7 +384,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_status);
+                return _status;
             }
 
             set
@@ -416,7 +416,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_employeeID);
+                return _employeeID;
             }
 
             set
@@ -440,7 +440,7 @@ namespace SharedBase.BOL.Appointments
                     _employeeName = user.UserName;
                 }
 
-                return (_employeeName);
+                return _employeeName;
             }
         }
 
@@ -448,7 +448,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (GetHTMLAppointmentText());
+                return GetHTMLAppointmentText();
             }
         }
 
@@ -456,7 +456,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (GetAppointmentText(true));
+                return GetAppointmentText(true);
             }
         }
 
@@ -467,7 +467,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (Therapists.Therapist.Get(_employeeID));
+                return Therapists.Therapist.Get(_employeeID);
             }
         }
 
@@ -478,7 +478,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_lockedBy != -1);
+                return _lockedBy != -1;
             }
         }
 
@@ -489,7 +489,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_lockedBy);
+                return _lockedBy;
             }
 
             set
@@ -512,7 +512,7 @@ namespace SharedBase.BOL.Appointments
                 if (String.IsNullOrEmpty(_lockedByName))
                     _lockedByName = Users.User.UserGet(_lockedBy).UserName;
 
-                return (_lockedByName);
+                return _lockedByName;
             }
         }
 
@@ -522,12 +522,12 @@ namespace SharedBase.BOL.Appointments
             get
             {
                 if (_appointmentType != 14)
-                    return (null);
+                    return null;
 
                 if (_trainingCourse == null)
                     _trainingCourse = Course.Get(ID);
 
-                return (_trainingCourse);
+                return _trainingCourse;
             }
         }
 
@@ -572,7 +572,7 @@ namespace SharedBase.BOL.Appointments
 
             Result = String.Format("<div class=\"AppointmentEntry\">{0}</div>", Result);
 
-            return (Result);
+            return Result;
         }
 
         #endregion Private Methods
@@ -593,7 +593,7 @@ namespace SharedBase.BOL.Appointments
                     Result = true;
             }
 
-            return (Result);
+            return Result;
         }
 
         public void ReminderSent(User user)
@@ -665,7 +665,7 @@ namespace SharedBase.BOL.Appointments
             if (_appointmentType != 14 && Notes != String.Empty)
                 Result += "\r\n\r\n" + Notes;
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -675,7 +675,7 @@ namespace SharedBase.BOL.Appointments
         /// <returns>AppointmentChanges collection</returns>
         public AppointmentChanges History()
         {
-            return (DAL.FirebirdDB.AppointmentChanges(this));
+            return DAL.FirebirdDB.AppointmentChanges(this);
         }
 
         /// <summary>
@@ -749,11 +749,11 @@ namespace SharedBase.BOL.Appointments
         {
             DateTime Result;
             int hour = (int)StartTime;
-            int minute = (int)(((StartTime - Math.Floor(StartTime)) * 100) / 1.666666666666667);
+            int minute = (int)((StartTime - Math.Floor(StartTime)) * 100 / 1.666666666666667);
 
             Result = new DateTime(AppointmentDate.Year, AppointmentDate.Month, AppointmentDate.Day, hour, minute, 0);
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -764,12 +764,12 @@ namespace SharedBase.BOL.Appointments
         {
             bool Result = false;
             int hour = (int)StartTime;
-            int minute = (int)(((StartTime - Math.Floor(StartTime)) * 100) / 1.666666666666667);
+            int minute = (int)((StartTime - Math.Floor(StartTime)) * 100 / 1.666666666666667);
 
             DateTime apptTime = new DateTime(AppointmentDate.Year, AppointmentDate.Month, AppointmentDate.Day, hour, minute, 0);
 
-            Result = (DateTime.Now < apptTime.Date.AddDays(-2));
-            return (Result);
+            Result = DateTime.Now < apptTime.Date.AddDays(-2);
+            return Result;
         }
 
         /// <summary>
@@ -797,7 +797,7 @@ namespace SharedBase.BOL.Appointments
             foreach (Appointment sub in this.ChildAppointments)
                 Result += sub.Duration;
 
-            return (Result);
+            return Result;
         }
 
         #endregion Public Methods
@@ -806,8 +806,8 @@ namespace SharedBase.BOL.Appointments
 
         public override string ToString()
         {
-            return (String.Format("Appointment: {0}; Date: {1}; User: {2}; Employee: {3}; Treatment: {4}; Status: {5}", 
-                ID, AppointmentAsDateTime().ToShortDateString(), _userID, _employeeID, _treatmentName, _status));
+            return String.Format("Appointment: {0}; Date: {1}; User: {2}; Employee: {3}; Treatment: {4}; Status: {5}", 
+                ID, AppointmentAsDateTime().ToShortDateString(), _userID, _employeeID, _treatmentName, _status);
         }
 
         #endregion Overridden Methods

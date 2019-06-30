@@ -37,12 +37,12 @@ namespace SharedBase.BOL.Celebrities
 
         public static Celebrities Get()
         {
-            return (DAL.FirebirdDB.CelebritiesGet());
+            return DAL.FirebirdDB.CelebritiesGet();
         }
 
         public static Celebrity Get(int ID)
         {
-            return (DAL.FirebirdDB.CelebritiesGet(ID));
+            return DAL.FirebirdDB.CelebritiesGet(ID);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace SharedBase.BOL.Celebrities
 
             Celebrity Result = new Celebrity(id, name, description, image);
 
-            return (Result);
+            return Result;
         }
 
 
@@ -71,7 +71,7 @@ namespace SharedBase.BOL.Celebrities
         {
             get
             {
-                return ((Celebrity)this.InnerList[Index]);
+                return (Celebrity)this.InnerList[Index];
             }
 
             set
@@ -91,7 +91,7 @@ namespace SharedBase.BOL.Celebrities
         /// <returns></returns>
         public int Add(Celebrity value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace SharedBase.BOL.Celebrities
         /// <returns></returns>
         public int IndexOf(Celebrity value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -133,7 +133,7 @@ namespace SharedBase.BOL.Celebrities
         public bool Contains(Celebrity value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

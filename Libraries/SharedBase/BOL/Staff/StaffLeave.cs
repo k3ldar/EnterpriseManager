@@ -41,7 +41,7 @@ namespace SharedBase.BOL.Staff
 		/// <returns>StaffLeaveRequest instance</returns>
 		public static StaffLeaveRequest Create(Int64 userID, DateTime dateRequested, DateTime dateFrom, DateTime dateTo, double totalTime, Int64 authorisedBy, Int64 grantedBy, string notes)
 		{
-            return (DAL.FirebirdDB.StaffLeaveRequestInsert(userID, dateRequested, dateFrom, dateTo, totalTime, authorisedBy, grantedBy, notes));
+            return DAL.FirebirdDB.StaffLeaveRequestInsert(userID, dateRequested, dateFrom, dateTo, totalTime, authorisedBy, grantedBy, notes);
 		}
 
 		/// <summary>
@@ -50,7 +50,7 @@ namespace SharedBase.BOL.Staff
 		/// <returns>StaffLeaveRequest instance</returns>
 		public static StaffLeaveRequest InsertUpdate(StaffLeaveRequest item)
 		{
-            return (DAL.FirebirdDB.StaffLeaveRequestInsertUpdate(item));
+            return DAL.FirebirdDB.StaffLeaveRequestInsertUpdate(item);
 		}
 
 		/// <summary>
@@ -59,17 +59,17 @@ namespace SharedBase.BOL.Staff
 		/// <returns>StaffLeave collection of StaffLeaveRequest items</returns>
 		public static StaffLeave All(User staffMember)
 		{
-			return (DAL.FirebirdDB.StaffLeaveRequestSelectAll(staffMember));
+			return DAL.FirebirdDB.StaffLeaveRequestSelectAll(staffMember);
 		}
 
         public static StaffLeave AuthorisationRequests()
         {
-            return (DAL.FirebirdDB.StaffLeaveRequestSelectAllAuthorisation());
+            return DAL.FirebirdDB.StaffLeaveRequestSelectAllAuthorisation();
         }
 
         public static StaffLeave ApprovalRequests()
         {
-            return (DAL.FirebirdDB.StaffLeaveRequestSelectAllApproval());
+            return DAL.FirebirdDB.StaffLeaveRequestSelectAllApproval();
         }
 
 		/// <summary>
@@ -79,7 +79,7 @@ namespace SharedBase.BOL.Staff
 		/// <returns>StaffLeaveRequest item if found, otherwise null</returns>
 		public static StaffLeaveRequest Get(Int64 item)
 		{
-            return (DAL.FirebirdDB.StaffLeaveRequestSelect(item));
+            return DAL.FirebirdDB.StaffLeaveRequestSelect(item);
 		}
 
 		/// <summary>
@@ -88,7 +88,7 @@ namespace SharedBase.BOL.Staff
 		/// <returns>int, number of records within table</returns>
 		public static int CountAll()
 		{
-            return (DAL.FirebirdDB.StaffLeaveRequestCount());
+            return DAL.FirebirdDB.StaffLeaveRequestCount();
 		}
 
 		#endregion Static Methods
@@ -106,7 +106,7 @@ namespace SharedBase.BOL.Staff
 		{
 			get
 			{
-                return ((StaffLeaveRequest)this.InnerList[Index]);
+                return (StaffLeaveRequest)this.InnerList[Index];
 			}
 
 			set
@@ -126,7 +126,7 @@ namespace SharedBase.BOL.Staff
 		/// <returns></returns>
 		public int Add(StaffLeaveRequest value)
 		{
-			return (List.Add(value));
+			return List.Add(value);
 		}
 
 		/// <summary>
@@ -136,7 +136,7 @@ namespace SharedBase.BOL.Staff
 		/// <returns></returns>
 		public int IndexOf(StaffLeaveRequest value)
 		{
-			return (List.IndexOf(value));
+			return List.IndexOf(value);
 		}
 
 		/// <summary>
@@ -168,7 +168,7 @@ namespace SharedBase.BOL.Staff
 		public bool Contains(StaffLeaveRequest value)
 		{
 			// If value is not of type OBJECT_TYPE, this will return false.
-			return (List.Contains(value));
+			return List.Contains(value);
 		}
 
 		#endregion Public Methods

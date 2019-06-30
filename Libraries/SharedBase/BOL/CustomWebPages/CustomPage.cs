@@ -74,7 +74,7 @@ namespace SharedBase.BOL.CustomWebPages
         { 
             get
             {
-                return (_id);
+                return _id;
             }
             
             set

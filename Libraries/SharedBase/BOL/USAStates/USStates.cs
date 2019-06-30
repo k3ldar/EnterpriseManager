@@ -36,17 +36,17 @@ namespace SharedBase.BOL.USAStates
 
         public static USStates Get()
         {
-            return (DAL.FirebirdDB.GetUSStates());
+            return DAL.FirebirdDB.GetUSStates();
         }
 
         public static USState Get(string Name)
         {
-            return (DAL.FirebirdDB.GetUSState(Name));
+            return DAL.FirebirdDB.GetUSState(Name);
         }
 
         public static USState GetIP(string IPAddress)
         {
-            return (DAL.FirebirdDB.IPAddressToState(IPAddress));
+            return DAL.FirebirdDB.IPAddressToState(IPAddress);
         }
 
         #endregion Static Methods
@@ -59,7 +59,7 @@ namespace SharedBase.BOL.USAStates
         {
             get
             {
-                return ((USState)this.InnerList[Index]);
+                return (USState)this.InnerList[Index];
             }
 
             set
@@ -80,7 +80,7 @@ namespace SharedBase.BOL.USAStates
         /// <returns></returns>
         public int Add(USState value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace SharedBase.BOL.USAStates
         /// <returns></returns>
         public int IndexOf(USState value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace SharedBase.BOL.USAStates
         public bool Contains(USState value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

@@ -45,7 +45,7 @@ namespace SharedBase.BOL.Websites
         public static Website Create(string description, string ftpHost, int ftpPort, string ftpUsername, string ftpPassword, string rootPath)
         {
             ftpPassword = Website.EncryptPassword(ftpPassword);
-            return (DAL.FirebirdDB.WebsiteInsert(description, ftpHost, ftpPort, ftpUsername, ftpPassword, rootPath));
+            return DAL.FirebirdDB.WebsiteInsert(description, ftpHost, ftpPort, ftpUsername, ftpPassword, rootPath);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace SharedBase.BOL.Websites
         /// <returns>Website instance</returns>
         public static Website InsertUpdate(Website item)
         {
-            return (DAL.FirebirdDB.WebsiteInsertUpdate(item));
+            return DAL.FirebirdDB.WebsiteInsertUpdate(item);
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace SharedBase.BOL.Websites
         /// <returns>Websites collection of Website items</returns>
         public static Websites All()
         {
-            return (DAL.FirebirdDB.WebsiteSelectAll());
+            return DAL.FirebirdDB.WebsiteSelectAll();
         }
 
         public static Website Primary()
@@ -79,11 +79,11 @@ namespace SharedBase.BOL.Websites
                     CachedItemAdd(cacheName, primary);
                 }
 
-                return ((Website)primary.Value);
+                return (Website)primary.Value;
             }
             else
             {
-                return (DAL.FirebirdDB.WebsiteSelectPrimary());
+                return DAL.FirebirdDB.WebsiteSelectPrimary();
             }
         }
 
@@ -97,10 +97,10 @@ namespace SharedBase.BOL.Websites
             foreach (Website site in All())
             {
                 if (site.URL == url.ToLower())
-                    return (site);
+                    return site;
             }
 
-            return (null);
+            return null;
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace SharedBase.BOL.Websites
         /// <returns>Website item if found, otherwise null</returns>
         public static Website Get(int item)
         {
-            return (DAL.FirebirdDB.WebsiteSelect(item));
+            return DAL.FirebirdDB.WebsiteSelect(item);
         }
 
         #endregion Public Static Methods
@@ -123,7 +123,7 @@ namespace SharedBase.BOL.Websites
         {
             get
             {
-                return ((Website)this.InnerList[Index]);
+                return (Website)this.InnerList[Index];
             }
 
             set
@@ -143,7 +143,7 @@ namespace SharedBase.BOL.Websites
         /// <returns></returns>
         public int Add(Website value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -153,7 +153,7 @@ namespace SharedBase.BOL.Websites
         /// <returns></returns>
         public int IndexOf(Website value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -185,7 +185,7 @@ namespace SharedBase.BOL.Websites
         public bool Contains(Website value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

@@ -43,7 +43,7 @@ namespace SharedBase.BOL.Helpdesk
         {
             get
             {
-                return ((SupportTicketMessage)this.InnerList[Index]);
+                return (SupportTicketMessage)this.InnerList[Index];
             }
 
             set
@@ -63,7 +63,7 @@ namespace SharedBase.BOL.Helpdesk
         /// <returns></returns>
         public int Add(SupportTicketMessage value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace SharedBase.BOL.Helpdesk
         /// <returns></returns>
         public int IndexOf(SupportTicketMessage value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace SharedBase.BOL.Helpdesk
         public bool Contains(SupportTicketMessage value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

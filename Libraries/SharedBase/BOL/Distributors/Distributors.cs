@@ -43,7 +43,7 @@ namespace SharedBase.BOL.Distributors
         /// <returns>Salons collection</returns>
         public static Distributors Get(int PageNumber, int PageSize)
         {
-            return (DAL.FirebirdDB.DistributorsGet(PageNumber, PageSize));
+            return DAL.FirebirdDB.DistributorsGet(PageNumber, PageSize);
         }
 
 
@@ -53,7 +53,7 @@ namespace SharedBase.BOL.Distributors
         /// <returns>int Number of publicly available salons</returns>
         public static int GetCount()
         {
-            return (DAL.FirebirdDB.DistributorsCount());
+            return DAL.FirebirdDB.DistributorsCount();
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace SharedBase.BOL.Distributors
         /// <returns></returns>
         public static Distributor Create(string DistributorName)
         {
-            return (DAL.FirebirdDB.AdminDistributorsCreate(DistributorName));
+            return DAL.FirebirdDB.AdminDistributorsCreate(DistributorName);
         }
 
         #endregion Static Methods
@@ -84,7 +84,7 @@ namespace SharedBase.BOL.Distributors
             }
 
 
-            return (Result);
+            return Result;
         }
 
         #endregion Public Methods
@@ -102,7 +102,7 @@ namespace SharedBase.BOL.Distributors
         {
             get
             {
-                return ((Distributor)this.InnerList[Index]);
+                return (Distributor)this.InnerList[Index];
             }
 
             set
@@ -122,7 +122,7 @@ namespace SharedBase.BOL.Distributors
         /// <returns></returns>
         public int Add(Distributor value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace SharedBase.BOL.Distributors
         /// <returns></returns>
         public int IndexOf(Distributor value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -164,7 +164,7 @@ namespace SharedBase.BOL.Distributors
         public bool Contains(Distributor value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

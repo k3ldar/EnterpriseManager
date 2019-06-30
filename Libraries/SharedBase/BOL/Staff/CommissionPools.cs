@@ -37,7 +37,7 @@ namespace SharedBase.BOL.Staff
 
         public static CommissionPools Get()
         {
-            return (DAL.FirebirdDB.StaffCommissionPoolsGet());
+            return DAL.FirebirdDB.StaffCommissionPoolsGet();
         }
 
         public static CommissionPool Get(Int64 ID)
@@ -45,10 +45,10 @@ namespace SharedBase.BOL.Staff
             foreach (CommissionPool pool in Get())
             {
                 if (pool.ID == ID)
-                    return (pool);
+                    return pool;
             }
 
-            return (null);
+            return null;
         }
 
         #endregion Static Methods
@@ -66,7 +66,7 @@ namespace SharedBase.BOL.Staff
         {
             get
             {
-                return ((CommissionPool)this.InnerList[Index]);
+                return (CommissionPool)this.InnerList[Index];
             }
 
             set
@@ -86,7 +86,7 @@ namespace SharedBase.BOL.Staff
         /// <returns></returns>
         public int Add(CommissionPool value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace SharedBase.BOL.Staff
         /// <returns></returns>
         public int IndexOf(CommissionPool value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -128,7 +128,7 @@ namespace SharedBase.BOL.Staff
         public bool Contains(CommissionPool value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

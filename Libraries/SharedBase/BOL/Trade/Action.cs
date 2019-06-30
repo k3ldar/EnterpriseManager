@@ -76,7 +76,7 @@ namespace SharedBase.BOL.Trade
         {
             get
             {
-                return (_ID);
+                return _ID;
             }
         }
 
@@ -84,7 +84,7 @@ namespace SharedBase.BOL.Trade
         {
             get
             {
-                return (_staffName);
+                return _staffName;
             }
         }
 
@@ -92,7 +92,7 @@ namespace SharedBase.BOL.Trade
         {
             get
             {
-                return (_action);
+                return _action;
             }
         }
 
@@ -100,7 +100,7 @@ namespace SharedBase.BOL.Trade
         {
             get
             {
-                return (_expires);
+                return _expires;
             }
         }
 
@@ -108,7 +108,7 @@ namespace SharedBase.BOL.Trade
         {
             get
             {
-                return (_user);
+                return _user;
             }
         }
 
@@ -116,7 +116,7 @@ namespace SharedBase.BOL.Trade
         {
             get
             {
-                return (_actionDate);
+                return _actionDate;
             }
         }
 
@@ -127,7 +127,7 @@ namespace SharedBase.BOL.Trade
                 if (_notes == null)
                     _notes = DAL.FirebirdDB.TradeClientNotesGet(this);
 
-                return (_notes);
+                return _notes;
             }
         }
 
@@ -135,7 +135,7 @@ namespace SharedBase.BOL.Trade
         {
             get
             {
-                return (_client);
+                return _client;
             }
 
             set
@@ -149,7 +149,7 @@ namespace SharedBase.BOL.Trade
         {
             get
             {
-                return (ActionedDate.Year != 1);
+                return ActionedDate.Year != 1;
             }
         }
         #endregion Properties
@@ -193,7 +193,7 @@ namespace SharedBase.BOL.Trade
             if (client != null)
                 client.Refresh();
 
-            return (action);
+            return action;
         }
 
         #endregion Public Static Methods

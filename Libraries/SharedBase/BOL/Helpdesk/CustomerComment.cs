@@ -63,7 +63,7 @@ namespace SharedBase.BOL.Helpdesk
         {
             get
             {
-                return (_ID);
+                return _ID;
             }
         }
 
@@ -71,7 +71,7 @@ namespace SharedBase.BOL.Helpdesk
         {
             get
             {
-                return (_UserID);
+                return _UserID;
             }
 
             set
@@ -84,7 +84,7 @@ namespace SharedBase.BOL.Helpdesk
         {
             get
             {
-                return (_UserName);
+                return _UserName;
             }
 
             set
@@ -97,7 +97,7 @@ namespace SharedBase.BOL.Helpdesk
         {
             get
             {
-                return (_Comments);
+                return _Comments;
             }
 
             set
@@ -110,7 +110,7 @@ namespace SharedBase.BOL.Helpdesk
         {
             get
             {
-                return (_ShowOnWeb);
+                return _ShowOnWeb;
             }
 
             set

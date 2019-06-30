@@ -71,7 +71,7 @@ namespace SharedBase.BOL.Hooks
 
         public static Hooks Get(User user)
         {
-            return (DAL.FirebirdDB.HooksGet(user));
+            return DAL.FirebirdDB.HooksGet(user);
         }
 
         public static void Add(HookEvent eventName, User user)
@@ -94,7 +94,7 @@ namespace SharedBase.BOL.Hooks
         {
             get
             {
-                return ((Hook)this.InnerList[Index]);
+                return (Hook)this.InnerList[Index];
             }
 
             set
@@ -117,10 +117,10 @@ namespace SharedBase.BOL.Hooks
             foreach (Hook hook in this)
             {
                 if (hook.EventName == eventName)
-                    return (true);
+                    return true;
             }
 
-            return (false);
+            return false;
         }
 
         /// <summary>
@@ -130,7 +130,7 @@ namespace SharedBase.BOL.Hooks
         /// <returns></returns>
         public int Add(Hook value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -140,7 +140,7 @@ namespace SharedBase.BOL.Hooks
         /// <returns></returns>
         public int IndexOf(Hook value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -172,7 +172,7 @@ namespace SharedBase.BOL.Hooks
         public bool Contains(Hook value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

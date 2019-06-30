@@ -92,7 +92,7 @@ namespace SharedBase.BOL.StockControl
         {
             get
             {
-                return (_StoreID);
+                return _StoreID;
             }
         }
 
@@ -100,7 +100,7 @@ namespace SharedBase.BOL.StockControl
         {
             get
             {
-                return (_Changed);
+                return _Changed;
             }
 
             set
@@ -113,7 +113,7 @@ namespace SharedBase.BOL.StockControl
         {
             get
             {
-                return (_ID);
+                return _ID;
             }
         }
 
@@ -121,7 +121,7 @@ namespace SharedBase.BOL.StockControl
         {
             get
             {
-                return (_SKU);
+                return _SKU;
             }
         }
 
@@ -129,7 +129,7 @@ namespace SharedBase.BOL.StockControl
         {
             get
             {
-                return (_Name);
+                return _Name;
             }
         }
 
@@ -137,7 +137,7 @@ namespace SharedBase.BOL.StockControl
         {
             get
             {
-                return (_Size);
+                return _Size;
             }
         }
 
@@ -148,7 +148,7 @@ namespace SharedBase.BOL.StockControl
         {
             get
             {
-                return (_Available);
+                return _Available;
             }
 
             set
@@ -161,7 +161,7 @@ namespace SharedBase.BOL.StockControl
         {
             get
             {
-                return (_MinLevel);
+                return _MinLevel;
             }
 
             set
@@ -178,7 +178,7 @@ namespace SharedBase.BOL.StockControl
         {
             get
             {
-                return (_OrderQuantity);
+                return _OrderQuantity;
             }
 
             set
@@ -195,7 +195,7 @@ namespace SharedBase.BOL.StockControl
         {
             get
             {
-                return (_ProductType);
+                return _ProductType;
             }
         }
 
@@ -212,7 +212,7 @@ namespace SharedBase.BOL.StockControl
         {
             get
             {
-                return (_hideGlobally);
+                return _hideGlobally;
             }
 
             set
@@ -229,7 +229,7 @@ namespace SharedBase.BOL.StockControl
         {
             get
             {
-                return (_outOfStock);
+                return _outOfStock;
             }
 
             set
@@ -243,7 +243,7 @@ namespace SharedBase.BOL.StockControl
         {
             get
             {
-                return (_autoRestock);
+                return _autoRestock;
             }
 
             set
@@ -260,7 +260,7 @@ namespace SharedBase.BOL.StockControl
         {
             get
             {
-                return (_location);
+                return _location;
             }
 
             set
@@ -352,7 +352,7 @@ namespace SharedBase.BOL.StockControl
 
         public override string ToString()
         {
-            return (String.Format("StockItem: {0}; Name: {1}", ID, Name));
+            return String.Format("StockItem: {0}; Name: {1}", ID, Name);
         }
 
         #endregion Overridden Methods

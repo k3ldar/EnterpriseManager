@@ -37,17 +37,17 @@ namespace SharedBase.BOL.Invoices
             RecurringType type, int frequency, decimal discount, RecurringInvoiceOptions options, 
             RecurringInvoiceItems items)
         {
-            return (DAL.FirebirdDB.RecurringInvoiceAdd(description, user, nextRun, type, frequency, discount, options, items));
+            return DAL.FirebirdDB.RecurringInvoiceAdd(description, user, nextRun, type, frequency, discount, options, items);
         }
 
         public static RecurringInvoices All()
         {
-            return (DAL.FirebirdDB.RecurringInvoiceAll());
+            return DAL.FirebirdDB.RecurringInvoiceAll();
         }
 
         public static RecurringInvoice Get(Int64 id)
         {
-            return (DAL.FirebirdDB.RecurringInvoiceGet(id));
+            return DAL.FirebirdDB.RecurringInvoiceGet(id);
         }
 
         #endregion Static Methods
@@ -60,7 +60,7 @@ namespace SharedBase.BOL.Invoices
         {
             get
             {
-                return ((RecurringInvoice)this.InnerList[Index]);
+                return (RecurringInvoice)this.InnerList[Index];
             }
 
             set
@@ -80,7 +80,7 @@ namespace SharedBase.BOL.Invoices
         /// <returns></returns>
         public int Add(RecurringInvoice value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace SharedBase.BOL.Invoices
         /// <returns></returns>
         public int IndexOf(RecurringInvoice value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace SharedBase.BOL.Invoices
         public bool Contains(RecurringInvoice value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

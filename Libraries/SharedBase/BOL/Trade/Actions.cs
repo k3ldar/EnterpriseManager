@@ -58,7 +58,7 @@ namespace SharedBase.BOL.Trade
         {
             get
             {
-                return ((ClientAction)this.InnerList[Index]);
+                return (ClientAction)this.InnerList[Index];
             }
 
             set
@@ -78,7 +78,7 @@ namespace SharedBase.BOL.Trade
         /// <returns></returns>
         public int Add(ClientAction value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace SharedBase.BOL.Trade
         /// <returns></returns>
         public int IndexOf(ClientAction value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace SharedBase.BOL.Trade
         public bool Contains(ClientAction value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

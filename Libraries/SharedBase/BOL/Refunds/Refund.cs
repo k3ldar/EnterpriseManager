@@ -63,37 +63,37 @@ namespace SharedBase.BOL.Refunds
 
         public Int64 ID
         {
-            get { return (_id); }
+            get { return _id; }
         }
 
         public Int64 User
         {
-            get { return (_user); }
+            get { return _user; }
         }
 
         public int InvoiceID
         {
-            get { return (_invoiceID); }
+            get { return _invoiceID; }
         }
 
         public decimal Amount
         {
-            get { return (_amount); }
+            get { return _amount; }
         }
 
         public DateTime Date
         {
-            get { return (_date); }
+            get { return _date; }
         }
 
         public Int64 Employee
         {
-            get { return (_employee); }
+            get { return _employee; }
         }
 
         public string Reason
         {
-            get { return (_reason); }
+            get { return _reason; }
         }
 
         #endregion Properties
@@ -103,7 +103,7 @@ namespace SharedBase.BOL.Refunds
         public static Int64 Create(User client, User employee, Invoice invoice, 
             decimal refundAmount, string reason)
         {
-            return (DAL.FirebirdDB.RefundCreate(client, employee, invoice, refundAmount, reason));
+            return DAL.FirebirdDB.RefundCreate(client, employee, invoice, refundAmount, reason);
         }
 
         #endregion Static Methods

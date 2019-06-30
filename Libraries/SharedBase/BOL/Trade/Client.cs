@@ -98,7 +98,7 @@ namespace SharedBase.BOL.Trade
         {
             get
             {
-                return (_ID);
+                return _ID;
             }
         }
 
@@ -106,7 +106,7 @@ namespace SharedBase.BOL.Trade
         {
             get
             {
-                return (_EMail);
+                return _EMail;
             }
         }
 
@@ -114,7 +114,7 @@ namespace SharedBase.BOL.Trade
         {
             get
             {
-                return (_Name);
+                return _Name;
             }
         }
 
@@ -122,7 +122,7 @@ namespace SharedBase.BOL.Trade
         {
             get
             {
-                return (_Telephone);
+                return _Telephone;
             }
         }
 
@@ -130,7 +130,7 @@ namespace SharedBase.BOL.Trade
         {
             get
             {
-                return (_Address);
+                return _Address;
             }
         }
 
@@ -138,7 +138,7 @@ namespace SharedBase.BOL.Trade
         {
             get
             {
-                return (_Postcode);
+                return _Postcode;
             }
         }
 
@@ -146,7 +146,7 @@ namespace SharedBase.BOL.Trade
         {
             get
             {
-                return (_CompanyName);
+                return _CompanyName;
             }
         }
 
@@ -154,7 +154,7 @@ namespace SharedBase.BOL.Trade
         {
             get
             {
-                return (_InitialNotes);
+                return _InitialNotes;
             }
         }
 
@@ -162,7 +162,7 @@ namespace SharedBase.BOL.Trade
         {
             get
             {
-                return (_State);
+                return _State;
             }
 
             set
@@ -178,7 +178,7 @@ namespace SharedBase.BOL.Trade
         {
             get
             {
-                return (DAL.FirebirdDB.TradeClientNotesGet(this));
+                return DAL.FirebirdDB.TradeClientNotesGet(this);
             }
         }
 
@@ -194,7 +194,7 @@ namespace SharedBase.BOL.Trade
                     _cachedUsers.Add(_EMail, item);
                 }
 
-                return ((User)item.Value);
+                return (User)item.Value;
             }
         }
 
@@ -202,7 +202,7 @@ namespace SharedBase.BOL.Trade
         {
             get
             {
-                return (_InfoPack);
+                return _InfoPack;
             }
         }
 
@@ -210,7 +210,7 @@ namespace SharedBase.BOL.Trade
         {
             get
             {
-                return (_Account);
+                return _Account;
             }
         }
 
@@ -218,7 +218,7 @@ namespace SharedBase.BOL.Trade
         {
             get
             {
-                return (_Training);
+                return _Training;
             }
         }
 
@@ -226,7 +226,7 @@ namespace SharedBase.BOL.Trade
         {
             get
             {
-                return (_Salons);
+                return _Salons;
             }
         }
 
@@ -242,7 +242,7 @@ namespace SharedBase.BOL.Trade
                     _accountManager = DAL.FirebirdDB.TradeClientManagerGet(this);
                 }
 
-                return (_accountManager);
+                return _accountManager;
             }
 
             set
@@ -300,7 +300,7 @@ namespace SharedBase.BOL.Trade
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         public ClientAction ClosedAction(Enums.ClientAction Action)
@@ -316,7 +316,7 @@ namespace SharedBase.BOL.Trade
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         public ClientActions ClosedActions(Enums.ClientAction Action)
@@ -329,7 +329,7 @@ namespace SharedBase.BOL.Trade
                     Result.Add(action);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Public Methods
@@ -338,7 +338,7 @@ namespace SharedBase.BOL.Trade
 
         public override string ToString()
         {
-            return (String.Format("{0} {1} {2} {3}", Name, Company, Telephone, Email));
+            return String.Format("{0} {1} {2} {3}", Name, Company, Telephone, Email);
         }
 
         #endregion Overridden Methods

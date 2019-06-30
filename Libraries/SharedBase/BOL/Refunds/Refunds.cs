@@ -36,7 +36,7 @@ namespace SharedBase.BOL.Refunds
 
         public static Refunds Get(DateTime From, DateTime To)
         {
-            return (DAL.FirebirdDB.RefundsGet(From, To));
+            return DAL.FirebirdDB.RefundsGet(From, To);
         }
 
         #endregion Static Methods
@@ -49,7 +49,7 @@ namespace SharedBase.BOL.Refunds
         {
             get
             {
-                return ((Refund)this.InnerList[Index]);
+                return (Refund)this.InnerList[Index];
             }
 
             set
@@ -69,7 +69,7 @@ namespace SharedBase.BOL.Refunds
         /// <returns></returns>
         public int Add(Refund value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace SharedBase.BOL.Refunds
         /// <returns></returns>
         public int IndexOf(Refund value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace SharedBase.BOL.Refunds
         public bool Contains(Refund value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

@@ -58,7 +58,7 @@ namespace SharedBase.BOL.Video
         {
             get
             {
-                return (_ID);
+                return _ID;
             }
 
             set
@@ -71,7 +71,7 @@ namespace SharedBase.BOL.Video
         {
             get
             {
-                return (_Description);
+                return _Description;
             }
 
             set
@@ -84,7 +84,7 @@ namespace SharedBase.BOL.Video
         {
             get
             {
-                return (_VideoReference);
+                return _VideoReference;
             }
 
             set
@@ -116,7 +116,7 @@ namespace SharedBase.BOL.Video
 
         public override string ToString()
         {
-            return (String.Format("Video: {0}; Description: {1}", ID, _Description));
+            return String.Format("Video: {0}; Description: {1}", ID, _Description);
         }
 
         #endregion Overridden Methods

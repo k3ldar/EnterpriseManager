@@ -43,8 +43,8 @@ namespace SharedBase.BOL.Staff
             DateTime dateNotified, string notes, string reasonCited, bool certificate, 
             bool preBooked, Int64 userCreating)
 		{
-            return (DAL.FirebirdDB.StaffSickRecordInsert(userID, dateStarted, dateNotified, notes,
-                reasonCited, certificate, preBooked, userCreating));
+            return DAL.FirebirdDB.StaffSickRecordInsert(userID, dateStarted, dateNotified, notes,
+                reasonCited, certificate, preBooked, userCreating);
 		}
 
 		/// <summary>
@@ -53,7 +53,7 @@ namespace SharedBase.BOL.Staff
 		/// <returns>StaffSickRecord instance</returns>
 		public static StaffSickRecord InsertUpdate(StaffSickRecord item)
 		{
-            return (DAL.FirebirdDB.StaffSickRecordInsertUpdate(item));
+            return DAL.FirebirdDB.StaffSickRecordInsertUpdate(item);
 		}
 
 		/// <summary>
@@ -62,7 +62,7 @@ namespace SharedBase.BOL.Staff
 		/// <returns>StaffSickRecords collection of StaffSickRecord items</returns>
 		public static StaffSickRecords All(Users.User user)
 		{
-            return (DAL.FirebirdDB.StaffSickRecordSelectAll(user));
+            return DAL.FirebirdDB.StaffSickRecordSelectAll(user);
 		}
 
 		/// <summary>
@@ -73,7 +73,7 @@ namespace SharedBase.BOL.Staff
 		/// <returns>StaffSickRecords collection of StaffSickRecord items</returns>
 		public static StaffSickRecords Page(int page, int pageSize)
 		{
-            return (DAL.FirebirdDB.StaffSickRecordPage(page, pageSize));
+            return DAL.FirebirdDB.StaffSickRecordPage(page, pageSize);
 		}
 
 		/// <summary>
@@ -83,7 +83,7 @@ namespace SharedBase.BOL.Staff
 		/// <returns>StaffSickRecord item if found, otherwise null</returns>
 		public static StaffSickRecord Get(Int64 item)
 		{
-            return (DAL.FirebirdDB.StaffSickRecordSelect(item));
+            return DAL.FirebirdDB.StaffSickRecordSelect(item);
 		}
 
 		/// <summary>
@@ -92,7 +92,7 @@ namespace SharedBase.BOL.Staff
 		/// <returns>int, number of records within table</returns>
 		public static int CountAll()
 		{
-            return (DAL.FirebirdDB.StaffSickRecordCount());
+            return DAL.FirebirdDB.StaffSickRecordCount();
 		}
 
 		#endregion Static Methods
@@ -191,7 +191,7 @@ namespace SharedBase.BOL.Staff
 		{
 			get
 			{
-                return ((StaffSickRecord)this.InnerList[Index]);
+                return (StaffSickRecord)this.InnerList[Index];
 			}
 
 			set
@@ -211,7 +211,7 @@ namespace SharedBase.BOL.Staff
 		/// <returns></returns>
 		public int Add(StaffSickRecord value)
 		{
-			return (List.Add(value));
+			return List.Add(value);
 		}
 
 		/// <summary>
@@ -221,7 +221,7 @@ namespace SharedBase.BOL.Staff
 		/// <returns></returns>
 		public int IndexOf(StaffSickRecord value)
 		{
-			return (List.IndexOf(value));
+			return List.IndexOf(value);
 		}
 
 		/// <summary>
@@ -253,7 +253,7 @@ namespace SharedBase.BOL.Staff
 		public bool Contains(StaffSickRecord value)
 		{
 			// If value is not of type OBJECT_TYPE, this will return false.
-			return (List.Contains(value));
+			return List.Contains(value);
 		}
 
 		#endregion Public Methods

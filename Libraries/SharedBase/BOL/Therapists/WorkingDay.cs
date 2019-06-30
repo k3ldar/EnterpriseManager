@@ -71,7 +71,7 @@ namespace SharedBase.BOL.Therapists
         {
             get
             {
-                return (_user);
+                return _user;
             }
         }
 
@@ -82,7 +82,7 @@ namespace SharedBase.BOL.Therapists
         {
             get
             {
-                return (_allowTreatments);
+                return _allowTreatments;
             }
 
             set
@@ -95,7 +95,7 @@ namespace SharedBase.BOL.Therapists
         {
             get
             {
-                return (_date);
+                return _date;
             }
 
             set
@@ -108,7 +108,7 @@ namespace SharedBase.BOL.Therapists
         {
             get
             {
-                return (_startTime);
+                return _startTime;
             }
 
             set
@@ -121,7 +121,7 @@ namespace SharedBase.BOL.Therapists
         {
             get
             {
-                return (_finishTime);
+                return _finishTime;
             }
 
             set
@@ -134,7 +134,7 @@ namespace SharedBase.BOL.Therapists
         {
             get
             {
-                return (_repeatOption);
+                return _repeatOption;
             }
 
             set
@@ -147,7 +147,7 @@ namespace SharedBase.BOL.Therapists
         {
             get
             {
-                return (_repeatDuration);
+                return _repeatDuration;
             }
 
             set
@@ -160,7 +160,7 @@ namespace SharedBase.BOL.Therapists
         {
             get
             {
-                return (_owner);
+                return _owner;
             }
 
             set
@@ -173,7 +173,7 @@ namespace SharedBase.BOL.Therapists
         {
             get
             {
-                return (_id);
+                return _id;
             }
         }
 
@@ -199,7 +199,7 @@ namespace SharedBase.BOL.Therapists
 
         public override string ToString()
         {
-            return (String.Format("WorkingDay: {0}; Staff: {1}", ID, _user.EmployeeID));
+            return String.Format("WorkingDay: {0}; Staff: {1}", ID, _user.EmployeeID);
         }
 
         #endregion Overridden Methods

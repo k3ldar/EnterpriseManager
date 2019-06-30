@@ -73,9 +73,9 @@ namespace SharedBase.BOL.Appointments
 
             // past date not allowed
             if (Date < DateTime.Now)
-                return (Result);
+                return Result;
 
-            if (Time > 0.0 && (Time >= StartTime && Time < EndTime))
+            if (Time > 0.0 && Time >= StartTime && Time < EndTime)
             {
                 //check user options
                 switch (Date.DayOfWeek)
@@ -107,7 +107,7 @@ namespace SharedBase.BOL.Appointments
                 if (Date.Date == DateTime.Now)
                     Result = _allowBookCurrentDay;
             }
-            return (Result);
+            return Result;
         }
 
         #endregion Public Methods
@@ -162,7 +162,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_employeeID);
+                return _employeeID;
             }
         }
 
@@ -170,7 +170,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_employeeName);
+                return _employeeName;
             }
         }
 
@@ -178,7 +178,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_allowMonday);
+                return _allowMonday;
             }
 
             set
@@ -191,7 +191,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_allowTuesday);
+                return _allowTuesday;
             }
 
             set
@@ -204,7 +204,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_allowWednesday);
+                return _allowWednesday;
             }
 
             set
@@ -217,7 +217,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_allowThursday);
+                return _allowThursday;
             }
 
             set
@@ -230,7 +230,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_allowFriday);
+                return _allowFriday;
             }
 
             set
@@ -243,7 +243,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_allowSaturday);
+                return _allowSaturday;
             }
 
             set
@@ -256,7 +256,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_allowSunday);
+                return _allowSunday;
             }
 
             set
@@ -269,7 +269,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_startTime);
+                return _startTime;
             }
 
             set
@@ -282,7 +282,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_endTime);
+                return _endTime;
             }
 
             set
@@ -295,7 +295,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_lunchStart);
+                return _lunchStart;
             }
 
             set
@@ -308,7 +308,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_lunchDuration);
+                return _lunchDuration;
             }
 
             set
@@ -321,7 +321,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_allowBookCurrentDay);
+                return _allowBookCurrentDay;
             }
 
             set

@@ -128,7 +128,7 @@ namespace SharedBase.BOL.Email
             IsResponseOk(Result);
                 
 
-            return (Result);
+            return Result;
         }
 
         public List<MessagePart> FetchMessageParts(int emailId)
@@ -267,7 +267,7 @@ namespace SharedBase.BOL.Email
                     body = preferredMsgPart.MessageText;
             }
 
-            return (body);
+            return body;
         }
 
         #region Private Methods
@@ -328,7 +328,7 @@ namespace SharedBase.BOL.Email
                 char c = (char)charcode;
                 if (m.Index > 0)
                     b.Append(encodedString.Substring(startIndx,
-                            (m.Index - startIndx)));
+                            m.Index - startIndx));
                 b.Append(c);
                 startIndx = m.Index + 3;
             }
@@ -373,9 +373,9 @@ namespace SharedBase.BOL.Email
             b.Append("</ol>");
 
             if (attachmentsFound)
-                return (b.ToString());
+                return b.ToString();
 
-            return (String.Empty);
+            return String.Empty;
         }
 
         private MessagePart FindMessagePart(List<MessagePart> msgParts, string contentType)
@@ -489,7 +489,7 @@ namespace SharedBase.BOL.Email
                         int nextBoundaryIndx = emailText.IndexOf(startingBoundary, startingBoundaryIndx + startingBoundary.Length);
                         if (nextBoundaryIndx != -1 && nextBoundaryIndx != startingBoundaryIndx)
                         {
-                            string multipartMsg = emailText.Substring(startingBoundaryIndx + startingBoundary.Length, (nextBoundaryIndx - startingBoundaryIndx - startingBoundary.Length));
+                            string multipartMsg = emailText.Substring(startingBoundaryIndx + startingBoundary.Length, nextBoundaryIndx - startingBoundaryIndx - startingBoundary.Length);
                             int headersIndx = multipartMsg.IndexOf("\r\n\r\n");
                             if (headersIndx == -1)
                                 throw new FormatException("Incompatible multipart message format");

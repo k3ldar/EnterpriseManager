@@ -109,7 +109,7 @@ namespace SharedBase.BOL.Countries
         {
             get
             {
-                return (_id);
+                return _id;
             }
         }
 
@@ -117,7 +117,7 @@ namespace SharedBase.BOL.Countries
         {
             get
             {
-                return (_countryCode);
+                return _countryCode;
             }
         }
 
@@ -125,7 +125,7 @@ namespace SharedBase.BOL.Countries
         {
             get
             {
-                return (_multiplier);
+                return _multiplier;
             }
 
             set
@@ -138,7 +138,7 @@ namespace SharedBase.BOL.Countries
         {
             get
             {
-                return (_name);
+                return _name;
             }
         }
 
@@ -146,7 +146,7 @@ namespace SharedBase.BOL.Countries
         {
             get
             {
-                return (-_sortOrder);
+                return -_sortOrder;
             }
 
             set
@@ -159,7 +159,7 @@ namespace SharedBase.BOL.Countries
         {
             get
             {
-                return (_shippingCosts);
+                return _shippingCosts;
             }
 
             set
@@ -172,7 +172,7 @@ namespace SharedBase.BOL.Countries
         {
             get
             {
-                return (_showOnWeb);
+                return _showOnWeb;
             }
         }
 
@@ -180,7 +180,7 @@ namespace SharedBase.BOL.Countries
         {
             get
             {
-                return (_autoRedirect);
+                return _autoRedirect;
             }
         }
 
@@ -197,7 +197,7 @@ namespace SharedBase.BOL.Countries
         {
             get
             {
-                return (_conversionRate);
+                return _conversionRate;
             }
 
             set
@@ -210,7 +210,7 @@ namespace SharedBase.BOL.Countries
         {
             get
             {
-                return (_vatRate);
+                return _vatRate;
             }
 
             set
@@ -223,7 +223,7 @@ namespace SharedBase.BOL.Countries
         {
             get
             {
-                return (_showPriceData);
+                return _showPriceData;
             }
 
             set
@@ -270,7 +270,7 @@ namespace SharedBase.BOL.Countries
 
                 }
 
-                return (_currencySymbol);
+                return _currencySymbol;
             }
 
             set
@@ -315,7 +315,7 @@ namespace SharedBase.BOL.Countries
         {
             get
             {
-                return (DAL.FirebirdDB.CashDenominationsGet(this));
+                return DAL.FirebirdDB.CashDenominationsGet(this);
             }
         }
 
@@ -331,7 +331,7 @@ namespace SharedBase.BOL.Countries
         /// <returns>true if the option is set, otherwise false</returns>
         public bool HasOption(AddressOptions option)
         {
-            return (((AddressSettings & option) == option));
+            return (AddressSettings & option) == option;
         }
 
         /// <summary>
@@ -340,7 +340,7 @@ namespace SharedBase.BOL.Countries
         /// <returns></returns>
         public bool ShowPriceData()
         {
-            return (_showPriceData);
+            return _showPriceData;
         }
 
         /// <summary>
@@ -357,7 +357,7 @@ namespace SharedBase.BOL.Countries
 
         public override string ToString()
         {
-            return (String.Format("Country: {0}; Country Code: {1}; Country Name: {2}; Price Column: {3}", ID, _countryCode, _name, PriceColumn));
+            return String.Format("Country: {0}; Country Code: {1}; Country Name: {2}; Price Column: {3}", ID, _countryCode, _name, PriceColumn);
         }
 
         #endregion Overridden Methods

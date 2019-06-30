@@ -89,7 +89,7 @@ namespace SharedBase.BOL.Affiliate
         { 
             get
             {
-                return (_url);
+                return _url;
             }
 
             set

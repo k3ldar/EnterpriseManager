@@ -61,7 +61,7 @@ namespace SharedBase.BOL.DatabaseUpdates
         {
             get
             {
-                return (_id);
+                return _id;
             }
         }
 
@@ -69,7 +69,7 @@ namespace SharedBase.BOL.DatabaseUpdates
         {
             get
             {
-                return(_updated);
+                return _updated;
             }
         }
 
@@ -77,7 +77,7 @@ namespace SharedBase.BOL.DatabaseUpdates
         {
             get
             {
-                return (_column);
+                return _column;
             }
         }
 
@@ -85,7 +85,7 @@ namespace SharedBase.BOL.DatabaseUpdates
         {
             get
             {
-                return (_oldValue);
+                return _oldValue;
             }
         }
 
@@ -93,7 +93,7 @@ namespace SharedBase.BOL.DatabaseUpdates
         {
             get 
             { 
-                return (_newValue); 
+                return _newValue; 
             }
         }
 

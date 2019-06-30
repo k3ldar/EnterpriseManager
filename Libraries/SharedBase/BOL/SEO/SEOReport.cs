@@ -309,7 +309,7 @@ namespace SharedBase.BOL.SEO
             get
             {
                 DateTime date = new DateTime(Year, MonthNumber, 1);
-                return (date.ToString("MMM yyyy"));
+                return date.ToString("MMM yyyy");
             }
         }
 
@@ -321,7 +321,7 @@ namespace SharedBase.BOL.SEO
         { 
             get
             {
-                return (String.Format("Week {0} - {1}", WeekNumber, Year));
+                return String.Format("Week {0} - {1}", WeekNumber, Year);
             }
         }
 
@@ -331,7 +331,7 @@ namespace SharedBase.BOL.SEO
         {
             get
             {
-                return (String.Format("{0} {1}.00 - {1}.59", Date.ToString("ddd"), Hour));
+                return String.Format("{0} {1}.00 - {1}.59", Date.ToString("ddd"), Hour);
             }
         }
 
@@ -363,7 +363,7 @@ namespace SharedBase.BOL.SEO
         {
             get
             {
-                return (Shared.Utilities.Percentage(Convert.ToDouble(UserVisits), Convert.ToDouble(Conversions)));
+                return Shared.Utilities.Percentage(Convert.ToDouble(UserVisits), Convert.ToDouble(Conversions));
             }
         }
 
@@ -373,11 +373,11 @@ namespace SharedBase.BOL.SEO
             {
                 try
                 {
-                    return (Shared.Utilities.Percentage(Convert.ToDouble(Conversions), Convert.ToDouble(MobileConversions)));
+                    return Shared.Utilities.Percentage(Convert.ToDouble(Conversions), Convert.ToDouble(MobileConversions));
                 }
                 catch
                 {
-                    return (0.00);
+                    return 0.00;
                 }
             }
         }

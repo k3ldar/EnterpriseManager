@@ -64,7 +64,7 @@ namespace SharedBase.BOL.ModuleDocumentation
         {
             get
             {
-                return (ModuleClasses.Get(ClassID));
+                return ModuleClasses.Get(ClassID);
             }
         }
 
@@ -97,56 +97,56 @@ namespace SharedBase.BOL.ModuleDocumentation
                 {
                     case "Boolean":
                     case "System.Boolean":
-                        return ("bool");
+                        return "bool";
                     case "Byte":
                     case "System.Byte":
-                        return ("byte");
+                        return "byte";
                     case "Double":
                     case "System.Double":
-                        return ("double");
+                        return "double";
                     case "Decimal":
                     case "System.Decimal":
-                        return ("decimal");
+                        return "decimal";
                     case "Char":
                     case "System.Char":
-                        return ("char");
+                        return "char";
                     case "SByte":
                     case "System.SByte":
-                        return ("sbyte");
+                        return "sbyte";
                     case "Object":
                     case "System.Object":
-                        return ("object");
+                        return "object";
                     case "UInt64":
                     case "System.UInt64":
-                        return ("ulong");
+                        return "ulong";
                     case "Int64":
                     case "System.Int64":
-                        return ("long");
+                        return "long";
                     case "UInt32":
                     case "System.UInt32":
-                        return ("uint");
+                        return "uint";
                     case "Int32":
                     case "System.Int32":
-                        return ("int");
+                        return "int";
                     case "Single":
                     case "System.Single":
-                        return ("float");
+                        return "float";
                     case "Int16":
                     case "System.Int16":
-                        return ("short");
+                        return "short";
                     case "UInt16":
                     case "System.UInt16":
-                        return ("ushort");
+                        return "ushort";
                     case "String":
                     case "System.String":
-                        return ("string");
+                        return "string";
                     case "Void":
-                        return ("void");
+                        return "void";
                     default:
                         if (retVal.Contains("."))
-                            return (retVal.Substring(retVal.LastIndexOf(".") + 1));
+                            return retVal.Substring(retVal.LastIndexOf(".") + 1);
                         else
-                            return (retVal);
+                            return retVal;
                 }
             }
         }
@@ -166,7 +166,7 @@ namespace SharedBase.BOL.ModuleDocumentation
                     DAL.DALHelper.InternalCache.Add(cacheName, cachedResult);
                 }
 
-                return ((ModuleParameters)cachedResult.Value);
+                return (ModuleParameters)cachedResult.Value;
             }
         }
 
@@ -191,9 +191,9 @@ namespace SharedBase.BOL.ModuleDocumentation
             if (paramType.Contains("`"))
                 paramType = paramType.Substring(0, paramType.IndexOf("`"));
 
-            return (DAL.FirebirdDB.ModuleClassMemberParameterInsert(this.ID, name, 
+            return DAL.FirebirdDB.ModuleClassMemberParameterInsert(this.ID, name, 
                 properties, parameterType, description, paramType, exampluUsage,
-                defaultValue, sortOrder));
+                defaultValue, sortOrder);
         }
 
         /// <summary>

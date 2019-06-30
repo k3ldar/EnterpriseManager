@@ -43,7 +43,7 @@ namespace SharedBase.BOL.Vouchers
 
         public static Voucher Get(string voucherCode)
         {
-            return (DAL.FirebirdDB.VoucherGet(voucherCode));
+            return DAL.FirebirdDB.VoucherGet(voucherCode);
         }
 
         public static void MarkAllAsSold(User currentUser)
@@ -70,7 +70,7 @@ namespace SharedBase.BOL.Vouchers
                 throw new Exception("Voucher Code is not valid");
 
             //voucherCode = ValidateVoucherCode(voucherCode);
-            return (DAL.FirebirdDB.RedeemVoucher(voucherCode, user, validateOnly));
+            return DAL.FirebirdDB.RedeemVoucher(voucherCode, user, validateOnly);
         }
 
 
@@ -144,13 +144,13 @@ namespace SharedBase.BOL.Vouchers
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         private static string CreateVoucher()
         {
             // Generate random voucher in form of LL-NNNN-LLLL-NNLL-N-L-N
-            return (SharedBase.Utils.LibUtils.GenerateRandomVoucherCode());
+            return SharedBase.Utils.LibUtils.GenerateRandomVoucherCode();
         }
 
         public static void SellVouchers(Vouchers vouchers)
@@ -198,7 +198,7 @@ namespace SharedBase.BOL.Vouchers
                 i++;
             }
 
-            return (Result);
+            return Result;
             //HVLQ-4212-VYWM-22OX-2
         }
 
@@ -217,7 +217,7 @@ namespace SharedBase.BOL.Vouchers
         {
             get
             {
-                return ((Voucher)this.InnerList[Index]);
+                return (Voucher)this.InnerList[Index];
             }
 
             set
@@ -237,7 +237,7 @@ namespace SharedBase.BOL.Vouchers
         /// <returns></returns>
         public int Add(Voucher value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -247,7 +247,7 @@ namespace SharedBase.BOL.Vouchers
         /// <returns></returns>
         public int IndexOf(Voucher value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -279,7 +279,7 @@ namespace SharedBase.BOL.Vouchers
         public bool Contains(Voucher value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

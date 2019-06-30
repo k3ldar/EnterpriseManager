@@ -47,7 +47,7 @@ namespace SharedBase.BOL.Staff
             if (user.MemberLevel < MemberLevel.StaffMember)
                 throw new Exception(Consts.ERROR_NOT_STAFF);
 
-            return (DAL.FirebirdDB.StaffMemberManagerGet(user));
+            return DAL.FirebirdDB.StaffMemberManagerGet(user);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace SharedBase.BOL.Staff
         /// <returns></returns>
         public static Users.Users ManagerGetStaff(StaffMember manager)
         {
-            return (DAL.FirebirdDB.StaffMemberManagerSubStaff(manager));
+            return DAL.FirebirdDB.StaffMemberManagerSubStaff(manager);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace SharedBase.BOL.Staff
 
             Result = leave.Count;
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace SharedBase.BOL.Staff
 
             Result = leave.Count;
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace SharedBase.BOL.Staff
         /// <returns></returns>
         public static int TotalLeaveRequests(User requestingUser)
         {
-            return (0);
+            return 0;
         }
     }
 }

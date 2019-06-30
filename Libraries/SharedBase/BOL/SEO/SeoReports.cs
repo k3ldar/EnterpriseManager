@@ -54,10 +54,10 @@ namespace SharedBase.BOL.SEO
                     DAL.DALHelper.InternalCacheShort.Add(cacheName, cache);
                 }
 
-                return ((SeoReports)cache.Value);
+                return (SeoReports)cache.Value;
             }
 
-            return (DAL.FirebirdDB.SeoReportsHourly());
+            return DAL.FirebirdDB.SeoReportsHourly();
         }
 
         /// <summary>
@@ -77,10 +77,10 @@ namespace SharedBase.BOL.SEO
                     DAL.DALHelper.InternalCacheShort.Add(cacheName, cache);
                 }
 
-                return ((SeoReports)cache.Value);
+                return (SeoReports)cache.Value;
             }
 
-            return (DAL.FirebirdDB.SeoReportsDaily());
+            return DAL.FirebirdDB.SeoReportsDaily();
         }
 
         /// <summary>
@@ -100,10 +100,10 @@ namespace SharedBase.BOL.SEO
                     DAL.DALHelper.InternalCacheShort.Add(cacheName, cache);
                 }
 
-                return ((SeoReports)cache.Value);
+                return (SeoReports)cache.Value;
             }
 
-            return (DAL.FirebirdDB.SeoReportsWeekly());
+            return DAL.FirebirdDB.SeoReportsWeekly();
         }
 
         /// <summary>
@@ -123,10 +123,10 @@ namespace SharedBase.BOL.SEO
                     DAL.DALHelper.InternalCacheShort.Add(cacheName, cache);
                 }
 
-                return ((SeoReports)cache.Value);
+                return (SeoReports)cache.Value;
             }
 
-            return (DAL.FirebirdDB.SeoReportsMonthly());
+            return DAL.FirebirdDB.SeoReportsMonthly();
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace SharedBase.BOL.SEO
         /// <returns></returns>
         public static SeoReports SEOCampaign(Campaign campaign)
         {
-            return (DAL.FirebirdDB.SeoReportsCampaign(campaign));
+            return DAL.FirebirdDB.SeoReportsCampaign(campaign);
         }
 
         public static SeoReports SEOMonthlyVisitsByCountry(int year, int month)
@@ -152,10 +152,10 @@ namespace SharedBase.BOL.SEO
                     DAL.DALHelper.InternalCacheShort.Add(cacheName, cache);
                 }
 
-                return ((SeoReports)cache.Value);
+                return (SeoReports)cache.Value;
             }
 
-            return (DAL.FirebirdDB.SeoReportsMonthlyVisitsByCountry(year, month));
+            return DAL.FirebirdDB.SeoReportsMonthlyVisitsByCountry(year, month);
         }
 
         public static SeoReports SEOMonthlyVisitsByCity(int year, int month)
@@ -171,10 +171,10 @@ namespace SharedBase.BOL.SEO
                     DAL.DALHelper.InternalCacheShort.Add(cacheName, cache);
                 }
 
-                return ((SeoReports)cache.Value);
+                return (SeoReports)cache.Value;
             }
 
-            return (DAL.FirebirdDB.SeoReportsMonthlyVisitsByCity(year, month));
+            return DAL.FirebirdDB.SeoReportsMonthlyVisitsByCity(year, month);
         }
 
         public static SeoReports SEOMonthlySalesByCity(int year, int month)
@@ -190,10 +190,10 @@ namespace SharedBase.BOL.SEO
                     DAL.DALHelper.InternalCacheShort.Add(cacheName, cache);
                 }
 
-                return ((SeoReports)cache.Value);
+                return (SeoReports)cache.Value;
             }
 
-            return (DAL.FirebirdDB.SeoReportsMonthlySalesByCity(year, month));
+            return DAL.FirebirdDB.SeoReportsMonthlySalesByCity(year, month);
         }
 
         public static SeoReports SEOMonthlySalesByCountry(int year, int month)
@@ -209,10 +209,10 @@ namespace SharedBase.BOL.SEO
                     DAL.DALHelper.InternalCacheShort.Add(cacheName, cache);
                 }
 
-                return ((SeoReports)cache.Value);
+                return (SeoReports)cache.Value;
             }
 
-            return (DAL.FirebirdDB.SeoReportsMonthlySalesByCountry(year, month));
+            return DAL.FirebirdDB.SeoReportsMonthlySalesByCountry(year, month);
         }
 
         #endregion Static Methods
@@ -230,7 +230,7 @@ namespace SharedBase.BOL.SEO
         {
             get
             {
-                return ((SeoReport)this.InnerList[Index]);
+                return (SeoReport)this.InnerList[Index];
             }
 
             set
@@ -250,7 +250,7 @@ namespace SharedBase.BOL.SEO
         /// <returns></returns>
         public int Add(SeoReport value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -260,7 +260,7 @@ namespace SharedBase.BOL.SEO
         /// <returns></returns>
         public int IndexOf(SeoReport value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -292,7 +292,7 @@ namespace SharedBase.BOL.SEO
         public bool Contains(SeoReport value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

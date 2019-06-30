@@ -45,17 +45,17 @@ namespace SharedBase.BOL.Statistics
 
         public Takings SalonProductSummary(DateTime from, DateTime to)
         {
-            return (DAL.FirebirdDB.StatisticsSalesSalonProducts(from, to));
+            return DAL.FirebirdDB.StatisticsSalesSalonProducts(from, to);
         }
 
         public Takings SalonTreatmentSummary(DateTime from, DateTime to)
         {
-            return (DAL.FirebirdDB.StatisticsSalesSalonTreatments(from, to));
+            return DAL.FirebirdDB.StatisticsSalesSalonTreatments(from, to);
         }
 
         public Takings SalonSalesSummary(DateTime from, DateTime to)
         {
-            return (DAL.FirebirdDB.StatisticsSalesSalonSummary(from, to));
+            return DAL.FirebirdDB.StatisticsSalesSalonSummary(from, to);
         }
 
         /// <summary>
@@ -156,13 +156,13 @@ namespace SharedBase.BOL.Statistics
 
         public SimpleStatistics GetAppointmentTotals(DateTime startDate, DateTime endDate)
         {
-            return (DAL.FirebirdDB.StatisticsAppointmentSummary(startDate, endDate));
+            return DAL.FirebirdDB.StatisticsAppointmentSummary(startDate, endDate);
         }
 
 
         public static SimpleStatistics GetSEOStatistics()
         {
-            return (DAL.FirebirdDB.StatisticsSEOStatistics());
+            return DAL.FirebirdDB.StatisticsSEOStatistics();
         }
 
         #endregion Public Methods
@@ -382,7 +382,7 @@ namespace SharedBase.BOL.Statistics
 
         public static BOL.Statistics.SimpleStatistics TopProducts(int number, int days)
         {
-            return (DAL.FirebirdDB.StatisticsGetTopProducts(number, days, false));
+            return DAL.FirebirdDB.StatisticsGetTopProducts(number, days, false);
         }
 
         public static void TopProductsSet(int number, int days)
@@ -398,7 +398,7 @@ namespace SharedBase.BOL.Statistics
         /// <returns></returns>
         public static SimpleStatistics GetVisitorLocations(decimal age)
         {
-            return (DAL.FirebirdDB.GetVisitorLocations(age));
+            return DAL.FirebirdDB.GetVisitorLocations(age);
         }
 
         /// <summary>
@@ -407,7 +407,7 @@ namespace SharedBase.BOL.Statistics
         /// <returns></returns>
         public static SimpleStatistics GetUnpaidOrderStatistics()
         {
-            return (DAL.FirebirdDB.GetUnpaidStatistics());
+            return DAL.FirebirdDB.GetUnpaidStatistics();
         }
 
         /// <summary>
@@ -432,7 +432,7 @@ namespace SharedBase.BOL.Statistics
 
             using (Shared.Classes.TimedLock.Lock(_lockObject))
             {
-                return (DAL.FirebirdDB.StatisticsRedirectGetHitCount(url));
+                return DAL.FirebirdDB.StatisticsRedirectGetHitCount(url);
             }
         }
 

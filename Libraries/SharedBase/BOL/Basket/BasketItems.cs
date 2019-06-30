@@ -56,11 +56,11 @@ namespace SharedBase.BOL.Basket
             {
                 if (item.ID == id)
                 {
-                    return (item);
+                    return item;
                 }
             }
 
-            return (null);
+            return null;
         }
 
         public BasketItem Get(ProductCost Item)
@@ -72,11 +72,11 @@ namespace SharedBase.BOL.Basket
                     item.ItemType != ProductCostItemType.Treatment &&
                     item.Description == String.Format("{0} ({1})", Item.Product.Name, Item.Size))
                 {
-                   return (item);
+                   return item;
                 }
             }
 
-            return (null);
+            return null;
         }
 
         public BasketItem Get(AppointmentTreatment Item)
@@ -85,11 +85,11 @@ namespace SharedBase.BOL.Basket
             {
                 if (item.ItemID == Item.ID && item.ItemType == ProductCostItemType.Treatment)
                 {
-                    return (item);
+                    return item;
                 }
             }
 
-            return (null);
+            return null;
         }
         
         /// <summary>
@@ -106,7 +106,7 @@ namespace SharedBase.BOL.Basket
                     Result += item.UserDiscountValue;
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -140,9 +140,9 @@ namespace SharedBase.BOL.Basket
 
                     if (item.ProductDiscount > 0.00m)
                     {
-                        decimal prodDisc = price - ((price / 100) * item.ProductDiscount);
+                        decimal prodDisc = price - (price / 100 * item.ProductDiscount);
                         _basket.ProductDiscountValue += price - prodDisc;
-                        price = price - ((price / 100) * item.ProductDiscount);
+                        price = price - (price / 100 * item.ProductDiscount);
                     }
 
                     // if the product is excluded from the discount, move on...
@@ -172,14 +172,14 @@ namespace SharedBase.BOL.Basket
                             _basket.VoucherType == Enums.InvoiceVoucherType.Percent &&
                             _basket.Discount > 0))
                         {
-                            sagePrice = sagePrice - ((sagePrice / 100) * _basket.Discount);
+                            sagePrice = sagePrice - (sagePrice / 100 * _basket.Discount);
                             _basket.BasketDiscountValue += price - sagePrice;
                         }
 
                         if (item.UserDiscount > 0.00m)
                         {
-                            _basket.UserDiscountValue += (sagePrice / 100) * item.UserDiscount;
-                            sagePrice = sagePrice - ((sagePrice / 100) * item.UserDiscount);
+                            _basket.UserDiscountValue += sagePrice / 100 * item.UserDiscount;
+                            sagePrice = sagePrice - (sagePrice / 100 * item.UserDiscount);
                         }
 
                         price = sagePrice;
@@ -190,7 +190,7 @@ namespace SharedBase.BOL.Basket
 
                         if (discountVal > 0)
                         {
-                            _basket.UserDiscountValue += (price / 100) * discountVal;
+                            _basket.UserDiscountValue += price / 100 * discountVal;
                         }
 
                         if ((_basket.DiscountType == BasketDiscountType.Percentage && _basket.Discount > 0) ||
@@ -198,13 +198,13 @@ namespace SharedBase.BOL.Basket
                             _basket.VoucherType == Enums.InvoiceVoucherType.Percent &&
                             _basket.Discount > 0))
                         {
-                            _basket.BasketDiscountValue += (price / 100) * _basket.Discount;
+                            _basket.BasketDiscountValue += price / 100 * _basket.Discount;
                             discountVal += _basket.Discount;
                         }
 
                         if (discountVal > 0.00m)
                         {
-                            price = price - ((price / 100) * discountVal);
+                            price = price - (price / 100 * discountVal);
                         }
                     }
                 }
@@ -225,7 +225,7 @@ namespace SharedBase.BOL.Basket
                     Result += item.PriceWithDiscount * item.Quantity;
             }
 
-            return (Result);
+            return Result;
         }
 
 
@@ -250,10 +250,10 @@ namespace SharedBase.BOL.Basket
 
             if (_basket.UseSageDiscountLogic)
             {
-                return (Math.Round(Result, 2, MidpointRounding.AwayFromZero));
+                return Math.Round(Result, 2, MidpointRounding.AwayFromZero);
             }
 
-            return (Utils.SharedUtils.BankersRounding(Result, 2));
+            return Utils.SharedUtils.BankersRounding(Result, 2);
         }
 
         #endregion Public Methods
@@ -271,7 +271,7 @@ namespace SharedBase.BOL.Basket
         {
             get
             {
-                return ((BasketItem)this.InnerList[Index]);
+                return (BasketItem)this.InnerList[Index];
             }
 
             set
@@ -291,7 +291,7 @@ namespace SharedBase.BOL.Basket
         /// <returns></returns>
         public int Add(BasketItem value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -301,7 +301,7 @@ namespace SharedBase.BOL.Basket
         /// <returns></returns>
         public int IndexOf(BasketItem value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -333,7 +333,7 @@ namespace SharedBase.BOL.Basket
         public bool Contains(BasketItem value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

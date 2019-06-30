@@ -83,7 +83,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_ID);
+                return _ID;
             }
 
             set
@@ -96,7 +96,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_MaxAvailable);
+                return _MaxAvailable;
             }
 
             set
@@ -112,7 +112,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_IsActive);
+                return _IsActive;
             }
 
             set
@@ -125,7 +125,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_Name);
+                return _Name;
             }
 
             set
@@ -139,7 +139,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_Duration);
+                return _Duration;
             }
 
             set
@@ -153,7 +153,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_RequireFollowOn);
+                return _RequireFollowOn;
             }
 
             set
@@ -166,7 +166,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_Cost);
+                return _Cost;
             }
 
             set
@@ -180,7 +180,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_lastTreated);
+                return _lastTreated;
             }
         }
 
@@ -188,7 +188,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_lastTreatedBy);
+                return _lastTreatedBy;
             }
         }
 
@@ -214,7 +214,7 @@ namespace SharedBase.BOL.Appointments
 
             Result = DAL.FirebirdDB.AppointmentTreatmentContains(this, therapist);
 
-            return (Result);
+            return Result;
         }
 
         public override void Save()
@@ -238,8 +238,8 @@ namespace SharedBase.BOL.Appointments
 
         public override string ToString()
         {
-            return (String.Format("Treatment: {0}; Active: {1}; Name: {2}; Duration: {3}; Cost: {4}",
-                ID, _IsActive.ToString(), _Name, _Duration, _Cost));
+            return String.Format("Treatment: {0}; Active: {1}; Name: {2}; Duration: {3}; Cost: {4}",
+                ID, _IsActive.ToString(), _Name, _Duration, _Cost);
         }
 
         #endregion Overridden Methods

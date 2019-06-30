@@ -46,13 +46,13 @@ namespace SharedBase.BOL.StockControl
         /// <returns></returns>
         public static StockHistory Get(StockItem stockItem, StoreLocation location, bool includeInternetSales, bool includeStockAudit)
         {
-            return (DAL.FirebirdDB.StockHistoryGet(stockItem, location, includeInternetSales, includeStockAudit));
+            return DAL.FirebirdDB.StockHistoryGet(stockItem, location, includeInternetSales, includeStockAudit);
         }
 
 
         public static StockHistory Get(StockItem stockitem)
         {
-            return (DAL.FirebirdDB.StockHistoryGet(stockitem));
+            return DAL.FirebirdDB.StockHistoryGet(stockitem);
         }
 
         #endregion Static Methods
@@ -70,7 +70,7 @@ namespace SharedBase.BOL.StockControl
         {
             get
             {
-                return ((StockHistoryItem)this.InnerList[Index]);
+                return (StockHistoryItem)this.InnerList[Index];
             }
 
             set
@@ -90,7 +90,7 @@ namespace SharedBase.BOL.StockControl
         /// <returns></returns>
         public int Add(StockHistoryItem value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace SharedBase.BOL.StockControl
         /// <returns></returns>
         public int IndexOf(StockHistoryItem value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace SharedBase.BOL.StockControl
         public bool Contains(StockHistoryItem value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

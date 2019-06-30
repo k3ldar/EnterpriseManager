@@ -38,7 +38,7 @@ namespace SharedBase.BOL.RSS
 
         public static RSSFeed Get(Enums.RSSFeedType feedType)
         {
-            return (DAL.FirebirdDB.RSSFeedsGet(feedType));
+            return DAL.FirebirdDB.RSSFeedsGet(feedType);
         }
 
         #endregion Public Static Methods
@@ -51,7 +51,7 @@ namespace SharedBase.BOL.RSS
         {
             get
             {
-                return ((RSSItem)this.InnerList[Index]);
+                return (RSSItem)this.InnerList[Index];
             }
 
             set
@@ -71,7 +71,7 @@ namespace SharedBase.BOL.RSS
         /// <returns></returns>
         public int Add(RSSItem value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace SharedBase.BOL.RSS
         /// <returns></returns>
         public int IndexOf(RSSItem value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace SharedBase.BOL.RSS
         public bool Contains(RSSItem value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

@@ -74,7 +74,7 @@ namespace SharedBase.BOL.Basket
 
         public override string ToString()
         {
-            return (String.Format("id: {0}; IsActive: {1}; CurrencyCode: {2}; Culture: {3}; CurrencySymbol: {4}", ID, IsActive, CurrencyCode, Culture, CurrencySymbol));
+            return String.Format("id: {0}; IsActive: {1}; CurrencyCode: {2}; Culture: {3}; CurrencySymbol: {4}", ID, IsActive, CurrencyCode, Culture, CurrencySymbol);
         }
 
         #endregion Overridden Methods
@@ -133,7 +133,7 @@ namespace SharedBase.BOL.Basket
         {
             get
             {
-                return (_multiplier);
+                return _multiplier;
             }
 
             set

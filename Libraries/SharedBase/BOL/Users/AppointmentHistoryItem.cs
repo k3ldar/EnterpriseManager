@@ -69,7 +69,7 @@ namespace SharedBase.BOL.Users
         {
             get
             {
-                return (_timeFrame);
+                return _timeFrame;
             }
         }
 
@@ -80,7 +80,7 @@ namespace SharedBase.BOL.Users
         {
             get
             {
-                return (_status);
+                return _status;
             }
         }
 
@@ -91,7 +91,7 @@ namespace SharedBase.BOL.Users
         {
             get
             {
-                return (_count);
+                return _count;
             }
         }
 

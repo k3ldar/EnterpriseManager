@@ -129,7 +129,7 @@ namespace SharedBase.BOL.Staff
 		/// </summary>
 		public bool Delete()
 		{
-			return (SharedBase.DAL.FirebirdDB.StaffExpenseDelete(this));
+			return SharedBase.DAL.FirebirdDB.StaffExpenseDelete(this);
 		}
 
 
@@ -150,7 +150,7 @@ namespace SharedBase.BOL.Staff
 		/// </summary>
 		public override string ToString()
 		{
-			return (String.Format("STAFF_EXPENSES Record {0}", Id));
+			return String.Format("STAFF_EXPENSES Record {0}", Id);
 		}
 
 		#endregion Overridden Methods
@@ -206,7 +206,7 @@ namespace SharedBase.BOL.Staff
         {
             get
             {
-                return (!String.IsNullOrWhiteSpace(ReceiptImage));
+                return !String.IsNullOrWhiteSpace(ReceiptImage);
             }
         }
 		/// <summary>
@@ -228,7 +228,7 @@ namespace SharedBase.BOL.Staff
                     Result = Image.FromStream(ms, true, true);
                 }
 
-                return (Result);
+                return Result;
             }
 
             set

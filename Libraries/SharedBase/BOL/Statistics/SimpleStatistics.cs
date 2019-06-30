@@ -43,7 +43,7 @@ namespace SharedBase.BOL.Statistics
         {
             get
             {
-                return ((SimpleStatistic)this.InnerList[Index]);
+                return (SimpleStatistic)this.InnerList[Index];
             }
 
 
@@ -64,7 +64,7 @@ namespace SharedBase.BOL.Statistics
         /// <returns></returns>
         public int Add(SimpleStatistic value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace SharedBase.BOL.Statistics
         /// <returns></returns>
         public int IndexOf(SimpleStatistic value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace SharedBase.BOL.Statistics
         public bool Contains(SimpleStatistic value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

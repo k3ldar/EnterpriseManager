@@ -64,7 +64,7 @@ namespace SharedBase.BOL.Downloads
 		/// </summary>
 		public bool Delete()
 		{
-			return (SharedBase.DAL.FirebirdDB.DownloadTypeDelete(this));
+			return SharedBase.DAL.FirebirdDB.DownloadTypeDelete(this);
 		}
 
 
@@ -85,7 +85,7 @@ namespace SharedBase.BOL.Downloads
 		/// </summary>
 		public override string ToString()
 		{
-			return (String.Format("WS_DOWNLOADTYPE Record {0}", ID));
+			return String.Format("WS_DOWNLOADTYPE Record {0}", ID);
 		}
 
 		#endregion Overridden Methods

@@ -157,14 +157,14 @@ namespace SharedBase.DAL
 
         public static string ConnectionStringGet(DatabaseType dbType)
         {
-            return (_connectionString[(int)dbType]);
+            return _connectionString[(int)dbType];
         }
 
         public static string LocalDatabase
         {
             get
             {
-                return (GetLocalDatabase());
+                return GetLocalDatabase();
             }
         }
 
@@ -172,7 +172,7 @@ namespace SharedBase.DAL
         {
             get
             {
-                return (_User);
+                return _User;
             }
 
             set
@@ -195,12 +195,12 @@ namespace SharedBase.DAL
         {
             get
             {
-                return (_roleName);
+                return _roleName;
             }
 
             set
             {
-                _roleName = value;
+                _roleName = String.Empty;
             }
         }
 
@@ -248,7 +248,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -297,7 +297,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -342,7 +342,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -381,7 +381,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -424,7 +424,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Website WebsiteSelectPrimary()
@@ -464,7 +464,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -513,7 +513,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Internal Website methods
@@ -554,7 +554,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -590,7 +590,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (true);
+            return true;
         }
 
         /// <summary>
@@ -635,7 +635,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -678,7 +678,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Contact Details
@@ -726,7 +726,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static bool SupplierProductDelete(SupplierProduct product)
@@ -756,7 +756,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -799,7 +799,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -852,7 +852,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Internal SupplierProduct methods
@@ -942,7 +942,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -977,7 +977,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref cmd, ref rdr);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -1036,7 +1036,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -1088,7 +1088,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -1132,7 +1132,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Internal Supplier methods
@@ -1184,7 +1184,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void StaffExpenseChangeStatus(User approver,
@@ -1264,7 +1264,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -1303,7 +1303,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -1346,7 +1346,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -1399,7 +1399,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -1449,7 +1449,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Internal StaffExpense methods
@@ -1525,7 +1525,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void HookAdd(HookEvent eventName, User user)
@@ -1636,7 +1636,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -1725,7 +1725,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -1792,7 +1792,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -1819,7 +1819,7 @@ namespace SharedBase.DAL
 
                     if (rdr.Read())
                     {
-                        return (UserGet(rdr.GetInt64(0), db, tran));
+                        return UserGet(rdr.GetInt64(0), db, tran);
                     }
                 }
                 finally
@@ -1833,7 +1833,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (null);
+            return null;
         }
 
         /// <summary>
@@ -1871,7 +1871,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -2003,7 +2003,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -2046,7 +2046,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -2089,7 +2089,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -2240,7 +2240,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -2282,7 +2282,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -2322,7 +2322,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -2439,7 +2439,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -2481,7 +2481,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -2534,7 +2534,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -2577,7 +2577,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Export / Import
@@ -2620,7 +2620,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -2667,7 +2667,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -2731,7 +2731,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void StaffCommissionRebuildClientData(DateTime dateFrom, DateTime dateTo, bool replace)
@@ -2861,7 +2861,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -2925,7 +2925,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -3100,7 +3100,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -3312,7 +3312,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -3433,7 +3433,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Staff Members
@@ -3483,7 +3483,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -3537,7 +3537,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -3586,7 +3586,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -3626,7 +3626,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -3672,7 +3672,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static StaffLeave StaffLeaveRequestSelectAllApproval()
@@ -3711,7 +3711,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static StaffLeave StaffLeaveRequestSelectAllAuthorisation()
@@ -3751,7 +3751,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -3788,7 +3788,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -3840,7 +3840,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Internal StaffLeaveRequest methods
@@ -3902,7 +3902,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -3969,7 +3969,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -4004,7 +4004,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -4056,7 +4056,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -4094,7 +4094,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -4161,7 +4161,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Internal StaffMember methods
@@ -4210,7 +4210,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -4261,7 +4261,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -4307,7 +4307,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -4342,7 +4342,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -4385,7 +4385,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -4430,7 +4430,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -4467,7 +4467,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -4517,7 +4517,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Internal StaffSickRecord methods
@@ -4576,7 +4576,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -4666,7 +4666,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -4717,7 +4717,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion File Backups
@@ -4765,7 +4765,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -4805,7 +4805,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -4854,7 +4854,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -4898,7 +4898,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -4935,7 +4935,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -4975,7 +4975,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -5015,7 +5015,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -5053,7 +5053,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -5101,7 +5101,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Internal ModuleClass methods
@@ -5146,7 +5146,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -5187,7 +5187,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -5237,7 +5237,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -5283,7 +5283,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -5321,7 +5321,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -5361,7 +5361,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -5403,7 +5403,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -5441,7 +5441,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -5529,7 +5529,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -5571,7 +5571,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -5624,7 +5624,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -5672,7 +5672,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -5710,7 +5710,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -5751,7 +5751,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -5794,7 +5794,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -5832,7 +5832,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -5879,7 +5879,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Internal ClassMemberParameter methods
@@ -5922,7 +5922,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -5964,7 +5964,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -6004,7 +6004,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -6042,7 +6042,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -6083,7 +6083,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -6123,7 +6123,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -6161,7 +6161,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -6205,7 +6205,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Internal ModuleClasses methods
@@ -6258,7 +6258,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void SeoSessionInsertUpdate(UserSession session)
@@ -6506,7 +6506,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -6553,7 +6553,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -6600,7 +6600,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -6648,7 +6648,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
 
@@ -6698,7 +6698,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -6747,7 +6747,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -6797,7 +6797,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -6845,7 +6845,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -6894,7 +6894,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion SEO Data
@@ -6940,7 +6940,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -6984,7 +6984,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
 
@@ -7028,7 +7028,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Internal Ipcity methods
@@ -7073,7 +7073,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -7119,7 +7119,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -7157,7 +7157,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -7197,7 +7197,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -7239,7 +7239,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -7277,7 +7277,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -7362,7 +7362,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion WaitingList Methods
@@ -7412,7 +7412,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -7458,7 +7458,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -7501,7 +7501,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Currencies
@@ -7550,7 +7550,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
 
@@ -7591,7 +7591,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
 
@@ -7635,7 +7635,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
 
@@ -7747,7 +7747,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Payment Statuses
@@ -7845,7 +7845,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -7934,7 +7934,7 @@ namespace SharedBase.DAL
             }
 
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -7985,7 +7985,7 @@ namespace SharedBase.DAL
             }
 
 
-            return (Result);
+            return Result;
         }
 
         #endregion Custom Web Pages
@@ -8066,7 +8066,7 @@ namespace SharedBase.DAL
             }
 
 
-            return (Result);
+            return Result;
         }
 
         internal static SystemEmail SystemEmailGet(SystemEmailType emailType)
@@ -8104,7 +8104,7 @@ namespace SharedBase.DAL
             }
 
 
-            return (Result);
+            return Result;
         }
 
         #endregion System Eails
@@ -8224,7 +8224,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Notifications
@@ -8268,7 +8268,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
 
@@ -8355,7 +8355,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -8403,7 +8403,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -8453,7 +8453,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void POSInstallSetSiteID(int siteID)
@@ -8687,7 +8687,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -8733,7 +8733,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion TagLines
@@ -8807,7 +8807,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Searching
@@ -8915,7 +8915,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -8924,7 +8924,7 @@ namespace SharedBase.DAL
         /// <returns>Courses collection</returns>
         internal static Courses TrainingCoursesGet()
         {
-            return (null);
+            return null;
         }
 
         /// <summary>
@@ -8967,7 +8967,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -9019,7 +9019,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -9068,7 +9068,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -9116,7 +9116,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Training Courses
@@ -9164,7 +9164,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -9209,7 +9209,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
 
@@ -9351,7 +9351,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Cash Denominations
@@ -9412,7 +9412,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -9454,7 +9454,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
 
@@ -9503,7 +9503,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void CashDrawerSubmit(User user, string checkType, CashDrawerType type, string notes,
@@ -9593,7 +9593,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -9704,7 +9704,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Mail Lists
@@ -9791,7 +9791,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -9834,7 +9834,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -9882,7 +9882,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -10006,7 +10006,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void VouchersMarkAllAsSold(User currentUser)
@@ -10112,7 +10112,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void CreateVoucher(string VoucherCode, decimal value)
@@ -10274,7 +10274,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -10317,7 +10317,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -10358,7 +10358,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -10397,7 +10397,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -10439,7 +10439,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Internal AppointmentGroup methods
@@ -10477,7 +10477,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
             Permissions = Permissions == -1 ? 0 : Permissions;
-            return ((SecurityEnums.SecurityPermissionsPOS)Permissions);
+            return (SecurityEnums.SecurityPermissionsPOS)Permissions;
         }
 
         internal static void PermissionsSet(User user, SecurityEnums.SecurityPermissionsPOS permissions)
@@ -10615,7 +10615,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
             Permissions = Permissions == -1 ? 0 : Permissions;
-            return ((SecurityEnums.SecurityPermissionsReports)Permissions);
+            return (SecurityEnums.SecurityPermissionsReports)Permissions;
         }
 
         internal static void PermissionsSetReports(User user, SecurityEnums.SecurityPermissionsReports permissions)
@@ -10676,7 +10676,7 @@ namespace SharedBase.DAL
             }
 
             Permissions = Permissions == -1 ? 0 : Permissions;
-            return ((SecurityEnums.SecurityPermissionsStaff)Permissions);
+            return (SecurityEnums.SecurityPermissionsStaff)Permissions;
         }
 
         internal static void PermissionsSetStaff(User user, SecurityEnums.SecurityPermissionsStaff permissions)
@@ -10736,7 +10736,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
             Permissions = Permissions == -1 ? 0 : Permissions;
-            return ((SecurityEnums.SecurityPermissionsAccounts)Permissions);
+            return (SecurityEnums.SecurityPermissionsAccounts)Permissions;
         }
 
         internal static SecurityEnums.SecurityPermissionsCalendar PermissionsGetCalendar(User user)
@@ -10771,7 +10771,7 @@ namespace SharedBase.DAL
             }
 
             Permissions = Permissions == -1 ? 0 : Permissions;
-            return ((SecurityEnums.SecurityPermissionsCalendar)Permissions);
+            return (SecurityEnums.SecurityPermissionsCalendar)Permissions;
         }
 
         internal static SecurityEnums.SecurityPermissionsWebsite PermissionsGetWebsite(User user)
@@ -10806,7 +10806,7 @@ namespace SharedBase.DAL
             }
 
             Permissions = Permissions == -1 ? 0 : Permissions;
-            return ((SecurityEnums.SecurityPermissionsWebsite)Permissions);
+            return (SecurityEnums.SecurityPermissionsWebsite)Permissions;
         }
 
         internal static void PermissionsSetStock(User user, SecurityEnums.SecurityPermissionsStockControl permissions)
@@ -10868,7 +10868,7 @@ namespace SharedBase.DAL
             }
 
             Permissions = Permissions == -1 ? 0 : Permissions;
-            return ((SecurityEnums.SecurityPermissionsStockControl)Permissions);
+            return (SecurityEnums.SecurityPermissionsStockControl)Permissions;
         }
 
         #endregion Permissions
@@ -10916,7 +10916,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Int64 RefundCreate(User client, User employee, Invoice invoice, decimal refundAmount, string reason)
@@ -10953,7 +10953,7 @@ namespace SharedBase.DAL
             }
 
 
-            return (Result);
+            return Result;
         }
 
         #endregion Refunds
@@ -10966,7 +10966,7 @@ namespace SharedBase.DAL
         /// <returns></returns>
         internal static bool CampaignsCanSetReplication()
         {
-            return (SettingsGet("CAN_REPLICATE_CAMPAIGNS").ToUpper() == "YES");
+            return SettingsGet("CAN_REPLICATE_CAMPAIGNS").ToUpper() == "YES";
         }
 
         internal static void CampaignSendTestEmail(User user, string SenderName, string SenderEmail,
@@ -11072,7 +11072,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
 
@@ -11141,7 +11141,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -11194,7 +11194,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
 
@@ -11246,7 +11246,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -11309,7 +11309,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -11366,7 +11366,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -11523,7 +11523,7 @@ namespace SharedBase.DAL
             }
 
 
-            return (Result);
+            return Result;
         }
 
         #endregion Campaigns
@@ -11568,7 +11568,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static KBGroups FAQGet(User user)
@@ -11610,7 +11610,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static KBGroups FAQGet(User user, KBGroup parent)
@@ -11652,7 +11652,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static KBGroup FAQGet(User user, int GroupID)
@@ -11692,7 +11692,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static KBGroup FAQGetParent(KBGroup child)
@@ -11732,7 +11732,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static FAQItem FAQItemGet(int ID)
@@ -11774,7 +11774,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static FAQItem FAQItemCreate()
@@ -11808,7 +11808,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void FAQItemSave(FAQItem item)
@@ -11902,7 +11902,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static int FAQItemGetCount()
@@ -11935,7 +11935,7 @@ namespace SharedBase.DAL
                 tran.Commit();
                 CloseAndDispose(ref db, ref tran);
             }
-            return (Result);
+            return Result;
         }
 
         internal static void FAQItemSetViewCount(FAQItem item)
@@ -12008,7 +12008,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Frequently Asked Questions
@@ -12053,7 +12053,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Updates DatabaseDeletesGet(string TableName, string ColumnName, string Key)
@@ -12095,7 +12095,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Database Updates
@@ -12138,7 +12138,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -12181,7 +12181,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -12222,7 +12222,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -12256,7 +12256,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -12294,7 +12294,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Download Types
@@ -12371,7 +12371,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void DownloadDelete(Download download)
@@ -12438,7 +12438,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Downloads DownloadsGet(int PageSize, int PageNumber, int DownloadType)
@@ -12480,7 +12480,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Downloads
@@ -12507,7 +12507,7 @@ namespace SharedBase.DAL
                     break;
             }
 
-            return (Result);
+            return Result;
         }
 
         private static RSSFeed RSSFeedsGetNewSignups()
@@ -12549,7 +12549,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         private static RSSFeed RSSFeedsGetTelephone()
@@ -12591,7 +12591,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         private static RSSFeed RSSFeedsGetVisits()
@@ -12633,7 +12633,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         private static RSSFeed RSSFeedsGetClientNotes()
@@ -12676,7 +12676,7 @@ namespace SharedBase.DAL
             }
 
 
-            return (Result);
+            return Result;
         }
 
         #endregion RSS Feeds
@@ -12743,7 +12743,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -12755,7 +12755,7 @@ namespace SharedBase.DAL
             User Result = null;
 
             if (client == null)
-                return (Result);
+                return Result;
 
             FbTransaction tran = null;
             FbConnection db = ConnectToDatabase(ref tran, DatabaseType.Standard);
@@ -12793,7 +12793,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -12895,7 +12895,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
 
@@ -13000,7 +13000,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         private static Client TradeClientGet(Int64 ID, FbConnection dbConnection, FbTransaction dbTransaction)
@@ -13029,7 +13029,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref cmd, ref rdr);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Clients TradeClientsGet(Enums.ClientState ClientState)
@@ -13081,7 +13081,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Client TradeClientCreate(string Name, string CompanyName, string Telephone,
@@ -13133,7 +13133,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
 
@@ -13239,7 +13239,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
 
         }
 
@@ -13281,7 +13281,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
 
         }
 
@@ -13325,7 +13325,7 @@ namespace SharedBase.DAL
             }
 
 
-            return (Result);
+            return Result;
 
         }
 
@@ -13382,7 +13382,7 @@ namespace SharedBase.DAL
             }
 
 
-            return (Result);
+            return Result;
         }
 
         internal static ClientActions TradeClientActionsGet(Client client)
@@ -13438,7 +13438,7 @@ namespace SharedBase.DAL
             }
 
 
-            return (Result);
+            return Result;
         }
 
         private static ClientActions TradeClientActionsGet(Int64 ClientID, FbConnection dbConnection, FbTransaction dbTransaction)
@@ -13471,7 +13471,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref cmd, ref rdr);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static ClientAction TradeClientActionGet(Client client, Enums.ClientAction action, bool Open)
@@ -13524,7 +13524,7 @@ namespace SharedBase.DAL
             //if (Result == null)
             //    Result = TradeClientActionCreate(client, action);
 
-            return (Result);
+            return Result;
         }
 
         internal static void TradeClientActionsComplete(ClientAction clientAction, User user, string Notes)
@@ -13615,7 +13615,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -13658,7 +13658,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static SimpleStatistics GetUnpaidStatistics()
@@ -13695,7 +13695,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static string GetCampaignStats(string Campaign)
@@ -13748,7 +13748,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void StatisticsVisitorsByCountryToday(Statistics statistics, int Count)
@@ -14581,7 +14581,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Takings StatisticsSalesSalonTreatments(DateTime from, DateTime to)
@@ -14625,7 +14625,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Takings StatisticsSalesSalonSummary(DateTime from, DateTime to)
@@ -14675,7 +14675,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void StatisticsUpdateRedirectHitCount(string url)
@@ -14717,7 +14717,7 @@ namespace SharedBase.DAL
             if (Result < 0)
                 Result = 0;
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -14771,7 +14771,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Stats Code
@@ -14816,7 +14816,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static USState GetUSState(string StateCode)
@@ -14868,7 +14868,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static USState GetUSState(Int64 ID)
@@ -14909,7 +14909,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion US States
@@ -14954,7 +14954,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Videos VideoGet()
@@ -14995,7 +14995,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Video VideoGet(int ID)
@@ -15036,7 +15036,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void VideoUpdate(Video video)
@@ -15147,7 +15147,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Videos
@@ -15161,12 +15161,12 @@ namespace SharedBase.DAL
         //encloses a string in single quotes
         private static string QuoteDBStr(string S)
         {
-            return ("'" + S + "'");
+            return "'" + S + "'";
         }
 
         private static string DBDateToString(DateTime datetime)
         {
-            return (datetime.ToString("dd.MM.yyyy hh:mm:ss"));
+            return datetime.ToString("dd.MM.yyyy hh:mm:ss");
         }
 
         /// <summary>
@@ -15178,7 +15178,7 @@ namespace SharedBase.DAL
         {
             string Result = s.Replace("'", "''");
 
-            return (Result);
+            return Result;
         }
 
         #endregion Helper Methods
@@ -15226,7 +15226,7 @@ namespace SharedBase.DAL
         {
             string Result = "'" + PrepareString(s) + "'";
 
-            return (Result);
+            return Result;
         }
 
         private static void DownloadIBLMOperationsLog(Int64 Start, string FileName)
@@ -15315,7 +15315,7 @@ namespace SharedBase.DAL
 
             DownloadIBLMOperationsLog(Start, Result);
 
-            return (Result);
+            return Result;
         }
 
         internal static int IBLMMaxOperationID()
@@ -15349,7 +15349,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Export Replication Data
@@ -15394,7 +15394,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Celebrities CelebritiesGet()
@@ -15435,7 +15435,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void CelebrityUpdate(Celebrity celebrity)
@@ -15539,7 +15539,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Celebrities
@@ -15552,7 +15552,7 @@ namespace SharedBase.DAL
 
 
 
-            return (Result);
+            return Result;
         }
 
         internal static NewsItems NewsGet(int PageSize, int PageNumber)
@@ -15595,7 +15595,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static NewsItem NewsGet(int ID)
@@ -15637,7 +15637,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static int NewsCount()
@@ -15678,7 +15678,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion News
@@ -15760,7 +15760,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #region Special Dates
@@ -15800,7 +15800,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Special Dates
@@ -15842,7 +15842,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
 
@@ -15959,7 +15959,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Appointments AppointmentsGetRequested()
@@ -16007,7 +16007,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Appointments AppointmentsGet(DateTime Date, Int64 EmployeeID)
@@ -16063,7 +16063,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Appointments AppointmentsGet(int PageNumber, int PageSize)
@@ -16112,7 +16112,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
 
         }
 
@@ -16163,7 +16163,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Appointments AppointmentsGet(Appointment MasterAppointment)
@@ -16211,7 +16211,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Appointments AppointmentsGet(DateTime StartDate, DateTime EndDate, Therapist Therapist)
@@ -16259,7 +16259,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Appointments AppointmentsGetNew(Int64 MaxID, DateTime LastChecked)
@@ -16311,7 +16311,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Appointments AppointmentsGet(DateTime minimumDate, Progress progress)
@@ -16384,7 +16384,7 @@ namespace SharedBase.DAL
                             rdr.IsDBNull(15) ? -1 : rdr.GetInt64(15), rdr.IsDBNull(16) ? DateTime.Now.AddYears(-100) : rdr.GetDateTime(16));
                         Result.Add(appt);
                         ++i;
-                        Percent = (100 / Total) * i;
+                        Percent = 100 / Total * i;
                         args.Percent = Convert.ToInt32(Percent);
 
                         if (progress != null)
@@ -16411,7 +16411,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Appointments AppointmentsGet(DateTime Date)
@@ -16459,7 +16459,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Int64 AppointmentCreate(Appointment appointment, User currentUser)
@@ -16513,7 +16513,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void AppointmentUpdate(Appointment appointment, User user)
@@ -16622,7 +16622,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Appointments AppointmentsGet(DateTime AppointmentDateStart, DateTime AppointmentDateFinish,
@@ -16676,7 +16676,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Appointments AppointmentsGet(DateTime AppointmentDate, Therapist therapist, bool ShowCancelledAppointment)
@@ -16732,7 +16732,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static AppointmentChanges AppointmentChanges(Appointment appointment)
@@ -16777,7 +16777,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static AppointmentHistory AppointmentHistory(User user)
@@ -16818,7 +16818,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #region Appointment Status
@@ -16857,7 +16857,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static AppointmentStatus AppointmentStatusGet(string name)
@@ -16895,7 +16895,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static AppointmentStatuses AppointmentStatusGet()
@@ -16933,7 +16933,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Appointment Status
@@ -17005,7 +17005,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static AppointmentTreatments AppointmentTreatmentsGet(Therapist therapist, bool activeTreatmentsOnly)
@@ -17054,7 +17054,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static int AppointmentsGetCount(User user)
@@ -17090,7 +17090,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static AppointmentTreatments AppointmentTreatmentsGet()
@@ -17132,7 +17132,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Appointment Treatments
@@ -17187,7 +17187,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
 
         }
 
@@ -17230,7 +17230,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void AppointmentTreatmentsSave(AppointmentTreatments treatments)
@@ -17309,7 +17309,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Count > 0);
+            return Count > 0;
         }
 
         internal static void AppointmentTreatmentAdd(AppointmentTreatment apptTreatment, Therapist therapist)
@@ -17508,7 +17508,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Country CountryGet(string CountryCode)
@@ -17560,7 +17560,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Country CountryGet(CultureInfo cultureInfo)
@@ -17612,7 +17612,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Country CountryGet(int CountryID)
@@ -17664,7 +17664,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Country CountryGet(int CountryID, FbConnection conn, FbTransaction tran)
@@ -17700,7 +17700,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref cmd, ref rdr);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Countries
@@ -17729,7 +17729,7 @@ namespace SharedBase.DAL
             Result.Add(new AppointmentType(12, "Working Off Site"));
             Result.Add(new AppointmentType(14, "External Training"));
 
-            return (Result);
+            return Result;
         }
 
 
@@ -17777,7 +17777,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Distributors DistributorsGet(int PageNumber, int PageSize)
@@ -17824,7 +17824,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Distributors
@@ -17871,7 +17871,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static CustomerComments HelpdeskCustomerCommentsGet(int PageNumber, int PageSize)
@@ -17914,7 +17914,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -17963,7 +17963,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -18076,7 +18076,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
 
@@ -18155,7 +18155,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static SupportTickets HelpdeskSupportTicketsGet(User user, string TicketKey)
@@ -18196,7 +18196,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static SupportTickets HelpdeskSupportTicketsGet(User user)
@@ -18237,7 +18237,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static SupportTicket HelpdeskSupportTicketGet(int TicketID)
@@ -18278,7 +18278,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void HelpdeskSupportTicketSubmitResponse(SupportTicket supportTicket,
@@ -18432,7 +18432,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static SupportTicketMessages HelpdeskSupportTicketMessagesGet(SupportTicket Ticket)
@@ -18474,7 +18474,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Support Tickets
@@ -18516,7 +18516,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static TicketDepartments HelpdeskTicketDepartmentsGet()
@@ -18554,7 +18554,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void HelpdeskTicketDepartmentDelete(TicketDepartment department)
@@ -18619,7 +18619,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void HelpdeskTicketDepartmentSave(TicketDepartment department)
@@ -18686,7 +18686,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Support Ticket Collections
@@ -18744,7 +18744,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Salon SalonFind(string SalonName)
@@ -18797,7 +18797,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Salons SalonsFind(string SalonName)
@@ -18847,7 +18847,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Salons SalonsGet(User user)
@@ -18895,7 +18895,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Salons SalonsGet(int PageNumber, int PageSize)
@@ -18943,7 +18943,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static int SalonsCount()
@@ -18984,7 +18984,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Salon SalonGet(int SalonID)
@@ -19032,7 +19032,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static SalonDiscount SalonDiscountGet(Salon salon)
@@ -19074,7 +19074,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static SalonDiscount SalonDiscountGet(string CouponCode)
@@ -19119,7 +19119,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Salons
@@ -19176,7 +19176,7 @@ namespace SharedBase.DAL
 
 
 
-            return (Result);
+            return Result;
         }
 
         internal static Therapist TherapistsGet(Int64 TherapistID)
@@ -19231,7 +19231,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Therapists TherapistsGet(bool PublicOnly)
@@ -19285,7 +19285,7 @@ namespace SharedBase.DAL
 
 
 
-            return (Result);
+            return Result;
         }
 
         internal static Therapist TherapistGet(Int64 TherapistID)
@@ -19332,7 +19332,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void TherapistSave(Therapist therapist)
@@ -19489,7 +19489,7 @@ namespace SharedBase.DAL
             }
 
             Result = TherapistGet(StaffMember.ID);
-            return (Result);
+            return Result;
         }
 
         internal static WorkingDays TherapistsWorkingDaysGet(Therapist therapist)
@@ -19529,7 +19529,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void TherapistsWorkingDaysDelete(WorkingDay Day)
@@ -19643,7 +19643,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static int TherapistsAppointments(Therapist therapist, DateTime From, DateTime To, Enums.AppointmentStatus Status)
@@ -19682,7 +19682,7 @@ namespace SharedBase.DAL
             }
 
 
-            return (Result);
+            return Result;
         }
 
         internal static decimal TherapistRefunds(Therapist therapist, DateTime From, DateTime To)
@@ -19723,7 +19723,7 @@ namespace SharedBase.DAL
             }
 
 
-            return (Result);
+            return Result;
         }
 
         internal static TherapistTakings TherapistTakings(Therapist therapist, DateTime from, DateTime to)
@@ -19774,7 +19774,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Takings TherapistSales(Therapist therapist, DateTime from, DateTime to)
@@ -19827,7 +19827,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static decimal TherapistSales(Therapist therapist, DateTime from, DateTime to, PaymentStatus paymentStatus, bool totals = true)
@@ -19868,7 +19868,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static decimal TherapistSales(Therapist therapist, DateTime From, DateTime To, ProductCostItemType Type)
@@ -19908,7 +19908,7 @@ namespace SharedBase.DAL
             }
 
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -19958,7 +19958,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Therapists
@@ -20003,7 +20003,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static TipsTrick TipsTrickGet(int TipID)
@@ -20043,7 +20043,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static TipsTricks TipsTricksGet(int PageNumber, int PageSize)
@@ -20083,7 +20083,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Treatments TreatmentsGet(int PageNumber, int PageSize, TreatmentGroup group)
@@ -20128,7 +20128,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Tips and Tricks
@@ -20178,7 +20178,7 @@ namespace SharedBase.DAL
             }
 
 
-            return (Result);
+            return Result;
         }
 
         internal static Treatment TreatmentGet(int ID, bool SpaDay)
@@ -20226,7 +20226,7 @@ namespace SharedBase.DAL
             }
 
 
-            return (Result);
+            return Result;
         }
 
         internal static Treatments TreatmentsGet(int PageNumber, int PageSize)
@@ -20272,7 +20272,7 @@ namespace SharedBase.DAL
             }
 
 
-            return (Result);
+            return Result;
         }
 
         internal static int TreatmentsCount()
@@ -20308,7 +20308,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
 
@@ -20349,7 +20349,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static TreatmentGroup TreatmentGroupGet(int TreatmentGroupID)
@@ -20389,7 +20389,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
 
@@ -20438,7 +20438,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static ProductGroupType ProductGroupTypeGet(string name)
@@ -20481,7 +20481,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Products ProductGroupTypesGetProducts(ProductGroupType groupType)
@@ -20533,7 +20533,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static ProductGroupTypes ProductGroupTypesGet()
@@ -20575,7 +20575,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void ProductGroupTypeDelete(ProductGroupType productGroupType)
@@ -20640,7 +20640,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void ProductGroupTypeSave(ProductGroupType productCostType)
@@ -20716,7 +20716,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static ProductCostType ProductCostTypeGet(string name)
@@ -20759,7 +20759,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static ProductCostTypes ProductCostTypesGet()
@@ -20802,7 +20802,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void ProductCostTypeDelete(ProductCostType productType)
@@ -20868,7 +20868,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void ProductCostTypeSave(ProductCostType productCostType)
@@ -20961,7 +20961,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -21007,7 +21007,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static ProductType ProductTypeGet(string name)
@@ -21051,7 +21051,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void ProductTypeDelete(ProductType productType)
@@ -21117,7 +21117,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void ProductTypeSave(ProductType productType)
@@ -21185,7 +21185,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static int ProductsCount(ProductType primaryProductType)
@@ -21230,7 +21230,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static int ProductsCountOffers()
@@ -21271,7 +21271,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static int ProductsCountByProduct(Int64 ProductGroup)
@@ -21317,7 +21317,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Products ProductsGetOffers(int PageNumber, int PageSize)
@@ -21368,7 +21368,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Products ProductsGetFeatured()
@@ -21421,7 +21421,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Products ProductsGetCarousel()
@@ -21473,7 +21473,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static SimpleStatistics ProductsGetTopProducts(int quantity)
@@ -21520,7 +21520,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -21578,7 +21578,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Product ProductGetFeatured()
@@ -21631,7 +21631,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Product ProductGet(Int64 ProductID)
@@ -21684,7 +21684,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Products ProductGetBlackLabel(User user)
@@ -21737,7 +21737,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Products ProductsGet(Celebrity celebrity)
@@ -21789,7 +21789,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Products ProductsGet(ProductType primaryProductType, int PageNumber, int PageSize)
@@ -21841,7 +21841,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Products ProductsGet(ProductType primaryProductType, int PageNumber, int PageSize, bool IncludeCosts)
@@ -21937,7 +21937,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Products ProductsGet(ProductType primaryProductType,
@@ -21946,7 +21946,7 @@ namespace SharedBase.DAL
             Products Result = new Products();
 
             if (ProductGroup == null)
-                return (Result);
+                return Result;
 
             FbTransaction tran = null;
             FbConnection db = ConnectToDatabase(ref tran, DatabaseType.Standard);
@@ -21994,7 +21994,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Products ProductsGetBySKU(string SKU)
@@ -22049,7 +22049,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static ProductGroup ProductGroupGet(Int64 ID)
@@ -22100,7 +22100,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static ProductGroups ProductGroupsGet(MemberLevel MemberLevel, bool visibleOnWebsite)
@@ -22150,7 +22150,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static ProductGroups ProductGroupsGet(ProductGroupType groupType, MemberLevel MemberLevel)
@@ -22200,7 +22200,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static ProductCosts ProductCostsGet(Product product, MemberLevel memberLevel)
@@ -22256,7 +22256,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static ProductCosts ProductCostsGet(Product product, User user, Country country)
@@ -22311,7 +22311,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static ProductCosts ProductCostsGet(Product product, User user)
@@ -22370,7 +22370,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static ProductCosts ProductCostsGetFreeOffers()
@@ -22425,7 +22425,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static ProductCosts ProductCostsGetFree(ProductCost productCost)
@@ -22481,7 +22481,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static ProductCosts ProductCostsGet(Product product)
@@ -22535,7 +22535,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -22595,7 +22595,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static ProductCost ProductCostGetSKU(string sku)
@@ -22652,7 +22652,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static ProductCost ProductCostGet(Int64 ID)
@@ -22660,7 +22660,7 @@ namespace SharedBase.DAL
             ProductCost Result = null;
 
             if (ID == -1)
-                return (Result);
+                return Result;
 
             FbTransaction tran = null;
             FbConnection db = ConnectToDatabase(ref tran, DatabaseType.Standard);
@@ -22710,7 +22710,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static ProductCost ProductCostGet(Int64 ID, MemberLevel memberLevel)
@@ -22765,7 +22765,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static ProductCost ProductCostGet(Int64 ID, User user)
@@ -22821,7 +22821,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Products
@@ -22901,7 +22901,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Int64 BasketGetNextID(int increment)
@@ -22950,7 +22950,7 @@ namespace SharedBase.DAL
             CouponCode = CouponCode.Trim();
 
             if (CouponCode == String.Empty)
-                return (Result);
+                return Result;
 
             string SQL = "SELECT r.DISCOUNT_COUPON, r.EXPIRES, r.ISACTIVE, " +
                 "r.DISCOUNT, r.FREE_PRODUCT_CODE, r.MAIN_PRODUCT_CODE, r.VOUCHER_TYPE, r.VOUCHER_USAGE, r.ID, " +
@@ -22995,7 +22995,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Order BasketSendEmailForPayment(ShoppingBasket basket, PaymentStatus PayMethod, string UserSession,
@@ -23095,7 +23095,7 @@ namespace SharedBase.DAL
                 throw;
             }
 
-            return (Result);
+            return Result;
         }
 
 
@@ -23133,11 +23133,11 @@ namespace SharedBase.DAL
 
                         if (rdr.Read())
                         {
-                            return (new BasketItem(basket, rdr.GetInt64(0), rdr.GetInt32(1), rdr.GetString(2), rdr.GetDecimal(3),
+                            return new BasketItem(basket, rdr.GetInt64(0), rdr.GetInt32(1), rdr.GetString(2), rdr.GetDecimal(3),
                                 rdr.GetDecimal(4), rdr.GetString(5), rdr.GetString(6) == "T",
                                 (ProductCostItemType)rdr.GetInt32(7), rdr.IsDBNull(8) ? -1 : rdr.GetInt32(8),
                                 new ProductCostType(rdr.GetInt32(9), rdr.GetString(13), (ProductCostItemType)rdr.GetInt32(14)),
-                                rdr.GetInt32(10), rdr.GetDecimal(11), rdr.IsDBNull(12) ? 0.00m : rdr.GetDecimal(12)));
+                                rdr.GetInt32(10), rdr.GetDecimal(11), rdr.IsDBNull(12) ? 0.00m : rdr.GetDecimal(12));
                         }
                     }
                     finally
@@ -23156,7 +23156,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (null);
+            return null;
         }
 
         internal static void BasketDeleteFromBasket(BasketItem item)
@@ -23288,7 +23288,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
 
@@ -23367,7 +23367,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -23390,7 +23390,7 @@ namespace SharedBase.DAL
 
                     CloseAndDispose(ref cmd);
 
-                    return (true);
+                    return true;
                 }
                 catch
                 {
@@ -23450,7 +23450,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Double GetShippingCosts(int UserID, int AddressID)
@@ -23489,7 +23489,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Double GetShippingCostsDefault(string CountryCode)
@@ -23529,7 +23529,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Shipping
@@ -23609,7 +23609,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void AutoBanIPAddress(string ipAddress)
@@ -23652,7 +23652,7 @@ namespace SharedBase.DAL
         {
             BanType = 0;
             bool Result = false;
-            return (Result);
+            return Result;
 
             //FbTransaction tran = null;
             //FbConnection db = ConnectToDatabase(ref tran, DatabaseType.Standard);
@@ -23744,7 +23744,7 @@ namespace SharedBase.DAL
                     CloseAndDispose(ref db, ref tran);
                 }
 
-                return (Result);
+                return Result;
             }
             catch
             {
@@ -23785,7 +23785,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static string IPAddressToCountry(string ipAddress)
@@ -23835,14 +23835,14 @@ namespace SharedBase.DAL
                     CloseAndDispose(ref db, ref tran);
                 }
 
-                return (Result);
+                return Result;
             }
             catch
             {
                 if (String.IsNullOrEmpty(Result))
                     Result = "ZZ";
 
-                return (Result);
+                return Result;
             }
         }
 
@@ -23883,11 +23883,11 @@ namespace SharedBase.DAL
                     CloseAndDispose(ref db, ref tran);
                 }
 
-                return (Result);
+                return Result;
             }
             catch
             {
-                return (Result);
+                return Result;
             }
         }
 
@@ -23942,7 +23942,7 @@ namespace SharedBase.DAL
 
             IPCodeReset();
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -24022,7 +24022,7 @@ namespace SharedBase.DAL
                 Result = false;
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion IP Address
@@ -24070,7 +24070,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void UserCreditCardDetailsDelete(CreditCard card, User user)
@@ -24356,7 +24356,7 @@ namespace SharedBase.DAL
                         if (progress != null)
                         {
                             i++;
-                            Percent = (100 / (double)total) * i;
+                            Percent = 100 / (double)total * i;
                             args.Percent = Convert.ToInt32(Percent);
                             args.User = selected;
 
@@ -24391,7 +24391,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static User UserGet(string Email)
@@ -24443,7 +24443,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static User UserGet(string Email, string Password)
@@ -24496,13 +24496,13 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static User UserGet(Int64 UserID)
         {
             if (UserID == -1)
-                return (null);
+                return null;
 
             User Result = null;
             string cacheName = String.Format("Internal Cached User {0}", UserID);
@@ -24512,11 +24512,11 @@ namespace SharedBase.DAL
                 CacheItem item = DALHelper.InternalCache.Get(cacheName);
 
                 if (item != null)
-                    return ((User)item.Value);
+                    return (User)item.Value;
             }
 
             if (Result != null)
-                return (Result);
+                return Result;
 
             FbTransaction tran = null;
             FbConnection db = ConnectToDatabase(ref tran, DatabaseType.Standard);
@@ -24566,7 +24566,7 @@ namespace SharedBase.DAL
                 DALHelper.InternalCache.Add(cacheName, new CacheItem(cacheName, Result));
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static User UserGetByBarcode(string Barcode)
@@ -24618,7 +24618,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static string UserGetBarcode(User user)
@@ -24652,7 +24652,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Barcode);
+            return Barcode;
         }
 
         internal static Users UserGet()
@@ -24706,7 +24706,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Users UserGetSalonOwners()
@@ -24756,7 +24756,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void UserChangePassword(Int64 UserID, string CurrentPassword, string NewPassword)
@@ -24817,7 +24817,7 @@ namespace SharedBase.DAL
             ValidateDetails(ConfirmPassword, 6, "Confirm Password");
 
             if (Password != ConfirmPassword)
-                throw (new System.Exception("Password and Confirm Password do not match!"));
+                throw new System.Exception("Password and Confirm Password do not match!");
 
             ValidateDetails(FirstName, 0, "First Name");
             ValidateDetails(Surname, 0, "Last Name");
@@ -24878,7 +24878,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static bool UserGetDetails(Int64 UserID, out string FirstName, out string Surname,
@@ -24958,7 +24958,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void UserAddressUpdate(Int64 UserID, string Street1,
@@ -25025,11 +25025,11 @@ namespace SharedBase.DAL
             string EMail;
             string Password;
 
-            Result = (UserGetDetails(UserID, out FirstName, out Surname, out EMail,
+            Result = UserGetDetails(UserID, out FirstName, out Surname, out EMail,
                 out Password, out CompanyName, out Street1, out Street2, out Street3,
-                out City, out County, out PostCode, out Country));
+                out City, out County, out PostCode, out Country);
 
-            return (Result);
+            return Result;
         }
 
 
@@ -25155,7 +25155,7 @@ namespace SharedBase.DAL
                 throw;
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static bool UserLogUserOn(User user)
@@ -25177,7 +25177,7 @@ namespace SharedBase.DAL
                     {
                         if (rdr.Read())
                         {
-                            return (true);
+                            return true;
                         }
                     }
                     finally
@@ -25195,7 +25195,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (false);
+            return false;
         }
 
 #if !ANDROID
@@ -25203,7 +25203,7 @@ namespace SharedBase.DAL
         {
             DataSet Result = new DataSet();
 
-            return (Result);
+            return Result;
         }
 #endif
 
@@ -25265,7 +25265,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         private static string WhereAddAnd(string whereClause)
@@ -25275,7 +25275,7 @@ namespace SharedBase.DAL
             if (whereClause.Trim().ToUpper() != "WHERE")
                 Result += " AND ";
 
-            return (Result);
+            return Result;
         }
 
         internal static Users UsersGet(HookEvent eventName)
@@ -25326,7 +25326,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Users UserSearch(string FirstName, string LastName, string Email, string telephone, int MaxRecords)
@@ -25407,7 +25407,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Users UserSearch(string FirstName, string LastName, string Email)
@@ -25458,7 +25458,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void UserSetLastVisit(User user)
@@ -25537,7 +25537,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion User Accounts
@@ -25588,7 +25588,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
 
@@ -25696,7 +25696,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static DeliveryAddresses MembersAddressGet(User user)
@@ -25736,7 +25736,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
 
@@ -25822,7 +25822,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Member Notes
@@ -25990,7 +25990,7 @@ namespace SharedBase.DAL
                         }
                     }
 
-                    return (Result);
+                    return Result;
                 }
                 finally
                 {
@@ -26044,7 +26044,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static RecurringInvoice RecurringInvoiceGet(Int64 id)
@@ -26065,14 +26065,14 @@ namespace SharedBase.DAL
 
                     if (rdr.Read())
                     {
-                        return (new RecurringInvoice(rdr.GetInt64(0), rdr.GetString(5),
+                        return new RecurringInvoice(rdr.GetInt64(0), rdr.GetString(5),
                             UserGet(rdr.GetInt64(1), db, tran),
                             rdr.GetDateTime(6),
                             (RecurringType)rdr.GetInt32(2),
                             rdr.GetInt32(3),
                             rdr.GetDecimal(4),
                             rdr.IsDBNull(7) ? RecurringInvoiceOptions.None : (RecurringInvoiceOptions)rdr.GetInt64(7),
-                            null));
+                            null);
                     }
                 }
                 finally
@@ -26086,7 +26086,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (null);
+            return null;
         }
 
         internal static RecurringInvoiceItem RecurringInvoiceItemAdd(RecurringInvoice invoice,
@@ -26113,7 +26113,7 @@ namespace SharedBase.DAL
 
                     Int64 newID = (Int64)cmd.Parameters["@opID"].Value;
 
-                    return (new RecurringInvoiceItem(newID, invoice, productCost, quantity));
+                    return new RecurringInvoiceItem(newID, invoice, productCost, quantity);
                 }
                 finally
                 {
@@ -26161,7 +26161,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void RecurringInvoiceItemSave(RecurringInvoiceItem invoiceItem)
@@ -26336,7 +26336,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Invoice InvoiceGet(Int64 InvoiceID)
@@ -26406,7 +26406,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         private static Invoice InvoiceGet(int InvoiceID, FbConnection connection, FbTransaction transaction)
@@ -26463,7 +26463,7 @@ namespace SharedBase.DAL
                 throw;
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void InvoiceUpdateNotes(Invoice invoice, string notes)
@@ -26534,7 +26534,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Invoices InvoicesGet(User user)
@@ -26602,7 +26602,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void InvoiceMarkAsPaid(Order order, PaymentStatus PaymentStatus,
@@ -26952,7 +26952,7 @@ namespace SharedBase.DAL
             }
 
 
-            return (Result);
+            return Result;
         }
 
         internal static void InvoiceSetDate(Invoice invoice, DateTime newDateTime)
@@ -27114,7 +27114,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static int OrdersGetCount(User user)
@@ -27151,7 +27151,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Orders OrdersGet(User user)
@@ -27206,7 +27206,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void OrderMarkAsPaid(Order order, string initialReferrer)
@@ -27378,7 +27378,7 @@ namespace SharedBase.DAL
             }
 
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -27453,7 +27453,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -27545,7 +27545,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Admin Email
@@ -27593,7 +27593,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static int AdminStatsMailCount(Enums.MailCount Option)
@@ -27618,7 +27618,7 @@ namespace SharedBase.DAL
 
             Result = GetDBCount(SQL);
 
-            return (Result);
+            return Result;
         }
 
         internal static int AdminStatsInvoices(InvoiceStatistics Option)
@@ -27651,7 +27651,7 @@ namespace SharedBase.DAL
 #endif
             }
 
-            return (GetDBCount(SQL));
+            return GetDBCount(SQL);
         }
 
         internal static string AdminStatsDownloads()
@@ -27708,35 +27708,35 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static int AdminStatsComments()
         {
             int Result = GetDBCount("SELECT COUNT(r.ID) FROM WS_CUSTOMER_COMMENTS r WHERE r.SHOW_ON_WEB = 'N'");
 
-            return (Result);
+            return Result;
         }
 
         internal static int AdminStatsLicenceCount()
         {
             int Result = GetDBCount("SELECT COUNT(a.ID) FROM WS_LICENCES a");
 
-            return (Result);
+            return Result;
         }
 
         internal static int AdminStatsUserCount()
         {
             int Result = GetDBCount("SELECT COUNT(a.ID) FROM WS_MEMBERS a");
 
-            return (Result);
+            return Result;
         }
 
         internal static int AdminStatsBannedIP()
         {
             int Result = GetDBCount("SELECT COUNT(*) FROM WS_BANNED_IP");
 
-            return (Result);
+            return Result;
         }
 
         internal static int AdminStatsAppointments(Enums.AppointmentStats Option)
@@ -27759,14 +27759,14 @@ namespace SharedBase.DAL
             }
 
 
-            return (Result);
+            return Result;
         }
 
         internal static int AdminStatsSalonUpdates()
         {
             int Result = GetDBCount("SELECT COUNT(r.USERID) FROM WS_SALON_UPDATES r");
 
-            return (Result);
+            return Result;
         }
 
         internal static int AdminStatsTickets(Enums.TicketStatus Option)
@@ -27790,7 +27790,7 @@ namespace SharedBase.DAL
             }
 
             Result = GetDBCount(SQL);
-            return (Result);
+            return Result;
         }
 
         #endregion Admin Stats
@@ -27837,7 +27837,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static SupportTicket AdminHelpdeskSupportTicketGet(int ID)
@@ -27878,7 +27878,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static SupportTicket AdminHelpdeskSupportTicketGet(int ID, FbConnection db, FbTransaction tran)
@@ -27900,7 +27900,7 @@ namespace SharedBase.DAL
 
             CloseAndDispose(ref cmd, ref rdr);
 
-            return (Result);
+            return Result;
         }
 
         internal static SupportTickets AdminHelpdeskSupportTicketsGet(bool OnHold, bool Closed, bool Open)
@@ -27941,7 +27941,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static CustomerComment AdminHelpdeskCustomerCommentGet(int CommentID)
@@ -27988,7 +27988,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void AdminHelpdeskCustomerCommentUpdate(CustomerComment Comment)
@@ -28106,7 +28106,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static int AdminHelpdeskCustomerCommentsCount()
@@ -28148,7 +28148,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Admin Helpdesk
@@ -28217,7 +28217,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Admin Orders
@@ -28268,7 +28268,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -28317,7 +28317,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -28366,7 +28366,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static int AdminProductsCount()
@@ -28407,7 +28407,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Products AdminProductsGet(int PageNumber, int PageSize)
@@ -28459,7 +28459,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Products AdminProductsGet(ProductGroup Group, string ProductName)
@@ -28529,7 +28529,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Products AdminProductsGet()
@@ -28580,7 +28580,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Product AdminProductInsert(string ProductName, ProductType productType, ProductGroup group)
@@ -28648,7 +28648,7 @@ namespace SharedBase.DAL
             }
             Result = ProductGet(ProductID);
 
-            return (Result);
+            return Result;
         }
 
         internal static void AdminProductUpdate(Product product)
@@ -28870,7 +28870,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static ProductGroups AdminProductGroupsGet(Product product)
@@ -28919,7 +28919,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static int AdminProductGroupsCount()
@@ -28960,7 +28960,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static ProductGroup AdminProductGroupCreate(string Description, int productGroupType)
@@ -29003,7 +29003,7 @@ namespace SharedBase.DAL
             }
 
 
-            return (Result);
+            return Result;
         }
 
         internal static void AdminProductGroupDelete(ProductGroup productGroup)
@@ -29128,7 +29128,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Admin Product Groups
@@ -29173,7 +29173,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static TreatmentGroup AdminTreatmentGroupCreate(string description)
@@ -29214,7 +29214,7 @@ namespace SharedBase.DAL
             }
 
 
-            return (Result);
+            return Result;
         }
 
         internal static void AdminTreatmentGroupDelete(TreatmentGroup productGroup)
@@ -29318,7 +29318,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static TreatmentGroups AdminTreatmentGroupsGet(Treatment treatment)
@@ -29359,7 +29359,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Admin Treatment Groups
@@ -29506,7 +29506,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void AdminProductCostDelete(ProductCost ProductCostSize)
@@ -29645,7 +29645,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Admin Product Cost / Size
@@ -29690,7 +29690,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static TipsTrick AdminTipsTrickCreate(TipsTrick tip)
@@ -29737,7 +29737,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void AdminTipsTricksDelete(TipsTrick Tip)
@@ -29841,7 +29841,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static TipsTricks AdminTipsTricksGet(int PageNumber, int PageSize)
@@ -29881,7 +29881,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Admin Tips and Tricks
@@ -29934,7 +29934,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Users AdminUsersGetMassEmail(bool AdminOnly)
@@ -29986,7 +29986,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Users AdminUsersGetMassEmailProductItem(bool AdminOnly, int ProductID)
@@ -30040,7 +30040,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static int AdminUsersGetCount()
@@ -30080,7 +30080,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Users AdminUsersGet(int PageNumber, int PageSize)
@@ -30123,7 +30123,7 @@ namespace SharedBase.DAL
             }
 
 
-            return (Result);
+            return Result;
         }
 
         #endregion Admin Users
@@ -30168,7 +30168,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static SimpleStatistics AdminInvoicesGetStats(int UserID, int InvoiceID, bool TodayOnly,
@@ -30215,7 +30215,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Invoices AdminInvoicesGet(int PageNumber, int PageSize, int UserID, int InvoiceID, bool TodayOnly,
@@ -30262,7 +30262,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Invoices AdminInvoicesGet(ProcessStatuses processStatuses, PaymentStatus PaymentStatus)
@@ -30349,7 +30349,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Invoices AdminInvoicesGet(ProcessStatuses processStatuses, bool SortAscending, bool showCancelled)
@@ -30438,7 +30438,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Invoices AdminInvoicesGetAll(ProcessStatuses processStatuses)
@@ -30519,7 +30519,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Invoices AdminInvoicesGet(DateTime dateFrom, DateTime dateTo,
@@ -30648,7 +30648,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Admin Invoices
@@ -30699,7 +30699,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void AdminTreatmentDelete(Treatment treatment)
@@ -30774,7 +30774,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void AdminTreatmentUpdate(Treatment treatment)
@@ -30858,7 +30858,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Users AdminSalonOwnersGet(int PageNumber, int PageSize)
@@ -30901,7 +30901,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static User AdminSalonOwnerGet(Salon salon)
@@ -30950,7 +30950,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void AdminSalonOwnerCreate(User user, Salon salon)
@@ -31207,7 +31207,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void AdminSalonOwnerUpdateInsert(User user, Salon salon)
@@ -31307,7 +31307,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Salons AdminSalonUpdatesGet(int PageNumber, int PageSize)
@@ -31352,7 +31352,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Admin Salon Owners
@@ -31406,7 +31406,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Salons AdminSalonsGetUnassigned()
@@ -31455,7 +31455,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Salons AdminSalonsGet()
@@ -31504,7 +31504,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Salons AdminSalonsGet(int PageNumber, int PageSize)
@@ -31553,7 +31553,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Salon AdminSalonGet(int SalonID)
@@ -31601,7 +31601,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void AdminSalonDelete(Salon salon)
@@ -31731,7 +31731,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static int AdminSalonCount()
@@ -31772,7 +31772,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
 
@@ -31819,7 +31819,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void AdminMissingLinkUpdate(MissingLink missingLink)
@@ -31923,7 +31923,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static int AdminMissingLinkCount()
@@ -31964,7 +31964,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static MissingLinks AdminMissingLinksGet(int PageNumber, int PageSize)
@@ -32006,7 +32006,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Admin Missing Links
@@ -32057,12 +32057,12 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Distributors AdminDistributorsGet(int PageNumber, int PageSize)
         {
-            return (DistributorsGet(PageNumber, PageSize));
+            return DistributorsGet(PageNumber, PageSize);
         }
 
         internal static void AdminDistributorsDelete(Distributor distributor)
@@ -32142,7 +32142,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void AdminDistributorsUpdate(Distributor distributor)
@@ -32227,7 +32227,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Coupon AdminCouponGet(int CouponID)
@@ -32273,7 +32273,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Coupons AdminCouponsGet()
@@ -32318,7 +32318,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Coupon AdminCouponGet(string CouponCode)
@@ -32366,7 +32366,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
         internal static Coupons AdminCouponsGet(int PageNumber, int PageSize)
         {
@@ -32410,7 +32410,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void AdminCouponDelete(Coupon coupon)
@@ -32491,7 +32491,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Coupon AdminCouponCreate(string Name)
@@ -32537,7 +32537,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void AdminCouponUpdate(Coupon coupon)
@@ -32733,7 +32733,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -32797,7 +32797,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Admin Coupons
@@ -32835,7 +32835,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static string AdminDatabaseServer(bool attemptConnect)
@@ -32860,7 +32860,7 @@ namespace SharedBase.DAL
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Database Specific
@@ -32906,7 +32906,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
 
@@ -32979,7 +32979,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (result);
+            return result;
         }
 
         internal static void EmailMarkSent(Email email, string sendResult)
@@ -33087,7 +33087,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static long EmailAdd(Country Country, string Subject, string Message)
@@ -33127,7 +33127,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static Int64 EmailAdd(string ToName, string ToEMail, string FromName,
@@ -33172,7 +33172,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -33233,7 +33233,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
 
@@ -33417,7 +33417,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static bool SettingsExist(string name)
@@ -33450,7 +33450,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -33490,7 +33490,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void SettingsSet(string Name, string Value)
@@ -33584,7 +33584,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static bool SettingsExistMeta(string name)
@@ -33619,7 +33619,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Settings
@@ -33662,7 +33662,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Missing Links
@@ -33740,7 +33740,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -33795,7 +33795,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Stock History
@@ -33873,7 +33873,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -33956,7 +33956,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -34079,10 +34079,10 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
-        internal static Stock StockItemsGet(User user)
+        internal static Stock StockItemsGet()
         {
             Stock Result = new Stock();
 
@@ -34123,7 +34123,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static void StockItemAddStockInQuantity(StockItem Item, int Quantity)
@@ -34434,7 +34434,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -34494,7 +34494,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
 
@@ -34546,7 +34546,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -34602,7 +34602,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
 
@@ -34652,7 +34652,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Stock Control
@@ -34764,7 +34764,7 @@ namespace SharedBase.DAL
 
             Result = String.Format("Local Database: {0}", db.Database);
 
-            return (Result);
+            return Result;
         }
 
         #endregion Local Database
@@ -34795,7 +34795,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Data Storage
@@ -34842,10 +34842,10 @@ namespace SharedBase.DAL
 
                 while (rdr.Read())
                 {
-                    return (new PaymentStatus(rdr.GetInt32(0), rdr.GetString(1), rdr.GetInt32(2),
+                    return new PaymentStatus(rdr.GetInt32(0), rdr.GetString(1), rdr.GetInt32(2),
                         rdr.GetString(3) == "Y", rdr.IsDBNull(4) ? String.Empty : rdr.GetString(4),
                         rdr.GetString(5) == "Y", rdr.GetString(6) == "Y", rdr.GetString(7) == "Y",
-                        rdr.GetString(8) == "Y", (MemberLevel)rdr.GetInt32(9)));
+                        rdr.GetString(8) == "Y", (MemberLevel)rdr.GetInt32(9));
                 }
             }
             finally
@@ -34853,7 +34853,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref cmd, ref rdr);
             }
 
-            return (null);
+            return null;
         }
 
 
@@ -34913,12 +34913,12 @@ namespace SharedBase.DAL
         {
             try
             {
-                return (Shared.Utilities.Encrypt(password, PASSWORD_ENCRYPTION_KEY));
+                return Shared.Utilities.Encrypt(password, PASSWORD_ENCRYPTION_KEY);
             }
             catch (Exception err)
             {
                 if (err.Message.Contains("Invalid length for a Base-64 char array or string."))
-                    return (password);
+                    return password;
                 else
                     throw;
             }
@@ -34928,12 +34928,12 @@ namespace SharedBase.DAL
         {
             try
             {
-                return (Shared.Utilities.Decrypt(password, PASSWORD_ENCRYPTION_KEY));
+                return Shared.Utilities.Decrypt(password, PASSWORD_ENCRYPTION_KEY);
             }
             catch (Exception err)
             {
                 if (err.Message.Contains("The input is not a valid Base-64 string") || err.Message.Contains("Invalid length for a Base-64 char array or string.") || err.Message.Contains("Length of the data to decrypt is invalid."))
-                    return (password);
+                    return password;
                 else
                     throw;
             }
@@ -34976,7 +34976,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref cmd, ref rdr);
             }
 
-            return (Result);
+            return Result;
         }
 
         internal static ProductCost ProductCostGet(Int64 ID, FbTransaction transaction)
@@ -34984,7 +34984,7 @@ namespace SharedBase.DAL
             ProductCost Result = null;
 
             if (ID == -1)
-                return (Result);
+                return Result;
 
             try
             {
@@ -35024,7 +35024,7 @@ namespace SharedBase.DAL
                 throw;
             }
 
-            return (Result);
+            return Result;
         }
 
         private static void OrderItemsGet(Order order, FbConnection Connection, FbTransaction Transaction)
@@ -35109,13 +35109,13 @@ namespace SharedBase.DAL
 
                 if (rdr.Read())
                 {
-                    return (new User(rdr.GetInt64(0), rdr.GetString(1), rdr.GetString(3), rdr.GetString(4),
+                    return new User(rdr.GetInt64(0), rdr.GetString(1), rdr.GetString(3), rdr.GetString(4),
                         DecryptPassword(rdr.GetString(5)),
                         rdr.GetDateTime(6), rdr.GetString(7), rdr.GetString(8), rdr.GetString(9), rdr.GetString(10), rdr.GetString(11),
                         rdr.GetString(12), rdr.GetString(13), (MemberLevel)rdr.GetInt32(14),
                         rdr.GetInt32(15), rdr.IsDBNull(16) ? "" : rdr.GetString(16), rdr.IsDBNull(17) ? false : rdr.GetInt32(17) == 0,
                         rdr.GetString(18) == "T", rdr.GetString(19) == "T", rdr.GetString(20) == "T", rdr.IsDBNull(21) ? DateTime.MinValue : rdr.GetDateTime(21),
-                        rdr.GetString(22), (Enums.UserRecordType)rdr.GetInt32(23), rdr.GetInt32(24)));
+                        rdr.GetString(22), (Enums.UserRecordType)rdr.GetInt32(23), rdr.GetInt32(24));
                 }
             }
             finally
@@ -35123,7 +35123,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref cmd, ref rdr);
             }
 
-            return (null);
+            return null;
         }
 
 
@@ -35152,7 +35152,7 @@ namespace SharedBase.DAL
 
             CloseAndDispose(ref cmd, ref rdr);
 
-            return (Result);
+            return Result;
         }
 
         #endregion Users
@@ -35181,7 +35181,7 @@ namespace SharedBase.DAL
 
             CloseAndDispose(ref cmd, ref rdr);
 
-            return (Result);
+            return Result;
         }
 
         #endregion Locations
@@ -35279,7 +35279,7 @@ namespace SharedBase.DAL
 
                 tran = Result.BeginTransaction(isolationLevel);
 
-                return (Result);
+                return Result;
             }
             catch (Exception err)
             {
@@ -35303,11 +35303,11 @@ namespace SharedBase.DAL
                                 FailOverStart = DateTime.Now;
                             }
 
-                            return (failedConn);
+                            return failedConn;
                         }
                         else
                         {
-                            return (ConnectToDatabase(ref tran, databaseType, isolationLevel, attempt + 1));
+                            return ConnectToDatabase(ref tran, databaseType, isolationLevel, attempt + 1);
                         }
                     }
                     else
@@ -35358,7 +35358,7 @@ namespace SharedBase.DAL
                 csb.ConnectionLifeTime = 60 * 20;
             }
 
-            return (csb.ToString());
+            return csb.ToString();
         }
 
         private static void UpdateVarIfNotEmpty(string Data, ref string Value)
@@ -35382,27 +35382,27 @@ namespace SharedBase.DAL
             switch (i)
             {
                 case 10:
-                    return (MemberLevel.Admin);
+                    return MemberLevel.Admin;
                 case 9:
-                    return (MemberLevel.AdminUpdateDelete);
+                    return MemberLevel.AdminUpdateDelete;
                 case 8:
-                    return (MemberLevel.AdminReadOnly);
+                    return MemberLevel.AdminReadOnly;
                 case 7:
-                    return (MemberLevel.StaffMember);
+                    return MemberLevel.StaffMember;
                 case 6:
-                    return (MemberLevel.SalesAdvisor);
+                    return MemberLevel.SalesAdvisor;
                 case 5:
-                    return (MemberLevel.Distributor);
+                    return MemberLevel.Distributor;
                 case 4:
-                    return (MemberLevel.User4);
+                    return MemberLevel.User4;
                 case 3:
-                    return (MemberLevel.Reseller);
+                    return MemberLevel.Reseller;
                 case 2:
-                    return (MemberLevel.GoldUser);
+                    return MemberLevel.GoldUser;
                 case 1:
-                    return (MemberLevel.FormerStaffMember);
+                    return MemberLevel.FormerStaffMember;
                 default:
-                    return (MemberLevel.StandardUser);
+                    return MemberLevel.StandardUser;
             }
         }
 
@@ -35544,7 +35544,7 @@ namespace SharedBase.DAL
 
         private static string LikeParam(string s)
         {
-            return ("%" + s + "%");
+            return "%" + s + "%";
         }
 
         private static void ValidateDetails(string s, int MinLength, string Field)
@@ -35552,10 +35552,10 @@ namespace SharedBase.DAL
             s = s.TrimEnd();
             if (s == null || s.Length < MinLength)
                 if (MinLength == 0)
-                    throw (new System.Exception(String.Format("{0} is mandatory.", Field)));
+                    throw new System.Exception(String.Format("{0} is mandatory.", Field));
                 else
-                    throw (new System.Exception(String.Format("{0} is mandatory and should " +
-                        "be at least {1} characters long.", Field, MinLength)));
+                    throw new System.Exception(String.Format("{0} is mandatory and should " +
+                        "be at least {1} characters long.", Field, MinLength));
         }
 
         #endregion Global Procs
@@ -35573,7 +35573,7 @@ namespace SharedBase.DAL
             if (UserID > -1)
             {
                 Where = String.Format(" WHERE (a.USERID = {0})", UserID);
-                return (Where);
+                return Where;
             }
 
             if (InvoiceID > -1)
@@ -35644,7 +35644,7 @@ namespace SharedBase.DAL
             if (Where.Length > 0)
                 Where = String.Format(" WHERE {0} ", Where);
 
-            return (Where);
+            return Where;
         }
 
         private static string BuildHelpdeskWhereClause(bool OnHold, bool Closed, bool Open)
@@ -35675,7 +35675,7 @@ namespace SharedBase.DAL
             if (Where.Length > 0)
                 Where = String.Format(" WHERE {0} ", Where);
 
-            return (Where);
+            return Where;
         }
 
         private static string AddToWhereClause(string WhereClause, string Value)
@@ -35694,7 +35694,7 @@ namespace SharedBase.DAL
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         private static string AddToInClause(string InClause, ProcessStatus status)
@@ -35707,10 +35707,10 @@ namespace SharedBase.DAL
             }
             else
             {
-                Result = (((int)status).ToString());
+                Result = ((int)status).ToString();
             }
 
-            return (Result);
+            return Result;
         }
 
         private static string AddToInClause(string InClause, string Value)
@@ -35729,7 +35729,7 @@ namespace SharedBase.DAL
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         private static int GetDBCount(string SQL)
@@ -35771,7 +35771,7 @@ namespace SharedBase.DAL
                 CloseAndDispose(ref db, ref tran);
             }
 
-            return (Count);
+            return Count;
         }
 
         #endregion DB Methods

@@ -41,7 +41,7 @@ namespace SharedBase.BOL.Trade
         {
             get
             {
-                return ((ClientNote)this.InnerList[Index]);
+                return (ClientNote)this.InnerList[Index];
             }
 
             set
@@ -61,7 +61,7 @@ namespace SharedBase.BOL.Trade
         /// <returns></returns>
         public int Add(ClientNote value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace SharedBase.BOL.Trade
         /// <returns></returns>
         public int IndexOf(ClientNote value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace SharedBase.BOL.Trade
         public bool Contains(ClientNote value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

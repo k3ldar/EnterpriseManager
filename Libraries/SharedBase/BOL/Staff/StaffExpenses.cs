@@ -41,7 +41,7 @@ namespace SharedBase.BOL.Staff
 
         public static decimal TotalMiles(User staffmember, DateTime accountYearStart)
         {
-            return (DAL.FirebirdDB.StaffExpenseTotalMileage(staffmember, accountYearStart));
+            return DAL.FirebirdDB.StaffExpenseTotalMileage(staffmember, accountYearStart);
         }
 
 		/// <summary>
@@ -50,7 +50,7 @@ namespace SharedBase.BOL.Staff
 		/// <returns>StaffExpense instance</returns>
 		public static StaffExpense InsertUpdate(StaffExpense item)
 		{
-			return (SharedBase.DAL.FirebirdDB.StaffExpenseInsertUpdate(item));
+			return SharedBase.DAL.FirebirdDB.StaffExpenseInsertUpdate(item);
 		}
 
 		/// <summary>
@@ -59,7 +59,7 @@ namespace SharedBase.BOL.Staff
 		/// <returns>StaffExpenses collection of StaffExpense items</returns>
 		public static StaffExpenses All(User user)
 		{
-			return (SharedBase.DAL.FirebirdDB.StaffExpenseSelectAll(user));
+			return SharedBase.DAL.FirebirdDB.StaffExpenseSelectAll(user);
 		}
 
 		/// <summary>
@@ -69,7 +69,7 @@ namespace SharedBase.BOL.Staff
 		/// <returns>StaffExpense item if found, otherwise null</returns>
 		public static StaffExpense Get(Int64 item)
 		{
-			return (SharedBase.DAL.FirebirdDB.StaffExpenseSelect(item));
+			return SharedBase.DAL.FirebirdDB.StaffExpenseSelect(item);
 		}
 
 		#endregion Static Methods
@@ -87,7 +87,7 @@ namespace SharedBase.BOL.Staff
 		{
 			get
 			{
-				return ((StaffExpense)this[Index]);
+				return (StaffExpense)this[Index];
 			}
 
 			set
@@ -107,7 +107,7 @@ namespace SharedBase.BOL.Staff
 		/// <returns></returns>
 		public int Add(StaffExpense value)
 		{
-			return (List.Add(value));
+			return List.Add(value);
 		}
 
 		/// <summary>
@@ -117,7 +117,7 @@ namespace SharedBase.BOL.Staff
 		/// <returns></returns>
 		public int IndexOf(StaffExpense value)
 		{
-			return (List.IndexOf(value));
+			return List.IndexOf(value);
 		}
 
 		/// <summary>
@@ -149,7 +149,7 @@ namespace SharedBase.BOL.Staff
 		public bool Contains(StaffExpense value)
 		{
 			// If value is not of type OBJECT_TYPE, this will return false.
-			return (List.Contains(value));
+			return List.Contains(value);
 		}
 
 		#endregion Public Methods

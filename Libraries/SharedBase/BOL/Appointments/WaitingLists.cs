@@ -43,7 +43,7 @@ namespace SharedBase.BOL.Appointments
 		/// <returns>WaitingList instance</returns>
 		public static WaitingList InsertUpdate(WaitingList item)
 		{
-            return (DAL.FirebirdDB.WaitingListInsertUpdate(item));
+            return DAL.FirebirdDB.WaitingListInsertUpdate(item);
 		}
 
 		/// <summary>
@@ -52,7 +52,7 @@ namespace SharedBase.BOL.Appointments
 		/// <returns>WaitingLists collection of WaitingList items</returns>
 		public static WaitingLists All()
 		{
-            return (DAL.FirebirdDB.WaitingListSelectAll());
+            return DAL.FirebirdDB.WaitingListSelectAll();
 		}
 
 		/// <summary>
@@ -63,7 +63,7 @@ namespace SharedBase.BOL.Appointments
 		/// <returns>WaitingLists collection of WaitingList items</returns>
 		public static WaitingLists Page(int page, int pageSize)
 		{
-            return (DAL.FirebirdDB.WaitingListPage(page, pageSize));
+            return DAL.FirebirdDB.WaitingListPage(page, pageSize);
 		}
 
 		/// <summary>
@@ -73,7 +73,7 @@ namespace SharedBase.BOL.Appointments
 		/// <returns>WaitingList item if found, otherwise null</returns>
 		public static WaitingList Get(int item)
 		{
-            return (DAL.FirebirdDB.WaitingListSelect(item));
+            return DAL.FirebirdDB.WaitingListSelect(item);
 		}
 
 		/// <summary>
@@ -82,7 +82,7 @@ namespace SharedBase.BOL.Appointments
 		/// <returns>int, number of records within table</returns>
 		public static int CountAll()
 		{
-            return (DAL.FirebirdDB.WaitingListCount());
+            return DAL.FirebirdDB.WaitingListCount();
 		}
 
 		#endregion Static Methods
@@ -100,7 +100,7 @@ namespace SharedBase.BOL.Appointments
 		{
 			get
 			{
-				return ((WaitingList)this.InnerList[Index]);
+				return (WaitingList)this.InnerList[Index];
 			}
 
 			set
@@ -120,7 +120,7 @@ namespace SharedBase.BOL.Appointments
 		/// <returns></returns>
 		public int Add(WaitingList value)
 		{
-			return (List.Add(value));
+			return List.Add(value);
 		}
 
 		/// <summary>
@@ -130,7 +130,7 @@ namespace SharedBase.BOL.Appointments
 		/// <returns></returns>
 		public int IndexOf(WaitingList value)
 		{
-			return (List.IndexOf(value));
+			return List.IndexOf(value);
 		}
 
 		/// <summary>
@@ -162,7 +162,7 @@ namespace SharedBase.BOL.Appointments
 		public bool Contains(WaitingList value)
 		{
 			// If value is not of type OBJECT_TYPE, this will return false.
-			return (List.Contains(value));
+			return List.Contains(value);
 		}
 
 		#endregion Public Methods

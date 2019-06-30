@@ -75,7 +75,7 @@ namespace SharedBase.BOL.SEO
 
         public static UserSession SeoSessionGet(string sessionID)
         {
-            return (DAL.FirebirdDB.SeoSessionRetrieve(sessionID));
+            return DAL.FirebirdDB.SeoSessionRetrieve(sessionID);
         }
 
         #endregion Static Methods

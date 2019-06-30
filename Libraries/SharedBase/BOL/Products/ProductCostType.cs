@@ -78,9 +78,9 @@ namespace SharedBase.BOL.Products
             {
                 case ProductCostItemType.Product:
                 case ProductCostItemType.Voucher:
-                    return (true);
+                    return true;
                 default:
-                    return (false);
+                    return false;
             }
         }
 

@@ -53,7 +53,7 @@ namespace SharedBase.BOL.Orders
                 break;
             }
 
-            return (Result);
+            return Result;
         }
 
 
@@ -61,7 +61,7 @@ namespace SharedBase.BOL.Orders
         {
             get
             {
-                return (SharedUtils.FormatMoney(SubTotal, _order.Currency));
+                return SharedUtils.FormatMoney(SubTotal, _order.Currency);
             }
         }
 
@@ -76,7 +76,7 @@ namespace SharedBase.BOL.Orders
                     Result += item.Price;
                 }
 
-                return (Result);
+                return Result;
             }
         }
 
@@ -88,7 +88,7 @@ namespace SharedBase.BOL.Orders
         {
             get
             {
-                return ((OrderItem)this.InnerList[Index]);
+                return (OrderItem)this.InnerList[Index];
             }
 
             set
@@ -108,7 +108,7 @@ namespace SharedBase.BOL.Orders
         /// <returns></returns>
         public int Add(OrderItem value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace SharedBase.BOL.Orders
         /// <returns></returns>
         public int IndexOf(OrderItem value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -150,7 +150,7 @@ namespace SharedBase.BOL.Orders
         public bool Contains(OrderItem value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

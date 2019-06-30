@@ -38,7 +38,7 @@ namespace SharedBase.BOL.Staff
 
         public static PaidCommission Get(User user)
         {
-            return (DAL.FirebirdDB.StaffCommissionPaymentsGet(user));
+            return DAL.FirebirdDB.StaffCommissionPaymentsGet(user);
         }
 
         #endregion Static Methods
@@ -56,7 +56,7 @@ namespace SharedBase.BOL.Staff
         {
             get
             {
-                return ((PaidCommissionItem)this.InnerList[Index]);
+                return (PaidCommissionItem)this.InnerList[Index];
             }
 
             set
@@ -76,7 +76,7 @@ namespace SharedBase.BOL.Staff
         /// <returns></returns>
         public int Add(PaidCommissionItem value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace SharedBase.BOL.Staff
         /// <returns></returns>
         public int IndexOf(PaidCommissionItem value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace SharedBase.BOL.Staff
         public bool Contains(PaidCommissionItem value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

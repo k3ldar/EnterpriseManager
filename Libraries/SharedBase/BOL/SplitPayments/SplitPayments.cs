@@ -60,7 +60,7 @@ namespace SharedBase.BOL.SplitPayments
         {
             get
             {
-                return ((SplitPayment)this.InnerList[Index]);
+                return (SplitPayment)this.InnerList[Index];
             }
 
             set
@@ -80,7 +80,7 @@ namespace SharedBase.BOL.SplitPayments
         /// <returns></returns>
         public int Add(SplitPayment value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace SharedBase.BOL.SplitPayments
         /// <returns></returns>
         public int IndexOf(SplitPayment value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace SharedBase.BOL.SplitPayments
         public bool Contains(SplitPayment value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

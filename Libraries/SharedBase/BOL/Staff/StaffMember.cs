@@ -191,7 +191,7 @@ namespace SharedBase.BOL.Staff
 		/// </summary>
         public new bool Delete()
 		{
-			return (DAL.FirebirdDB.StaffMemberDelete(this));
+			return DAL.FirebirdDB.StaffMemberDelete(this);
 		}
 
 
@@ -210,13 +210,13 @@ namespace SharedBase.BOL.Staff
 
 #warning finish this off - go through all leave records and see what is used
 
-            return (Result);
+            return Result;
         }
 
 
         public Users.Users GetStaff()
         {
-            return (Staff.ManagerGetStaff(this));
+            return Staff.ManagerGetStaff(this);
         }
 
 		#endregion Public Methods
@@ -228,7 +228,7 @@ namespace SharedBase.BOL.Staff
 		/// </summary>
 		public override string ToString()
 		{
-			return (String.Format("STAFF_MEMBERS Record {0}", UserID));
+			return String.Format("STAFF_MEMBERS Record {0}", UserID);
 		}
 
 		#endregion Overridden Methods
@@ -400,7 +400,7 @@ namespace SharedBase.BOL.Staff
                 if (_staffLeave == null)
                     _staffLeave = StaffLeave.All(_staffMember);
 
-                return (_staffLeave);
+                return _staffLeave;
             }
         }
 
@@ -422,7 +422,7 @@ namespace SharedBase.BOL.Staff
                 if (_staffMember == null)
                     _staffMember = User.UserGet(UserID);
 
-                return (_staffMember);
+                return _staffMember;
             }
         }
 

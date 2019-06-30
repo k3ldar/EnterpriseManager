@@ -102,16 +102,16 @@ namespace SharedBase.Library.Utils
                 if (String.IsNullOrEmpty(Result))
                     throw new FormatException(String.Format("{0} is not of type {1}", validationText, validationType));
 
-            return (Result);
+            return Result;
         }
 
         public static AcceptedCreditCardTypes CardType(string cardNumber)
         {
             if (Regex.IsMatch(cardNumber, CARD_TYPE_VISA))
-                return (AcceptedCreditCardTypes.Visa);
+                return AcceptedCreditCardTypes.Visa;
 
             if (Regex.IsMatch(cardNumber, CARD_TYPE_MASTERCARD))
-                return (AcceptedCreditCardTypes.MasterCard);
+                return AcceptedCreditCardTypes.MasterCard;
 
             throw new Exception("Could not determine credit card type");
         }
@@ -152,7 +152,7 @@ namespace SharedBase.Library.Utils
                     Result += c.ToString();
             }
 
-            return (Result);
+            return Result;
         }
 
         private static string ValidateNumeric(string validationText)
@@ -162,7 +162,7 @@ namespace SharedBase.Library.Utils
 
             Convert.ToInt64(validationText);
 
-            return (validationText);
+            return validationText;
         }
 
         private static void ValidateCreditCard(string cardNumber)
@@ -171,16 +171,16 @@ namespace SharedBase.Library.Utils
 
             // Compute checksum of every other digit starting from right-most digit
             for (i = cardNumber.Length - 1; i >= 0; i -= 2)
-                checkSum += (cardNumber[i] - '0');
+                checkSum += cardNumber[i] - '0';
 
             // Now take digits not included in first checksum, multiple by two,
             // and compute checksum of resulting digits
             for (i = cardNumber.Length - 2; i >= 0; i -= 2)
             {
-                int val = ((cardNumber[i] - '0') * 2);
+                int val = (cardNumber[i] - '0') * 2;
                 while (val > 0)
                 {
-                    checkSum += (val % 10);
+                    checkSum += val % 10;
                     val /= 10;
                 }
             }

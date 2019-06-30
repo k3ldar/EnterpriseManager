@@ -83,7 +83,7 @@ namespace SharedBase.BOL.Suppliers
 		/// </summary>
 		public bool Delete()
 		{
-			return (SharedBase.DAL.FirebirdDB.SupplierProductDelete(this));
+			return SharedBase.DAL.FirebirdDB.SupplierProductDelete(this);
 		}
 
 
@@ -104,7 +104,7 @@ namespace SharedBase.BOL.Suppliers
 		/// </summary>
 		public override string ToString()
 		{
-			return (String.Format("SUPPLIER_PRODUCTS Record {0}", ID));
+			return String.Format("SUPPLIER_PRODUCTS Record {0}", ID);
 		}
 
 		#endregion Overridden Methods

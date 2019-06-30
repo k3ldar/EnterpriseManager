@@ -79,14 +79,14 @@ namespace SharedBase.BOL.Websites
             get
             {
                 if (String.IsNullOrEmpty(URL))
-                    return (String.Empty);
+                    return String.Empty;
 
                 Uri uri = new Uri(URL);
 
                 if (uri.Host == "localhost")
-                    return (uri.Authority);
+                    return uri.Authority;
                 else
-                    return (uri.Host);
+                    return uri.Host;
             }
         }
 
@@ -113,9 +113,9 @@ namespace SharedBase.BOL.Websites
             get
             {
                 if (String.IsNullOrEmpty(_ftpPassword))
-                    return (String.Empty);
+                    return String.Empty;
 
-                return (Utils.StringCipher.Decrypt(_ftpPassword, ENCRYPTION_KEY));
+                return Utils.StringCipher.Decrypt(_ftpPassword, ENCRYPTION_KEY);
             }
 
             set
@@ -140,7 +140,7 @@ namespace SharedBase.BOL.Websites
                 {
                     // test the connection by getting a directory listing
                     ftpClient.DirectoryListSimple("/");
-                    return (true);
+                    return true;
                 }
                 finally
                 {
@@ -153,7 +153,7 @@ namespace SharedBase.BOL.Websites
                     throw;
             }
 
-            return (false);
+            return false;
         }
 
         #endregion Methods
@@ -163,9 +163,9 @@ namespace SharedBase.BOL.Websites
         public static string EncryptPassword(string s)
         {
             if (String.IsNullOrWhiteSpace(s))
-                return (String.Empty);
+                return String.Empty;
 
-            return (Utils.StringCipher.Encrypt(s, ENCRYPTION_KEY));
+            return Utils.StringCipher.Encrypt(s, ENCRYPTION_KEY);
         }
 
         #endregion Static Methoods

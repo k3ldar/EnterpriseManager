@@ -44,12 +44,12 @@ namespace SharedBase.BOL.Invoices
 
         public static int GetCount(User user)
         {
-            return (DAL.FirebirdDB.InvoiceGetCount(user));
+            return DAL.FirebirdDB.InvoiceGetCount(user);
         }
 
         public static Invoice Get(Int64 InvoiceID)
         {
-            return (DAL.FirebirdDB.InvoiceGet(InvoiceID));
+            return DAL.FirebirdDB.InvoiceGet(InvoiceID);
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace SharedBase.BOL.Invoices
         /// <returns></returns>
         public static Invoices Get(User user)
         {
-            return (DAL.FirebirdDB.InvoicesGet(user));
+            return DAL.FirebirdDB.InvoicesGet(user);
         }
 
         public static void InvoiceUpdateProcessStatus(ProcessStatus ProcessStatus, Invoice invoice)
@@ -73,51 +73,51 @@ namespace SharedBase.BOL.Invoices
 
         public static InvoiceItems Get(Invoice invoice)
         {
-            return (DAL.FirebirdDB.InvoiceItemsGet(invoice));
+            return DAL.FirebirdDB.InvoiceItemsGet(invoice);
         }
 
         public static Invoice Get(Orders.Order order)
         {
-            return (DAL.FirebirdDB.InvoiceGet(order));
+            return DAL.FirebirdDB.InvoiceGet(order);
         }
 
         #region Administration
 
         public static int InvoicesCount(User user, int UserID, int InvoiceID, bool TodayOnly, ProcessStatuses statuses)
         {
-            return (DAL.FirebirdDB.AdminInvoicesGetCount(UserID, InvoiceID, TodayOnly, statuses));
+            return DAL.FirebirdDB.AdminInvoicesGetCount(UserID, InvoiceID, TodayOnly, statuses);
         }
 
         public static SimpleStatistics InvoicesGetStats(User user, int UserID, int InvoiceID, bool TodayOnly, ProcessStatuses statuses)
         {
-            return (DAL.FirebirdDB.AdminInvoicesGetStats(UserID, InvoiceID, TodayOnly, statuses));
+            return DAL.FirebirdDB.AdminInvoicesGetStats(UserID, InvoiceID, TodayOnly, statuses);
         }
 
         public static Invoices InvoicesGet(User user, int PageNumber, int PageSize, int UserID, int InvoiceID, bool TodayOnly,
             ProcessStatuses statuses)
         {
-            return (DAL.FirebirdDB.AdminInvoicesGet(PageNumber, PageSize, UserID, InvoiceID, TodayOnly, statuses));
+            return DAL.FirebirdDB.AdminInvoicesGet(PageNumber, PageSize, UserID, InvoiceID, TodayOnly, statuses);
         }
 
         public static Invoices InvoicesGet(User user, ProcessStatuses statuses, bool SortAscending, bool showCancelled)
         {
-            return (DAL.FirebirdDB.AdminInvoicesGet(statuses, SortAscending, showCancelled));
+            return DAL.FirebirdDB.AdminInvoicesGet(statuses, SortAscending, showCancelled);
         }
 
         public static Invoices InvoicesGetAll(User user, ProcessStatuses statuses)
         {
-            return (DAL.FirebirdDB.AdminInvoicesGetAll(statuses));
+            return DAL.FirebirdDB.AdminInvoicesGetAll(statuses);
         }
 
         public static Invoices InvoicesGet(User user, ProcessStatuses processStatuses, PaymentStatus PaymentStatus)
         {
-            return (DAL.FirebirdDB.AdminInvoicesGet(processStatuses, PaymentStatus));
+            return DAL.FirebirdDB.AdminInvoicesGet(processStatuses, PaymentStatus);
         }
 
         public static Invoices InvoicesGet(User user, DateTime DateFrom, DateTime DateTo, ProcessStatuses processStatuses, 
             int PaymentType, Coupon coupon, bool showCancelled)
         {
-            return (DAL.FirebirdDB.AdminInvoicesGet(DateFrom, DateTo, processStatuses, PaymentType, coupon, showCancelled));
+            return DAL.FirebirdDB.AdminInvoicesGet(DateFrom, DateTo, processStatuses, PaymentType, coupon, showCancelled);
         }
 
         #endregion Administration
@@ -134,10 +134,10 @@ namespace SharedBase.BOL.Invoices
             foreach (Invoice inv in this)
             {
                 if (inv.CouponName.ToLower() == voucherCode)
-                    return (true);
+                    return true;
             }
 
-            return (false);
+            return false;
         }
 
         public Invoice First()
@@ -150,7 +150,7 @@ namespace SharedBase.BOL.Invoices
                 break;
             }
 
-            return (Result);
+            return Result;
         }
 
         public Invoice Next(Invoice Current)
@@ -171,7 +171,7 @@ namespace SharedBase.BOL.Invoices
                     }
             }
 
-            return (Result);
+            return Result;
         }
 
         public decimal Total()
@@ -183,7 +183,7 @@ namespace SharedBase.BOL.Invoices
                 Result += invoice.TotalCost;
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Public Methods
@@ -196,7 +196,7 @@ namespace SharedBase.BOL.Invoices
         {
             get
             {
-                return ((Invoice)this.InnerList[Index]);
+                return (Invoice)this.InnerList[Index];
             }
 
             set
@@ -227,7 +227,7 @@ namespace SharedBase.BOL.Invoices
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -237,7 +237,7 @@ namespace SharedBase.BOL.Invoices
         /// <returns></returns>
         public int Add(Invoice value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -247,7 +247,7 @@ namespace SharedBase.BOL.Invoices
         /// <returns></returns>
         public int IndexOf(Invoice value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -279,7 +279,7 @@ namespace SharedBase.BOL.Invoices
         public bool Contains(Invoice value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

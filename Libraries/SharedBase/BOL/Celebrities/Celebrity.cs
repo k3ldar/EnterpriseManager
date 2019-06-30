@@ -59,7 +59,7 @@ namespace SharedBase.BOL.Celebrities
         {
             get
             {
-                return (_ID);
+                return _ID;
             }
 
             set
@@ -72,7 +72,7 @@ namespace SharedBase.BOL.Celebrities
         {
             get
             {
-                return (_Name);
+                return _Name;
             }
 
             set
@@ -85,7 +85,7 @@ namespace SharedBase.BOL.Celebrities
         {
             get
             {
-                return (_Image);
+                return _Image;
             }
 
             set
@@ -98,7 +98,7 @@ namespace SharedBase.BOL.Celebrities
         {
             get
             {
-                return (_Description);
+                return _Description;
             }
 
             set
@@ -131,7 +131,7 @@ namespace SharedBase.BOL.Celebrities
 
         public override string ToString()
         {
-            return (String.Format("Celebrity: {0}; Description: {1}; Name: {2}; Image: {3}", ID, _Description, _Name, _Image));
+            return String.Format("Celebrity: {0}; Description: {1}; Name: {2}; Image: {3}", ID, _Description, _Name, _Image);
         }
 
         #endregion Overridden Methods

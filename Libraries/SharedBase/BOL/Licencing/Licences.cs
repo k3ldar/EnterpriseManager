@@ -57,7 +57,7 @@ namespace SharedBase.BOL.Licencing
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
 
@@ -91,7 +91,7 @@ namespace SharedBase.BOL.Licencing
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace SharedBase.BOL.Licencing
         /// <returns>Licences collection</returns>
         public static Licences Get(User user)
         {
-            return (DAL.FirebirdDB.LicenceGet(user));
+            return DAL.FirebirdDB.LicenceGet(user);
         }
 
         #endregion Static Methods
@@ -114,7 +114,7 @@ namespace SharedBase.BOL.Licencing
         {
             get
             {
-                return ((Licence)this.InnerList[Index]);
+                return (Licence)this.InnerList[Index];
             }
 
             set
@@ -134,7 +134,7 @@ namespace SharedBase.BOL.Licencing
         /// <returns></returns>
         public int Add(Licence value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -144,7 +144,7 @@ namespace SharedBase.BOL.Licencing
         /// <returns></returns>
         public int IndexOf(Licence value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -176,7 +176,7 @@ namespace SharedBase.BOL.Licencing
         public bool Contains(Licence value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

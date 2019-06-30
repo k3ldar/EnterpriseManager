@@ -62,7 +62,7 @@ namespace SharedBase.BOL.Products
         /// <returns>true if the notification exists, otherwise false</returns>
         public static bool Exists(ProductCost item, string email)
         {
-            return (DAL.FirebirdDB.ProductNotificationExists(item, email));
+            return DAL.FirebirdDB.ProductNotificationExists(item, email);
         }
 
         #endregion Static Methods
@@ -75,7 +75,7 @@ namespace SharedBase.BOL.Products
         {
             get
             {
-                return ((Notification)this.InnerList[Index]);
+                return (Notification)this.InnerList[Index];
             }
 
             set
@@ -95,7 +95,7 @@ namespace SharedBase.BOL.Products
         /// <returns></returns>
         public int Add(Notification value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace SharedBase.BOL.Products
         /// <returns></returns>
         public int IndexOf(Notification value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace SharedBase.BOL.Products
         public bool Contains(Notification value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

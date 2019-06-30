@@ -117,12 +117,12 @@ namespace SharedBase.BOL.IPAddresses
 
         public static List<IPCity> Get(decimal latitude, decimal longitude, string country)
         {
-            return (DAL.FirebirdDB.IPCitySelect(latitude, longitude, country));
+            return DAL.FirebirdDB.IPCitySelect(latitude, longitude, country);
         }
 
         public static List<IPCity> GetAll()
         {
-            return (DAL.FirebirdDB.IPCitySelectAll());
+            return DAL.FirebirdDB.IPCitySelectAll();
         }
 
         public static IPCity Get(string userIP, string ipAddress)
@@ -130,12 +130,12 @@ namespace SharedBase.BOL.IPAddresses
             CacheItem item = _IPCache.Get(ipAddress);
 
             if (item != null)
-                return ((IPCity)item.Value);
+                return (IPCity)item.Value;
 
             IPCity ipCache = DAL.FirebirdDB.IPCitySelect(ipAddress);
             _IPCache.Add(ipAddress, new CacheItem(ipAddress, ipCache));
 
-            return (ipCache);
+            return ipCache;
         }
 
         /// <summary>
@@ -153,7 +153,7 @@ namespace SharedBase.BOL.IPAddresses
                 Result.Add((IPCity)item.Value);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Static Methods
@@ -194,7 +194,7 @@ namespace SharedBase.BOL.IPAddresses
 		/// </summary>
 		public override string ToString()
 		{
-			return (String.Format("WD$IPCITY Record {0}", ID));
+			return String.Format("WD$IPCITY Record {0}", ID);
 		}
 
 		#endregion Overridden Methods
@@ -273,17 +273,17 @@ namespace SharedBase.BOL.IPAddresses
         int IComparable<IPCity>.CompareTo(IPCity obj)
         {
             if (this.StartBlock < obj.StartBlock)
-                return (-1);
+                return -1;
             else if (this.StartBlock > obj.StartBlock)
-                return (1);
+                return 1;
             else
             {
                 if (this.Version > obj.Version)
-                    return (-1);
+                    return -1;
                 else if (this.Version < obj.Version)
-                    return (1);
+                    return 1;
 
-                return (0);
+                return 0;
             }
         }
 

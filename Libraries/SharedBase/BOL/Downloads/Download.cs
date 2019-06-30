@@ -55,12 +55,12 @@ namespace SharedBase.BOL.Downloads
 
         public int ID
         {
-            get { return (_id); }
+            get { return _id; }
         }
 
         public string FileName
         {
-            get { return (_filename); }
+            get { return _filename; }
 
 
         }
@@ -69,7 +69,7 @@ namespace SharedBase.BOL.Downloads
         {
             get
             {
-                return (Path.GetExtension(_filename));
+                return Path.GetExtension(_filename);
             }
         }
 
@@ -90,7 +90,7 @@ namespace SharedBase.BOL.Downloads
                     readable = num.ToString() + suf[place];
                 }
 
-                return (readable);
+                return readable;
             }
         }
 
@@ -105,7 +105,7 @@ namespace SharedBase.BOL.Downloads
                     Result = Result.Substring(1);
                 }
 
-                return (Result.ToLower());
+                return Result.ToLower();
             }
         }
 
@@ -113,7 +113,7 @@ namespace SharedBase.BOL.Downloads
         {
             get
             {
-                return (_description);
+                return _description;
             }
 
             set
@@ -134,7 +134,7 @@ namespace SharedBase.BOL.Downloads
 
         public override string ToString()
         {
-            return (String.Format("Download: {0}; FileName: {1}", ID, _filename));
+            return String.Format("Download: {0}; FileName: {1}", ID, _filename);
         }
 
         #endregion Overridden Methods

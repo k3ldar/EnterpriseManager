@@ -100,7 +100,7 @@ namespace SharedBase.BOL.Staff
 		/// </summary>
 		public new bool Delete()
 		{
-			return (DAL.FirebirdDB.StaffSickRecordDelete(this));
+			return DAL.FirebirdDB.StaffSickRecordDelete(this);
 		}
 
 
@@ -121,7 +121,7 @@ namespace SharedBase.BOL.Staff
 		/// </summary>
 		public override string ToString()
 		{
-			return (String.Format("STAFF_SICK_RECORDS Record {0}", ID));
+			return String.Format("STAFF_SICK_RECORDS Record {0}", ID);
 		}
 
 		#endregion Overridden Methods

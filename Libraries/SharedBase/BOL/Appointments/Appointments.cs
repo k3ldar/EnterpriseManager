@@ -71,7 +71,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_therapist);
+                return _therapist;
             }
         }
 
@@ -106,17 +106,17 @@ namespace SharedBase.BOL.Appointments
                             continue;
 
                         default:
-                            return (true);
+                            return true;
                     }
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         public bool IsWorking(double AppointmentTime)
         {
-            return (AppointmentTime >= _therapist.StartTime && AppointmentTime < _therapist.EndTime);
+            return AppointmentTime >= _therapist.StartTime && AppointmentTime < _therapist.EndTime;
         }
 
         public Appointment Find(Int64 AppointmentID)
@@ -132,7 +132,7 @@ namespace SharedBase.BOL.Appointments
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -151,7 +151,7 @@ namespace SharedBase.BOL.Appointments
             if (Result > 0)
                 Result = Result / 25;
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -172,7 +172,7 @@ namespace SharedBase.BOL.Appointments
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -193,7 +193,7 @@ namespace SharedBase.BOL.Appointments
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
 
@@ -209,7 +209,7 @@ namespace SharedBase.BOL.Appointments
             {
 
                 //get appointment as double
-                Double d = (appt.StartTime + (((appt.Duration - 5) * 1.666666666666667) / 100));
+                Double d = appt.StartTime + ((appt.Duration - 5) * 1.666666666666667 / 100);
 
                 foreach (Appointment ap in this)
                 {
@@ -218,13 +218,13 @@ namespace SharedBase.BOL.Appointments
                         if (ap.StartTime >= appt.StartTime && ap.StartTime <= d)
                         {
                             Result = true;
-                            return (Result);
+                            return Result;
                         }
                     }
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -237,13 +237,13 @@ namespace SharedBase.BOL.Appointments
             bool Result = false;
 
             double finalTime = _therapist.EndTime;
-            double duration = (appt.Duration / 15) * 0.25;
+            double duration = appt.Duration / 15 * 0.25;
             double apptEndTime = appt.StartTime + duration;
 
             Result = apptEndTime > finalTime;
             
 
-            return (Result);
+            return Result;
         }
 
         
@@ -257,7 +257,7 @@ namespace SharedBase.BOL.Appointments
             int Result = 1;
 
             //get appointment as double
-            Double apptDuration = (appt.StartTime + (((appt.Duration -1) * 1.666666666666667) / 100));
+            Double apptDuration = appt.StartTime + ((appt.Duration -1) * 1.666666666666667 / 100);
 
             foreach (Appointment ap in this)
             {
@@ -269,7 +269,7 @@ namespace SharedBase.BOL.Appointments
                     default:
                         if (appt.ID != ap.ID)
                         {
-                            Double thisApptDuration = (ap.StartTime + (((ap.Duration -1) * 1.666666666666667) / 100));
+                            Double thisApptDuration = ap.StartTime + ((ap.Duration -1) * 1.666666666666667 / 100);
 
                             if ((ap.StartTime >= appt.StartTime && ap.StartTime <= apptDuration) || (appt.StartTime <= thisApptDuration && appt.StartTime >= ap.StartTime))
                             {
@@ -283,7 +283,7 @@ namespace SharedBase.BOL.Appointments
             if (Result == 0)
                 Result = 1; // must include this appointment
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -297,13 +297,13 @@ namespace SharedBase.BOL.Appointments
             int Result = 0;
 
             //get appointment as double
-            Double apptDuration = (appt.StartTime + (((appt.Duration - 5) * 1.666666666666667) / 100));
+            Double apptDuration = appt.StartTime + ((appt.Duration - 5) * 1.666666666666667 / 100);
 
             foreach (Appointment ap in this)
             {
                 if (appt.ID != ap.ID && ap.TreatmentID == treatment.ID && ap.AppointmentType == 0 && ((int)ap.Status < 4 || (int)ap.Status > 5))
                 {
-                    Double thisApptDuration = (ap.StartTime + (((ap.Duration - 5) * 1.666666666666667) / 100));
+                    Double thisApptDuration = ap.StartTime + ((ap.Duration - 5) * 1.666666666666667 / 100);
 
                     if ((ap.StartTime >= appt.StartTime && ap.StartTime <= apptDuration) || (appt.StartTime <= thisApptDuration && appt.StartTime >= ap.StartTime))
                     {
@@ -312,7 +312,7 @@ namespace SharedBase.BOL.Appointments
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -327,7 +327,7 @@ namespace SharedBase.BOL.Appointments
             foreach (Appointment appt in this)
             {
                 //get appointment as double
-                Double apptFinish = (appt.StartTime + (((appt.Duration) * 1.666666666666667) / 100));
+                Double apptFinish = appt.StartTime + (appt.Duration * 1.666666666666667 / 100);
 
                 if (Time > appt.StartTime && Time <= apptFinish)
                 {
@@ -335,9 +335,9 @@ namespace SharedBase.BOL.Appointments
                     {
                         if (appt.ID != ap.ID)
                         {
-                            Double thisApptFinish = (ap.StartTime + (((ap.Duration) * 1.666666666666667) / 100));
+                            Double thisApptFinish = ap.StartTime + (ap.Duration * 1.666666666666667 / 100);
 
-                            if ((((apptFinish > thisApptFinish || ap.StartTime > apptFinish) && (thisApptFinish < apptFinish)) && 
+                            if (((apptFinish > thisApptFinish || ap.StartTime > apptFinish) && (thisApptFinish < apptFinish) && 
                                 (apptFinish > ap.StartTime) && 
                                 (Time < ap.StartTime || Time > ap.StartTime)  && (Time <= thisApptFinish)) || 
                                 ((Time < apptFinish) && (ap.StartTime > appt.StartTime) && (ap.StartTime < apptFinish)))
@@ -350,7 +350,7 @@ namespace SharedBase.BOL.Appointments
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
 
@@ -362,7 +362,7 @@ namespace SharedBase.BOL.Appointments
             {
                 if (appt.ID != appointment.ID)
                 {
-                    Double d = (appt.StartTime + (((appt.Duration - 5) * 1.666666666666667) / 100));
+                    Double d = appt.StartTime + ((appt.Duration - 5) * 1.666666666666667 / 100);
 
                     if (Time >= appt.StartTime && Time <= d)
                     {
@@ -372,7 +372,7 @@ namespace SharedBase.BOL.Appointments
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -389,7 +389,7 @@ namespace SharedBase.BOL.Appointments
             {
                 if (appt.ID != appointment.ID)
                 {
-                    Double d = (appt.StartTime + (((appt.Duration - 5) * 1.666666666666667) / 100));
+                    Double d = appt.StartTime + ((appt.Duration - 5) * 1.666666666666667 / 100);
 
                     if (Time >= appt.StartTime && Time <= d && AppointmentPartOf(Time))
                     {
@@ -399,7 +399,7 @@ namespace SharedBase.BOL.Appointments
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -420,7 +420,7 @@ namespace SharedBase.BOL.Appointments
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         public int AppointmentCountByTime(Double StartTime)
@@ -435,7 +435,7 @@ namespace SharedBase.BOL.Appointments
                     case Enums.AppointmentStatus.CancelledByUser:
                         break;
                     default:
-                        Double d = (appt.StartTime + (((appt.Duration - 5) * 1.666666666666667) / 100));
+                        Double d = appt.StartTime + ((appt.Duration - 5) * 1.666666666666667 / 100);
                         if (StartTime >= appt.StartTime && StartTime <= d)
                         {
                             Result++;
@@ -445,7 +445,7 @@ namespace SharedBase.BOL.Appointments
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -459,7 +459,7 @@ namespace SharedBase.BOL.Appointments
 
             foreach (Appointment appt in this)
             {
-                Double d = (appt.StartTime + (((appt.Duration - 5) * 1.666666666666667) / 100));
+                Double d = appt.StartTime + ((appt.Duration - 5) * 1.666666666666667 / 100);
                 if (StartTime >= appt.StartTime && StartTime <= d)
                 {
                     Result = true;
@@ -467,7 +467,7 @@ namespace SharedBase.BOL.Appointments
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -525,7 +525,7 @@ namespace SharedBase.BOL.Appointments
                     ErrorText = "Therapist does not work on a " + Date.DayOfWeek.ToString();
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -547,7 +547,7 @@ namespace SharedBase.BOL.Appointments
                 Result = !ExceedsWorkingHours(appt);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -566,7 +566,7 @@ namespace SharedBase.BOL.Appointments
                 col = 0;
             value.Column = col;
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -576,7 +576,7 @@ namespace SharedBase.BOL.Appointments
         /// <returns></returns>
         public int IndexOf(Appointment value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -612,7 +612,7 @@ namespace SharedBase.BOL.Appointments
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -623,7 +623,7 @@ namespace SharedBase.BOL.Appointments
         public bool Contains(Appointment value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion
@@ -689,7 +689,7 @@ namespace SharedBase.BOL.Appointments
         /// <returns>int - number of appointments</returns>
         public static int FutureAppointments(User user)
         {
-            return (DAL.FirebirdDB.AppointmentFutureCount(user, DateTime.Now));
+            return DAL.FirebirdDB.AppointmentFutureCount(user, DateTime.Now);
         }
 
         public static bool IsMaximumAllowed(AppointmentTreatment treatment, DateTime date, 
@@ -716,7 +716,7 @@ namespace SharedBase.BOL.Appointments
                     Result = false;
             }
 
-            return (Result);
+            return Result;
         }
 
         public static Int64 Create(Appointment appointment, User user)
@@ -730,72 +730,72 @@ namespace SharedBase.BOL.Appointments
                 String.Format("User: {0}; Staff: {1}; Treatment: {2}", 
                 appointment.User.UserName, user.UserName, appointment.TreatmentName));
 
-            return (appointment.ID);
+            return appointment.ID;
         }
 
         public static Appointments GetNew(Int64 MaxID, DateTime LastChecked)
         {
-            return (DAL.FirebirdDB.AppointmentsGetNew(MaxID, LastChecked));
+            return DAL.FirebirdDB.AppointmentsGetNew(MaxID, LastChecked);
         }
 
         public static Appointments Get(DateTime Date, Int64 EmployeeID)
         {
-            return (DAL.FirebirdDB.AppointmentsGet(Date, EmployeeID));
+            return DAL.FirebirdDB.AppointmentsGet(Date, EmployeeID);
         }
 
         public static Appointments Get(User user, int PageNumber, int PageSize)
         {
-            return (DAL.FirebirdDB.AppointmentsGet(user, PageNumber, PageSize));
+            return DAL.FirebirdDB.AppointmentsGet(user, PageNumber, PageSize);
         }
 
         public static int GetCount(User user)
         {
-            return (DAL.FirebirdDB.AppointmentsGetCount(user));
+            return DAL.FirebirdDB.AppointmentsGetCount(user);
         }
 
         public static Appointments Get(DateTime MinimumDate, Progress progress)
         {
-            return (DAL.FirebirdDB.AppointmentsGet(MinimumDate, progress));
+            return DAL.FirebirdDB.AppointmentsGet(MinimumDate, progress);
         }
 
         public static Appointment Get(Int64 AppointmentID)
         {
-            return (DAL.FirebirdDB.AppointmentGet(AppointmentID));
+            return DAL.FirebirdDB.AppointmentGet(AppointmentID);
         }
 
         public static Appointments Get(int PageNumber, int PageSize)
         {
-            return (DAL.FirebirdDB.AppointmentsGet(PageNumber, PageSize));
+            return DAL.FirebirdDB.AppointmentsGet(PageNumber, PageSize);
         }
 
         public static Appointments Get(DateTime AppointmentDate, Therapist therapist, bool ShowCancelledAppointment)
         {
-            return (DAL.FirebirdDB.AppointmentsGet(AppointmentDate, therapist, ShowCancelledAppointment));
+            return DAL.FirebirdDB.AppointmentsGet(AppointmentDate, therapist, ShowCancelledAppointment);
         }
 
         public static Appointments Get(DateTime AppointmentDate, bool ShowCancelledAppointments)
         {
-            return (DAL.FirebirdDB.AppointmentsGet(AppointmentDate, ShowCancelledAppointments));
+            return DAL.FirebirdDB.AppointmentsGet(AppointmentDate, ShowCancelledAppointments);
         }
 
         public static Appointments Get(DateTime AppointmentDateStart, DateTime AppointmentDateFinish, bool ShowCancelledAppointments)
         {
-            return (DAL.FirebirdDB.AppointmentsGet(AppointmentDateStart, AppointmentDateFinish, ShowCancelledAppointments));
+            return DAL.FirebirdDB.AppointmentsGet(AppointmentDateStart, AppointmentDateFinish, ShowCancelledAppointments);
         }
 
         public static Appointments Get(DateTime AppointmentDate)
         {
-            return (DAL.FirebirdDB.AppointmentsGet(AppointmentDate));
+            return DAL.FirebirdDB.AppointmentsGet(AppointmentDate);
         }
 
         public static Appointments Get(DateTime StartDate, DateTime EndDate, Therapist Therapist)
         {
-            return (DAL.FirebirdDB.AppointmentsGet(StartDate, EndDate, Therapist));
+            return DAL.FirebirdDB.AppointmentsGet(StartDate, EndDate, Therapist);
         }
 
         public static Appointments GetRequested()
         {
-            return (DAL.FirebirdDB.AppointmentsGetRequested());
+            return DAL.FirebirdDB.AppointmentsGetRequested();
         }
 
         #endregion Static Methods

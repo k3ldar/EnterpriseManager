@@ -38,28 +38,28 @@ namespace SharedBase.BOL.News
         {
             NewsItems Result = DAL.FirebirdDB.NewsGet();            
 
-            return (Result);
+            return Result;
         }
 
         public static NewsItem Get(int ID)
         {
             NewsItem Result = DAL.FirebirdDB.NewsGet(ID);
 
-            return (Result);
+            return Result;
         }
 
         public static NewsItems Get(int PageSize, int PageNumber)
         {
             NewsItems Result = DAL.FirebirdDB.NewsGet(PageSize, PageNumber);
 
-            return (Result);
+            return Result;
         }
 
         public static int GetCount()
         {
             int Result = DAL.FirebirdDB.NewsCount();
 
-            return (Result);
+            return Result;
         }
 
         #endregion Static Methods
@@ -72,7 +72,7 @@ namespace SharedBase.BOL.News
         {
             get
             {
-                return ((NewsItem)this.InnerList[Index]);
+                return (NewsItem)this.InnerList[Index];
             }
 
             set
@@ -92,7 +92,7 @@ namespace SharedBase.BOL.News
         /// <returns></returns>
         public int Add(NewsItem value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace SharedBase.BOL.News
         /// <returns></returns>
         public int IndexOf(NewsItem value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace SharedBase.BOL.News
         public bool Contains(NewsItem value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

@@ -51,7 +51,7 @@ namespace SharedBase.BOL.ModuleDocumentation
                 DAL.DALHelper.InternalCache.Add(Consts.CACHE_NAME_ALL_MODULES, cachedResult);
             }
 
-            return ((ModuleNames)cachedResult.Value);
+            return (ModuleNames)cachedResult.Value;
         }
 
         /// <summary>
@@ -63,9 +63,9 @@ namespace SharedBase.BOL.ModuleDocumentation
         {
             foreach (ModuleName mod in GetModules())
                 if (mod.ID == id)
-                    return (mod);
+                    return mod;
 
-            return (null);
+            return null;
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace SharedBase.BOL.ModuleDocumentation
         /// <returns></returns>
         public static ModuleName Create(string name, string description)
         {
-            return (DAL.FirebirdDB.ModuleNameInsert(name, description));
+            return DAL.FirebirdDB.ModuleNameInsert(name, description);
         }
 
         #endregion Static Methods
@@ -89,7 +89,7 @@ namespace SharedBase.BOL.ModuleDocumentation
         {
             get
             {
-                return ((ModuleName)this.InnerList[Index]);
+                return (ModuleName)this.InnerList[Index];
             }
 
             set
@@ -109,7 +109,7 @@ namespace SharedBase.BOL.ModuleDocumentation
         /// <returns></returns>
         public int Add(ModuleName value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace SharedBase.BOL.ModuleDocumentation
         /// <returns></returns>
         public int IndexOf(ModuleName value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -151,7 +151,7 @@ namespace SharedBase.BOL.ModuleDocumentation
         public bool Contains(ModuleName value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

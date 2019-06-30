@@ -91,7 +91,7 @@ namespace SharedBase.BOL.Training
                 if (_attendees == null)
                     _attendees = Attendees.Get(this);
 
-                return (_attendees);
+                return _attendees;
             }
         }
         
@@ -107,7 +107,7 @@ namespace SharedBase.BOL.Training
                 foreach (Attendee attendee in CourseAttendees)
                     Result += attendee.NumberOfAttendees;
 
-                return (Result);
+                return Result;
             }
         }
 
@@ -118,7 +118,7 @@ namespace SharedBase.BOL.Training
         {
             get
             {
-                return (CourseType.MaximumAttendees - TotalAttendees);
+                return CourseType.MaximumAttendees - TotalAttendees;
             }
         }
 
@@ -133,7 +133,7 @@ namespace SharedBase.BOL.Training
         /// <returns></returns>
         public static Course Get(Int64 id)
         {
-            return (DAL.FirebirdDB.TrainingCoursesGet(id));
+            return DAL.FirebirdDB.TrainingCoursesGet(id);
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace SharedBase.BOL.Training
         /// <returns></returns>
         public static Course Create(Appointments.Appointment appointment, TrainingCourse course, Therapist trainer)
         {
-            return (DAL.FirebirdDB.TrainingCoursesCreate(appointment, course, trainer));
+            return DAL.FirebirdDB.TrainingCoursesCreate(appointment, course, trainer);
         }
 
         #endregion Static Methods

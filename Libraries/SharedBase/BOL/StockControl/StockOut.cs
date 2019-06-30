@@ -44,7 +44,7 @@ namespace SharedBase.BOL.StockControl
         /// <returns>StockOut collection</returns>
         public static StockOut Get(int storeID, int productType, DateTime date)
         {
-            return (DAL.FirebirdDB.StockOutGet(storeID, productType, date));
+            return DAL.FirebirdDB.StockOutGet(storeID, productType, date);
         }
 
         #endregion Static Methods
@@ -62,7 +62,7 @@ namespace SharedBase.BOL.StockControl
         {
             get
             {
-                return ((StockOutItem)this.InnerList[Index]);
+                return (StockOutItem)this.InnerList[Index];
             }
 
             set
@@ -82,7 +82,7 @@ namespace SharedBase.BOL.StockControl
         /// <returns></returns>
         public int Add(StockOutItem value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace SharedBase.BOL.StockControl
         /// <returns></returns>
         public int IndexOf(StockOutItem value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace SharedBase.BOL.StockControl
         public bool Contains(StockOutItem value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

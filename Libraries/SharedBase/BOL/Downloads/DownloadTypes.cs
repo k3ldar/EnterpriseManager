@@ -43,7 +43,7 @@ namespace SharedBase.BOL.Downloads
 		/// <returns>DownloadType instance</returns>
 		public static DownloadType Create(string description)
 		{
-			return (DAL.FirebirdDB.DownloadTypeInsert(description));
+			return DAL.FirebirdDB.DownloadTypeInsert(description);
 		}
 
 		/// <summary>
@@ -52,7 +52,7 @@ namespace SharedBase.BOL.Downloads
 		/// <returns>DownloadTypes collection of DownloadType items</returns>
 		public static DownloadTypes All()
 		{
-			return (DAL.FirebirdDB.DownloadTypeSelectAll());
+			return DAL.FirebirdDB.DownloadTypeSelectAll();
 		}
 
 		/// <summary>
@@ -62,7 +62,7 @@ namespace SharedBase.BOL.Downloads
 		/// <returns>DownloadType item if found, otherwise null</returns>
 		public static DownloadType Get(int item)
 		{
-			return (DAL.FirebirdDB.DownloadTypeSelect(item));
+			return DAL.FirebirdDB.DownloadTypeSelect(item);
 		}
 
 		#endregion Static Methods
@@ -80,7 +80,7 @@ namespace SharedBase.BOL.Downloads
 		{
 			get
 			{
-				return ((DownloadType)this[Index]);
+				return (DownloadType)this[Index];
 			}
 
 			set
@@ -100,7 +100,7 @@ namespace SharedBase.BOL.Downloads
 		/// <returns></returns>
 		public int Add(DownloadType value)
 		{
-			return (List.Add(value));
+			return List.Add(value);
 		}
 
 		/// <summary>
@@ -110,7 +110,7 @@ namespace SharedBase.BOL.Downloads
 		/// <returns></returns>
 		public int IndexOf(DownloadType value)
 		{
-			return (List.IndexOf(value));
+			return List.IndexOf(value);
 		}
 
 		/// <summary>
@@ -142,7 +142,7 @@ namespace SharedBase.BOL.Downloads
 		public bool Contains(DownloadType value)
 		{
 			// If value is not of type OBJECT_TYPE, this will return false.
-			return (List.Contains(value));
+			return List.Contains(value);
 		}
 
 		#endregion Public Methods

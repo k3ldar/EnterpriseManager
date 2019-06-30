@@ -385,7 +385,7 @@ namespace SharedBase.BOL.Mail
                                         curException = curException.InnerException;
                                     }
 
-                                    return (Result);
+                                    return Result;
                                 }
                             }
                             catch (Exception err)
@@ -410,7 +410,7 @@ namespace SharedBase.BOL.Mail
                         return new EmailStatusReport(new StatusReportEntry(Ex.Message, null));
                     }
 
-                    return (Result);
+                    return Result;
                 }
             }
             catch
@@ -479,7 +479,7 @@ namespace SharedBase.BOL.Mail
             }
 
 
-            return (Result);
+            return Result;
         }
 
         #endregion

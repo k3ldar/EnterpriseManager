@@ -65,7 +65,7 @@ namespace SharedBase.BOL.Mail
 		{
 			get  
 			{ 
-				return((Email) List[index]);
+				return(Email) List[index];
 			}
 			
 
@@ -87,7 +87,7 @@ namespace SharedBase.BOL.Mail
 		/// <returns></returns>
 		public int Add(Email value) 
 		{
-			return(List.Add(value));
+			return List.Add(value);
 		}
 
 
@@ -98,7 +98,7 @@ namespace SharedBase.BOL.Mail
 		/// <returns></returns>
 		public int IndexOf(Email value) 
 		{
-			return(List.IndexOf(value));
+			return List.IndexOf(value);
 		}
 
 
@@ -131,7 +131,7 @@ namespace SharedBase.BOL.Mail
 		public bool Contains(Email value) 
 		{
 			// If value is not of type OBJECT_TYPE, this will return false.
-			return(List.Contains(value));
+			return List.Contains(value);
 		}
 
 
@@ -198,7 +198,7 @@ namespace SharedBase.BOL.Mail
 
         public static Emails Get(bool IncludeSentEmail, Int16 MaxSendAttempts)
         {
-            return (DAL.FirebirdDB.EmailsGet(IncludeSentEmail, MaxSendAttempts));
+            return DAL.FirebirdDB.EmailsGet(IncludeSentEmail, MaxSendAttempts);
         }
 
         public static void DeleteSent()
@@ -229,7 +229,7 @@ namespace SharedBase.BOL.Mail
                 Result = DAL.FirebirdDB.EmailAdd(ToName, ToEMail, FromName, FromEMail, Subject, MessagePart);
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -255,12 +255,12 @@ namespace SharedBase.BOL.Mail
         /// <returns></returns>
         public static Int64 MassEmail(string Subject, string Message, MemberLevel memberLevel, bool SendToAboveLevels)
         {
-            return (DAL.FirebirdDB.EmailAdd(memberLevel, SendToAboveLevels, Subject, Message));
+            return DAL.FirebirdDB.EmailAdd(memberLevel, SendToAboveLevels, Subject, Message);
         }
 
         public static Int64 MassEmail(string Subject, string Message, Countries.Country country)
         {
-            return (DAL.FirebirdDB.EmailAdd(country, Subject, Message));
+            return DAL.FirebirdDB.EmailAdd(country, Subject, Message);
         }
 
         /// <summary>
@@ -320,7 +320,7 @@ namespace SharedBase.BOL.Mail
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Static Methods

@@ -109,9 +109,9 @@ namespace SharedBase.BOL.Accounts
 
 
             if (cachedResult != null)
-                return ((PaymentStatuses)cachedResult.Value);
+                return (PaymentStatuses)cachedResult.Value;
             else
-                return (DAL.FirebirdDB.PaymentStatusesGet());
+                return DAL.FirebirdDB.PaymentStatusesGet();
         }
 
         /// <summary>
@@ -125,12 +125,12 @@ namespace SharedBase.BOL.Accounts
             {
                 if (status.Description.ToLower() == name.ToLower())
                 {
-                    return (status);
+                    return status;
                 }
             }
 
             // default to unknown
-            return (Get(999));
+            return Get(999);
         }
 
         /// <summary>
@@ -144,7 +144,7 @@ namespace SharedBase.BOL.Accounts
             {
                 if (status.ID == id)
                 {
-                    return (status);
+                    return status;
                 }
             }
 
@@ -153,11 +153,11 @@ namespace SharedBase.BOL.Accounts
             {
                 if (status.ID == 999)
                 {
-                    return (status);
+                    return status;
                 }
             }
 
-            return (null);
+            return null;
         }
 
 
@@ -171,7 +171,7 @@ namespace SharedBase.BOL.Accounts
         {
             get
             {
-                return ((PaymentStatus)this.InnerList[Index]);
+                return (PaymentStatus)this.InnerList[Index];
             }
 
             set
@@ -191,7 +191,7 @@ namespace SharedBase.BOL.Accounts
         /// <returns></returns>
         public int Add(PaymentStatus value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -201,7 +201,7 @@ namespace SharedBase.BOL.Accounts
         /// <returns></returns>
         public int IndexOf(PaymentStatus value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -235,11 +235,11 @@ namespace SharedBase.BOL.Accounts
             foreach (PaymentStatus status in this)
             {
                 if (status.ID == value.ID)
-                    return (true);
+                    return true;
             }
 
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (false);
+            return false;
         }
 
         #endregion Public Methods

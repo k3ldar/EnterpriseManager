@@ -69,7 +69,7 @@ namespace SharedBase.Utils
                                 cryptoStream.Write(plainTextBytes, 0, plainTextBytes.Length);
                                 cryptoStream.FlushFinalBlock();
 
-                                return (Convert.ToBase64String(memoryStream.ToArray()));
+                                return Convert.ToBase64String(memoryStream.ToArray());
                             }
                             finally
                             {
@@ -129,7 +129,7 @@ namespace SharedBase.Utils
                                 byte[] plainTextBytes = new byte[cipherTextBytes.Length];
                                 int decryptedByteCount = cryptoStream.Read(plainTextBytes, 0, plainTextBytes.Length);
                                 
-                                return (Encoding.UTF8.GetString(plainTextBytes, 0, decryptedByteCount));
+                                return Encoding.UTF8.GetString(plainTextBytes, 0, decryptedByteCount);
                             }
                             finally
                             {

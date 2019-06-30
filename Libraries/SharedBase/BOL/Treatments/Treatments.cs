@@ -45,7 +45,7 @@ namespace SharedBase.BOL.Treatments
         /// <returns></returns>
         public static Treatments SpaDays(int PageNumber, int PageSize)
         {
-            return (DAL.FirebirdDB.TreatmentSpaDays(PageNumber, PageSize));
+            return DAL.FirebirdDB.TreatmentSpaDays(PageNumber, PageSize);
         }
 
         /// <summary>
@@ -56,12 +56,12 @@ namespace SharedBase.BOL.Treatments
         /// <returns>Treatments collection</returns>
         public static Treatments Get(int PageNumber, int PageSize)
         {
-            return (DAL.FirebirdDB.TreatmentsGet(PageNumber, PageSize));
+            return DAL.FirebirdDB.TreatmentsGet(PageNumber, PageSize);
         }
 
         public static Treatments Get(int PageNumber, int PageSize, TreatmentGroup group)
         {
-            return (DAL.FirebirdDB.TreatmentsGet(PageNumber, PageSize, group));
+            return DAL.FirebirdDB.TreatmentsGet(PageNumber, PageSize, group);
         }
 
         /// <summary>
@@ -70,17 +70,17 @@ namespace SharedBase.BOL.Treatments
         /// <returns>int - Number of treatments</returns>
         public static int GetCount()
         {
-            return (DAL.FirebirdDB.TreatmentsCount());
+            return DAL.FirebirdDB.TreatmentsCount();
         }
 
         public static Treatment Get(int ID)
         {
-            return (DAL.FirebirdDB.TreatmentGet(ID, false));
+            return DAL.FirebirdDB.TreatmentGet(ID, false);
         }
 
         public static Treatment GetSpaDay(int ID)
         {
-            return (DAL.FirebirdDB.TreatmentGet(ID, true));
+            return DAL.FirebirdDB.TreatmentGet(ID, true);
         }
 
         #endregion Static Methods
@@ -93,7 +93,7 @@ namespace SharedBase.BOL.Treatments
         {
             get
             {
-                return ((Treatment)this.InnerList[Index]);
+                return (Treatment)this.InnerList[Index];
             }
 
             set
@@ -113,7 +113,7 @@ namespace SharedBase.BOL.Treatments
         /// <returns></returns>
         public int Add(Treatment value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace SharedBase.BOL.Treatments
         /// <returns></returns>
         public int IndexOf(Treatment value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -155,7 +155,7 @@ namespace SharedBase.BOL.Treatments
         public bool Contains(Treatment value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

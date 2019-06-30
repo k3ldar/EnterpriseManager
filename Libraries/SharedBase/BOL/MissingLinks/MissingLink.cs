@@ -57,7 +57,7 @@ namespace SharedBase.BOL.MissingLinks
         {
             get
             {
-                return (_Id);
+                return _Id;
             }
         }
 
@@ -65,7 +65,7 @@ namespace SharedBase.BOL.MissingLinks
         {
             get
             {
-                return (_DeprectedLink);
+                return _DeprectedLink;
             }
 
             set
@@ -78,7 +78,7 @@ namespace SharedBase.BOL.MissingLinks
         {
             get
             {
-                return (_RedirectLink);
+                return _RedirectLink;
             }
 
             set

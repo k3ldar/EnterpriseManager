@@ -49,7 +49,7 @@ namespace SharedBase.BOL.Therapists
 
             Result = DAL.FirebirdDB.TherapistWorkingDaysCreate(therapist);
             Insert(0, Result);
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace SharedBase.BOL.Therapists
             DateTime start;
             DateTime finish;
 
-            return (WorkingOverride(workingDay, out start, out finish, out AllowTreatments));
+            return WorkingOverride(workingDay, out start, out finish, out AllowTreatments);
         }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace SharedBase.BOL.Therapists
                         start = Shared.Utilities.DoubleToDate(workingDay, day.StartTime);
                         finish = Shared.Utilities.DoubleToDate(workingDay, day.FinishTime);
                         AllowTreatments = day.AllowTreatments;
-                        return (true);
+                        return true;
                     }
 
                     ++iteration;
@@ -118,7 +118,7 @@ namespace SharedBase.BOL.Therapists
             }
 
 
-            return (false);
+            return false;
         }
 
         public WorkingDay Get(DateTime workingDay)
@@ -148,7 +148,7 @@ namespace SharedBase.BOL.Therapists
 
                     if (workingDay.Date == day.Date || date.Date == workingDay.Date)
                     {
-                        return (day);
+                        return day;
                     }
 
                     ++iteration;
@@ -156,7 +156,7 @@ namespace SharedBase.BOL.Therapists
                 } while (iteration < MAXIMUM_ITERATIONS && date <= workingDay);
             }
 
-            return (null);
+            return null;
         }
 
         /// <summary>
@@ -193,7 +193,7 @@ namespace SharedBase.BOL.Therapists
 
                     if (startDateTime.Date == day.Date || date == startDateTime.Date)
                     {
-                        return (true);
+                        return true;
                     }
 
                     ++iteration;
@@ -201,7 +201,7 @@ namespace SharedBase.BOL.Therapists
                 } while (iteration < MAXIMUM_ITERATIONS && date <= startDateTime);
             }
             
-            return (Result);
+            return Result;
         }
 
         #endregion Public Methods
@@ -214,7 +214,7 @@ namespace SharedBase.BOL.Therapists
         {
             get
             {
-                return ((WorkingDay)this.InnerList[Index]);
+                return (WorkingDay)this.InnerList[Index];
             }
 
             set
@@ -235,7 +235,7 @@ namespace SharedBase.BOL.Therapists
         public int Add(WorkingDay value)
         {
             value.Owner = this;
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -245,7 +245,7 @@ namespace SharedBase.BOL.Therapists
         /// <returns></returns>
         public int IndexOf(WorkingDay value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -277,7 +277,7 @@ namespace SharedBase.BOL.Therapists
         public bool Contains(WorkingDay value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

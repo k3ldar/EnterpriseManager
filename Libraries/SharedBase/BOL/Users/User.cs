@@ -192,7 +192,7 @@ namespace SharedBase.BOL.Users
                 if (_permissionsPOS == 0)
                     _permissionsPOS = DAL.FirebirdDB.PermissionsGet(this);
 
-                return (_permissionsPOS);
+                return _permissionsPOS;
             }
 
             set
@@ -212,7 +212,7 @@ namespace SharedBase.BOL.Users
                 if (_permissionsCalendar == 0)
                     _permissionsCalendar = DAL.FirebirdDB.PermissionsGetCalendar(this);
 
-                return (_permissionsCalendar);
+                return _permissionsCalendar;
             }
 
             set
@@ -232,7 +232,7 @@ namespace SharedBase.BOL.Users
                 if (_permissionsWebsite == 0)
                     _permissionsWebsite = DAL.FirebirdDB.PermissionsGetWebsite(this);
 
-                return (_permissionsWebsite);
+                return _permissionsWebsite;
             }
 
             set
@@ -252,7 +252,7 @@ namespace SharedBase.BOL.Users
                 if (_permissionsReports == 0)
                     _permissionsReports = DAL.FirebirdDB.PermissionsGetReports(this);
 
-                return (_permissionsReports);
+                return _permissionsReports;
             }
 
             set
@@ -272,7 +272,7 @@ namespace SharedBase.BOL.Users
                 if (_permissionsStaff == 0)
                     _permissionsStaff = DAL.FirebirdDB.PermissionsGetStaff(this);
 
-                return (_permissionsStaff);
+                return _permissionsStaff;
             }
 
             set
@@ -292,7 +292,7 @@ namespace SharedBase.BOL.Users
                 if (_permissionsStock == 0)
                     _permissionsStock = DAL.FirebirdDB.PermissionsGetStock(this);
 
-                return (_permissionsStock);
+                return _permissionsStock;
             }
 
             set
@@ -312,7 +312,7 @@ namespace SharedBase.BOL.Users
                 if (_permissionsAccounts == 0)
                     _permissionsAccounts = DAL.FirebirdDB.PermissionsGetAccounts(this);
 
-                return (_permissionsAccounts);
+                return _permissionsAccounts;
             }
 
             set
@@ -329,7 +329,7 @@ namespace SharedBase.BOL.Users
         {
             get
             {
-                return (_ID);
+                return _ID;
             }
 
             set
@@ -345,7 +345,7 @@ namespace SharedBase.BOL.Users
         {
             get
             {
-                return (_Email);
+                return _Email;
             }
 
             set
@@ -358,7 +358,7 @@ namespace SharedBase.BOL.Users
         {
             get
             {
-                return (_FirstName);
+                return _FirstName;
             }
 
             set
@@ -371,7 +371,7 @@ namespace SharedBase.BOL.Users
         {
             get
             {
-                return (_LastName);
+                return _LastName;
             }
 
             set
@@ -384,7 +384,7 @@ namespace SharedBase.BOL.Users
         {
             get
             {
-                return (_FirstName + " " + _LastName);
+                return _FirstName + " " + _LastName;
             }
         }
 
@@ -392,7 +392,7 @@ namespace SharedBase.BOL.Users
         {
             get
             {
-                return (_password);
+                return _password;
             }
 
             set
@@ -416,7 +416,7 @@ namespace SharedBase.BOL.Users
         {
             get
             {
-                return (_LastVisit);
+                return _LastVisit;
             }
 
             set
@@ -430,7 +430,7 @@ namespace SharedBase.BOL.Users
         {
             get
             {
-                return (_BusinessName);
+                return _BusinessName;
             }
 
             set
@@ -443,7 +443,7 @@ namespace SharedBase.BOL.Users
         {
             get
             {
-                return (_AddressLine1);
+                return _AddressLine1;
             }
 
             set
@@ -456,7 +456,7 @@ namespace SharedBase.BOL.Users
         {
             get
             {
-                return (_AddressLine2);
+                return _AddressLine2;
             }
 
             set
@@ -469,7 +469,7 @@ namespace SharedBase.BOL.Users
         {
             get
             {
-                return (_AddressLine3);
+                return _AddressLine3;
             }
 
             set
@@ -482,7 +482,7 @@ namespace SharedBase.BOL.Users
         {
             get
             {
-                return (_City);
+                return _City;
             }
 
             set
@@ -496,7 +496,7 @@ namespace SharedBase.BOL.Users
         {
             get
             {
-                return (_County);
+                return _County;
             }
 
             set
@@ -510,7 +510,7 @@ namespace SharedBase.BOL.Users
         {
             get
             {
-                return (_PostCode);
+                return _PostCode;
             }
 
             set
@@ -524,7 +524,7 @@ namespace SharedBase.BOL.Users
         {
             get
             {
-                return (_MemberLevel);
+                return _MemberLevel;
             }
 
             set
@@ -540,7 +540,7 @@ namespace SharedBase.BOL.Users
                 if (_Country == null)
                     _Country = DAL.FirebirdDB.CountryGet(_countryID);
 
-                return (_Country);
+                return _Country;
             }
 
             set
@@ -553,7 +553,7 @@ namespace SharedBase.BOL.Users
         {
             get
             {
-                return (_Telephone);
+                return _Telephone;
             }
 
             set
@@ -566,7 +566,7 @@ namespace SharedBase.BOL.Users
         {
             get
             {
-                return (DAL.FirebirdDB.SalonsGet(this));
+                return DAL.FirebirdDB.SalonsGet(this);
             }
         }
 
@@ -574,7 +574,7 @@ namespace SharedBase.BOL.Users
         {
             get
             {
-                return (_OffersEmail);
+                return _OffersEmail;
             }
 
             set
@@ -587,7 +587,7 @@ namespace SharedBase.BOL.Users
         {
             get
             {
-                return (_OffersPost);
+                return _OffersPost;
             }
 
             set
@@ -600,7 +600,7 @@ namespace SharedBase.BOL.Users
         {
             get
             {
-                return (_OffersTelephone);
+                return _OffersTelephone;
             }
 
             set
@@ -613,7 +613,7 @@ namespace SharedBase.BOL.Users
         {
             get
             {
-                return (_BirthDate);
+                return _BirthDate;
             }
 
             set
@@ -629,7 +629,7 @@ namespace SharedBase.BOL.Users
                 if (_DeliveryAddresses == null)
                     _DeliveryAddresses = DAL.FirebirdDB.MembersAddressGet(this);
 
-                return (_DeliveryAddresses);
+                return _DeliveryAddresses;
             }
         }
 
@@ -637,7 +637,7 @@ namespace SharedBase.BOL.Users
         {
             get
             {
-                return (DAL.FirebirdDB.AppointmentsGet(this, 1, 1000));
+                return DAL.FirebirdDB.AppointmentsGet(this, 1, 1000);
             }
         }
 
@@ -645,7 +645,7 @@ namespace SharedBase.BOL.Users
         {
             get
             {
-                return (DAL.FirebirdDB.OrdersGet(this));
+                return DAL.FirebirdDB.OrdersGet(this);
             }
         }
 
@@ -653,7 +653,7 @@ namespace SharedBase.BOL.Users
         {
             get
             {
-                return (DAL.FirebirdDB.InvoicesGet(this));
+                return DAL.FirebirdDB.InvoicesGet(this);
             }
         }
 
@@ -664,7 +664,7 @@ namespace SharedBase.BOL.Users
         {
             get
             {
-                return (_Style == "VIP");
+                return _Style == "VIP";
             }
 
             set
@@ -679,7 +679,7 @@ namespace SharedBase.BOL.Users
         {
             get
             {
-                return (_Style);
+                return _Style;
             }
         }
 
@@ -687,7 +687,7 @@ namespace SharedBase.BOL.Users
         {
             get
             {
-                return (_basket);
+                return _basket;
             }
 
             set
@@ -701,7 +701,7 @@ namespace SharedBase.BOL.Users
         {
             get
             {
-                return (DAL.FirebirdDB.UserGetUserMenuItems());
+                return DAL.FirebirdDB.UserGetUserMenuItems();
             }
         }
 #endif
@@ -710,7 +710,7 @@ namespace SharedBase.BOL.Users
         {
             get
             {
-                return (_RecordType);
+                return _RecordType;
             }
         }
 
@@ -727,7 +727,7 @@ namespace SharedBase.BOL.Users
                 Result = Result.Replace('`', '_');
                 Result = Result.Substring(0, Result.Length > 31 ? 30 : Result.Length);
 
-                return (Result);
+                return Result;
             }
         }
 
@@ -743,7 +743,7 @@ namespace SharedBase.BOL.Users
                 if (_MemberLevel >= MemberLevel.GoldUser)
                     Result = _AutoDiscount;
 
-                return (Result);
+                return Result;
             }
 
             set
@@ -758,7 +758,7 @@ namespace SharedBase.BOL.Users
         {
             get
             {
-                return (DAL.FirebirdDB.MemberNotesGet(this));
+                return DAL.FirebirdDB.MemberNotesGet(this);
             }
 
             set
@@ -774,7 +774,7 @@ namespace SharedBase.BOL.Users
                 if (_history == null)
                     _history = DAL.FirebirdDB.AppointmentHistory(this);
 
-                return (_history);
+                return _history;
             }
         }
 
@@ -793,7 +793,7 @@ namespace SharedBase.BOL.Users
                 if (_cardDetails == null)
                     _cardDetails = DAL.FirebirdDB.UserCreditCardDetailsGet(this);
 
-                return (_cardDetails);
+                return _cardDetails;
             }
         }
 
@@ -804,7 +804,7 @@ namespace SharedBase.BOL.Users
                 if (String.IsNullOrEmpty(_barcode))
                     _barcode = DAL.FirebirdDB.UserGetBarcode(this);
 
-                return (_barcode);
+                return _barcode;
             }
         }
 
@@ -818,7 +818,7 @@ namespace SharedBase.BOL.Users
         {
             get
             {
-                return (DAL.FirebirdDB.LicenceGet(this));
+                return DAL.FirebirdDB.LicenceGet(this);
             }
         }
 
@@ -835,7 +835,7 @@ namespace SharedBase.BOL.Users
                     _managerRetrieved = true;
                 }
 
-                return (_manager);
+                return _manager;
             }
 
             set
@@ -868,7 +868,7 @@ namespace SharedBase.BOL.Users
                     }
                 }
 
-                return (_staffRecord);
+                return _staffRecord;
             }
         }
 
@@ -886,15 +886,15 @@ namespace SharedBase.BOL.Users
         public bool HasPermissionPOS(SecurityEnums.SecurityPermissionsPOS permission, int iteration = 0)
         {
             if (iteration > 10)
-                return (false);
+                return false;
 
             try
             {
-                return (((Permissions & permission) == permission));
+                return (Permissions & permission) == permission;
             }
             catch
             {
-                return (HasPermissionPOS(permission, iteration + 1));
+                return HasPermissionPOS(permission, iteration + 1);
             }
         }
 
@@ -906,15 +906,15 @@ namespace SharedBase.BOL.Users
         public bool HasPermissionReport(SecurityEnums.SecurityPermissionsReports permission, int iteration = 0)
         {
             if (iteration > 10)
-                return (false);
+                return false;
 
             try
             {
-                return (((PermissionsReports & permission) == permission));
+                return (PermissionsReports & permission) == permission;
             }
             catch
             {
-                return (HasPermissionReport(permission, iteration + 1));
+                return HasPermissionReport(permission, iteration + 1);
             }
         }
 
@@ -926,15 +926,15 @@ namespace SharedBase.BOL.Users
         public bool HasPermissionCalendar(SecurityEnums.SecurityPermissionsCalendar permission, int iteration = 0)
         {
             if (iteration > 10)
-                return (false);
+                return false;
 
             try
             {
-                return (((PermissionsCalendar & permission) == permission));
+                return (PermissionsCalendar & permission) == permission;
             }
             catch
             {
-                return (HasPermissionCalendar(permission, iteration + 1));
+                return HasPermissionCalendar(permission, iteration + 1);
             }
         }
 
@@ -946,15 +946,15 @@ namespace SharedBase.BOL.Users
         public bool HasPermissionAccounts(SecurityEnums.SecurityPermissionsAccounts permission, int iteration = 0)
         {
             if (iteration > 10)
-                return (false);
+                return false;
 
             try
             {
-                return (((PermissionsAccounts & permission) == permission));
+                return (PermissionsAccounts & permission) == permission;
             }
             catch
             {
-                return (HasPermissionAccounts(permission, iteration + 1));
+                return HasPermissionAccounts(permission, iteration + 1);
             }
         }
 
@@ -966,15 +966,15 @@ namespace SharedBase.BOL.Users
         public bool HasPermissionStock(SecurityEnums.SecurityPermissionsStockControl permission, int iteration = 0)
         {
             if (iteration > 10)
-                return (false);
+                return false;
 
             try
             {
-                return (((PermissionsStock & permission) == permission));
+                return (PermissionsStock & permission) == permission;
             }
             catch
             {
-                return (HasPermissionStock(permission, iteration + 1));
+                return HasPermissionStock(permission, iteration + 1);
             }
         }
 
@@ -986,15 +986,15 @@ namespace SharedBase.BOL.Users
         public bool HasPermissionWebsite(SecurityEnums.SecurityPermissionsWebsite permission, int iteration = 0)
         {
             if (iteration > 10)
-                return (false);
+                return false;
 
             try
             {
-                return (((PermissionsWebsite & permission) == permission));
+                return (PermissionsWebsite & permission) == permission;
             }
             catch
             {
-                return (HasPermissionWebsite(permission, iteration + 1));
+                return HasPermissionWebsite(permission, iteration + 1);
             }
         }
 
@@ -1006,15 +1006,15 @@ namespace SharedBase.BOL.Users
         public bool HasPermissionStaff(SecurityEnums.SecurityPermissionsStaff permission, int iteration = 0)
         {
             if (iteration > 10)
-                return (false);
+                return false;
 
             try
             {
-                return (((PermissionsStaff & permission) == permission));
+                return (PermissionsStaff & permission) == permission;
             }
             catch
             {
-                return (HasPermissionStaff(permission, iteration + 1));
+                return HasPermissionStaff(permission, iteration + 1);
             }
         }
 
@@ -1069,7 +1069,7 @@ namespace SharedBase.BOL.Users
             if (PostCode != "")
                 Result += PostCode.ToUpper() + Seperator;
 
-            return (Result);
+            return Result;
 
         }
 
@@ -1088,7 +1088,7 @@ namespace SharedBase.BOL.Users
                     Result++;
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -1097,9 +1097,9 @@ namespace SharedBase.BOL.Users
         /// <returns>true if valid, otherwise false</returns>
         public bool ValidBirthDate()
         {
-            bool Result = (_BirthDate.Year > 1900 | BirthDate.Year == 1800);
+            bool Result = _BirthDate.Year > 1900 | BirthDate.Year == 1800;
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -1139,7 +1139,7 @@ namespace SharedBase.BOL.Users
 
             Result = !String.IsNullOrEmpty(_AddressLine1) && !String.IsNullOrEmpty(_City) && !String.IsNullOrEmpty(_PostCode);
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -1150,7 +1150,7 @@ namespace SharedBase.BOL.Users
         /// <returns>string - voucher code</returns>
         public string CreateUniqueVoucher(double value, DateTime expires)
         {
-            return (String.Empty);
+            return String.Empty;
         }
 
         /// <summary>
@@ -1169,13 +1169,13 @@ namespace SharedBase.BOL.Users
             //    (!String.IsNullOrEmpty(lastName) && UserName.ToLower().Contains(lastName))));
 
             if (firstName == lastName)
-                Result = (_FirstName.ToLower().Contains(firstName.Trim()) ||
-                (_LastName.ToLower().Contains(lastName)));
+                Result = _FirstName.ToLower().Contains(firstName.Trim()) ||
+                _LastName.ToLower().Contains(lastName);
             else
-                Result = (_FirstName.ToLower().Contains(firstName.Trim()) &&
-                    (_LastName.ToLower().Contains(lastName)));
+                Result = _FirstName.ToLower().Contains(firstName.Trim()) &&
+                    _LastName.ToLower().Contains(lastName);
 
-            return (Result);
+            return Result;
         }
 
         public bool SendPasswordEmail()
@@ -1196,7 +1196,7 @@ namespace SharedBase.BOL.Users
                 Result = true;
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -1205,7 +1205,7 @@ namespace SharedBase.BOL.Users
         /// <returns></returns>
         public Clients GetTradeClients()
         {
-            return (DAL.FirebirdDB.TradeClientManagerClients(this));
+            return DAL.FirebirdDB.TradeClientManagerClients(this);
         }
 
         #endregion Public Methods
@@ -1227,7 +1227,7 @@ namespace SharedBase.BOL.Users
                 Result.Save();
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -1236,40 +1236,40 @@ namespace SharedBase.BOL.Users
         /// <returns>Users collection</returns>
         public static Users GetBirthdayList(string currenLocation, int month, int radius)
         {
-            return (DAL.FirebirdDB.UserGetBirthdays(currenLocation, month, radius));
+            return DAL.FirebirdDB.UserGetBirthdays(currenLocation, month, radius);
         }
 
         public static User UserFindByBarcode(string barcode)
         {
-            return (DAL.FirebirdDB.UserGetByBarcode(barcode));
+            return DAL.FirebirdDB.UserGetByBarcode(barcode);
         }
 
         public static User UserGet(Int64 UserID)
         {
-            return (DAL.FirebirdDB.UserGet(UserID));
+            return DAL.FirebirdDB.UserGet(UserID);
         }
 
         public static User UserGet(string Email)
         {
-            return (DAL.FirebirdDB.UserGet(Email.Trim()));
+            return DAL.FirebirdDB.UserGet(Email.Trim());
         }
 
         public static User UserGet(string Email, string Password)
         {
             if (String.IsNullOrEmpty(Email) || String.IsNullOrEmpty(Password))
-                return (null);
+                return null;
 
-            return (DAL.FirebirdDB.UserGet(Email.Trim(), Password.Trim()));
+            return DAL.FirebirdDB.UserGet(Email.Trim(), Password.Trim());
         }
 
         public static Users UserSearch(string FirstName, string LastName, string Email)
         {
-            return (DAL.FirebirdDB.UserSearch(FirstName.Trim(), LastName.Trim(), Email.Trim()));
+            return DAL.FirebirdDB.UserSearch(FirstName.Trim(), LastName.Trim(), Email.Trim());
         }
 
         public static Users UserSearch(string FirstName, string LastName, string Email, string telephone, int MaxRecords)
         {
-            return (DAL.FirebirdDB.UserSearch(FirstName.Trim(), LastName.Trim(), Email.Trim(), telephone.Trim(), MaxRecords));
+            return DAL.FirebirdDB.UserSearch(FirstName.Trim(), LastName.Trim(), Email.Trim(), telephone.Trim(), MaxRecords);
         }
 
         public static User UserCreateAccount(string FirstName, string Surname, string Telephone, string EMail, string Password,
@@ -1287,12 +1287,12 @@ namespace SharedBase.BOL.Users
             Hooks.Hooks.HookNotification(HookEvent.UserAccountCreated,
                 String.Format("User Name: {0} {1}; Email: {2}", FirstName, Surname, EMail));
 
-            return (Result);
+            return Result;
         }
 
         public static bool UserLogUserOn(User user)
         {
-            return (DAL.FirebirdDB.UserLogUserOn(user));
+            return DAL.FirebirdDB.UserLogUserOn(user);
         }
 
         /// <summary>
@@ -1312,7 +1312,7 @@ namespace SharedBase.BOL.Users
                 DAL.DALHelper.InternalCache.Add(STAFF_CACHE, staff, true);
             }
 
-            return ((Users)staff.Value);
+            return (Users)staff.Value;
         }
 
         /// <summary>
@@ -1321,7 +1321,7 @@ namespace SharedBase.BOL.Users
         /// <returns>Users Collection</returns>
         public static Users SalonOwners()
         {
-            return (DAL.FirebirdDB.UserGetSalonOwners());
+            return DAL.FirebirdDB.UserGetSalonOwners();
         }
 
         #endregion Static Methods
@@ -1349,7 +1349,7 @@ namespace SharedBase.BOL.Users
 
         public override string ToString()
         {
-            return (String.Format("User: {0}; Username: {1}", ID, UserName));
+            return String.Format("User: {0}; Username: {1}", ID, UserName);
         }
 
         #endregion Overridden Methods

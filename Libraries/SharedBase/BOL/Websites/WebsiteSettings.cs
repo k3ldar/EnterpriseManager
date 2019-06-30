@@ -523,7 +523,7 @@ namespace SharedBase.BOL.Websites
                     return (true);
 #endif
 
-                return (false);
+                return false;
             }
 
             public static void Initialise()
@@ -963,7 +963,7 @@ namespace SharedBase.BOL.Websites
             {
                 get
                 {
-                    return (_allowWebsiteGeoUpdate);
+                    return _allowWebsiteGeoUpdate;
                 }
 
                 set
@@ -1016,7 +1016,7 @@ namespace SharedBase.BOL.Websites
                 //ignore, default setting already set above;
             }
 
-            return (Result);
+            return Result;
         }
 
         public static decimal ConfigSettingGet(string name, decimal defaultValue, int websiteID, bool isGlobal = false)
@@ -1040,7 +1040,7 @@ namespace SharedBase.BOL.Websites
                 //ignore, default setting already set above;
             }
 
-            return (Result);
+            return Result;
         }
 
         public static double ConfigSettingGet(string name, double defaultValue, int websiteID, bool isGlobal = false)
@@ -1064,7 +1064,7 @@ namespace SharedBase.BOL.Websites
                 //ignore, default setting already set above;
             }
 
-            return (Result);
+            return Result;
         }
 
         public static int ConfigSettingGet(string name, int defaultValue, int websiteID, bool isGlobal = false)
@@ -1088,7 +1088,7 @@ namespace SharedBase.BOL.Websites
                 //ignore, default setting already set above;
             }
 
-            return (Result);
+            return Result;
         }
 
         public static bool ConfigSettingGet(string name, bool defaultValue, int websiteID, bool isGlobal = false)
@@ -1119,7 +1119,7 @@ namespace SharedBase.BOL.Websites
                 //ignore, default setting already set above;
             }
 
-            return (Result);
+            return Result;
         }
 
         public static string ConfigSettingGet(string name, string defaultValue, int websiteID, bool isGlobal = false)
@@ -1146,7 +1146,7 @@ namespace SharedBase.BOL.Websites
                 //ignore, default setting already set above;
             }
 
-            return (Result);
+            return Result;
         }
 
         public static bool ConfigSettingExists(string name, int websiteID, bool isGlobal = false)
@@ -1159,7 +1159,7 @@ namespace SharedBase.BOL.Websites
             if (keyName.Length > 50)
                 keyName = keyName.Substring(0, 50);
 
-            return (LibraryHelperClass.SettingsExist(keyName));
+            return LibraryHelperClass.SettingsExist(keyName);
         }
 
         public static void ConfigSettingSet(string name, decimal value, int websiteID, bool isGlobal = false)
@@ -1631,7 +1631,7 @@ namespace SharedBase.BOL.Websites
             Result = true;
 
 
-            return (Result);
+            return Result;
         }
 
         #endregion Configuration Settings

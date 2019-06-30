@@ -36,12 +36,12 @@ namespace SharedBase.BOL.Export
 
         public static ExportableItems Get()
         {
-            return (DAL.FirebirdDB.ImportExportGetConfig());
+            return DAL.FirebirdDB.ImportExportGetConfig();
         }
 
         public static ExportableItems Get(string tableName)
         {
-            return (DAL.FirebirdDB.ImportExportGetConfig(tableName));
+            return DAL.FirebirdDB.ImportExportGetConfig(tableName);
         }
 
         #endregion Static Methods
@@ -59,7 +59,7 @@ namespace SharedBase.BOL.Export
         {
             get
             {
-                return ((ExportItem)this.InnerList[Index]);
+                return (ExportItem)this.InnerList[Index];
             }
 
             set
@@ -79,7 +79,7 @@ namespace SharedBase.BOL.Export
         /// <returns></returns>
         public int Add(ExportItem value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace SharedBase.BOL.Export
         /// <returns></returns>
         public int IndexOf(ExportItem value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace SharedBase.BOL.Export
         public bool Contains(ExportItem value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

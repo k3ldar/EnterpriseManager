@@ -65,7 +65,7 @@ namespace SharedBase.BOL.Invoices
         {
             get
             {
-                return (_quantity);
+                return _quantity;
             }
 
             set

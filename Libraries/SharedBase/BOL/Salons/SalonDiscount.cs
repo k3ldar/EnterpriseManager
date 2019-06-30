@@ -64,7 +64,7 @@ namespace SharedBase.BOL.Salons
         {
             get
             {
-                return (_id);
+                return _id;
             }
         }
 
@@ -72,7 +72,7 @@ namespace SharedBase.BOL.Salons
         {
             get
             {
-                return (_salon);
+                return _salon;
             }
         }
 
@@ -80,7 +80,7 @@ namespace SharedBase.BOL.Salons
         {
             get
             {
-                return (_salonDiscount);
+                return _salonDiscount;
             }
 
             set
@@ -93,7 +93,7 @@ namespace SharedBase.BOL.Salons
         {
             get
             {
-                return (_customerDiscount);
+                return _customerDiscount;
             }
 
             set
@@ -106,7 +106,7 @@ namespace SharedBase.BOL.Salons
         {
             get
             {
-                return (_couponCode);
+                return _couponCode;
             }
 
             set
@@ -132,12 +132,12 @@ namespace SharedBase.BOL.Salons
             SalonDiscount Result = null;
 
 
-            return (Result);
+            return Result;
         }
 
         public static SalonDiscount Get(string CouponCode)
         {
-            return (DAL.FirebirdDB.SalonDiscountGet(CouponCode));
+            return DAL.FirebirdDB.SalonDiscountGet(CouponCode);
         }
 
         #endregion Static Methods

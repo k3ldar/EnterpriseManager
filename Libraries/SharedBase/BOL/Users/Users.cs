@@ -63,7 +63,7 @@ namespace SharedBase.BOL.Users
                 break;
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Public Methods
@@ -72,7 +72,7 @@ namespace SharedBase.BOL.Users
 
         public static Users Get(HookEvent hookEvent)
         {
-            return (DAL.FirebirdDB.UsersGet(hookEvent));
+            return DAL.FirebirdDB.UsersGet(hookEvent);
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace SharedBase.BOL.Users
         /// <returns>Users collection</returns>
         public static Users Get(Progress progress)
         {
-            return (DAL.FirebirdDB.UsersGet(progress));
+            return DAL.FirebirdDB.UsersGet(progress);
         }
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace SharedBase.BOL.Users
         {
             get
             {
-                return ((User)this.InnerList[Index]);
+                return (User)this.InnerList[Index];
             }
 
             set
@@ -147,7 +147,7 @@ namespace SharedBase.BOL.Users
         /// <returns></returns>
         public int Add(User value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace SharedBase.BOL.Users
         /// <returns></returns>
         public int IndexOf(User value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -189,7 +189,7 @@ namespace SharedBase.BOL.Users
         public bool Contains(User value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

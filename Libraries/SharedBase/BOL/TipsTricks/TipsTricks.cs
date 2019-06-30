@@ -43,7 +43,7 @@ namespace SharedBase.BOL.TipsTricks
         /// <returns>int - Count of Tips & Tricks</returns>
         public static int GetCount()
         {
-            return (DAL.FirebirdDB.TipsTricksCount());
+            return DAL.FirebirdDB.TipsTricksCount();
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace SharedBase.BOL.TipsTricks
         /// <returns>TipsTricks collection</returns>
         public static TipsTricks Get(int PageNumber, int PageSize)
         {
-            return (DAL.FirebirdDB.TipsTricksGet(PageNumber, PageSize));
+            return DAL.FirebirdDB.TipsTricksGet(PageNumber, PageSize);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace SharedBase.BOL.TipsTricks
         /// <returns>TipsTrick object if found, otherwise null</returns>
         public static TipsTrick Get(int TipID)
         {
-            return (DAL.FirebirdDB.TipsTrickGet(TipID));
+            return DAL.FirebirdDB.TipsTrickGet(TipID);
         }
 
         #endregion Static Methods
@@ -85,7 +85,7 @@ namespace SharedBase.BOL.TipsTricks
                 break;
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Public Methods
@@ -98,7 +98,7 @@ namespace SharedBase.BOL.TipsTricks
         {
             get
             {
-                return ((TipsTrick)this.InnerList[Index]);
+                return (TipsTrick)this.InnerList[Index];
             }
 
             set
@@ -118,7 +118,7 @@ namespace SharedBase.BOL.TipsTricks
         /// <returns></returns>
         public int Add(TipsTrick value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -128,7 +128,7 @@ namespace SharedBase.BOL.TipsTricks
         /// <returns></returns>
         public int IndexOf(TipsTrick value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -160,7 +160,7 @@ namespace SharedBase.BOL.TipsTricks
         public bool Contains(TipsTrick value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

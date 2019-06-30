@@ -96,7 +96,7 @@ namespace SharedBase.BOL.Appointments
 		/// </summary>
 		public override string ToString()
 		{
-			return (String.Format("WS_WAIT_LIST_LONG_TO_TREAT Record {0}", ID));
+			return String.Format("WS_WAIT_LIST_LONG_TO_TREAT Record {0}", ID);
 		}
 
 		#endregion Overridden Methods

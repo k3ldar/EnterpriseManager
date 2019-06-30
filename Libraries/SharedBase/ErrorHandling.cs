@@ -49,7 +49,7 @@ namespace SharedBase
         {
             // hack for local development
             if (System.IO.File.Exists("T:\\IgnoreLogging.txt"))
-                return (true);
+                return true;
 
             ParameterInfo[] parms = method.GetParameters();
             string parameters = String.Empty;
@@ -65,7 +65,7 @@ namespace SharedBase
             bool Result = RaiseInternalException(method.Name, ex.Message, ex.Source == null ? "null" : ex.Source.ToString(), parameters,
                 ex.StackTrace == null ? "No Stack Trace" : ex.StackTrace.ToString());
 
-            return (Result);
+            return Result;
         }
 
 
@@ -89,7 +89,7 @@ namespace SharedBase
                     parameters += String.Format("{0}\r\n", values[i]);
             }
 
-            return (RaiseInternalException(method.Name, error, "null", parameters, "No Stack Trace"));
+            return RaiseInternalException(method.Name, error, "null", parameters, "No Stack Trace");
         }
 
         #endregion Log Errors
@@ -114,7 +114,7 @@ namespace SharedBase
             if (InternalException != null)
                 InternalException(null, args);
 
-            return (args.IgnoreError);
+            return args.IgnoreError;
         }
 
         #endregion Internal Methods

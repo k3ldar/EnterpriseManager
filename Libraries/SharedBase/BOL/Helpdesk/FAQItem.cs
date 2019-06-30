@@ -61,7 +61,7 @@ namespace SharedBase.BOL.Helpdesk
         {
             get
             {
-                return (_id);
+                return _id;
             }
         }
 
@@ -69,7 +69,7 @@ namespace SharedBase.BOL.Helpdesk
         {
             get
             {
-                return (_description);
+                return _description;
             }
 
             set
@@ -82,7 +82,7 @@ namespace SharedBase.BOL.Helpdesk
         {
             get
             {
-                return (_parent);
+                return _parent;
             }
 
             set
@@ -95,7 +95,7 @@ namespace SharedBase.BOL.Helpdesk
         {
             get
             {
-                return (_viewCount);
+                return _viewCount;
             }
 
             set
@@ -109,7 +109,7 @@ namespace SharedBase.BOL.Helpdesk
         {
             get
             {
-                return (_content);
+                return _content;
             }
 
             set
@@ -119,7 +119,6 @@ namespace SharedBase.BOL.Helpdesk
         }
 
         #endregion Properties
-
 
         #region Public Methods
 

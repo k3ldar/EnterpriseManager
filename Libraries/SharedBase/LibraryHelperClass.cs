@@ -48,7 +48,7 @@ namespace SharedBase
         {
             get
             {
-                return (DAL.DALHelper.Path);
+                return DAL.DALHelper.Path;
             }
         }
 
@@ -58,7 +58,7 @@ namespace SharedBase
 
         public string GetPopupData(int PopupID, out string Title)
         {
-            return (DAL.FirebirdDB.GetPopupData(PopupID, out Title));
+            return DAL.FirebirdDB.GetPopupData(PopupID, out Title);
         }
 
         #endregion Popup
@@ -74,7 +74,7 @@ namespace SharedBase
 
         public static Int64 GetBasketID(int increment)
         {
-            return (DAL.FirebirdDB.BasketGetNextID(increment));
+            return DAL.FirebirdDB.BasketGetNextID(increment);
         }
 
         public static void ResetCache()
@@ -88,12 +88,12 @@ namespace SharedBase
             CacheItem item = DAL.DALHelper.InternalCache.Get(META_CACHE_NAME);
 
             if (item != null)
-                return ((string)item.Value);
+                return (string)item.Value;
 
             item = new CacheItem(META_CACHE_NAME, SettingsGetMeta("META_KEYWORDS"));
             DAL.DALHelper.InternalCache.Add(META_CACHE_NAME, item, true);
 
-            return ((string)item.Value);
+            return (string)item.Value;
         }
 
         #region IP Addresses
@@ -102,7 +102,7 @@ namespace SharedBase
             out int Unchanged, out int Added, out int Unknown, out Int64 NewVersion)
         {
             string GeoPath = System.IO.Path.GetDirectoryName(GeoFile);
-            return (DAL.FirebirdDB.IPAddressToCountryProcessFile(GeoPath, GeoFile, GeoTempTable, out Updated, out Unchanged, out Added, out Unknown, out NewVersion));
+            return DAL.FirebirdDB.IPAddressToCountryProcessFile(GeoPath, GeoFile, GeoTempTable, out Updated, out Unchanged, out Added, out Unknown, out NewVersion);
 
             //if (Updated > 0)
                 
@@ -110,7 +110,7 @@ namespace SharedBase
 
         public static string IPAddressToCountryVersion(Int64 version)
         {
-            return (DAL.FirebirdDB.IPAddressToCountryCreateUpdateSQL(version));
+            return DAL.FirebirdDB.IPAddressToCountryCreateUpdateSQL(version);
         }
 
         public static string IPAddressToCountry(string IPAddress)
@@ -123,22 +123,22 @@ namespace SharedBase
                 CacheItem item = DAL.DALHelper.InternalCache.Get(IPAddress);
 
                 if (item != null)
-                    return (((IPAddressData)item.Value).CountryCode);
+                    return ((IPAddressData)item.Value).CountryCode;
 
                 item = new CacheItem(IPAddress, new IPAddressData(IPAddress,
                         DAL.FirebirdDB.IPAddressToCountry(IPAddress),
                         false));
                 DAL.DALHelper.InternalCache.Add(IPAddress, item, true);
 
-                return (((IPAddressData)item.Value).CountryCode);
+                return ((IPAddressData)item.Value).CountryCode;
             }
 
-            return (DAL.FirebirdDB.IPAddressToCountry(IPAddress));
+            return DAL.FirebirdDB.IPAddressToCountry(IPAddress);
         }
 
         public static string IPAddressToCountryA(string IPAddress)
         {
-            return (DAL.FirebirdDB.IPAddressToCountryA(IPAddress));
+            return DAL.FirebirdDB.IPAddressToCountryA(IPAddress);
         }
 
         public static bool IPAddressIsBanned(string IPAddress, out int BanType)
@@ -151,14 +151,14 @@ namespace SharedBase
             CacheItem item = DAL.DALHelper.InternalCache.Get(IPAddress);
 
             if (item != null)
-                return (((IPAddressData)item.Value).IsBanned);
+                return ((IPAddressData)item.Value).IsBanned;
 
             item = new CacheItem(IPAddress, new IPAddressData(IPAddress,
                     DAL.FirebirdDB.IPAddressToCountry(IPAddress),
                     DAL.FirebirdDB.IPAddressIsBanned(IPAddress, out BanType)));
             DAL.DALHelper.InternalCache.Add(IPAddress, item, true);
 
-            return (((IPAddressData)item.Value).IsBanned);
+            return ((IPAddressData)item.Value).IsBanned;
         }
 
         #endregion IP Addresses
@@ -177,7 +177,7 @@ namespace SharedBase
 
             _initialised = true;
 
-            return (_initialised);
+            return _initialised;
         }
 
         public static bool SettingsExist(string name)
@@ -189,28 +189,28 @@ namespace SharedBase
                 CacheItem item = DAL.DALHelper.InternalCache.Get(cacheName);
 
                 if (item != null)
-                    return (true);
+                    return true;
 
                 bool value = DAL.FirebirdDB.SettingsExist(name);
 
                 DAL.DALHelper.InternalCache.Add(cacheName, new CacheItem(name, value));
 
-                return (value);
+                return value;
             }
             else
             {
-                return (DAL.FirebirdDB.SettingsExist(name));
+                return DAL.FirebirdDB.SettingsExist(name);
             }
         }
 
         public static double SettingsGetDouble(string name, double defaultValue)
         {
-            return (Convert.ToDouble(SettingsGet(name, defaultValue.ToString())));
+            return Convert.ToDouble(SettingsGet(name, defaultValue.ToString()));
         }
 
         public static int SettingsGetInt(string name, int defaultValue)
         {
-            return (Convert.ToInt32(SettingsGet(name, defaultValue.ToString())));
+            return Convert.ToInt32(SettingsGet(name, defaultValue.ToString()));
         }
 
         public static bool SettingsGetBool(string Name, bool defaultValue)
@@ -225,7 +225,7 @@ namespace SharedBase
                     break;
             }
 
-            return (Result);
+            return Result;
         }
 
         public static void SettingsSetMeta(string Name, string value)
@@ -250,10 +250,10 @@ namespace SharedBase
                 CacheItem item = DAL.DALHelper.InternalCache.Get(cacheName);
 
                 if (item != null)
-                    return ((string)item.Value);
+                    return (string)item.Value;
 
                 if (_initialised)
-                    return (defaultValue);
+                    return defaultValue;
             }
 
             name = name.ToUpper();
@@ -268,7 +268,7 @@ namespace SharedBase
                 DAL.DALHelper.InternalCache.Add(cacheName, new CacheItem(cacheName, Result));
             }
 
-            return (Result);
+            return Result;
         }
 
         public static string SettingsGet(string name, string defaultValue = "")
@@ -280,9 +280,9 @@ namespace SharedBase
                 CacheItem item = DAL.DALHelper.InternalCache.Get(cacheName);
 
                 if (item != null)
-                    return ((string)item.Value);
+                    return (string)item.Value;
                 else if (_initialised)
-                    return (defaultValue);
+                    return defaultValue;
             }
 
             name = name.ToUpper();
@@ -305,7 +305,7 @@ namespace SharedBase
                 // do nothing, the default will be returned
             }
 
-            return (Result);
+            return Result;
         }
 
         public static DateTime SettingsGetDateTime(string name, DateTime defaultValue)
@@ -313,17 +313,17 @@ namespace SharedBase
             string date = SettingsGet(name, Shared.Utilities.DateTimeToStr(defaultValue, "en-GB"));
             try
             {
-                return (Shared.Utilities.StrToDateTime(date));
+                return Shared.Utilities.StrToDateTime(date);
             }
             catch
             {
-                return (defaultValue);
+                return defaultValue;
             }
         }
 
         public static decimal SettingsGetDecimal(string name, decimal defaultValue)
         {
-            return (Convert.ToDecimal(SettingsGet(name, defaultValue.ToString())));
+            return Convert.ToDecimal(SettingsGet(name, defaultValue.ToString()));
         }
 
         public static void SettingsSet(string Name, string Value)

@@ -70,7 +70,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_id);
+                return _id;
             }
         }
 
@@ -81,7 +81,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_description);
+                return _description;
             }
         }
 
@@ -92,7 +92,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_dateStart);
+                return _dateStart;
             }
         }
 
@@ -103,7 +103,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return (_dateEnd);
+                return _dateEnd;
             }
         }
 
@@ -114,7 +114,7 @@ namespace SharedBase.BOL.Appointments
 
         public override string ToString()
         {
-            return (String.Format("SpecialDate: {0}; Description: {1}", ID, Description));
+            return String.Format("SpecialDate: {0}; Description: {1}", ID, Description);
         }
 
         #endregion Overridden Methods

@@ -52,7 +52,7 @@ namespace SharedBase.BOL.StockControl
             if (Result != null)
                 this.Add(Result);
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace SharedBase.BOL.StockControl
         {
             get
             {
-                return ((CreateStockItem)this.InnerList[Index]);
+                return (CreateStockItem)this.InnerList[Index];
             }
 
             set
@@ -111,7 +111,7 @@ namespace SharedBase.BOL.StockControl
         /// <returns></returns>
         public int Add(CreateStockItem value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace SharedBase.BOL.StockControl
         /// <returns></returns>
         public int IndexOf(CreateStockItem value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -153,7 +153,7 @@ namespace SharedBase.BOL.StockControl
         public bool Contains(CreateStockItem value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

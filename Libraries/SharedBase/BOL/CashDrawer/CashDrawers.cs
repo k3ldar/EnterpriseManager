@@ -51,18 +51,18 @@ namespace SharedBase.BOL.CashDrawer
 
         public static bool StartOfDayComplete(CashDrawerType type)
         {
-            return (DAL.FirebirdDB.CashDrawerDailyStartComplete(type));
+            return DAL.FirebirdDB.CashDrawerDailyStartComplete(type);
         }
 
         public static bool CheckedInLast10Minutes()
         {
-            return (DAL.FirebirdDB.CashDrawer10MinuteCheck());
+            return DAL.FirebirdDB.CashDrawer10MinuteCheck();
         }
 
         public static string CurrentStatus(int storeID, Countries.Country country,
             Currency currency, DateTime date, CashDrawerType type)
         {
-            return (DAL.FirebirdDB.CashDrawerVerify(storeID, country, currency, date, type));
+            return DAL.FirebirdDB.CashDrawerVerify(storeID, country, currency, date, type);
         }
 
         #endregion Static Methods

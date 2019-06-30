@@ -57,7 +57,7 @@ namespace SharedBase.BOL.Helpdesk
         {
             get
             {
-                return (_ID);
+                return _ID;
             }
         }
 
@@ -65,7 +65,7 @@ namespace SharedBase.BOL.Helpdesk
         {
             get
             {
-                return (_Description);
+                return _Description;
             }
         }
 

@@ -108,7 +108,7 @@ namespace SharedBase.BOL.Mail
 
             Result = Result.Replace("[PRODUCTID]", product.ID.ToString());
 
-            return (Result);
+            return Result;
         }
 
         public string Format(User user, StockItem stockItem, Product product, bool convertToHtml = true)
@@ -118,7 +118,7 @@ namespace SharedBase.BOL.Mail
             Result = Result.Replace("[STOCKITEM]", stockItem.ID.ToString());
             Result = Result.Replace("[PRODUCTID]", product.ID.ToString());
 
-            return (Result);
+            return Result;
         }
 
         public string Format(User user, bool convertToHtml = true)
@@ -127,7 +127,7 @@ namespace SharedBase.BOL.Mail
 
             Result = Result.Replace("[PASSWORD]", user.Password);
 
-            return (Result);
+            return Result;
         }
 
         public string Format(Invoice invoice, bool convertToHtml = true)
@@ -136,7 +136,7 @@ namespace SharedBase.BOL.Mail
 
             Result = Result.Replace("[INVOICENUMBER]", invoice.ID.ToString());
 
-            return (Result);
+            return Result;
         }
 
         public string Format(Order order, bool convertToHtml = true)
@@ -145,7 +145,7 @@ namespace SharedBase.BOL.Mail
 
             Result = Result.Replace("[ORDERNUMBER]", order.ID.ToString());
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -196,7 +196,7 @@ namespace SharedBase.BOL.Mail
             }
 
             if (!convertToHtml)
-                return (message);
+                return message;
             
             string Result = String.Format("<html><head><link href=\"{0}/styles/email.css\" type=\"text/css\" rel=\"stylesheet\" />" +
                 "</head><body bgColor=\"#ffffff\">" +
@@ -220,7 +220,7 @@ namespace SharedBase.BOL.Mail
 
             Result = Result.Replace("\r\n", "<br />");
 
-            return (Result);
+            return Result;
         }
 
         #endregion Private Methods

@@ -83,7 +83,7 @@ namespace SharedBase.BOL.Users
         /// <returns></returns>
         public override string ToString()
         {
-            return (String.Format("CreditCard - ID: {0}; Last4: {1}; User: {2}", ID, Last4Digits, Member.ToString()));
+            return String.Format("CreditCard - ID: {0}; Last4: {1}; User: {2}", ID, Last4Digits, Member.ToString());
         }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace SharedBase.BOL.Users
 
 #warning every time card is decrypted, log the decryption date time, user and who's card
 
-            return (Result);
+            return Result;
         }
 
         public bool CardStillValied()
@@ -126,7 +126,7 @@ namespace SharedBase.BOL.Users
             DateTime fromDate = new DateTime(yearFrom + 2000, monthFrom, 18);
             DateTime toDate = new DateTime(yearTo + 2000, monthTo, 18);
 
-            return (toDate >= fromDate && toDate > DateTime.Now);
+            return toDate >= fromDate && toDate > DateTime.Now;
         }
 
         #endregion Public Methods

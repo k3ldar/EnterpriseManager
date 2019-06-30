@@ -48,7 +48,7 @@ namespace SharedBase.BOL.Downloads
         /// <returns>Download</returns>
         public static Download Create(string FileName, string Description)
         {
-            return (DAL.FirebirdDB.DownloadCreate(FileName, Description));
+            return DAL.FirebirdDB.DownloadCreate(FileName, Description);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace SharedBase.BOL.Downloads
         /// <returns></returns>
         public static int GetCount(int DownloadType, bool isActive)
         {
-            return (DAL.FirebirdDB.DownloadCount(DownloadType, isActive));
+            return DAL.FirebirdDB.DownloadCount(DownloadType, isActive);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace SharedBase.BOL.Downloads
         /// <returns></returns>
         public static Downloads Get(int PageSize, int PageNumber, int DownloadType)
         {
-            return (DAL.FirebirdDB.DownloadsGet(PageSize, PageNumber, DownloadType));
+            return DAL.FirebirdDB.DownloadsGet(PageSize, PageNumber, DownloadType);
         }
 
         /// <summary>
@@ -85,11 +85,11 @@ namespace SharedBase.BOL.Downloads
             {
                 if (download.ID == downloadID)
                 {
-                    return (download);
+                    return download;
                 }
             }
 
-            return (null);
+            return null;
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace SharedBase.BOL.Downloads
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Public Methods
@@ -136,7 +136,7 @@ namespace SharedBase.BOL.Downloads
         {
             get
             {
-                return ((Download)this.InnerList[Index]);
+                return (Download)this.InnerList[Index];
             }
 
             set
@@ -156,7 +156,7 @@ namespace SharedBase.BOL.Downloads
         /// <returns></returns>
         public int Add(Download value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -166,7 +166,7 @@ namespace SharedBase.BOL.Downloads
         /// <returns></returns>
         public int IndexOf(Download value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -198,7 +198,7 @@ namespace SharedBase.BOL.Downloads
         public bool Contains(Download value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

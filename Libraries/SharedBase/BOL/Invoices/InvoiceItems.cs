@@ -58,14 +58,14 @@ namespace SharedBase.BOL.Invoices
                 break;
             }
 
-            return (Result);
+            return Result;
         }
         
         public string SubTotalStr
         {
             get
             {
-                return (SharedUtils.FormatMoney(SubTotal, _invoice.Currency, false, true));
+                return SharedUtils.FormatMoney(SubTotal, _invoice.Currency, false, true);
             }
         }
 
@@ -80,7 +80,7 @@ namespace SharedBase.BOL.Invoices
                     Result += item.Price;
                 }
 
-                return (Result);
+                return Result;
             }
         }
 
@@ -94,7 +94,7 @@ namespace SharedBase.BOL.Invoices
         {
             get
             {
-                return ((InvoiceItem)this.InnerList[Index]);
+                return (InvoiceItem)this.InnerList[Index];
             }
 
             set
@@ -114,7 +114,7 @@ namespace SharedBase.BOL.Invoices
         /// <returns></returns>
         public int Add(InvoiceItem value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace SharedBase.BOL.Invoices
         /// <returns></returns>
         public int IndexOf(InvoiceItem value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -156,7 +156,7 @@ namespace SharedBase.BOL.Invoices
         public bool Contains(InvoiceItem value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

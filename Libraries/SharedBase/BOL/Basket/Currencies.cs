@@ -54,11 +54,11 @@ namespace SharedBase.BOL.Basket
             CacheItem item = DAL.DALHelper.InternalCache.Get(cacheName);
 
             if (item != null)
-                return ((Currency)item.Value);
+                return (Currency)item.Value;
 
             Currency Result = DAL.FirebirdDB.CurrenciesGetCurrency(currencyCode);
             DAL.DALHelper.InternalCache.Add(cacheName, new CacheItem(cacheName, Result));
-            return (Result);        
+            return Result;        
         }
 
 
@@ -69,12 +69,12 @@ namespace SharedBase.BOL.Basket
             CacheItem item = DAL.DALHelper.InternalCache.Get(cacheName);
 
             if (item != null)
-                return ((Currency)item.Value);
+                return (Currency)item.Value;
 
             Currency Result = DAL.FirebirdDB.CurrenciesGetCulture(culture);
 
             DAL.DALHelper.InternalCache.Add(cacheName, new CacheItem(cacheName, Result));
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace SharedBase.BOL.Basket
             CacheItem item = DAL.DALHelper.InternalCache.Get(cacheName);
 
             if (item != null)
-                return ((Currencies)item.Value);
+                return (Currencies)item.Value;
 
             Currencies Result = DAL.FirebirdDB.CurrenciesGetAll();
             DAL.DALHelper.InternalCache.Add(cacheName, new CacheItem(cacheName, Result));
@@ -101,7 +101,7 @@ namespace SharedBase.BOL.Basket
                     DAL.DALHelper.InternalCache.Add(cacheName, new CacheItem(cacheName, currency));
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Static Methods
@@ -119,7 +119,7 @@ namespace SharedBase.BOL.Basket
         {
             get
             {
-                return ((Currency)this.InnerList[Index]);
+                return (Currency)this.InnerList[Index];
             }
 
             set
@@ -139,7 +139,7 @@ namespace SharedBase.BOL.Basket
         /// <returns></returns>
         public int Add(Currency value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace SharedBase.BOL.Basket
         /// <returns></returns>
         public int IndexOf(Currency value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -181,7 +181,7 @@ namespace SharedBase.BOL.Basket
         public bool Contains(Currency value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

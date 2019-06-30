@@ -147,7 +147,7 @@ namespace SharedBase.BOL.Mail
 		{
 			get
 			{
-				return (emailSendtime);
+				return emailSendtime;
 			}
 			set
 			{

@@ -73,7 +73,7 @@ namespace SharedBase.BOL.Distributors
 
         public override string ToString()
         {
-            return (String.Format("Distributor: {0}; Name: {1}", ID, Name));
+            return String.Format("Distributor: {0}; Name: {1}", ID, Name);
         }
 
         #endregion Overridden Methods

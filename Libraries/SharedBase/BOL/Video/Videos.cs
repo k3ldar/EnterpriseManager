@@ -46,7 +46,7 @@ namespace SharedBase.BOL.Video
         {
             get
             {
-                return ((Video)this.InnerList[Index]);
+                return (Video)this.InnerList[Index];
             }
 
             set
@@ -66,7 +66,7 @@ namespace SharedBase.BOL.Video
         /// <returns></returns>
         public int Add(Video value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace SharedBase.BOL.Video
         /// <returns></returns>
         public int IndexOf(Video value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace SharedBase.BOL.Video
         public bool Contains(Video value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods
@@ -183,17 +183,17 @@ namespace SharedBase.BOL.Video
         /// <returns>Video Collection</returns>
         public static Videos Get()
         {
-            return (DAL.FirebirdDB.VideoGet());
+            return DAL.FirebirdDB.VideoGet();
         }
 
         public static Video Get(int ID)
         {
-            return (DAL.FirebirdDB.VideoGet(ID));
+            return DAL.FirebirdDB.VideoGet(ID);
         }
 
         public static int GetCount()
         {
-            return (DAL.FirebirdDB.VideoCount());
+            return DAL.FirebirdDB.VideoCount();
         }
 
         /// <summary>
@@ -216,7 +216,7 @@ namespace SharedBase.BOL.Video
             int id = DAL.FirebirdDB.VideoCreate(description, reference);
 
             Video Result = new Video(id, reference, description);
-            return (Result);
+            return Result;
         }
 
         #endregion Static Methods

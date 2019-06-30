@@ -42,7 +42,7 @@ namespace SharedBase.BOL.Training
         /// <returns>Attendees collection</returns>
         public static Attendees Get(Course course)
         {
-            return (DAL.FirebirdDB.TrainingCourseAttendeesGet(course));
+            return DAL.FirebirdDB.TrainingCourseAttendeesGet(course);
         }
 
         #endregion Static Methods
@@ -60,7 +60,7 @@ namespace SharedBase.BOL.Training
         {
             get
             {
-                return ((Attendee)this.InnerList[Index]);
+                return (Attendee)this.InnerList[Index];
             }
 
             set
@@ -80,7 +80,7 @@ namespace SharedBase.BOL.Training
         /// <returns></returns>
         public int Add(Attendee value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace SharedBase.BOL.Training
         /// <returns></returns>
         public int IndexOf(Attendee value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace SharedBase.BOL.Training
         public bool Contains(Attendee value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

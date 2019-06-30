@@ -41,17 +41,17 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AppSettings, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Applications\packages\ApplicationSettings.1.1.0\lib\net45\AppSettings.dll</HintPath>
+    <Reference Include="AppSettings, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Applications\packages\ApplicationSettings.1.2.0\lib\net45\AppSettings.dll</HintPath>
     </Reference>
-    <Reference Include="FirebirdSql.Data.FirebirdClient, Version=6.5.0.0, Culture=neutral, PublicKeyToken=3750abcc3150b00c, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Applications\packages\FirebirdSql.Data.FirebirdClient.6.5.0\lib\net452\FirebirdSql.Data.FirebirdClient.dll</HintPath>
+    <Reference Include="FirebirdSql.Data.FirebirdClient, Version=6.6.0.0, Culture=neutral, PublicKeyToken=3750abcc3150b00c, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Applications\packages\FirebirdSql.Data.FirebirdClient.6.6.0\lib\net452\FirebirdSql.Data.FirebirdClient.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=1.1.0.145, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>..\..\..\Applications\packages\SharpZipLib.1.1.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="Languages, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Applications\packages\AspNetCore.PluginManager.Languages.1.6.0\lib\net461\Languages.dll</HintPath>
+      <HintPath>..\..\..\Applications\packages\AspNetCore.PluginManager.Languages.2.3.0\lib\netstandard2.0\Languages.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNetCore.Antiforgery, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\..\..\Applications\packages\Microsoft.AspNetCore.Antiforgery.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Antiforgery.dll</HintPath>
@@ -267,11 +267,11 @@
     <Reference Include="SharedBaseCore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\Applications\packages\SharedBaseCore.3.8.1\lib\net461\SharedBaseCore.dll</HintPath>
     </Reference>
-    <Reference Include="SharedControls, Version=2.9.0.0, Culture=neutral, PublicKeyToken=eb57f133a9520019, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Applications\packages\SC.SharedControls.2.9.0\lib\net461\SharedControls.dll</HintPath>
+    <Reference Include="SharedControls, Version=2.9.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Applications\packages\SC.SharedControls.2.9.9\lib\net461\SharedControls.dll</HintPath>
     </Reference>
-    <Reference Include="SharedLib, Version=2.6.0.0, Culture=neutral, PublicKeyToken=f2ca6ac6cfa8c8da, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Applications\packages\SC.Shared.Library.Core.2.8.0\lib\net461\SharedLib.dll</HintPath>
+    <Reference Include="SharedLib, Version=0.0.0.0, Culture=neutral, PublicKeyToken=f2ca6ac6cfa8c8da, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Applications\packages\SC.Shared.Library.Core.2.9.4\lib\net461\SharedLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.AppContext, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -625,8 +625,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>..\..\..\..\..\GitProjects\Builds\NetBuildTools\Release\UpdateVersion.exe /out="$(ProjectDir)Properties\ver.txt" /$(ConfigurationName) /path="$(ProjectDir)
-..\..\..\..\..\GitProjects\Builds\NetBuildTools\Release\Build.Deploy.Util.exe  /CH="T:\ShifooMain\EnterpriseManagerLicence.txt" /chp="$(ProjectDir)\" /cht=".cs;" /chb /chi=".designer.cs"</PreBuildEvent>
+    <PreBuildEvent>c:\GitProjects\Builds\NetBuildTools\Release\UpdateVersion.exe /out="$(ProjectDir)Properties\ver.txt" /$(ConfigurationName) /path="$(ProjectDir)
+c:\GitProjects\Builds\NetBuildTools\Release\Build.Deploy.Util.exe  /CH="T:\ShifooMain\EnterpriseManagerLicence.txt" /chp="$(ProjectDir)\" /cht=".cs;" /chb /chi=".designer.cs"</PreBuildEvent>
   </PropertyGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

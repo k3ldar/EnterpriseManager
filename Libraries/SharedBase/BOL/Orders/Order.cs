@@ -122,7 +122,7 @@ namespace SharedBase.BOL.Orders
                     _currency.Multiplier = (decimal)CostMultiplier;
                 }
 
-                return (_currency);
+                return _currency;
             }
         }
 
@@ -130,7 +130,7 @@ namespace SharedBase.BOL.Orders
         {
             get
             {
-                return (_CostMultiplier);
+                return _CostMultiplier;
             }
         }
 
@@ -138,7 +138,7 @@ namespace SharedBase.BOL.Orders
         {
             get
             {
-                return (_CouponName);
+                return _CouponName;
             }
 
             set
@@ -154,7 +154,7 @@ namespace SharedBase.BOL.Orders
                 if (_OrderItems == null)
                     _OrderItems = DAL.FirebirdDB.OrderItemsGet(this);
 
-                return (_OrderItems);
+                return _OrderItems;
             }
         }
 
@@ -166,9 +166,9 @@ namespace SharedBase.BOL.Orders
                 {
                     case Consts.INVOICE_VERSION_VAT_ADD:
                     case Consts.INVOICE_VERSION_VAT_ADD_OPTIONS:
-                        return (_version);
+                        return _version;
                     default:
-                        return (_VATAmmount == -1 ? 0 : 1);
+                        return _VATAmmount == -1 ? 0 : 1;
                 }
             }
         }
@@ -180,7 +180,7 @@ namespace SharedBase.BOL.Orders
         {
             get
             {
-                return (_ID);
+                return _ID;
             }
         }
 
@@ -192,9 +192,9 @@ namespace SharedBase.BOL.Orders
             get
             {
                 if (LocalOrderNumber > 0)
-                    return (LocalOrderNumber);
+                    return LocalOrderNumber;
                 else
-                    return (_ID);
+                    return _ID;
             }
         }
 
@@ -205,7 +205,7 @@ namespace SharedBase.BOL.Orders
                 if (_User == null)
                     _User = DAL.FirebirdDB.UserGet(_UserID);
 
-                return (_User);
+                return _User;
             }
         }
 
@@ -213,7 +213,7 @@ namespace SharedBase.BOL.Orders
         {
             get
             {
-                return (_PurchaseDateTime);
+                return _PurchaseDateTime;
             }
         }
 
@@ -221,7 +221,7 @@ namespace SharedBase.BOL.Orders
         {
             get
             {
-                return (_TotalCost);
+                return _TotalCost;
             }
         }
 
@@ -229,7 +229,7 @@ namespace SharedBase.BOL.Orders
         {
             get
             {
-                return (_Status);
+                return _Status;
             }
 
             set
@@ -243,7 +243,7 @@ namespace SharedBase.BOL.Orders
         {
             get
             {
-                return (_ShippingCosts);
+                return _ShippingCosts;
             }
         }
 
@@ -251,7 +251,7 @@ namespace SharedBase.BOL.Orders
         {
             get
             {
-                return (_Discount);
+                return _Discount;
             }
         }
 
@@ -259,7 +259,7 @@ namespace SharedBase.BOL.Orders
         {
             get
             {
-                return (_ProcessStatus);
+                return _ProcessStatus;
             }
 
             //set
@@ -276,7 +276,7 @@ namespace SharedBase.BOL.Orders
                 if (_DeliveryAddress == null)
                     _DeliveryAddress = DAL.FirebirdDB.MembersAddressGet(_DeliveryAddressID);
 
-                return (_DeliveryAddress);
+                return _DeliveryAddress;
             }
         }
 
@@ -284,7 +284,7 @@ namespace SharedBase.BOL.Orders
         {
             get
             {
-                return (_ConversionRate);
+                return _ConversionRate;
             }
         }
 
@@ -292,7 +292,7 @@ namespace SharedBase.BOL.Orders
         {
             get
             {
-                return (_VATRate);
+                return _VATRate;
             }
         }
 
@@ -300,7 +300,7 @@ namespace SharedBase.BOL.Orders
         {
             get
             {
-                return (_Culture);
+                return _Culture;
             }
         }
 
@@ -308,7 +308,7 @@ namespace SharedBase.BOL.Orders
         {
             get
             {
-                return (_DiscountAmmount);
+                return _DiscountAmmount;
             }
         }
 
@@ -332,7 +332,7 @@ namespace SharedBase.BOL.Orders
                         break;
                 }
 
-                return (Result);
+                return Result;
             }
         }
 
@@ -340,7 +340,7 @@ namespace SharedBase.BOL.Orders
         {
             get
             {
-                return (_StoreID);
+                return _StoreID;
             }
         }
 
@@ -348,7 +348,7 @@ namespace SharedBase.BOL.Orders
         {
             get
             {
-                return (_TillID);
+                return _TillID;
             }
         }
 
@@ -359,7 +359,7 @@ namespace SharedBase.BOL.Orders
         {
             get
             {
-                return (_voucherType);
+                return _voucherType;
             }
         }
 
@@ -378,7 +378,7 @@ namespace SharedBase.BOL.Orders
         {
             get
             {
-                return (SharedUtils.FormatMoney(TotalCost, Currency, false, true));
+                return SharedUtils.FormatMoney(TotalCost, Currency, false, true);
             }
         }
 
@@ -386,7 +386,7 @@ namespace SharedBase.BOL.Orders
         {
             get
             {
-                return (SharedUtils.FormatMoney(ShippingCosts, Currency, false, true));
+                return SharedUtils.FormatMoney(ShippingCosts, Currency, false, true);
             }
         }
 
@@ -394,7 +394,7 @@ namespace SharedBase.BOL.Orders
         {
             get
             {
-                return (SharedUtils.FormatMoney(_subTotal, Currency));
+                return SharedUtils.FormatMoney(_subTotal, Currency);
             }
         }
 
@@ -402,7 +402,7 @@ namespace SharedBase.BOL.Orders
         {
             get
             {
-                return (SharedUtils.FormatMoney(DiscountAmount, Currency, false, true));
+                return SharedUtils.FormatMoney(DiscountAmount, Currency, false, true);
             }
         }
 
@@ -410,7 +410,7 @@ namespace SharedBase.BOL.Orders
         {
             get
             {
-                return (SharedUtils.FormatMoney(VATAmount, Currency, false, true));
+                return SharedUtils.FormatMoney(VATAmount, Currency, false, true);
             }
         }
 
@@ -421,7 +421,7 @@ namespace SharedBase.BOL.Orders
                 if (_orderCountry == null)
                     _orderCountry = Countries.Countries.Get(OriginalCountry);
 
-                return (_orderCountry);
+                return _orderCountry;
             }
         }
 
@@ -498,7 +498,7 @@ namespace SharedBase.BOL.Orders
 
         public override string ToString()
         {
-            return (String.Format("Order: {0}; User ID: {1}", ID, _UserID));
+            return String.Format("Order: {0}; User ID: {1}", ID, _UserID);
         }
 
         #endregion Overridden Methods

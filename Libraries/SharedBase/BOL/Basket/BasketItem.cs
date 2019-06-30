@@ -86,7 +86,7 @@ namespace SharedBase.BOL.Basket
         {
             get
             {
-                return (_itemID);
+                return _itemID;
             }
         }
 
@@ -94,7 +94,7 @@ namespace SharedBase.BOL.Basket
         {
             get
             {
-                return (_description);
+                return _description;
             }
 
             set
@@ -108,7 +108,7 @@ namespace SharedBase.BOL.Basket
         {
             get
             {
-                return (_quantity);
+                return _quantity;
             }
 
             set
@@ -125,7 +125,7 @@ namespace SharedBase.BOL.Basket
 
                 if (ProductDiscount > 0.00m)
                 {
-                    Result = Result - ((Result / 100) * ProductDiscount);
+                    Result = Result - (Result / 100 * ProductDiscount);
                 }
 
                 // if the product is excluded from the discount, move on...
@@ -136,7 +136,7 @@ namespace SharedBase.BOL.Basket
                     foreach (ProductCost cost in _basket.CouponUsed.ExcludedProducts)
                     {
                         if (cost.ID == this.ItemID)
-                            return (Result);
+                            return Result;
                     }
                 }
 
@@ -147,12 +147,12 @@ namespace SharedBase.BOL.Basket
                         _basket.VoucherType == Enums.InvoiceVoucherType.Percent &&  
                         _basket.Discount > 0))
                     {
-                        Result = Result - ((Result / 100) * _basket.Discount);
+                        Result = Result - (Result / 100 * _basket.Discount);
                     }
 
                     if (UserDiscount > 0.00m)
                     {
-                        Result = Result - ((Result / 100) * UserDiscount);
+                        Result = Result - (Result / 100 * UserDiscount);
                     }
                 }
                 else
@@ -169,11 +169,11 @@ namespace SharedBase.BOL.Basket
 
                     if (discountVal > 0.00m)
                     {
-                        Result = Result - ((Result / 100) * (discountVal));
+                        Result = Result - (Result / 100 * discountVal);
                     }
                 }
 
-                return (Result);
+                return Result;
             }
         }
 
@@ -181,7 +181,7 @@ namespace SharedBase.BOL.Basket
         {
             get
             {
-                return (_price);
+                return _price;
             }
 
             set
@@ -194,7 +194,7 @@ namespace SharedBase.BOL.Basket
         {
             get
             {
-                return (_Image);
+                return _Image;
             }
         }
 
@@ -202,7 +202,7 @@ namespace SharedBase.BOL.Basket
         {
             get
             {
-                return (_outOfStock);
+                return _outOfStock;
             }
         }
 
@@ -210,7 +210,7 @@ namespace SharedBase.BOL.Basket
         {
             get
             {
-                return (_itemType);
+                return _itemType;
             }
         }
 
@@ -218,7 +218,7 @@ namespace SharedBase.BOL.Basket
         {
             get
             {
-                return (_userID);
+                return _userID;
             }
 
             set
@@ -231,7 +231,7 @@ namespace SharedBase.BOL.Basket
         {
             get
             {
-                return (_productCostType);
+                return _productCostType;
             }
         }
 
@@ -240,7 +240,7 @@ namespace SharedBase.BOL.Basket
         {
             get
             {
-                return (BOL.Products.ProductCosts.Get(_itemID).Product);
+                return BOL.Products.ProductCosts.Get(_itemID).Product;
             }
         }
 
@@ -272,7 +272,7 @@ namespace SharedBase.BOL.Basket
                 //    Result = (price / 100) * (UserDiscount);
                 //}
 
-                return (Result);
+                return Result;
             }
         }
 
@@ -291,8 +291,8 @@ namespace SharedBase.BOL.Basket
 
         public override string ToString()
         {
-            return (String.Format("BasketItem: {0}; Description: {1}; Quantity: {2}; Price: {3}; ItemType: {4}", 
-                _itemID, _description, _quantity, _price, _itemType.ToString()));
+            return String.Format("BasketItem: {0}; Description: {1}; Quantity: {2}; Price: {3}; ItemType: {4}", 
+                _itemID, _description, _quantity, _price, _itemType.ToString());
         }
 
         #endregion Overridden Methods

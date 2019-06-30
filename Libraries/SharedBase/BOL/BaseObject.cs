@@ -75,7 +75,7 @@ namespace SharedBase.BOL
 		{
 			get
 			{
-				return (_isdirty);
+				return _isdirty;
 			}
 		}
 
@@ -83,7 +83,7 @@ namespace SharedBase.BOL
         {
             get
             {
-                return (DAL.DALHelper.StoreID);
+                return DAL.DALHelper.StoreID;
             }
         }
 
@@ -163,7 +163,7 @@ namespace SharedBase.BOL
         /// <returns></returns>
         protected static CacheItem CachedItemGet(string name)
         {
-            return (DAL.DALHelper.InternalCache.Get(name));
+            return DAL.DALHelper.InternalCache.Get(name);
         }
 
         /// <summary>
@@ -184,7 +184,7 @@ namespace SharedBase.BOL
         /// <returns></returns>
         protected static CacheItem CachedItemGetShort(string name)
         {
-            return (DAL.DALHelper.InternalCacheShort.Get(name));
+            return DAL.DALHelper.InternalCacheShort.Get(name);
         }
 
         /// <summary>
@@ -204,7 +204,7 @@ namespace SharedBase.BOL
         {
             get
             {
-                return (DAL.DALHelper.AllowCaching);
+                return DAL.DALHelper.AllowCaching;
             }
         }
 

@@ -45,7 +45,7 @@ namespace SharedBase.BOL.Campaigns
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Internal Methods
@@ -54,7 +54,7 @@ namespace SharedBase.BOL.Campaigns
 
         public static Campaigns GetWizard()
         {
-            return (DAL.FirebirdDB.CampaignsGetWizard());
+            return DAL.FirebirdDB.CampaignsGetWizard();
         }
 
         /// <summary>
@@ -64,12 +64,12 @@ namespace SharedBase.BOL.Campaigns
         /// Campaigns collection</returns>
         public static Campaigns Get()
         {
-            return (DAL.FirebirdDB.CampaignsGet());
+            return DAL.FirebirdDB.CampaignsGet();
         }
 
         public static Campaigns Active()
         {
-            return (DAL.FirebirdDB.CampaignsGetActive());
+            return DAL.FirebirdDB.CampaignsGetActive();
         }
 
         public static Campaign Create(string campaignName)
@@ -86,12 +86,12 @@ namespace SharedBase.BOL.Campaigns
             }
 
             // create the new campaign with a unique name
-            return (DAL.FirebirdDB.CampaignCreate(newName));
+            return DAL.FirebirdDB.CampaignCreate(newName);
         }
 
         public static bool CanSetReplicationStatus()
         {
-            return (DAL.FirebirdDB.CampaignsCanSetReplication());
+            return DAL.FirebirdDB.CampaignsCanSetReplication();
         }
 
         #endregion Static Methods
@@ -122,7 +122,7 @@ namespace SharedBase.BOL.Campaigns
         {
             get
             {
-                return ((Campaign)this.InnerList[Index]);
+                return (Campaign)this.InnerList[Index];
             }
 
             set
@@ -142,7 +142,7 @@ namespace SharedBase.BOL.Campaigns
         /// <returns></returns>
         public int Add(Campaign value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -152,7 +152,7 @@ namespace SharedBase.BOL.Campaigns
         /// <returns></returns>
         public int IndexOf(Campaign value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -184,7 +184,7 @@ namespace SharedBase.BOL.Campaigns
         public bool Contains(Campaign value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

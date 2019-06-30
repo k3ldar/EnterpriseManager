@@ -37,17 +37,17 @@ namespace SharedBase.BOL.Countries
 
         public static Double ShippingCosts(string CountryCode)
         {
-            return (DAL.FirebirdDB.GetShippingCosts(CountryCode));
+            return DAL.FirebirdDB.GetShippingCosts(CountryCode);
         }
 
         public static Double ShippingCosts(int UserID, int AddressID)
         {
-            return (DAL.FirebirdDB.GetShippingCosts(UserID, AddressID));
+            return DAL.FirebirdDB.GetShippingCosts(UserID, AddressID);
         }
 
         public static Double ShippingCostsDefault(string CountryCode)
         {
-            return (DAL.FirebirdDB.GetShippingCostsDefault(CountryCode));
+            return DAL.FirebirdDB.GetShippingCostsDefault(CountryCode);
         }
 
         public static Countries Get()
@@ -84,10 +84,10 @@ namespace SharedBase.BOL.Countries
                     }
                 }
 
-                return ((Countries)item.Value);
+                return (Countries)item.Value;
             }
 
-            return (DAL.FirebirdDB.CountriesGet());
+            return DAL.FirebirdDB.CountriesGet();
         }
 
         public static Country Get(int CountryID)
@@ -104,10 +104,10 @@ namespace SharedBase.BOL.Countries
                     DAL.DALHelper.InternalCache.Add(name, countryItem);
                 }
 
-                return ((Country)countryItem.Value);
+                return (Country)countryItem.Value;
             }
 
-            return (DAL.FirebirdDB.CountryGet(CountryID));
+            return DAL.FirebirdDB.CountryGet(CountryID);
         }
 
         /// <summary>
@@ -129,10 +129,10 @@ namespace SharedBase.BOL.Countries
                     DAL.DALHelper.InternalCache.Add(name, countryItem);
                 }
 
-                return ((Country)countryItem.Value);
+                return (Country)countryItem.Value;
             }
 
-            return (DAL.FirebirdDB.CountryGet(cultureInfo));
+            return DAL.FirebirdDB.CountryGet(cultureInfo);
         }
 
         public static Country Get(string CountryCode)
@@ -149,10 +149,10 @@ namespace SharedBase.BOL.Countries
                     DAL.DALHelper.InternalCache.Add(name, countryItem);
                 }
 
-                return ((Country)countryItem.Value);
+                return (Country)countryItem.Value;
             }
 
-            return (DAL.FirebirdDB.CountryGet(CountryCode));
+            return DAL.FirebirdDB.CountryGet(CountryCode);
         }
 
 
@@ -168,7 +168,7 @@ namespace SharedBase.BOL.Countries
                     Result.Add(country);
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Static Methods
@@ -186,7 +186,7 @@ namespace SharedBase.BOL.Countries
         {
             get
             {
-                return ((Country)this.InnerList[Index]);
+                return (Country)this.InnerList[Index];
             }
 
             set
@@ -206,7 +206,7 @@ namespace SharedBase.BOL.Countries
         /// <returns></returns>
         public int Add(Country value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -216,7 +216,7 @@ namespace SharedBase.BOL.Countries
         /// <returns></returns>
         public int IndexOf(Country value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -248,7 +248,7 @@ namespace SharedBase.BOL.Countries
         public bool Contains(Country value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

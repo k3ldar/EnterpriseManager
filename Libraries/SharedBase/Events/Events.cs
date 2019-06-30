@@ -114,7 +114,7 @@ namespace SharedBase.BOLEvents
         public int Max 
         {
             set { _max = value; }
-            get { return (_max); }
+            get { return _max; }
         }
 
         private int _percent;
@@ -122,7 +122,7 @@ namespace SharedBase.BOLEvents
         public int Percent
         {
             set { _percent = value; }
-            get { return (_percent); }
+            get { return _percent; }
         }
 
         public User User { get; internal set; }

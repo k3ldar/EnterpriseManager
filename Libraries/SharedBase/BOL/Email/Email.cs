@@ -168,7 +168,7 @@ namespace SharedBase.BOL.Mail
 		{
 			get
 			{
-				return (_subject.Replace("\r", " ").Replace("\n", " ").Replace("\r\n", " "));
+				return _subject.Replace("\r", " ").Replace("\n", " ").Replace("\r\n", " ");
 			}
 		}
 
@@ -179,7 +179,7 @@ namespace SharedBase.BOL.Mail
 		{
 			get
 			{
-				return (_username);
+				return _username;
 			}
 		}
 
@@ -190,7 +190,7 @@ namespace SharedBase.BOL.Mail
 		{
 			get
 			{
-				return (_message);
+				return _message;
 			}
 		}
 

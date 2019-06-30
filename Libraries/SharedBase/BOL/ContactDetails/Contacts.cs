@@ -47,7 +47,7 @@ namespace SharedBase.BOL.ContactDetails
 		/// <returns>Contact instance</returns>
 		public static Contact Create(string contactName, ContactDetailsType contactType, string contactValue)
 		{
-			return (DAL.FirebirdDB.ContactInsert(contactName, contactType, contactValue));
+			return DAL.FirebirdDB.ContactInsert(contactName, contactType, contactValue);
 		}
 
 		#endregion Static Methods
@@ -65,7 +65,7 @@ namespace SharedBase.BOL.ContactDetails
 		{
 			get
 			{
-				return ((Contact)this.InnerList[Index]);
+				return (Contact)this.InnerList[Index];
 			}
 
 			set
@@ -85,7 +85,7 @@ namespace SharedBase.BOL.ContactDetails
 		/// <returns></returns>
 		public int Add(Contact value)
 		{
-			return (List.Add(value));
+			return List.Add(value);
 		}
 
 		/// <summary>
@@ -95,7 +95,7 @@ namespace SharedBase.BOL.ContactDetails
 		/// <returns></returns>
 		public int IndexOf(Contact value)
 		{
-			return (List.IndexOf(value));
+			return List.IndexOf(value);
 		}
 
 		/// <summary>
@@ -127,7 +127,7 @@ namespace SharedBase.BOL.ContactDetails
 		public bool Contains(Contact value)
 		{
 			// If value is not of type OBJECT_TYPE, this will return false.
-			return (List.Contains(value));
+			return List.Contains(value);
 		}
 
 		#endregion Public Methods

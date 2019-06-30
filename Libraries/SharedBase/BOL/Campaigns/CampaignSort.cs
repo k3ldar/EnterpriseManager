@@ -49,19 +49,19 @@ namespace SharedBase.BOL.Campaigns
         int IComparer.Compare(object x, object y)
         {
             if (x == null || y == null)
-                return (0);
+                return 0;
 
             switch (SortType)
             {
                 case CampaignSortType.TopSpend:
-                    return (CompareSpend((Campaign)x, (Campaign)y));
+                    return CompareSpend((Campaign)x, (Campaign)y);
                 case CampaignSortType.TopVisits:
-                    return (CompareVisits((Campaign)x, (Campaign)y));
+                    return CompareVisits((Campaign)x, (Campaign)y);
                 case CampaignSortType.StartDateDescending:
-                    return (CompareStartDateDescending((Campaign)x, (Campaign)y));
+                    return CompareStartDateDescending((Campaign)x, (Campaign)y);
                 case CampaignSortType.StartDateAscending:
                 default:
-                    return (CompareStartDate((Campaign)x, (Campaign)y));
+                    return CompareStartDate((Campaign)x, (Campaign)y);
             }
         }
 
@@ -71,22 +71,22 @@ namespace SharedBase.BOL.Campaigns
 
         private int CompareStartDate(Campaign x, Campaign y)
         {
-            return (x.StartDateTime.CompareTo(y.StartDateTime));
+            return x.StartDateTime.CompareTo(y.StartDateTime);
         }
 
         private int CompareStartDateDescending(Campaign x, Campaign y)
         {
-            return (y.StartDateTime.CompareTo(x.StartDateTime));
+            return y.StartDateTime.CompareTo(x.StartDateTime);
         }
 
         private int CompareSpend(Campaign x, Campaign y)
         {
-            return (y.Sales.CompareTo(x.Sales));
+            return y.Sales.CompareTo(x.Sales);
         }
 
         private int CompareVisits(Campaign x, Campaign y)
         {
-            return (y.Visits.CompareTo(x.Visits));
+            return y.Visits.CompareTo(x.Visits);
         }
 
         #endregion Private Methods

@@ -49,7 +49,7 @@ namespace SharedBase.BOL.Coupons
         {
             get
             {
-                return ((Coupon)this.InnerList[Index]);
+                return (Coupon)this.InnerList[Index];
             }
 
             set
@@ -69,7 +69,7 @@ namespace SharedBase.BOL.Coupons
         /// <returns></returns>
         public int Add(Coupon value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace SharedBase.BOL.Coupons
         /// <returns></returns>
         public int IndexOf(Coupon value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace SharedBase.BOL.Coupons
         public bool Contains(Coupon value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods
@@ -187,22 +187,22 @@ namespace SharedBase.BOL.Coupons
         public static Coupons Get(bool IncludeUsers)
         {
             if (IncludeUsers)
-                return (DAL.FirebirdDB.AdminCouponsGet(1, 1000));
+                return DAL.FirebirdDB.AdminCouponsGet(1, 1000);
             else
-                return (DAL.FirebirdDB.AdminCouponsGet());
+                return DAL.FirebirdDB.AdminCouponsGet();
         }
 
         public static Coupon ValidateCoupon(string CouponCode)
         {
-            return (DAL.FirebirdDB.BasketValidateCouponCode(CouponCode));
+            return DAL.FirebirdDB.BasketValidateCouponCode(CouponCode);
         }
 
         public static Coupon Get(string CouponCode)
         {
             if (String.IsNullOrEmpty(CouponCode))
-                return (null);
+                return null;
             else
-                return (DAL.FirebirdDB.AdminCouponGet(CouponCode));
+                return DAL.FirebirdDB.AdminCouponGet(CouponCode);
         }
 
         public static Coupon CreateCoupon(string voucherCode, DateTime expires)
@@ -217,7 +217,7 @@ namespace SharedBase.BOL.Coupons
             Result.VoucherType = Enums.InvoiceVoucherType.SpecialOffer;
             Result.Save();
 
-            return (Result);
+            return Result;
         }
 
         public static ProductCost FreeProduct(string CouponCode)
@@ -234,7 +234,7 @@ namespace SharedBase.BOL.Coupons
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -276,7 +276,7 @@ namespace SharedBase.BOL.Coupons
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Static Methods

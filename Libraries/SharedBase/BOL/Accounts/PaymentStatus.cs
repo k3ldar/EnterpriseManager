@@ -24,8 +24,6 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SharedBase.BOL.Accounts
 {
@@ -118,7 +116,7 @@ namespace SharedBase.BOL.Accounts
 
         public override string ToString()
         {
-            return (Description);
+            return Description;
         }
 
         #endregion Overridden Methods

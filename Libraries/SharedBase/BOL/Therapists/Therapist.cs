@@ -112,9 +112,9 @@ namespace SharedBase.BOL.Therapists
         /// <returns></returns>
         public int EmployeeDuration()
         {
-            int Result = (int)Math.Round(((_EndTime - _StartTime) * 4) * 15, 0);
+            int Result = (int)Math.Round((_EndTime - _StartTime) * 4 * 15, 0);
 
-            return (Result);
+            return Result;
         }
 
         public override void Save()
@@ -163,7 +163,7 @@ namespace SharedBase.BOL.Therapists
                 }
             }
 
-            return (count > 0);
+            return count > 0;
         }
 
         /// <summary>
@@ -178,9 +178,9 @@ namespace SharedBase.BOL.Therapists
 
             // past date not allowed
             if (!ignorePast && (Date.Date < DateTime.Now.Date))
-                return (Result);
+                return Result;
 
-            if ((Time == 0.0) || (Time > 0.0 && (Time >= StartTime && Time < EndTime)))
+            if ((Time == 0.0) || (Time > 0.0 && Time >= StartTime && Time < EndTime))
             {
                 //check user options
                 switch (Date.DayOfWeek)
@@ -219,7 +219,7 @@ namespace SharedBase.BOL.Therapists
             if (!Result)
                 Result = WorkingDays.WorkingOverride(Date, out AllowTreatments);
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -266,7 +266,7 @@ namespace SharedBase.BOL.Therapists
                 duration += 15;
             }
 
-            return (Result);
+            return Result;
         }
         
         /// <summary>
@@ -281,7 +281,7 @@ namespace SharedBase.BOL.Therapists
             if (_workingDays == null)
                 _workingDays = DAL.FirebirdDB.TherapistsWorkingDaysGet(this);
 
-            return (_workingDays.WorkingOverride(workingDay, out start, out finish, out AllowTreatments));
+            return _workingDays.WorkingOverride(workingDay, out start, out finish, out AllowTreatments);
         }
 
         /// <summary>
@@ -298,7 +298,7 @@ namespace SharedBase.BOL.Therapists
             if (wDay != null && !wDay.AllowTreatments)
                 Result = false;
             
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -344,7 +344,7 @@ namespace SharedBase.BOL.Therapists
                 DateTime Start = Shared.Utilities.DoubleToDate(startDateTime, _StartTime);
                 DateTime Finish = Shared.Utilities.DoubleToDate(finishDateTime, _EndTime);
 
-                Result = (startDateTime >= Start && finishDateTime <= Finish);
+                Result = startDateTime >= Start && finishDateTime <= Finish;
             }
 
             if (!Result)
@@ -357,12 +357,12 @@ namespace SharedBase.BOL.Therapists
 
                 if (Result)
                 {
-                    Result = (startDateTime >= start && finishDateTime <= finish);
+                    Result = startDateTime >= start && finishDateTime <= finish;
                 }
 
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -389,7 +389,7 @@ namespace SharedBase.BOL.Therapists
             }
 
             Result = found == treatments.Count;
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -412,7 +412,7 @@ namespace SharedBase.BOL.Therapists
 
             if (starttime == finishtime)
             {
-                return (false);
+                return false;
             }
             else
             {
@@ -423,7 +423,7 @@ namespace SharedBase.BOL.Therapists
                     start += 0.25;
                 }
 
-                return (start < finishtime);
+                return start < finishtime;
             }
         }
 
@@ -454,7 +454,7 @@ namespace SharedBase.BOL.Therapists
                     double tempStart = start;
 
                     if (!WorkingDay(date, out tStartTime, out tEndTime, out tDuration))
-                        return (false);
+                        return false;
                     
                     //get first working slot
                     while (tempStart < tEndTime)
@@ -467,7 +467,7 @@ namespace SharedBase.BOL.Therapists
                             if (appts.AllowCreateAppointment(date, tempStart, duration))
                             {
                                 start = tempStart;
-                                return (true);
+                                return true;
                             }
                         }
 
@@ -477,7 +477,7 @@ namespace SharedBase.BOL.Therapists
             }
 
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -491,12 +491,12 @@ namespace SharedBase.BOL.Therapists
         {
             decimal Result = DAL.FirebirdDB.TherapistSales(this, From, To, Type);
 
-            return (Result);
+            return Result;
         }
 
         public decimal TotalRefunds(DateTime From, DateTime To)
         {
-            return (DAL.FirebirdDB.TherapistRefunds(this, From, To));
+            return DAL.FirebirdDB.TherapistRefunds(this, From, To);
         }
 
         /// <summary>
@@ -507,7 +507,7 @@ namespace SharedBase.BOL.Therapists
         /// <returns>TherapistTakings object</returns>
         public TherapistTakings TotalDiscounts(DateTime From, DateTime To)
         {
-            return (DAL.FirebirdDB.TherapistTakings(this, From, To));
+            return DAL.FirebirdDB.TherapistTakings(this, From, To);
         }
 
         /// <summary>
@@ -518,7 +518,7 @@ namespace SharedBase.BOL.Therapists
         /// <returns></returns>
         public Takings TotalProducts(DateTime from, DateTime to)
         {
-            return (DAL.FirebirdDB.TherapistTakingsProducts(this, from, to));
+            return DAL.FirebirdDB.TherapistTakingsProducts(this, from, to);
         }
 
         /// <summary>
@@ -529,12 +529,12 @@ namespace SharedBase.BOL.Therapists
         /// <returns></returns>
         public Takings Sales(DateTime From, DateTime To)
         {
-            return (DAL.FirebirdDB.TherapistSales(this, From, To));
+            return DAL.FirebirdDB.TherapistSales(this, From, To);
         }
 
         public decimal TotalSales(DateTime From, DateTime To, PaymentStatus PaymentStatus)
         {
-            return (DAL.FirebirdDB.TherapistSales(this, From, To, PaymentStatus));
+            return DAL.FirebirdDB.TherapistSales(this, From, To, PaymentStatus);
         }
 
         /// <summary>
@@ -548,7 +548,7 @@ namespace SharedBase.BOL.Therapists
         {
             int Result = DAL.FirebirdDB.TherapistsAppointments(this, From, To, Status);
 
-            return (Result);
+            return Result;
         }
 
         #endregion Public Methods
@@ -562,7 +562,7 @@ namespace SharedBase.BOL.Therapists
         {
             get
             {
-                return (_group);
+                return _group;
             }
 
             set
@@ -578,7 +578,7 @@ namespace SharedBase.BOL.Therapists
         {
             get
             {
-                return (_PublicDiary);
+                return _PublicDiary;
             }
 
             set
@@ -597,7 +597,7 @@ namespace SharedBase.BOL.Therapists
                 if (_Treatments == null)
                     _Treatments = DAL.FirebirdDB.AppointmentTreatmentsGet(this, true);
 
-                return (_Treatments);
+                return _Treatments;
             }
         }
 
@@ -608,7 +608,7 @@ namespace SharedBase.BOL.Therapists
         {
             get
             {
-                return (_EmployeeID);
+                return _EmployeeID;
             }
         }
 
@@ -619,7 +619,7 @@ namespace SharedBase.BOL.Therapists
         {
             get
             {
-                return (_EmployeeName);
+                return _EmployeeName;
             }
 
             set
@@ -633,7 +633,7 @@ namespace SharedBase.BOL.Therapists
             get
             {
                 User user = User.UserGet(_EmployeeID);
-                return (user.Email);
+                return user.Email;
             }
         }
 
@@ -641,7 +641,7 @@ namespace SharedBase.BOL.Therapists
         {
             get
             {
-                return (_AllowMonday);
+                return _AllowMonday;
             }
 
             set
@@ -654,7 +654,7 @@ namespace SharedBase.BOL.Therapists
         {
             get
             {
-                return (_AllowTuesday);
+                return _AllowTuesday;
             }
 
             set
@@ -667,7 +667,7 @@ namespace SharedBase.BOL.Therapists
         {
             get
             {
-                return (_AllowWednesday);
+                return _AllowWednesday;
             }
 
             set
@@ -680,7 +680,7 @@ namespace SharedBase.BOL.Therapists
         {
             get
             {
-                return (_AllowThursday);
+                return _AllowThursday;
             }
 
             set
@@ -693,7 +693,7 @@ namespace SharedBase.BOL.Therapists
         {
             get
             {
-                return (_AllowFriday);
+                return _AllowFriday;
             }
 
             set
@@ -706,7 +706,7 @@ namespace SharedBase.BOL.Therapists
         {
             get
             {
-                return (_AllowSaturday);
+                return _AllowSaturday;
             }
 
             set
@@ -719,7 +719,7 @@ namespace SharedBase.BOL.Therapists
         {
             get
             {
-                return (_AllowSunday);
+                return _AllowSunday;
             }
 
             set
@@ -732,7 +732,7 @@ namespace SharedBase.BOL.Therapists
         {
             get
             {
-                return (_StartTime);
+                return _StartTime;
             }
 
             set
@@ -753,7 +753,7 @@ namespace SharedBase.BOL.Therapists
                 if (!Result)
                     Result = WorkingDays.Count > 0;
 
-                return (Result);
+                return Result;
             }
         }
 
@@ -761,7 +761,7 @@ namespace SharedBase.BOL.Therapists
         {
             get
             {
-                return (_EndTime);
+                return _EndTime;
             }
 
             set
@@ -774,7 +774,7 @@ namespace SharedBase.BOL.Therapists
         {
             get
             {
-                return (_LunchStart);
+                return _LunchStart;
             }
 
             set
@@ -787,7 +787,7 @@ namespace SharedBase.BOL.Therapists
         {
             get
             {
-                return (_LunchDuration);
+                return _LunchDuration;
             }
 
             set
@@ -803,7 +803,7 @@ namespace SharedBase.BOL.Therapists
         {
             get
             {
-                return (_AllowBookCurrentDay);
+                return _AllowBookCurrentDay;
             }
 
             set
@@ -822,7 +822,7 @@ namespace SharedBase.BOL.Therapists
                 if (_workingDays == null)
                     _workingDays = DAL.FirebirdDB.TherapistsWorkingDaysGet(this);
 
-                return (_workingDays);
+                return _workingDays;
             }
         }
 
@@ -833,7 +833,7 @@ namespace SharedBase.BOL.Therapists
         {
             get
             {
-                return (Treatments.Count > 0);
+                return Treatments.Count > 0;
             }
         }
 
@@ -853,7 +853,7 @@ namespace SharedBase.BOL.Therapists
         /// <returns>Therapist object if it exists, otherwise null</returns>
         public static Therapist Get(Int64 TherapistID)
         {
-            return (DAL.FirebirdDB.TherapistGet(TherapistID));
+            return DAL.FirebirdDB.TherapistGet(TherapistID);
         }
 
         /// <summary>
@@ -863,7 +863,7 @@ namespace SharedBase.BOL.Therapists
         /// <returns>Therapist object if it exists, otherwise null</returns>
         public static Therapist Get(User user)
         {
-            return (DAL.FirebirdDB.TherapistGet(user.ID));
+            return DAL.FirebirdDB.TherapistGet(user.ID);
         }
 
         /// <summary>
@@ -882,7 +882,7 @@ namespace SharedBase.BOL.Therapists
         /// <returns>Therapist object for Employee</returns>
         public static Therapist Create(User Employee)
         {
-            return (DAL.FirebirdDB.TherapistCreate(Employee));
+            return DAL.FirebirdDB.TherapistCreate(Employee);
         }
 
         #endregion Static Methods
@@ -891,7 +891,7 @@ namespace SharedBase.BOL.Therapists
 
         public override string ToString()
         {
-            return (String.Format("Therapist: {0}; Name: {1}", _EmployeeID, _EmployeeName));
+            return String.Format("Therapist: {0}; Name: {1}", _EmployeeID, _EmployeeName);
         }
 
         #endregion Overridden Methods

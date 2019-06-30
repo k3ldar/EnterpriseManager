@@ -96,11 +96,11 @@ namespace SharedBase
         {
             try
             {
-                return (Convert.ToInt64(GetXMLValue(xmlFile, parentName, keyName)));
+                return Convert.ToInt64(GetXMLValue(xmlFile, parentName, keyName));
             }
             catch
             {
-                return (defaultValue);
+                return defaultValue;
             }
         }
 
@@ -108,11 +108,11 @@ namespace SharedBase
         {
             try
             {
-                return (Convert.ToBoolean(GetXMLValue(xmlFile, parentName, keyName)));
+                return Convert.ToBoolean(GetXMLValue(xmlFile, parentName, keyName));
             }
             catch
             {
-                return (defaultValue);
+                return defaultValue;
             }
         }
 
@@ -148,14 +148,14 @@ namespace SharedBase
                                     Result = defaultValue;
                                 }
 
-                                return (Result);
+                                return Result;
                             }
                         }
                     }
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         public static DateTime GetXMLValue(string xmlFile, string parentName, string keyName, DateTime defaultValue)
@@ -190,14 +190,14 @@ namespace SharedBase
                                     Result = defaultValue;
                                 }
 
-                                return (Result);
+                                return Result;
                             }
                         }
                     }
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         public static string GetXMLValue(string xmlFile, string parentName, string keyName, string defaultValue)
@@ -232,14 +232,14 @@ namespace SharedBase
                                     Result = defaultValue;
                                 }
 
-                                return (Result);
+                                return Result;
                             }
                         }
                     }
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         public static string GetXMLValue(string xmlFile, string parentName, string keyName)
@@ -266,14 +266,14 @@ namespace SharedBase
                             if (Item.Name == keyName)
                             {
                                 Result = Item.InnerText;
-                                return (Result);
+                                return Result;
                             }
                         }
                     }
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
     }

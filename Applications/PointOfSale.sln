@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29009.5
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PointOfSale", "Pos\PointOfSale.csproj", "{C9B1BD57-E5DB-42C1-B488-19F689FCD4F2}"
 EndProject
@@ -60,6 +60,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POS.Suppliers", "..\Libraries\Plugins\POS.Suppliers\POS.Suppliers.csproj", "{DFAAC3E9-7D98-472F-B68F-753EEDC45807}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POS.PurchaseOrders", "..\Libraries\Plugins\POS.PurchaseOrders\POS.PurchaseOrders.csproj", "{7B620B38-0AF7-4EF6-AE15-9FC36609C2D7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedBaseCore", "..\Libraries\SharedBase\SharedBaseCore.csproj", "{206E0CB6-29CD-4913-903D-23BC5D8F85A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1027,6 +1029,42 @@ Global
 		{7B620B38-0AF7-4EF6-AE15-9FC36609C2D7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{7B620B38-0AF7-4EF6-AE15-9FC36609C2D7}.Release|x86.ActiveCfg = Release|Any CPU
 		{7B620B38-0AF7-4EF6-AE15-9FC36609C2D7}.Release|x86.Build.0 = Release|Any CPU
+		{206E0CB6-29CD-4913-903D-23BC5D8F85A6}.Debug Release|Any CPU.ActiveCfg = Release|Any CPU
+		{206E0CB6-29CD-4913-903D-23BC5D8F85A6}.Debug Release|Any CPU.Build.0 = Release|Any CPU
+		{206E0CB6-29CD-4913-903D-23BC5D8F85A6}.Debug Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{206E0CB6-29CD-4913-903D-23BC5D8F85A6}.Debug Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{206E0CB6-29CD-4913-903D-23BC5D8F85A6}.Debug Release|x86.ActiveCfg = Release|Any CPU
+		{206E0CB6-29CD-4913-903D-23BC5D8F85A6}.Debug Release|x86.Build.0 = Release|Any CPU
+		{206E0CB6-29CD-4913-903D-23BC5D8F85A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{206E0CB6-29CD-4913-903D-23BC5D8F85A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{206E0CB6-29CD-4913-903D-23BC5D8F85A6}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{206E0CB6-29CD-4913-903D-23BC5D8F85A6}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{206E0CB6-29CD-4913-903D-23BC5D8F85A6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{206E0CB6-29CD-4913-903D-23BC5D8F85A6}.Debug|x86.Build.0 = Debug|Any CPU
+		{206E0CB6-29CD-4913-903D-23BC5D8F85A6}.Release_40|Any CPU.ActiveCfg = Release|Any CPU
+		{206E0CB6-29CD-4913-903D-23BC5D8F85A6}.Release_40|Any CPU.Build.0 = Release|Any CPU
+		{206E0CB6-29CD-4913-903D-23BC5D8F85A6}.Release_40|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{206E0CB6-29CD-4913-903D-23BC5D8F85A6}.Release_40|Mixed Platforms.Build.0 = Release|Any CPU
+		{206E0CB6-29CD-4913-903D-23BC5D8F85A6}.Release_40|x86.ActiveCfg = Release|Any CPU
+		{206E0CB6-29CD-4913-903D-23BC5D8F85A6}.Release_40|x86.Build.0 = Release|Any CPU
+		{206E0CB6-29CD-4913-903D-23BC5D8F85A6}.Release_45|Any CPU.ActiveCfg = Release|Any CPU
+		{206E0CB6-29CD-4913-903D-23BC5D8F85A6}.Release_45|Any CPU.Build.0 = Release|Any CPU
+		{206E0CB6-29CD-4913-903D-23BC5D8F85A6}.Release_45|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{206E0CB6-29CD-4913-903D-23BC5D8F85A6}.Release_45|Mixed Platforms.Build.0 = Release|Any CPU
+		{206E0CB6-29CD-4913-903D-23BC5D8F85A6}.Release_45|x86.ActiveCfg = Release|Any CPU
+		{206E0CB6-29CD-4913-903D-23BC5D8F85A6}.Release_45|x86.Build.0 = Release|Any CPU
+		{206E0CB6-29CD-4913-903D-23BC5D8F85A6}.Release_Mono_w_Linux|Any CPU.ActiveCfg = Release|Any CPU
+		{206E0CB6-29CD-4913-903D-23BC5D8F85A6}.Release_Mono_w_Linux|Any CPU.Build.0 = Release|Any CPU
+		{206E0CB6-29CD-4913-903D-23BC5D8F85A6}.Release_Mono_w_Linux|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{206E0CB6-29CD-4913-903D-23BC5D8F85A6}.Release_Mono_w_Linux|Mixed Platforms.Build.0 = Release|Any CPU
+		{206E0CB6-29CD-4913-903D-23BC5D8F85A6}.Release_Mono_w_Linux|x86.ActiveCfg = Release|Any CPU
+		{206E0CB6-29CD-4913-903D-23BC5D8F85A6}.Release_Mono_w_Linux|x86.Build.0 = Release|Any CPU
+		{206E0CB6-29CD-4913-903D-23BC5D8F85A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{206E0CB6-29CD-4913-903D-23BC5D8F85A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{206E0CB6-29CD-4913-903D-23BC5D8F85A6}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{206E0CB6-29CD-4913-903D-23BC5D8F85A6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{206E0CB6-29CD-4913-903D-23BC5D8F85A6}.Release|x86.ActiveCfg = Release|Any CPU
+		{206E0CB6-29CD-4913-903D-23BC5D8F85A6}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

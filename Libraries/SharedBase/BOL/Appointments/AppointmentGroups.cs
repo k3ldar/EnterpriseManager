@@ -36,7 +36,7 @@ namespace SharedBase.BOL.Appointments
 
         public static AppointmentGroup Create(string name)
         {
-            return (DAL.FirebirdDB.AppointmentGroupInsert(name));
+            return DAL.FirebirdDB.AppointmentGroupInsert(name);
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace SharedBase.BOL.Appointments
         /// <returns>AppointmentGroups collection</returns>
         public static AppointmentGroups Get()
         {
-            return (DAL.FirebirdDB.AppointmentGroupsGet());
+            return DAL.FirebirdDB.AppointmentGroupsGet();
         }
 
         #endregion Static Methods
@@ -58,7 +58,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return ((AppointmentGroup)this.InnerList[Index]);
+                return (AppointmentGroup)this.InnerList[Index];
             }
 
             set
@@ -78,7 +78,7 @@ namespace SharedBase.BOL.Appointments
         /// <returns></returns>
         public int Add(AppointmentGroup value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace SharedBase.BOL.Appointments
         /// <returns></returns>
         public int IndexOf(AppointmentGroup value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace SharedBase.BOL.Appointments
         public bool Contains(AppointmentGroup value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

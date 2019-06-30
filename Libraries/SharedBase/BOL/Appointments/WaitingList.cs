@@ -103,7 +103,7 @@ namespace SharedBase.BOL.Appointments
 		/// </summary>
         public new bool Delete()
 		{
-            return (DAL.FirebirdDB.WaitingListDelete(this));
+            return DAL.FirebirdDB.WaitingListDelete(this);
 		}
 
 
@@ -124,7 +124,7 @@ namespace SharedBase.BOL.Appointments
 		/// </summary>
 		public override string ToString()
 		{
-			return (String.Format("WS_APPOINTMENT_WAIT_LIST_LONG Record {0}", ID));
+			return String.Format("WS_APPOINTMENT_WAIT_LIST_LONG Record {0}", ID);
 		}
 
 		#endregion Overridden Methods
@@ -151,7 +151,7 @@ namespace SharedBase.BOL.Appointments
                 if (_customer == null)
                     _customer = User.UserGet(UserID);
 
-                return (_customer);
+                return _customer;
             }
 
             set
@@ -180,7 +180,7 @@ namespace SharedBase.BOL.Appointments
                 if (_staffMember == null)
                     _staffMember = User.UserGet(StaffID);
 
-                return (_staffMember);
+                return _staffMember;
             }
 
             set
@@ -233,7 +233,7 @@ namespace SharedBase.BOL.Appointments
                 if (_treatments == null)
                     _treatments = AppointmentTreatments.Get(this);
 
-                return (_treatments);
+                return _treatments;
             }
         }
 

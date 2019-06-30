@@ -48,7 +48,7 @@ namespace SharedBase.Utils
 
         public static string HTMLEncode(string s)
         {
-            return (System.Web.HttpUtility.HtmlEncode(s));
+            return System.Web.HttpUtility.HtmlEncode(s);
         }
 
         public static string RemovePence(string s, CultureInfo culture)
@@ -59,7 +59,7 @@ namespace SharedBase.Utils
             if (s.Contains(seperator))
                 Result = s.Substring(0, s.IndexOf(seperator));
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace SharedBase.Utils
         /// <returns>Processed Text</returns>
         public static string PreProcessPost(string S)
         {
-            return (PreProcessPost("", S));
+            return PreProcessPost("", S);
         }
 
         /// <summary>
@@ -88,12 +88,12 @@ namespace SharedBase.Utils
             Result = Result.Replace("\r\n", "<br />");
             Result = Result.Replace("\r", "<br />");
 
-            return (Result);
+            return Result;
         }
 
         public static string ReplaceHTMLElements(string S)
         {
-            return (ReplaceHTMLElements(S, Shared.CaseType.Ignore));
+            return ReplaceHTMLElements(S, Shared.CaseType.Ignore);
         }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace SharedBase.Utils
             }
 
 
-            return (Result);
+            return Result;
         }
 
         #endregion Public Methods
@@ -193,7 +193,7 @@ namespace SharedBase.Utils
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
 
@@ -249,7 +249,7 @@ namespace SharedBase.Utils
                 }
             }
 
-            return (destImage);
+            return destImage;
         }
 
         public static Size ResizeKeepAspect(Size src, int maxWidth)
@@ -259,7 +259,7 @@ namespace SharedBase.Utils
             Size Result = new Size(Convert.ToInt32(src.Width * ratioW),
                 Convert.ToInt32(src.Height * ratioW));
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -273,7 +273,7 @@ namespace SharedBase.Utils
             try
             {
                 if (String.IsNullOrEmpty(image))
-                    return (image);
+                    return image;
 
                 string Result = image;
                 
@@ -289,11 +289,11 @@ namespace SharedBase.Utils
 
                 Result = String.Format("{0}_{1}{2}", Result, size, extension);
 
-                return (Result);
+                return Result;
             }
             catch 
             {
-                return (image);
+                return image;
             }
         }
 
@@ -336,7 +336,7 @@ namespace SharedBase.Utils
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         public static string GetRandomDiscountCoupon()
@@ -372,7 +372,7 @@ namespace SharedBase.Utils
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         public static void IsStaffMember(User user)

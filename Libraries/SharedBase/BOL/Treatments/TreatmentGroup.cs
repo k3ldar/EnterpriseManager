@@ -62,7 +62,7 @@ namespace SharedBase.BOL.Treatments
         {
             get
             {
-                return (_ID);
+                return _ID;
             }
         }
 
@@ -70,7 +70,7 @@ namespace SharedBase.BOL.Treatments
         {
             get
             {
-                return (_Description);
+                return _Description;
             }
 
             set
@@ -83,7 +83,7 @@ namespace SharedBase.BOL.Treatments
         {
             get
             {
-                return (_SortOrder);
+                return _SortOrder;
             }
 
             set
@@ -99,7 +99,7 @@ namespace SharedBase.BOL.Treatments
                 if (_Treatments == null)
                     _Treatments = DAL.FirebirdDB.TreatmentsGet(1, 10000, this);
 
-                return (_Treatments);
+                return _Treatments;
             }
         }
 
@@ -107,7 +107,7 @@ namespace SharedBase.BOL.Treatments
         {
             get
             {
-                return (_TagLine);
+                return _TagLine;
             }
 
             set
@@ -138,7 +138,7 @@ namespace SharedBase.BOL.Treatments
 
         public override string ToString()
         {
-            return (String.Format("TreatmentGroup: {0}; Description: {1}", ID, _Description));
+            return String.Format("TreatmentGroup: {0}; Description: {1}", ID, _Description);
         }
 
         #endregion Overridden Methods

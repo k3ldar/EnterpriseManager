@@ -126,7 +126,7 @@ namespace SharedBase.BOL.Salons
         {
             get
             {
-                return (_ID);
+                return _ID;
             }
 
             set
@@ -139,7 +139,7 @@ namespace SharedBase.BOL.Salons
         {
             get
             {
-                return (_ShowOnWeb);
+                return _ShowOnWeb;
             }
 
             set
@@ -152,7 +152,7 @@ namespace SharedBase.BOL.Salons
         {
             get
             {
-                return (_Name);
+                return _Name;
             }
 
             set
@@ -165,7 +165,7 @@ namespace SharedBase.BOL.Salons
         {
             get
             {
-                return (_Image);
+                return _Image;
             }
 
             set
@@ -178,7 +178,7 @@ namespace SharedBase.BOL.Salons
         {
             get
             {
-                return (_ContactName);
+                return _ContactName;
             }
 
             set
@@ -191,7 +191,7 @@ namespace SharedBase.BOL.Salons
         {
             get
             {
-                return (_Address);
+                return _Address;
             }
 
             set
@@ -204,7 +204,7 @@ namespace SharedBase.BOL.Salons
         {
             get
             {
-                return (_Telephone);
+                return _Telephone;
             }
 
             set
@@ -217,7 +217,7 @@ namespace SharedBase.BOL.Salons
         {
             get
             {
-                return (_Fax);
+                return _Fax;
             }
 
             set
@@ -230,7 +230,7 @@ namespace SharedBase.BOL.Salons
         {
             get
             {
-                return (_Email);
+                return _Email;
             }
 
             set
@@ -243,7 +243,7 @@ namespace SharedBase.BOL.Salons
         {
             get
             {
-                return (_URL);
+                return _URL;
             }
 
             set
@@ -256,7 +256,7 @@ namespace SharedBase.BOL.Salons
         {
             get
             {
-                return (_SalonStockist);
+                return _SalonStockist;
             }
 
             set
@@ -269,7 +269,7 @@ namespace SharedBase.BOL.Salons
         {
             get
             {
-                return (_Location);
+                return _Location;
             }
 
             set
@@ -282,7 +282,7 @@ namespace SharedBase.BOL.Salons
         {
             get
             {
-                return (_SortOrder);
+                return _SortOrder;
             }
 
             set
@@ -295,7 +295,7 @@ namespace SharedBase.BOL.Salons
         {
             get
             {
-                return (_PostCode);
+                return _PostCode;
             }
 
             set
@@ -309,7 +309,7 @@ namespace SharedBase.BOL.Salons
         {
             get
             {
-                return (_VIPSalon);
+                return _VIPSalon;
             }
 
             set
@@ -329,7 +329,7 @@ namespace SharedBase.BOL.Salons
                     Result = DAL.FirebirdDB.SalonDiscountGet(this);
                 //}
 
-                return (Result);
+                return Result;
             }
         }
 
@@ -337,7 +337,7 @@ namespace SharedBase.BOL.Salons
         {
             get
             {
-                return (_Distance);
+                return _Distance;
             }
 
             set
@@ -355,7 +355,7 @@ namespace SharedBase.BOL.Salons
                 if (_UserID > -1)
                     Result = DAL.FirebirdDB.UserGet(_UserID);
 
-                return (Result);
+                return Result;
             }
         }
 
@@ -363,7 +363,7 @@ namespace SharedBase.BOL.Salons
         {
             get
             {
-                return (_SalonType);
+                return _SalonType;
             }
 
             set
@@ -384,7 +384,7 @@ namespace SharedBase.BOL.Salons
         { 
             get
             {
-                return (_openingTimes);
+                return _openingTimes;
             }
             
             set
@@ -487,7 +487,7 @@ namespace SharedBase.BOL.Salons
 
         public User UpdateOwner()
         {
-            return (DAL.FirebirdDB.AdminSalonOwnerGet(this));
+            return DAL.FirebirdDB.AdminSalonOwnerGet(this);
         }
 
         public void Delete()
@@ -523,7 +523,7 @@ namespace SharedBase.BOL.Salons
 
         public override string ToString()
         {
-            return (String.Format("Salon: {0}; Name: {1}", ID, _Name));
+            return String.Format("Salon: {0}; Name: {1}", ID, _Name);
         }
 
         #endregion Overridden Methods

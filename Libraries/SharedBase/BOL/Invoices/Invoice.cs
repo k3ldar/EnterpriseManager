@@ -152,7 +152,7 @@ namespace SharedBase.BOL.Invoices
                     _currency.Multiplier = (decimal)CostMultiplier;
                 }
 
-                return (_currency);
+                return _currency;
             }
         }
 
@@ -163,7 +163,7 @@ namespace SharedBase.BOL.Invoices
         {
             get
             {
-                return (_CostMultiplier);
+                return _CostMultiplier;
             }
         }
 
@@ -171,7 +171,7 @@ namespace SharedBase.BOL.Invoices
         {
             get
             {
-                return (_ID);
+                return _ID;
             }
         }
 
@@ -183,9 +183,9 @@ namespace SharedBase.BOL.Invoices
             get
             {
                 if (LocalInvoiceNumber > 0)
-                    return (LocalInvoiceNumber);
+                    return LocalInvoiceNumber;
                 else
-                    return (_ID);
+                    return _ID;
             }
         }
 
@@ -193,7 +193,7 @@ namespace SharedBase.BOL.Invoices
         {
             get
             {
-                return (_OrderID);
+                return _OrderID;
             }
         }
 
@@ -201,7 +201,7 @@ namespace SharedBase.BOL.Invoices
         {
             get
             {
-                return (_CouponName);
+                return _CouponName;
             }
 
             set
@@ -218,7 +218,7 @@ namespace SharedBase.BOL.Invoices
                 if (_User == null)
                     _User = DAL.FirebirdDB.UserGet(_UserID);
 
-                return (_User);
+                return _User;
             }
         }
 
@@ -226,7 +226,7 @@ namespace SharedBase.BOL.Invoices
         {
             get
             {
-                return (_Version);
+                return _Version;
             }
         }
 
@@ -234,7 +234,7 @@ namespace SharedBase.BOL.Invoices
         {
             get
             {
-                return (_PurchaseDateTime);
+                return _PurchaseDateTime;
             }
 
             set
@@ -247,7 +247,7 @@ namespace SharedBase.BOL.Invoices
         {
             get
             {
-                return (String.Format("http://www.royalmail.com/track-trace?trackNumber={0}&page_type=rml-tracking-details", TrackingReference.Replace(" ", "")));
+                return String.Format("http://www.royalmail.com/track-trace?trackNumber={0}&page_type=rml-tracking-details", TrackingReference.Replace(" ", ""));
             }
         }
 
@@ -255,7 +255,7 @@ namespace SharedBase.BOL.Invoices
         {
             get
             {
-                return (_Status);
+                return _Status;
             }
 
             set
@@ -269,7 +269,7 @@ namespace SharedBase.BOL.Invoices
         {
             get
             {
-                return (SharedUtils.FormatMoney(TotalCost, Currency, false, true));
+                return SharedUtils.FormatMoney(TotalCost, Currency, false, true);
             }
         }
 
@@ -277,7 +277,7 @@ namespace SharedBase.BOL.Invoices
         {
             get
             {
-                return (SharedUtils.FormatMoney(ShippingCosts, Currency, false, true));
+                return SharedUtils.FormatMoney(ShippingCosts, Currency, false, true);
             }
         }
 
@@ -285,7 +285,7 @@ namespace SharedBase.BOL.Invoices
         {
             get
             {
-                return (SharedUtils.FormatMoney(DiscountAmount, Currency, false, true));
+                return SharedUtils.FormatMoney(DiscountAmount, Currency, false, true);
             }
         }
 
@@ -293,7 +293,7 @@ namespace SharedBase.BOL.Invoices
         { 
             get
             {
-                return (SharedUtils.FormatMoney(VATAmount, Currency, false, true));
+                return SharedUtils.FormatMoney(VATAmount, Currency, false, true);
             }
         }
 
@@ -301,7 +301,7 @@ namespace SharedBase.BOL.Invoices
         {
             get
             {
-                return (SharedUtils.FormatMoney(_subTotal, Currency));
+                return SharedUtils.FormatMoney(_subTotal, Currency);
             }
         }
 
@@ -315,14 +315,14 @@ namespace SharedBase.BOL.Invoices
                 switch (_Version)
                 {
                     case 1:
-                        Result = (_TotalCost + _ShippingCosts) - ((_TotalCost / 100) * _Discount);
+                        Result = _TotalCost + _ShippingCosts - (_TotalCost / 100 * _Discount);
                         break;
                     default:
                         Result = _TotalCost;
                         break;
                 }
 
-                return (Result);
+                return Result;
             }
         }
 
@@ -330,7 +330,7 @@ namespace SharedBase.BOL.Invoices
         {
             get
             {
-                return (_subTotal);
+                return _subTotal;
             }
         }
 
@@ -345,7 +345,7 @@ namespace SharedBase.BOL.Invoices
                 //    Result = Utils.HSCUtils.VATRemove(Result, _VATRate);
                 //}
 
-                return (Result);
+                return Result;
             }
         }
 
@@ -353,7 +353,7 @@ namespace SharedBase.BOL.Invoices
         {
             get
             {
-                return (_VATRate);
+                return _VATRate;
             }
         }
 
@@ -366,14 +366,14 @@ namespace SharedBase.BOL.Invoices
                 switch (_Version)
                 {
                     case 1:
-                        Result = (_TotalCost / 100) * _Discount;
+                        Result = _TotalCost / 100 * _Discount;
                         break;
                     default:
                         Result = _DiscountAmmount;
                         break;
                 }
 
-                return (Result);
+                return Result;
             }
         }
 
@@ -388,7 +388,7 @@ namespace SharedBase.BOL.Invoices
                 //    Result += Utils.HSCUtils.VATCalculatePaid(Result, _VATRate);
                 //}
 
-                return (Result);
+                return Result;
             }
         }
 
@@ -396,7 +396,7 @@ namespace SharedBase.BOL.Invoices
         {
             get
             {
-                return (_Discount);
+                return _Discount;
             }
         }
 
@@ -404,7 +404,7 @@ namespace SharedBase.BOL.Invoices
         {
             get
             {
-                return (_ProcessStatus);
+                return _ProcessStatus;
             }
         }
 
@@ -415,7 +415,7 @@ namespace SharedBase.BOL.Invoices
                 if (_DeliveryAddress == null)
                     _DeliveryAddress = DAL.FirebirdDB.MembersAddressGet(_DeliveryAddressID);
 
-                return (_DeliveryAddress);
+                return _DeliveryAddress;
             }
         }
 
@@ -423,7 +423,7 @@ namespace SharedBase.BOL.Invoices
         {
             get
             {
-                return (_ConversionRate);
+                return _ConversionRate;
             }
         }
 
@@ -431,7 +431,7 @@ namespace SharedBase.BOL.Invoices
         {
             get
             {
-                return (_Culture);
+                return _Culture;
             }
         }
 
@@ -439,7 +439,7 @@ namespace SharedBase.BOL.Invoices
         {
             get
             {
-                return (_Dateshipped);
+                return _Dateshipped;
             }
         }
 
@@ -447,7 +447,7 @@ namespace SharedBase.BOL.Invoices
         {
             get
             {
-                return (_PaymentType);
+                return _PaymentType;
             }
         }
 
@@ -458,7 +458,7 @@ namespace SharedBase.BOL.Invoices
                 if (_InvoiceItems == null)
                     _InvoiceItems = DAL.FirebirdDB.InvoiceItemsGet(this);
 
-                return (_InvoiceItems);
+                return _InvoiceItems;
             }
         }
 
@@ -466,7 +466,7 @@ namespace SharedBase.BOL.Invoices
         {
             get
             {
-                return (_RemoteHost);
+                return _RemoteHost;
             }
         }
 
@@ -474,7 +474,7 @@ namespace SharedBase.BOL.Invoices
         {
             get
             {
-                return (_UserSession);
+                return _UserSession;
             }
         }
 
@@ -482,7 +482,7 @@ namespace SharedBase.BOL.Invoices
         {
             get
             {
-                return (_StoreID);
+                return _StoreID;
             }
         }
 
@@ -490,7 +490,7 @@ namespace SharedBase.BOL.Invoices
         {
             get
             {
-                return (_TillID);
+                return _TillID;
             }
         }
 
@@ -498,7 +498,7 @@ namespace SharedBase.BOL.Invoices
         {
             get
             {
-                return (_TrackingReference.Replace(" ", ""));
+                return _TrackingReference.Replace(" ", "");
             }
 
             set
@@ -511,7 +511,7 @@ namespace SharedBase.BOL.Invoices
         {
             get
             {
-                return (_notes);
+                return _notes;
             }
 
             set
@@ -524,7 +524,7 @@ namespace SharedBase.BOL.Invoices
         {
             get
             {
-                return (_voucherType);
+                return _voucherType;
             }
         }
 
@@ -545,7 +545,7 @@ namespace SharedBase.BOL.Invoices
                 if (_invoiceCountry == null)
                     _invoiceCountry = Countries.Countries.Get(OriginalCountry);
 
-                return (_invoiceCountry);
+                return _invoiceCountry;
             }
         }
 
@@ -702,7 +702,7 @@ namespace SharedBase.BOL.Invoices
             if (_DeliveryAddress.PostCode != "")
                 Result += _DeliveryAddress.PostCode + Seperator;
 
-            return (Result);
+            return Result;
 
         }
 
@@ -712,7 +712,7 @@ namespace SharedBase.BOL.Invoices
 
         public override string ToString()
         {
-            return (String.Format("Invoice: {0}; User ID: {1}", ID, _UserID));
+            return String.Format("Invoice: {0}; User ID: {1}", ID, _UserID);
         }
 
         #endregion Overridden Methods

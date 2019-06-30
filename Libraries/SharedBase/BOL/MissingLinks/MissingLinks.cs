@@ -37,7 +37,7 @@ namespace SharedBase.BOL.MissingLinks
 
         public static MissingLink MissingLinkGet(string DeprecatedLink)
         {
-            return (DAL.FirebirdDB.MissingLinkGet(DeprecatedLink));
+            return DAL.FirebirdDB.MissingLinkGet(DeprecatedLink);
         }
 
         #endregion Static Methods
@@ -50,7 +50,7 @@ namespace SharedBase.BOL.MissingLinks
         {
             get
             {
-                return ((MissingLink)this.InnerList[Index]);
+                return (MissingLink)this.InnerList[Index];
             }
 
             set
@@ -70,7 +70,7 @@ namespace SharedBase.BOL.MissingLinks
         /// <returns></returns>
         public int Add(MissingLink value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace SharedBase.BOL.MissingLinks
         /// <returns></returns>
         public int IndexOf(MissingLink value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace SharedBase.BOL.MissingLinks
         public bool Contains(MissingLink value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

@@ -61,10 +61,10 @@ namespace SharedBase.BOL.Products
                     CachedItemAdd(cacheName, Result);
                 }
 
-                return ((ProductCost)Result.Value);
+                return (ProductCost)Result.Value;
             }
             else
-                return (DAL.FirebirdDB.ProductCostGetSKU(sku));
+                return DAL.FirebirdDB.ProductCostGetSKU(sku);
         }
         /// <summary>
         /// Returns a ProductCost item determined by it's barcode
@@ -73,7 +73,7 @@ namespace SharedBase.BOL.Products
         /// <returns>ProductCostItem if found, otherwise null</returns>
         public static ProductCost GetByBarcode(string barcode)
         {
-            return (DAL.FirebirdDB.ProductCostGetByBarcode(barcode));
+            return DAL.FirebirdDB.ProductCostGetByBarcode(barcode);
         }
 
         /// <summary>
@@ -98,10 +98,10 @@ namespace SharedBase.BOL.Products
                     CachedItemAdd(cacheName, Result);
                 }
 
-                return ((ProductCost)Result.Value);
+                return (ProductCost)Result.Value;
             }
             else
-                return (DAL.FirebirdDB.ProductCostGet(ID, user));
+                return DAL.FirebirdDB.ProductCostGet(ID, user);
         }
 
         public static ProductCost Get(int ID)
@@ -120,10 +120,10 @@ namespace SharedBase.BOL.Products
                     CachedItemAdd(cacheName, Result);
                 }
 
-                return ((ProductCost)Result.Value);
+                return (ProductCost)Result.Value;
             }
             else
-                return (DAL.FirebirdDB.ProductCostGet(ID));
+                return DAL.FirebirdDB.ProductCostGet(ID);
         }
 
         public static ProductCost Get(long ID)
@@ -142,10 +142,10 @@ namespace SharedBase.BOL.Products
                     CachedItemAdd(cacheName, Result);
                 }
 
-                return ((ProductCost)Result.Value);
+                return (ProductCost)Result.Value;
             }
             else
-                return (DAL.FirebirdDB.ProductCostGet(Convert.ToInt32(ID)));
+                return DAL.FirebirdDB.ProductCostGet(Convert.ToInt32(ID));
         }
 
         public static ProductCosts Get()
@@ -163,10 +163,10 @@ namespace SharedBase.BOL.Products
                     CachedItemAdd(cacheName, Result);
                 }
 
-                return ((ProductCosts)Result.Value);
+                return (ProductCosts)Result.Value;
             }
             else
-                return (DAL.FirebirdDB.ProductCostsGetFreeOffers());
+                return DAL.FirebirdDB.ProductCostsGetFreeOffers();
         }
 
         /// <summary>
@@ -190,10 +190,10 @@ namespace SharedBase.BOL.Products
                     CachedItemAdd(cacheName, Result);
                 }
 
-                return ((ProductCosts)Result.Value);
+                return (ProductCosts)Result.Value;
             }
             else
-                return (DAL.FirebirdDB.ProductCostsGet(product, MemberLevel.Admin));
+                return DAL.FirebirdDB.ProductCostsGet(product, MemberLevel.Admin);
         }
 
 
@@ -213,10 +213,10 @@ namespace SharedBase.BOL.Products
                     CachedItemAdd(cacheName, Result);
                 }
 
-                return ((ProductCost)Result.Value);
+                return (ProductCost)Result.Value;
             }
             else
-                return (DAL.FirebirdDB.ProductCostGet(id, memberLevel));
+                return DAL.FirebirdDB.ProductCostGet(id, memberLevel);
         }
 
         /// <summary>
@@ -238,10 +238,10 @@ namespace SharedBase.BOL.Products
                     CachedItemAdd(cacheName, Result);
                 }
 
-                return ((ProductCost)Result.Value);
+                return (ProductCost)Result.Value;
             }
             else
-                return (DAL.FirebirdDB.ProductCostGetGiftWrap());
+                return DAL.FirebirdDB.ProductCostGetGiftWrap();
         }
 
         #endregion Static Methods
@@ -254,7 +254,7 @@ namespace SharedBase.BOL.Products
         {
             get
             {
-                return ((ProductCost)this.InnerList[Index]);
+                return (ProductCost)this.InnerList[Index];
             }
 
             set
@@ -274,7 +274,7 @@ namespace SharedBase.BOL.Products
         /// <returns></returns>
         public int Add(ProductCost value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         public void Add(ProductCosts costs)
@@ -288,7 +288,7 @@ namespace SharedBase.BOL.Products
         /// <returns></returns>
         public int IndexOf(ProductCost value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -324,10 +324,10 @@ namespace SharedBase.BOL.Products
             foreach (ProductCost item in this)
             {
                 if (item.ID == value.ID)
-                    return (true);
+                    return true;
             }
 
-            return (false);
+            return false;
         }
 
         #endregion Public Methods

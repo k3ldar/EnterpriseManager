@@ -46,7 +46,7 @@ namespace SharedBase.BOL.DatabaseUpdates
         {
             get
             {
-                return ((AutoUpdateItem)this.InnerList[Index]);
+                return (AutoUpdateItem)this.InnerList[Index];
             }
 
             set
@@ -66,7 +66,7 @@ namespace SharedBase.BOL.DatabaseUpdates
         /// <returns></returns>
         public int Add(AutoUpdateItem value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -79,10 +79,10 @@ namespace SharedBase.BOL.DatabaseUpdates
             for (int i = 0; i < this.Count; i++)
             {
                 if (this[i].ID == value.ID)
-                    return (i);
+                    return i;
             }
 
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace SharedBase.BOL.DatabaseUpdates
         public bool Contains(AutoUpdateItem value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

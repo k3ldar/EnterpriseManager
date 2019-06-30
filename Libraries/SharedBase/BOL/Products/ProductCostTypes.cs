@@ -38,7 +38,7 @@ namespace SharedBase.BOL.Products
 
         public static ProductCostType Create(string description, ProductCostItemType itemType)
         {
-            return (DAL.FirebirdDB.ProductCostTypeInsert(description, itemType));
+            return DAL.FirebirdDB.ProductCostTypeInsert(description, itemType);
         }
 
         /// <summary>
@@ -63,9 +63,9 @@ namespace SharedBase.BOL.Products
 
 
             if (cachedResult != null)
-                return ((ProductCostTypes)cachedResult.Value);
+                return (ProductCostTypes)cachedResult.Value;
             else
-                return (DAL.FirebirdDB.ProductCostTypesGet());
+                return DAL.FirebirdDB.ProductCostTypesGet();
         }
 
         /// <summary>
@@ -78,10 +78,10 @@ namespace SharedBase.BOL.Products
             foreach (ProductCostType pcType in Get())
             {
                 if (pcType.Description == name)
-                    return (pcType);
+                    return pcType;
             }
 
-            return (DAL.FirebirdDB.ProductCostTypeGet(name));
+            return DAL.FirebirdDB.ProductCostTypeGet(name);
         }
 
         /// <summary>
@@ -94,10 +94,10 @@ namespace SharedBase.BOL.Products
             foreach (ProductCostType pcType in Get())
             {
                 if (pcType.ID == id)
-                    return (pcType);
+                    return pcType;
             }
 
-            return (DAL.FirebirdDB.ProductCostTypeGet(id));
+            return DAL.FirebirdDB.ProductCostTypeGet(id);
         }
 
         #endregion Static Methods
@@ -115,7 +115,7 @@ namespace SharedBase.BOL.Products
         {
             get
             {
-                return ((ProductCostType)this.InnerList[Index]);
+                return (ProductCostType)this.InnerList[Index];
             }
 
             set
@@ -135,7 +135,7 @@ namespace SharedBase.BOL.Products
         /// <returns></returns>
         public int Add(ProductCostType value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace SharedBase.BOL.Products
         /// <returns></returns>
         public int IndexOf(ProductCostType value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -177,7 +177,7 @@ namespace SharedBase.BOL.Products
         public bool Contains(ProductCostType value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

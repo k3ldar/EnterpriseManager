@@ -36,7 +36,7 @@ namespace SharedBase.BOL.Affiliate
 
         public static AffiliateProducts GetAffiliateProducts(string countryCode, string affiliateID, int imageSize, string website)
         {
-            return (DAL.FirebirdDB.AffiliatedProductsGet(countryCode, affiliateID, imageSize, website));
+            return DAL.FirebirdDB.AffiliatedProductsGet(countryCode, affiliateID, imageSize, website);
         }
 
         #endregion Static Methods
@@ -54,7 +54,7 @@ namespace SharedBase.BOL.Affiliate
         {
             get
             {
-                return ((AffiliateProduct)this.InnerList[Index]);
+                return (AffiliateProduct)this.InnerList[Index];
             }
 
             set
@@ -74,7 +74,7 @@ namespace SharedBase.BOL.Affiliate
         /// <returns></returns>
         public int Add(AffiliateProduct value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace SharedBase.BOL.Affiliate
         /// <returns></returns>
         public int IndexOf(AffiliateProduct value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace SharedBase.BOL.Affiliate
         public bool Contains(AffiliateProduct value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

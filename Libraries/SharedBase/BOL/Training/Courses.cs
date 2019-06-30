@@ -48,7 +48,7 @@ namespace SharedBase.BOL.Training
         {
             get
             {
-                return ((Course)this.InnerList[Index]);
+                return (Course)this.InnerList[Index];
             }
 
             set
@@ -68,7 +68,7 @@ namespace SharedBase.BOL.Training
         /// <returns></returns>
         public int Add(Course value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace SharedBase.BOL.Training
         /// <returns></returns>
         public int IndexOf(Course value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace SharedBase.BOL.Training
         public bool Contains(TrainingCourse value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

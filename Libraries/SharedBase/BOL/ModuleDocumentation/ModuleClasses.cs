@@ -51,7 +51,7 @@ namespace SharedBase.BOL.ModuleDocumentation
                 DAL.DALHelper.InternalCache.Add(Consts.CACHE_NAME_ALL_CLASSES, cachedResult);
             }
 
-            return ((ModuleClasses)cachedResult.Value);
+            return (ModuleClasses)cachedResult.Value;
         }
 
         public static ModuleClass Get(string name)
@@ -66,16 +66,16 @@ namespace SharedBase.BOL.ModuleDocumentation
                     {
                         DAL.DALHelper.InternalCache.Add(String.Format(Consts.CACHE_NAME_CLASS_NAME, name),
                             new CacheItem(String.Format(Consts.CACHE_NAME_CLASS_NAME, name), mClass));
-                        return (mClass);
+                        return mClass;
                     }
                 }
             }
             else
-                return ((ModuleClass)cachedResult.Value);
+                return (ModuleClass)cachedResult.Value;
 
             DAL.DALHelper.InternalCache.Add(String.Format(Consts.CACHE_NAME_CLASS_NAME, name),
                 new CacheItem(String.Format(Consts.CACHE_NAME_CLASS_NAME, name), null));
-            return (null);
+            return null;
         }
 
         public static ModuleClass Get(Int64 id)
@@ -88,7 +88,7 @@ namespace SharedBase.BOL.ModuleDocumentation
                 DAL.DALHelper.InternalCache.Add(String.Format(Consts.CACHE_NAME_CLASS, id), cachedResult);
             }
 
-            return ((ModuleClass)cachedResult.Value);
+            return (ModuleClass)cachedResult.Value;
         }
 
         #endregion Static Methods
@@ -101,7 +101,7 @@ namespace SharedBase.BOL.ModuleDocumentation
         {
             get
             {
-                return ((ModuleClass)this.InnerList[Index]);
+                return (ModuleClass)this.InnerList[Index];
             }
 
             set
@@ -121,7 +121,7 @@ namespace SharedBase.BOL.ModuleDocumentation
         /// <returns></returns>
         public int Add(ModuleClass value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace SharedBase.BOL.ModuleDocumentation
         /// <returns></returns>
         public int IndexOf(ModuleClass value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace SharedBase.BOL.ModuleDocumentation
         public bool Contains(ModuleClass value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

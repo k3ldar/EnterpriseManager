@@ -3695,13 +3695,13 @@ namespace SharedBase.DAL
             {
                 if (_showVATInSubTotalsSet)
                 {
-                    return (_showVATInSubTotals);
+                    return _showVATInSubTotals;
                 }
 
                 _showVATInSubTotals = SettingGet("VAT_IN_SUBTOTALS", false);
                 _showVATInSubTotalsSet = true;
 
-                return (_showVATInSubTotals);
+                return _showVATInSubTotals;
             }
         }
 
@@ -3755,7 +3755,7 @@ namespace SharedBase.DAL
         {
             get
             {
-                return (_cacheAllow);
+                return _cacheAllow;
             }
 
             set
@@ -3782,7 +3782,7 @@ namespace SharedBase.DAL
                     _cacheLimit = new TimeSpan(0, limit, 0);
                 }
 
-                return (_cacheLimit);
+                return _cacheLimit;
             }
 
             set
@@ -3809,7 +3809,7 @@ namespace SharedBase.DAL
                 double Result = _defaultVATRate;
 
                 if (Result > -1)
-                    return (Result);
+                    return Result;
 
                 try
                 {
@@ -3824,7 +3824,7 @@ namespace SharedBase.DAL
                 }
 
                 _defaultVATRate = Result;
-                return (Result);
+                return Result;
             }
 
             set
@@ -3840,7 +3840,7 @@ namespace SharedBase.DAL
         {
             get
             {
-                return (_allowUseOfCurrencyConversion);
+                return _allowUseOfCurrencyConversion;
             }
 
             set
@@ -3856,7 +3856,7 @@ namespace SharedBase.DAL
         {
             get
             {
-                return (_hideVATOnWebsiteAndInvoices);
+                return _hideVATOnWebsiteAndInvoices;
             }
 
             set
@@ -3869,7 +3869,7 @@ namespace SharedBase.DAL
         {
             get
             {
-                return (_cultureOverride);
+                return _cultureOverride;
             }
 
             set
@@ -3910,7 +3910,7 @@ namespace SharedBase.DAL
                 _Path = System.IO.Path.GetDirectoryName(XMLFile);
                 _Path = _Path.Substring(6);
 
-                return (_Path);
+                return _Path;
             }
         }
 
@@ -3918,7 +3918,7 @@ namespace SharedBase.DAL
         {
             get
             {
-                return (_StoreID);
+                return _StoreID;
             }
         }
 
@@ -3926,7 +3926,7 @@ namespace SharedBase.DAL
         {
             get
             {
-                return (_TillID);
+                return _TillID;
             }
         }
 
@@ -3935,7 +3935,7 @@ namespace SharedBase.DAL
         {
             get
             {
-                return (FirebirdDB.AdminDatabaseVersion());
+                return FirebirdDB.AdminDatabaseVersion();
             }
         }
 
@@ -3957,7 +3957,7 @@ namespace SharedBase.DAL
                     //error, will return false anyway
                 }
 
-                return (Result);
+                return Result;
             }
         }
 
@@ -3965,7 +3965,7 @@ namespace SharedBase.DAL
         {
             get
             {
-                return (FirebirdDB.AdminDatabaseServer(false));
+                return FirebirdDB.AdminDatabaseServer(false);
             }
         }
 
@@ -3973,7 +3973,7 @@ namespace SharedBase.DAL
         {
             get
             {
-                return (MAX_LOCK_CONFLICT_ATTEMPTS);
+                return MAX_LOCK_CONFLICT_ATTEMPTS;
             }
         }
 
@@ -3984,7 +3984,7 @@ namespace SharedBase.DAL
         {
             get
             {
-                return (FirebirdDB.LocalDatabase);
+                return FirebirdDB.LocalDatabase;
             }
         }
 
@@ -3995,7 +3995,7 @@ namespace SharedBase.DAL
         {
             get
             {
-                return ("en-GB");
+                return "en-GB";
             }
         }
 
@@ -4004,7 +4004,7 @@ namespace SharedBase.DAL
         {
             get
             {
-                return (1);
+                return 1;
             }
         }
 
@@ -4015,16 +4015,16 @@ namespace SharedBase.DAL
         public static bool ConfigureDAL(string[] options)
         {
             if (options.Length != 5)
-                return (false);
+                return false;
 
             if (String.IsNullOrEmpty(options[0]) || String.IsNullOrEmpty(options[1]) || String.IsNullOrEmpty(options[2]) ||
                 String.IsNullOrEmpty(options[3]) || String.IsNullOrEmpty(options[4]))
             {
-                return (false);
+                return false;
             }
 
             if (options[0].CompareTo("setupSuperUser") != 0)
-                return (false);
+                return false;
 
             User superUser = User.UserGet(0);
 
@@ -4035,7 +4035,7 @@ namespace SharedBase.DAL
 
             superUser.Save();
 
-            return (true);
+            return true;
         }
 
         /// <summary>
@@ -4044,7 +4044,7 @@ namespace SharedBase.DAL
         /// <returns>true if successfully connected, otherwise false</returns>
         public static bool TestConnection()
         {
-            return (FirebirdDB.TestConnection());
+            return FirebirdDB.TestConnection();
         }
 
         public static void RegisterWebsite(string url)
@@ -4054,7 +4054,7 @@ namespace SharedBase.DAL
 
         public static string ConnectionString(DatabaseType dbType)
         {
-            return (FirebirdDB.ConnectionStringGet(dbType));
+            return FirebirdDB.ConnectionStringGet(dbType);
         }
 
         public static void SetCurrentUser(User loggedOnUser)
@@ -4079,7 +4079,7 @@ namespace SharedBase.DAL
                 // do nothing, value set above
             }
 
-            return (Result);
+            return Result;
         }
 
         public static int SettingGet(string name, int defaultValue)
@@ -4094,13 +4094,13 @@ namespace SharedBase.DAL
                 //do nothing, default value set above
             }
 
-            return (Result);
+            return Result;
         }
 
         public static bool InitialiseDAL(in int storeId, in int tillId, Dictionary<string, string> connectionStrings)
         {
             if (_initialised)
-                return (true);
+                return true;
 
             string standard = connectionStrings["Standard"];
 
@@ -4143,7 +4143,7 @@ namespace SharedBase.DAL
             string xmlFile2 = Shared.Utilities.CurrentPath(true);
 
             if (!File.Exists(XMLFile))
-                return (false);
+                return false;
 
             // Set Connection String
             string password = Utilities.Decrypt(GetXMLValue(XMLFile, "Connection", "Password"), PASSWORD_ENCRYPTION_KEY);
@@ -4203,14 +4203,14 @@ namespace SharedBase.DAL
 
                             if (Item.Name == KeyName)
                             {
-                                return (Item.InnerText);
+                                return Item.InnerText;
                             }
                         }
                     }
                 }
             }
 
-            return (DefaultValue);
+            return DefaultValue;
         }
 
         static void ThreadManager_ThreadStopped(object sender, ThreadManagerEventArgs e)
@@ -4232,7 +4232,7 @@ namespace SharedBase.DAL
             string Result = GetXMLValue(XMLFile, "Connection", "BackupConnectionString", defaultConnString);
             Result = String.Format(Result, EncryptDecrypt(GetXMLValue(XMLFile, "Connection", "BackupPassword", "y{hn*-#")));
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>

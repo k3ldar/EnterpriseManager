@@ -98,7 +98,7 @@ namespace SharedBase.BOL.Coupons
         {
             get
             {
-                return (_ID);
+                return _ID;
             }
 
             set
@@ -114,7 +114,7 @@ namespace SharedBase.BOL.Coupons
         {
             get
             {
-                return (_freePostage);
+                return _freePostage;
             }
 
             set
@@ -127,7 +127,7 @@ namespace SharedBase.BOL.Coupons
         {
             get
             {
-                return (_Name);
+                return _Name;
             }
 
             set
@@ -140,7 +140,7 @@ namespace SharedBase.BOL.Coupons
         {
             get
             {
-                return (_Expires);
+                return _Expires;
             }
 
             set
@@ -158,7 +158,7 @@ namespace SharedBase.BOL.Coupons
         {
             get
             {
-                return (_IsActive);
+                return _IsActive;
             }
 
             set
@@ -171,7 +171,7 @@ namespace SharedBase.BOL.Coupons
         {
             get
             {
-                return (_Discount);
+                return _Discount;
             }
 
             set
@@ -187,7 +187,7 @@ namespace SharedBase.BOL.Coupons
         {
             get
             {
-                return (_FreeProduct);
+                return _FreeProduct;
             }
 
             set
@@ -203,7 +203,7 @@ namespace SharedBase.BOL.Coupons
         {
             get
             {
-                return (_VoucherType);
+                return _VoucherType;
             }
 
             set
@@ -222,7 +222,7 @@ namespace SharedBase.BOL.Coupons
         {
             get
             {
-                return (_VoucherUsage);
+                return _VoucherUsage;
             }
         }
 
@@ -233,7 +233,7 @@ namespace SharedBase.BOL.Coupons
         {
             get
             {
-                return (_maxUsage);
+                return _maxUsage;
             }
 
             set
@@ -249,7 +249,7 @@ namespace SharedBase.BOL.Coupons
         {
             get
             {
-                return (_minSpend);
+                return _minSpend;
             }
 
             set
@@ -277,7 +277,7 @@ namespace SharedBase.BOL.Coupons
                 if (_requiredProducts == null)
                     _requiredProducts = DAL.FirebirdDB.AdminCouponGetRequiredProducts(this);
 
-                return (_requiredProducts);
+                return _requiredProducts;
             }
         }
 
@@ -291,7 +291,7 @@ namespace SharedBase.BOL.Coupons
                 if (_excludedProducts == null)
                     _excludedProducts = DAL.FirebirdDB.AdminCouponGetExcludedProducts(this);
 
-                return (_excludedProducts);
+                return _excludedProducts;
             }
         }
 
@@ -320,7 +320,7 @@ namespace SharedBase.BOL.Coupons
 
         public bool Valid()
         {
-            return (_IsActive && DateTime.Now < _Expires && DateTime.Now > StartDateTime && VoucherUsage < MaxUsage);
+            return _IsActive && DateTime.Now < _Expires && DateTime.Now > StartDateTime && VoucherUsage < MaxUsage;
         }
 
         #endregion Public Methods
@@ -329,8 +329,8 @@ namespace SharedBase.BOL.Coupons
 
         public override string ToString()
         {
-            return (String.Format("Coupon: {0}; Name: {1}; Active: {2}; Expires: {3}; Discount: {4}", 
-                ID, _Name, _IsActive, _Expires.ToShortDateString(), _Discount));
+            return String.Format("Coupon: {0}; Name: {1}; Active: {2}; Expires: {3}; Discount: {4}", 
+                ID, _Name, _IsActive, _Expires.ToShortDateString(), _Discount);
         }
 
         #endregion Overridden Methods

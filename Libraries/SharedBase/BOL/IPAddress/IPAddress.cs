@@ -146,7 +146,7 @@ namespace SharedBase.BOL.IPAddresses
         {
             get
             {
-                return (IsActive && CanExpire && Expire < DateTime.Now);
+                return IsActive && CanExpire && Expire < DateTime.Now;
             }
         }
 

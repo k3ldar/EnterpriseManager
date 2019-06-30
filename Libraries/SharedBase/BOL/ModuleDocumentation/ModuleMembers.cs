@@ -48,7 +48,7 @@ namespace SharedBase.BOL.ModuleDocumentation
                 DAL.DALHelper.InternalCache.Add(name, cachedResult);
             }
             
-            return ((ModuleMember)cachedResult.Value);
+            return (ModuleMember)cachedResult.Value;
         }
 
         #endregion Static Methods
@@ -61,7 +61,7 @@ namespace SharedBase.BOL.ModuleDocumentation
         {
             get
             {
-                return ((ModuleMember)this.InnerList[Index]);
+                return (ModuleMember)this.InnerList[Index];
             }
 
             set
@@ -81,7 +81,7 @@ namespace SharedBase.BOL.ModuleDocumentation
         /// <returns></returns>
         public int Add(ModuleMember value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace SharedBase.BOL.ModuleDocumentation
         /// <returns></returns>
         public int IndexOf(ModuleMember value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace SharedBase.BOL.ModuleDocumentation
         public bool Contains(ModuleMember value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

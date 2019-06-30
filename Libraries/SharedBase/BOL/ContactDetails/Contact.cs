@@ -74,7 +74,7 @@ namespace SharedBase.BOL.ContactDetails
 		/// </summary>
 		public bool Delete()
 		{
-			return (SharedBase.DAL.FirebirdDB.ContactDelete(this));
+			return SharedBase.DAL.FirebirdDB.ContactDelete(this);
 		}
 
 
@@ -95,7 +95,7 @@ namespace SharedBase.BOL.ContactDetails
 		/// </summary>
 		public override string ToString()
 		{
-			return (String.Format("CONTACT_DETAILS Record {0}", ID));
+			return String.Format("CONTACT_DETAILS Record {0}", ID);
 		}
 
 		#endregion Overridden Methods

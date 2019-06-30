@@ -36,22 +36,22 @@ namespace SharedBase.BOL.DatabaseUpdates
 
         public static Updates GetUpdates(string TableName, Int64 Key)
         {
-            return (DAL.FirebirdDB.DatabaseUpdatesGet(TableName, Key.ToString()));
+            return DAL.FirebirdDB.DatabaseUpdatesGet(TableName, Key.ToString());
         }
 
         public static Updates GetUpdates(string TableName, int Key)
         {
-            return (DAL.FirebirdDB.DatabaseUpdatesGet(TableName, Key.ToString()));
+            return DAL.FirebirdDB.DatabaseUpdatesGet(TableName, Key.ToString());
         }
 
         public static Updates GetDeleted(string TableName, string ColumnName, Int64 Key)
         {
-            return (DAL.FirebirdDB.DatabaseDeletesGet(TableName, ColumnName, Key.ToString()));
+            return DAL.FirebirdDB.DatabaseDeletesGet(TableName, ColumnName, Key.ToString());
         }
 
         public static Updates GetDeleted(string TableName, string ColumnName, int Key)
         {
-            return (DAL.FirebirdDB.DatabaseDeletesGet(TableName, ColumnName, Key.ToString()));
+            return DAL.FirebirdDB.DatabaseDeletesGet(TableName, ColumnName, Key.ToString());
         }
 
         #endregion Static Methods
@@ -69,7 +69,7 @@ namespace SharedBase.BOL.DatabaseUpdates
         {
             get
             {
-                return ((Update)this.InnerList[Index]);
+                return (Update)this.InnerList[Index];
             }
 
             set
@@ -89,7 +89,7 @@ namespace SharedBase.BOL.DatabaseUpdates
         /// <returns></returns>
         public int Add(Update value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace SharedBase.BOL.DatabaseUpdates
         /// <returns></returns>
         public int IndexOf(Update value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace SharedBase.BOL.DatabaseUpdates
         public bool Contains(Update value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

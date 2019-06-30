@@ -60,7 +60,7 @@ namespace SharedBase
                 zip = null;
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -188,7 +188,7 @@ namespace SharedBase
 
             foreach (string Folder in SubFolders)
                 if (!zipFolder(RootFolder, Folder, zStream, zipFile))
-                    return (false);
+                    return false;
 
             string relativePath = CurrentFolder.Substring(RootFolder.Length) + "/";
 
@@ -202,12 +202,12 @@ namespace SharedBase
             foreach (string file in Directory.GetFiles(CurrentFolder))
             {
                 if (!RaiseFileAddedToZip(file, zipFile))
-                    return (false);
+                    return false;
 
                 addFileToZip(zStream, relativePath, file);
             }
 
-            return (true);
+            return true;
         }
 
         private static void addFileToZip(ZipOutputStream zStream, string relativePath, string file)
@@ -237,7 +237,7 @@ namespace SharedBase
             if (ZipFileAddedToArchive != null)
                 ZipFileAddedToArchive(null, args);
 
-            return (!args.Cancel);
+            return !args.Cancel;
         }
 
         #endregion Private Static Methods

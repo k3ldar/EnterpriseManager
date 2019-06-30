@@ -40,22 +40,22 @@ namespace SharedBase.BOL.Helpdesk
 
         public static FAQItem Get(int ID)
         {
-            return (DAL.FirebirdDB.FAQItemGet(ID));
+            return DAL.FirebirdDB.FAQItemGet(ID);
         }
 
         public static FAQItem Create()
         {
-            return (DAL.FirebirdDB.FAQItemCreate());
+            return DAL.FirebirdDB.FAQItemCreate();
         }
 
         public static int GetCount()
         {
-            return (DAL.FirebirdDB.FAQItemGetCount());
+            return DAL.FirebirdDB.FAQItemGetCount();
         }
 
         public static FAQItems Get(int Page, int PageCount)
         {
-            return (DAL.FirebirdDB.FAQItemsGet(Page, PageCount));
+            return DAL.FirebirdDB.FAQItemsGet(Page, PageCount);
         }
 
         #endregion Static Methods
@@ -68,7 +68,7 @@ namespace SharedBase.BOL.Helpdesk
         {
             get
             {
-                return ((FAQItem)this.InnerList[Index]);
+                return (FAQItem)this.InnerList[Index];
             }
 
             set
@@ -88,7 +88,7 @@ namespace SharedBase.BOL.Helpdesk
         /// <returns></returns>
         public int Add(FAQItem value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace SharedBase.BOL.Helpdesk
         /// <returns></returns>
         public int IndexOf(FAQItem value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -130,7 +130,7 @@ namespace SharedBase.BOL.Helpdesk
         public bool Contains(FAQItem value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

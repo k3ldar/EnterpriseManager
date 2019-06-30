@@ -41,7 +41,7 @@ namespace SharedBase.BOL.Appointments
         /// <returns>AppointmentChanges collection</returns>
         public static AppointmentChanges Get(Appointment appointment)
         {
-            return (DAL.FirebirdDB.AppointmentChanges(appointment));
+            return DAL.FirebirdDB.AppointmentChanges(appointment);
         }
 
         #endregion Static Methods
@@ -54,7 +54,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return ((AppointmentChangeItem)this.InnerList[Index]);
+                return (AppointmentChangeItem)this.InnerList[Index];
             }
 
             set
@@ -74,7 +74,7 @@ namespace SharedBase.BOL.Appointments
         /// <returns></returns>
         public int Add(AppointmentChangeItem value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace SharedBase.BOL.Appointments
         /// <returns></returns>
         public int IndexOf(AppointmentChangeItem value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace SharedBase.BOL.Appointments
         public bool Contains(AppointmentChangeItem value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

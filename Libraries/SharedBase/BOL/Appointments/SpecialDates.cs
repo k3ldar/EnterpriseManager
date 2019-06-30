@@ -40,7 +40,7 @@ namespace SharedBase.BOL.Appointments
         {
             get
             {
-                return ((SpecialDate)this.InnerList[Index]);
+                return (SpecialDate)this.InnerList[Index];
             }
 
             set
@@ -60,7 +60,7 @@ namespace SharedBase.BOL.Appointments
         /// <returns></returns>
         public int Add(SpecialDate value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace SharedBase.BOL.Appointments
         /// <returns></returns>
         public int IndexOf(SpecialDate value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace SharedBase.BOL.Appointments
         public bool Contains(SpecialDate value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods
@@ -177,7 +177,7 @@ namespace SharedBase.BOL.Appointments
         /// <returns>SpecialDates collection</returns>
         public static SpecialDates Get()
         {
-            return (DAL.FirebirdDB.SpecialDatesGet());
+            return DAL.FirebirdDB.SpecialDatesGet();
         }
 
         #endregion Static Methods

@@ -129,7 +129,7 @@ namespace SharedBase.BOL.Appointments
                 Result += treat.Duration;
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Private Methods

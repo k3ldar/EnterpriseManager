@@ -39,7 +39,7 @@ namespace SharedBase.BOL.Helpdesk
 
         public static TicketStatuses Get()
         {
-            return (DAL.FirebirdDB.HelpdeskTicketStatusesGet());
+            return DAL.FirebirdDB.HelpdeskTicketStatusesGet();
         }
 
         public static TicketStatus Get(int StatusID)
@@ -55,7 +55,7 @@ namespace SharedBase.BOL.Helpdesk
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         public static TicketStatus Get(string Status)
@@ -71,7 +71,7 @@ namespace SharedBase.BOL.Helpdesk
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Static Methods
@@ -84,7 +84,7 @@ namespace SharedBase.BOL.Helpdesk
         {
             get
             {
-                return ((TicketStatus)this.InnerList[Index]);
+                return (TicketStatus)this.InnerList[Index];
             }
 
             set
@@ -104,7 +104,7 @@ namespace SharedBase.BOL.Helpdesk
         /// <returns></returns>
         public int Add(TicketStatus value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace SharedBase.BOL.Helpdesk
         /// <returns></returns>
         public int IndexOf(TicketStatus value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace SharedBase.BOL.Helpdesk
         public bool Contains(TicketStatus value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

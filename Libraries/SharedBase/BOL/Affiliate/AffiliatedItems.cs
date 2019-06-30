@@ -39,12 +39,12 @@ namespace SharedBase.BOL.Affiliate
 
         public static Users.Users GetAffiliateUsers()
         {
-            return (DAL.FirebirdDB.AffiliatedGetUsers());
+            return DAL.FirebirdDB.AffiliatedGetUsers();
         }
 
         public static User GetAffiliateUser(string affiliateID)
         {
-            return (DAL.FirebirdDB.AffiliatedUserGet(affiliateID));
+            return DAL.FirebirdDB.AffiliatedUserGet(affiliateID);
         }
 
         public static string UniqueID()
@@ -57,23 +57,23 @@ namespace SharedBase.BOL.Affiliate
                 Result = "AF" + Shared.Utilities.GetRandomWord(8, "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789");
             } while (!IsIDUnique(testItem, Result));
 
-            return (Result);
+            return Result;
         }
 
         public static bool IsIDUnique(AffiliatedItem item, string affiliateID)
         {
-            return (DAL.FirebirdDB.AffiliateIDIsUnique(item, affiliateID));
+            return DAL.FirebirdDB.AffiliateIDIsUnique(item, affiliateID);
         }
 
         public static AffiliatedItems Get(User user)
         {
-            return (DAL.FirebirdDB.AffiliatedSitesGet(user));
+            return DAL.FirebirdDB.AffiliatedSitesGet(user);
         }
 
         public static string Get(string referringURL)
         {
             if (String.IsNullOrEmpty(referringURL))
-                return (String.Empty);
+                return String.Empty;
 
             referringURL = referringURL.ToLower().Replace("www.", "").Replace("http://", "https://").Replace("https://", "");
 
@@ -91,15 +91,15 @@ namespace SharedBase.BOL.Affiliate
             }
 
             if (Result.Value == null)
-                return (String.Empty);
+                return String.Empty;
             else
-                return (((AffiliatedItem)Result.Value).AffiliateID);
+                return ((AffiliatedItem)Result.Value).AffiliateID;
         }
 
         public static AffiliatedItem GetAffiliate(string referringURL)
         {
             if (String.IsNullOrEmpty(referringURL))
-                return (null);
+                return null;
 
             referringURL = referringURL.ToLower().Replace("www.", "").Replace("http://", "https://").Replace("https://", "");
 
@@ -116,7 +116,7 @@ namespace SharedBase.BOL.Affiliate
                 CachedItemAdd(referringURL.ToLower(), Result);
             }
 
-            return ((AffiliatedItem)Result.Value);
+            return (AffiliatedItem)Result.Value;
         }
 
 
@@ -135,7 +135,7 @@ namespace SharedBase.BOL.Affiliate
         {
             get
             {
-                return ((AffiliatedItem)this.InnerList[Index]);
+                return (AffiliatedItem)this.InnerList[Index];
             }
 
             set
@@ -155,7 +155,7 @@ namespace SharedBase.BOL.Affiliate
         /// <returns></returns>
         public int Add(AffiliatedItem value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -165,7 +165,7 @@ namespace SharedBase.BOL.Affiliate
         /// <returns></returns>
         public int IndexOf(AffiliatedItem value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -197,7 +197,7 @@ namespace SharedBase.BOL.Affiliate
         public bool Contains(AffiliatedItem value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

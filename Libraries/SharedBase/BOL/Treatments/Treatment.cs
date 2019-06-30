@@ -77,7 +77,7 @@ namespace SharedBase.BOL.Treatments
         {
             get
             {
-                return (_Duration);
+                return _Duration;
             }
 
             set
@@ -90,7 +90,7 @@ namespace SharedBase.BOL.Treatments
         {
             get
             {
-                return (_SortOrder);
+                return _SortOrder;
             }
 
             set
@@ -103,7 +103,7 @@ namespace SharedBase.BOL.Treatments
         {
             get
             {
-                return (_URL);
+                return _URL;
             }
 
             set
@@ -116,7 +116,7 @@ namespace SharedBase.BOL.Treatments
         {
             get
             {
-                return (_Image);
+                return _Image;
             }
 
             set
@@ -129,7 +129,7 @@ namespace SharedBase.BOL.Treatments
         {
             get
             {
-                return (_Description);
+                return _Description;
             }
 
             set
@@ -142,7 +142,7 @@ namespace SharedBase.BOL.Treatments
         {
             get
             {
-                return (_TreatmentLength);
+                return _TreatmentLength;
             }
 
             set
@@ -155,7 +155,7 @@ namespace SharedBase.BOL.Treatments
         {
             get
             {
-                return (_Price);
+                return _Price;
             }
 
             set
@@ -168,7 +168,7 @@ namespace SharedBase.BOL.Treatments
         {
             get
             {
-                return (_Name);
+                return _Name;
             }
 
             set
@@ -181,7 +181,7 @@ namespace SharedBase.BOL.Treatments
         {
             get
             {
-                return (_ID);
+                return _ID;
             }
 
             set
@@ -194,7 +194,7 @@ namespace SharedBase.BOL.Treatments
         {
             get
             {
-                return (_SpaDay);
+                return _SpaDay;
             }
         }
 
@@ -205,7 +205,7 @@ namespace SharedBase.BOL.Treatments
         {
             get
             {
-                return (DAL.FirebirdDB.AdminTreatmentGroupsGet(this));
+                return DAL.FirebirdDB.AdminTreatmentGroupsGet(this);
             }
         }
 
@@ -231,7 +231,7 @@ namespace SharedBase.BOL.Treatments
 
         public override string ToString()
         {
-            return (String.Format("Treatment: {0}; Description: {1}", ID, _Description));
+            return String.Format("Treatment: {0}; Description: {1}", ID, _Description);
         }
 
         #endregion Overridden Methods

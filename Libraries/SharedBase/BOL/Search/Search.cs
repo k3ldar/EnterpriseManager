@@ -46,7 +46,7 @@ namespace SharedBase.BOL.Search
         /// <returns>Search Collection</returns>
         public static Search SubmitSearch(MemberLevel memberLevel, string terms, bool useAND)
         {
-            return (DAL.FirebirdDB.SearchSubmit(memberLevel, terms, useAND));
+            return DAL.FirebirdDB.SearchSubmit(memberLevel, terms, useAND);
         }
 
         #endregion Static Methods
@@ -59,7 +59,7 @@ namespace SharedBase.BOL.Search
         {
             get
             {
-                return ((SearchItem)this.InnerList[Index]);
+                return (SearchItem)this.InnerList[Index];
             }
 
             set
@@ -79,7 +79,7 @@ namespace SharedBase.BOL.Search
         /// <returns></returns>
         public int Add(SearchItem value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace SharedBase.BOL.Search
         /// <returns></returns>
         public int IndexOf(SearchItem value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace SharedBase.BOL.Search
         public bool Contains(SearchItem value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

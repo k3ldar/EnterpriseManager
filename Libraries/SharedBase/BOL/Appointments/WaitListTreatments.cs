@@ -114,7 +114,7 @@ namespace SharedBase.BOL.Appointments
 		{
 			get
 			{
-				return ((WaitListTreatment)this[Index]);
+				return (WaitListTreatment)this[Index];
 			}
 
 			set
@@ -134,7 +134,7 @@ namespace SharedBase.BOL.Appointments
 		/// <returns></returns>
 		public int Add(WaitListTreatment value)
 		{
-			return (List.Add(value));
+			return List.Add(value);
 		}
 
 		/// <summary>
@@ -144,7 +144,7 @@ namespace SharedBase.BOL.Appointments
 		/// <returns></returns>
 		public int IndexOf(WaitListTreatment value)
 		{
-			return (List.IndexOf(value));
+			return List.IndexOf(value);
 		}
 
 		/// <summary>
@@ -176,7 +176,7 @@ namespace SharedBase.BOL.Appointments
 		public bool Contains(WaitListTreatment value)
 		{
 			// If value is not of type OBJECT_TYPE, this will return false.
-			return (List.Contains(value));
+			return List.Contains(value);
 		}
 
 		#endregion Public Methods

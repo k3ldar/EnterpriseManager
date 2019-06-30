@@ -351,7 +351,7 @@ namespace SharedBase.Utils
             for (int i = 0; i < Find.Length; i++)
                 Result = Result.Replace(Find[i], Replace[i]);
 
-            return (Result);
+            return Result;
         }
 
 
@@ -369,7 +369,7 @@ namespace SharedBase.Utils
             for (int i = 0; i < Find.Length; i++)
                 Result = Result.Replace(Find[i], Replace[i]);
 
-            return (Result);
+            return Result;
         }
     }
 }

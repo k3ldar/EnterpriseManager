@@ -34,7 +34,7 @@ namespace SharedBase.BOL.Mail
 
         public static SystemEmail Get(SystemEmailType emailType)
         {
-            return (DAL.FirebirdDB.SystemEmailGet(emailType));
+            return DAL.FirebirdDB.SystemEmailGet(emailType);
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace SharedBase.BOL.Mail
         /// <returns>SystemEmails collection</returns>
         public static SystemEmails Get()
         {
-            return (DAL.FirebirdDB.SystemEmailGet());
+            return DAL.FirebirdDB.SystemEmailGet();
         }
 
         #endregion Static Methods
@@ -56,7 +56,7 @@ namespace SharedBase.BOL.Mail
         {
             get
             {
-                return ((SystemEmail)this.InnerList[Index]);
+                return (SystemEmail)this.InnerList[Index];
             }
 
             set
@@ -76,7 +76,7 @@ namespace SharedBase.BOL.Mail
         /// <returns></returns>
         public int Add(SystemEmail value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace SharedBase.BOL.Mail
         /// <returns></returns>
         public int IndexOf(SystemEmail value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace SharedBase.BOL.Mail
         public bool Contains(SystemEmail value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

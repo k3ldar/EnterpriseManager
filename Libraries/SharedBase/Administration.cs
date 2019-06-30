@@ -55,7 +55,7 @@ namespace SharedBase
 
         public string GetCampaignStats(string Campaign)
         {
-            return (FirebirdDB.GetCampaignStats(Campaign));
+            return FirebirdDB.GetCampaignStats(Campaign);
         }
 
         #endregion Stats
@@ -68,7 +68,7 @@ namespace SharedBase
         /// <param name="primaryProductType">Primary Product Type</param>
         public ProductGroups ProductGroups(bool visibleOnWebsite = true)
         {
-            return (FirebirdDB.ProductGroupsGet(_user.MemberLevel, visibleOnWebsite));
+            return FirebirdDB.ProductGroupsGet(_user.MemberLevel, visibleOnWebsite);
         }
 
         /// <summary>
@@ -76,12 +76,12 @@ namespace SharedBase
         /// </summary>
         public Products ProductsGet()
         {
-            return (FirebirdDB.AdminProductsGet());
+            return FirebirdDB.AdminProductsGet();
         }
 
         public Products ProductsGet(ProductGroup Group, string ProductName)
         {
-            return (FirebirdDB.AdminProductsGet(Group, ProductName));
+            return FirebirdDB.AdminProductsGet(Group, ProductName);
         }
 
 
@@ -89,7 +89,7 @@ namespace SharedBase
         {
             get
             {
-                return (FirebirdDB.AdminProductsCount());
+                return FirebirdDB.AdminProductsCount();
             }
         }
 
@@ -100,17 +100,17 @@ namespace SharedBase
         /// <returns></returns>
         public Product ProductGet(int ProductID)
         {
-            return (FirebirdDB.ProductGet(ProductID));
+            return FirebirdDB.ProductGet(ProductID);
         }
 
         public Products ProductsGet(int PageNumber, int PageSize)
         {
-            return(FirebirdDB.AdminProductsGet(PageNumber, PageSize));
+            return FirebirdDB.AdminProductsGet(PageNumber, PageSize);
         }
 
         public Product ProductInsert(string productName, ProductType productType, ProductGroup group)
         {
-            return (FirebirdDB.AdminProductInsert(productName, productType, group));
+            return FirebirdDB.AdminProductInsert(productName, productType, group);
         }
 
         #endregion Product Groups
@@ -125,7 +125,7 @@ namespace SharedBase
         /// <returns>ProductGroups collection</returns>
         public ProductGroups ProductGroupsGet(int PageNumber, int PageSize)
         {
-            return(FirebirdDB.AdminProductGroupsGet(PageNumber, PageSize));
+            return FirebirdDB.AdminProductGroupsGet(PageNumber, PageSize);
         }
 
         /// <summary>
@@ -134,12 +134,12 @@ namespace SharedBase
         /// <returns>int - Count of Product Groups</returns>
         public int ProductGroupsCount()
         {
-            return (FirebirdDB.AdminProductGroupsCount());
+            return FirebirdDB.AdminProductGroupsCount();
         }
 
         public ProductGroup ProductGroupCreate(string Description, ProductGroupType productGroupType)
         {
-            return (FirebirdDB.AdminProductGroupCreate(Description, productGroupType.ID));
+            return FirebirdDB.AdminProductGroupCreate(Description, productGroupType.ID);
         }
 
         public void ProductGroupDelete(ProductGroup productGroup)
@@ -154,7 +154,7 @@ namespace SharedBase
 
         public ProductGroup ProductGroupGet(int GroupID)
         {
-            return (FirebirdDB.AdminProductGroupGet(GroupID));
+            return FirebirdDB.AdminProductGroupGet(GroupID);
         }
 
         #endregion Product Groups
@@ -163,7 +163,7 @@ namespace SharedBase
 
         public ProductCost ProductCostCreate(Product product, string productItemName, ProductCostType costType)
         {
-            return (FirebirdDB.AdminProductCostCreate(product, productItemName, costType));
+            return FirebirdDB.AdminProductCostCreate(product, productItemName, costType);
         }
 
         //public ProductCost ProductCostGet(int ProductCostID)
@@ -187,7 +187,7 @@ namespace SharedBase
 
         public MissingLink MissingLinkAdd(string DeprecatedLink, string ReplacementLink)
         {
-            return (FirebirdDB.AdminMissingLinkAdd(DeprecatedLink, ReplacementLink));
+            return FirebirdDB.AdminMissingLinkAdd(DeprecatedLink, ReplacementLink);
         }
 
         public void MissingLinkUpdate(MissingLink missingLink)
@@ -202,17 +202,17 @@ namespace SharedBase
 
         public MissingLink MissingLinkGet(string DeprecatedLink)
         {
-            return (FirebirdDB.AdminMissingLinkGet(DeprecatedLink));
+            return FirebirdDB.AdminMissingLinkGet(DeprecatedLink);
         }
 
         public int MissingLinkCount()
         {
-            return (FirebirdDB.AdminMissingLinkCount());
+            return FirebirdDB.AdminMissingLinkCount();
         }
 
         public MissingLinks MissingLinksGet(int PageNumber, int PageSize)
         {
-            return (FirebirdDB.AdminMissingLinksGet(PageNumber, PageSize));
+            return FirebirdDB.AdminMissingLinksGet(PageNumber, PageSize);
         }
 
         #endregion Missing Links
@@ -221,27 +221,27 @@ namespace SharedBase
 
         public SupportTicket HelpdeskSupportTicketGet(string TicketKey)
         {
-            return (FirebirdDB.AdminHelpdeskSupportTicketGet(TicketKey));
+            return FirebirdDB.AdminHelpdeskSupportTicketGet(TicketKey);
         }
 
         public SupportTickets HelpdeskSupportTicketsGet(bool OnHold, bool Closed, bool Open)
         {
-            return (FirebirdDB.AdminHelpdeskSupportTicketsGet(OnHold, Closed, Open));
+            return FirebirdDB.AdminHelpdeskSupportTicketsGet(OnHold, Closed, Open);
         }
 
         public CustomerComment HelpdeskCustomerCommentGet(int CommentID)
         {
-            return (FirebirdDB.AdminHelpdeskCustomerCommentGet(CommentID));
+            return FirebirdDB.AdminHelpdeskCustomerCommentGet(CommentID);
         }
 
         public CustomerComments HelpdeskCustomerCommentsGet(int PageNumber, int PageSize)
         {
-            return (FirebirdDB.AdminHelpdeskCustomerCommentsGet(PageNumber, PageSize));
+            return FirebirdDB.AdminHelpdeskCustomerCommentsGet(PageNumber, PageSize);
         }
 
         public int HelpdeskCustomerCommentsCount()
         {
-            return (FirebirdDB.AdminHelpdeskCustomerCommentsCount());
+            return FirebirdDB.AdminHelpdeskCustomerCommentsCount();
         }
 
         #endregion Helpdesk
@@ -250,7 +250,7 @@ namespace SharedBase
 
         public int ProductsCount()
         {
-            return (FirebirdDB.AdminProductsCount());
+            return FirebirdDB.AdminProductsCount();
         }
 
         #endregion Products
@@ -259,7 +259,7 @@ namespace SharedBase
 
         public Orders OrdersGet(int UserID, int InvoiceID, bool TodayOnly, ProcessStatuses processStatuses)
         {
-            return (FirebirdDB.AdminOrdersGet(UserID, InvoiceID, TodayOnly, processStatuses));
+            return FirebirdDB.AdminOrdersGet(UserID, InvoiceID, TodayOnly, processStatuses);
         }
 
         #endregion Admin Orders
@@ -268,17 +268,17 @@ namespace SharedBase
 
         public int TipsTricksCount()
         {
-            return (FirebirdDB.AdminTipsTricksCount());
+            return FirebirdDB.AdminTipsTricksCount();
         }
 
         public TipsTricks TipsTricksGet(int PageNumber, int PageSize)
         {
-            return (FirebirdDB.AdminTipsTricksGet(PageNumber, PageSize));
+            return FirebirdDB.AdminTipsTricksGet(PageNumber, PageSize);
         }
 
         public TipsTrick TipsTricksGet(int TipTrickID)
         {
-            return (FirebirdDB.AdminTipsTricksGet(TipTrickID));
+            return FirebirdDB.AdminTipsTricksGet(TipTrickID);
         }
 
         public void TipsTricksUpdate(TipsTrick Tip)
@@ -293,7 +293,7 @@ namespace SharedBase
 
         public TipsTrick TipsTrickCreate(TipsTrick Tip)
         {
-            return (FirebirdDB.AdminTipsTrickCreate(Tip));
+            return FirebirdDB.AdminTipsTrickCreate(Tip);
         }
 
         #endregion Tips and Tricks
@@ -303,7 +303,7 @@ namespace SharedBase
         public static Int64 EmailMassAdd(string ToName, string ToEMail, string FromName,
             string FromEMail, string Subject, string Message, DateTime SendDateTime)
         {
-            return (FirebirdDB.AdminEmailMassAdd(ToName, ToEMail, FromName, FromEMail, Subject, Message, SendDateTime));
+            return FirebirdDB.AdminEmailMassAdd(ToName, ToEMail, FromName, FromEMail, Subject, Message, SendDateTime);
         }
 
         #endregion Email
@@ -316,12 +316,12 @@ namespace SharedBase
         /// <returns></returns>
         public int UsersGetCount()
         {
-            return (FirebirdDB.AdminUsersGetCount());
+            return FirebirdDB.AdminUsersGetCount();
         }
 
         public Users UsersGet(int PageNumber, int PageSize)
         {
-            return (FirebirdDB.AdminUsersGet(PageNumber, PageSize));
+            return FirebirdDB.AdminUsersGet(PageNumber, PageSize);
         }
 
         /// <summary>
@@ -331,17 +331,17 @@ namespace SharedBase
         /// <returns></returns>
         public Users UsersGet(MemberLevel MemberLevel)
         {
-            return (FirebirdDB.AdminUsersGet(MemberLevel));
+            return FirebirdDB.AdminUsersGet(MemberLevel);
         }
 
         public Users UsersGetMassEmail(bool AdminOnly)
         {
-            return (FirebirdDB.AdminUsersGetMassEmail(AdminOnly));
+            return FirebirdDB.AdminUsersGetMassEmail(AdminOnly);
         }
 
         public Users UsersGetMassEmail(bool AdminOnly, int ProductItem)
         {
-            return (FirebirdDB.AdminUsersGetMassEmailProductItem(AdminOnly, ProductItem));
+            return FirebirdDB.AdminUsersGetMassEmailProductItem(AdminOnly, ProductItem);
         }
 
         #endregion Users
@@ -350,55 +350,55 @@ namespace SharedBase
 
         public int StatsMailCount(Enums.MailCount Option)
         {
-            return (FirebirdDB.AdminStatsMailCount(Option));
+            return FirebirdDB.AdminStatsMailCount(Option);
         }
 
         public int StatsComments()
         {
-            return (FirebirdDB.AdminStatsComments());
+            return FirebirdDB.AdminStatsComments();
         }
 
         public int StatsBannedIP()
         {
-            return (FirebirdDB.AdminStatsBannedIP());
+            return FirebirdDB.AdminStatsBannedIP();
         }
 
         public int StatsAppointments(Enums.AppointmentStats Option)
         {
-            return (FirebirdDB.AdminStatsAppointments(Option));
+            return FirebirdDB.AdminStatsAppointments(Option);
         }
 
 
         public string StatsDownloads()
         {
-            return (FirebirdDB.AdminStatsDownloads());
+            return FirebirdDB.AdminStatsDownloads();
         }
 
 
         public int StatsTickets(Enums.TicketStatus Option)
         {
-            return (FirebirdDB.AdminStatsTickets(Option));
+            return FirebirdDB.AdminStatsTickets(Option);
         }
 
         public int StatsSalonUpdates()
         {
-            return (FirebirdDB.AdminStatsSalonUpdates());
+            return FirebirdDB.AdminStatsSalonUpdates();
         }
 
         public int StatsInvoices(InvoiceStatistics Option)
         {
-            return (FirebirdDB.AdminStatsInvoices(Option));
+            return FirebirdDB.AdminStatsInvoices(Option);
         }
 
 
         public int StatsUserCount()
         {
-            return (FirebirdDB.AdminStatsUserCount());
+            return FirebirdDB.AdminStatsUserCount();
         }
 
         public int StatsLicenceCount()
         {
-            return (FirebirdDB.AdminStatsLicenceCount());
+            return FirebirdDB.AdminStatsLicenceCount();
         }
 
         #endregion Stats
@@ -407,13 +407,13 @@ namespace SharedBase
 
         public Treatment TreatmentGet(int TreatmentID)
         {
-            return (FirebirdDB.AdminTreatmentGet(TreatmentID));
+            return FirebirdDB.AdminTreatmentGet(TreatmentID);
         }
 
 
         public Treatment TreatmentCreate(Treatment treatment)
         {
-            return (FirebirdDB.AdminTreatmentCreate(treatment));
+            return FirebirdDB.AdminTreatmentCreate(treatment);
         }
 
 
@@ -428,7 +428,7 @@ namespace SharedBase
         /// <returns>Salon object</returns>
         public Salon SalonGet(int SalonID)
         {
-            return (FirebirdDB.AdminSalonGet(SalonID));
+            return FirebirdDB.AdminSalonGet(SalonID);
         }
 
 
@@ -438,7 +438,7 @@ namespace SharedBase
         /// <returns></returns>
         public Salons SalonsGet()
         {
-            return (FirebirdDB.AdminSalonsGet());
+            return FirebirdDB.AdminSalonsGet();
         }
 
         /// <summary>
@@ -447,12 +447,12 @@ namespace SharedBase
         /// <returns></returns>
         public Salons SalonsUnassigned()
         {
-            return (FirebirdDB.AdminSalonsGetUnassigned());
+            return FirebirdDB.AdminSalonsGetUnassigned();
         }
 
         public Salons SalonsGet(string SalonName)
         {
-            return (FirebirdDB.AdminSalonsGet(SalonName));
+            return FirebirdDB.AdminSalonsGet(SalonName);
         }
 
         /// <summary>
@@ -463,7 +463,7 @@ namespace SharedBase
         /// <returns></returns>
         public Salons SalonsGet(int PageNumber, int PageSize)
         {
-            return (FirebirdDB.AdminSalonsGet(PageNumber, PageSize));
+            return FirebirdDB.AdminSalonsGet(PageNumber, PageSize);
         }
 
 
@@ -474,12 +474,12 @@ namespace SharedBase
         /// <returns>Salon object for newly created salon</returns>
         public Salon SalonCreate(string SalonName, Enums.SalonType SalonType)
         {
-            return (FirebirdDB.AdminSalonCreate(SalonName, SalonType));
+            return FirebirdDB.AdminSalonCreate(SalonName, SalonType);
         }
 
         public int SalonCount()
         {
-            return (FirebirdDB.AdminSalonCount());
+            return FirebirdDB.AdminSalonCount();
         }
 
         #endregion Admin Salons
@@ -517,27 +517,27 @@ namespace SharedBase
 
         public Salon SalonOwnerUpdateGet(User user, Salon salon)
         {
-            return (FirebirdDB.AdminSalonOwnerUpdateGet(user, salon));
+            return FirebirdDB.AdminSalonOwnerUpdateGet(user, salon);
         }
 
         public Users SalonOwnersGet(int PageNumber, int PageSize)
         {
-            return (FirebirdDB.AdminSalonOwnersGet(PageNumber, PageSize));
+            return FirebirdDB.AdminSalonOwnersGet(PageNumber, PageSize);
         }
 
         public int SalonOwnersCount()
         {
-            return (FirebirdDB.AdminSalonOwnersCount());
+            return FirebirdDB.AdminSalonOwnersCount();
         }
 
         public int SalonOwnersUpdateCount()
         {
-            return (FirebirdDB.AdminSalonOwnersUpdateCount());
+            return FirebirdDB.AdminSalonOwnersUpdateCount();
         }
 
         public Salons SalonUpdatesGet(int PageNumber, int PageSize)
         {
-            return (FirebirdDB.AdminSalonUpdatesGet(PageNumber, PageSize));
+            return FirebirdDB.AdminSalonUpdatesGet(PageNumber, PageSize);
         }
 
         #endregion Salon Owners
@@ -546,12 +546,12 @@ namespace SharedBase
 
         public Distributor DistributorGet(int DistributorID)
         {
-            return (FirebirdDB.AdminDistributorGet(DistributorID));
+            return FirebirdDB.AdminDistributorGet(DistributorID);
         }
 
         public Distributors DistributorsGet(int PageNumber, int PageSize)
         {
-            return (FirebirdDB.AdminDistributorsGet(PageNumber, PageSize));
+            return FirebirdDB.AdminDistributorsGet(PageNumber, PageSize);
         }
 
         public void DistributorsDelete(Distributor distributor)
@@ -561,7 +561,7 @@ namespace SharedBase
 
         public Distributor DistributorsCreate(string Name)
         {
-            return (FirebirdDB.AdminDistributorsCreate(Name));
+            return FirebirdDB.AdminDistributorsCreate(Name);
         }
 
         public void DistributorsUpdate(Distributor distributor)
@@ -575,17 +575,17 @@ namespace SharedBase
 
         public int CouponCount()
         {
-            return (FirebirdDB.AdminCouponCount());
+            return FirebirdDB.AdminCouponCount();
         }
 
         public Coupon CouponGet(int CouponID)
         {
-            return (FirebirdDB.AdminCouponGet(CouponID));
+            return FirebirdDB.AdminCouponGet(CouponID);
         }
 
         public Coupons CouponsGet(int PageNumber, int PageSize)
         {
-            return (FirebirdDB.AdminCouponsGet(PageNumber, PageSize));
+            return FirebirdDB.AdminCouponsGet(PageNumber, PageSize);
         }
 
         public void CouponDelete(Coupon coupon)
@@ -595,7 +595,7 @@ namespace SharedBase
 
         public Coupon CouponCreate(string Name)
         {
-            return (FirebirdDB.AdminCouponCreate(Name));
+            return FirebirdDB.AdminCouponCreate(Name);
         }
 
         public void CouponUpdate(Coupon coupon)
@@ -625,7 +625,7 @@ namespace SharedBase
         {
             get
             {
-                return (DALHelper.LocalDatabase);
+                return DALHelper.LocalDatabase;
             }
         }
 
@@ -633,7 +633,7 @@ namespace SharedBase
         {
             get
             {
-                return (DALHelper.DatabaseVersion);
+                return DALHelper.DatabaseVersion;
             }
         }
 
@@ -641,7 +641,7 @@ namespace SharedBase
         {
             get
             {
-                return (DALHelper.DatabaseVersionCorrect);
+                return DALHelper.DatabaseVersionCorrect;
             }
         }
 
@@ -649,7 +649,7 @@ namespace SharedBase
         {
             get
             {
-                return (DALHelper.StoreID);
+                return DALHelper.StoreID;
             }
         }
 
@@ -657,7 +657,7 @@ namespace SharedBase
         {
             get
             {
-                return (DALHelper.TillID);
+                return DALHelper.TillID;
             }
         }
 
@@ -665,7 +665,7 @@ namespace SharedBase
         {
             get
             {
-                return (_user);
+                return _user;
             }
         }
 
@@ -673,7 +673,7 @@ namespace SharedBase
         {
             get
             {
-                return (DAL.FirebirdDB.AdminDatabaseServer(false));
+                return DAL.FirebirdDB.AdminDatabaseServer(false);
             }
         }
 
@@ -703,7 +703,7 @@ namespace SharedBase
         /// <returns>true if ip address is banned</returns>
         public static bool AutoBanIPAddress(string path, string ipAddress, bool ForceBan = false)
         {
-            return (FirebirdDB.AutoBanIPAddress(path, ipAddress, ForceBan));
+            return FirebirdDB.AutoBanIPAddress(path, ipAddress, ForceBan);
         }
 
         public static void BanIPAddress(string ipAddress)

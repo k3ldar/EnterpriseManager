@@ -50,7 +50,7 @@ namespace SharedBase.BOL.Distributors
                 CachedItemAdd("Distributor Web Pages", item);
             }
 
-            return ((WebsiteDistributors)item.Value);
+            return (WebsiteDistributors)item.Value;
         }
 
 
@@ -72,7 +72,7 @@ namespace SharedBase.BOL.Distributors
             }
 
 
-            return (Result);
+            return Result;
         }
 
         #endregion Public Methods
@@ -85,7 +85,7 @@ namespace SharedBase.BOL.Distributors
         {
             get
             {
-                return ((WebsiteDistributor)this.InnerList[Index]);
+                return (WebsiteDistributor)this.InnerList[Index];
             }
 
             set
@@ -105,7 +105,7 @@ namespace SharedBase.BOL.Distributors
         /// <returns></returns>
         public int Add(WebsiteDistributor value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace SharedBase.BOL.Distributors
         /// <returns></returns>
         public int IndexOf(WebsiteDistributor value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace SharedBase.BOL.Distributors
         public bool Contains(WebsiteDistributor value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

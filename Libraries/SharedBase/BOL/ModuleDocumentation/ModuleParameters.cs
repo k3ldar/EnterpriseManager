@@ -40,7 +40,7 @@ namespace SharedBase.BOL.ModuleDocumentation
         {
             get
             {
-                return ((ModuleParameter)this.InnerList[Index]);
+                return (ModuleParameter)this.InnerList[Index];
             }
 
             set
@@ -60,7 +60,7 @@ namespace SharedBase.BOL.ModuleDocumentation
         /// <returns></returns>
         public int Add(ModuleParameter value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace SharedBase.BOL.ModuleDocumentation
         /// <returns></returns>
         public int IndexOf(ModuleParameter value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace SharedBase.BOL.ModuleDocumentation
         public bool Contains(ModuleParameter value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

@@ -65,7 +65,7 @@ namespace SharedBase.BOL.News
         {
             get
             {
-                return (_ID);
+                return _ID;
             }
         }
 
@@ -73,7 +73,7 @@ namespace SharedBase.BOL.News
         {
             get
             {
-                return (_DateTime);
+                return _DateTime;
             }
 
             set
@@ -86,7 +86,7 @@ namespace SharedBase.BOL.News
         {
             get
             {
-                return (_Title);
+                return _Title;
             }
 
             set
@@ -99,7 +99,7 @@ namespace SharedBase.BOL.News
         {
             get
             {
-                return (_Text);
+                return _Text;
             }
 
             set
@@ -112,7 +112,7 @@ namespace SharedBase.BOL.News
         {
             get
             {
-                return (_Image);
+                return _Image;
             }
 
             set
@@ -125,7 +125,7 @@ namespace SharedBase.BOL.News
         {
             get
             {
-                return (_URL);
+                return _URL;
             }
 
             set

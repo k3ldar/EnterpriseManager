@@ -84,7 +84,7 @@ namespace SharedBase.BOL.Invoices
                 if (_items == null)
                     _items = DAL.FirebirdDB.RecurringInvoiceItemsGet(this);
 
-                return (_items);
+                return _items;
             }
         }
 
@@ -110,7 +110,7 @@ namespace SharedBase.BOL.Invoices
 
         public override string ToString()
         {
-            return (String.Format("RecurringInvoice {0}; ID: {1}", Description, ID));
+            return String.Format("RecurringInvoice {0}; ID: {1}", Description, ID);
         }
 
         #endregion Overridden Methods

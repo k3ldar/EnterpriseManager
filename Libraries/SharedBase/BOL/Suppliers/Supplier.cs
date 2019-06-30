@@ -100,7 +100,7 @@ namespace SharedBase.BOL.Suppliers
 		/// </summary>
 		public bool Delete()
 		{
-			return (false);
+			return false;
 		}
 
         public bool UpdateContact(string name, string telephone)
@@ -119,7 +119,7 @@ namespace SharedBase.BOL.Suppliers
 
             DAL.FirebirdDB.SupplierAddContactDetails(this, contact);
 
-            return (true);
+            return true;
         }
 
 		/// <summary>
@@ -148,7 +148,7 @@ namespace SharedBase.BOL.Suppliers
         /// </summary>
         public override string ToString()
 		{
-			return (String.Format("SUPPLIERS Record {0}", ID));
+			return String.Format("SUPPLIERS Record {0}", ID);
 		}
 
 		#endregion Overridden Methods
@@ -230,7 +230,7 @@ namespace SharedBase.BOL.Suppliers
                 if (_contacts == null)
                     _contacts = DAL.FirebirdDB.ContactDetailsGet(this);
 
-                return (_contacts);
+                return _contacts;
             }
         }
 
@@ -242,7 +242,7 @@ namespace SharedBase.BOL.Suppliers
                 if (_products == null)
                     _products = DAL.FirebirdDB.SupplierProductSelectAll(this);
 
-                return (_products);
+                return _products;
             }
         }
 

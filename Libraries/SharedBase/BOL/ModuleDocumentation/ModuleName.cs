@@ -78,7 +78,7 @@ namespace SharedBase.BOL.ModuleDocumentation
                     DAL.DALHelper.InternalCache.Add(String.Format(Consts.CACHE_NAME_MODULE_CLASSES, Name), cachedResult);
                 }
 
-                return ((ModuleClasses)cachedResult.Value);
+                return (ModuleClasses)cachedResult.Value;
             }
         }
 
@@ -90,7 +90,7 @@ namespace SharedBase.BOL.ModuleDocumentation
         public ModuleClass AddClass(bool isPrimary, string moduleNamespace, 
             string name, string description, string exampleUsage)
         {
-            return (DAL.FirebirdDB.ModuleClassInsert(this.ID, isPrimary, moduleNamespace, name, description, exampleUsage));
+            return DAL.FirebirdDB.ModuleClassInsert(this.ID, isPrimary, moduleNamespace, name, description, exampleUsage);
         }
 
         #endregion Public Methods

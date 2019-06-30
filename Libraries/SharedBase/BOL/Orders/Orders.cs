@@ -47,18 +47,18 @@ namespace SharedBase.BOL.Orders
         /// <returns></returns>
         public static Orders GetUnpaid(DateTime dateFrom, DateTime dateTo)
         {
-            return (DAL.FirebirdDB.OrdersUnpaid(dateFrom, dateTo));
+            return DAL.FirebirdDB.OrdersUnpaid(dateFrom, dateTo);
         }
 
         public static Order Get(Int64 OrderID)
         {
-            return (DAL.FirebirdDB.OrderGet(OrderID));
+            return DAL.FirebirdDB.OrderGet(OrderID);
         }
 
         public static Orders GetProcessing()
         {
             ProcessStatuses status = ProcessStatuses.Processing;
-            return (DAL.FirebirdDB.AdminOrdersGet(-1, -1, false, status));
+            return DAL.FirebirdDB.AdminOrdersGet(-1, -1, false, status);
         }
 
         /// <summary>
@@ -68,12 +68,12 @@ namespace SharedBase.BOL.Orders
         /// <returns>int 0 if none otherwise the number of orders</returns>
         public static int GetCount(User user)
         {
-            return (DAL.FirebirdDB.OrdersGetCount(user));
+            return DAL.FirebirdDB.OrdersGetCount(user);
         }
 
         public static Orders Get(User user)
         {
-            return (DAL.FirebirdDB.OrdersGet(user));
+            return DAL.FirebirdDB.OrdersGet(user);
         }
 
         #endregion Static Methods
@@ -86,7 +86,7 @@ namespace SharedBase.BOL.Orders
         {
             get
             {
-                return ((Order)this.InnerList[Index]);
+                return (Order)this.InnerList[Index];
             }
 
             set
@@ -117,7 +117,7 @@ namespace SharedBase.BOL.Orders
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace SharedBase.BOL.Orders
         /// <returns></returns>
         public int Add(Order value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace SharedBase.BOL.Orders
         /// <returns></returns>
         public int IndexOf(Order value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -169,7 +169,7 @@ namespace SharedBase.BOL.Orders
         public bool Contains(Order value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

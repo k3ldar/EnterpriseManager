@@ -69,16 +69,16 @@ namespace SharedBase.BOL.HashTags
                 CacheItem item = DAL.DALHelper.InternalCache.Get(cacheName);
 
                 if (item != null)
-                    return ((HashTags)item.Value);
+                    return (HashTags)item.Value;
 
                 HashTags Result = DAL.FirebirdDB.HashTagsGet(pageName);
 
                 DAL.DALHelper.InternalCache.Add(cacheName, new CacheItem(cacheName, Result));
 
-                return (Result);
+                return Result;
             }
 
-            return (DAL.FirebirdDB.HashTagsGet(pageName));
+            return DAL.FirebirdDB.HashTagsGet(pageName);
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace SharedBase.BOL.HashTags
                 CacheItem item = DAL.DALHelper.InternalCache.Get(cacheName);
 
                 if (item != null)
-                    return ((HashTags)item.Value);
+                    return (HashTags)item.Value;
             }
 
             HashTags Result = DAL.FirebirdDB.HashTagsGet();
@@ -102,7 +102,7 @@ namespace SharedBase.BOL.HashTags
             if (DAL.DALHelper.AllowCaching && Result != null)
                 DAL.DALHelper.InternalCache.Add(cacheName, new CacheItem(cacheName, Result));
             
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace SharedBase.BOL.HashTags
             HashTag newTag = DAL.FirebirdDB.HashTagCreate(TagName);
             DAL.FirebirdDB.HashTagAdd(newTag, pageName.ToUpper());
             PageTagsClearCache();
-            return (newTag);
+            return newTag;
         }
 
         /// <summary>
@@ -182,7 +182,7 @@ namespace SharedBase.BOL.HashTags
             if (Result.EndsWith(","))
                 Result = Result.Substring(0, Result.Length - 1);
 
-            return (Result);
+            return Result;
         }
 
         #endregion Public Methods
@@ -195,7 +195,7 @@ namespace SharedBase.BOL.HashTags
         {
             get
             {
-                return ((HashTag)this.InnerList[Index]);
+                return (HashTag)this.InnerList[Index];
             }
 
             set
@@ -215,7 +215,7 @@ namespace SharedBase.BOL.HashTags
         /// <returns></returns>
         public int Add(HashTag value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -225,7 +225,7 @@ namespace SharedBase.BOL.HashTags
         /// <returns></returns>
         public int IndexOf(HashTag value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -246,7 +246,7 @@ namespace SharedBase.BOL.HashTags
                 }
             }
 
-            return (Result);
+            return Result;
         }
 
         /// <summary>
@@ -278,7 +278,7 @@ namespace SharedBase.BOL.HashTags
         public bool Contains(HashTag value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

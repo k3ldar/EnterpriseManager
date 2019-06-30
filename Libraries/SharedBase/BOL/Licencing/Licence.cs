@@ -110,7 +110,7 @@ namespace SharedBase.BOL.Licencing
         {
             get
             {
-                return (_updates);
+                return _updates;
             }
         }
 
@@ -160,7 +160,7 @@ namespace SharedBase.BOL.Licencing
                 }
 
 
-                return (Result);
+                return Result;
             }
         }
 
@@ -191,13 +191,13 @@ namespace SharedBase.BOL.Licencing
         /// <returns>True if valid, otherwise false</returns>
         public static bool LicenceValid(Int64 licenceID, string domain, int licenceType)
         {
-            return (DAL.FirebirdDB.LicenceValid(licenceID, domain, licenceType));
+            return DAL.FirebirdDB.LicenceValid(licenceID, domain, licenceType);
         }
 
 
         public static int LicenceCount(User user)
         {
-            return (DAL.FirebirdDB.LicenceCount(user));
+            return DAL.FirebirdDB.LicenceCount(user);
         }
 
         #endregion Static Methods

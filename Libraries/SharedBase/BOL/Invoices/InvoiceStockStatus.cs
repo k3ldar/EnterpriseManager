@@ -56,7 +56,7 @@ namespace SharedBase.BOL.Invoices
         {
             get
             {
-                return (_itemsWithoutStock);
+                return _itemsWithoutStock;
             }
         }
 

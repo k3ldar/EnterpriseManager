@@ -60,7 +60,7 @@ namespace SharedBase.BOL.Products
                 break;
             }
 
-            return (Result);
+            return Result;
         }
 
         #endregion Public Methods
@@ -83,25 +83,25 @@ namespace SharedBase.BOL.Products
                     CachedItemAdd(Consts.CACHE_NAME_PRODUCTS_TOP, Result);
                 }
 
-                return ((SimpleStatistics)Result.Value);
+                return (SimpleStatistics)Result.Value;
             }
             else
-                return (DAL.FirebirdDB.ProductsGetTopProducts(quantity));
+                return DAL.FirebirdDB.ProductsGetTopProducts(quantity);
         }
 
         public static SimpleStatistics FeaturedProducts()
         {
-            return (DAL.FirebirdDB.AdminProductsStatsFeaturedProducts());
+            return DAL.FirebirdDB.AdminProductsStatsFeaturedProducts();
         }
 
         public static SimpleStatistics DuplicateSKUCodes()
         {
-            return (DAL.FirebirdDB.AdminProductsStatsSKUDuplicateCodes());
+            return DAL.FirebirdDB.AdminProductsStatsSKUDuplicateCodes();
         }
 
         public static SimpleStatistics InvalidSKUCodes()
         {
-            return (DAL.FirebirdDB.AdminProductsStatsSKUInvalidCodes());
+            return DAL.FirebirdDB.AdminProductsStatsSKUInvalidCodes();
         }
 
         public static ProductCosts GetDiscounted()
@@ -117,10 +117,10 @@ namespace SharedBase.BOL.Products
                     CachedItemAdd(Consts.CACHE_NAME_PRODUCTS_DISCOUNTED, Result);
                 }
 
-                return ((ProductCosts)Result.Value);
+                return (ProductCosts)Result.Value;
             }
             else
-                return (DAL.FirebirdDB.DiscountedProducts());
+                return DAL.FirebirdDB.DiscountedProducts();
         }
 
         /// <summary>
@@ -140,10 +140,10 @@ namespace SharedBase.BOL.Products
                     CachedItemAdd(Consts.CACHE_NAME_PRODUCTS_COUNT, Result);
                 }
 
-                return ((int)Result.Value);
+                return (int)Result.Value;
             }
             else
-                return (DAL.FirebirdDB.ProductsCount(primaryProductType));
+                return DAL.FirebirdDB.ProductsCount(primaryProductType);
         }
 
         /// <summary>
@@ -163,10 +163,10 @@ namespace SharedBase.BOL.Products
                     CachedItemAdd(Consts.CACHE_NAME_PRODUCTS_COUNT_OFFERS, Result);
                 }
 
-                return ((int)Result.Value);
+                return (int)Result.Value;
             }
             else
-                return (DAL.FirebirdDB.ProductsCountOffers());
+                return DAL.FirebirdDB.ProductsCountOffers();
         }
 
         /// <summary>
@@ -177,7 +177,7 @@ namespace SharedBase.BOL.Products
         public static int CountByProduct(ProductGroup ProductGroup)
         {
             if (ProductGroup == null)
-                return (0);
+                return 0;
 
             if (CacheAvailable)
             {
@@ -192,14 +192,14 @@ namespace SharedBase.BOL.Products
                     CachedItemAdd(cacheName, Result);
                 }
 
-                return ((int)Result.Value);
+                return (int)Result.Value;
             }
             else
             {
                 if (ProductGroup != null)
-                    return (DAL.FirebirdDB.ProductsCountByProduct(ProductGroup.ID));
+                    return DAL.FirebirdDB.ProductsCountByProduct(ProductGroup.ID);
                 else
-                    return (0);
+                    return 0;
             }
         }
 
@@ -210,7 +210,7 @@ namespace SharedBase.BOL.Products
         /// <returns>bool - true if valid SKU otherwise false</returns>
         public static bool IsValidSKU(string SKU)
         {
-            return (DAL.FirebirdDB.ProductIsValidSKU(SKU));
+            return DAL.FirebirdDB.ProductIsValidSKU(SKU);
         }
 
         /// <summary>
@@ -230,10 +230,10 @@ namespace SharedBase.BOL.Products
                     CachedItemAdd(Consts.CACHE_NAME_PRODUCT_FEATURED, Result);
                 }
 
-                return ((Product)Result.Value);
+                return (Product)Result.Value;
             }
             else
-                return (DAL.FirebirdDB.ProductGetFeatured());
+                return DAL.FirebirdDB.ProductGetFeatured();
         }
 
         /// <summary>
@@ -253,10 +253,10 @@ namespace SharedBase.BOL.Products
                     CachedItemAdd(Consts.CACHE_NAME_PRODUCTS_CAROUSEL, Result);
                 }
 
-                return ((Products)Result.Value);
+                return (Products)Result.Value;
             }
             else
-                return (DAL.FirebirdDB.ProductsGetCarousel());
+                return DAL.FirebirdDB.ProductsGetCarousel();
         }
 
         public static Products GetFeaturedProducts()
@@ -272,10 +272,10 @@ namespace SharedBase.BOL.Products
                     CachedItemAdd(Consts.CACHE_NAME_PRODUCTS_CAROUSEL, Result);
                 }
 
-                return ((Products)Result.Value);
+                return (Products)Result.Value;
             }
             else
-                return (DAL.FirebirdDB.ProductsGetFeatured());
+                return DAL.FirebirdDB.ProductsGetFeatured();
         }
 
         public static Products Get(Celebrity celebrity)
@@ -293,10 +293,10 @@ namespace SharedBase.BOL.Products
                     CachedItemAdd(cacheName, Result);
                 }
 
-                return ((Products)Result.Value);
+                return (Products)Result.Value;
             }
             else
-                return (DAL.FirebirdDB.ProductsGet(celebrity));
+                return DAL.FirebirdDB.ProductsGet(celebrity);
         }
 
         /// <summary>
@@ -319,10 +319,10 @@ namespace SharedBase.BOL.Products
                     CachedItemAdd(cacheName, Result);
                 }
 
-                return ((Product)Result.Value);
+                return (Product)Result.Value;
             }
             else
-                return (DAL.FirebirdDB.ProductGet(ProductID));
+                return DAL.FirebirdDB.ProductGet(ProductID);
         }
 
         public static Products Get(ProductType primaryProductType, int PageNumber, int PageSize, bool IncludeCosts)
@@ -341,10 +341,10 @@ namespace SharedBase.BOL.Products
                     CachedItemAdd(cacheName, Result);
                 }
 
-                return ((Products)Result.Value);
+                return (Products)Result.Value;
             }
             else
-                return (DAL.FirebirdDB.ProductsGet(primaryProductType, PageNumber, PageSize, IncludeCosts));
+                return DAL.FirebirdDB.ProductsGet(primaryProductType, PageNumber, PageSize, IncludeCosts);
         }
 
         /// <summary>
@@ -373,10 +373,10 @@ namespace SharedBase.BOL.Products
                     CachedItemAdd(cacheName, Result);
                 }
 
-                return ((Products)Result.Value);
+                return (Products)Result.Value;
             }
             else
-                return (DAL.FirebirdDB.ProductsGet(primaryProductType, PageNumber, PageSize));
+                return DAL.FirebirdDB.ProductsGet(primaryProductType, PageNumber, PageSize);
         }
 
         /// <summary>
@@ -402,10 +402,10 @@ namespace SharedBase.BOL.Products
                     CachedItemAdd(cacheName, Result);
                 }
 
-                return ((Products)Result.Value);
+                return (Products)Result.Value;
             }
             else
-                return (DAL.FirebirdDB.ProductsGet(primaryProductType, PageNumber, PageSize, ProductGroup));
+                return DAL.FirebirdDB.ProductsGet(primaryProductType, PageNumber, PageSize, ProductGroup);
         }
 
 
@@ -430,10 +430,10 @@ namespace SharedBase.BOL.Products
                     CachedItemAdd(cacheName, Result);
                 }
 
-                return ((Products)Result.Value);
+                return (Products)Result.Value;
             }
             else
-                return (DAL.FirebirdDB.ProductsGetBySKU(SKU));
+                return DAL.FirebirdDB.ProductsGetBySKU(SKU);
         }
 
         /// <summary>
@@ -458,15 +458,15 @@ namespace SharedBase.BOL.Products
                     CachedItemAdd(cacheName, Result);
                 }
 
-                return ((Products)Result.Value);
+                return (Products)Result.Value;
             }
             else
-                return (DAL.FirebirdDB.ProductsGetOffers(PageNumber, PageSize));
+                return DAL.FirebirdDB.ProductsGetOffers(PageNumber, PageSize);
         }
 
         public static Products GetBlackLabel(Users.User user)
         {
-            return (DAL.FirebirdDB.ProductGetBlackLabel(user));
+            return DAL.FirebirdDB.ProductGetBlackLabel(user);
         }
 
         #endregion Static Methods
@@ -479,7 +479,7 @@ namespace SharedBase.BOL.Products
         {
             get
             {
-                return ((Product)this.InnerList[Index]);
+                return (Product)this.InnerList[Index];
             }
 
             set
@@ -499,7 +499,7 @@ namespace SharedBase.BOL.Products
         /// <returns></returns>
         public int Add(Product value)
         {
-            return (List.Add(value));
+            return List.Add(value);
         }
 
         /// <summary>
@@ -509,7 +509,7 @@ namespace SharedBase.BOL.Products
         /// <returns></returns>
         public int IndexOf(Product value)
         {
-            return (List.IndexOf(value));
+            return List.IndexOf(value);
         }
 
         /// <summary>
@@ -541,7 +541,7 @@ namespace SharedBase.BOL.Products
         public bool Contains(Product value)
         {
             // If value is not of type OBJECT_TYPE, this will return false.
-            return (List.Contains(value));
+            return List.Contains(value);
         }
 
         #endregion Public Methods

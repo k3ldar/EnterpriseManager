@@ -63,7 +63,7 @@ namespace SharedBase.BOL.TipsTricks
         {
             get
             {
-                return (_ID);
+                return _ID;
             }
 
             set
@@ -76,7 +76,7 @@ namespace SharedBase.BOL.TipsTricks
         {
             get
             {
-                return (_Name);
+                return _Name;
             }
 
             set
@@ -89,7 +89,7 @@ namespace SharedBase.BOL.TipsTricks
         {
             get
             {
-                return (_ShowOnWeb);
+                return _ShowOnWeb;
             }
 
             set
@@ -102,7 +102,7 @@ namespace SharedBase.BOL.TipsTricks
         {
             get
             {
-                return (_PopUpID);
+                return _PopUpID;
             }
 
             set
@@ -115,7 +115,7 @@ namespace SharedBase.BOL.TipsTricks
         {
             get
             {
-                return (_Description);
+                return _Description;
             }
 
             set
